@@ -223,6 +223,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		// Use primordial URI and issue "hits" request to check if the WFS will
 		// return anything at all
 		int hits;
+
 		if (ignoreNumberMatched) {
 			hits = UNKNOWN_SIZE;
 		}
@@ -260,6 +261,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 					"featuresPerRequest must be a positive integer or {0} to disable pagination",
 					UNLIMITED));
 		}
+
 		this.featuresPerRequest = featuresPerRequest;
 	}
 
@@ -297,7 +299,10 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	 * @see Iterable#iterator()
 	 */
 	@Override
-	public WfsBackedGmlInstanceIterator iterator() {
+	public InstanceIterator iterator() {
+		if (primordialQueryParams.containsKey("RESOLVEDEPTH")) {
+			return new DuplicateIDsFilterIterator(new WfsBackedGmlInstanceIterator());
+		}
 		return new WfsBackedGmlInstanceIterator();
 	}
 
@@ -354,7 +359,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	public Instance getInstance(InstanceReference reference) {
 		IndexInstanceReference ref = (IndexInstanceReference) reference;
 
-		WfsBackedGmlInstanceIterator it = iterator();
+		InstanceIterator it = iterator();
 		try {
 			for (int i = 0; i < ref.getIndex(); i++) {
 				// skip all instances before the referenced instance
@@ -425,7 +430,9 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		 * {@link WfsBackedGmlInstanceIterator} is closed.
 		 */
 		private void proceedOrClose() {
-			iterator.close();
+			if (iterator != null) {
+				iterator.close();
+			}
 
 			if (!isPaged() || isFeatureLimitReached()) {
 				close();
@@ -433,7 +440,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 			else {
 				createNextIterator();
 
-				if (!iterator.hasNext()) {
+				if (iterator != null && !iterator.hasNext()) {
 					close();
 				}
 			}
@@ -548,15 +555,23 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		 * @return true if the number of features processed is equal to (or exceeds) the
 		 *         maximum number of features to processed or the number of results
 		 *         reported by the WFS.
+		 *
+		 *         The !iterator.hasNext() condition is necessary to ensure that
+		 *         instances from additionalObjects are processed after the final 'main'
+		 *         instance.
 		 */
 		protected boolean isFeatureLimitReached() {
 			return (maxNumberOfFeatures != UNLIMITED
 					&& totalFeaturesProcessed >= maxNumberOfFeatures)
-					|| (size != UNKNOWN_SIZE && totalFeaturesProcessed >= size);
+					|| (size != UNKNOWN_SIZE && totalFeaturesProcessed >= size
+							&& !iterator.hasNext());
 		}
 
 		/**
 		 * @see java.util.Iterator#next()
+		 *
+		 *      Condition: if the instance is part of additional objects then that
+		 *      instance is it added but is not counted for the totalFeaturesProcessed
 		 */
 		@Override
 		public Instance next() {
@@ -565,7 +580,16 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 			}
 
 			Instance instance = iterator.next();
-			return new StreamGmlInstance(instance, totalFeaturesProcessed++);
+			boolean hasAdditionalObjects = instance
+					.getMetaData(GmlInstanceCollection.ADDITIONAL_OBJECTS) != null
+					&& !instance.getMetaData(GmlInstanceCollection.ADDITIONAL_OBJECTS).isEmpty();
+
+			if (primordialQueryParams.containsKey("RESOLVEDEPTH") && hasAdditionalObjects) {
+				return new StreamGmlInstance(instance, totalFeaturesProcessed);
+			}
+			else {
+				return new StreamGmlInstance(instance, totalFeaturesProcessed++);
+			}
 		}
 
 		/**
