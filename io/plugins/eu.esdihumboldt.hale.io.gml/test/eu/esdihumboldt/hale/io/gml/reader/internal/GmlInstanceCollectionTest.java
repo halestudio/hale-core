@@ -20,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 import javax.xml.namespace.QName;
@@ -38,6 +39,7 @@ import eu.esdihumboldt.hale.common.schema.io.SchemaReader;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.test.TestUtil;
+import eu.esdihumboldt.hale.io.gml.reader.internal.wfs.DuplicateIDsFilterIterator;
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements;
 import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
@@ -260,6 +262,56 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 		} finally {
 			it.close();
 		}
+	}
+
+	/**
+	 * Test loading a simple XML file with one instance
+	 *
+	 * @throws Exception if an error occurs
+	 */
+	@Test
+	public void testLoadFilterNoDuplicates() throws Exception {
+
+		int uniqueInstanceCount = extractedUniqueInstances(
+				"/data/filter_doubles/filter_with_doubles.xml");
+		System.out.println(
+				"There are " + uniqueInstanceCount + " unique instances in the file with doubles.");
+		assertEquals(3, uniqueInstanceCount);
+
+		uniqueInstanceCount = extractedUniqueInstances(
+				"/data/filter_doubles/filter_no_doubles.xml");
+
+		System.out.println("There are " + uniqueInstanceCount
+				+ " unique instances in the file with unique instances.");
+		assertEquals(4, uniqueInstanceCount);
+	}
+
+	/**
+	 * @param pathToXML
+	 * @return how many unique instances are present
+	 * @throws IOException
+	 * @throws IOProviderConfigurationException
+	 * @throws URISyntaxException
+	 */
+	private int extractedUniqueInstances(String pathToXML)
+			throws IOException, IOProviderConfigurationException, URISyntaxException {
+		GmlInstanceCollection instances = loadInstances(
+				getClass().getResource("/data/filter_doubles/filter.xsd").toURI(),
+				getClass().getResource(pathToXML).toURI(), false);
+
+		int uniqueInstanceCount = 0;
+		try (DuplicateIDsFilterIterator myIterator = new DuplicateIDsFilterIterator(
+				instances.iterator())) {
+			while (myIterator.hasNext()) {
+				myIterator.skip();
+				uniqueInstanceCount++;
+				System.out.println("Start " + uniqueInstanceCount + " uniqueInstanceCount");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(uniqueInstanceCount + " uniqueInstanceCount");
+		return uniqueInstanceCount;
 	}
 
 	/**
