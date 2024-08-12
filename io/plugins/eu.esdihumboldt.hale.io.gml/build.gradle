@@ -1,0 +1,60 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'GML/XML Instance I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+  implementation libs.groovy.xml
+  implementation libs.groovy.json
+
+  implementation libs.guava
+  implementation libs.spring.core
+  implementation libs.xmlbeans
+  implementation libs.commons.io
+  implementation libs.joda.time
+
+  implementation libs.jts
+  implementation libs.geotools.gml3
+  implementation libs.geotools.main
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.graph')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.geometry')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml.geometry')
+
+  // for content type definition
+  runtimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.xml')
+
+  testImplementation testLibs.junit4
+
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation libs.trove
+  testImplementation libs.apache.ws.xsd
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xml')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

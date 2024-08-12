@@ -19,7 +19,7 @@ package eu.esdihumboldt.hale.common.align.groovy.accessor.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.esdihumboldt.hale.common.align.groovy.accessor.PathElement;
+import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement;
 import eu.esdihumboldt.hale.common.align.model.AlignmentUtil;
 import eu.esdihumboldt.hale.common.align.model.ChildContext;
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
@@ -30,14 +30,14 @@ import eu.esdihumboldt.util.groovy.paths.Path;
 
 /**
  * Entity definition access utilites.
- * 
+ *
  * @author Simon Templer
  */
 public class EntityAccessorUtil {
 
 	/**
 	 * Create an entity definition from a path.
-	 * 
+	 *
 	 * @param path the path, the topmost element has to represent an
 	 *            {@link EntityDefinition}, all other elements must represent
 	 *            {@link ChildContext}s

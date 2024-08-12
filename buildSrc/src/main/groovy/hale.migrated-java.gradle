@@ -1,0 +1,26 @@
+/*
+ * Custom source set for Java libraries migrated from hale studio (keep main sources in same path)
+ */
+
+plugins {
+  id 'hale.library-conventions'
+}
+
+sourceSets {
+  main {
+    java {
+      srcDirs = ['src']  // retain source path from before migration
+    }
+    resources {
+      srcDirs = ['resources/main']
+    }
+  }
+  test {
+    java {
+      srcDirs = ['test']
+    }
+    resources {
+      srcDirs = ['resources/test']
+    }
+  }
+}

@@ -1,0 +1,31 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Deegree I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+
+  implementation libs.bundles.deegree
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.config')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  testImplementation testLibs.junit4
+}

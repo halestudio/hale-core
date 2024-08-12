@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
@@ -36,7 +36,7 @@ import eu.esdihumboldt.hale.util.nonosgi.NonOsgiPlatform;
 
 /**
  * Helper methods for the Hale platform.
- * 
+ *
  * @author Simon Templer
  */
 public class HalePlatform {
@@ -68,7 +68,7 @@ public class HalePlatform {
 	/**
 	 * Get the content type manager. Uses the default Eclipse content type
 	 * manager if running in OSGi, otherwise an adapted version.
-	 * 
+	 *
 	 * @return the content type manager
 	 */
 	public static IContentTypeManager getContentTypeManager() {
@@ -84,7 +84,7 @@ public class HalePlatform {
 	 * Get a service based on it's interface type. The service provided here
 	 * have global scope, services that are UI-specific are not included, use
 	 * HaleUI instead to access those services.
-	 * 
+	 *
 	 * @param serviceClass the service class
 	 * @return the service instance or <code>null</code>
 	 */
@@ -95,7 +95,7 @@ public class HalePlatform {
 
 	/**
 	 * Get the platform global scoped service provider.
-	 * 
+	 *
 	 * @return the service provider
 	 */
 	public static ServiceProvider getServiceProvider() {
@@ -106,7 +106,7 @@ public class HalePlatform {
 
 	/**
 	 * Determine the version of the currently used HALE core bundle/library.
-	 * 
+	 *
 	 * @return the version of the HALE core bundle/library
 	 */
 	public static Version getCoreVersion() {
@@ -137,13 +137,17 @@ public class HalePlatform {
 
 	/**
 	 * Determine if the HALE core bundle/library is a SNAPSHOT version.
-	 * 
+	 *
 	 * @return <code>true</code> if the HALE core bundle/library used is
 	 *         verified to be a SNAPSHOT version, <code>false</code> otherwise
 	 */
 	public static boolean isSnapshotVersion() {
 		String qualifier = getCoreVersion().getQualifier();
 		return qualifier != null && (qualifier.equals("SNAPSHOT") || qualifier.equals("qualifier"));
+	}
+
+	public static boolean isOsgi() {
+		return CoreBundle.isOsgi();
 	}
 
 }

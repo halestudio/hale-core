@@ -1,0 +1,13 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE Logback Test Configuration'
+
+  fragmentHost = "ch.qos.logback.classic;bundle-version=\"${libs.versions.logback.get()}\""
+}
+
+dependencies {
+  implementation libs.slf4jplus.logback.appender
+}

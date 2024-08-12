@@ -1,0 +1,36 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'XLS/Instance I/O'
+}
+
+dependencies {
+  implementation libs.bundles.poi
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.orient')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.lookup')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.csv')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.assertj
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.test')
+}

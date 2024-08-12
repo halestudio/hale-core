@@ -1,0 +1,23 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'hale CLI Default Commands'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.cli')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.html.svg')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xls')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.csv')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.cli')
+}

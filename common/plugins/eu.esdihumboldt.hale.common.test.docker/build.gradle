@@ -1,0 +1,23 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Docker Test Helpers'
+
+  activator = 'eu.esdihumboldt.hale.common.test.docker.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation testLibs.junit4
+
+  implementation libs.jackson.annotations
+
+  implementation libs.eclipse.osgi
+
+  api libs.spotify.docker
+  implementation libs.typesafe.config
+}

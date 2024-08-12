@@ -1,0 +1,18 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Groovy Meta Class Extension Fragment'
+
+  fragmentHost = "groovy;bundle-version=\"${libs.versions.groovy.get()}\""
+}
+
+dependencies {
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.meta.extension')
+  implementation libs.igd.eclipse.util
+
+  compileOnly(libs.groovy.core)
+
+  testImplementation testLibs.junit4
+}

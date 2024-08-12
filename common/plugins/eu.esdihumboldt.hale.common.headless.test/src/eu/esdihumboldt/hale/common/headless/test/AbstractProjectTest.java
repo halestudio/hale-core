@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     wetransform GmbH <http://www.wetransform.to>
  */
@@ -26,13 +26,14 @@ import com.google.common.cache.LoadingCache;
 import eu.esdihumboldt.hale.common.cli.HaleCLIUtil;
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
 import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Base class for tests working with loaded transformation projects.
- * 
+ *
  * @author Simon Templer
  */
-public abstract class AbstractProjectTest {
+public abstract class AbstractProjectTest extends AbstractPlatformTest {
 
 	/**
 	 * Cache of loaded projects
@@ -49,7 +50,7 @@ public abstract class AbstractProjectTest {
 
 	/**
 	 * Load a transformation project.
-	 * 
+	 *
 	 * @param uri the project location
 	 * @return the loaded project
 	 * @throws IOException if loading the project fails
@@ -61,7 +62,7 @@ public abstract class AbstractProjectTest {
 
 	/**
 	 * Get a loaded transformation project.
-	 * 
+	 *
 	 * @param location the project location
 	 * @return the loaded project
 	 * @throws Exception if loading the project fails

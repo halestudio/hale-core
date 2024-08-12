@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     HUMBOLDT EU Integrated Project #030962
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import eu.esdihumboldt.hale.common.core.HalePlatform;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
@@ -55,7 +56,7 @@ import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 
 /**
  * Some static helper methods for tests.
- * 
+ *
  * @author Kai Schwierczek
  */
 @SuppressWarnings("restriction")
@@ -63,7 +64,7 @@ public class TestUtil {
 
 	/**
 	 * Loads the specified schema.
-	 * 
+	 *
 	 * @param location the URI specifying the location of the schema
 	 * @return the loaded schema
 	 * @throws IOProviderConfigurationException if the schema reader
@@ -94,7 +95,7 @@ public class TestUtil {
 	/**
 	 * Loads the specified alignment. Assumes that its base alignments don't
 	 * need a location update.
-	 * 
+	 *
 	 * @param location the URI specifying the location of the alignment
 	 * @param sourceTypes the source type index
 	 * @param targetTypes the target type index
@@ -129,7 +130,7 @@ public class TestUtil {
 	/**
 	 * Loads an instance collection from the specified file with the given
 	 * source types.
-	 * 
+	 *
 	 * @param location the URI specifying the location of the instance file
 	 * @param types the type index
 	 * @return the loaded instance collection
@@ -180,17 +181,19 @@ public class TestUtil {
 
 	/**
 	 * Uninstalls a bundle with the given symbolic name.
-	 * 
+	 *
 	 * @param name the symbolic name of the bundle to uninstall
 	 */
 	public static void uninstallBundle(String name) {
-		BundleContext context = OsgiUtilsActivator.getInstance().getContext();
-		for (Bundle bundle : context.getBundles()) {
-			if (bundle.getSymbolicName().equals(name)) {
-				try {
-					bundle.uninstall();
-				} catch (BundleException e) {
-					throw new IllegalStateException("Failed to uninstall bundle", e);
+		if (HalePlatform.isOsgi()) {
+			BundleContext context = OsgiUtilsActivator.getInstance().getContext();
+			for (Bundle bundle : context.getBundles()) {
+				if (bundle.getSymbolicName().equals(name)) {
+					try {
+						bundle.uninstall();
+					} catch (BundleException e) {
+						throw new IllegalStateException("Failed to uninstall bundle", e);
+					}
 				}
 			}
 		}
@@ -199,9 +202,9 @@ public class TestUtil {
 	/**
 	 * Start the given bundles and then check that the given service is
 	 * available.
-	 * 
+	 *
 	 * XXX HACKHACK
-	 * 
+	 *
 	 * @param bundlesToStart the bundles to start
 	 * @param serviceToCheck the service to check
 	 */
@@ -228,7 +231,7 @@ public class TestUtil {
 
 	/**
 	 * Start the bundle with the given name.
-	 * 
+	 *
 	 * @param bundleName the name of the bundle to start
 	 */
 	public static void startBundle(String bundleName) {

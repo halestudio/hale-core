@@ -1,0 +1,24 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Groovy Sandbox'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.groovy.core
+  implementation libs.groovy.sandbox
+
+  implementation libs.igd.eclipse.util
+  implementation libs.eclipse.core.runtime
+
+  testImplementation testLibs.junit4
+
+  /*
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+   */
+}

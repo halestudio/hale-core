@@ -1,37 +1,37 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 
 package eu.esdihumboldt.cst.test;
 
-import java.io.InputStream;
-
 import eu.esdihumboldt.hale.common.align.model.Alignment;
 import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 
+import java.io.InputStream;
+
 /**
  * Transformation example for use in transformation testing.
- * 
+ *
  * @author Simon Templer
  */
 public interface TransformationExample {
 
 	/**
 	 * Get the source schema, load it if it was not loaded yet.
-	 * 
+	 *
 	 * @return the source schema
 	 * @throws Exception if an error occurs while loading the source schema
 	 */
@@ -39,7 +39,7 @@ public interface TransformationExample {
 
 	/**
 	 * Get the target schema, load it if it was not loaded yet.
-	 * 
+	 *
 	 * @return the target schema
 	 * @throws Exception if an error occurs while loading the target schema
 	 */
@@ -47,7 +47,7 @@ public interface TransformationExample {
 
 	/**
 	 * Get the alignment, load it if it was not loaded yet.
-	 * 
+	 *
 	 * @return the alignment
 	 * @throws Exception if an error occurs while loading the alignment
 	 */
@@ -55,7 +55,7 @@ public interface TransformationExample {
 
 	/**
 	 * Get the target container namespace (XML specific).
-	 * 
+	 *
 	 * @return the name of the target file root element namespace,
 	 *         <code>null</code> represents the target schema default namespace
 	 */
@@ -63,14 +63,14 @@ public interface TransformationExample {
 
 	/**
 	 * Get the target container name (XML specific).
-	 * 
+	 *
 	 * @return the local name of the target file root element
 	 */
 	public String getTargetContainerName();
 
 	/**
 	 * Get the source instances, load them if they were not loaded yet.
-	 * 
+	 *
 	 * @return the source instances
 	 * @throws Exception if an error occurs while loading the source instances
 	 */
@@ -78,7 +78,7 @@ public interface TransformationExample {
 
 	/**
 	 * Get the target instances, load them if they were not loaded yet.
-	 * 
+	 *
 	 * @return the target instances
 	 * @throws Exception if an error occurs while loading the target instances
 	 */

@@ -1,0 +1,36 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'Core I/O Providers'
+
+dependencies {
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
+
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.codelist.skos"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.codelist.xml"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.csv"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.geopackage"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.gml"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.gml.geometry"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.groovy"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.haleconnect"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.jdbc"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.jdbc.postgresql"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.jdbc.spatialite"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.json"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.shp"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.validation"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.wfs"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.xls"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.xml"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.xsd"))
+
+  // for resolving CRS
+  api(libs.geotools.epsg)
+
+  // include these?
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.topojson"))
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.pb"))
+  // api(project(":io:plugins:eu.esdihumboldt.hale.io.schematron")) // causes problems due to saxon?
+}

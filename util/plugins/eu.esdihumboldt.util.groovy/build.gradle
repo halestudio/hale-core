@@ -1,0 +1,17 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Groovy Utilities'
+}
+
+dependencies {
+  api libs.groovy.core
+  implementation libs.groovy.json
+  implementation libs.groovy.xml
+
+  implementation libs.guava
+
+  testImplementation testLibs.junit4
+}

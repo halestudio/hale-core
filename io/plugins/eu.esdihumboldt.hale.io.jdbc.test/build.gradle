@@ -1,0 +1,30 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE JDBC Test Helpers'
+}
+
+dependencies {
+  implementation testLibs.junit4
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.spotify.docker
+  implementation libs.typesafe.config
+
+  implementation libs.jackson.annotations
+
+  implementation libs.schemacrawler
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.test.docker')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.jdbc')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

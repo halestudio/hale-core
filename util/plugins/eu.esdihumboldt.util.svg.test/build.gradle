@@ -1,0 +1,16 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Test Utility Bundle with SVG tools'
+}
+
+dependencies {
+  implementation libs.batik.svggen
+  implementation libs.batik.dom
+  implementation libs.jts
+
+  implementation testLibs.junit4
+  implementation testLibs.allure.annotations
+}

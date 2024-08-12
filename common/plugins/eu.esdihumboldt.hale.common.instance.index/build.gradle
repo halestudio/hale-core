@@ -1,0 +1,29 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Instance Indexes'
+}
+
+dependencies {
+  implementation libs.guava
+
+  implementation libs.jts
+
+  implementation libs.findbugs.annotations
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  implementation project(':ext:geom:de.fhg.igd.geom')
+
+  testImplementation testLibs.junit4
+}

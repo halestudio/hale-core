@@ -1,0 +1,11 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE Prefix Mapper'
+}
+
+dependencies {
+  implementation libs.jaxb.runtime
+}

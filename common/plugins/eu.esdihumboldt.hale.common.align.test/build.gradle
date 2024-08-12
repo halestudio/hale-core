@@ -1,0 +1,15 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE Alignment API Test Helpers'
+}
+
+dependencies {
+  implementation libs.slf4j.api
+
+  implementation libs.groovy.xml
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+}

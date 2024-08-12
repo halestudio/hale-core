@@ -1,0 +1,15 @@
+plugins {
+  id 'hale.library-conventions'
+}
+
+description = 'Utilities for non-OSGi environment'
+
+dependencies {
+  implementation libs.slf4j.adapter.jul
+  implementation libs.groovy.core
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(path: ':ext:nonosgi:org.eclipse.equinox.nonosgi.registry')
+  implementation project(path: ':util:plugins:eu.esdihumboldt.util.groovy.meta.extension')
+}

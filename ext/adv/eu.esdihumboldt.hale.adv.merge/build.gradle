@@ -1,0 +1,23 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'AdV Alignment Merge functions'
+}
+
+dependencies {
+  implementation libs.guava
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  testImplementation testLibs.junit4
+
+  testImplementation libs.guava
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.headless.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge.test')
+}

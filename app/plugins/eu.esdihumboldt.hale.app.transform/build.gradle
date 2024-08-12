@@ -1,0 +1,39 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Application for command line transformation'
+}
+
+dependencies {
+  implementation libs.groovy.json
+
+  implementation libs.guava
+  implementation libs.joda.time
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.app')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.cli')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.validation')
+
+  testImplementation testLibs.junit4
+
+  testImplementation libs.groovy.xml
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  testRuntimeOnly project(':io:features:eu.esdihumboldt.hale.io.feature.core')
+  testRuntimeOnly project(':cst:features:eu.esdihumboldt.cst.feature')
+}

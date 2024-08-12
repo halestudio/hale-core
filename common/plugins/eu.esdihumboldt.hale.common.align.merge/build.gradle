@@ -1,0 +1,33 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Alignment Merger'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.findbugs.annotations
+
+  implementation libs.guava
+  implementation libs.jts
+
+  implementation libs.igd.eclipse.util
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge.test')
+}

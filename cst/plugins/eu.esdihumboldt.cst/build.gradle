@@ -1,0 +1,40 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Conceptual Schema Transformer'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+
+  implementation libs.guava
+  implementation libs.trove
+  implementation libs.spring.core
+
+  implementation libs.igd.osgi.util
+  implementation libs.igd.eclipse.util
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.jts
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.test')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

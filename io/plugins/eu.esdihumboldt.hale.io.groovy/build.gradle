@@ -1,0 +1,24 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Groovy I/O'
+}
+
+dependencies {
+  implementation libs.slf4j.api
+
+  implementation libs.groovy.core
+
+  implementation libs.commons.io
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  testImplementation testLibs.junit4
+}

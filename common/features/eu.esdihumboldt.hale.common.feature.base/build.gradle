@@ -1,0 +1,17 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'Platform base feature'
+
+dependencies {
+  /*
+   * Logging
+   */
+  api(libs.bundles.slf4jplus)
+
+  api(libs.logback.core)
+  api(libs.logback.classic)
+
+  api(libs.bundles.slf4j)
+}

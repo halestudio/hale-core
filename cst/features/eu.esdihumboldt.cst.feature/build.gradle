@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'Conceptual Schema Transformer Feature'
+
+dependencies {
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.orient"))
+
+  api(project(":cst:plugins:eu.esdihumboldt.cst"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.collector"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.core"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.custom"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.geometric"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.groovy"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.groovy.helpers"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.inspire"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.numeric"))
+  api(project(":cst:plugins:eu.esdihumboldt.cst.functions.string"))
+
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.scripting"))
+
+  api(libs.jmep)
+}

@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  //FIXME used before with equinox test app - still needed?
+  bundleName = 'Allure Test Integration'
+}
+
+dependencies {
+  implementation testLibs.junit4
+
+  implementation testLibs.allure.junit
+}

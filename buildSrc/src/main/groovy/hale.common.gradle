@@ -1,0 +1,22 @@
+plugins {
+  id 'to.wetransform.semantic-release-version'
+}
+
+repositories {
+  maven {
+    url 'https://artifactory.wetransform.to/artifactory/local'
+  }
+
+  maven {
+    url 'https://repo.osgeo.org/repository/release/'
+  }
+
+  // deegree repository
+  maven {
+    url 'https://repo.deegree.org/content/groups/public'
+  }
+
+  mavenCentral()
+}
+
+project.extensions.create('hale', HaleProjectExtension)

@@ -1,0 +1,15 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'String Transformation Functions'
+}
+
+dependencies {
+  implementation libs.guava
+
+  implementation libs.spring.core
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+}

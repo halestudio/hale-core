@@ -1,0 +1,43 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE SpatiaLite Support'
+
+  activator = 'eu.esdihumboldt.hale.io.jdbc.spatialite.internal.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+
+  implementation libs.schemacrawler
+
+  implementation libs.sqlite.jdbc
+
+  implementation libs.jts
+  implementation libs.geotools.main
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.jdbc')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.allure.annotations
+
+  testRuntimeOnly libs.geotools.epsg
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.test')
+}

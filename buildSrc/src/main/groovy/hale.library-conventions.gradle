@@ -1,0 +1,97 @@
+/*
+ * A library part of hale-core.
+ */
+
+plugins {
+  id 'java-library'
+
+  id 'biz.aQute.bnd.builder'
+
+  id 'hale.java-conventions'
+}
+
+// https://github.com/bndtools/bnd/blob/master/gradle-plugins/README.md#replacing-use-of-gradles-deprecated-osgi-plugin
+jar {
+  bundle {
+    afterEvaluate {
+      def bunName = project.hale.bundleName ?: project.description
+      if (bunName) {
+        bnd(
+          'Bundle-Name': bunName
+        )
+      }
+
+      def symName = project.hale.bundleSymbolicName
+      if (!symName) {
+        symName = projectDir.name
+      }
+      def useSymName = symName
+
+      boolean singleton = false
+      if (project.hale.singletonBundle != null) {
+        // custom setting
+        singleton = project.hale.singletonBundle
+      }
+      else {
+        // determine automatically
+        // enable if a plugin.xml is present in the main resources
+
+        singleton = project.sourceSets.main.resources.srcDirs
+          .collect { resDir -> new File(resDir, 'plugin.xml')}
+          .findAll { it.exists()}
+          .any()
+      }
+
+      if (singleton) {
+        useSymName = "${useSymName};singleton:=true"
+      }
+      bnd(
+        'Bundle-SymbolicName': useSymName,
+        'Automatic-Module-Name': symName,
+        'Bundle-Vendor': project.hale.bundleVendor ?: 'wetransform GmbH'
+      )
+
+      if (project.hale.activator) {
+        bnd('Bundle-Activator': project.hale.activator)
+      }
+      if (project.hale.lazyActivation) {
+        bnd(
+          'Bundle-ActivationPolicy': 'lazy'
+        )
+      }
+
+      if (project.hale.fragmentHost) {
+        bnd(
+          'Fragment-Host': project.hale.fragmentHost
+        )
+      }
+
+      def pp = project.hale.privatePackage // ?: 'icons.*;-split-package:=first,schema.*;-split-package:=first,help.*;-split-package:=first'
+      if (pp) {
+        bnd(
+          'Private-Package': pp
+        )
+      }
+
+      def ep = project.hale.exportPackage ?: "${symName}.*;-noimport:=true"
+      if (ep) {
+        bnd(
+          'Export-Package': ep
+        )
+      }
+
+      if (project.hale.registeredBuddies) {
+        bnd(
+          'Eclipse-BuddyPolicy': 'registered'
+        )
+      }
+    }
+  }
+}
+
+/*
+   Note: in case it turns out that related to editing plugin.xml files there is a better experience having them
+   in the root folder of a project (possibly schema folder as well), there is a way to add specific files to
+   resources (see https://discuss.gradle.org/t/how-to-add-a-single-extra-resource-to-the-existing-resources/17070)
+   Open question is if that works also on runtime when testing
+ */

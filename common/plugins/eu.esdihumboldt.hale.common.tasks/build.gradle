@@ -1,0 +1,16 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Tasks API'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+}

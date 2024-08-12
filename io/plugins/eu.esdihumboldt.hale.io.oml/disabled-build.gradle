@@ -1,0 +1,35 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'OML Alignment I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+  implementation libs.log4j
+
+  implementation libs.guava
+  implementation libs.jakarta.xml.bind.api
+
+  implementation libs.model.oml
+
+  implementation libs.geotools.opengis
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.inspire')
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.numeric')
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.string')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.prefixmapper')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  testImplementation testLibs.junit4
+}

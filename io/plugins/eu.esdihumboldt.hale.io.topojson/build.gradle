@@ -1,0 +1,39 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Topojson Support'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.wetf.topojson
+
+  implementation libs.geotools.opengis
+
+  implementation libs.jackson.databind
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.shp')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.json')
+
+  testImplementation testLibs.junit4
+
+  testImplementation libs.groovy.json
+  testImplementation libs.jts
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

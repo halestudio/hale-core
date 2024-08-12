@@ -1,0 +1,27 @@
+plugins {
+  id 'hale.bom-conventions'
+}
+
+description = 'hale-core BOM'
+
+javaPlatform {
+  // allowDependencies() // for including other BOMs
+}
+
+dependencies {
+  // api(platform(project("other bom")))
+
+  constraints {
+    // Note: transitive dependencies are not included for a dependency
+
+    rootProject.subprojects.each { p ->
+      // add all projects except:
+      // - root project
+      // - this project
+      // - intermediate projects w/o build.gradle
+      if (p != project && new File(p.projectDir, 'build.gradle').exists()) {
+        api(p)
+      }
+    }
+  }
+}

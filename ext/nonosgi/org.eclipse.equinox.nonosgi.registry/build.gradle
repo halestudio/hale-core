@@ -1,0 +1,15 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Extension Point with NO OSGi-env.'
+  bundleVendor = 'Eclipse.org'
+
+  activator = 'org.eclipse.equinox.nonosgi.internal.registry.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.eclipse.equinox.registry
+}

@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2015 Simon Templer
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Simon Templer - initial version
  */
@@ -30,9 +30,9 @@ import groovy.transform.CompileStatic
 
 /**
  * Accessor linked instances of a {@link FamilyInstance}s.
- * 
+ *
  * It mutates, so it is only usable once.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -40,7 +40,7 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 
 	/**
 	 * Create an accessor for a given family instance.
-	 * 
+	 *
 	 * @param definition the definition
 	 */
 	public InstanceFamilyAccessor(FamilyInstance instance) {
@@ -49,7 +49,7 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 
 	/**
 	 * Creates an accessor for the given family instances.
-	 * 
+	 *
 	 * @param objects the initial objects
 	 */
 	public InstanceFamilyAccessor(List<? extends FamilyInstance> instances) {
@@ -76,8 +76,8 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 	}
 
 	@Override
-	protected List<? extends Path<Object>> findChildPaths(
-			List<? extends Path<Object>> parentPaths, final String name, List<?> args) {
+	protected List<? extends Path<FamilyInstance>> findChildPaths(
+			List<? extends Path<FamilyInstance>> parentPaths, final String name, List<?> args) {
 		List<?> list = new ArrayList<>(args)
 
 		String namespace = null
@@ -168,7 +168,7 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 
 	/**
 	 * Iterator over the path last values.
-	 * 
+	 *
 	 * @param closure the closure to execute for each value
 	 */
 	public void each(Closure closure) {
@@ -177,7 +177,7 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 
 	/**
 	 * Get the first value.
-	 * 
+	 *
 	 * @return the first value
 	 */
 	public Object first() {

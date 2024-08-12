@@ -1,0 +1,44 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE Json IO'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.commons.codec
+
+  implementation libs.jts
+  implementation libs.geotools.referencing
+  implementation libs.geotools.geojson
+
+  implementation libs.jackson.databind
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.geometry')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.assertj
+
+  testImplementation libs.groovy.json
+
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

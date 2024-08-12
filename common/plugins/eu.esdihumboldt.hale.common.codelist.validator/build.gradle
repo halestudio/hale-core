@@ -1,0 +1,20 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Codelist validator for instances'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instancevalidator')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+}

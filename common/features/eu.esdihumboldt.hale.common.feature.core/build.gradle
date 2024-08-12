@@ -1,0 +1,43 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'HALE core logic and models'
+
+dependencies {
+  api(project(":util:features:eu.esdihumboldt.util.feature.resource"))
+
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.align"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.align.groovy"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.align.merge"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.app"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.cache"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.codelist"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.codelist.validator"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.convert"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.convert.core"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.convert.wkt"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.core"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.filter"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.groovy"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.index"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.lookup"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.referencing"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.schema"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.schema.groovy"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.schema.persist"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.style"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.tasks"))
+
+  api(project(":ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi"))
+
+  api(project(":util:plugins:eu.esdihumboldt.util"))
+  api(project(":util:plugins:eu.esdihumboldt.util.geometry"))
+  api(project(":util:plugins:eu.esdihumboldt.util.groovy"))
+  api(project(":util:plugins:eu.esdihumboldt.util.groovy.meta.extension"))
+  api(project(":util:plugins:eu.esdihumboldt.util.groovy.sandbox"))
+
+  // only use in OSGi environment
+  // api(project(":util:plugins:eu.esdihumboldt.util.groovy.meta.fragment"))
+}

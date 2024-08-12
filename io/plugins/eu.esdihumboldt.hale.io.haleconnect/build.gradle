@@ -1,0 +1,24 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'hale connect integration'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.commons.lang
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.bundles.hc.api
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+}

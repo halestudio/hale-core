@@ -1,0 +1,11 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Metrics API'
+}
+
+dependencies {
+  implementation libs.prometheus.client
+}

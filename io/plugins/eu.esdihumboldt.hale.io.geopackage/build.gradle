@@ -1,0 +1,41 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'hale Geopackage Support'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.jts
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+  implementation libs.geotools.main
+
+  implementation libs.bundles.geopackage
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.assertj
+
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

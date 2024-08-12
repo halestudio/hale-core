@@ -1,0 +1,37 @@
+/*
+ * A BOM built from Gradle.
+ *
+ * Important note: BOM are just for specifying constraints, not actual dependencies.
+ *
+ * See https://dev.to/mfvanek/creation-and-usage-of-bom-in-gradle-ca1 for examples on BOM usage in Gradle.
+ */
+
+plugins {
+  id 'java-platform'
+  id 'maven-publish'
+  id 'hale.common'
+}
+
+/*
+ * Publishing to Maven
+ *
+ * https://docs.gradle.org/current/userguide/publishing_maven.html
+ */
+publishing {
+  publications {
+    mavenBOM(MavenPublication) {
+      from components.javaPlatform
+    }
+  }
+
+  repositories {
+    maven {
+      url 'https://artifactory.wetransform.to/artifactory/' +
+        (version.endsWith('-SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local')
+      credentials {
+        username project.hasProperty('wetfArtifactoryUser') ? wetfArtifactoryUser : ''
+        password project.hasProperty('wetfArtifactoryPassword') ? wetfArtifactoryPassword : ''
+      }
+    }
+  }
+}

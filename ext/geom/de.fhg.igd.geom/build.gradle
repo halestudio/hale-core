@@ -1,0 +1,13 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Geometry'
+  bundleVendor = 'Fraunhofer IGD'
+}
+
+dependencies {
+  implementation libs.guava
+  implementation libs.jts
+}

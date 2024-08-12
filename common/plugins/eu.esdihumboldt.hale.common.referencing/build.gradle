@@ -1,0 +1,22 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Extensions to GeoTools Referencing'
+
+  // fragmentHost = 'org.geotools' // rather add in update site build where host bundle is created
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.geotools.opengis
+  implementation libs.groovy.core
+
+  compileOnly libs.geotools.referencing
+
+  testImplementation testLibs.junit4
+  testImplementation libs.geotools.referencing
+  testImplementation libs.geotools.epsg
+}

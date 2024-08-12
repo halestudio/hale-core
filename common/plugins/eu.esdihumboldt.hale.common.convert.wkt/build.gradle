@@ -1,0 +1,16 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'WKT Geometry Converters'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.spring.core
+  implementation libs.jts
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+}

@@ -1,0 +1,26 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Groovy Helper Functions'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.json
+
+  implementation libs.guava
+  implementation libs.spring.core
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  testImplementation testLibs.junit4
+}

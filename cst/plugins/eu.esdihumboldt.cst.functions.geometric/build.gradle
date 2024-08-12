@@ -1,0 +1,57 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'CST Geometric Functions'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+  implementation libs.groovy.xml
+
+  implementation libs.guava
+  implementation libs.commons.lang
+  implementation libs.spring.core
+
+  implementation libs.jmep
+
+  implementation libs.jts
+  implementation libs.geotools.main
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.core')
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.numeric')
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.scripting')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.geometry')
+
+  implementation project(':ext:geom:de.fhg.igd.geom')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.svg.test')
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst')
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.test')
+}

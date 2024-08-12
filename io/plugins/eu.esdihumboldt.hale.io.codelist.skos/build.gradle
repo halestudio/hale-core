@@ -1,0 +1,22 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Skos Reader'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.skos
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+}

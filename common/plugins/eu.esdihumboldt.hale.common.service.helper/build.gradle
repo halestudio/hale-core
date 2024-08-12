@@ -1,0 +1,21 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Hale UI Service Implementer'
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}
