@@ -1,0 +1,37 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Custom transformation functions'
+
+  // package name differs from bundle/project name
+  exportPackage = 'eu.esdihumboldt.hale.common.align.custom.*'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.templates
+
+  implementation libs.guava
+  implementation libs.spring.core
+
+  implementation libs.igd.eclipse.util
+
+  implementation libs.bundles.flexmark
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

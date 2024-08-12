@@ -1,0 +1,18 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Embedded OrientDB Test Bundle'
+}
+
+tasks.test {
+  jvmArgs = ['--add-exports', 'java.base/sun.nio.ch=ALL-UNNAMED']
+}
+
+dependencies {
+  testImplementation testLibs.junit4
+
+  testImplementation libs.orientdb.core
+  testImplementation libs.orient.common
+}

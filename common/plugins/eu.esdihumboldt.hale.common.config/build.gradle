@@ -1,0 +1,19 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Configuration utilities for hale'
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  api project(':util:plugins:eu.esdihumboldt.util.config')
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':ext:nonosgi:org.eclipse.equinox.nonosgi.registry')
+}

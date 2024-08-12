@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Schema Groovy API and Utilities'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  implementation libs.guava
+  implementation libs.jts
+  implementation libs.slf4jplus.api
+
+  api project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

@@ -1,0 +1,29 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Schematron Validator'
+}
+
+dependencies {
+  implementation libs.slf4j.api
+
+  implementation libs.groovy.xml
+
+  implementation libs.opengis.cite.schema.utils
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.validation')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

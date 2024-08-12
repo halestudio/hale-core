@@ -1,0 +1,29 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Geometry Utilities'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  implementation libs.groovy.core
+  implementation libs.slf4j.api
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation libs.jts
+  implementation libs.geotools.opengis
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.allure.annotations
+
+  testImplementation libs.geotools.referencing
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.svg.test')
+}

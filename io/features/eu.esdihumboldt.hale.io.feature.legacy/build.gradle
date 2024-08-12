@@ -1,0 +1,13 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'Core I/O Providers'
+
+dependencies {
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
+
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.project.jaxb"))
+
+  api(project(":util:plugins:eu.esdihumboldt.util.prefixmapper"))
+}

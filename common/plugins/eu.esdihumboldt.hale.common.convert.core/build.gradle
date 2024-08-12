@@ -1,0 +1,18 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Core Converters'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.guava
+  implementation libs.groovy.core
+  implementation libs.joda.time
+  implementation libs.spring.core
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+}

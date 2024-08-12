@@ -1,0 +1,46 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'CSV Schema/Instance I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.opencsv
+
+  implementation libs.guava
+  implementation libs.commons.io
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation libs.findbugs.annotations
+
+  implementation libs.jts
+  implementation libs.geotools.opengis
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert.wkt')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.lookup')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.test')
+}

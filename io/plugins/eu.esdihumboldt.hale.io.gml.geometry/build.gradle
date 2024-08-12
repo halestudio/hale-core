@@ -1,0 +1,40 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'GML schema geometry support'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.spring.core
+
+  implementation libs.jts
+  implementation libs.geotools.gml2
+  implementation libs.geotools.opengis
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.geometry')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.allure.annotations
+
+  testImplementation libs.findbugs.annotations
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.svg.test')
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+}

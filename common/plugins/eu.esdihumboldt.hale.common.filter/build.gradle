@@ -1,0 +1,34 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Hale Filter API'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+
+  api libs.geotools.cql
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  runtimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.propertyaccessor')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.shp')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+}

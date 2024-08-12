@@ -1,0 +1,18 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE CodeList Support'
+}
+
+dependencies {
+  implementation libs.groovy.core
+  implementation libs.groovy.xml
+
+  implementation libs.guava
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+}

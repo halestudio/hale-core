@@ -1,0 +1,34 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Headless Transformation'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.commons.io
+  implementation libs.joda.time
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+  implementation libs.igd.osgi.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.orient')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instancevalidator')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.haleconnect')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+}

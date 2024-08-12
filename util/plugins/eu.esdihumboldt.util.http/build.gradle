@@ -1,0 +1,20 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Http Utilities'
+}
+
+dependencies {
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.metrics')
+  implementation libs.prometheus.client
+
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  api libs.apache.http.client
+  implementation libs.apache.http.fluent
+}

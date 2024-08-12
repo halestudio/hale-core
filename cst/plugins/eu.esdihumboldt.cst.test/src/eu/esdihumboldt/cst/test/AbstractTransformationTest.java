@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     HUMBOLDT EU Integrated Project #030962
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
@@ -16,26 +16,26 @@
 
 package eu.esdihumboldt.cst.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import org.junit.BeforeClass;
-
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.InstanceUtil;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.test.TestUtil;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
+import org.junit.BeforeClass;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Base class for transformation tests.
- * 
+ *
  * @author Simon Templer
  */
-public abstract class AbstractTransformationTest {
+public abstract class AbstractTransformationTest extends AbstractPlatformTest {
 
 	/**
 	 * Wait for needed services.
@@ -50,9 +50,9 @@ public abstract class AbstractTransformationTest {
 	 * Execute the transformation on a transformation example and test if the
 	 * transformation result conforms to the expected target instances provided
 	 * by the example.
-	 * 
+	 *
 	 * @param example the transformation example
-	 * 
+	 *
 	 * @throws Exception if any exception (mostly IO) occurs, loading the
 	 *             transformation example or executing the transformation
 	 */
@@ -64,7 +64,7 @@ public abstract class AbstractTransformationTest {
 	/**
 	 * Compares the two given collections for equality. Order of occurrence
 	 * doesn't matter for this implementation.
-	 * 
+	 *
 	 * @param targetData the expected data
 	 * @param transformedData the transformed data to test
 	 */
@@ -111,7 +111,7 @@ public abstract class AbstractTransformationTest {
 
 	/**
 	 * Executes the transformation on the example source data.
-	 * 
+	 *
 	 * @param example the transformation example
 	 * @return the transformed instances
 	 * @throws Exception if an error occurs during the transformation

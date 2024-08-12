@@ -1,0 +1,46 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'XML Schema I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+  implementation libs.groovy.xml
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.guava
+  implementation libs.trove
+  implementation libs.commons.lang
+
+  implementation libs.findbugs.annotations
+
+  implementation libs.apache.ws.xsd
+
+  implementation libs.jts
+  implementation libs.geotools.xsd
+  implementation libs.geotools.opengis
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.cache')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.resource')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+
+  implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml.geometry')
+
+  implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

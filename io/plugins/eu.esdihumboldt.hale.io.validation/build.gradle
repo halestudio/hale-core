@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Instance Validation'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.commons.io
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.resource')
+
+  // for content type definition
+  runtimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.xml')
+}

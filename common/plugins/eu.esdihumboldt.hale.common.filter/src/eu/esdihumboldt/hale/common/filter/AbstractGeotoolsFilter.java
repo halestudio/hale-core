@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     HUMBOLDT EU Integrated Project #030962
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
@@ -30,7 +30,7 @@ import org.opengis.filter.expression.PropertyName;
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
 import eu.esdihumboldt.hale.common.align.groovy.accessor.EntityAccessor;
-import eu.esdihumboldt.hale.common.align.groovy.accessor.PathElement;
+import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement;
 import eu.esdihumboldt.hale.common.align.groovy.accessor.internal.EntityAccessorUtil;
 import eu.esdihumboldt.hale.common.align.instance.EntityAwareFilter;
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration;
@@ -44,7 +44,7 @@ import eu.esdihumboldt.util.groovy.paths.Path;
 /**
  * Geotools based filter. Two filters are seen as equal if they are based on the
  * same filter expression.
- * 
+ *
  * @author Sebastian Reinhardt
  * @author Simon Templer
  */
@@ -59,7 +59,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Create a Geotools based filter.
-	 * 
+	 *
 	 * @param filterTerm the filter expression
 	 * @throws CQLException if parsing the filter expression fails
 	 */
@@ -74,7 +74,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Create a filter instance from a filter term.
-	 * 
+	 *
 	 * @param filterTerm the filter term
 	 * @return the filter
 	 * @throws CQLException if an error occurs on filter creation
@@ -83,7 +83,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Create the filter from a filter term.
-	 * 
+	 *
 	 * @param filterTerm the filter term
 	 * @return the filter
 	 * @throws CQLException if an error occurs on filter creation
@@ -92,7 +92,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Get the filter term from a filter object
-	 * 
+	 *
 	 * @param filter the filter
 	 * @return the instance filter
 	 * @throws CQLException if an error occurs on filter creation
@@ -114,7 +114,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Get the ECQL expression the filter is based on.
-	 * 
+	 *
 	 * @return the ECQL expression
 	 */
 	public String getFilterTerm() {
@@ -197,7 +197,7 @@ public abstract class AbstractGeotoolsFilter
 
 	/**
 	 * Resolve a property name based on the given context.
-	 * 
+	 *
 	 * @param name the property name
 	 * @param context the entity context
 	 * @param log the operation log

@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Instance Graphs'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+
+  implementation libs.findbugs.annotations
+
+  implementation libs.tinkerpop.blueprints.core
+  implementation libs.tinkerpop.pipes
+  implementation libs.tinkerpop.gremlin.java
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+}

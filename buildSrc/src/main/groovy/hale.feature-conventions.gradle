@@ -1,0 +1,9 @@
+/*
+ * A feature represented as Java library with no sources of its own.
+ */
+
+plugins {
+  id 'java-library'
+
+  id 'hale.java-conventions'
+}

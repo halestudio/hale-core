@@ -1,0 +1,16 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Utilities for usage in Non-OSGi environment'
+}
+
+dependencies {
+  implementation libs.slf4j.api
+
+  implementation libs.eclipse.core.runtime
+
+  compileOnly libs.logback.core
+  compileOnly libs.logback.classic
+}

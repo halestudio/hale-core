@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.groovy.accessor
 
+import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement
+
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.align.groovy.accessor.internal.EntityAccessorUtil
@@ -38,12 +40,10 @@ import eu.esdihumboldt.util.groovy.paths.AbstractAccessor
 import eu.esdihumboldt.util.groovy.paths.Path
 import eu.esdihumboldt.util.groovy.paths.PathImpl
 import groovy.transform.CompileStatic
-import groovy.transform.TypeChecked
-import groovy.transform.TypeCheckingMode
 
 /**
  * Entity definition accessor.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -96,8 +96,8 @@ class EntityAccessor extends AbstractAccessor<PathElement> {
 	}
 
 	@Override
-	@CompileStatic(TypeCheckingMode.SKIP) // compile static breaks access to createChildContext
-	@TypeChecked
+	// @CompileStatic(TypeCheckingMode.SKIP) // compile static breaks access to createChildContext
+	// @TypeChecked
 	protected List<? extends Path<PathElement>> findChildPaths(
 			List<? extends Path<PathElement>> parentPaths, String name, List<?> args) {
 		List<?> list = new ArrayList<>(args)
@@ -249,7 +249,7 @@ class EntityAccessor extends AbstractAccessor<PathElement> {
 
 	/**
 	 * Create a filter from the given test.
-	 * 	
+	 *
 	 * @param text the filter text
 	 * @return the filter or <code>null</code>
 	 */

@@ -1,0 +1,16 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Instance PropertyAccessor extension for Geotools'
+
+  // fragmentHost = 'org.geotools' // rather add in update site build where host bundle is created
+}
+
+dependencies {
+  implementation libs.geotools.main
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+}

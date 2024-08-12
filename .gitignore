@@ -5,7 +5,7 @@
 # *~
 
 # generic part (can be overridden locally using !pattern)
-bin/
+build/
 dist/
 logs/
 classes/
@@ -40,3 +40,9 @@ Thumbs.db
 #.gitignore
 *.hprof
 *.tycho-consumer-pom.xml
+
+# Gradle
+.gradle/
+
+# IntelliJ
+.idea/

@@ -1,0 +1,40 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE Instance API'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+
+  implementation libs.guava
+
+  implementation libs.jts
+  implementation libs.geotools.main
+  implementation libs.geotools.gml2
+  implementation libs.geotools.referencing
+  implementation libs.geotools.opengis
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+  implementation libs.igd.osgi.util
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.geometry')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.shp')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  testImplementation libs.spring.core
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+}

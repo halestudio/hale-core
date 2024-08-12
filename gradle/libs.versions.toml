@@ -1,0 +1,207 @@
+[versions]
+slf4j = "1.7.36"
+logback = "1.2.12"
+slf4jplus = "1.2.0.201503311443"
+spring = "5.2.0.RELEASE"
+groovy = "2.5.23" # "2.5.19"
+tinkerpop = "2.5.0-orientDB151"
+orientdb = "1.5.1"
+orient-common = "1.5.5"
+geotools = "29.1"
+batik = "1.8"
+prometheus = "0.16.0"
+apache-http-client = "4.5.13"
+ehcache = "2.6.11"
+castor = "1.4.1"
+flexmark = "0.64.0"
+geopackage = "3.4.0"
+deegree = "3.5.8"
+jackson = "2.13.4"
+poi = "5.2.3"
+protobuf = "3.21.7"
+
+[libraries]
+# TODO add project builds?
+model-align = {module = "eu.esdihumboldt.hale:eu.esdihumboldt.hale.common.align.io.model.jaxb", version = '2.9.9'}
+model-project = {module = "eu.esdihumboldt.hale:eu.esdihumboldt.hale.common.core.io.project.model.jaxb", version = '2.9.9'}
+model-oml = {module = "eu.esdihumboldt.hale:eu.esdihumboldt.hale.io.oml.model.jaxb", version = '2.9.4'} # 2.9.7 not present in artifactory but required for Java 17
+
+flexmark-core = {module = "com.vladsch.flexmark:flexmark", version.ref = "flexmark"}
+flexmark-pegdown = {module = "com.vladsch.flexmark:flexmark-profile-pegdown", version.ref = "flexmark"}
+flexmark-util = {module = "com.vladsch.flexmark:flexmark-util", version.ref = "flexmark"}
+flexmark-util-data = {module = "com.vladsch.flexmark:flexmark-util-data", version.ref = "flexmark"}
+flexmark-util-misc = {module = "com.vladsch.flexmark:flexmark-util-misc", version.ref = "flexmark"}
+flexmark-util-ast = {module = "com.vladsch.flexmark:flexmark-util-ast", version.ref = "flexmark"}
+flexmark-util-sequence = {module = "com.vladsch.flexmark:flexmark-util-sequence", version.ref = "flexmark"}
+flexmark-util-format = {module = "com.vladsch.flexmark:flexmark-util-format", version.ref = "flexmark"}
+
+castor-xml = {module = "org.codehaus.castor:castor-xml", version.ref = "castor"}
+
+protobuf-java-core = {module = "com.google.protobuf:protobuf-java", version.ref = "protobuf"}
+protobuf-java-util = {module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf"}
+
+ehcache = {module = "net.sf.ehcache:ehcache-core", version.ref = "ehcache"}
+
+prometheus-client = {module = "io.prometheus:simpleclient", version.ref = "prometheus"}
+
+geotools-opengis = {module = "org.geotools:gt-opengis", version.ref = "geotools"}
+geotools-shapefile = {module = "org.geotools:gt-shapefile", version.ref = "geotools"}
+geotools-xml = {module = "org.geotools:gt-xml", version.ref = "geotools"}
+geotools-main = {module = "org.geotools:gt-main", version.ref = "geotools"}
+geotools-referencing = {module = "org.geotools:gt-referencing", version.ref = "geotools"}
+geotools-cql = {module = "org.geotools:gt-cql", version.ref = "geotools"}
+geotools-epsg = {module = "org.geotools:gt-epsg-hsql", version.ref = "geotools"}
+geotools-gml2 = {module = "org.geotools.xsd:gt-xsd-gml2", version.ref = "geotools"}
+geotools-gml3 = {module = "org.geotools.xsd:gt-xsd-gml3", version.ref = "geotools"}
+geotools-xsd = {module = "org.geotools.xsd:gt-xsd-core", version.ref = "geotools"}
+geotools-geojson = {module = "org.geotools:gt-geojson", version.ref = "geotools"}
+
+groovy-core = {module = "org.codehaus.groovy:groovy", version.ref = "groovy"}
+groovy-test = {module = "org.codehaus.groovy:groovy-test", version.ref = "groovy"}
+groovy-templates = {module = "org.codehaus.groovy:groovy-templates", version.ref = "groovy"}
+groovy-json = {module = "org.codehaus.groovy:groovy-json", version.ref = "groovy"}
+groovy-xml = {module = "org.codehaus.groovy:groovy-xml", version.ref = "groovy"}
+groovy-sql = {module = "org.codehaus.groovy:groovy-sql", version.ref = "groovy"}
+groovy-cli = {module = "org.codehaus.groovy:groovy-cli-picocli", version.ref = "groovy"}
+
+groovy-sandbox = {module = "eu.esdihumboldt.unpuzzled:org.kohsuke.groovy.sandbox", version = "1.6.0.hale"}
+
+slf4j-api = {module = "org.slf4j:slf4j-api", version.ref = "slf4j"}
+slf4j-ext = {module = "org.slf4j:slf4j-ext", version.ref = "slf4j"}
+slf4j-adapter-jul = {module = "org.slf4j:jul-to-slf4j", version.ref = "slf4j"}
+slf4j-adapter-jcl = {module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j"}
+
+log4j = {module = "org.slf4j:log4j-over-slf4j", version.ref = "slf4j"}
+
+logback-core = {module = "ch.qos.logback:logback-core", version.ref = "logback"}
+logback-classic = {module = "ch.qos.logback:logback-classic", version.ref = "logback"}
+
+slf4jplus-api = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus", version.ref = "slf4jplus"}
+slf4jplus-logback-core = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus.logback", version.ref = "slf4jplus"}
+slf4jplus-logback-appender = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus.logback.appender", version.ref = "slf4jplus"}
+slf4jplus-logback-observer = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus.logback.observer", version.ref = "slf4jplus"}
+
+findbugs-annotations = {module="com.google.code.findbugs:annotations", version = "2.0.3"}
+
+guava = {module = "com.google.guava:guava", version = "27.0.1-jre"}
+
+xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.1.1"}
+
+commons-io = {module = "commons-io:commons-io", version = "2.14.0"}
+commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
+commons-codec = {module = "commons-codec:commons-codec", version = "1.15"}
+
+igd-eclipse-util = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.eclipse.util", version = "1.0.0.201407081822"}
+igd-osgi-util = {module = "de.fhg.igd:osgi-util", version = "1.0"}
+
+eclipse-core-runtime = {module = "eu.esdihumboldt.unpuzzled:org.eclipse.core.runtime", version = "3.17.100.v20200203-0917"}
+eclipse-equinox-registry = {module = "eu.esdihumboldt.unpuzzled:org.eclipse.equinox.registry", version = "3.8.700.v20200121-1457"}
+eclipse-equinox-app = {module = "eu.esdihumboldt.unpuzzled:org.eclipse.equinox.app", version = "1.4.400.v20191212-0743"}
+eclipse-osgi = {module = "eu.esdihumboldt.unpuzzled:org.eclipse.osgi", version = "3.15.200.v20200214-1600"}
+
+spring-core = {module = "org.springframework:spring-core", version.ref = "spring"}
+spring-context = {module = "org.springframework:spring-context", version.ref = "spring"}
+spring-beans = {module = "org.springframework:spring-beans", version.ref = "spring"}
+
+tinkerpop-blueprints-core = {module = "com.tinkerpop.blueprints:blueprints-core", version.ref = "tinkerpop"}
+tinkerpop-blueprints-orient = {module = "com.tinkerpop.blueprints:blueprints-orient-graph", version.ref = "tinkerpop"}
+tinkerpop-pipes = {module = "com.tinkerpop:pipes", version.ref = "tinkerpop"}
+tinkerpop-gremlin-java = {module = "com.tinkerpop.gremlin:gremlin-java", version.ref = "tinkerpop"}
+
+orientdb-core = {module = "com.orientechnologies:orientdb-core", version.ref = "orientdb"}
+orient-common = {module = "com.orientechnologies:orient-commons", version.ref = "orient-common"}
+
+snakeyaml = {module = "org.yaml:snakeyaml", version = "2.2"}
+
+jts = {module = "org.locationtech.jts:jts-core", version = "1.19.0"}
+
+batik-svggen = {module = "org.apache.xmlgraphics:batik-svggen", version.ref = "batik"}
+batik-dom = {module = "org.apache.xmlgraphics:batik-dom", version.ref = "batik"}
+
+apache-http-core = {module = "org.apache.httpcomponents:httpcore", version = "4.4.13"}
+apache-http-client = {module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client"}
+apache-http-fluent = {module = "org.apache.httpcomponents:fluent-hc", version.ref = "apache-http-client"}
+
+jaxb-runtime = {module = "org.glassfish.jaxb:jaxb-runtime", version = "4.0.1"}
+
+joda-time = {module = "joda-time:joda-time", version = "2.3"}
+
+jmep = {module = "com.iabcinc:jmep", version = "0.1.0"}
+
+trove = {module = "net.sf.trove4j:trove4j", version = "2.0.4"}
+
+jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.0"}
+
+apache-ws-xsd = {module = "org.apache.ws.commons.schema:XmlSchema", version = "1.4.7"}
+
+hc-users = {module = "com.haleconnect.api:haleconnect-user-api", version = "1.0.2"}
+hc-projects = {module = "com.haleconnect.api:haleconnect-project-api", version = "0.1.0"}
+hc-projectstore = {module = "com.haleconnect.api:haleconnect-projectstore-api", version = "1.6.0"}
+hc-buckets = {module = "com.haleconnect.api:haleconnect-bucket-api", version = "1.0.1"}
+
+ibm-icu = {module = "eu.esdihumboldt.unpuzzled:com.ibm.icu", version = "64.2.0.v20190507-1337"}
+
+geopackage-lib = {module = "mil.nga.geopackage:geopackage", version.ref = "geopackage"}
+geopackage-core = {module = "mil.nga.geopackage:geopackage-core", version.ref = "geopackage"}
+
+picocli = {module = "info.picocli:picocli", version = "4.3.2"}
+
+xerces = {module = "xerces:xercesImpl", version = "2.12.2"}
+
+opencsv = {module = "net.sf.opencsv:opencsv", version = "2.3"}
+
+skos = {module = "eu.esdihumboldt.unpuzzled:org.semanticweb.owlapi.osgi.skos", version = "3.0.0"}
+
+deegree-featurestore-sql = {module = "org.deegree:deegree-featurestore-sql", version.ref = "deegree"}
+deegree-postgis = {module = "org.deegree:deegree-sqldialect-postgis", version.ref = "deegree"}
+
+staxon = {module = "de.odysseus.staxon:staxon", version = "1.3"}
+
+schemacrawler = {module = "us.fatehi:schemacrawler", version = "12.04.02"}
+
+sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.28.0"}
+
+spotify-docker = {module = "com.spotify:docker-client", version = "2.7.7"}
+
+typesafe-config = {module = "com.typesafe:config", version = "1.2.1"}
+
+jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}
+jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
+
+ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "3.0.6"}
+
+poi-core = {module = "org.apache.poi:poi", version.ref = "poi"}
+poi-ooxml = {module = "org.apache.poi:poi-ooxml", version.ref = "poi"}
+poi-ooxml-lite = {module = "org.apache.poi:poi-ooxml-lite", version.ref = "poi"}
+
+json-simple = {module = "com.googlecode.json-simple:json-simple", version = "1.1.1"}
+
+saxon = {module = "net.sf.saxon:Saxon-HE", version = "9.4.0-9"} # "9.0.0-8" was originally used but not available in Maven Central
+
+opengis-cite-schema-utils = {module = "org.opengis.cite:schema-utils", version = "1.8"}
+
+wetf-topojson = {module = "com.github.wetransform-os:topojson-j", version = "1.1.0"}
+
+postgis = {module = "net.postgis:postgis-jdbc", version = "2.3.0"}
+postgres = {module = "org.postgresql:postgresql", version = "42.2.8"}
+
+mssql-jdbc = {module = "eu.esdihumboldt.unpuzzled:com.microsoft.sqlserver.jdbc.SQLServerDriver", version = "4.2.0"}
+
+[bundles]
+slf4j = ['slf4j-api', 'slf4j-ext', 'slf4j-adapter-jul', 'slf4j-adapter-jcl', 'log4j']
+
+slf4jplus = ['slf4jplus-api', 'slf4jplus-logback-core', 'slf4jplus-logback-appender']
+
+flexmark = ['flexmark-core', 'flexmark-pegdown', 'flexmark-util', 'flexmark-util-ast', 'flexmark-util-data', 'flexmark-util-misc', 'flexmark-util-sequence', 'flexmark-util-format']
+
+hc-api = ['hc-users', 'hc-projects', 'hc-projectstore', 'hc-buckets']
+
+geopackage = ['geopackage-core', 'geopackage-lib']
+
+deegree = ['deegree-featurestore-sql', 'deegree-postgis']
+
+poi = ['poi-core', 'poi-ooxml', 'poi-ooxml-lite']
+
+postgis = ['postgis', 'postgres']
+
+mssql = ['mssql-jdbc']

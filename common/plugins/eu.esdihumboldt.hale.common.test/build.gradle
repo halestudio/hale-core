@@ -1,0 +1,27 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Test Support Project'
+}
+
+dependencies {
+  implementation testLibs.junit4
+
+  implementation libs.castor.xml
+  implementation libs.jakarta.xml.bind.api
+
+  implementation libs.igd.osgi.util
+  implementation libs.spring.core
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  api project(':util:plugins:eu.esdihumboldt.util.test')
+}

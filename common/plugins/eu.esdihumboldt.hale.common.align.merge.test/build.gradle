@@ -1,0 +1,20 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Alignment Merger Test Helpers'
+}
+
+dependencies {
+  implementation testLibs.junit4
+
+  implementation libs.guava
+
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.headless.test')
+}

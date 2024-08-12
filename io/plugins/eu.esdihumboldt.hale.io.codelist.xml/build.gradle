@@ -1,0 +1,27 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'XML CodeList I/O'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.ibm.icu
+  implementation libs.apache.http.client
+  implementation libs.apache.http.fluent
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+  implementation project(':util:plugins:eu.esdihumboldt.util.resource')
+
+  implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+}

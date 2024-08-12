@@ -1,0 +1,60 @@
+/*
+ * A library part of hale-core.
+ */
+
+plugins {
+  id 'java'
+  id 'maven-publish'
+
+  id 'hale.common'
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+}
+
+dependencies {
+  testRuntimeOnly libs.logback.core
+  testRuntimeOnly libs.logback.classic
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.logback.config.test')
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allJava
+  archiveClassifier = 'sources'
+}
+
+/*
+task javadocJar(type: Jar) {
+  from javadoc
+  archiveClassifier = 'javadoc'
+}
+*/
+
+/*
+ * Publishing to Maven
+ *
+ * https://docs.gradle.org/current/userguide/publishing_maven.html
+ */
+publishing {
+  publications {
+    library(MavenPublication) {
+      from components.java
+      artifact sourcesJar
+      // artifact javadocJar
+    }
+  }
+
+  repositories {
+    maven {
+      url 'https://artifactory.wetransform.to/artifactory/' +
+        (version.endsWith('-SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local')
+      credentials {
+        username project.hasProperty('wetfArtifactoryUser') ? wetfArtifactoryUser : ''
+        password project.hasProperty('wetfArtifactoryPassword') ? wetfArtifactoryPassword : ''
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Schema Persistence'
+}
+
+dependencies {
+  implementation libs.groovy.core
+  implementation libs.groovy.json
+  implementation libs.groovy.xml
+
+  implementation libs.slf4jplus.api
+  implementation libs.guava
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+}

@@ -1,0 +1,28 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'hale Core CLI Commands'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.joda.time
+
+  api libs.groovy.cli
+  api libs.picocli
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+
+  implementation project(':app:plugins:eu.esdihumboldt.hale.app.transform')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  api project(':util:plugins:eu.esdihumboldt.util.cli')
+}

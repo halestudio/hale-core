@@ -1,0 +1,15 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Groovy Meta Class Extension'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.igd.eclipse.util
+
+  testImplementation testLibs.junit4
+}

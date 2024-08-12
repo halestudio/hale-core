@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Configuration Utilities'
+}
+
+dependencies {
+  implementation libs.groovy.core
+  implementation libs.snakeyaml
+
+  testImplementation testLibs.junit4
+}

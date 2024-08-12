@@ -1,0 +1,43 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE Core API'
+
+  activator = 'eu.esdihumboldt.hale.common.core.internal.CoreBundle'
+  lazyActivation = true
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+  implementation libs.groovy.json
+  implementation libs.groovy.xml
+
+  implementation libs.guava
+  implementation libs.commons.io
+  implementation libs.castor.xml
+  implementation libs.findbugs.annotations
+
+  implementation libs.igd.eclipse.util
+  implementation libs.igd.osgi.util
+
+  implementation libs.spring.core
+
+  api project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.resource')
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.cache')
+
+  implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+
+  implementation libs.model.project
+
+  testImplementation testLibs.junit4
+  testImplementation project(':ext:nonosgi:org.eclipse.equinox.nonosgi.registry')
+}

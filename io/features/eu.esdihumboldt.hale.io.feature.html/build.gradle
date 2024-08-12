@@ -1,0 +1,11 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'HTML Export Feature'
+
+dependencies {
+  api(project(":io:plugins:eu.esdihumboldt.hale.io.html.svg"))
+
+  api(libs.staxon)
+}

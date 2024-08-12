@@ -1,0 +1,17 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'hale CLI API'
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.slf4j.api
+  implementation libs.igd.eclipse.util
+  implementation libs.eclipse.core.runtime
+  implementation libs.groovy.core
+
+  testImplementation testLibs.junit4
+}

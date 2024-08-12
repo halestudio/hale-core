@@ -1,0 +1,49 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE Alignment API'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.core
+  implementation libs.groovy.templates
+
+  implementation libs.guava
+  implementation libs.spring.core
+  implementation libs.commons.io
+  implementation libs.commons.lang
+  implementation libs.findbugs.annotations
+
+  implementation libs.jts
+
+  implementation libs.bundles.flexmark
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+  implementation libs.igd.osgi.util
+
+  implementation libs.model.align
+
+  implementation libs.castor.xml
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.lookup')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+
+  testImplementation testLibs.junit4
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+}

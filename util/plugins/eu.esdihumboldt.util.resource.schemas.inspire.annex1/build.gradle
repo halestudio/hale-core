@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Bundled Inspire Annex I Schemas'
+  singletonBundle = true
+}
+
+dependencies {
+  implementation project(':util:plugins:eu.esdihumboldt.util.resource')
+
+  api resJars.schemas.ogc
+}

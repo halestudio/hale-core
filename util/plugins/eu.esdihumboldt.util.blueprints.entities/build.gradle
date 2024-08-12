@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+dependencies {
+  implementation libs.groovy.core
+  implementation libs.guava
+
+  implementation libs.tinkerpop.blueprints.core
+  implementation libs.tinkerpop.blueprints.orient
+
+  testImplementation libs.groovy.test
+  testImplementation testLibs.junit4
+}

@@ -1,0 +1,33 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE Cache'
+
+  activator = 'eu.esdihumboldt.hale.common.cache.Activator'
+  lazyActivation = true
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.templates
+
+  implementation libs.guava
+
+  implementation libs.igd.osgi.util
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.ehcache
+
+  implementation libs.apache.http.client
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+
+  testImplementation testLibs.junit4
+}

@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Enable Groovy Sandbox Service (for server side operation)'
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
+}

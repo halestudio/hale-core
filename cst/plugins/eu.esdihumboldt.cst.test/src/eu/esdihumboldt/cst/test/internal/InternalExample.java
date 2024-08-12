@@ -1,29 +1,29 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 
 package eu.esdihumboldt.cst.test.internal;
 
+import eu.esdihumboldt.cst.test.TransformationExampleImpl;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import eu.esdihumboldt.cst.test.TransformationExampleImpl;
-
 /**
  * Transformation example contained in the CST test bundle.
- * 
+ *
  * @author Simon Templer
  */
 public class InternalExample extends TransformationExampleImpl {
@@ -32,7 +32,7 @@ public class InternalExample extends TransformationExampleImpl {
 	 * Create a transformation example. All provided locations are specific to
 	 * this bundle. Relative locations refer to the {@link InternalExample}
 	 * class, absolute locations start with a <code>/</code>.
-	 * 
+	 *
 	 * @param sourceSchemaLocation the source schema location
 	 * @param targetSchemaLocation the target schema location
 	 * @param alignmentLocation the alignment location
@@ -54,7 +54,7 @@ public class InternalExample extends TransformationExampleImpl {
 	/**
 	 * Returns an URI for the given location: <br>
 	 * <code>getClass().getResource(location).toURI()</code>
-	 * 
+	 *
 	 * @param location the location
 	 * @param mustExist if the location must exist (i.e. if the result may not
 	 *            be <code>null</code>)

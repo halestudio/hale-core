@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE Protocol Buffer IO'
+}
+
+dependencies {
+  implementation libs.slf4j.api
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.protobuf.java.core
+  implementation libs.protobuf.java.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.json')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation libs.json.simple
+}

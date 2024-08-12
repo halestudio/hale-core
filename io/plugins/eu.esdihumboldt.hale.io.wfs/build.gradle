@@ -1,0 +1,37 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Support for WFS-T'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.groovy.xml
+
+  implementation libs.guava
+  implementation libs.xmlbeans
+  implementation libs.apache.http.fluent
+
+  implementation libs.jts
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.cache')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.graph')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.http')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

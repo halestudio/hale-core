@@ -1,0 +1,30 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Alignment Groovy API and Utilities'
+
+  // for some reason the default package is determined to be used - work around was:
+  // privatePackage = '.;-split-package:=first'
+  // but the underlying problem cause more problems - solved by moving PathElement class to separate package
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  implementation libs.guava
+
+  implementation libs.model.align
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  api project(':util:plugins:eu.esdihumboldt.util.groovy')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy.meta.extension')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

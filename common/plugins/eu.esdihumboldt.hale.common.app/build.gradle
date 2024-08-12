@@ -1,0 +1,14 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'HALE Application Support'
+
+  activator = 'eu.esdihumboldt.hale.common.app.internal.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.eclipse.equinox.app
+}

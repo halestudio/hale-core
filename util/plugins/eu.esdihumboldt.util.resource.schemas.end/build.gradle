@@ -1,0 +1,8 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Bundled Environmental Noise Directive (END) Schemas'
+  singletonBundle = true
+}

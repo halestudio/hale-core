@@ -1,0 +1,35 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE JDBC Schema and Instance Support'
+  registeredBuddies = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation libs.guava
+
+  implementation libs.schemacrawler
+  implementation libs.sqlite.jdbc
+
+  implementation libs.jts
+
+  implementation libs.findbugs.annotations
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+}

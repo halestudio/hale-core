@@ -1,0 +1,19 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Instance builder I/O support'
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+}

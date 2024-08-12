@@ -1,0 +1,13 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'OrientDB based Instance Database'
+
+dependencies {
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
+
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.orient"))
+
+  // anything to add manually?
+}

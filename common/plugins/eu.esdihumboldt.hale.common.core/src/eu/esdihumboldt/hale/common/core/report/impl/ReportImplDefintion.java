@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     HUMBOLDT EU Integrated Project #030962
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
@@ -26,12 +26,12 @@ import eu.esdihumboldt.hale.common.core.report.Reporter;
 
 /**
  * Object definition for {@link DefaultReporter}.
- * 
+ *
  * @author Andreas Burchert
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
 @SuppressWarnings("rawtypes")
-public class ReportImplDefintion extends AbstractReportDefinition<Report, Reporter<?>> {
+public class ReportImplDefintion extends AbstractReportDefinition<Report<?>, Reporter<?>> {
 
 	private static final ALogger _log = ALoggerFactory.getLogger(ReportImplDefintion.class);
 
@@ -39,7 +39,7 @@ public class ReportImplDefintion extends AbstractReportDefinition<Report, Report
 	 * Default constructor.
 	 */
 	public ReportImplDefintion() {
-		super(Report.class, "default");
+		super((Class<Report<?>>) (Class<?>) Report.class, "default");
 	}
 
 	/**

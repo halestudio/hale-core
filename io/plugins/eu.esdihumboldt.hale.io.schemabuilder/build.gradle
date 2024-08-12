@@ -1,0 +1,17 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Schemabuilder I/O support'
+}
+
+dependencies {
+  implementation libs.groovy.core
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+}

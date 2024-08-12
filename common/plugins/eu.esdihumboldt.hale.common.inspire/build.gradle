@@ -1,0 +1,30 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'INSPIRE constants and apps'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.apache.http.client
+  implementation libs.apache.http.fluent
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.app')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.codelist.xml')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml.geometry')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+}

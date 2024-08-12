@@ -1,0 +1,12 @@
+[versions]
+junit4 = "4.13.2"
+allure = "1.5.0"
+assertj = "3.22.0"
+
+[libraries]
+junit4 = {module = "junit:junit", version.ref = "junit4"}
+
+allure-annotations = {module = "ru.yandex.qatools.allure:allure-java-annotations", version.ref = "allure"}
+allure-junit = {module = "ru.yandex.qatools.allure:allure-junit-adaptor", version.ref = "allure"}
+
+assertj = {module = "org.assertj:assertj-core", version.ref = "assertj"}

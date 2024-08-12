@@ -1,0 +1,44 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'HALE PostgreSQL Support'
+
+  activator = 'eu.esdihumboldt.hale.io.jdbc.postgresql.internal.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.schemacrawler
+
+  implementation libs.bundles.postgis
+
+  implementation libs.jts
+  implementation libs.geotools.main
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+
+  implementation libs.eclipse.core.runtime
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.jdbc')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.allure.annotations
+
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation libs.groovy.sql
+
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.jdbc.test')
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test.docker')
+}

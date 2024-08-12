@@ -1,0 +1,25 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Utilities Bundle'
+
+  activator = 'eu.esdihumboldt.util.internal.Activator'
+  lazyActivation = true
+}
+
+dependencies {
+  implementation libs.slf4j.api
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+  implementation libs.spring.core
+  implementation libs.findbugs.annotations
+  implementation libs.commons.io
+  implementation libs.xmlbeans
+
+  implementation libs.eclipse.core.runtime
+
+  testImplementation testLibs.junit4
+}

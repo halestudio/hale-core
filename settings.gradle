@@ -1,0 +1,54 @@
+rootProject.name = 'hale-core'
+
+// This script automatically discovers sub-projects.
+// It should not contain any project-specific information.
+
+boolean isProjectDir(File f, filter = null) {
+  f.isDirectory() && !f.name.startsWith('.') && f.name != 'buildSrc' && new File(f, 'build.gradle').isFile() && (filter == null || filter(f))
+}
+
+void searchDir(collectDirs, File dir, filter = null) {
+  if (isProjectDir(dir, filter)) {
+    collectDirs << dir
+  }
+  else {
+    dir.eachDir { subDir ->
+      searchDir(collectDirs, subDir, filter)
+    }
+  }
+}
+
+void includeProjects(relativeDirPath = null, filter = null) {
+  def dir = relativeDirPath ? new File(rootProject.projectDir, relativeDirPath) : rootProject.projectDir
+  if(dir.exists() && dir.isDirectory()) {
+    def rootPath = rootProject.projectDir.absolutePath
+
+    def projectDirs = []
+
+    dir.eachDir { subDir ->
+      searchDir(projectDirs, subDir, filter)
+    }
+
+    projectDirs.each { File subdir ->
+      include subdir.absolutePath.substring(rootPath.length() + 1).replace(File.separator, ':')
+    }
+  }
+}
+
+includeProjects()
+
+// dependency resolution management
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    // testLibs separate version catalog
+    testLibs {
+      from(files("gradle/test-libs.versions.toml"))
+    }
+
+    // offline resources
+    resJars {
+      from(files("gradle/resources.versions.toml"))
+    }
+  }
+}

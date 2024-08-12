@@ -1,0 +1,12 @@
+plugins {
+  id 'groovy-gradle-plugin'
+}
+
+repositories {
+  gradlePluginPortal() // so that external plugins can be resolved in dependencies section
+}
+
+dependencies {
+  implementation 'to.wetransform:gradle-semantic-release-version:2.1.1'
+  implementation 'biz.aQute.bnd:biz.aQute.bnd.gradle:6.3.0'
+}

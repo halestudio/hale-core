@@ -1,25 +1,19 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 
 package eu.esdihumboldt.cst.test;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-
-import javax.annotation.Nullable;
 
 import eu.esdihumboldt.hale.common.align.model.Alignment;
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
@@ -29,9 +23,14 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.common.test.TestUtil;
 
+import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+
 /**
  * Transformation example default implementation.
- * 
+ *
  * @author Simon Templer
  */
 public class TransformationExampleImpl implements TransformationExample {
@@ -51,7 +50,7 @@ public class TransformationExampleImpl implements TransformationExample {
 
 	/**
 	 * Create a transformation example.
-	 * 
+	 *
 	 * @param sourceSchemaLocation the source schema location
 	 * @param targetSchemaLocation the target schema location
 	 * @param alignmentLocation the alignment location

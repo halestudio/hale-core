@@ -1,0 +1,18 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'HALE resources feature'
+
+dependencies {
+  constraints {
+    api(project(":util:plugins:eu.esdihumboldt.util.resource"))
+
+    api(project(":util:plugins:eu.esdihumboldt.util.resource.schemas.inspire.annex1"))
+    api(project(":util:plugins:eu.esdihumboldt.util.resource.schemas.end"))
+
+    // api(project(":util:plugins:eu.esdihumboldt.util.resource.schemas.citygml"))
+
+    api(resJars.bundles.all)
+  }
+}

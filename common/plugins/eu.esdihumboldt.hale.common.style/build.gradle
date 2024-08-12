@@ -1,0 +1,19 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Styles API'
+}
+
+dependencies {
+  implementation libs.guava
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.geotools.xml
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+}

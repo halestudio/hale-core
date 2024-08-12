@@ -1,0 +1,21 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Resource Utilities'
+
+  activator = 'eu.esdihumboldt.util.resource.internal.ResourceBundle'
+  lazyActivation = true
+
+  singletonBundle = true
+}
+
+dependencies {
+  implementation libs.guava
+  implementation libs.slf4jplus.api
+  implementation libs.commons.io
+  implementation libs.igd.eclipse.util
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+}
