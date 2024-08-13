@@ -26,12 +26,12 @@ import org.eclipse.core.runtime.spi.RegistryStrategy;
 import org.eclipse.osgi.framework.util.Headers;
 
 /**
- * 
+ *
  * The registry strategy that can be used in NO OSGi-env.
  * <p>
  * This class emulate RegistryStrategyOSGI
  * </p>
- * 
+ *
  */
 @SuppressWarnings({ "restriction", "deprecation" })
 public class RegistryStrategyNonOSGI extends RegistryStrategy {
@@ -46,7 +46,7 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.core.runtime.spi.RegistryStrategy#onStart(org.eclipse.core
 	 * .runtime.IExtensionRegistry, boolean)
@@ -163,7 +163,7 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 
 	/**
 	 * Load the plugin.xml.
-	 * 
+	 *
 	 * @param pluginManifest
 	 * @param extensionRegistry
 	 * @param manifests
@@ -189,6 +189,8 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 			return false;
 		}
 
+		String symbolicName = null;
+
 		// Search META-INF/MANIFEST.MF stored int the same plugin.xml folder.
 		String baseDir = Utils.getBaseDir(pluginManifest,
 				Constants.PLUGIN_MANIFEST);
@@ -204,43 +206,62 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 								+ baseDir
 								+ "META-INF/MANIFEST.MF> not founded.", 2);
 			}
-			return false;
-		}
 
-		// MANIFEST.MF founded for the plugin.xml, Parse MANIFEST.MF.
-		@SuppressWarnings("rawtypes")
-		Headers headers = null;
-		try {
-			headers = Headers.parseManifest(manifestURL.openStream());
-		} catch (Exception e) {
-			if (DebugHelper.DEBUG) {
-				DebugHelper.logError("<plugin.xml> [ERROR] : ("
-						+ pluginManifest.getPath() + "): ", 1);
-				DebugHelper.logError("Error while parsing MANIFEST.MF=<"
-						+ manifestURL.getPath() + ">", 2);
-				DebugHelper.logError(e);
+			// handle special case - plugin.xml is in file system
+			// assume it is project being tested
+			// determine folder by looking for build.gradle file
+			// determine bundle symbolic name from project folder name
+			File pluginFile = new File(baseDir);
+			if (pluginFile.exists()) {
+				File projectDir = findProjectDir(pluginFile, 3);
+				if (projectDir != null) {
+					symbolicName = projectDir.getName();
+				}
 			}
-			return false;
-		}
 
-		// Get Bundle-SymbolicName from the MANIFEST.MF
-		String symbolicName = (String) headers
-				.get(Constants.BUNDLE_SYMBOLICNAME);
-		if (Utils.isEmpty(symbolicName)) {
-			if (DebugHelper.DEBUG) {
-				DebugHelper.logError("<plugin.xml> [ERROR] : ("
-						+ pluginManifest.getPath() + "): ", 1);
-				DebugHelper.logError(
-						"Cannot found <Bundle-SymbolicName> from the MANIFEST.MF=<"
-								+ manifestURL.getPath() + ">", 2);
+			if (symbolicName == null) {
+				return false;
 			}
-			return false;
 		}
 
-		// Remove options from the Bundle-SymbolicName declaration.
-		int index = symbolicName.indexOf(';');
-		if (index != -1) {
-			symbolicName = symbolicName.substring(0, index);
+		if (symbolicName == null) {
+
+			// MANIFEST.MF founded for the plugin.xml, Parse MANIFEST.MF.
+			@SuppressWarnings("rawtypes")
+			Headers headers = null;
+			try {
+				headers = Headers.parseManifest(manifestURL.openStream());
+			} catch (Exception e) {
+				if (DebugHelper.DEBUG) {
+					DebugHelper.logError("<plugin.xml> [ERROR] : ("
+							+ pluginManifest.getPath() + "): ", 1);
+					DebugHelper.logError("Error while parsing MANIFEST.MF=<"
+							+ manifestURL.getPath() + ">", 2);
+					DebugHelper.logError(e);
+				}
+				return false;
+			}
+
+			// Get Bundle-SymbolicName from the MANIFEST.MF
+			symbolicName = (String) headers
+					.get(Constants.BUNDLE_SYMBOLICNAME);
+			if (Utils.isEmpty(symbolicName)) {
+				if (DebugHelper.DEBUG) {
+					DebugHelper.logError("<plugin.xml> [ERROR] : ("
+							+ pluginManifest.getPath() + "): ", 1);
+					DebugHelper.logError(
+							"Cannot found <Bundle-SymbolicName> from the MANIFEST.MF=<"
+									+ manifestURL.getPath() + ">", 2);
+				}
+				return false;
+			}
+
+			// Remove options from the Bundle-SymbolicName declaration.
+			int index = symbolicName.indexOf(';');
+			if (index != -1) {
+				symbolicName = symbolicName.substring(0, index);
+			}
+
 		}
 
 		// Create IContributor
@@ -272,7 +293,7 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 			return false;
 		}
 
-		
+
 		if (DebugHelper.DEBUG) {
 			DebugHelper.log("<plugin.xml> [OK] loaded with time="
 								+ (System.currentTimeMillis() - startTime)
@@ -280,5 +301,38 @@ public class RegistryStrategyNonOSGI extends RegistryStrategy {
 					+ ")", 1);
 		}
 		return true;
+	}
+
+	/**
+	 * Look for the project folder in the given folder and its parent folders.
+	 * Used to determine project information when no META-INF/MANIFEST.MF file is present.
+	 *
+	 * @param folder the folder to check
+	 * @param maxParentChecks the maximum number of parent folder checks
+	 * @return the project folder or null
+	 */
+	private File findProjectDir(File folder, int maxParentChecks) {
+		File currentDir = folder;
+		int parentChecks = 0;
+
+		while (currentDir != null && parentChecks <= maxParentChecks) {
+			File[] files = currentDir.listFiles();
+
+			// Check if the current directory contains a build.gradle file or a src folder
+			if (files != null) {
+				for (File file : files) {
+					if ((file.isFile() && file.getName().equals("build.gradle")) || (file.isDirectory() && file.getName().equals("src"))) {
+						return currentDir;
+					}
+				}
+			}
+
+			// Move up to the parent directory
+			currentDir = currentDir.getParentFile();
+			parentChecks++;
+		}
+
+		// Return null if the target file is not found within the maximum parent checks
+		return null;
 	}
 }
