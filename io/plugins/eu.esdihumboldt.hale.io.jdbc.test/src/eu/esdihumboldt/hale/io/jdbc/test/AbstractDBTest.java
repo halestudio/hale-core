@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
@@ -31,10 +31,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.After;
 import org.junit.Before;
-
-import com.spotify.docker.client.DockerException;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
@@ -63,10 +62,10 @@ import eu.esdihumboldt.hale.io.jdbc.constraints.SQLType;
 
 /**
  * Base class for database tests.
- * 
+ *
  * @author Simon Templer
  */
-public abstract class AbstractDBTest {
+public abstract class AbstractDBTest extends AbstractPlatformTest {
 
 	/**
 	 * the config key specifying the time in seconds required for starting the
@@ -79,7 +78,7 @@ public abstract class AbstractDBTest {
 	/**
 	 * @param imageParams the config parameters required while creating and
 	 *            starting the container.
-	 * 
+	 *
 	 */
 	public AbstractDBTest(DBImageParameters imageParams) {
 		this.dbi = imageParams;
@@ -87,7 +86,7 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Create a new database test class.
-	 * 
+	 *
 	 * @param configName the name of the docker configuration to use for ramping
 	 *            up the database
 	 * @param contextClass the class in which context (class loader) the
@@ -99,15 +98,12 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Setup host and database.
-	 * 
+	 *
 	 * @throws InterruptedException thrown while creating, starting or
 	 *             inspecting a container.
-	 * @throws DockerException ImageNotFoundException if the image is not found
-	 *             while creating a container. ContainerNotFoundException if
-	 *             container is not found while starting/inspecting a container.
 	 */
 	@Before
-	public void setupDB() throws DockerException, InterruptedException {
+	public void setupDB() throws InterruptedException {
 
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -133,12 +129,11 @@ public abstract class AbstractDBTest {
 		}
 
 		TestUtil.startConversionService();
-
 	}
 
 	/**
 	 * Wait for the database to be ready.
-	 * 
+	 *
 	 * @throws SQLException if connecting to the database fails
 	 */
 	protected void waitForDatabase() throws SQLException {
@@ -147,7 +142,7 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Wait for connection to database.
-	 * 
+	 *
 	 * @return the connection to the database once it is set up, the caller is
 	 *         responsible to close it
 	 * @throws SQLException if connecting to the database fails
@@ -201,7 +196,7 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Load the database schema.
-	 * 
+	 *
 	 * @return the schema
 	 * @throws Exception if reading the schema fails
 	 */
@@ -228,10 +223,10 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Load the database schema for a SQL statement.
-	 * 
+	 *
 	 * @param sql the SQL query
 	 * @param typeName the type name for the query
-	 * 
+	 *
 	 * @return the schema
 	 * @throws Exception if reading the schema fails
 	 */
@@ -256,7 +251,7 @@ public abstract class AbstractDBTest {
 	/**
 	 * It checks if the binding of a data type read from schema and the expected
 	 * binding are equal.
-	 * 
+	 *
 	 * @param map It maps a data type with a binding class to be expected. e.g.
 	 *            for postgresql db, for data type VARCHAR, the expected binding
 	 *            class is String.class
@@ -299,7 +294,7 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Write instances to the database.
-	 * 
+	 *
 	 * @param instances the collection of instances
 	 * @param schema the target schema
 	 * @throws Exception if writing the instances fails
@@ -320,10 +315,10 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * Read instances from the database.
-	 * 
+	 *
 	 * @param schema the source schema
 	 * @return the database instances
-	 * 
+	 *
 	 * @throws Exception if reading the instances fails
 	 */
 	protected InstanceCollection readInstances(Schema schema) throws Exception {
@@ -343,7 +338,7 @@ public abstract class AbstractDBTest {
 	/**
 	 * Read the instances from the db, check if it is same as instances written
 	 * to the db.
-	 * 
+	 *
 	 * @param originalInstances instance created and written to db
 	 * @param schema schema read
 	 * @param gType the geometry type definition.
@@ -377,7 +372,7 @@ public abstract class AbstractDBTest {
 
 	/**
 	 * stop and remove the container.
-	 * 
+	 *
 	 * @throws Exception if killing and removing the container fail.
 	 */
 	@After
