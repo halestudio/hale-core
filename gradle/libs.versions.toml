@@ -161,8 +161,6 @@ schemacrawler = {module = "us.fatehi:schemacrawler", version = "12.04.02"}
 
 sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.28.0"}
 
-spotify-docker = {module = "com.spotify:docker-client", version = "2.7.7"}
-
 typesafe-config = {module = "com.typesafe:config", version = "1.2.1"}
 
 jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}

@@ -11,7 +11,6 @@ dependencies {
 
   implementation libs.eclipse.core.runtime
 
-  implementation libs.spotify.docker
   implementation libs.typesafe.config
 
   implementation libs.jackson.annotations

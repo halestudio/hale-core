@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
@@ -17,10 +17,14 @@ package eu.esdihumboldt.hale.io.jdbc.test;
 
 import eu.esdihumboldt.hale.common.test.docker.config.DockerConfigInstance;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * A configuration instance which provides the functionality to get the
  * configuration for starting a database docker image
- * 
+ *
  * @author Sameer Sheikh
  */
 public class DBConfigInstance extends DockerConfigInstance implements DBImageParameters {
@@ -79,6 +83,17 @@ public class DBConfigInstance extends DockerConfigInstance implements DBImagePar
 	@Override
 	public int getDBPort() {
 		return getIntValue(PORT_KEY, 0);
+	}
+
+	@Override
+	public List<String> getExposedPortList() {
+		int dbport = getDBPort();
+		if (dbport != 0) {
+			Set<String> ports = new HashSet<>(super.getExposedPortList());
+			ports.add(String.valueOf(dbport));
+			return ports.stream().toList();
+		}
+		return super.getExposedPortList();
 	}
 
 	/**

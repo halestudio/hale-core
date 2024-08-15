@@ -18,6 +18,7 @@ dependencies {
 
   implementation libs.eclipse.osgi
 
-  api libs.spotify.docker
+  api testLibs.testcontainers.core
+
   implementation libs.typesafe.config
 }
