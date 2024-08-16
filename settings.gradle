@@ -26,7 +26,9 @@ void includeProjects(relativeDirPath = null, filter = null) {
     def projectDirs = []
 
     dir.eachDir { subDir ->
-      searchDir(projectDirs, subDir, filter)
+      if (subDir.name != 'build') {
+        searchDir(projectDirs, subDir, filter)
+      }
     }
 
     projectDirs.each { File subdir ->

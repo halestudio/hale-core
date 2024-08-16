@@ -1,3 +1,11 @@
+plugins {
+  id 'hale.base'
+}
+
+repositories {
+  mavenCentral()
+}
+
 allprojects {
   group = 'eu.esdihumboldt.hale'
 }

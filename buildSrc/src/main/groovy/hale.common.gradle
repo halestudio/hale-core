@@ -1,5 +1,7 @@
 plugins {
   id 'to.wetransform.semantic-release-version'
+
+  id 'hale.base'
 }
 
 repositories {
