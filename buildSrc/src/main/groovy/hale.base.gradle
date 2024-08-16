@@ -1,0 +1,26 @@
+plugins {
+  id 'com.diffplug.spotless'
+}
+
+spotless {
+  // try to reflect .editorconfig settings
+
+  // generic steps described in https://github.com/diffplug/spotless/tree/main/plugin-gradle#generic-steps
+  // custom steps described in https://github.com/diffplug/spotless/tree/main/plugin-gradle#custom-steps
+
+  groovyGradle {
+    target '*.gradle'
+
+    greclipse().configFile(rootProject.file('gradle-format.properties'))
+
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
+
+  format 'other', {
+    target '*.md', '.gitignore'
+
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
+}

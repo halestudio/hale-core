@@ -1,13 +1,30 @@
 plugins {
   id 'groovy-gradle-plugin'
+
+  id("com.diffplug.spotless") version "6.25.0"
 }
 
 repositories {
   gradlePluginPortal() // so that external plugins can be resolved in dependencies section
+
+  mavenCentral()
 }
 
 dependencies {
   implementation 'to.wetransform:gradle-semantic-release-version:2.1.1'
   implementation 'biz.aQute.bnd:biz.aQute.bnd.gradle:6.3.0'
   implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.25.0'
+}
+
+spotless {
+  // try to reflect .editorconfig settings for .gradle
+
+  groovyGradle {
+    target '*.gradle'
+
+    greclipse().configFile('../gradle-format.properties')
+
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
 }
