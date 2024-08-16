@@ -1,3 +1,4 @@
+---
 name: Publish
 
 on:
@@ -10,153 +11,14 @@ concurrency:
   # only run one publishing at a time to avoid conflicts
   group: publish-${{ github.ref }}
 
-# env:
-  # instead of embedded Maven use local Maven CLI
-  # HALE_BUILD_MAVEN_EMBEDDED: 'false'
-
 jobs:
-  build:
-    # Only on main repository (don't publish on forks)
-    if: github.repository_owner == 'halestudio'
-
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Setup Maven
-        uses: s4u/setup-maven-action@2f53a7669c7543a045d0bb6c92436df0c5a726f8 # v1.14.0
-        # uses: stempler/setup-maven-action@feat/cache-save-always
-        with:
-          java-version: 17
-          java-distribution: temurin
-          maven-version: 3.9.6
-          # Note: currently not working because of https://github.com/actions/cache/issues/1315
-          # Fix in https://github.com/actions/cache/pull/1325 not merged yet
-          # cache-save-always: true
-
-      - name: Install genisoimage # required for Mac build
-        run: sudo apt-get install -y genisoimage
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
-      - name: Clean
-        run: ./build.sh clean
-        working-directory: ./build
-
-      - name: Create hale-docker.conf file
-        run: |
-          mkdir -p ~/.hale
-          cat <<EOF > ~/.hale/hale-docker.conf
-          global {
-            dockerHost="unix:///var/run/docker.sock"
-          }
-          EOF
-
-      - name: Test
-        run: ./build.sh integrationStage
-        working-directory: ./build
-
-      - name: Product
-        run: |
-          ./build.sh product --arch x86_64 --os linux HALE
-          ./build.sh product --arch x86_64 --os windows HALE
-          ./build.sh product --arch x86_64 --os macosx HALE
-          ./build.sh product --arch x86_64 --os linux --publish Infocenter
-        working-directory: ./build    
-
-      - name: Upload hale studio build (Linux)
-        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4.3.4
-        with:
-          name: hale studio (Linux)
-          path: build/target/hale-studio-*linux*.tar.gz
-          retention-days: 90
-
-      - name: Upload hale studio build (Windows)
-        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4.3.4
-        with:
-          name: hale studio (Windows)
-          path: build/target/hale-studio-*win32*.zip
-          retention-days: 90
-
-      - name: Upload hale studio build (macos)
-        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4.3.4
-        with:
-          name: hale studio (macos)
-          path: build/target/hale-studio-*macosx*.dmg
-          retention-days: 90
-
-      - name: Install AWS CLI
-        uses: unfor19/install-aws-cli-action@e8b481e524a99f37fbd39fdc1dcb3341ab091367 # v1.0.7
-        with:
-          version: 1
-
-      - name: Update site
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.BUILD_ARCHIVE_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.BUILD_ARCHIVE_SECRET_KEY }}
-        run: ./upload-site.sh
-        working-directory: ./build    
-
-      - name: Deploy Artifacts
-        env:
-          WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
-          WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
-          JAVA_TOOL_OPTIONS: '-Dmaven.wagon.httpconnectionManager.ttlSeconds=120'
-        run: ./build.sh deployArtifacts
-        working-directory: ./build   
-
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
-        if: always() # always run even if the previous step fails
-        with:
-          # fail if there are no test results
-          require_tests: true
-
-          # Workaround for check that is additionally created being associated
-          # to the wrong workflow/run. Instead no additional check is created.
-          # See https://github.com/mikepenz/action-junit-report/issues/40
-          annotate_only: true
-          detailed_summary: true  
-          report_paths: 'build/target/testReports/*.xml'
-
-        # https://github.com/marketplace/actions/slack-notify-build
-      - name: Notify failure to Slack
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@3665186a8c1a022b28a1dbe0954e73aa9081ea9e # v1.6.0
-        with:
-          channel: build-failures
-          status: FAILED
-          color: danger
-
-  trivy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download hale studio build (Linux)
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
-        with:
-          name: hale studio (Linux)
-
-      - name: Extract the archive file
-        run: |
-          mkdir -p hale-studio-linux-trivy
-          tar -xzf hale-studio-*linux*.tar.gz -C hale-studio-linux-trivy
-
-      - name: Run Trivy vulnerability scanner in rootfs mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'rootfs'
-          scan-ref: 'hale-studio-linux-trivy'
-          format: 'sarif'
-          severity: 'CRITICAL,HIGH'
-          output: 'trivy-results.sarif'
-
-      - name: Upload Trivy SARIF report
-        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
-        with:
-          sarif_file: trivy-results.sarif
+  publish:
+    uses: wetransform/gha-workflows/.github/workflows/gradle-library-publish.yml@feat/multi-module-improvements
+    with:
+      java-version: 17
+      multi-module: true
+      skip-scan: true
+    secrets:
+      WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
+      WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
+      SLACK_NOTIFICATIONS_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
