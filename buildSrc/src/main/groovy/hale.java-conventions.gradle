@@ -6,7 +6,20 @@ plugins {
   id 'java'
   id 'maven-publish'
 
+  id 'com.diffplug.spotless'
+
   id 'hale.common'
+}
+
+spotless {
+  java {
+    importOrder('java', 'javax', 'org', 'com', '')
+
+    removeUnusedImports()
+
+    // https://github.com/diffplug/spotless/tree/main/plugin-gradle#eclipse-jdt
+    eclipse().configFile(rootProject.file('eclipse-format.xml'))
+  }
 }
 
 java {

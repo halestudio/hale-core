@@ -24,6 +24,7 @@ jobs:
       java-version: 17
       multi-module: true
       skip-scan: true
+      build-tasks: 'clean spotlessCheck check'
       semantic-release: true
       semantic-release-dryrun: ${{ inputs.dryRun }}
     secrets:
