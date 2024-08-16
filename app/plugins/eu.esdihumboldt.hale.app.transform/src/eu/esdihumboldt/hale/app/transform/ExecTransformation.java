@@ -117,8 +117,8 @@ public class ExecTransformation implements ConsoleConstants {
 		public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
 				throws IOException {
 			/*
-			 * XXX currently cannot determine from the patterns if a directory
-			 * should be inspected or not
+			 * XXX currently cannot determine from the patterns if a directory should be
+			 * inspected or not
 			 */
 			return FileVisitResult.CONTINUE;
 		}

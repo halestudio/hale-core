@@ -15,9 +15,9 @@
 
 package eu.esdihumboldt.hale.io.haleconnect.project
 
-import com.google.gson.annotations.SerializedName
-
 import groovy.transform.Immutable
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * Options for sharing transformation projects on hale connect.

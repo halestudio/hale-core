@@ -34,8 +34,9 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import com.google.common.collect.Iterables;
 import org.locationtech.jts.geom.Geometry;
+
+import com.google.common.collect.Iterables;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -80,19 +81,19 @@ public abstract class StreamGmlHelper {
 	 * @param type the definition of the instance type
 	 * @param indexInStream the index of the instance in the stream or
 	 *            <code>null</code>
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
 	 * @param srsDimension the dimension of the instance or <code>null</code>
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
 	 * @param parentType the type of the topmost instance
-	 * @param propertyPath the property path down from the topmost instance, may
-	 *            be <code>null</code>
+	 * @param propertyPath the property path down from the topmost instance, may be
+	 *            <code>null</code>
 	 * @param allowNull if a <code>null</code> result is allowed
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param ioProvider the I/O Provider to get value
 	 * @return the parsed instance, may be <code>null</code> if allowNull is
 	 *         <code>true</code>
@@ -116,19 +117,19 @@ public abstract class StreamGmlHelper {
 	 * @param type the definition of the instance type
 	 * @param indexInStream the index of the instance in the stream or
 	 *            <code>null</code>
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
 	 * @param srsDimension the dimension of the instance or <code>null</code>
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
 	 * @param parentType the type of the topmost instance
-	 * @param propertyPath the property path down from the topmost instance, may
-	 *            be <code>null</code>
+	 * @param propertyPath the property path down from the topmost instance, may be
+	 *            <code>null</code>
 	 * @param allowNull if a <code>null</code> result is allowed
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param ioProvider the I/O Provider to get value
 	 * @param crs The <code>CRSDefinition</code> to use for geometries
 	 * @return the parsed instance, may be <code>null</code> if allowNull is
@@ -219,10 +220,9 @@ public abstract class StreamGmlHelper {
 			if (allowNull && isNil && Iterables.isEmpty(instance.getPropertyNames())) {
 				// no value should be created
 				/*
-				 * XXX returning null here then results in problems during
-				 * adding other properties to the parent group, as mandatory
-				 * elements are expected to appear, and it will warn about
-				 * possible invalid data loaded
+				 * XXX returning null here then results in problems during adding other
+				 * properties to the parent group, as mandatory elements are expected to appear,
+				 * and it will warn about possible invalid data loaded
 				 */
 //				return null;
 			}
@@ -230,9 +230,9 @@ public abstract class StreamGmlHelper {
 			// instance value
 			if (!hasElements(type)) {
 				/*
-				 * Value can only be determined if there are no documents,
-				 * because otherwise elements have already been processed in
-				 * parseProperties and we are already past END_ELEMENT.
+				 * Value can only be determined if there are no documents, because otherwise
+				 * elements have already been processed in parseProperties and we are already
+				 * past END_ELEMENT.
 				 */
 				if (type.getConstraint(HasValueFlag.class).isEnabled()) {
 					// try to get text value
@@ -245,8 +245,8 @@ public abstract class StreamGmlHelper {
 		}
 		else {
 			/*
-			 * XXX For a mixed type currently ignore elements and parse only
-			 * attributes and text.
+			 * XXX For a mixed type currently ignore elements and parse only attributes and
+			 * text.
 			 */
 
 			// instance properties (attributes only)
@@ -280,12 +280,11 @@ public abstract class StreamGmlHelper {
 				}
 			} catch (Exception e) {
 				/*
-				 * Catch IllegalArgumentException that e.g. occurs if a linear
-				 * ring has to few points. NullPointerExceptions may occur
-				 * because an internal geometry could not be created.
+				 * Catch IllegalArgumentException that e.g. occurs if a linear ring has to few
+				 * points. NullPointerExceptions may occur because an internal geometry could
+				 * not be created.
 				 * 
-				 * XXX a problem is that these messages will not appear in the
-				 * report
+				 * XXX a problem is that these messages will not appear in the report
 				 */
 				log.error("Error creating geometry", e);
 			}
@@ -340,16 +339,15 @@ public abstract class StreamGmlHelper {
 
 	/**
 	 * Read the text value of the current element from the stream. The stream is
-	 * expected to be at {@link XMLStreamConstants#START_ELEMENT}. For mixed
-	 * content elements the text content is concatenated and the elements
-	 * ignored.
+	 * expected to be at {@link XMLStreamConstants#START_ELEMENT}. For mixed content
+	 * elements the text content is concatenated and the elements ignored.
 	 * 
 	 * FIXME different handling for mixed types?
 	 * 
 	 * @param reader the XML stream reader
 	 * @return the element text
-	 * @throws XMLStreamException if an error occurs reading from the stream or
-	 *             the element ends prematurely
+	 * @throws XMLStreamException if an error occurs reading from the stream or the
+	 *             element ends prematurely
 	 */
 	private static String readText(XMLStreamReader reader) throws XMLStreamException {
 		checkState(reader.getEventType() == XMLStreamConstants.START_ELEMENT);
@@ -396,9 +394,9 @@ public abstract class StreamGmlHelper {
 	 * 
 	 * @param reader the XML stream reader
 	 * @param group the group to populate with properties
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
 	 * @param srsDimension the dimension of the instance or <code>null</code>
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
@@ -407,9 +405,9 @@ public abstract class StreamGmlHelper {
 	 * @param parentType the type of the topmost instance
 	 * @param propertyPath the property path down from the topmost instance
 	 * @param onlyAttributes if only attributes should be parsed
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param ioProvider the I/O Provider to get value
 	 * @throws XMLStreamException if parsing the properties failed
 	 */
@@ -594,8 +592,8 @@ public abstract class StreamGmlHelper {
 	}
 
 	/**
-	 * Convert a string value from a XML simple type to the binding defined by
-	 * the given type.
+	 * Convert a string value from a XML simple type to the binding defined by the
+	 * given type.
 	 * 
 	 * @param type the type associated with the value
 	 * @param value the value

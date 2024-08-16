@@ -31,8 +31,8 @@ public interface Verifier<T extends Localizable, L extends Localizable> {
 	 * 
 	 * @param first the first localizable
 	 * @param second the other localizable
-	 * @return true if the first localizable has a spatial relation to the
-	 *         second one
+	 * @return true if the first localizable has a spatial relation to the second
+	 *         one
 	 */
 	public boolean verify(T first, L second);
 }

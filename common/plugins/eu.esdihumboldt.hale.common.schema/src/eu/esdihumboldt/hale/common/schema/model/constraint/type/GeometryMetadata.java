@@ -34,8 +34,7 @@ public class GeometryMetadata implements TypeConstraint {
 	public static final int UNKNOWN_DIMENSION = 0;
 
 	/**
-	 * The the WKT definition of the spatial reference system or
-	 * <code>null</code>.
+	 * The the WKT definition of the spatial reference system or <code>null</code>.
 	 */
 	private final String srsText;
 
@@ -70,8 +69,7 @@ public class GeometryMetadata implements TypeConstraint {
 	 * @param srs the spatial reference system code
 	 * @param dimension the dimension, or <code>0</code> if unknown
 	 * @param srsText the WKT definition of the spatial reference system
-	 * @param auth_name the name of the authority defining the SRS code, e.g.
-	 *            EPSG
+	 * @param auth_name the name of the authority defining the SRS code, e.g. EPSG
 	 */
 	public GeometryMetadata(@Nullable String srs, int dimension, @Nullable String srsText,
 			@Nullable String auth_name) {

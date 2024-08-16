@@ -87,8 +87,8 @@ public class FunctionExecutor extends CellNodeValidator {
 		this.context = context;
 		this.functionPriority = functionPriority;
 
-		this.transformations = context.getServiceProvider().getService(
-				TransformationFunctionService.class);
+		this.transformations = context.getServiceProvider()
+				.getService(TransformationFunctionService.class);
 	}
 
 	/**
@@ -102,10 +102,10 @@ public class FunctionExecutor extends CellNodeValidator {
 			return;
 		}
 		/*
-		 * if the result node is only one and its value had already been set, it
-		 * is not necessary to execute this function of a lower priority. (if
-		 * there are more than one target node we will need to execute them all
-		 * and check at the end of the transformation.
+		 * if the result node is only one and its value had already been set, it is not
+		 * necessary to execute this function of a lower priority. (if there are more
+		 * than one target node we will need to execute them all and check at the end of
+		 * the transformation.
 		 */
 		if (targets.size() == 1) {
 			TargetNode targetNode = targets.values().iterator().next().getFirst();
@@ -170,8 +170,8 @@ public class FunctionExecutor extends CellNodeValidator {
 		// configure function
 
 		// set expected result
-		ListMultimap<String, PropertyEntityDefinition> expectedResult = ArrayListMultimap.create(
-				targets.keySet().size(), 1);
+		ListMultimap<String, PropertyEntityDefinition> expectedResult = ArrayListMultimap
+				.create(targets.keySet().size(), 1);
 		for (Entry<String, Pair<TargetNode, Entity>> targetEntry : targets.entries()) {
 			EntityDefinition def = targetEntry.getValue().getSecond().getDefinition();
 			expectedResult.put(targetEntry.getKey(), toPropertyEntityDefinition(def));
@@ -244,10 +244,9 @@ public class FunctionExecutor extends CellNodeValidator {
 							null));
 				}
 				if (values.size() > nodes.size()) {
-					cellLog.warn(cellLog.createMessage(
-							MessageFormat
-									.format("More transformation results than target nodes for result with name {0}",
-											name), null));
+					cellLog.warn(cellLog.createMessage(MessageFormat.format(
+							"More transformation results than target nodes for result with name {0}",
+							name), null));
 				}
 
 				int count = Math.min(values.size(), nodes.size());
@@ -275,9 +274,8 @@ public class FunctionExecutor extends CellNodeValidator {
 					/*
 					 * TODO
 					 * 
-					 * set node value only if no result has already been set. If
-					 * a value is already there and we are in a lower priority
-					 * executor, we do not overwrite.
+					 * set node value only if no result has already been set. If a value is already
+					 * there and we are in a lower priority executor, we do not overwrite.
 					 */
 					if (!node.isDefined()) {
 						node.setResult(value);
@@ -305,10 +303,9 @@ public class FunctionExecutor extends CellNodeValidator {
 					value = convert(value, toPropertyEntityDefinition(node.getEntityDefinition()));
 				} catch (Throwable e) {
 					// ignore, but create error
-					cellLog.error(cellLog
-							.createMessage(
-									"Conversion according to target property failed, using value as is.",
-									e));
+					cellLog.error(cellLog.createMessage(
+							"Conversion according to target property failed, using value as is.",
+							e));
 				}
 			}
 			else {
@@ -323,8 +320,8 @@ public class FunctionExecutor extends CellNodeValidator {
 		}
 
 		/*
-		 * If the value is no group, but it should be one, create an instance
-		 * wrapping the value
+		 * If the value is no group, but it should be one, create an instance wrapping
+		 * the value
 		 */
 		TypeDefinition propertyType = toPropertyEntityDefinition(node.getEntityDefinition())
 				.getDefinition().getPropertyType();
@@ -397,8 +394,9 @@ public class FunctionExecutor extends CellNodeValidator {
 			return (PropertyEntityDefinition) def;
 		}
 
-		return new PropertyEntityDefinition(def.getType(), new ArrayList<ChildContext>(
-				def.getPropertyPath()), def.getSchemaSpace(), def.getFilter());
+		return new PropertyEntityDefinition(def.getType(),
+				new ArrayList<ChildContext>(def.getPropertyPath()), def.getSchemaSpace(),
+				def.getFilter());
 	}
 
 	/**

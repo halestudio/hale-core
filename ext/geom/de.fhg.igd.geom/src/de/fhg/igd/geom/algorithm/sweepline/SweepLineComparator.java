@@ -57,8 +57,8 @@ public class SweepLineComparator implements Comparator<SweepLineSegment> {
 	 * 
 	 * @param s1 the first segment
 	 * @param s2 the second segment
-	 * @return -1 if the first segment is "above" the second one, 1 if it is
-	 *         below and 0 if both segments are equal.
+	 * @return -1 if the first segment is "above" the second one, 1 if it is below
+	 *         and 0 if both segments are equal.
 	 */
 	@Override
 	public int compare(SweepLineSegment s1, SweepLineSegment s2) {

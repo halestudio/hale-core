@@ -25,8 +25,8 @@ public interface TypeConstraint {
 
 	/**
 	 * Determines if the constraint is inheritable, meaning it may be used for a
-	 * sub-type. A constraint may only be inherited if it is not overriden in
-	 * the sub-type.
+	 * sub-type. A constraint may only be inherited if it is not overriden in the
+	 * sub-type.
 	 * 
 	 * @return if the constraint is inheritable
 	 */

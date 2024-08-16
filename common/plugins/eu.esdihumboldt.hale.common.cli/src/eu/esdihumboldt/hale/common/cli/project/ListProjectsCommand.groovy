@@ -15,14 +15,15 @@
 
 package eu.esdihumboldt.hale.common.cli.project
 
+import groovy.cli.picocli.OptionAccessor
+import groovy.transform.CompileStatic
+
 import java.nio.file.Path
 import java.nio.file.Paths
 
 import eu.esdihumboldt.hale.common.core.report.ReportHandler
 import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment
 import eu.esdihumboldt.util.cli.CommandContext
-import groovy.cli.picocli.OptionAccessor
-import groovy.transform.CompileStatic
 @CompileStatic
 class ListProjectsCommand extends AbstractProjectEnvironmentCommand {
 

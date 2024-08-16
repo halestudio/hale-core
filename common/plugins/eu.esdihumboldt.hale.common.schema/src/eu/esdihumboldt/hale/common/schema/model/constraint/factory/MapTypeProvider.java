@@ -36,8 +36,7 @@ public class MapTypeProvider implements TypeProvider {
 	/**
 	 * Create a new type provider based on the given map.
 	 * 
-	 * @param map the map with references mapped to the respective type
-	 *            definitions
+	 * @param map the map with references mapped to the respective type definitions
 	 */
 	public MapTypeProvider(Map<Value, DefaultTypeDefinition> map) {
 		super();

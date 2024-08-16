@@ -83,8 +83,7 @@ public abstract class AbstractCachedSchemaReaderBase extends AbstractSchemaReade
 	}
 
 	/**
-	 * @return if the cache should be used as fall-back if loading the source
-	 *         fails
+	 * @return if the cache should be used as fall-back if loading the source fails
 	 */
 	protected boolean useCacheAsFallback() {
 		// by default use the cache as fall-back if loading the source fails
@@ -106,8 +105,8 @@ public abstract class AbstractCachedSchemaReaderBase extends AbstractSchemaReade
 	protected abstract Value storeInCache(Schema schema) throws Exception;
 
 	/**
-	 * Load the schema from the given cache. On success the reporter must be
-	 * updated accordingly.<br>
+	 * Load the schema from the given cache. On success the reporter must be updated
+	 * accordingly.<br>
 	 * <br>
 	 * This method is called if both {@link #validCache(Value)} and
 	 * {@link #useCache(Value)} returned <code>true</code>.<br>
@@ -121,12 +120,12 @@ public abstract class AbstractCachedSchemaReaderBase extends AbstractSchemaReade
 			IOReporter reporter);
 
 	/**
-	 * Determines if with the current configuration and source the cache should
-	 * be used to load the schema or not. This method is only called after
+	 * Determines if with the current configuration and source the cache should be
+	 * used to load the schema or not. This method is only called after
 	 * {@link #validCache(Value)} returned <code>true</code>.<br>
 	 * <br>
-	 * The default implementation checks if the source location/stream is
-	 * readable and allows using the cache if it's not.
+	 * The default implementation checks if the source location/stream is readable
+	 * and allows using the cache if it's not.
 	 * 
 	 * @param cache the cache value
 	 * @return if the cache should be used to load the schema
@@ -151,12 +150,11 @@ public abstract class AbstractCachedSchemaReaderBase extends AbstractSchemaReade
 	}
 
 	/**
-	 * Determines if the given value provides valid cache information that could
-	 * be used in {@link #loadFromCache(Value, ProgressIndicator, IOReporter)}.
+	 * Determines if the given value provides valid cache information that could be
+	 * used in {@link #loadFromCache(Value, ProgressIndicator, IOReporter)}. <br>
 	 * <br>
-	 * <br>
-	 * The default implementation classifies the cache value as valid if it is
-	 * not <code>null</code> or the NULL value.
+	 * The default implementation classifies the cache value as valid if it is not
+	 * <code>null</code> or the NULL value.
 	 * 
 	 * @param cache the cache value
 	 * @return if the cache value is valid
@@ -166,8 +164,8 @@ public abstract class AbstractCachedSchemaReaderBase extends AbstractSchemaReade
 	}
 
 	/**
-	 * Load the schema from the {@link #getSource()}. On success the reporter
-	 * must be updated accordingly.
+	 * Load the schema from the {@link #getSource()}. On success the reporter must
+	 * be updated accordingly.
 	 * 
 	 * @param progress the progress indicator
 	 * @param reporter the reporter

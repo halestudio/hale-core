@@ -39,7 +39,6 @@ import eu.esdihumboldt.hale.common.align.model.functions.RetypeFunction;
 import eu.esdihumboldt.hale.common.core.io.Text;
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
-import eu.esdihumboldt.hale.common.instance.extension.filter.FilterDefinitionManager;
 
 /**
  * Merge migrator for the Groovy Retype function.

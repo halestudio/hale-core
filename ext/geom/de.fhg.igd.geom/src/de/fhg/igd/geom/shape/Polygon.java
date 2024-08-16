@@ -76,8 +76,8 @@ public class Polygon extends Shape {
 	/**
 	 * @return true if the given point is inside this Polygon. Uses the standard
 	 *         contains algorithm that checks how often a ray projected form the
-	 *         point parallel to the y axis cuts a segment of the polygon. If
-	 *         the number is even, it's outide, if it is odd, it's inside.
+	 *         point parallel to the y axis cuts a segment of the polygon. If the
+	 *         number is even, it's outide, if it is odd, it's inside.
 	 * @param x the x ordinate of the point that may be inside of this Polygon
 	 * @param y the y ordinate of the point that may be inside of this Polygon
 	 */
@@ -166,8 +166,8 @@ public class Polygon extends Shape {
 	 * 
 	 * @param p the Polygon to add
 	 * @param q the queue to add to
-	 * @return a list of line2d objects which are vertical and which could not
-	 *         be added.
+	 * @return a list of line2d objects which are vertical and which could not be
+	 *         added.
 	 */
 	private static List<Line2D> addToPoint2DEventQueue(Polygon p, Point2DEventQueue q) {
 		List<Line2D> verticalLines = new ArrayList<Line2D>();
@@ -290,10 +290,10 @@ public class Polygon extends Shape {
 	}
 
 	/**
-	 * Tests if this Polygon completely contains another one. First it checks
-	 * for intersection (because the two Polygons must not intersect). Then it
-	 * checks if this Polygon contains at least one point (actually the first
-	 * one) of the other Polygon.
+	 * Tests if this Polygon completely contains another one. First it checks for
+	 * intersection (because the two Polygons must not intersect). Then it checks if
+	 * this Polygon contains at least one point (actually the first one) of the
+	 * other Polygon.
 	 * 
 	 * @param p the other Polygon
 	 * @return true if this Polygon completely contains p, false otherwise
@@ -307,23 +307,22 @@ public class Polygon extends Shape {
 
 	/**
 	 * <p>
-	 * This method will test if there is an intersection point between the
-	 * vectors defined by (a1,a2) and (b1,b2). If there is none, it will return
-	 * null, otherwise it will return the parameter (usually called "lambda")
-	 * where the intersection point can be found on the first line.
+	 * This method will test if there is an intersection point between the vectors
+	 * defined by (a1,a2) and (b1,b2). If there is none, it will return null,
+	 * otherwise it will return the parameter (usually called "lambda") where the
+	 * intersection point can be found on the first line.
 	 * </p>
 	 * <p>
-	 * <b>Attention</b>: This method may also return lambda values lower than
-	 * 0.0 or greater than 1.0. In this case the intersection point lies outside
-	 * the first line!
+	 * <b>Attention</b>: This method may also return lambda values lower than 0.0 or
+	 * greater than 1.0. In this case the intersection point lies outside the first
+	 * line!
 	 * </p>
 	 * <p>
-	 * <b>Attention</b>: If the result value is
-	 * <code>0.0 <= lambda <= 1.0</code> this does not mean that the
-	 * intersection point lies on both lines in all cases. This method
-	 * intersects vectors and so the intersection point may lie on the first
-	 * line but not on the second one. If you want to make sure the intersection
-	 * point lies on both lines, always call this method as follows:
+	 * <b>Attention</b>: If the result value is <code>0.0 <= lambda <= 1.0</code>
+	 * this does not mean that the intersection point lies on both lines in all
+	 * cases. This method intersects vectors and so the intersection point may lie
+	 * on the first line but not on the second one. If you want to make sure the
+	 * intersection point lies on both lines, always call this method as follows:
 	 * </p>
 	 * 
 	 * <pre>

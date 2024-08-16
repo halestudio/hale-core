@@ -98,8 +98,8 @@ public class CurveHandler extends GenericGeometryHandler {
 		if (GMLGeometryUtil.isCombineCompositesEnabled(reader)
 				&& GMLGeometryUtil.is2D(lineStrings)) {
 			/*
-			 * XXX Third dimension curves are not supported, because CurveHelper
-			 * uses Coordinate.equals(...) which does only a 2D check.
+			 * XXX Third dimension curves are not supported, because CurveHelper uses
+			 * Coordinate.equals(...) which does only a 2D check.
 			 */
 
 			try {

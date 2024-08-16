@@ -52,8 +52,8 @@ public abstract class HeadlessIO {
 			.getLogger(ProjectTransformationEnvironment.class);
 
 	/**
-	 * Execute a set of I/O configurations. Configurations for which no advisor
-	 * is provided are ignored.
+	 * Execute a set of I/O configurations. Configurations for which no advisor is
+	 * provided are ignored.
 	 * 
 	 * @param configurations the I/O configurations
 	 * @param advisors map of advisors, action ID mapped to responsible advisor
@@ -86,9 +86,9 @@ public abstract class HeadlessIO {
 	}
 
 	/**
-	 * Execute a single I/O configuration. If no matching advisor is given for
-	 * the configuration, first the extension point is queried for an advisor,
-	 * if not found it is ignored.
+	 * Execute a single I/O configuration. If no matching advisor is given for the
+	 * configuration, first the extension point is queried for an advisor, if not
+	 * found it is ignored.
 	 * 
 	 * @param conf the I/O configuration
 	 * @param advisors map of advisors, action ID mapped to responsible advisor
@@ -160,12 +160,11 @@ public abstract class HeadlessIO {
 	}
 
 	/**
-	 * Load and configure the I/O provider specified by the given I/O
-	 * configuration.
+	 * Load and configure the I/O provider specified by the given I/O configuration.
 	 * 
 	 * @param conf the I/O configuration
-	 * @return the provider or <code>null</code> if it was not found or could
-	 *         not be created
+	 * @return the provider or <code>null</code> if it was not found or could not be
+	 *         created
 	 */
 	public static IOProvider loadProvider(IOConfiguration conf) {
 		IOProvider provider = null;

@@ -36,8 +36,8 @@ public abstract class FunctionUtil {
 	 * declarations if no service is available.
 	 * 
 	 * @param id the function ID
-	 * @param serviceProvider the service provider to retrieve the function
-	 *            service for resolving the function identifier
+	 * @param serviceProvider the service provider to retrieve the function service
+	 *            for resolving the function identifier
 	 * @return the function or <code>null</code> if no function with the given
 	 *         identifier was found
 	 */
@@ -66,8 +66,8 @@ public abstract class FunctionUtil {
 	 * function declarations if no service is available.
 	 * 
 	 * @param id the function ID
-	 * @param serviceProvider the service provider to retrieve the function
-	 *            service for resolving the function identifier
+	 * @param serviceProvider the service provider to retrieve the function service
+	 *            for resolving the function identifier
 	 * @return the function or <code>null</code> if no function with the given
 	 *         identifier was found
 	 */
@@ -84,12 +84,12 @@ public abstract class FunctionUtil {
 	}
 
 	/**
-	 * Get the type function w/ the given identifier. Falls back to static
-	 * function declarations if no service is available.
+	 * Get the type function w/ the given identifier. Falls back to static function
+	 * declarations if no service is available.
 	 * 
 	 * @param id the function ID
-	 * @param serviceProvider the service provider to retrieve the function
-	 *            service for resolving the function identifier
+	 * @param serviceProvider the service provider to retrieve the function service
+	 *            for resolving the function identifier
 	 * @return the function or <code>null</code> if no function with the given
 	 *         identifier was found
 	 */

@@ -26,7 +26,7 @@ public abstract class BasicDescription implements IContentDescription {
 	 */
 	public IContentType getContentType() {
 		ContentType contentType = contentTypeInfo.getContentType();
-		//TODO performance: potential creation of garbage		
+		// TODO performance: potential creation of garbage
 		return new ContentTypeHandler(contentType, contentType.getCatalog().getGeneration());
 	}
 

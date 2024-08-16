@@ -28,6 +28,7 @@ public interface TaskUserData {
 	 * Task status
 	 */
 	public enum TaskStatus {
+
 		/** a new task */
 		NEW,
 		/** an active task */

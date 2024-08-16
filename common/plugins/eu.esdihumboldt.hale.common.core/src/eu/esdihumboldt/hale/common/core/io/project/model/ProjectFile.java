@@ -39,8 +39,8 @@ public interface ProjectFile {
 	public void load(InputStream in) throws Exception;
 
 	/**
-	 * Reset the file when a project is loaded but no data for the file was
-	 * present or loading the file failed.
+	 * Reset the file when a project is loaded but no data for the file was present
+	 * or loading the file failed.
 	 * 
 	 * @see #apply()
 	 */
@@ -48,8 +48,8 @@ public interface ProjectFile {
 
 	/**
 	 * Apply the (loaded) configuration. Is called even if
-	 * {@link #load(InputStream)} or {@link #apply()} haven't been called after
-	 * the main project file has been loaded.
+	 * {@link #load(InputStream)} or {@link #apply()} haven't been called after the
+	 * main project file has been loaded.
 	 */
 	public void apply();
 

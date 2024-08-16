@@ -69,8 +69,8 @@ public class MergeUtil {
 	}
 
 	/**
-	 * Get the property path for a value representing a property configured as
-	 * Merge function parameter.
+	 * Get the property path for a value representing a property configured as Merge
+	 * function parameter.
 	 * 
 	 * @param value the value representation of the parameter
 	 * @return the property identified by its property path
@@ -84,12 +84,11 @@ public class MergeUtil {
 	}
 
 	/**
-	 * Get the property path for a value representing a property configured as
-	 * Merge function parameter and resolve it to an entity definition.
+	 * Get the property path for a value representing a property configured as Merge
+	 * function parameter and resolve it to an entity definition.
 	 * 
 	 * @param value the value representation of the parameter
-	 * @param parentType the parent type of the property (the type that is
-	 *            merged)
+	 * @param parentType the parent type of the property (the type that is merged)
 	 * @return the entity definition resolved from the property path
 	 * @throws IllegalStateException if the property path cannot be resolved
 	 */
@@ -143,16 +142,15 @@ public class MergeUtil {
 	}
 
 	/**
-	 * Get the {@link PropertyEntityDefinition} paths for all key properties of
-	 * a merge.<br>
+	 * Get the {@link PropertyEntityDefinition} paths for all key properties of a
+	 * merge.<br>
 	 * <br>
-	 * <b>Subproperties are not yet supported to be part of a merge key.
-	 * Therefore, the inner lists will contain only a single property for the
-	 * time being.</b>
+	 * <b>Subproperties are not yet supported to be part of a merge key. Therefore,
+	 * the inner lists will contain only a single property for the time being.</b>
 	 * 
 	 * @param cell Mapping cell of the merge
-	 * @return <code>PropertyEntityDefinition</code> paths for all key
-	 *         properties of the merge
+	 * @return <code>PropertyEntityDefinition</code> paths for all key properties of
+	 *         the merge
 	 */
 	public static List<PropertyEntityDefinition> getKeyPropertyDefinitions(Cell cell) {
 		List<PropertyEntityDefinition> result = new ArrayList<>();

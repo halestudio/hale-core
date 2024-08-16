@@ -66,14 +66,13 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 
 	/**
 	 * Create an empty report. It is set to not successful by default. But you
-	 * should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
 	 * @param messageType the message type
-	 * @param doLog if added messages shall also be logged using the provided
-	 *            logger
+	 * @param doLog if added messages shall also be logged using the provided logger
 	 * @param log the log to use if doLog is enabled
 	 */
 	public AllInMemoryReporter(String taskName, String taskType, Class<T> messageType,
@@ -85,8 +84,8 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 
 	/**
 	 * Create an empty report. It is set to not successful by default. But you
-	 * should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
@@ -100,8 +99,8 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	}
 
 	/**
-	 * Adds a warning to the report. If configured accordingly a log message
-	 * will also be created.
+	 * Adds a warning to the report. If configured accordingly a log message will
+	 * also be created.
 	 * 
 	 * @param message the warning message
 	 */
@@ -166,9 +165,8 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	}
 
 	/**
-	 * Add all messages of the given report to this report. This method will
-	 * never log the messages (because the original report may have logged them
-	 * already.
+	 * Add all messages of the given report to this report. This method will never
+	 * log the messages (because the original report may have logged them already.
 	 * 
 	 * @see ReportLog#importMessages(Report)
 	 */

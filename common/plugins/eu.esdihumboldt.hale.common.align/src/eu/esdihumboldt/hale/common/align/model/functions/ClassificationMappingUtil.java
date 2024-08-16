@@ -60,8 +60,8 @@ public class ClassificationMappingUtil implements ClassificationMappingFunction 
 			if (!(parameters.get(PARAMETER_LOOKUPTABLE_ID).isEmpty())) {
 				LookupService lookupServiceImpl = serviceProvider.getService(LookupService.class);
 				Collection<? extends Value> tmpMap = parameters.get(PARAMETER_LOOKUPTABLE_ID);
-				LookupTableInfo lookupTableInfo = lookupServiceImpl.getTable(tmpMap.iterator()
-						.next().as(String.class));
+				LookupTableInfo lookupTableInfo = lookupServiceImpl
+						.getTable(tmpMap.iterator().next().as(String.class));
 				return lookupTableInfo.getTable();
 			}
 		} catch (NullPointerException e) {

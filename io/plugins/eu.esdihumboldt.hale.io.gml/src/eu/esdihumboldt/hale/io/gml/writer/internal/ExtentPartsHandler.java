@@ -34,8 +34,7 @@ import eu.esdihumboldt.util.Pair;
 public class ExtentPartsHandler implements MultipartHandler {
 
 	/**
-	 * Key to be used for instances that do not have exactly one geometry
-	 * property.
+	 * Key to be used for instances that do not have exactly one geometry property.
 	 */
 	public static final String KEY_NO_GEOMETRY = "NOGEOM";
 
@@ -76,8 +75,7 @@ public class ExtentPartsHandler implements MultipartHandler {
 	 * Create the handler
 	 * 
 	 * @param keyToTargetMapping Mapping between tree key and target file
-	 * @param idToKeyMapping Mapping between the GML IDs and the associated tree
-	 *            key
+	 * @param idToKeyMapping Mapping between the GML IDs and the associated tree key
 	 */
 	public ExtentPartsHandler(Map<String, URI> keyToTargetMapping,
 			Map<String, String> idToKeyMapping) {

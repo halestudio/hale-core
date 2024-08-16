@@ -22,15 +22,17 @@ import org.eclipse.osgi.util.NLS;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 
-@SuppressWarnings({"restriction", "rawtypes"})
+@SuppressWarnings({ "restriction", "rawtypes" })
 public class ContentTypeSettings implements IContentTypeSettings, IContentTypeInfo {
 
 	private ContentType contentType;
 	private IScopeContext context;
 
 	@SuppressWarnings("unchecked")
-	static void addFileSpec(IScopeContext context, String contentTypeId, String fileSpec, int type) throws CoreException {
-		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context).node(contentTypeId);
+	static void addFileSpec(IScopeContext context, String contentTypeId, String fileSpec, int type)
+			throws CoreException {
+		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context)
+				.node(contentTypeId);
 		String key = ContentType.getPreferenceKey(type);
 		List existingValues = Util.parseItemsIntoList(contentTypeNode.get(key, null));
 		for (int i = 0; i < existingValues.size(); i++)
@@ -38,7 +40,7 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 				// don't do anything if already exists
 				return;
 		existingValues.add(fileSpec);
-		// set new preference value		
+		// set new preference value
 		String newValue = Util.toListString(existingValues.toArray());
 		ContentType.setPreference(contentTypeNode, key, newValue);
 		try {
@@ -51,7 +53,8 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 	}
 
 	static String[] getFileSpecs(IScopeContext context, String contentTypeId, int type) {
-		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context).node(contentTypeId);
+		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context)
+				.node(contentTypeId);
 		return getFileSpecs(contentTypeNode, type);
 	}
 
@@ -61,7 +64,9 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 		return Util.parseItems(existing);
 	}
 
-	public static String internalGetDefaultProperty(ContentType current, final Preferences contentTypePrefs, final QualifiedName key) throws BackingStoreException {
+	public static String internalGetDefaultProperty(ContentType current,
+			final Preferences contentTypePrefs, final QualifiedName key)
+			throws BackingStoreException {
 		String id = current.getId();
 		if (contentTypePrefs.nodeExists(id)) {
 			Preferences contentTypeNode = contentTypePrefs.node(id);
@@ -75,11 +80,14 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 			return propertyValue;
 		// try ancestor
 		ContentType baseType = (ContentType) current.getBaseType();
-		return baseType == null ? null : internalGetDefaultProperty(baseType, contentTypePrefs, key);
+		return baseType == null ? null
+				: internalGetDefaultProperty(baseType, contentTypePrefs, key);
 	}
 
-	static void removeFileSpec(IScopeContext context, String contentTypeId, String fileSpec, int type) throws CoreException {
-		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context).node(contentTypeId);
+	static void removeFileSpec(IScopeContext context, String contentTypeId, String fileSpec,
+			int type) throws CoreException {
+		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context)
+				.node(contentTypeId);
 		String key = ContentType.getPreferenceKey(type);
 		String existing = contentTypeNode.get(key, null);
 		if (existing == null)
@@ -113,7 +121,7 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 	}
 
 	/*
-	 * @see IContentTypeSettings 
+	 * @see IContentTypeSettings
 	 */
 	public void addFileSpec(String fileSpec, int type) throws CoreException {
 		addFileSpec(context, contentType.getId(), fileSpec, type);
@@ -128,7 +136,8 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 	}
 
 	public String getDefaultProperty(final QualifiedName key) {
-		final Preferences contentTypePrefs = ContentTypeManager.getInstance().getPreferences(context);
+		final Preferences contentTypePrefs = ContentTypeManager.getInstance()
+				.getPreferences(context);
 		try {
 			String propertyValue = internalGetDefaultProperty(contentType, contentTypePrefs, key);
 			return "".equals(propertyValue) ? null : propertyValue; //$NON-NLS-1$
@@ -150,12 +159,14 @@ public class ContentTypeSettings implements IContentTypeSettings, IContentTypeIn
 	}
 
 	public void setDefaultCharset(String userCharset) throws CoreException {
-		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context).node(contentType.getId());
+		Preferences contentTypeNode = ContentTypeManager.getInstance().getPreferences(context)
+				.node(contentType.getId());
 		ContentType.setPreference(contentTypeNode, ContentType.PREF_DEFAULT_CHARSET, userCharset);
 		try {
 			contentTypeNode.flush();
 		} catch (BackingStoreException bse) {
-			String message = NLS.bind(ContentMessages.content_errorSavingSettings, contentType.getId());
+			String message = NLS.bind(ContentMessages.content_errorSavingSettings,
+					contentType.getId());
 			IStatus status = new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, bse);
 			throw new CoreException(status);
 		}

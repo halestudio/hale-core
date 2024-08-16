@@ -60,8 +60,8 @@ public class IOProviderParameter extends AbstractCommonParameter {
 	}
 
 	/**
-	 * Returns the binding class for this function parameter or null if there is
-	 * an enumeration present.
+	 * Returns the binding class for this function parameter or null if there is an
+	 * enumeration present.
 	 * 
 	 * @return the binding
 	 */
@@ -75,14 +75,13 @@ public class IOProviderParameter extends AbstractCommonParameter {
 	 * 
 	 * @return the validator or <code>null</code>
 	 */
-	public @Nullable
-	Validator getValidator() {
+	public @Nullable Validator getValidator() {
 		return validator;
 	}
 
 	/**
-	 * Returns the enumeration of allowed values for this function parameter or
-	 * null if there is a binding present.
+	 * Returns the enumeration of allowed values for this function parameter or null
+	 * if there is a binding present.
 	 * 
 	 * @return the enumeration
 	 */

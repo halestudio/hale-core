@@ -28,13 +28,14 @@ import org.slf4j.LoggerFactory;
 /**
  * @see IContentType
  */
-@SuppressWarnings({"restriction"})
+@SuppressWarnings({ "restriction" })
 public final class ContentType implements IContentType, IContentTypeInfo {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(ContentType.class);
 
 	/* A placeholder for missing/invalid binary/text describers. */
 	private class InvalidDescriber implements IContentDescriber, ITextContentDescriber {
+
 		@Override
 		public int describe(InputStream contents, IContentDescription description) {
 			return INVALID;
@@ -102,25 +103,31 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 	// -1 means unknown
 	private byte depth = -1;
 
-	public static ContentType createContentType(ContentTypeCatalog catalog, String uniqueId, String name, byte priority,
-			String[] fileExtensions, String[] fileNames, String[] filePatterns, String baseTypeId, String aliasTargetId,
-			Map<QualifiedName, String> defaultProperties, IConfigurationElement contentTypeElement) {
+	public static ContentType createContentType(ContentTypeCatalog catalog, String uniqueId,
+			String name, byte priority, String[] fileExtensions, String[] fileNames,
+			String[] filePatterns, String baseTypeId, String aliasTargetId,
+			Map<QualifiedName, String> defaultProperties,
+			IConfigurationElement contentTypeElement) {
 		ContentType contentType = new ContentType(catalog.getManager());
 		contentType.catalog = catalog;
 		contentType.defaultDescription = new DefaultDescription(contentType);
 		contentType.id = uniqueId;
 		contentType.name = name;
 		contentType.priority = priority;
-		if ((fileExtensions != null && fileExtensions.length > 0) || (fileNames != null && fileNames.length > 0)
+		if ((fileExtensions != null && fileExtensions.length > 0)
+				|| (fileNames != null && fileNames.length > 0)
 				|| (filePatterns != null && filePatterns.length > 0)) {
 			contentType.builtInAssociations = true;
-			contentType.fileSpecs = new ArrayList<>(fileExtensions.length + fileNames.length + filePatterns.length);
+			contentType.fileSpecs = new ArrayList<>(
+					fileExtensions.length + fileNames.length + filePatterns.length);
 			for (String fileName : fileNames)
 				contentType.internalAddFileSpec(fileName, FILE_NAME_SPEC | SPEC_PRE_DEFINED);
 			for (String fileExtension : fileExtensions)
-				contentType.internalAddFileSpec(fileExtension, FILE_EXTENSION_SPEC | SPEC_PRE_DEFINED);
+				contentType.internalAddFileSpec(fileExtension,
+						FILE_EXTENSION_SPEC | SPEC_PRE_DEFINED);
 			for (String fileExtension : filePatterns) {
-				contentType.internalAddFileSpec(fileExtension, FILE_PATTERN_SPEC | SPEC_PRE_DEFINED);
+				contentType.internalAddFileSpec(fileExtension,
+						FILE_PATTERN_SPEC | SPEC_PRE_DEFINED);
 			}
 		}
 		contentType.defaultProperties = defaultProperties;
@@ -144,7 +151,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 
 	@SuppressWarnings("unused")
 	private static String getValidationString(byte validation) {
-		return validation == STATUS_VALID ? "VALID" : (validation == STATUS_INVALID ? "INVALID" : "UNKNOWN"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return validation == STATUS_VALID ? "VALID" //$NON-NLS-1$
+				: (validation == STATUS_INVALID ? "INVALID" : "UNKNOWN"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public ContentType(ContentTypeManager manager) {
@@ -153,7 +161,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 
 	@Override
 	public void addFileSpec(String fileSpec, int type) throws CoreException {
-		Assert.isLegal(type == FILE_EXTENSION_SPEC || type == FILE_NAME_SPEC || type == FILE_PATTERN_SPEC,
+		Assert.isLegal(
+				type == FILE_EXTENSION_SPEC || type == FILE_NAME_SPEC || type == FILE_PATTERN_SPEC,
 				"Unknown type: " + type); //$NON-NLS-1$
 		String[] userSet;
 		synchronized (this) {
@@ -178,21 +187,26 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 		manager.fireContentTypeChangeEvent(this);
 	}
 
-	int describe(IContentDescriber selectedDescriber, ILazySource contents, ContentDescription description) throws IOException {
+	int describe(IContentDescriber selectedDescriber, ILazySource contents,
+			ContentDescription description) throws IOException {
 		try {
-			return contents.isText() ? ((ITextContentDescriber) selectedDescriber).describe((Reader) contents, description) : selectedDescriber.describe((InputStream) contents, description);
+			return contents.isText()
+					? ((ITextContentDescriber) selectedDescriber).describe((Reader) contents,
+							description)
+					: selectedDescriber.describe((InputStream) contents, description);
 		} catch (RuntimeException re) {
 			// describer seems to be buggy. just disable it (logging the reason)
 			invalidateDescriber(re);
 		} catch (Error e) {
-			// describer got some serious problem. disable it (logging the reason) and throw the error again
+			// describer got some serious problem. disable it (logging the reason) and throw
+			// the error again
 			invalidateDescriber(e);
 			throw e;
 		} catch (LowLevelIOException llioe) {
 			// throw the actual exception
 			throw llioe.getActualException();
 		} catch (IOException ioe) {
-			// bugs 67841/ 62443  - non-low level IOException should be "ignored"
+			// bugs 67841/ 62443 - non-low level IOException should be "ignored"
 			if (ContentTypeManager.DEBUGGING) {
 				String message = NLS.bind(ContentMessages.content_errorReadingContents, id);
 				log.error(message, ioe);
@@ -247,7 +261,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 	}
 
 	/**
-	 * Returns the default value for the given property in this content type, or <code>null</code>.
+	 * Returns the default value for the given property in this content type, or
+	 * <code>null</code>.
 	 */
 	@Override
 	public String getDefaultProperty(QualifiedName key) {
@@ -291,7 +306,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 						describer = NO_DESCRIBER;
 						return null;
 					}
-					describer = tmpDescriber = contentTypeElement.createExecutableExtension(DESCRIBER_ELEMENT);
+					describer = tmpDescriber = contentTypeElement
+							.createExecutableExtension(DESCRIBER_ELEMENT);
 					return (IContentDescriber) tmpDescriber;
 				} catch (CoreException ce) {
 					// the content type definition was invalid. Ensure we don't
@@ -301,12 +317,13 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 				}
 		} catch (InvalidRegistryObjectException e) {
 			/*
-			 * This should only happen if  an API call is made after the registry has changed and before
-			 * the corresponding registry change event has been broadcast.
+			 * This should only happen if an API call is made after the registry has changed
+			 * and before the corresponding registry change event has been broadcast.
 			 */
 			// the configuration element is stale - need to rebuild the catalog
 			manager.invalidate();
-			// bad timing - next time the client asks for a describer, s/he will have better luck
+			// bad timing - next time the client asks for a describer, s/he will have better
+			// luck
 			return null;
 		}
 		if (baseType == null) {
@@ -319,12 +336,14 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 	}
 
 	@Override
-	public IContentDescription getDescriptionFor(InputStream contents, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(InputStream contents, QualifiedName[] options)
+			throws IOException {
 		return internalGetDescriptionFor(ContentTypeManager.readBuffer(contents), options);
 	}
 
 	@Override
-	public IContentDescription getDescriptionFor(Reader contents, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(Reader contents, QualifiedName[] options)
+			throws IOException {
 		return internalGetDescriptionFor(ContentTypeManager.readBuffer(contents), options);
 	}
 
@@ -392,10 +411,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 	/**
 	 * Returns whether this content type has the given file spec.
 	 *
-	 * @param text
-	 *            the file spec string
-	 * @param typeMask
-	 *            FILE_NAME_SPEC or FILE_EXTENSION_SPEC or FILE_REGEXP_SPEC
+	 * @param text the file spec string
+	 * @param typeMask FILE_NAME_SPEC or FILE_EXTENSION_SPEC or FILE_REGEXP_SPEC
 	 * @param strict
 	 * @return true if this file spec has already been added, false otherwise
 	 */
@@ -429,7 +446,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 			fileSpecs.add(newFileSpec);
 			return true;
 		}
-		// update file specs atomically so threads traversing the list of file specs don't have to synchronize
+		// update file specs atomically so threads traversing the list of file specs
+		// don't have to synchronize
 		ArrayList<FileSpec> tmpFileSpecs = (ArrayList<FileSpec>) fileSpecs.clone();
 		tmpFileSpecs.add(newFileSpec);
 		catalog.associate(this, newFileSpec.getText(), newFileSpec.getType());
@@ -459,7 +477,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 		return defaultProperties == null ? null : defaultProperties.get(key);
 	}
 
-	BasicDescription internalGetDescriptionFor(ILazySource buffer, QualifiedName[] options) throws IOException {
+	BasicDescription internalGetDescriptionFor(ILazySource buffer, QualifiedName[] options)
+			throws IOException {
 		if (buffer == null)
 			return defaultDescription;
 		// use temporary local var to avoid sync'ing
@@ -497,7 +516,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 	boolean internalRemoveFileSpec(String fileSpec, int typeMask) {
 		if (fileSpecs.isEmpty())
 			return false;
-		// we modify the list of file specs atomically so we don't interfere with threads doing traversals
+		// we modify the list of file specs atomically so we don't interfere with
+		// threads doing traversals
 		@SuppressWarnings("unchecked")
 		ArrayList<FileSpec> tmpFileSpecs = (ArrayList<FileSpec>) fileSpecs.clone();
 		for (Iterator<FileSpec> i = tmpFileSpecs.iterator(); i.hasNext();) {
@@ -569,7 +589,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 
 	@Override
 	public void removeFileSpec(String fileSpec, int type) throws CoreException {
-		Assert.isLegal(type == FILE_EXTENSION_SPEC || type == FILE_NAME_SPEC || type == FILE_PATTERN_SPEC,
+		Assert.isLegal(
+				type == FILE_EXTENSION_SPEC || type == FILE_NAME_SPEC || type == FILE_PATTERN_SPEC,
 				"Unknown type: " + type); //$NON-NLS-1$
 		synchronized (this) {
 			if (!internalRemoveFileSpec(fileSpec, type | SPEC_USER_DEFINED))
@@ -603,7 +624,8 @@ public final class ContentType implements IContentType, IContentTypeInfo {
 			if (userCharset == null) {
 				if (newCharset == null)
 					return;
-			} else if (userCharset.equals(newCharset))
+			}
+			else if (userCharset.equals(newCharset))
 				return;
 			// apply change in memory
 			userCharset = newCharset;

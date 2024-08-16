@@ -93,8 +93,8 @@ public abstract class AbstractInstanceValidator extends GZipEnabledImport
 	protected abstract String getReportLabel();
 
 	/**
-	 * @return the identifier of the validation report type, by convention the
-	 *         same as the I/O provider id
+	 * @return the identifier of the validation report type, by convention the same
+	 *         as the I/O provider id
 	 */
 	protected abstract String getReportType();
 

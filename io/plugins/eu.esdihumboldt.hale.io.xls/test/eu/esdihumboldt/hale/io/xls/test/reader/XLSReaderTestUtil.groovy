@@ -15,7 +15,7 @@
 
 package eu.esdihumboldt.hale.io.xls.test.reader
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*
 
 import java.util.function.Consumer
 

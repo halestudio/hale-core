@@ -15,12 +15,13 @@
 
 package eu.esdihumboldt.hale.io.shp
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
 import static org.junit.Assert.assertTrue
+
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
@@ -40,8 +41,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeInstanceReader
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for reading Shapefiles.

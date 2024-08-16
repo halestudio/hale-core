@@ -237,8 +237,7 @@ public class Message {
 	}
 
 	/**
-	 * Apply from a given {@link Value}, if the value represents a
-	 * {@link Message}.
+	 * Apply from a given {@link Value}, if the value represents a {@link Message}.
 	 * 
 	 * @param value the value to interpret as {@link Message}
 	 * @return this for chaining

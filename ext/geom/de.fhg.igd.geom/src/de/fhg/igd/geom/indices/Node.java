@@ -42,8 +42,7 @@ public class Node<T extends Localizable> implements Localizable {
 	private List<Localizable> _children;
 
 	/**
-	 * True, if this node is a leaf. All nodes are leafs until child nodes are
-	 * added
+	 * True, if this node is a leaf. All nodes are leafs until child nodes are added
 	 */
 	private boolean _isLeaf = true;
 
@@ -66,9 +65,9 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Default constructor
 	 * 
-	 * @param pageSize the page size (number of children/locs that can be
-	 *            attached to this node before it gets splitted). Must be even
-	 *            and greater than or equal to 4.
+	 * @param pageSize the page size (number of children/locs that can be attached
+	 *            to this node before it gets splitted). Must be even and greater
+	 *            than or equal to 4.
 	 * @param parent the node's parent or null if the node is the root
 	 * @param tree the parent R-Tree
 	 */
@@ -97,9 +96,9 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to
-	 * index n-dimensional stuff. We make sure irregular stuff won't get in
-	 * anyway, so be relaxed about BBs.
+	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to index
+	 * n-dimensional stuff. We make sure irregular stuff won't get in anyway, so be
+	 * relaxed about BBs.
 	 * 
 	 * @param bb the boundingBox
 	 * @return the ersatz volume
@@ -116,9 +115,9 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to
-	 * index n-dimensional stuff. We make sure irregular stuff won't get in
-	 * anyway, so be relaxed about BBs.
+	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to index
+	 * n-dimensional stuff. We make sure irregular stuff won't get in anyway, so be
+	 * relaxed about BBs.
 	 * 
 	 * @param bb the boundingBox
 	 * @return the ersatz volume
@@ -132,8 +131,8 @@ public class Node<T extends Localizable> implements Localizable {
 	 * 
 	 * @param b1 the first bounding box
 	 * @param b2 the second bounding box
-	 * @param useExtent true if the extents of the bounding boxes should be
-	 *            compared and not the bounding boxes themselves
+	 * @param useExtent true if the extents of the bounding boxes should be compared
+	 *            and not the bounding boxes themselves
 	 * @return true if the first bounding box has any relation to the other one,
 	 *         false otherwise
 	 */
@@ -145,8 +144,8 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * Searches this Node and all children and returns the leaf that contains
-	 * the given Localizable
+	 * Searches this Node and all children and returns the leaf that contains the
+	 * given Localizable
 	 * 
 	 * @param loc the Localizable to find
 	 * @return the leaf that contains loc or null if loc is not contained by any
@@ -294,8 +293,8 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * Splits this node into two nodes and adds them to the parent node.
-	 * (Quadratic Split)
+	 * Splits this node into two nodes and adds them to the parent node. (Quadratic
+	 * Split)
 	 * 
 	 * @return the new second Node
 	 */
@@ -460,8 +459,8 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * Finds the Leaf L in which to insert the given Localizable loc and inserts
-	 * loc to L. Splits L if there are too many children.
+	 * Finds the Leaf L in which to insert the given Localizable loc and inserts loc
+	 * to L. Splits L if there are too many children.
 	 * 
 	 * @param loc the Localizable to insert
 	 */
@@ -493,9 +492,9 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * Traverses the given Node "no" and all its children. If a leaf is found
-	 * its children (the actual Localizables) will be inserted into the given
-	 * RTree as usual.
+	 * Traverses the given Node "no" and all its children. If a leaf is found its
+	 * children (the actual Localizables) will be inserted into the given RTree as
+	 * usual.
 	 * 
 	 * @param <T> the type of the objects stored in the RTree
 	 * @param no the Node to traverse
@@ -520,8 +519,8 @@ public class Node<T extends Localizable> implements Localizable {
 	}
 
 	/**
-	 * Eliminate l if it has too few entries. Propagate elimination upwards.
-	 * Adjust BoundingBoxes.
+	 * Eliminate l if it has too few entries. Propagate elimination upwards. Adjust
+	 * BoundingBoxes.
 	 * 
 	 * @param l the Leaf from which an entry has been deleted
 	 */
@@ -608,8 +607,8 @@ public class Node<T extends Localizable> implements Localizable {
 	 * Localizable loc.
 	 * 
 	 * @param loc the Localizable to match
-	 * @param ignoreZ true if the z coordinate should be ignored during
-	 *            candidate search
+	 * @param ignoreZ true if the z coordinate should be ignored during candidate
+	 *            search
 	 * @return a list of Localizables (containing only leafs of this tree and no
 	 *         nodes)
 	 */
@@ -664,10 +663,10 @@ public class Node<T extends Localizable> implements Localizable {
 	 * 
 	 * @param k the number of neighbor candidates to retrieve
 	 * @param loc the given Localizable
-	 * @param stepsize the size of each step in which the neighborhood is
-	 *            enlarged. If the original Localizable had no volume (because
-	 *            it's a point type), this value is first used as an absolute
-	 *            value and then as a successive relative increase
+	 * @param stepsize the size of each step in which the neighborhood is enlarged.
+	 *            If the original Localizable had no volume (because it's a point
+	 *            type), this value is first used as an absolute value and then as a
+	 *            successive relative increase
 	 * @return a list with all neighbors
 	 */
 	public ArrayList<T> findNeighborhood(int k, Localizable loc, double stepsize) {

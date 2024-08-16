@@ -41,8 +41,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractAlignmentReader extends AbstractImportProvider implements
-		AlignmentReader {
+public abstract class AbstractAlignmentReader extends AbstractImportProvider
+		implements AlignmentReader {
 
 	private TypeIndex sourceSchema;
 	private TypeIndex targetSchema;
@@ -132,8 +132,8 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider imp
 	 */
 	protected MutableAlignment postProcess(MutableAlignment alignment) {
 		/*
-		 * Processing of core functions. This should eventually be handled
-		 * through an extension point to allow external contributions.
+		 * Processing of core functions. This should eventually be handled through an
+		 * extension point to allow external contributions.
 		 */
 		Collection<? extends Cell> originalCells = new ArrayList<>(alignment.getCells());
 		for (Cell orgCell : originalCells) {

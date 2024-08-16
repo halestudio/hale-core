@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.hale.common.core.report.util
 
+import groovy.transform.CompileStatic
+
 import java.util.concurrent.TimeUnit
 
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.report.Report
 import eu.esdihumboldt.hale.common.core.report.Statistics
 import eu.esdihumboldt.util.groovy.collector.StatsCollector
-import groovy.transform.CompileStatic
 
 /**
  * Report statistics helper.

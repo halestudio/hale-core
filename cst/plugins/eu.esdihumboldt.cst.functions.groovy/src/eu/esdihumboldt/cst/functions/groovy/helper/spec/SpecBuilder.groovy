@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.cst.functions.groovy.helper.spec
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.cst.functions.groovy.helper.spec.impl.HelperFunctionArgument
 import eu.esdihumboldt.cst.functions.groovy.helper.spec.impl.HelperFunctionSpecification
 import eu.esdihumboldt.util.groovy.builder.BuilderBase
-import groovy.transform.CompileStatic
 
 
 /**

@@ -15,9 +15,9 @@ import eu.esdihumboldt.hale.common.test.docker.config.RunWithContainer;
 public class DockerConfigHelper {
 
 	/**
-	 * fetches the configuration parameters for the key <b> configName </b>
-	 * which is usefull in creating a docker container. It starts a container,
-	 * executes the logic and kills the container.
+	 * fetches the configuration parameters for the key <b> configName </b> which is
+	 * usefull in creating a docker container. It starts a container, executes the
+	 * logic and kills the container.
 	 * 
 	 * @param configName a name for the configuration group
 	 * @param runInstance an anonymous class object

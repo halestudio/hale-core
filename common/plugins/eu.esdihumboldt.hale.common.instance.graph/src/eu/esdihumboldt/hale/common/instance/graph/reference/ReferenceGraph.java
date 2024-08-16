@@ -55,11 +55,11 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 public class ReferenceGraph<T> {
 
 	/**
-	 * Custom tinker graph that allows fast access to a random contained vertex
-	 * and to the information if the graph has any vertices.
+	 * Custom tinker graph that allows fast access to a random contained vertex and
+	 * to the information if the graph has any vertices.
 	 * 
-	 * This class was created because the call to
-	 * {@link TinkerGraph#getVertices()} is very expensive for large graphs.
+	 * This class was created because the call to {@link TinkerGraph#getVertices()}
+	 * is very expensive for large graphs.
 	 */
 	public class CustomTinkerGraph extends TinkerGraph {
 
@@ -99,8 +99,8 @@ public class ReferenceGraph<T> {
 		private final SimpleLog log;
 
 		/**
-		 * @param maxObjects the guiding value for the maximum number of objects
-		 *            in a part
+		 * @param maxObjects the guiding value for the maximum number of objects in a
+		 *            part
 		 * @param log the operation log
 		 */
 		public PartitionIterator(int maxObjects, SimpleLog log) {
@@ -111,8 +111,8 @@ public class ReferenceGraph<T> {
 		@Override
 		public boolean hasNext() {
 			/*
-			 * There are additional parts if there are candidates in the queue
-			 * and/or vertices left in the graph.
+			 * There are additional parts if there are candidates in the queue and/or
+			 * vertices left in the graph.
 			 */
 			return !candidates.isEmpty() || verticesLeft();
 		}
@@ -216,8 +216,7 @@ public class ReferenceGraph<T> {
 				}
 				else {
 					/**
-					 * Example for the Groovy console - getting all associated
-					 * vertices. <code>
+					 * Example for the Groovy console - getting all associated vertices. <code>
 					 * g = TinkerGraphFactory.createTinkerGraph()
 					 * x = new LinkedHashSet()
 					 * g.v(1).as('ref').aggregate(x).both.loop('ref', { !x.contains(it.object) })
@@ -305,8 +304,8 @@ public class ReferenceGraph<T> {
 	 * 
 	 * @param inspector the instance inspector to use
 	 * @param instances the
-	 * @param handleFirst the ID of the first instance to handle, optional and
-	 *            can be null
+	 * @param handleFirst the ID of the first instance to handle, optional and can
+	 *            be null
 	 */
 	public ReferenceGraph(IdentityReferenceInspector<T> inspector, InstanceCollection instances,
 			T handleFirst) {
@@ -369,8 +368,8 @@ public class ReferenceGraph<T> {
 	 * Partition the collected instances in parts that respectively contain all
 	 * referenced instances.
 	 * 
-	 * @param maxObjects the guiding value for the maximum number of objects in
-	 *            a part
+	 * @param maxObjects the guiding value for the maximum number of objects in a
+	 *            part
 	 * @param log the operation log
 	 * @return an iterator of instance collections, each instance collection
 	 *         represents a part
@@ -388,8 +387,8 @@ public class ReferenceGraph<T> {
 	 * Partition the collected instances in parts that respectively contain all
 	 * referenced instances.
 	 * 
-	 * @param maxObjects the guiding value for the maximum number of objects in
-	 *            a part
+	 * @param maxObjects the guiding value for the maximum number of objects in a
+	 *            part
 	 * @return an iterator of instance collections, each instance collection
 	 *         represents a part
 	 */

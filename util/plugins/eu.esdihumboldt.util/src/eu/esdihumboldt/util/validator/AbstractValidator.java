@@ -33,8 +33,8 @@ public abstract class AbstractValidator implements Validator {
 	 * @param o the object to convert
 	 * @param type the target type
 	 * @return the converted object
-	 * @throws ConversionException if the object couldn't be converted to the
-	 *             target type
+	 * @throws ConversionException if the object couldn't be converted to the target
+	 *             type
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getObjectAs(Object o, Class<T> type) throws ConversionException {

@@ -40,9 +40,8 @@ public abstract class AbstractSingleTargetPropertyTransformation<E extends Trans
 		extends AbstractPropertyTransformation<E> {
 
 	/**
-	 * @see AbstractPropertyTransformation#evaluate(String,
-	 *      TransformationEngine, ListMultimap, ListMultimap, Map,
-	 *      TransformationLog)
+	 * @see AbstractPropertyTransformation#evaluate(String, TransformationEngine,
+	 *      ListMultimap, ListMultimap, Map, TransformationLog)
 	 */
 	@Override
 	protected ListMultimap<String, Object> evaluate(String transformationIdentifier, E engine,
@@ -74,8 +73,8 @@ public abstract class AbstractSingleTargetPropertyTransformation<E extends Trans
 	 * @param resultName the name of the result
 	 * @param resultProperty the property entity definition associated with the
 	 *            result
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @return the evaluation result

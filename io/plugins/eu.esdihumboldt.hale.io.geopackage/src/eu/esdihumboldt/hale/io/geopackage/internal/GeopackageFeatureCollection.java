@@ -49,11 +49,10 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 		private UserResultSet<?, ?, ?> currentResults;
 
 		/**
-		 * States if the row at the current cursor position was already
-		 * consumed.
+		 * States if the row at the current cursor position was already consumed.
 		 * 
-		 * Initially the result set points to the row before the first row,
-		 * which by definition is consumed.
+		 * Initially the result set points to the row before the first row, which by
+		 * definition is consumed.
 		 */
 		private boolean consumed = true;
 
@@ -195,12 +194,10 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 	private final SimpleLog log = SimpleLog.fromLogger(logger);
 
 	/**
-	 * Create a new instance collection for features in a GeoPackage feature
-	 * table.
+	 * Create a new instance collection for features in a GeoPackage feature table.
 	 * 
 	 * @param features the feature DAO
-	 * @param geometryColumns the geometry columns to derive CRS information
-	 *            from
+	 * @param geometryColumns the geometry columns to derive CRS information from
 	 * @param type the type associated to the feature table
 	 */
 	public GeopackageFeatureCollection(UserDao<?, ?, ?, ?> features,
@@ -213,8 +210,7 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 	 * feature table.
 	 * 
 	 * @param features the feature DAO
-	 * @param geometryColumns the geometry columns to derive CRS information
-	 *            from
+	 * @param geometryColumns the geometry columns to derive CRS information from
 	 * @param type the type associated to the feature table
 	 * @param where WHERE clause to filter table data
 	 */

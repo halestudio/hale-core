@@ -15,10 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Specifies if validation should be skipped for a property value. May be
@@ -52,9 +52,9 @@ public class SkipValidation extends AbstractFlagConstraint implements TypeConstr
 	}
 
 	/**
-	 * Creates a default skip validation constraint, which is disabled. If
-	 * possible, instead of creating an instance, use {@link #get(boolean)},
-	 * {@link #ENABLED} or {@link #DISABLED}.
+	 * Creates a default skip validation constraint, which is disabled. If possible,
+	 * instead of creating an instance, use {@link #get(boolean)}, {@link #ENABLED}
+	 * or {@link #DISABLED}.
 	 */
 	public SkipValidation() {
 		this(false);
@@ -63,16 +63,16 @@ public class SkipValidation extends AbstractFlagConstraint implements TypeConstr
 	/**
 	 * Creates a skip validation constraint
 	 * 
-	 * @param enabled if validation should be generally skipped for the
-	 *            associated property
+	 * @param enabled if validation should be generally skipped for the associated
+	 *            property
 	 */
 	protected SkipValidation(boolean enabled) {
 		super(enabled);
 	}
 
 	/**
-	 * Determines if validation should be skipped for a property and its
-	 * children for the given property value
+	 * Determines if validation should be skipped for a property and its children
+	 * for the given property value
 	 * 
 	 * @param propertyValue the property value, may be an Instance
 	 * @return if validation should be skipped for the property and its children

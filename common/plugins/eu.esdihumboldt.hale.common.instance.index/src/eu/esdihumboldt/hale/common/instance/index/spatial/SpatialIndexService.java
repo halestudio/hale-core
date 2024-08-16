@@ -42,20 +42,20 @@ public interface SpatialIndexService<L extends Localizable, K extends Localizabl
 	 * Retrieves objects that match the given query
 	 * 
 	 * @param spatialQuery spatial query, e.g. a bounding box
-	 * @return Objects that match the query or an empty Collection if there are
-	 *         no matches
+	 * @return Objects that match the query or an empty Collection if there are no
+	 *         matches
 	 */
 	Collection<L> retrieve(K spatialQuery);
 
 	/**
 	 * Retrieves objects that match the given spatial query and the type filter.
-	 * Type matching is supported for {@link Localizable}s that also implement
-	 * the {@link Typed} interface.
+	 * Type matching is supported for {@link Localizable}s that also implement the
+	 * {@link Typed} interface.
 	 * 
 	 * @param spatialQuery spatial query, e.g. a bounding box
 	 * @param typeFilter types to include in result
-	 * @return Objects that match the query or an empty Collection if there are
-	 *         no matches
+	 * @return Objects that match the query or an empty Collection if there are no
+	 *         matches
 	 */
 	Collection<L> retrieve(K spatialQuery, Collection<TypeDefinition> typeFilter);
 
@@ -64,10 +64,10 @@ public interface SpatialIndexService<L extends Localizable, K extends Localizabl
 	 * {@link Verifier}.
 	 * 
 	 * @param spatialQuery spatial query
-	 * @param verifier Verifier that decides if indexed objects match the
-	 *            spatial query
-	 * @return Objects that match the query or an empty Collection if there are
-	 *         no matches
+	 * @param verifier Verifier that decides if indexed objects match the spatial
+	 *            query
+	 * @return Objects that match the query or an empty Collection if there are no
+	 *         matches
 	 */
 	Collection<L> retrieve(K spatialQuery, Verifier<? super L, K> verifier);
 

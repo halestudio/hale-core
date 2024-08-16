@@ -56,8 +56,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 	private final List<Filter> unconditionalFilters;
 
 	/**
-	 * Filters applicable for any instance that can mark instances to be
-	 * excluded.
+	 * Filters applicable for any instance that can mark instances to be excluded.
 	 */
 	private final List<Filter> excludeFilters = new ArrayList<>();
 

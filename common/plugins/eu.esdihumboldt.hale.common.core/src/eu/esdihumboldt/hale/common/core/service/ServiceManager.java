@@ -131,8 +131,7 @@ public class ServiceManager implements ServiceProvider, ServiceConstants {
 	/**
 	 * Get the scope of services provided by the manager.
 	 * 
-	 * @return the service scope name or <code>null</code> representing all
-	 *         scopes
+	 * @return the service scope name or <code>null</code> representing all scopes
 	 */
 	public String getServiceScope() {
 		return serviceScope;

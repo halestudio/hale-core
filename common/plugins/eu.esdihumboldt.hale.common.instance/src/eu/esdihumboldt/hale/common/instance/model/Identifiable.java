@@ -39,8 +39,8 @@ public interface Identifiable {
 	 * Test if an object is identifiable
 	 * 
 	 * @param o Test subject
-	 * @return true if <code>o</code> implements {@link Identifiable} and
-	 *         actually has an ID
+	 * @return true if <code>o</code> implements {@link Identifiable} and actually
+	 *         has an ID
 	 */
 	static boolean is(Object o) {
 		return (o instanceof Identifiable && ((Identifiable) o).hasId());
@@ -50,8 +50,8 @@ public interface Identifiable {
 	 * Return the ID of the given object
 	 * 
 	 * @param o Object to retrieve ID from
-	 * @return The object's ID or <code>null</code> if <code>o</code> is either
-	 *         not {@link Identifiable} or doesn't have an ID
+	 * @return The object's ID or <code>null</code> if <code>o</code> is either not
+	 *         {@link Identifiable} or doesn't have an ID
 	 */
 	static Object getId(Object o) {
 		if (is(o)) {

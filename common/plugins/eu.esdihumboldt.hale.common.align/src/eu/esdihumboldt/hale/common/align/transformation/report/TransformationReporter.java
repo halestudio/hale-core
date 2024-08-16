@@ -23,8 +23,8 @@ import eu.esdihumboldt.hale.common.core.report.Reporter;
  * 
  * @author Simon Templer
  */
-public interface TransformationReporter extends TransformationReport,
-		Reporter<TransformationMessage> {
+public interface TransformationReporter
+		extends TransformationReport, Reporter<TransformationMessage> {
 
 	// concrete typed interface
 

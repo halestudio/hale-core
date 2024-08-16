@@ -87,8 +87,8 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns a setter method for a given property, no matter if the method is
-	 * visible or hidden or if it is declared in the given class or in a
-	 * superclass or implemented interface.
+	 * visible or hidden or if it is declared in the given class or in a superclass
+	 * or implemented interface.
 	 * 
 	 * @param c the class which would contain the setter method
 	 * @param property the property
@@ -161,8 +161,8 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns a getter method for a given property, no matter if the method is
-	 * visible or hidden or if it is declared in the given class or in a
-	 * superclass or implemented interface.
+	 * visible or hidden or if it is declared in the given class or in a superclass
+	 * or implemented interface.
 	 * 
 	 * @param c the class which would contain the getter method
 	 * @param property the property
@@ -235,8 +235,8 @@ public class ReflectionHelper {
 	}
 
 	/**
-	 * Returns a field for a given property, no matter if the field is visible
-	 * or hidden or if it is declared in the given class or in a superclass.
+	 * Returns a field for a given property, no matter if the field is visible or
+	 * hidden or if it is declared in the given class or in a superclass.
 	 * 
 	 * @param c the class which would contain the field
 	 * @param property the property
@@ -317,9 +317,9 @@ public class ReflectionHelper {
 	}
 
 	/**
-	 * Invokes a setter for a property, no matter if the setter is visible or
-	 * hidden or if it is declared in the given class or in a superclass or
-	 * implemented interface.
+	 * Invokes a setter for a property, no matter if the setter is visible or hidden
+	 * or if it is declared in the given class or in a superclass or implemented
+	 * interface.
 	 * 
 	 * @param bean the object to invoke the public setter on
 	 * @param propertyName the name of the property that shall be updated
@@ -392,9 +392,9 @@ public class ReflectionHelper {
 	}
 
 	/**
-	 * Invokes a getter for a property, no matter if the getter is visible or
-	 * hidden or if it is declared in the given class or in a superclass or
-	 * implemented interface.
+	 * Invokes a getter for a property, no matter if the getter is visible or hidden
+	 * or if it is declared in the given class or in a superclass or implemented
+	 * interface.
 	 * 
 	 * @param <T> the result type
 	 * @param bean the object to invoke the getter on
@@ -418,8 +418,7 @@ public class ReflectionHelper {
 	}
 
 	/**
-	 * Invokes a getter for a property, or gets the matching field, no matter
-	 * what.
+	 * Invokes a getter for a property, or gets the matching field, no matter what.
 	 * 
 	 * @param bean the object to invoke the getter on
 	 * @param propertyName the name of the property to retrieve
@@ -459,8 +458,7 @@ public class ReflectionHelper {
 
 	/**
 	 * @return the URL to the JAR file this class is in or null
-	 * @throws MalformedURLException if the URL to the jar file could not be
-	 *             created
+	 * @throws MalformedURLException if the URL to the jar file could not be created
 	 */
 	public static URL getCurrentJarURL() throws MalformedURLException {
 		String name = ReflectionHelper.class.getCanonicalName();
@@ -707,22 +705,21 @@ public class ReflectionHelper {
 
 	/**
 	 * <p>
-	 * Find the most specialised class from group compatible with clazz. A
-	 * direct superclass match is searched and returned if found.
+	 * Find the most specialised class from group compatible with clazz. A direct
+	 * superclass match is searched and returned if found.
 	 * </p>
 	 * <p>
-	 * If not and checkAssignability is true, the most derived assignable class
-	 * is being searched.
+	 * If not and checkAssignability is true, the most derived assignable class is
+	 * being searched.
 	 * </p>
 	 * <p>
-	 * See The Java Language Specification, sections 5.1.1 and 5.1.4 , for
-	 * details.
+	 * See The Java Language Specification, sections 5.1.1 and 5.1.4 , for details.
 	 * </p>
 	 * 
 	 * @param clazz a class
 	 * @param group a collection of classes to match against
-	 * @param checkAssignability whether to use assignability when no direct
-	 *            match is found
+	 * @param checkAssignability whether to use assignability when no direct match
+	 *            is found
 	 * @return null or the most specialised match from group
 	 */
 	public static Class<?> findMostSpecificMatch(Class<?> clazz, Collection<Class<?>> group,

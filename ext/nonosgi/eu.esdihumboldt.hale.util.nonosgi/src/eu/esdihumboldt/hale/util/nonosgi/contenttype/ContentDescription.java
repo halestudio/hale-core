@@ -32,7 +32,8 @@ public final class ContentDescription extends BasicDescription {
 		if (requested.length > 1) {
 			keys = requested;
 			values = new Object[requested.length];
-		} else if (requested.length == 1)
+		}
+		else if (requested.length == 1)
 			keys = requested[0];
 		// if requested.length == 0 then keys == null (no options to describe!)
 	}
@@ -141,8 +142,8 @@ public final class ContentDescription extends BasicDescription {
 		}
 		if (keys instanceof QualifiedName) {
 			if ((flags & FLAG_ALL_OPTIONS) != 0) {
-				keys = new QualifiedName[] {(QualifiedName) keys, newKey};
-				values = new Object[] {values, newValue};
+				keys = new QualifiedName[] { (QualifiedName) keys, newKey };
+				values = new Object[] { values, newValue };
 			}
 			return;
 		}
@@ -154,7 +155,7 @@ public final class ContentDescription extends BasicDescription {
 			}
 		if ((flags & FLAG_ALL_OPTIONS) == 0)
 			return;
-		// need to resize arrays 		
+		// need to resize arrays
 		int currentSize = tmpKeys.length;
 		tmpKeys = new QualifiedName[currentSize + 1];
 		System.arraycopy(keys, 0, tmpKeys, 0, currentSize);
@@ -172,7 +173,8 @@ public final class ContentDescription extends BasicDescription {
 			if (keys instanceof QualifiedName) {
 				if (values != null)
 					result.append(keys + "=" + values); //$NON-NLS-1$
-			} else {
+			}
+			else {
 				QualifiedName[] tmpKeys = (QualifiedName[]) keys;
 				Object[] tmpValues = (Object[]) values;
 				boolean any = false;

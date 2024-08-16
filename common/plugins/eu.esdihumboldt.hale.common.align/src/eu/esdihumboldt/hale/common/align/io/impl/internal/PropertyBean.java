@@ -66,8 +66,8 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 		super();
 
 		setTypeName(property.getDefinition().getType().getName());
-		setFilter(FilterDefinitionManager.getInstance().asString(
-				property.getDefinition().getFilter()));
+		setFilter(FilterDefinitionManager.getInstance()
+				.asString(property.getDefinition().getFilter()));
 
 		for (ChildContext child : property.getDefinition().getPropertyPath()) {
 			properties.add(new ChildContextBean(child));
@@ -90,8 +90,8 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 			SchemaSpaceID schemaSpace) {
 		TypeDefinition typeDef = index.getType(getTypeName());
 		if (typeDef == null) {
-			throw new IllegalStateException(MessageFormat.format(
-					"TypeDefinition for type {0} not found", getTypeName()));
+			throw new IllegalStateException(
+					MessageFormat.format("TypeDefinition for type {0} not found", getTypeName()));
 		}
 
 		List<ChildContext> path = new ArrayList<ChildContext>();
@@ -116,15 +116,14 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 			if (childs.getSecond() != null) {
 				for (ChildDefinition<?> pathElems : childs.getSecond()) {
-					path.add(new ChildContext(childContext.getContextName(), childContext
-							.getContextIndex(), createCondition(childContext.getConditionFilter()),
-							pathElems));
+					path.add(new ChildContext(childContext.getContextName(),
+							childContext.getContextIndex(),
+							createCondition(childContext.getConditionFilter()), pathElems));
 				}
 			}
 
-			path.add(new ChildContext(childContext.getContextName(),
-					childContext.getContextIndex(), createCondition(childContext
-							.getConditionFilter()), child));
+			path.add(new ChildContext(childContext.getContextName(), childContext.getContextIndex(),
+					createCondition(childContext.getConditionFilter()), child));
 
 			if (child instanceof DefinitionGroup) {
 				parent = (DefinitionGroup) child;
@@ -137,8 +136,8 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 			}
 		}
 
-		return new PropertyEntityDefinition(typeDef, path, schemaSpace, FilterDefinitionManager
-				.getInstance().parse(getFilter()));
+		return new PropertyEntityDefinition(typeDef, path, schemaSpace,
+				FilterDefinitionManager.getInstance().parse(getFilter()));
 	}
 
 	/**
@@ -193,7 +192,8 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 						List<ChildDefinition<?>> second = new ArrayList<ChildDefinition<?>>();
 						second.add(temp);
 						ChildDefinition<?> first = recTemp.getFirst();
-						return new Pair<ChildDefinition<?>, List<ChildDefinition<?>>>(first, second);
+						return new Pair<ChildDefinition<?>, List<ChildDefinition<?>>>(first,
+								second);
 					}
 					else {
 						recTemp.getSecond().add(0, temp);

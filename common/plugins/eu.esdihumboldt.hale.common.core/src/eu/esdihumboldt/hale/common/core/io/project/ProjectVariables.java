@@ -151,8 +151,8 @@ public class ProjectVariables {
 	 * 
 	 * @param name the variable name
 	 * @return the project variable value if set
-	 * @throws IllegalArgumentException if the project variable with the given
-	 *             name is not set
+	 * @throws IllegalArgumentException if the project variable with the given name
+	 *             is not set
 	 */
 	public String getString(String name) {
 		String value = getString(name, null);

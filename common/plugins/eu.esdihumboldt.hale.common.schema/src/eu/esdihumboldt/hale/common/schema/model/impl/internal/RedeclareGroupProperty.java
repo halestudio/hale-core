@@ -16,13 +16,12 @@
 
 package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 
-import net.jcip.annotations.Immutable;
-
 import com.google.common.base.Preconditions;
 
 import eu.esdihumboldt.hale.common.schema.model.DefinitionGroup;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractGroupPropertyDecorator;
+import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link GroupPropertyDefinition}s that has a changed declaring
@@ -36,12 +35,10 @@ public class RedeclareGroupProperty extends AbstractGroupPropertyDecorator {
 	private final DefinitionGroup declaringGroup;
 
 	/**
-	 * Create a decorator for the given property that has a changed declaring
-	 * group.
+	 * Create a decorator for the given property that has a changed declaring group.
 	 * 
 	 * @param propertyGroup the property group to decorate
-	 * @param declaringGroup the new declaring group, may not be
-	 *            <code>null</code>
+	 * @param declaringGroup the new declaring group, may not be <code>null</code>
 	 */
 	public RedeclareGroupProperty(GroupPropertyDefinition propertyGroup,
 			DefinitionGroup declaringGroup) {

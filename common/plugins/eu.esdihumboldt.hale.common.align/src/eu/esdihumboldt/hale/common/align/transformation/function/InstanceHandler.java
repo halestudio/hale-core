@@ -44,8 +44,8 @@ public interface InstanceHandler<E extends TransformationEngine> {
 	 *            execution
 	 * @param transformationParameters the transformation parameters, may be
 	 *            <code>null</code>
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @return a resource iterator over partitioned instances instances

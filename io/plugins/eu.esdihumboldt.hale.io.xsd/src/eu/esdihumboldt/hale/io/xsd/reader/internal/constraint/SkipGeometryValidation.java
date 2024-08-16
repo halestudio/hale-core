@@ -15,9 +15,9 @@
 
 package eu.esdihumboldt.hale.io.xsd.reader.internal.constraint;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.SkipValidation;
+import net.jcip.annotations.Immutable;
 
 /**
  * Controls validation being skipped for geometry properties with an augmented

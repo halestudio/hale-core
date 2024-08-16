@@ -100,8 +100,7 @@ public final class IOUtils {
 	 * 
 	 * @param zipDir the directory to ZIP
 	 * @param zos the ZIP output stream
-	 * @throws IOException if reading the directory or writing the ZIP stream
-	 *             fails
+	 * @throws IOException if reading the directory or writing the ZIP stream fails
 	 */
 	public static void zipDirectory(File zipDir, ZipOutputStream zos) throws IOException {
 		zipDirectory(zipDir, zos, "");
@@ -145,8 +144,8 @@ public final class IOUtils {
 	 * 
 	 * @param targetURI the target path
 	 * @param baseURI the base path
-	 * @return a relative path from basePath to targetPath or the targetPath if
-	 *         a relative path is not possible
+	 * @return a relative path from basePath to targetPath or the targetPath if a
+	 *         relative path is not possible
 	 */
 	public static URI getRelativePath(URI targetURI, URI baseURI) {
 		// nothing to do if one path is opaque or not absolute
@@ -221,8 +220,8 @@ public final class IOUtils {
 	/**
 	 * Returns a URI for the given file.
 	 * 
-	 * In contrast to {@link File#toURI()} it does not resolve a relative file,
-	 * but instead returns a relative URI.
+	 * In contrast to {@link File#toURI()} it does not resolve a relative file, but
+	 * instead returns a relative URI.
 	 * 
 	 * @param file the file to transform
 	 * @return a (relative) URI for the given file
@@ -261,8 +260,8 @@ public final class IOUtils {
 	 *
 	 * @param resourcePath The path to the ZIP resource.
 	 * @param processorClass The class containing the processor method.
-	 * @param processFolder The function that performs an action on the contents
-	 *            of the temporary extraction directory.
+	 * @param processFolder The function that performs an action on the contents of
+	 *            the temporary extraction directory.
 	 * @throws IOException If an I/O error occurs.
 	 */
 	public static void withTemporaryExtractedZipResource(String resourcePath,

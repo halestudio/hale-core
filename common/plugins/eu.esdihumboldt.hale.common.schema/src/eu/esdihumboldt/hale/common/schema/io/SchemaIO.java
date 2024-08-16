@@ -54,14 +54,14 @@ public abstract class SchemaIO {
 	public static final String ACTION_LOAD_TARGET_SCHEMA = "eu.esdihumboldt.hale.io.schema.read.target";
 
 	/**
-	 * ID of the action to export the target schemas. Reflects the ID defined in
-	 * the extension.
+	 * ID of the action to export the target schemas. Reflects the ID defined in the
+	 * extension.
 	 */
 	public static final String ACTION_EXPORT_TARGET_SCHEMAS = "eu.esdihumboldt.hale.io.schema.export.target";
 
 	/**
-	 * ID of the action to export the source schemas. Reflects the ID defined in
-	 * the extension.
+	 * ID of the action to export the source schemas. Reflects the ID defined in the
+	 * extension.
 	 */
 	public static final String ACTION_EXPORT_SOURCE_SCHEMAS = "eu.esdihumboldt.hale.io.schema.export.source";
 
@@ -70,10 +70,10 @@ public abstract class SchemaIO {
 	 * 
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
-	 * @param providerId the id of the provider to use, may be <code>null</code>
-	 *            if contentType is set
-	 * @return the I/O provider preconfigured with the content type if it was
-	 *         given or <code>null</code> if no matching I/O provider is found
+	 * @param providerId the id of the provider to use, may be <code>null</code> if
+	 *            contentType is set
+	 * @return the I/O provider preconfigured with the content type if it was given
+	 *         or <code>null</code> if no matching I/O provider is found
 	 */
 	public static SchemaReader createSchemaReader(IContentType contentType, String providerId) {
 		return HaleIO.createIOProvider(SchemaReader.class, contentType, providerId);
@@ -110,8 +110,7 @@ public abstract class SchemaIO {
 	}
 
 	/**
-	 * Get the name of the project settings parameter specifying the mappable
-	 * types.
+	 * Get the name of the project settings parameter specifying the mappable types.
 	 * 
 	 * @param spaceID the schemas space
 	 * @return the parameter name

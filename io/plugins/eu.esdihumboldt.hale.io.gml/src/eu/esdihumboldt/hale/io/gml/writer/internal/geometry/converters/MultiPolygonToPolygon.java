@@ -26,8 +26,8 @@ import org.locationtech.jts.geom.Polygon;
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @version $Id$
  */
-public class MultiPolygonToPolygon extends
-		AbstractGeometryCollectionConverter<MultiPolygon, Polygon> {
+public class MultiPolygonToPolygon
+		extends AbstractGeometryCollectionConverter<MultiPolygon, Polygon> {
 
 	/**
 	 * Default constructor

@@ -38,9 +38,8 @@ public class ObjectFactory {
 	private final static QName _Styles_QNAME = new QName("", "Styles");
 
 	/**
-	 * Create a new ObjectFactory that can be used to create new instances of
-	 * schema derived classes for package:
-	 * eu.esdihumboldt.hale.models.project.generated
+	 * Create a new ObjectFactory that can be used to create new instances of schema
+	 * derived classes for package: eu.esdihumboldt.hale.models.project.generated
 	 * 
 	 */
 	public ObjectFactory() {
@@ -111,8 +110,7 @@ public class ObjectFactory {
 	}
 
 	/**
-	 * Create an instance of {@link JAXBElement }{@code <}{@link String
-	 * }{@code >}
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
 	 * 
 	 */
 	@XmlElementDecl(namespace = "", name = "ContextElement")
@@ -170,8 +168,7 @@ public class ObjectFactory {
 	}
 
 	/**
-	 * Create an instance of {@link JAXBElement }{@code <}{@link Styles
-	 * }{@code >}
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Styles }{@code >}
 	 * 
 	 */
 	@XmlElementDecl(namespace = "", name = "Styles")

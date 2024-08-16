@@ -15,11 +15,14 @@
 
 package eu.esdihumboldt.hale.io.html.svg
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Test
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import java.nio.file.Files
 import java.nio.file.Path
+
+import org.junit.Test
 
 import eu.esdihumboldt.cst.test.TransformationExample
 import eu.esdihumboldt.cst.test.TransformationExamples
@@ -27,9 +30,7 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.hale.io.html.svg.mapping.MappingExporter
-import groovy.transform.CompileStatic
-
-import static org.junit.Assert.*
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for {@link MappingExporter}.

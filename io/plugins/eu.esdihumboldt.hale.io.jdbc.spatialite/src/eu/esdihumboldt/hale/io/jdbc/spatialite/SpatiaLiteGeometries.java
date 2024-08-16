@@ -7,14 +7,13 @@ import java.util.function.Supplier;
 
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.MathTransform;
-import org.sqlite.SQLiteConnection;
-
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.io.WKTReader;
 import org.locationtech.jts.io.WKTWriter;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.operation.MathTransform;
+import org.sqlite.SQLiteConnection;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -49,9 +48,9 @@ public class SpatiaLiteGeometries implements GeometryAdvisor<SQLiteConnection> {
 	@Override
 	public boolean isFixedType(ColumnDataType columnType) {
 		/*
-		 * Concrete information on geometry type and SRS is not stored in the
-		 * column but as metadata in the database. Therefore every column has to
-		 * be configured on its own.
+		 * Concrete information on geometry type and SRS is not stored in the column but
+		 * as metadata in the database. Therefore every column has to be configured on
+		 * its own.
 		 */
 		return false;
 	}
@@ -162,12 +161,11 @@ public class SpatiaLiteGeometries implements GeometryAdvisor<SQLiteConnection> {
 		// convert JTS geometry to SpatiaLite's internal BLOB format
 		WKTWriter wktWriter = new WKTWriter(dimension);
 		/*
-		 * Note: WKTWriter does produce wrong WKT (as of the OGC specification)
-		 * for 3D geometries. For example does produce "MULTIPOLGON" instead of
+		 * Note: WKTWriter does produce wrong WKT (as of the OGC specification) for 3D
+		 * geometries. For example does produce "MULTIPOLGON" instead of
 		 * "MULTIPOLYGON Z".
 		 * 
-		 * This is why we use the GeomFromEWKT function. See also
-		 * http://postgis.
+		 * This is why we use the GeomFromEWKT function. See also http://postgis.
 		 * refractions.net/docs/using_postgis_dbmanagement.html#EWKB_EWKT
 		 */
 		String sqlGeomFromText = "SELECT GeomFromEWKT(?)";
@@ -228,34 +226,33 @@ public class SpatiaLiteGeometries implements GeometryAdvisor<SQLiteConnection> {
 		// WKB format
 
 		/*
-		 * We could use the WKT - but the JTS WKTReader does not support
-		 * properly encoded 3D geometries (e.g. "MULTIPOLYON Z" instead of just
-		 * "MULTIPOLYGON")
+		 * We could use the WKT - but the JTS WKTReader does not support properly
+		 * encoded 3D geometries (e.g. "MULTIPOLYON Z" instead of just "MULTIPOLYGON")
 		 */
 //		String sqlGeomAsWKX = "SELECT ST_AsText(?)";
 
 		/*
-		 * We could use the 2D WKT - but this will reduce all 3D geometries to a
-		 * 2D projection.
+		 * We could use the 2D WKT - but this will reduce all 3D geometries to a 2D
+		 * projection.
 		 */
 //		String sqlGeomAsWKX = "SELECT AsWKT(?)";
 
 		/*
-		 * We could use the WKB - but the JTS WKBReader does not properly
-		 * support geometry type codes of 1000 and above (e.g. 1007 for a
-		 * GeometryCollection with Z coordinate)
+		 * We could use the WKB - but the JTS WKBReader does not properly support
+		 * geometry type codes of 1000 and above (e.g. 1007 for a GeometryCollection
+		 * with Z coordinate)
 		 */
 //		String sqlGeomAsWKX = "SELECT ST_AsBinary(?)";
 
 		/*
-		 * We could use the EWKB - but the JTS WKBReader does not handle that
-		 * properly as well (wrong geometry type extracted, 3D not recognized).
+		 * We could use the EWKB - but the JTS WKBReader does not handle that properly
+		 * as well (wrong geometry type extracted, 3D not recognized).
 		 */
 //		String sqlGeomAsWKX = "SELECT AsEWKB(?)";
 
 		/*
-		 * We can use the EWKT - but the JTS WKTReader will fail if there is a
-		 * preceding SRID (which we can remove).
+		 * We can use the EWKT - but the JTS WKTReader will fail if there is a preceding
+		 * SRID (which we can remove).
 		 */
 		String sqlGeomAsWKX = "SELECT AsEWKT(?)";
 

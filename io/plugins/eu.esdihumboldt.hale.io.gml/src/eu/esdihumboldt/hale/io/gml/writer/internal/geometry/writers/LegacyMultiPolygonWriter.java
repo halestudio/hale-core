@@ -55,17 +55,22 @@ public class LegacyMultiPolygonWriter extends AbstractGeometryWriter<MultiPolygo
 		addBasePattern("**/surfaceMember"); //$NON-NLS-1$
 
 		// verification patterns (from LegacyPolygonWriter)
-		addVerificationPattern("*/Polygon/outerBoundaryIs/LinearRing"); // both exterior //$NON-NLS-1$
-		addVerificationPattern("*/Polygon/innerBoundaryIs/LinearRing"); // and interior elements must be present for contained polygons //$NON-NLS-1$
+		addVerificationPattern("*/Polygon/outerBoundaryIs/LinearRing"); // both //$NON-NLS-1$
+																		// exterior
+		addVerificationPattern("*/Polygon/innerBoundaryIs/LinearRing"); // and //$NON-NLS-1$
+																		// interior elements must be
+																		// present for contained
+																		// polygons
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, MultiPolygon geometry, TypeDefinition elementType,
-			QName elementName, String gmlNs, DecimalFormat decimalFormatter) throws XMLStreamException {
+			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
+			throws XMLStreamException {
 		for (int i = 0; i < geometry.getNumGeometries(); i++) {
 			if (i > 0) {
 				writer.writeStartElement(elementName.getNamespaceURI(), elementName.getLocalPart());
@@ -75,8 +80,8 @@ public class LegacyMultiPolygonWriter extends AbstractGeometryWriter<MultiPolygo
 					elementType, elementName, gmlNs, false);
 
 			Polygon poly = (Polygon) geometry.getGeometryN(i);
-			polygonWriter.write(writer, poly, descent.getPath().getLastType(), descent.getPath()
-					.getLastElement().getName(), gmlNs, decimalFormatter);
+			polygonWriter.write(writer, poly, descent.getPath().getLastType(),
+					descent.getPath().getLastElement().getName(), gmlNs, decimalFormatter);
 
 			descent.close();
 

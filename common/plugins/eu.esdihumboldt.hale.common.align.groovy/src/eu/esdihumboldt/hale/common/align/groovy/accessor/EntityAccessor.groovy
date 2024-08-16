@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.hale.common.align.groovy.accessor
 
-import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement
+import groovy.transform.CompileStatic
 
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.align.groovy.accessor.internal.EntityAccessorUtil
+import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ChildContextType
 import eu.esdihumboldt.hale.common.align.model.ChildContext
 import eu.esdihumboldt.hale.common.align.model.Condition
@@ -39,7 +40,6 @@ import eu.esdihumboldt.hale.common.schema.paths.DefinitionResolver
 import eu.esdihumboldt.util.groovy.paths.AbstractAccessor
 import eu.esdihumboldt.util.groovy.paths.Path
 import eu.esdihumboldt.util.groovy.paths.PathImpl
-import groovy.transform.CompileStatic
 
 /**
  * Entity definition accessor.

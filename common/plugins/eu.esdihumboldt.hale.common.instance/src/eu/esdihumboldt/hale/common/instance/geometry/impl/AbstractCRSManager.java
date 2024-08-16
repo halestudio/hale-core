@@ -36,19 +36,19 @@ public abstract class AbstractCRSManager implements CRSProvider {
 
 	/**
 	 * The configuration parameter name for the default CRS definition.
-	 * {@link CRSDefinitionManager#parse(String)} is used to handle any values,
-	 * so {@link CRSDefinitionManager#asString(CRSDefinition)} should be used to
-	 * create them.
+	 * {@link CRSDefinitionManager#parse(String)} is used to handle any values, so
+	 * {@link CRSDefinitionManager#asString(CRSDefinition)} should be used to create
+	 * them.
 	 */
 	public static final String PARAM_DEFAULT_CRS = "defaultCRS";
 
 	/**
-	 * The prefix for configuration parameter names for the default CRS
-	 * definition for a property. The configuration parameter is the prefix
-	 * concatenated with the {@link PropertyDefinition} identifier.
-	 * {@link CRSDefinitionManager#parse(String)} is used to handle any values,
-	 * so {@link CRSDefinitionManager#asString(CRSDefinition)} should be used to
-	 * create them.
+	 * The prefix for configuration parameter names for the default CRS definition
+	 * for a property. The configuration parameter is the prefix concatenated with
+	 * the {@link PropertyDefinition} identifier.
+	 * {@link CRSDefinitionManager#parse(String)} is used to handle any values, so
+	 * {@link CRSDefinitionManager#asString(CRSDefinition)} should be used to create
+	 * them.
 	 */
 	public static final String PREFIX_PARAM_CRS = "defaultCRS:";
 
@@ -60,8 +60,7 @@ public abstract class AbstractCRSManager implements CRSProvider {
 	 * Create a CRS manager.
 	 * 
 	 * @param reader the instance reader
-	 * @param provider the internal CRS provider to use, may be
-	 *            <code>null</code>
+	 * @param provider the internal CRS provider to use, may be <code>null</code>
 	 */
 	public AbstractCRSManager(InstanceReader reader, CRSProvider provider) {
 		super();

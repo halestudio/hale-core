@@ -38,8 +38,8 @@ public interface LookupTableExportConstants {
 	public static final String PARAM_SKIP_FIRST_LINE = "skip";
 
 	/**
-	 * Name of the parameter specifying whether empty strings should be ignored
-	 * and treated as null
+	 * Name of the parameter specifying whether empty strings should be ignored and
+	 * treated as null
 	 */
 	public static final String PARAM_IGNORE_EMPTY_STRING = "ignoreEmptyStrings";
 

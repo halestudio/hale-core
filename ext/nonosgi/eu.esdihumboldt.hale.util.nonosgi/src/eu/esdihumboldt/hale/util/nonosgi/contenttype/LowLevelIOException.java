@@ -11,13 +11,14 @@
 package eu.esdihumboldt.hale.util.nonosgi.contenttype;
 
 import java.io.IOException;
+
 import org.eclipse.core.runtime.Assert;
 
 /**
- * A wrapper for IOExceptions, throw by LazyInputStream/Reader.
- * Its purpose is to allow one to differentiate
- * between IOExceptions thrown by the base stream/reader from those
- * thrown by streams/readers built on top of LazyInputStream/Reader.
+ * A wrapper for IOExceptions, throw by LazyInputStream/Reader. Its purpose is
+ * to allow one to differentiate between IOExceptions thrown by the base
+ * stream/reader from those thrown by streams/readers built on top of
+ * LazyInputStream/Reader.
  *
  * @see LazyInputStream
  * @see LazyReader

@@ -28,9 +28,9 @@ public interface NamedDefinition {
 	public abstract String getName();
 
 	/**
-	 * Get the display name for the parameter. If present the parameter label
-	 * will be used, otherwise the parameter name is returned. In case the
-	 * parameter name is <code>null</code> an empty string is returned.
+	 * Get the display name for the parameter. If present the parameter label will
+	 * be used, otherwise the parameter name is returned. In case the parameter name
+	 * is <code>null</code> an empty string is returned.
 	 * 
 	 * @return the parameter display name
 	 */

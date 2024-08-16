@@ -48,13 +48,13 @@ public class CSVUtil implements CSVConstants {
 	}
 
 	/**
-	 * This method reads/retrieves just one line, either the first after the
-	 * header or the first line after skipping "skipLines".
+	 * This method reads/retrieves just one line, either the first after the header
+	 * or the first line after skipping "skipLines".
 	 * 
 	 * @param provider to get the parameters from
 	 * @param skipLines how many lines have to be skipped
-	 * @return a reader containing the first line after (no. of lines -
-	 *         skipLines) of the CSV file
+	 * @return a reader containing the first line after (no. of lines - skipLines)
+	 *         of the CSV file
 	 * @throws IOException
 	 */
 	public static CSVReader readFirst(ImportProvider provider, int skipLines) throws IOException {

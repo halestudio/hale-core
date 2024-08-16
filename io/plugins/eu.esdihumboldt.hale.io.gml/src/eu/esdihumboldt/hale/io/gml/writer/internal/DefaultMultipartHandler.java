@@ -40,10 +40,9 @@ public class DefaultMultipartHandler implements MultipartHandler {
 	}
 
 	/**
-	 * Return the file name without extension and the extension as a
-	 * {@link Pair}. If the file name ends with <code>.xml.gz</code> or
-	 * <code>.gml.gz</code>, this will also be the returned extension (and not
-	 * <code>gz</code>).
+	 * Return the file name without extension and the extension as a {@link Pair}.
+	 * If the file name ends with <code>.xml.gz</code> or <code>.gml.gz</code>, this
+	 * will also be the returned extension (and not <code>gz</code>).
 	 * 
 	 * @param filename File name to split
 	 * @return Pair of name and extension

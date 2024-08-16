@@ -30,8 +30,8 @@ import eu.esdihumboldt.hale.common.instance.extension.validation.report.Instance
  * 
  * @author Kai Schwierczek
  */
-public class InstanceValidationReportDefinition extends
-		AbstractReportDefinition<InstanceValidationReport, InstanceValidationReporter> {
+public class InstanceValidationReportDefinition
+		extends AbstractReportDefinition<InstanceValidationReport, InstanceValidationReporter> {
 
 	private static final ALogger log = ALoggerFactory
 			.getLogger(InstanceValidationReportDefinition.class);

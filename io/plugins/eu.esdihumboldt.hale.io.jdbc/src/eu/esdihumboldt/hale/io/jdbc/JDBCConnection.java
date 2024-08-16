@@ -81,8 +81,7 @@ public abstract class JDBCConnection implements JDBCConstants {
 	}
 
 	/**
-	 * Get a connection to a database, as configured in the given import
-	 * provider.
+	 * Get a connection to a database, as configured in the given import provider.
 	 * 
 	 * @param jdbcImportProvider the import provider
 	 * @return the database connection
@@ -93,8 +92,7 @@ public abstract class JDBCConnection implements JDBCConstants {
 	}
 
 	/**
-	 * Get a connection to a database, as configured in the given export
-	 * provider.
+	 * Get a connection to a database, as configured in the given export provider.
 	 * 
 	 * @param jdbcExportProvider the export provider
 	 * @return the database connection

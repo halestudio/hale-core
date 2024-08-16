@@ -34,9 +34,9 @@ public class NonOSGiLoggingFilter extends TurboFilter {
 	public FilterReply decide(Marker marker, Logger logger, Level level, String format,
 			Object[] params, Throwable t) {
 		/*
-		 *  Filter error on org.eclipse.xsd content type appearing since upgrade
-		 *  to Eclipse Photon.
-		 *  Hiding this because org.eclipse.xsd is not currently used in hale.
+		 * Filter error on org.eclipse.xsd content type appearing since upgrade to
+		 * Eclipse Photon. Hiding this because org.eclipse.xsd is not currently used in
+		 * hale.
 		 */
 		if ("eu.esdihumboldt.hale.util.nonosgi.contenttype.ContentType".equals(logger.getName())) {
 			if ("Could not create content describer for org.eclipse.xsd. Content type has been disabled."

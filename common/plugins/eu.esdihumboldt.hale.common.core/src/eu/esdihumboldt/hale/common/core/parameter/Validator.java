@@ -29,8 +29,7 @@ public interface Validator {
 	 * Checks whether the given value is valid.
 	 * 
 	 * @param value the value to check
-	 * @return null, if the value is valid, otherwise the reason why it's
-	 *         invalid
+	 * @return null, if the value is valid, otherwise the reason why it's invalid
 	 */
 	public String validate(String value);
 

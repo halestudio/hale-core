@@ -17,6 +17,9 @@ package eu.esdihumboldt.hale.io.json.test
 
 import static org.junit.Assert.*
 
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 import org.junit.Ignore
 import org.junit.Test
 import org.locationtech.jts.geom.Geometry
@@ -29,8 +32,6 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.json.internal.InstanceToJson
-import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
 
 class InstanceToJsonTest {
 

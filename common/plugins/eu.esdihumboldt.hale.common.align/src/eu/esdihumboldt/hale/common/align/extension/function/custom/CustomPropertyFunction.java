@@ -23,8 +23,8 @@ import eu.esdihumboldt.hale.common.align.transformation.function.PropertyTransfo
  * 
  * @author Simon Templer
  */
-public interface CustomPropertyFunction extends
-		CustomFunction<PropertyFunctionDefinition, PropertyTransformation<?>> {
+public interface CustomPropertyFunction
+		extends CustomFunction<PropertyFunctionDefinition, PropertyTransformation<?>> {
 
 	// concrete typed interface
 

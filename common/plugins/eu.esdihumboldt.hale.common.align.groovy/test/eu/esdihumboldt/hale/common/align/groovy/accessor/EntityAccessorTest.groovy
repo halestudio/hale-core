@@ -15,6 +15,11 @@
 
 package eu.esdihumboldt.hale.common.align.groovy.accessor
 
+import static org.junit.Assert.*
+
+import org.junit.Before
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ChildContextType
 import eu.esdihumboldt.hale.common.align.model.ChildContext
@@ -24,10 +29,6 @@ import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Before
-import org.junit.Test
-
-import static org.junit.Assert.*
 
 
 /**
@@ -93,7 +94,7 @@ class EntityAccessorTest extends AbstractPlatformTest {
 		assertEquals 2, names.size()
 
 		assertEquals 2, names[0].elements.size()
-        PathElement directName = names[0].elements.last()
+		PathElement directName = names[0].elements.last()
 		assertNotNull directName
 
 		assertEquals 3, names[1].elements.size()

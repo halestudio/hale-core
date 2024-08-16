@@ -54,12 +54,12 @@ public abstract class AbstractValueConstraintFactoryTest<T> {
 	private static final QName DEF_NAME = new QName("test");
 
 	/**
-	 * Test storing a constraint, restoring it and compare both using an empty
-	 * type index and a default constraint definition.
+	 * Test storing a constraint, restoring it and compare both using an empty type
+	 * index and a default constraint definition.
 	 *
 	 * @param constraint the constraint to store
-	 * @throws Exception if an error occurs during storing, restoring or
-	 *             comparing the constraint
+	 * @throws Exception if an error occurs during storing, restoring or comparing
+	 *             the constraint
 	 */
 	protected void storeRestoreTest(T constraint) throws Exception {
 		storeRestoreTest(constraint, null, null);
@@ -72,11 +72,11 @@ public abstract class AbstractValueConstraintFactoryTest<T> {
 	 * @param typeIndex the type index (as context for storing/restoring),
 	 *            <code>null</code> for an empty index
 	 * @param constraintDef the definition the constraint is associated to (as
-	 *            context for storing/restoring), for <code>null</code> the
-	 *            method will try to generate a default definition based on the
-	 *            constraint type
-	 * @throws Exception if an error occurs during storing, restoring or
-	 *             comparing the constraint
+	 *            context for storing/restoring), for <code>null</code> the method
+	 *            will try to generate a default definition based on the constraint
+	 *            type
+	 * @throws Exception if an error occurs during storing, restoring or comparing
+	 *             the constraint
 	 */
 	@SuppressWarnings("unchecked")
 	protected void storeRestoreTest(T constraint, Map<TypeDefinition, Value> typeIndex,
@@ -123,9 +123,9 @@ public abstract class AbstractValueConstraintFactoryTest<T> {
 	}
 
 	/**
-	 * Create a default definition where the given constraint type is
-	 * applicable. This is decided on whether the constraint implements certain
-	 * (marker) interfaces.
+	 * Create a default definition where the given constraint type is applicable.
+	 * This is decided on whether the constraint implements certain (marker)
+	 * interfaces.
 	 *
 	 * @param constraintType the constraint type
 	 * @return the default definition

@@ -79,7 +79,7 @@ public class RingHandler extends FixedConstraintsGeometryHandler {
 	 */
 	protected GeometryProperty<LinearRing> createGeometry(Instance instance, int srsDimension,
 			boolean allowTryOtherDimension, IOProvider reader)
-					throws GeometryNotSupportedException {
+			throws GeometryNotSupportedException {
 
 		LinearRing ring = null;
 

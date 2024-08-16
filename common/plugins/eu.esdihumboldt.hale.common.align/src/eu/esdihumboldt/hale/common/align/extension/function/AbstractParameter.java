@@ -16,11 +16,10 @@
 
 package eu.esdihumboldt.hale.common.align.extension.function;
 
-import net.jcip.annotations.Immutable;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import eu.esdihumboldt.hale.common.core.parameter.AbstractCommonParameter;
+import net.jcip.annotations.Immutable;
 
 /**
  * Abstract definition of a parameter based on an {@link IConfigurationElement}
@@ -28,8 +27,8 @@ import eu.esdihumboldt.hale.common.core.parameter.AbstractCommonParameter;
  * @author Simon Templer
  */
 @Immutable
-public abstract class AbstractParameter extends AbstractCommonParameter implements
-		ParameterDefinition {
+public abstract class AbstractParameter extends AbstractCommonParameter
+		implements ParameterDefinition {
 
 	private final int minOccurrence;
 	private final int maxOccurrence;

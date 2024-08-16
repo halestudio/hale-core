@@ -38,14 +38,14 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Kevin Mais
  */
-public class GeographicalName extends
-		AbstractSingleTargetPropertyTransformation<TransformationEngine> implements
-		GeographicalNameFunction {
+public class GeographicalName
+		extends AbstractSingleTargetPropertyTransformation<TransformationEngine>
+		implements GeographicalNameFunction {
 
 	/**
 	 * @see AbstractSingleTargetPropertyTransformation#evaluate(String,
-	 *      TransformationEngine, ListMultimap, String,
-	 *      PropertyEntityDefinition, Map, TransformationLog)
+	 *      TransformationEngine, ListMultimap, String, PropertyEntityDefinition,
+	 *      Map, TransformationLog)
 	 */
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,
@@ -222,10 +222,11 @@ public class GeographicalName extends
 			PropertyDefinition spellOfNameChildText = Util.getChild("text", spellOfNameType);
 
 			// name/GeographicalName/spelling/SpellingOfName/transliterationScheme
-			PropertyDefinition spellOfNameChildTransliteration = Util.getChild(
-					"transliterationScheme", spellOfNameType);
+			PropertyDefinition spellOfNameChildTransliteration = Util
+					.getChild("transliterationScheme", spellOfNameType);
 			TypeDefinition transliterationType = spellOfNameChildTransliteration.getPropertyType();
-			DefaultInstance transliterationInstance = new DefaultInstance(transliterationType, null);
+			DefaultInstance transliterationInstance = new DefaultInstance(transliterationType,
+					null);
 
 			// build the spelling instance
 			scriptInstance.setValue(scripts.get(i).as(String.class));

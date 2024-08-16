@@ -31,8 +31,8 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
  * 
  * @author Simon Templer
  */
-public class DefaultGroupPropertyDefinition extends
-		AbstractChildDefinition<GroupPropertyConstraint> implements GroupPropertyDefinition {
+public class DefaultGroupPropertyDefinition extends AbstractChildDefinition<GroupPropertyConstraint>
+		implements GroupPropertyDefinition {
 
 	private final DefinitionGroup children;
 

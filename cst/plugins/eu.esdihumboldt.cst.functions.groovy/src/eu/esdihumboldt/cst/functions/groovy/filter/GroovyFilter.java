@@ -70,8 +70,8 @@ public class GroovyFilter implements ContextAwareFilter {
 	 */
 	protected Script getScript(GroovyService service, Binding binding) {
 		/*
-		 * The compiled script is stored in a ThreadLocal variable so it needs
-		 * only to be created once per filter thread.
+		 * The compiled script is stored in a ThreadLocal variable so it needs only to
+		 * be created once per filter thread.
 		 */
 		Script groovyScript = localScript.get();
 		if (groovyScript == null) {

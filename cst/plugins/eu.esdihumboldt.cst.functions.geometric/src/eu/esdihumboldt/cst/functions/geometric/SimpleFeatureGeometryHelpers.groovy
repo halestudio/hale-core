@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.cst.functions.geometric
 
+import groovy.transform.CompileStatic
+
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryCollection
 import org.locationtech.jts.geom.GeometryFactory
@@ -25,7 +27,6 @@ import eu.esdihumboldt.cst.functions.groovy.helper.spec.SpecBuilder
 import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.util.geometry.CurveHelper
-import groovy.transform.CompileStatic
 
 /**
  * Helpers related to simple feature geometries.
@@ -93,5 +94,4 @@ class SimpleFeatureGeometryHelpers {
 			return [geometry]
 		}
 	}
-
 }

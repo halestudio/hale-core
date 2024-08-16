@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.align.model.functions.join
 
-import org.junit.Test
+import static org.junit.Assert.*
 
 import javax.xml.namespace.QName
 
+import org.junit.Test
 import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.align.io.LoadAlignmentContext
@@ -31,8 +32,6 @@ import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
-
-import static org.junit.Assert.*
 
 /**
  * Tests for {@link JoinParameter}

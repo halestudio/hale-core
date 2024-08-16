@@ -41,8 +41,8 @@ public class ProjectFileExtension extends IdentifiableExtension<ProjectFileFacto
 	/**
 	 * Create a project file extension instance.
 	 * 
-	 * @param serviceProvider the service provider to use for eventual I/O
-	 *            advisors created
+	 * @param serviceProvider the service provider to use for eventual I/O advisors
+	 *            created
 	 */
 	public ProjectFileExtension(ServiceProvider serviceProvider) {
 		super(ID);

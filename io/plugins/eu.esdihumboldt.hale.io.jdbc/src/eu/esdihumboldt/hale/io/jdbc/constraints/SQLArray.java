@@ -98,8 +98,8 @@ public class SQLArray implements TypeConstraint {
 	}
 
 	/**
-	 * @return the array dimension, {#value UNKNOWN_DIMENSION} if the dimension
-	 *         is unknown
+	 * @return the array dimension, {#value UNKNOWN_DIMENSION} if the dimension is
+	 *         unknown
 	 */
 	public int getDimension() {
 		return dimension;

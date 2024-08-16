@@ -22,7 +22,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -36,6 +35,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.hale.io.csv.reader.CommonSchemaConstants;
 import eu.esdihumboldt.hale.io.csv.reader.internal.CSVSchemaReader;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test Class for CSVSchemaReader
@@ -102,8 +102,7 @@ public class CSVSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test for no given property names and property types (using default
-	 * settings)
+	 * Test for no given property names and property types (using default settings)
 	 *
 	 * @throws Exception the Exception thrown if the test fails
 	 */
@@ -211,9 +210,9 @@ public class CSVSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test for no given property names and only 2 (of 4) given property types
-	 * (if there are not given 0 or maximum, in this case 4, property types we
-	 * expect an error)
+	 * Test for no given property names and only 2 (of 4) given property types (if
+	 * there are not given 0 or maximum, in this case 4, property types we expect an
+	 * error)
 	 *
 	 * @throws Exception the Exception thrown if the test fails
 	 */
@@ -238,8 +237,7 @@ public class CSVSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test for no given type name. So we expect the reporter not to be
-	 * successful.
+	 * Test for no given type name. So we expect the reporter not to be successful.
 	 *
 	 * @throws Exception the Exception thrown if the test fails
 	 */

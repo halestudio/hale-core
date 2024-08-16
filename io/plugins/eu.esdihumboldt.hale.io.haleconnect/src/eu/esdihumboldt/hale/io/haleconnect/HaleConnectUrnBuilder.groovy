@@ -15,11 +15,11 @@
 
 package eu.esdihumboldt.hale.io.haleconnect;
 
-import java.text.MessageFormat;
-
-import org.apache.commons.lang.StringUtils;
-
 import groovy.transform.CompileStatic
+
+import java.text.MessageFormat
+
+import org.apache.commons.lang.StringUtils
 
 /**
  * Helper for building and decomposing hale-connect project URNs.

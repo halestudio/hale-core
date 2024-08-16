@@ -15,8 +15,6 @@
 
 package eu.esdihumboldt.hale.io.json.test
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.assertj.core.api.Assertions.*
 
 import java.util.function.Consumer
@@ -40,6 +38,7 @@ import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.io.json.internal.JsonToInstance
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for translating Json/GeoJson to hale instance model.

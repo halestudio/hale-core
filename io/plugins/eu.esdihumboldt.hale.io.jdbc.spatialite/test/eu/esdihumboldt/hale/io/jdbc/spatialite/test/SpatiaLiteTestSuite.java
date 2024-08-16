@@ -112,23 +112,23 @@ public abstract class SpatiaLiteTestSuite {
 	 * @throws IOException if temp file can't be created
 	 */
 	public void createSourceTempFile() throws IOException {
-		ByteSource source = Resources.asByteSource(SpatiaLiteTestSuite.class
-				.getResource(SOURCE_DB_LOCATION));
+		ByteSource source = Resources
+				.asByteSource(SpatiaLiteTestSuite.class.getResource(SOURCE_DB_LOCATION));
 		ByteSink dest = Files.asByteSink(new File(getSourceTempFilePath()));
 
 		source.copyTo(dest);
 	}
 
 	/**
-	 * Copies the target database to a temporary file and deletes all instances
-	 * in it.
+	 * Copies the target database to a temporary file and deletes all instances in
+	 * it.
 	 * 
 	 * @throws IOException if temp file can't be created or instances can't be
 	 *             deleted
 	 */
 	public void createTargetTempFile() throws IOException {
-		ByteSource source = Resources.asByteSource(SpatiaLiteTestSuite.class
-				.getResource(SOURCE_DB_LOCATION));
+		ByteSource source = Resources
+				.asByteSource(SpatiaLiteTestSuite.class.getResource(SOURCE_DB_LOCATION));
 		ByteSink dest = Files.asByteSink(new File(getTargetTempFilePath()));
 
 		source.copyTo(dest);
@@ -170,10 +170,9 @@ public abstract class SpatiaLiteTestSuite {
 	}
 
 	/**
-	 * Generates a random path (within the system's temporary folder) for the
-	 * source database. The random number used to construct the path is saved in
-	 * a static variable and thus the path will remain constant for the whole
-	 * run.
+	 * Generates a random path (within the system's temporary folder) for the source
+	 * database. The random number used to construct the path is saved in a static
+	 * variable and thus the path will remain constant for the whole run.
 	 * 
 	 * @return the absolute path of the source temp file
 	 */
@@ -182,10 +181,9 @@ public abstract class SpatiaLiteTestSuite {
 	}
 
 	/**
-	 * Generates a random path (within the system's temporary folder) for the
-	 * target database. The random number used to construct the path is saved in
-	 * a static variable and thus the path will remain constant for the whole
-	 * run.
+	 * Generates a random path (within the system's temporary folder) for the target
+	 * database. The random number used to construct the path is saved in a static
+	 * variable and thus the path will remain constant for the whole run.
 	 * 
 	 * @return the absolute path of the target temp file
 	 */
@@ -275,8 +273,8 @@ public abstract class SpatiaLiteTestSuite {
 	}
 
 	/**
-	 * Test - reads data from a source SpatiaLite database, writes them to a
-	 * target SpatiaLite database and checks the results.
+	 * Test - reads data from a source SpatiaLite database, writes them to a target
+	 * SpatiaLite database and checks the results.
 	 * 
 	 * @throws Exception if an error occurs
 	 */
@@ -402,8 +400,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * @param sourceSchema the schema of the source database
 	 * @param sourceFilePath the path to the source database file
 	 * @return the read instances
-	 * @throws Exception any exception thrown by
-	 *             {@link SpatiaLiteInstanceReader}
+	 * @throws Exception any exception thrown by {@link SpatiaLiteInstanceReader}
 	 */
 	public InstanceCollection readInstances(Schema sourceSchema, String sourceFilePath)
 			throws Exception {
@@ -426,8 +423,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * @param schema the target schema
 	 * @param targetFilePath the path to the target database file
 	 * @param instances the instances to write
-	 * @throws Exception any exception thrown by
-	 *             {@link SpatiaLiteInstanceWriter}
+	 * @throws Exception any exception thrown by {@link SpatiaLiteInstanceWriter}
 	 */
 	public void writeInstances(Schema schema, String targetFilePath, InstanceCollection instances)
 			throws Exception {
@@ -446,9 +442,9 @@ public abstract class SpatiaLiteTestSuite {
 	}
 
 	/**
-	 * Checks the property definitions and values of the provided instances.
-	 * Values will be checked for just one instance (the one with
-	 * {@link #PROPERTY_ID_NAME} = {@link #PROPERTY_ID_VALUE}).
+	 * Checks the property definitions and values of the provided instances. Values
+	 * will be checked for just one instance (the one with {@link #PROPERTY_ID_NAME}
+	 * = {@link #PROPERTY_ID_VALUE}).
 	 * 
 	 * @param instances the instances to check
 	 * @param propertyMap the expected property names / values
@@ -480,8 +476,8 @@ public abstract class SpatiaLiteTestSuite {
 			@SuppressWarnings("null")
 			Object value = instance.getProperty(QName.valueOf(propertyName))[0];
 			if (value instanceof GeometryProperty) {
-				assertTrue(((Geometry) propertyMap.get(propertyName)).equalsExact(
-						((GeometryProperty) value).getGeometry(), 0.000001));
+				assertTrue(((Geometry) propertyMap.get(propertyName))
+						.equalsExact(((GeometryProperty) value).getGeometry(), 0.000001));
 			}
 			else {
 				assertEquals(propertyMap.get(propertyName), value);

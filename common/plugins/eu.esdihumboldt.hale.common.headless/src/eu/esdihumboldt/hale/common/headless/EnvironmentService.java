@@ -32,12 +32,11 @@ public interface EnvironmentService {
 	public Collection<TransformationEnvironment> getEnvironments();
 
 	/**
-	 * Get the transformation environment with the given identifier, if it
-	 * exists.
+	 * Get the transformation environment with the given identifier, if it exists.
 	 * 
 	 * @param id the identifier
-	 * @return the environment matching the identifier or <code>null</code> if
-	 *         there is none
+	 * @return the environment matching the identifier or <code>null</code> if there
+	 *         is none
 	 */
 	public TransformationEnvironment getEnvironment(String id);
 

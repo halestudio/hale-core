@@ -85,8 +85,8 @@ public class SimpleTypeUtil {
 	 * @param <T> the type of the value
 	 * @param value the value
 	 * @param type the type definition of the simple type
-	 * @return the string representation of the value or <code>null</code> if
-	 *         the value is <code>null</code>
+	 * @return the string representation of the value or <code>null</code> if the
+	 *         value is <code>null</code>
 	 */
 	public static <T> String convertToXml(T value, TypeDefinition type) {
 		if (value == null) {
@@ -151,14 +151,14 @@ public class SimpleTypeUtil {
 	}
 
 	/**
-	 * Convert a string belonging to a XML simple type to the binding specified
-	 * by the given type definition.
+	 * Convert a string belonging to a XML simple type to the binding specified by
+	 * the given type definition.
 	 * 
 	 * @param value the string value
 	 * @param type the type definition
-	 * @return <code>null</code> if the string was <code>null</code>, the
-	 *         converted object with the binding type if possible, otherwise the
-	 *         original string
+	 * @return <code>null</code> if the string was <code>null</code>, the converted
+	 *         object with the binding type if possible, otherwise the original
+	 *         string
 	 */
 	public static Object convertFromXml(String value, TypeDefinition type) {
 		if (value == null) {

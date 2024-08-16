@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.lookup.internal
 
+import groovy.xml.dom.DOMCategory
+
 import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
@@ -26,7 +28,6 @@ import eu.esdihumboldt.hale.common.lookup.LookupTable
 import eu.esdihumboldt.hale.common.lookup.impl.LookupTableImpl
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
-import groovy.xml.dom.DOMCategory
 
 
 /**

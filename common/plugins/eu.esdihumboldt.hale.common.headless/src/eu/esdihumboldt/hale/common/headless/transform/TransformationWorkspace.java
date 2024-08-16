@@ -63,20 +63,18 @@ public class TransformationWorkspace {
 	private static final String WORKSPACE_REPORT_FILE = "reports.log";
 
 	/**
-	 * Name of the folder containing the source files in a transformation
-	 * workspace.
+	 * Name of the folder containing the source files in a transformation workspace.
 	 */
 	private static final String WORKSPACE_SOURCE_FOLDER = "source";
 
 	/**
-	 * Name of the folder containing the target files in a transformation
-	 * workspace.
+	 * Name of the folder containing the target files in a transformation workspace.
 	 */
 	private static final String WORKSPACE_TARGET_FOLDER = "target";
 
 	/**
-	 * Name of the workspace setting that holds information about the completion
-	 * of the transformation.
+	 * Name of the workspace setting that holds information about the completion of
+	 * the transformation.
 	 */
 	private static final String SETTING_TRANSFORMATION_SUCCESS = "transformationSuccess";
 
@@ -128,11 +126,11 @@ public class TransformationWorkspace {
 	/**
 	 * Create a new workspace or use an existing one.
 	 * 
-	 * @param workspaceId the workspace identifier if this object should
-	 *            represent an existing workspace, may be <code>null</code> if
-	 *            leaseDuration is set.
-	 * @param leaseDuration the lease duration of a new workspace to create, may
-	 *            be <code>null</code> if workspaceId is set
+	 * @param workspaceId the workspace identifier if this object should represent
+	 *            an existing workspace, may be <code>null</code> if leaseDuration
+	 *            is set.
+	 * @param leaseDuration the lease duration of a new workspace to create, may be
+	 *            <code>null</code> if workspaceId is set
 	 * @throws IllegalStateException if the {@link WorkspaceService} is not
 	 *             available or the workspace with the given identifier does not
 	 *             exist
@@ -168,15 +166,15 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Transform the instances provided through the given instance readers and
-	 * store the result in the {@link #getTargetFolder()}.
+	 * Transform the instances provided through the given instance readers and store
+	 * the result in the {@link #getTargetFolder()}.
 	 * 
 	 * @param envId the environment ID
 	 * @param sources the instance readers
 	 * @param target the configuration of the target instance writer
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 * @throws Exception if launching the transformation fails
 	 */
 	public ListenableFuture<Boolean> transform(String envId, List<InstanceReader> sources,
@@ -196,8 +194,8 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Transform the instances provided through the given instance readers and
-	 * by default stores the result in the {@link #getTargetFolder()}.
+	 * Transform the instances provided through the given instance readers and by
+	 * default stores the result in the {@link #getTargetFolder()}.
 	 * 
 	 * @param env the transformation environment
 	 * @param sources the instance readers
@@ -206,8 +204,8 @@ public class TransformationWorkspace {
 	 *            <code>null</code> to use the default target in thet
 	 *            {@link #getTargetFolder()}
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 * @throws Exception if launching the transformation fails
 	 */
 	public ListenableFuture<Boolean> transform(TransformationEnvironment env,
@@ -276,12 +274,12 @@ public class TransformationWorkspace {
 	/**
 	 * Determines if a previously with
 	 * {@link #transform(String, List, IOConfiguration)} started transformation
-	 * process was complete successfully. Note that a successful completion
-	 * doesn't necessary mean there weren't any internal transformation errors.
-	 * The {@link #getReportFile()} holds more detailed information.<br>
+	 * process was complete successfully. Note that a successful completion doesn't
+	 * necessary mean there weren't any internal transformation errors. The
+	 * {@link #getReportFile()} holds more detailed information.<br>
 	 * <br>
-	 * This method may only be called of the transformation is finished,
-	 * otherwise an {@link IllegalStateException} will be thrown.
+	 * This method may only be called of the transformation is finished, otherwise
+	 * an {@link IllegalStateException} will be thrown.
 	 * 
 	 * @return if the transformation was completed successfully
 	 * @throws IllegalStateException if the transformation is not finished
@@ -303,9 +301,8 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Set if the transformation was successfully completed. Must be called when
-	 * the transformation is finished. Also deletes the source folder in the
-	 * workspace.
+	 * Set if the transformation was successfully completed. Must be called when the
+	 * transformation is finished. Also deletes the source folder in the workspace.
 	 * 
 	 * @param success if the transformation was completed successfully
 	 * @throws FileNotFoundException if the workspace does not exist
@@ -398,8 +395,8 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Get the target folder. This folder holds the transformation results after
-	 * the transformation is finished and successful.
+	 * Get the target folder. This folder holds the transformation results after the
+	 * transformation is finished and successful.
 	 * 
 	 * @return the target folder
 	 * 
@@ -411,8 +408,8 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Get the source folder. Files placed in this folder will be deleted after
-	 * the transformation has finished.
+	 * Get the source folder. Files placed in this folder will be deleted after the
+	 * transformation has finished.
 	 * 
 	 * @return the source folder
 	 */
@@ -421,8 +418,7 @@ public class TransformationWorkspace {
 	}
 
 	/**
-	 * Get the report file. It holds information about the finished
-	 * transformation.
+	 * Get the report file. It holds information about the finished transformation.
 	 * 
 	 * @return the report file
 	 * 

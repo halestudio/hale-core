@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.io.xsd.constraint;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type is a mixed XML type and therefore can contain text, elements
@@ -53,8 +53,8 @@ public final class XmlMixedFlag extends AbstractFlagConstraint implements TypeCo
 
 	/**
 	 * Creates a default XML mixed type flag, which is disabled. If possible,
-	 * instead of creating an instance, use {@link #get(boolean)},
-	 * {@link #ENABLED} or {@link #DISABLED}.
+	 * instead of creating an instance, use {@link #get(boolean)}, {@link #ENABLED}
+	 * or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

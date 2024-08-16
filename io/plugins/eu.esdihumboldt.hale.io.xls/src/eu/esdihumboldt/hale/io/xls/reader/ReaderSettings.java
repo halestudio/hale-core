@@ -150,8 +150,8 @@ public class ReaderSettings {
 	 * 
 	 * @param reader the Excel reader
 	 * @return the loaded settings
-	 * @throws InvalidFormatException if the source file has a wrong format or
-	 *             is tried to be read with the wrong format
+	 * @throws InvalidFormatException if the source file has a wrong format or is
+	 *             tried to be read with the wrong format
 	 * @throws IOException if the source file can't be read
 	 */
 	public static ReaderSettings load(XLSInstanceReader reader)

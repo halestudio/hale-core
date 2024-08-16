@@ -34,9 +34,9 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 public class MetaFilter implements Filter {
 
 	/*
-	 * FIXME the type should not be part of this filter - this is done for now
-	 * to be able to easily add support to the OrientDB instance collection and
-	 * to the data view instance selector.
+	 * FIXME the type should not be part of this filter - this is done for now to be
+	 * able to easily add support to the OrientDB instance collection and to the
+	 * data view instance selector.
 	 */
 	private final TypeDefinition type;
 
@@ -49,8 +49,7 @@ public class MetaFilter implements Filter {
 	 * 
 	 * @param type the type of instances to accept, may be <code>null</code>
 	 * @param metadataKey the name of the metadata key to check
-	 * @param values the values that should be accepted for the given metadata
-	 *            key
+	 * @param values the values that should be accepted for the given metadata key
 	 */
 	public MetaFilter(@Nullable TypeDefinition type, @Nonnull String metadataKey,
 			@Nonnull Collection<? extends Object> values) {

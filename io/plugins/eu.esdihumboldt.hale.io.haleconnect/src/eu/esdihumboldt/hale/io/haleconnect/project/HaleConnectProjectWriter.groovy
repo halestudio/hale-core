@@ -15,34 +15,35 @@
 
 package eu.esdihumboldt.hale.io.haleconnect.project;
 
-import java.nio.file.Files;
-import java.text.MessageFormat;
-
-import de.fhg.igd.slf4jplus.ALogger;
-import de.fhg.igd.slf4jplus.ALoggerFactory;
-import eu.esdihumboldt.hale.common.core.HalePlatform;
-import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
-import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;
-import eu.esdihumboldt.hale.common.core.io.Value;
-import eu.esdihumboldt.hale.common.core.io.project.ProjectWriter.ProjectWriterMode
-import eu.esdihumboldt.hale.common.core.io.project.impl.ArchiveProjectWriter;
-import eu.esdihumboldt.hale.common.core.io.project.model.Project;
-import eu.esdihumboldt.hale.common.core.io.report.IOReport;
-import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
-import eu.esdihumboldt.hale.common.core.io.report.MutableTargetIOReport;
-import eu.esdihumboldt.hale.common.core.io.report.impl.DefaultIOReporter;
-import eu.esdihumboldt.hale.common.core.io.supplier.Locatable;
-import eu.esdihumboldt.hale.common.core.io.supplier.LocatableURI;
-import eu.esdihumboldt.hale.common.core.io.supplier.NoStreamOutputSupplier;
-import eu.esdihumboldt.hale.io.haleconnect.BasePathResolver;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectException;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectProjectInfo;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectService;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServices;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUrnBuilder;
-import eu.esdihumboldt.hale.io.haleconnect.Owner;
-import eu.esdihumboldt.hale.io.haleconnect.OwnerType;
 import groovy.transform.CompileStatic
+
+import java.nio.file.Files
+import java.text.MessageFormat
+
+import de.fhg.igd.slf4jplus.ALogger
+import de.fhg.igd.slf4jplus.ALoggerFactory
+import eu.esdihumboldt.hale.common.core.HalePlatform
+import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException
+import eu.esdihumboldt.hale.common.core.io.ProgressIndicator
+import eu.esdihumboldt.hale.common.core.io.Value
+import eu.esdihumboldt.hale.common.core.io.project.ProjectWriter.ProjectWriterMode
+import eu.esdihumboldt.hale.common.core.io.project.impl.ArchiveProjectWriter
+import eu.esdihumboldt.hale.common.core.io.project.model.Project
+import eu.esdihumboldt.hale.common.core.io.report.IOReport
+import eu.esdihumboldt.hale.common.core.io.report.IOReporter
+import eu.esdihumboldt.hale.common.core.io.report.MutableTargetIOReport
+import eu.esdihumboldt.hale.common.core.io.report.impl.DefaultIOReporter
+import eu.esdihumboldt.hale.common.core.io.supplier.Locatable
+import eu.esdihumboldt.hale.common.core.io.supplier.LocatableURI
+import eu.esdihumboldt.hale.common.core.io.supplier.NoStreamOutputSupplier
+import eu.esdihumboldt.hale.io.haleconnect.BasePathResolver
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectException
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectProjectInfo
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectService
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServices
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUrnBuilder
+import eu.esdihumboldt.hale.io.haleconnect.Owner
+import eu.esdihumboldt.hale.io.haleconnect.OwnerType
 
 /**
  * Saves a project (optonally including all related resources) as a ZIP archive
@@ -295,7 +296,7 @@ public class HaleConnectProjectWriter extends ArchiveProjectWriter {
 	@Override
 	public IOReporter createReporter() {
 		if (!(haleConnect instanceof BasePathResolver)
-		|| !HaleConnectUrnBuilder.isValidProjectUrn(getTarget().getLocation())) {
+				|| !HaleConnectUrnBuilder.isValidProjectUrn(getTarget().getLocation())) {
 			return super.createReporter();
 		}
 
@@ -319,7 +320,6 @@ public class HaleConnectProjectWriter extends ArchiveProjectWriter {
 			String clientBasePath = resolver.getBasePath(HaleConnectServices.WEB_CLIENT);
 
 			return HaleConnectUrnBuilder.buildClientAccessUrl(clientBasePath, owner, projectId);
-
 		} catch (Throwable t) {
 			return targetUri;
 		}

@@ -53,8 +53,9 @@ import groovy.lang.Script;
  * 
  * @author Kai Schwierczek
  */
-public class GroovyGreedyTransformation extends
-		AbstractSingleTargetPropertyTransformation<TransformationEngine>implements GroovyConstants {
+public class GroovyGreedyTransformation
+		extends AbstractSingleTargetPropertyTransformation<TransformationEngine>
+		implements GroovyConstants {
 
 	/**
 	 * The function/transformation ID.
@@ -62,8 +63,8 @@ public class GroovyGreedyTransformation extends
 	public static final String ID = "eu.esdihumboldt.cst.functions.groovy.greedy";
 
 	/**
-	 * Name of the parameter specifying if instances should be used as variables
-	 * in the binding.
+	 * Name of the parameter specifying if instances should be used as variables in
+	 * the binding.
 	 */
 	public static final String PARAM_INSTANCE_VARIABLES = "variablesAsInstances";
 
@@ -109,15 +110,15 @@ public class GroovyGreedyTransformation extends
 	 * Create a Groovy binding from the list of variables.
 	 * 
 	 * @param vars the variable values
-	 * @param varDefs definition of the assigned variables, in case some
-	 *            variable values are not set, may be <code>null</code>
+	 * @param varDefs definition of the assigned variables, in case some variable
+	 *            values are not set, may be <code>null</code>
 	 * @param cell the cell the binding is created for
 	 * @param typeCell the type cell the binding is created for, may be
 	 *            <code>null</code>
 	 * @param builder the instance builder for creating target instances, or
 	 *            <code>null</code> if not applicable
-	 * @param useInstanceVariables if instances should be used as variables for
-	 *            the binding instead of extracting the instance values
+	 * @param useInstanceVariables if instances should be used as variables for the
+	 *            binding instead of extracting the instance values
 	 * @param log the transformation log
 	 * @param context the execution context
 	 * @param targetInstanceType the type of the target instance

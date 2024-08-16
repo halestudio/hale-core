@@ -38,8 +38,8 @@ public class DummyEntityKey {
 	/**
 	 * Create an entity key from a list of names.
 	 * 
-	 * @param names list of names, the first name is the type name, the
-	 *            following are child names
+	 * @param names list of names, the first name is the type name, the following
+	 *            are child names
 	 */
 	public DummyEntityKey(Iterable<QName> names) {
 		super();

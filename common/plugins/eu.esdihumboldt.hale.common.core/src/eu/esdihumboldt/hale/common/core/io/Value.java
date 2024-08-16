@@ -159,9 +159,9 @@ public abstract class Value implements Serializable {
 	}
 
 	/**
-	 * Create a value from an object. If a complex value representation is found
-	 * in {@link ComplexValueExtension} a complex value is created, otherwise a
-	 * simple value.
+	 * Create a value from an object. If a complex value representation is found in
+	 * {@link ComplexValueExtension} a complex value is created, otherwise a simple
+	 * value.
 	 * 
 	 * @see #complex(Object)
 	 * @see #simple(Object)
@@ -190,22 +190,21 @@ public abstract class Value implements Serializable {
 	 * @param expectedType the expected value type, this must be either
 	 *            {@link String}, DOM {@link Element} or a complex value type
 	 *            defined in the {@link ComplexValueExtension}
-	 * @return the value as the expected type or <code>null</code> if it could
-	 *         not be created/converted
+	 * @return the value as the expected type or <code>null</code> if it could not
+	 *         be created/converted
 	 */
 	public abstract <T> T as(Class<T> expectedType);
 
 	/**
-	 * Get the value as the expected type if possible, a default value
-	 * otherwise.
+	 * Get the value as the expected type if possible, a default value otherwise.
 	 * 
 	 * @param expectedType the expected value type, this must be either
 	 *            {@link String}, DOM {@link Element} or a complex value type
 	 *            defined in the {@link ComplexValueExtension}
-	 * @param defValue the default value to use if the value is
-	 *            <code>null</code> or cannot be converted to the expected type
-	 * @return the value as the expected type or the given default value if it
-	 *         could not be created/converted
+	 * @param defValue the default value to use if the value is <code>null</code> or
+	 *            cannot be converted to the expected type
+	 * @return the value as the expected type or the given default value if it could
+	 *         not be created/converted
 	 */
 	public abstract <T> T as(Class<T> expectedType, T defValue);
 
@@ -213,8 +212,7 @@ public abstract class Value implements Serializable {
 	 * Get the value as the given type.
 	 * 
 	 * @param type the type to convert the value to
-	 * @return the value converted to the type or <code>null</code> for a null
-	 *         value
+	 * @return the value converted to the type or <code>null</code> for a null value
 	 * @throws IllegalArgumentException if the value cannot be converted to the
 	 *             given type
 	 */
@@ -249,15 +247,15 @@ public abstract class Value implements Serializable {
 	/**
 	 * Determines if the value is empty.
 	 * 
-	 * @return <code>true</code> if the value is <code>null</code> or another
-	 *         kind of empty (e.g. empty string) depending on the value type,
+	 * @return <code>true</code> if the value is <code>null</code> or another kind
+	 *         of empty (e.g. empty string) depending on the value type,
 	 *         <code>false</code> otherwise
 	 */
 	public abstract boolean isEmpty();
 
 	/**
-	 * Determines if the value is represented as DOM {@link Element} for
-	 * serializing it.
+	 * Determines if the value is represented as DOM {@link Element} for serializing
+	 * it.
 	 * 
 	 * @return if the value can be represented as {@link Element}
 	 * @see #getDOMRepresentation()
@@ -266,8 +264,7 @@ public abstract class Value implements Serializable {
 	public abstract boolean isRepresentedAsDOM();
 
 	/**
-	 * Convenience method to determine if this value has a simple
-	 * representation.
+	 * Convenience method to determine if this value has a simple representation.
 	 * 
 	 * @return if this value has a simple representation
 	 */
@@ -276,8 +273,7 @@ public abstract class Value implements Serializable {
 	}
 
 	/**
-	 * Convenience method to determine if this value has a complex
-	 * representation.
+	 * Convenience method to determine if this value has a complex representation.
 	 * 
 	 * @return if this value has a complex representation
 	 */

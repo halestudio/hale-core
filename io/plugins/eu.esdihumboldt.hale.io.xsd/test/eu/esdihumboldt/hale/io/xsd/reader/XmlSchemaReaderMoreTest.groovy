@@ -15,8 +15,6 @@
 
 package eu.esdihumboldt.hale.io.xsd.reader
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReaderTest.readSchema
 import static org.junit.Assert.*
 
@@ -28,6 +26,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.ReferenceProperty
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlAppInfo
 import eu.esdihumboldt.hale.io.xsd.model.XmlIndex
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * More XmlSchemaReader tests (using Groovy).

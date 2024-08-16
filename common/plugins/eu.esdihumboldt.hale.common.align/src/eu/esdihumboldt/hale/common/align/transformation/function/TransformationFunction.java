@@ -44,8 +44,7 @@ public interface TransformationFunction<E extends TransformationEngine> {
 	/**
 	 * Set the execution context.
 	 * 
-	 * @param executionContext the execution context of the transformation
-	 *            process
+	 * @param executionContext the execution context of the transformation process
 	 */
 	public void setExecutionContext(ExecutionContext executionContext);
 
@@ -55,8 +54,8 @@ public interface TransformationFunction<E extends TransformationEngine> {
 	 * @param transformationIdentifier the transformation function identifier
 	 * @param engine the transformation engine that may be used for the function
 	 *            execution
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @param cell the cell for this function

@@ -115,11 +115,10 @@ public class XLSAlignmentMappingWriter extends AbstractAlignmentMappingExport {
 
 			boolean disabled = false;
 			if (getParameter(TRANSFORMATION_AND_DISABLED_FOR).as(Boolean.class)) {
-				List<String> transformationDisabled = entry.get(
-						CellType.TRANSFORMATION_AND_DISABLED).getText();
-				disabled = !transformationDisabled.isEmpty()
-						&& !transformationDisabled
-								.contains(TransformationMode.active.displayName());
+				List<String> transformationDisabled = entry
+						.get(CellType.TRANSFORMATION_AND_DISABLED).getText();
+				disabled = !transformationDisabled.isEmpty() && !transformationDisabled
+						.contains(TransformationMode.active.displayName());
 			}
 
 			// create a row

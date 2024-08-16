@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl
 
-import eu.esdihumboldt.hale.common.core.io.Text
+import static org.junit.Assert.*
+
 import org.junit.Test
 
-import static org.junit.Assert.*
+import eu.esdihumboldt.hale.common.core.io.Text
 
 
 /**

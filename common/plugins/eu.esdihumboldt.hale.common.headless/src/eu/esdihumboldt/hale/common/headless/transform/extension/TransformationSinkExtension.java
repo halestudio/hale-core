@@ -30,12 +30,12 @@ import eu.esdihumboldt.hale.common.headless.transform.TransformationSink;
  * 
  * @author Simon Templer
  */
-public class TransformationSinkExtension extends
-		AbstractExtension<TransformationSink, TransformationSinkDescriptor> {
+public class TransformationSinkExtension
+		extends AbstractExtension<TransformationSink, TransformationSinkDescriptor> {
 
-	private static class ConfigurationDescriptor extends
-			AbstractConfigurationFactory<TransformationSink> implements
-			TransformationSinkDescriptor {
+	private static class ConfigurationDescriptor
+			extends AbstractConfigurationFactory<TransformationSink>
+			implements TransformationSinkDescriptor {
 
 		/**
 		 * Creates a new descriptor.
@@ -118,19 +118,20 @@ public class TransformationSinkExtension extends
 	 * @throws Exception if no applicable transformation sink can be created
 	 */
 	public TransformationSink createSink(final boolean reiterable) throws Exception {
-		List<TransformationSinkDescriptor> candidates = getFactories(new FactoryFilter<TransformationSink, TransformationSinkDescriptor>() {
+		List<TransformationSinkDescriptor> candidates = getFactories(
+				new FactoryFilter<TransformationSink, TransformationSinkDescriptor>() {
 
-			@Override
-			public boolean acceptFactory(TransformationSinkDescriptor factory) {
-				return factory.isReiterable() == reiterable;
-			}
+					@Override
+					public boolean acceptFactory(TransformationSinkDescriptor factory) {
+						return factory.isReiterable() == reiterable;
+					}
 
-			@Override
-			public boolean acceptCollection(
-					ExtensionObjectFactoryCollection<TransformationSink, TransformationSinkDescriptor> collection) {
-				return true;
-			}
-		});
+					@Override
+					public boolean acceptCollection(
+							ExtensionObjectFactoryCollection<TransformationSink, TransformationSinkDescriptor> collection) {
+						return true;
+					}
+				});
 		if (!candidates.isEmpty()) {
 			return candidates.get(0).createExtensionObject();
 			// TODO try other candidates?

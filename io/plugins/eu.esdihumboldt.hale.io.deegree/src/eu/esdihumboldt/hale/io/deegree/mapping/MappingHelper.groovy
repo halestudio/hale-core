@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.deegree.mapping
 
+import groovy.transform.CompileStatic
+
 import org.deegree.feature.persistence.sql.GeometryStorageParams
 import org.deegree.feature.persistence.sql.MappedAppSchema
 import org.deegree.feature.persistence.sql.mapper.AppSchemaMapper
@@ -24,7 +26,6 @@ import org.deegree.sqldialect.SQLDialect
 
 import eu.esdihumboldt.hale.io.deegree.mapping.config.MappingConfiguration
 import eu.esdihumboldt.hale.io.deegree.mapping.config.MappingMode
-import groovy.transform.CompileStatic
 
 /**
  * Helper class to generate DDL and deegree FeatureStore configuration files based on GML schema.

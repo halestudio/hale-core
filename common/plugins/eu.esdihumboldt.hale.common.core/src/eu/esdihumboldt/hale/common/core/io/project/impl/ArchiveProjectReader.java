@@ -98,8 +98,8 @@ public class ArchiveProjectReader extends AbstractProjectReader implements Tempo
 
 		if (readProject != null) {
 			/*
-			 * Because the original source is only available here, update the
-			 * project's resource paths here.
+			 * Because the original source is only available here, update the project's
+			 * resource paths here.
 			 * 
 			 * The only drawback is that the UILocationUpdater cannot be used.
 			 */

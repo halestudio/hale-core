@@ -16,8 +16,8 @@
 
 package eu.esdihumboldt.hale.common.align.model;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.instance.model.Filter;
+import net.jcip.annotations.Immutable;
 
 /**
  * Property condition.
@@ -30,11 +30,11 @@ public class Condition {
 	private final Filter filter;
 
 	/*
-	 * TODO condition scope This class is intended to hold additional
-	 * information on the filter - how and to what to apply it. This could be
-	 * e.g. a type (the containing main entity type) or value (the property
-	 * value) scope. Currently it seems to make more sense to implement the
-	 * value scope, this will be used as the only scope for now.
+	 * TODO condition scope This class is intended to hold additional information on
+	 * the filter - how and to what to apply it. This could be e.g. a type (the
+	 * containing main entity type) or value (the property value) scope. Currently
+	 * it seems to make more sense to implement the value scope, this will be used
+	 * as the only scope for now.
 	 */
 
 	/**

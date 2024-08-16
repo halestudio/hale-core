@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.geopackage.internal
 
+import groovy.transform.CompileStatic
+
 import java.sql.SQLException
 import java.util.function.Function
 
@@ -37,7 +39,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.NillableFlag
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata
 import eu.esdihumboldt.hale.io.geopackage.GeopackageSchemaBuilder
-import groovy.transform.CompileStatic
 import mil.nga.geopackage.core.srs.SpatialReferenceSystem
 import mil.nga.geopackage.features.columns.GeometryColumns
 import mil.nga.geopackage.features.user.FeatureResultSet

@@ -73,8 +73,8 @@ public class XercesValidator implements Validator {
 			@Override
 			public void error(SAXParseException e) throws SAXException {
 				// XXX this error occurs even if the element is present
-				if (e.getMessage()
-						.equals("cvc-elt.1: Cannot find the declaration of element 'gml:FeatureCollection'.")) { //$NON-NLS-1$
+				if (e.getMessage().equals(
+						"cvc-elt.1: Cannot find the declaration of element 'gml:FeatureCollection'.")) { //$NON-NLS-1$
 					return;
 				}
 

@@ -104,8 +104,8 @@ public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
 	}
 
 	/**
-	 * Load an explanation template. The default implementation locates
-	 * localized Markdown files located next to the class.
+	 * Load an explanation template. The default implementation locates localized
+	 * Markdown files located next to the class.
 	 * 
 	 * @param clazz the explanation class
 	 * @param locale the locale

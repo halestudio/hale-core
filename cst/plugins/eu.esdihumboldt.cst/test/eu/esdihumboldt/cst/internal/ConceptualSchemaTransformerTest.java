@@ -80,8 +80,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test for using the Groovy transformation function to return multiple
-	 * results that should result in multiple properties.
+	 * Test for using the Groovy transformation function to return multiple results
+	 * that should result in multiple properties.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -91,8 +91,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test for using the Groovy transformation function to return multiple
-	 * results that should result in multiple complex properties.
+	 * Test for using the Groovy transformation function to return multiple results
+	 * that should result in multiple complex properties.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -217,9 +217,9 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test where multiple properties from a simple source type are mapped to a
-	 * complex property structure including a repeatable group in the target
-	 * type. In this case there are no facts that the decision which way to
-	 * group the source properties to an address can be based on.
+	 * complex property structure including a repeatable group in the target type.
+	 * In this case there are no facts that the decision which way to group the
+	 * source properties to an address can be based on.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -240,8 +240,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test where properties from a simple source type are mapped to to a
-	 * complex property with simple content and attributes.
+	 * Test where properties from a simple source type are mapped to to a complex
+	 * property with simple content and attributes.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -312,8 +312,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test based on {@link #testMergeAdditionalProp()} but without the
-	 * additional merge property
+	 * Test based on {@link #testMergeAdditionalProp()} but without the additional
+	 * merge property
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -323,8 +323,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test based on a join and some renames with join on properties of
-	 * non-matching types
+	 * Test based on a join and some renames with join on properties of non-matching
+	 * types
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -366,8 +366,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test a Join that has the innerJoin flag enabled. Multiple types are
-	 * joined to the join focus, not joins at second level.
+	 * Test a Join that has the innerJoin flag enabled. Multiple types are joined to
+	 * the join focus, not joins at second level.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -378,8 +378,8 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
-	 * Test a Join that has the innerJoin flag enabled. Conditions are bound to
-	 * some of the joined types.
+	 * Test a Join that has the innerJoin flag enabled. Conditions are bound to some
+	 * of the joined types.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */

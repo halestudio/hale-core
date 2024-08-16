@@ -43,14 +43,13 @@ public interface Instance extends Group {
 	/**
 	 * Get the instance value.<br>
 	 * <br>
-	 * The value is only present for certain types where the
-	 * {@link HasValueFlag} or {@link AugmentedValueFlag} constraint is enabled.
-	 * The {@link Binding} constraint on the type definition defines the binding
-	 * of the value.<br>
+	 * The value is only present for certain types where the {@link HasValueFlag} or
+	 * {@link AugmentedValueFlag} constraint is enabled. The {@link Binding}
+	 * constraint on the type definition defines the binding of the value.<br>
 	 * <br>
-	 * <b>NOTE:</b> This is needed for instance for XML elements with text
-	 * content and attributes. It may only be a simple value (i.e. no
-	 * {@link Group} or {@link Instance}).
+	 * <b>NOTE:</b> This is needed for instance for XML elements with text content
+	 * and attributes. It may only be a simple value (i.e. no {@link Group} or
+	 * {@link Instance}).
 	 * 
 	 * @return the instance value if it is defined, otherwise <code>null</code>
 	 */
@@ -67,8 +66,8 @@ public interface Instance extends Group {
 	 * Get the metadata the instance my be associated with
 	 * 
 	 * @param key the key to access a certain metadata
-	 * @return A list of objects from the metadata, may be an empty List if the
-	 *         key can not be found or there is not metadata associated with the
+	 * @return A list of objects from the metadata, may be an empty List if the key
+	 *         can not be found or there is not metadata associated with the
 	 *         Instance
 	 */
 	public List<Object> getMetaData(String key);
@@ -76,8 +75,8 @@ public interface Instance extends Group {
 	/**
 	 * Get all keys the metadata is associated with
 	 * 
-	 * @return an Set of String keys, or an empty Set if the data doesn't exist
-	 *         or the container is empty, the Set may not be changed
+	 * @return an Set of String keys, or an empty Set if the data doesn't exist or
+	 *         the container is empty, the Set may not be changed
 	 */
 	public Set<String> getMetaDataNames();
 

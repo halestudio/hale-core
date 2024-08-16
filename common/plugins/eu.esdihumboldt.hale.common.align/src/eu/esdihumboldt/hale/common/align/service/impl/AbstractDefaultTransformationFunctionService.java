@@ -32,18 +32,17 @@ import eu.esdihumboldt.hale.common.align.transformation.function.PropertyTransfo
  * 
  * @author Simon Templer
  */
-public abstract class AbstractDefaultTransformationFunctionService extends
-		StaticTransformationFunctionService implements CustomFunctionIdentifiers {
+public abstract class AbstractDefaultTransformationFunctionService
+		extends StaticTransformationFunctionService implements CustomFunctionIdentifiers {
 
-	private static class CustomPropertyFunctionFactory extends
-			AbstractObjectFactory<PropertyTransformation<?>> implements
-			PropertyTransformationFactory {
+	private static class CustomPropertyFunctionFactory
+			extends AbstractObjectFactory<PropertyTransformation<?>>
+			implements PropertyTransformationFactory {
 
 		private final CustomPropertyFunction customFunction;
 
 		/**
-		 * Create a transformation function factory for the given custom
-		 * function.
+		 * Create a transformation function factory for the given custom function.
 		 * 
 		 * @param customFunction the custom function
 		 */
@@ -100,8 +99,8 @@ public abstract class AbstractDefaultTransformationFunctionService extends
 
 	@Override
 	public List<PropertyTransformationFactory> getPropertyTransformations(String functionId) {
-		List<PropertyTransformationFactory> functions = super
-				.getPropertyTransformations(functionId);
+		List<PropertyTransformationFactory> functions = super.getPropertyTransformations(
+				functionId);
 
 		Alignment al = getCurrentAlignment();
 		if (al != null) {

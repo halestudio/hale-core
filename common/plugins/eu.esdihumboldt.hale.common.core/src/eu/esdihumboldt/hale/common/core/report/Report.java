@@ -67,8 +67,8 @@ public interface Report<T extends Message> {
 
 	/**
 	 * Get the start time of the report. This is optional. If a start time is
-	 * present the {@link #getTimestamp()} can be seen as an end time and used
-	 * to compute a duration.
+	 * present the {@link #getTimestamp()} can be seen as an end time and used to
+	 * compute a duration.
 	 * 
 	 * @return the start time or <code>null</code>
 	 */
@@ -99,8 +99,8 @@ public interface Report<T extends Message> {
 	public Collection<T> getErrors();
 
 	/**
-	 * Get the total number of errors. This may be more than the number of
-	 * errors actually listed with {@link #getErrors()}.
+	 * Get the total number of errors. This may be more than the number of errors
+	 * actually listed with {@link #getErrors()}.
 	 * 
 	 * @return the number of warnings
 	 */
@@ -116,8 +116,8 @@ public interface Report<T extends Message> {
 	public Collection<T> getInfos();
 
 	/**
-	 * Get the total number of info messages. This may be more than the number
-	 * of messages actually listed with {@link #getInfos()}.
+	 * Get the total number of info messages. This may be more than the number of
+	 * messages actually listed with {@link #getInfos()}.
 	 * 
 	 * @return the number of warnings
 	 */

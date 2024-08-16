@@ -54,8 +54,8 @@ public class CachedResolver implements TypeConstraint, GroupPropertyConstraint {
 	public CachedResolver(Definition<?> def) {
 		super();
 
-		Preconditions.checkArgument(def instanceof TypeDefinition
-				|| def instanceof GroupPropertyDefinition);
+		Preconditions.checkArgument(
+				def instanceof TypeDefinition || def instanceof GroupPropertyDefinition);
 
 		this.def = def;
 	}
@@ -64,8 +64,8 @@ public class CachedResolver implements TypeConstraint, GroupPropertyConstraint {
 	 * Get the resolved paths for the given property name and namespace.
 	 * 
 	 * @param name the property name
-	 * @param namespace the property namespace or <code>null</code> if the
-	 *            namespace should be ignored
+	 * @param namespace the property namespace or <code>null</code> if the namespace
+	 *            should be ignored
 	 * @return the resolved paths
 	 */
 	public List<Path<Definition<?>>> getResolvedPaths(String name, String namespace) {

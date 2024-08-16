@@ -17,12 +17,12 @@ package eu.esdihumboldt.hale.io.jdbc.spatialite;
 
 import java.util.regex.Pattern;
 
+import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
+import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
 import schemacrawler.schemacrawler.DatabaseSpecificOverrideOptions;
 import schemacrawler.schemacrawler.InclusionRule;
 import schemacrawler.schemacrawler.InformationSchemaViews;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;
-import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
-import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
 
 /**
  * Adapts {@link JDBCSchemaReader} behavior for SpatialLite.

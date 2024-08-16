@@ -52,16 +52,16 @@ import eu.esdihumboldt.hale.common.scripting.transformation.AbstractSingleTarget
  * 
  * @author Simon Templer
  */
-public class NetworkExpansion extends
-		AbstractSingleTargetScriptedPropertyTransformation<TransformationEngine> implements
-		NetworkExpansionFunction {
+public class NetworkExpansion
+		extends AbstractSingleTargetScriptedPropertyTransformation<TransformationEngine>
+		implements NetworkExpansionFunction {
 
 	private static int CAP_STYLE = BufferParameters.CAP_ROUND;
 
 	/**
 	 * @see AbstractSingleTargetScriptedPropertyTransformation#evaluate(String,
-	 *      TransformationEngine, ListMultimap, String,
-	 *      PropertyEntityDefinition, Map, TransformationLog)
+	 *      TransformationEngine, ListMultimap, String, PropertyEntityDefinition,
+	 *      Map, TransformationLog)
 	 */
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,
@@ -69,8 +69,8 @@ public class NetworkExpansion extends
 			PropertyEntityDefinition resultProperty, Map<String, String> executionParameters,
 			TransformationLog log) throws TransformationException, NoResultException {
 		// get the buffer width parameter
-		String bufferWidthString = getTransformedParameterChecked(PARAMETER_BUFFER_WIDTH).as(
-				String.class);
+		String bufferWidthString = getTransformedParameterChecked(PARAMETER_BUFFER_WIDTH)
+				.as(String.class);
 
 		double bufferWidth;
 		try {
@@ -83,7 +83,8 @@ public class NetworkExpansion extends
 						variables.get(ENTITY_VARIABLE), getExecutionContext());
 				bufferWidth = ConversionUtil.getAs(result, Double.class);
 			} catch (ScriptException e1) {
-				throw new TransformationException("Failed to evaluate buffer width expression.", e1);
+				throw new TransformationException("Failed to evaluate buffer width expression.",
+						e1);
 			} catch (ConversionException e2) {
 				throw new TransformationException(
 						"Failed to convert buffer width expression result to double.", e2);
@@ -140,10 +141,9 @@ public class NetworkExpansion extends
 
 			if (geometries.size() > 1) {
 				if (log != null) {
-					log.warn(log
-							.createMessage(
-									"Multiple geometries found, but network expansion is only done on the first.",
-									null));
+					log.warn(log.createMessage(
+							"Multiple geometries found, but network expansion is only done on the first.",
+							null));
 				}
 			}
 		}

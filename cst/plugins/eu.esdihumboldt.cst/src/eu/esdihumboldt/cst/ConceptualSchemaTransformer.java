@@ -141,11 +141,9 @@ public class ConceptualSchemaTransformer implements TransformationService {
 						.getTypeTransformations(typeCell.getTransformationIdentifier());
 
 				if (transformations == null || transformations.isEmpty()) {
-					reporter.error(new TransformationMessageImpl(typeCell,
-							MessageFormat.format(
-									"No transformation for function {0} found. Skipped type transformation.",
-									typeCell.getTransformationIdentifier()),
-							null));
+					reporter.error(new TransformationMessageImpl(typeCell, MessageFormat.format(
+							"No transformation for function {0} found. Skipped type transformation.",
+							typeCell.getTransformationIdentifier()), null));
 				}
 				else {
 					// TODO select based on e.g. preferred transformation
@@ -357,8 +355,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 		private final HashMap<TypeDefinition, Object> lookup = new HashMap<TypeDefinition, Object>();
 
 		/**
-		 * Constructs a filter that matches all instances relevant to the given
-		 * cell.
+		 * Constructs a filter that matches all instances relevant to the given cell.
 		 * 
 		 * @param typeCell the type cell
 		 */

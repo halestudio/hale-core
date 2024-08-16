@@ -42,8 +42,8 @@ public class DefaultInstanceValidationMessage extends MessageImpl
 	/**
 	 * Create a new instance validation message.
 	 * 
-	 * @param instanceReference the instance reference this message is
-	 *            associated to, may be null
+	 * @param instanceReference the instance reference this message is associated
+	 *            to, may be null
 	 * @param type the type's name
 	 * @param path the path within the type
 	 * @param category the message's category

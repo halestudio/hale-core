@@ -62,8 +62,8 @@ public class Retype extends AbstractTypeTransformation<TransformationEngine>
 				Value.of(false)).as(Boolean.class, false);
 		if (structuralRename) {
 			boolean ignoreNamespaces = getOptionalParameter(
-					RenameFunction.PARAMETER_IGNORE_NAMESPACES, Value.of(false)).as(Boolean.class,
-							false);
+					RenameFunction.PARAMETER_IGNORE_NAMESPACES, Value.of(false))
+					.as(Boolean.class, false);
 			boolean copyGeometries = getOptionalParameter(RenameFunction.PARAMETER_COPY_GEOMETRIES,
 					Value.of(true)).as(Boolean.class);
 			target = doStructuralRename(getSource(), targetType, ignoreNamespaces, copyGeometries,

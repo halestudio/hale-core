@@ -33,9 +33,8 @@ public class IdentityWrapper<T> {
 	/**
 	 * Create a wrapper for the given value.
 	 * 
-	 * @param value the value to wrap, if the value is an
-	 *            {@link IdentityWrapper}, its value will be extracted and used
-	 *            as the value to wrap
+	 * @param value the value to wrap, if the value is an {@link IdentityWrapper},
+	 *            its value will be extracted and used as the value to wrap
 	 */
 	@SuppressWarnings("unchecked")
 	public IdentityWrapper(T value) {

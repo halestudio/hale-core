@@ -35,8 +35,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 @SuppressWarnings("javadoc")
 public class ExtentHelperFunctions {
 
-	private static final Argument GEOMETRIES_ARG_SPEC = new HelperFunctionArgument(
-			"geometries",
+	private static final Argument GEOMETRIES_ARG_SPEC = new HelperFunctionArgument("geometries",
 			"A single or multiple (as a list/iterable) geometries, geometry properties or instances holding a geometry");
 
 	@Nullable
@@ -63,8 +62,10 @@ public class ExtentHelperFunctions {
 	}
 
 	public HelperFunctionSpecification _bbox_spec(String name) {
-		return new HelperFunctionSpecification(MessageFormat.format(
-				"The {0} function calculates the bounding box of the given geometries", name),
+		return new HelperFunctionSpecification(
+				MessageFormat.format(
+						"The {0} function calculates the bounding box of the given geometries",
+						name),
 				"the calculated bounding box (wrapped in a GeometryProperty)", //
 				GEOMETRIES_ARG_SPEC);
 	}

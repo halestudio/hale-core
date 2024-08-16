@@ -62,7 +62,8 @@ public class ReportWriter {
 	 * 
 	 * @throws IOException if IO fails
 	 */
-	public static boolean write(File file, boolean append, Report<?>... reports) throws IOException {
+	public static boolean write(File file, boolean append, Report<?>... reports)
+			throws IOException {
 		return write(file, Lists.newArrayList(reports), append);
 	}
 

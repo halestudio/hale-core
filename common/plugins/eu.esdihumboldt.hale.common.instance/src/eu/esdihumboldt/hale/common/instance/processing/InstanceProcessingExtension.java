@@ -46,11 +46,11 @@ public class InstanceProcessingExtension
 	 * {@link IConfigurationElement}.
 	 */
 	private static class ConfigurationFactory extends
-			AbstractConfigurationFactory<InstanceProcessor>implements InstanceProcessorFactory {
+			AbstractConfigurationFactory<InstanceProcessor> implements InstanceProcessorFactory {
 
 		/**
-		 * Create a {@link FilterDefinition} factory based on the given
-		 * configuration element.
+		 * Create a {@link FilterDefinition} factory based on the given configuration
+		 * element.
 		 * 
 		 * @param conf the configuration element
 		 */
@@ -82,8 +82,8 @@ public class InstanceProcessingExtension
 	/**
 	 * Create the extension
 	 * 
-	 * @param serviceProvider Service provider that will be passed to the
-	 *            created {@link InstanceProcessor}s
+	 * @param serviceProvider Service provider that will be passed to the created
+	 *            {@link InstanceProcessor}s
 	 */
 	public InstanceProcessingExtension(ServiceProvider serviceProvider) {
 		super(ID);

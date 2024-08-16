@@ -110,24 +110,24 @@ public class PatternTest {
 		curve.getConstraint(XmlElements.class).addElement(curveElement);
 
 		// create the segments property for curve
-		TypeDefinition segArray = new DefaultTypeDefinition(new QName(GML_NS,
-				"CurveSegmentArrayPropertyType")); //$NON-NLS-1$
+		TypeDefinition segArray = new DefaultTypeDefinition(
+				new QName(GML_NS, "CurveSegmentArrayPropertyType")); //$NON-NLS-1$
 		new DefaultPropertyDefinition(new QName("segments"), curve, segArray);
 
 		// create the AbstractCurveSegement property for segArray
-		DefaultTypeDefinition absSeg = new DefaultTypeDefinition(new QName(GML_NS,
-				"AbstractCurveSegementType")); //$NON-NLS-1$
+		DefaultTypeDefinition absSeg = new DefaultTypeDefinition(
+				new QName(GML_NS, "AbstractCurveSegementType")); //$NON-NLS-1$
 		absSeg.setConstraint(AbstractFlag.ENABLED);
 		new DefaultPropertyDefinition(new QName("AbstractCurveSegment"), segArray, absSeg);
 
 		// add dummy sub-type
-		DefaultTypeDefinition subtype = new DefaultTypeDefinition(new QName(
-				"somespace", "SomeSegmentType")); //$NON-NLS-1$ //$NON-NLS-2$
+		DefaultTypeDefinition subtype = new DefaultTypeDefinition(
+				new QName("somespace", "SomeSegmentType")); //$NON-NLS-1$ //$NON-NLS-2$
 		subtype.setSuperType(absSeg);
 
 		// create the LineStringSegmentType sub-type
-		DefaultTypeDefinition lineSeg = new DefaultTypeDefinition(new QName(GML_NS,
-				"LineStringSegmentType")); //$NON-NLS-1$
+		DefaultTypeDefinition lineSeg = new DefaultTypeDefinition(
+				new QName(GML_NS, "LineStringSegmentType")); //$NON-NLS-1$
 		lineSeg.setSuperType(absSeg);
 		XmlElement lineSegElement = new XmlElement(new QName(GML_NS, "LineStringSegment"), lineSeg,
 				new QName(GML_NS, "AbstractCurveSegment"));

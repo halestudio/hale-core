@@ -60,8 +60,8 @@ public interface InstanceIndexService {
 	void add(InstanceReference reference, InstanceCollection instances);
 
 	/**
-	 * Add properties whose values will be indexed in a combined key (may be
-	 * single property)
+	 * Add properties whose values will be indexed in a combined key (may be single
+	 * property)
 	 * 
 	 * @param properties Properties to index
 	 */
@@ -84,8 +84,7 @@ public interface InstanceIndexService {
 	void removePropertyMapping(List<PropertyEntityDefinition> properties);
 
 	/**
-	 * Retrieve instance references from the index grouped by the given
-	 * properties.
+	 * Retrieve instance references from the index grouped by the given properties.
 	 * 
 	 * @param typeName Type that contains the properties
 	 * @param properties Properties to group by
@@ -126,8 +125,8 @@ public interface InstanceIndexService {
 	 * 
 	 * @param typeName Type of instances to search
 	 * @param propertyPath Property to search
-	 * @param values Values that the instance must have in the property
-	 *            specified by <code>propertyPath</code>
+	 * @param values Values that the instance must have in the property specified by
+	 *            <code>propertyPath</code>
 	 * @return References to matching instances
 	 */
 	Collection<ResolvableInstanceReference> getInstancesByValue(QName typeName,

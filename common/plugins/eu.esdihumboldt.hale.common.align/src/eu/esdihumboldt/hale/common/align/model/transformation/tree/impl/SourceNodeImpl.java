@@ -177,7 +177,8 @@ public class SourceNodeImpl extends AbstractTransformationNode implements Source
 				}
 				// visit annotated children
 				if (visitor.includeAnnotatedNodes() && getAnnotation(ANNOTATION_CHILDREN) != null) {
-					for (SourceNode child : (Iterable<SourceNode>) getAnnotation(ANNOTATION_CHILDREN)) {
+					for (SourceNode child : (Iterable<SourceNode>) getAnnotation(
+							ANNOTATION_CHILDREN)) {
 						child.accept(visitor);
 					}
 				}

@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.common.codelist.config;
 
+import groovy.xml.DOMBuilder
+import groovy.xml.dom.DOMCategory
+
 import javax.xml.namespace.QName
 
 import org.w3c.dom.Element
@@ -23,8 +26,6 @@ import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
-import groovy.xml.DOMBuilder
-import groovy.xml.dom.DOMCategory
 
 /**
  * Converts {@link CodeListAssociations} configuration from DOM to object and back. 

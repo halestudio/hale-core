@@ -68,8 +68,8 @@ public class ReportSession {
 	@SuppressWarnings("unchecked")
 	public <M extends Message, R extends Report<M>> void addReport(R report) {
 		// get all reports for this messageType
-		Multimap<Class<? extends Report<?>>, Report<?>> reportMap = getReports(report
-				.getMessageType());
+		Multimap<Class<? extends Report<?>>, Report<?>> reportMap = getReports(
+				report.getMessageType());
 
 		// add the report to temporary map
 		reportMap.put((Class<? extends Report<?>>) report.getClass(), report);

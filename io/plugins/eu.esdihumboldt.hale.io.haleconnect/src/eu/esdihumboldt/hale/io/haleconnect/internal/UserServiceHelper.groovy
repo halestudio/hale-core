@@ -15,20 +15,21 @@
 
 package eu.esdihumboldt.hale.io.haleconnect.internal;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.haleconnect.api.user.v1.ApiClient;
-import com.haleconnect.api.user.v1.api.LoginApi;
-import com.haleconnect.api.user.v1.api.OrganisationsApi;
-import com.haleconnect.api.user.v1.api.PermissionsApi;
-import com.haleconnect.api.user.v1.api.UsersApi;
-import com.haleconnect.api.user.v1.model.Credentials;
-
-import eu.esdihumboldt.hale.io.haleconnect.BasePathResolver;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServices;
-import eu.esdihumboldt.hale.io.haleconnect.Owner;
-import eu.esdihumboldt.hale.io.haleconnect.OwnerType;
 import groovy.transform.CompileStatic
+
+import org.apache.commons.lang.StringUtils
+
+import com.haleconnect.api.user.v1.ApiClient
+import com.haleconnect.api.user.v1.api.LoginApi
+import com.haleconnect.api.user.v1.api.OrganisationsApi
+import com.haleconnect.api.user.v1.api.PermissionsApi
+import com.haleconnect.api.user.v1.api.UsersApi
+import com.haleconnect.api.user.v1.model.Credentials
+
+import eu.esdihumboldt.hale.io.haleconnect.BasePathResolver
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServices
+import eu.esdihumboldt.hale.io.haleconnect.Owner
+import eu.esdihumboldt.hale.io.haleconnect.OwnerType
 
 /**
  * Helper class for the user service API

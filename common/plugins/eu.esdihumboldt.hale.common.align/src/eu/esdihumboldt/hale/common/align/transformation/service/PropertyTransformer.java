@@ -40,8 +40,8 @@ public interface PropertyTransformer {
 			Cell typeCell);
 
 	/**
-	 * Join with the property transformer and wait for its completion, e.g. if
-	 * the property transformer executes tasks in worker threads.
+	 * Join with the property transformer and wait for its completion, e.g. if the
+	 * property transformer executes tasks in worker threads.
 	 * 
 	 * @param cancel if still pending transformations should be canceled
 	 */

@@ -15,9 +15,10 @@
 
 package eu.esdihumboldt.hale.app.transform
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.headless.transform.filter.InstanceFilterDefinition
-import groovy.transform.CompileStatic
 
 /**
  * Execution context for the {@link ExecApplication}.

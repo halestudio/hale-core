@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.util.cli.impl
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.util.cli.CLIUtil
 import eu.esdihumboldt.util.cli.Command
 import eu.esdihumboldt.util.cli.CommandContext
 import eu.esdihumboldt.util.cli.bash.BashCompletion
-import groovy.transform.CompileStatic
 
 /**
  * Command that delegates to other commands.
@@ -91,5 +92,4 @@ abstract class DelegatingCommand implements Command {
 			BashCompletion.command('compgen -W "help ' + subCommands.keySet().join(' ') + '" -- ' + args[current])
 		}
 	}
-
 }

@@ -32,8 +32,8 @@ public class NumberValidator extends AbstractValidator {
 	private final BigDecimal value;
 
 	/**
-	 * Construct a validator that checks the value of the input to match the
-	 * given type and value.
+	 * Construct a validator that checks the value of the input to match the given
+	 * type and value.
 	 * 
 	 * @param type the condition to check for
 	 * @param value the value to check for

@@ -42,8 +42,8 @@ import eu.esdihumboldt.util.svg.test.SVGPainter;
 public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
-	 * Prepare a canvas to draw an arc, perform the given draw operation and
-	 * save the drawing.
+	 * Prepare a canvas to draw an arc, perform the given draw operation and save
+	 * the drawing.
 	 * 
 	 * @param arc the arc to draw
 	 * @param draw function that draws on the canvas
@@ -67,8 +67,8 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Prepare a canvas to draw an arc, perform the given draw operation and
-	 * save the drawing.
+	 * Prepare a canvas to draw an arc, perform the given draw operation and save
+	 * the drawing.
 	 * 
 	 * @param arcs the arc string to draw
 	 * @param draw function that draws on the canvas
@@ -104,14 +104,14 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 		svg.setColor(Color.DARK_GRAY);
 //		LineMetrics fontMetrics = svg.getGraphics2D().getFontMetrics().getLineMetrics(name, svg.getGraphics2D());
-		svg.getGraphics2D().setFont(svg.getGraphics2D().getFont()
-				.deriveFont(40.0f)/* .deriveFont(Font.BOLD) */);
+		svg.getGraphics2D().setFont(
+				svg.getGraphics2D().getFont().deriveFont(40.0f)/* .deriveFont(Font.BOLD) */);
 		svg.getGraphics2D().drawString(name, 30, 70);
 	}
 
 	/**
-	 * Draw an arc with markers for the points defining the arc. Saves the
-	 * resulting drawing.
+	 * Draw an arc with markers for the points defining the arc. Saves the resulting
+	 * drawing.
 	 * 
 	 * @param arc the arc to draw
 	 * @throws IOException if saving the drawing fails
@@ -121,8 +121,8 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Draw an arc with markers for the points defining the arc. Saves the
-	 * resulting drawing.
+	 * Draw an arc with markers for the points defining the arc. Saves the resulting
+	 * drawing.
 	 * 
 	 * @param arc the arc to draw
 	 * @param name an optional name for the drawing
@@ -147,8 +147,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Draw an interpolated arc with debug information. Saves the resulting
-	 * drawing.
+	 * Draw an interpolated arc with debug information. Saves the resulting drawing.
 	 * 
 	 * @param arc the arc to draw
 	 * @param gridSize the grid size
@@ -173,8 +172,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Draw an interpolated arc with debug information. Saves the resulting
-	 * drawing.
+	 * Draw an interpolated arc with debug information. Saves the resulting drawing.
 	 * 
 	 * @param arc the arc to draw
 	 * @param interpolated the interpolated geometry
@@ -202,8 +200,8 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Draw an interpolated arc string with debug information. Saves the
-	 * resulting drawing.
+	 * Draw an interpolated arc string with debug information. Saves the resulting
+	 * drawing.
 	 * 
 	 * @param arcs the arc string to draw
 	 * @param gridSize the grid size
@@ -228,8 +226,8 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	}
 
 	/**
-	 * Draw an interpolated arc string with debug information. Saves the
-	 * resulting drawing.
+	 * Draw an interpolated arc string with debug information. Saves the resulting
+	 * drawing.
 	 * 
 	 * @param arcs the arc string to draw
 	 * @param interpolated the interpolated geometry

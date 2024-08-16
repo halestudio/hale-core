@@ -33,8 +33,8 @@ public class DigitCountValidator extends AbstractValidator {
 	private final int length;
 
 	/**
-	 * Construct a validator that checks the digit count of the input to match
-	 * the given type and value.
+	 * Construct a validator that checks the digit count of the input to match the
+	 * given type and value.
 	 * 
 	 * @param type the digits to check for
 	 * @param length the length to check for
@@ -72,8 +72,7 @@ public class DigitCountValidator extends AbstractValidator {
 				if (decimal.scale() > length) {
 					// throws exception if scaling is not possible
 					/*
-					 * FIXME this does not change the original value, so what
-					 * does this achieve?
+					 * FIXME this does not change the original value, so what does this achieve?
 					 */
 					decimal = decimal.setScale(length);
 				}

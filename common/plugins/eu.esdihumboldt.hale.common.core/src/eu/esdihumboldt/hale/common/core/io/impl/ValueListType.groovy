@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl
 
+import groovy.transform.CompileStatic
+
 import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
@@ -25,7 +27,6 @@ import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.ValueList
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
-import groovy.transform.CompileStatic
 
 
 /**

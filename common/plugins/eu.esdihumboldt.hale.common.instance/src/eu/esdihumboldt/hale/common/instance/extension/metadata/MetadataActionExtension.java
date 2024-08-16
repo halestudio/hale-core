@@ -33,8 +33,8 @@ import de.fhg.igd.eclipse.util.extension.FactoryFilter;
  * 
  * @author Sebastian Reinhardt
  */
-public class MetadataActionExtension extends
-		AbstractExtension<MetadataAction, MetadataActionFactory> {
+public class MetadataActionExtension
+		extends AbstractExtension<MetadataAction, MetadataActionFactory> {
 
 	/**
 	 * {@link MetadataAction} factory based on an {@link IConfigurationElement}
@@ -43,8 +43,8 @@ public class MetadataActionExtension extends
 			implements MetadataActionFactory {
 
 		/**
-		 * Create a {@link MetadataAction} factory based on the given
-		 * configuration element
+		 * Create a {@link MetadataAction} factory based on the given configuration
+		 * element
 		 * 
 		 * @param conf the configuration element
 		 */
@@ -146,19 +146,20 @@ public class MetadataActionExtension extends
 	 * @return the list of action factorys
 	 */
 	public List<MetadataActionFactory> getMetadataActions(final String key) {
-		List<MetadataActionFactory> factorys = (getFactories(new FactoryFilter<MetadataAction, MetadataActionFactory>() {
+		List<MetadataActionFactory> factorys = (getFactories(
+				new FactoryFilter<MetadataAction, MetadataActionFactory>() {
 
-			@Override
-			public boolean acceptCollection(
-					ExtensionObjectFactoryCollection<MetadataAction, MetadataActionFactory> collection) {
-				return true;
-			}
+					@Override
+					public boolean acceptCollection(
+							ExtensionObjectFactoryCollection<MetadataAction, MetadataActionFactory> collection) {
+						return true;
+					}
 
-			@Override
-			public boolean acceptFactory(MetadataActionFactory factory) {
-				return factory.getKey().equals(key);
-			}
-		}));
+					@Override
+					public boolean acceptFactory(MetadataActionFactory factory) {
+						return factory.getKey().equals(key);
+					}
+				}));
 		return factorys;
 
 	}

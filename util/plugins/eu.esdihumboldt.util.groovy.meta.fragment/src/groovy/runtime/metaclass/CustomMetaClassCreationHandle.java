@@ -63,8 +63,8 @@ public class CustomMetaClassCreationHandle extends MetaClassCreationHandle {
 	 * Check if a meta class descriptor applies to a given class.
 	 *
 	 * @param descriptor the meta class descriptor
-	 * @param theClass the class for which should be determined if the
-	 *            descriptor applies
+	 * @param theClass the class for which should be determined if the descriptor
+	 *            applies
 	 * @return <code>true</code> if the descriptor applies to the class,
 	 *         <code>false</code> otherwise
 	 */

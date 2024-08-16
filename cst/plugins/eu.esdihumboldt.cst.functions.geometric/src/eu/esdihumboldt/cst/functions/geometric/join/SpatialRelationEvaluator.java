@@ -113,8 +113,8 @@ public interface SpatialRelationEvaluator {
 		 * Returns the {@link StandardRelation} that has the given title.
 		 * 
 		 * @param relation Title of the relation to return
-		 * @return the {@link StandardRelation} with the given title or null if
-		 *         none exists
+		 * @return the {@link StandardRelation} with the given title or null if none
+		 *         exists
 		 */
 		public static StandardRelation valueOfOrNull(String relation) {
 			try {
@@ -140,8 +140,7 @@ public interface SpatialRelationEvaluator {
 	String getDescription();
 
 	/**
-	 * Builds a {@link SpatialRelationEvaluator} for a specific evaluation
-	 * function.
+	 * Builds a {@link SpatialRelationEvaluator} for a specific evaluation function.
 	 * 
 	 * @param description Description of the spatial relation evaluation, e.g.
 	 *            "covers"

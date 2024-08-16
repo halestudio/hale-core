@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.util.groovy.json
 
-import eu.esdihumboldt.util.groovy.builder.BuilderBase
 import groovy.json.JsonOutput
 import groovy.json.StringEscapeUtils
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
+
+import eu.esdihumboldt.util.groovy.builder.BuilderBase
 
 
 /**
@@ -427,5 +428,4 @@ class JsonStreamBuilder extends BuilderBase {
 		// return null instead
 		null
 	}
-
 }

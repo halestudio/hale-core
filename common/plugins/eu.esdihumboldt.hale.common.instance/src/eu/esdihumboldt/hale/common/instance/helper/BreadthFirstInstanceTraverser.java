@@ -16,7 +16,6 @@
 
 package eu.esdihumboldt.hale.common.instance.helper;
 
-
 /**
  * Instance traverser that traverses the model breadth first.
  * 

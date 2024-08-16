@@ -215,11 +215,11 @@ public class IndexMergeHandler
 		MutableInstance result = getInstanceFactory().createInstance(type);
 
 		/*
-		 * FIXME This a first VERY basic implementation, where only the first
-		 * item in each property path is regarded, and that whole tree is added
-		 * only once (from the first instance). XXX This especially will be a
-		 * problem, if a path contains a choice. XXX For more advanced stuff we
-		 * need more advanced test cases.
+		 * FIXME This a first VERY basic implementation, where only the first item in
+		 * each property path is regarded, and that whole tree is added only once (from
+		 * the first instance). XXX This especially will be a problem, if a path
+		 * contains a choice. XXX For more advanced stuff we need more advanced test
+		 * cases.
 		 */
 		Set<QName> rootNames = new HashSet<QName>();
 		Set<QName> nonKeyRootNames = new HashSet<QName>();
@@ -242,8 +242,8 @@ public class IndexMergeHandler
 				for (QName name : instance.getPropertyNames()) {
 					if (rootNames.contains(name)) {
 						/*
-						 * Property is merge key -> only use first occurrence
-						 * (as all entries need to be the same)
+						 * Property is merge key -> only use first occurrence (as all entries need
+						 * to be the same)
 						 * 
 						 * TODO adapt if multiple keys are possible per instance
 						 */
@@ -265,10 +265,9 @@ public class IndexMergeHandler
 						 * 
 						 * Only keep unique values.
 						 * 
-						 * XXX This differs from the traditional behavior in
-						 * that there only the first value would be used, but
-						 * only if all values were equal. That cannot be easily
-						 * checked in an iterative approach.
+						 * XXX This differs from the traditional behavior in that there only the
+						 * first value would be used, but only if all values were equal. That cannot
+						 * be easily checked in an iterative approach.
 						 */
 						addUnique(result, instance, name);
 					}
@@ -306,9 +305,8 @@ public class IndexMergeHandler
 	}
 
 	/**
-	 * Apply instance property values to the merged result instance. Use the
-	 * "first occurrence" strategy that only keeps the values from the first
-	 * instance.
+	 * Apply instance property values to the merged result instance. Use the "first
+	 * occurrence" strategy that only keeps the values from the first instance.
 	 * 
 	 * @param result the result instance
 	 * @param instance the instance to merge with the result
@@ -356,8 +354,8 @@ public class IndexMergeHandler
 	}
 
 	/**
-	 * Apply instance property values to the merged result instance. Use the
-	 * "add values" strategy that keeps all values.
+	 * Apply instance property values to the merged result instance. Use the "add
+	 * values" strategy that keeps all values.
 	 * 
 	 * @param result the result instance
 	 * @param instance the instance to merge with the result

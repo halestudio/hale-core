@@ -79,8 +79,8 @@ public abstract class FilterResourceIteratorAdapter<S, T> implements ResourceIte
 	}
 
 	/**
-	 * Move {@link #preview} to the next non-null converted item if possible,
-	 * update {@link #previewPresent}.
+	 * Move {@link #preview} to the next non-null converted item if possible, update
+	 * {@link #previewPresent}.
 	 */
 	private void update() {
 		if (updatePreview) {

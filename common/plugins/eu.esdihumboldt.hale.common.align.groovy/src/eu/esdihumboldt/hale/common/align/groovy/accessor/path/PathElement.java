@@ -21,8 +21,8 @@ import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
 import eu.esdihumboldt.hale.common.schema.model.Definition;
 
 /**
- * Path element for {@link EntityAccessor}, which is either a type
- * entity definiton which must be the root of a path or a child context.
+ * Path element for {@link EntityAccessor}, which is either a type entity
+ * definiton which must be the root of a path or a child context.
  *
  * @author Simon Templer
  */

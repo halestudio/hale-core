@@ -62,12 +62,11 @@ public class PropertyResolver {
 	private static final ThreadLocal<QueryDefinitionIndex> lastQDI = new ThreadLocal<QueryDefinitionIndex>();
 
 	/**
-	 * Method for retrieving values from instances using a certain path query
-	 * for searching through the instance definitions. Calls methods for
-	 * traversing the definition tree.<br>
+	 * Method for retrieving values from instances using a certain path query for
+	 * searching through the instance definitions. Calls methods for traversing the
+	 * definition tree.<br>
 	 * <br>
-	 * If at the end of the path there is an instance, its value will be
-	 * returned.
+	 * If at the end of the path there is an instance, its value will be returned.
 	 * 
 	 * @param instance the instance
 	 * @param propertyPath the property path
@@ -78,16 +77,16 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Method for retrieving values from instances using a certain path query
-	 * for searching through the instance definitions. Calls methods for
-	 * traversing the definition tree.
+	 * Method for retrieving values from instances using a certain path query for
+	 * searching through the instance definitions. Calls methods for traversing the
+	 * definition tree.
 	 * 
 	 * @param instance the instance
 	 * @param propertyPath the property path
-	 * @param forceValue if this is <code>true</code>, when the object at the
-	 *            end of a path is an instance, its value will be returned
-	 * @return the values or instances contained in the instance matching the
-	 *         given path, may be <code>null</code>
+	 * @param forceValue if this is <code>true</code>, when the object at the end of
+	 *            a path is an instance, its value will be returned
+	 * @return the values or instances contained in the instance matching the given
+	 *         path, may be <code>null</code>
 	 */
 	public static Collection<Object> getValues(Instance instance, String propertyPath,
 			boolean forceValue) {
@@ -237,8 +236,8 @@ public class PropertyResolver {
 
 	/**
 	 * Method for spliting up the path in the given query. The Method splits the
-	 * String when a dot occurs. Are there an URL-parts inside the path, all
-	 * dots inside thos parts are ignored ( checks of "{}" )
+	 * String when a dot occurs. Are there an URL-parts inside the path, all dots
+	 * inside thos parts are ignored ( checks of "{}" )
 	 * 
 	 * @param propertyPath The definitionpath part of the query
 	 * @return An arraylist of split up parts of the path
@@ -320,8 +319,8 @@ public class PropertyResolver {
 		/*
 		 * if (qnames.size() == 1) {
 		 * 
-		 * analyzeSimpleQueryChildDefinition(instance
-		 * .getDefinition().getChildren(), qnames, qdi);
+		 * analyzeSimpleQueryChildDefinition(instance .getDefinition().getChildren(),
+		 * qnames, qdi);
 		 * 
 		 * return !definitioncache.get(qdi).isEmpty(); }
 		 * 
@@ -335,14 +334,13 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Determines of the given Instance contains certain definitions questioned
-	 * by a given stringquery. If the cache allready contains this special path
-	 * of the instance-definition-tree, true will be returned, else the method
-	 * calls the analysismethods for searching of the definition-tree
+	 * Determines of the given Instance contains certain definitions questioned by a
+	 * given stringquery. If the cache allready contains this special path of the
+	 * instance-definition-tree, true will be returned, else the method calls the
+	 * analysismethods for searching of the definition-tree
 	 * 
 	 * @param instance the given instance we are searching in
-	 * @param query the given pathquery we are searching inside the
-	 *            definition-tree
+	 * @param query the given pathquery we are searching inside the definition-tree
 	 * @return true if the path was found, else false
 	 */
 	public static boolean hasProperty(Instance instance, String query) {
@@ -364,8 +362,7 @@ public class PropertyResolver {
 	 * @param typeDef the type definition
 	 * @param dataSet the data set
 	 * @param query the query
-	 * @return a list of all possible paths matching the query (which may be
-	 *         empty)
+	 * @return a list of all possible paths matching the query (which may be empty)
 	 */
 	public static List<List<QName>> getQueryPaths(TypeDefinition typeDef, DataSet dataSet,
 			String query) {
@@ -382,11 +379,11 @@ public class PropertyResolver {
 	 * instance-definition-tree (for example "*" queries) the method writes the
 	 * found paths into the cache
 	 * 
-	 * @param children a list of ChildDefinitions from the root definition of
-	 *            the instance-definition-tree
+	 * @param children a list of ChildDefinitions from the root definition of the
+	 *            instance-definition-tree
 	 * @param path the list of QNames split up from the original querypath
-	 * @param qdi the cacheindex produced from the instance root definition and
-	 *            the querypath
+	 * @param qdi the cacheindex produced from the instance root definition and the
+	 *            querypath
 	 */
 	@SuppressWarnings("unused")
 	private static void analyzeSimpleQueryChildDefinition(
@@ -475,10 +472,10 @@ public class PropertyResolver {
 
 	/**
 	 * this method searches for the indices given from the querypath inside the
-	 * instance-definition-tree but only for one iteration. this is used to
-	 * avoid recursion and is used by the analyzeSpecialQueryChild method. the
-	 * indices must be children in order to their appearance in the path. only
-	 * groups may be between them.
+	 * instance-definition-tree but only for one iteration. this is used to avoid
+	 * recursion and is used by the analyzeSpecialQueryChild method. the indices
+	 * must be children in order to their appearance in the path. only groups may be
+	 * between them.
 	 * 
 	 * @param current the current searched index as a QName
 	 * @param qudi a queue item of the current found index and its definition
@@ -568,14 +565,14 @@ public class PropertyResolver {
 	/**
 	 * this method searches for the indices given from the querypath inside the
 	 * instance-definition-tree the indices must be children in order to their
-	 * appearance in the path. only groups may be between them. the method
-	 * writes the found paths into the cache
+	 * appearance in the path. only groups may be between them. the method writes
+	 * the found paths into the cache
 	 * 
 	 * @param children a list of Childdefinitions from the rootdefinition of the
 	 *            instance-definition-tree
 	 * @param path the list of QNames split up from the original querypath
-	 * @param qdi the cacheindex produced from the instance root definition and
-	 *            the querypath
+	 * @param qdi the cacheindex produced from the instance root definition and the
+	 *            querypath
 	 */
 	private static void analyzeSpecialQueryChildDefinition(
 			Collection<? extends ChildDefinition<?>> children, List<QName> path,
@@ -684,11 +681,11 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Method for easy comparing of two QName objects. The first QName can miss
-	 * the URI part. Then only the local parts getting compared.
+	 * Method for easy comparing of two QName objects. The first QName can miss the
+	 * URI part. Then only the local parts getting compared.
 	 * 
-	 * @param qname1 the QName (usually from the filterquery), which can miss an
-	 *            URI part
+	 * @param qname1 the QName (usually from the filterquery), which can miss an URI
+	 *            part
 	 * @param qname2 the second QName
 	 * @return true, if both are equal or if the first QName doesn't have an URI
 	 *         part and both localparts are equal. Else false...
@@ -715,15 +712,15 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Returns possible fully qualified (with namespace) paths for the given
-	 * String which could not contain all namespaces.<br>
+	 * Returns possible fully qualified (with namespace) paths for the given String
+	 * which could not contain all namespaces.<br>
 	 * The path can be splitted using {@link #getQNamesFromPath(String)}
 	 * 
 	 * @param instance the given instance which should contain the definitions
 	 *            mentioned in the paths
 	 * @param query the pathstring from the filterquery
-	 * @return a list of Strings with possible paths inside the definitions of
-	 *         the instance
+	 * @return a list of Strings with possible paths inside the definitions of the
+	 *         instance
 	 */
 	public static LinkedList<String> getQueryPath(Instance instance, String query) {
 		QueryDefinitionIndex qdi = new QueryDefinitionIndex(instance.getDefinition(),
@@ -739,15 +736,14 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Determines if the last query path was unique. This will only yield a
-	 * reliable result if the last call to
-	 * {@link #hasProperty(Instance, String)} was done from the current thread.
-	 * The information on the last {@link #hasProperty(Instance, String)} call
-	 * will be reset on calling this method.
+	 * Determines if the last query path was unique. This will only yield a reliable
+	 * result if the last call to {@link #hasProperty(Instance, String)} was done
+	 * from the current thread. The information on the last
+	 * {@link #hasProperty(Instance, String)} call will be reset on calling this
+	 * method.
 	 * 
-	 * @return <code>true</code> if the last query path was unique or if there
-	 *         is no information on the last query path, <code>false</code>
-	 *         otherwise
+	 * @return <code>true</code> if the last query path was unique or if there is no
+	 *         information on the last query path, <code>false</code> otherwise
 	 */
 	public static boolean isLastQueryPathUnique() {
 		QueryDefinitionIndex qdi = lastQDI.get();
@@ -764,8 +760,8 @@ public class PropertyResolver {
 	}
 
 	/**
-	 * Clear the definition cache, e.g. when the type definitions may no longer
-	 * be valid.
+	 * Clear the definition cache, e.g. when the type definitions may no longer be
+	 * valid.
 	 * 
 	 * FIXME cache in service instead?
 	 */

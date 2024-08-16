@@ -3,18 +3,19 @@ package eu.esdihumboldt.hale.common.test.docker.config;
 import java.text.MessageFormat;
 import java.time.Duration;
 
-import de.fhg.igd.slf4jplus.ALogger;
-import de.fhg.igd.slf4jplus.ALoggerFactory;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.images.PullPolicy;
 import org.testcontainers.utility.DockerImageName;
 
+import de.fhg.igd.slf4jplus.ALogger;
+import de.fhg.igd.slf4jplus.ALoggerFactory;
+
 /**
  * Docker client abstraction for use in hale tests.
  *
- * Original implementation used Spotify Docker client.
- * Now replaced by using testcontainers, but it is encouraged to instead use testcontainers directly.
+ * Original implementation used Spotify Docker client. Now replaced by using
+ * testcontainers, but it is encouraged to instead use testcontainers directly.
  *
  * @author Sameer Sheikh
  *
@@ -44,12 +45,15 @@ public class HaleDockerClient implements DockerContainer {
 	public void createContainer() {
 		String configuredDocker = dbc.getDockerHost();
 		if (configuredDocker != null) {
-			LOGGER.warn("Setting for docker host ({}) is ignored when using testcontainers, instead configure testcontainers", configuredDocker);
+			LOGGER.warn(
+					"Setting for docker host ({}) is ignored when using testcontainers, instead configure testcontainers",
+					configuredDocker);
 			// see also https://java.testcontainers.org/features/configuration/
 		}
 
 		container = new GenericContainer(DockerImageName.parse(dbc.getImageName()))
-				.withExposedPorts(dbc.getExposedPortList().stream().map(Integer::parseInt).toArray(Integer[]::new))
+				.withExposedPorts(dbc.getExposedPortList().stream().map(Integer::parseInt)
+						.toArray(Integer[]::new))
 				.withCommand(dbc.getCommands().toArray(String[]::new))
 				.withLogConsumer(new Slf4jLogConsumer(LOGGER))
 				.withPrivilegedMode(dbc.isPrivileged())
@@ -81,8 +85,8 @@ public class HaleDockerClient implements DockerContainer {
 	 * @throws InterruptedException interrupted exception
 	 */
 	public void startContainer() throws InterruptedException {
-		LOGGER.info(MessageFormat.format("Preparing container for image {0}...",
-				container.getImage()));
+		LOGGER.info(
+				MessageFormat.format("Preparing container for image {0}...", container.getImage()));
 		container.start();
 		LOGGER.info(MessageFormat.format("Created container with ID {0}, now starting...",
 				container.getContainerId()));
@@ -114,8 +118,7 @@ public class HaleDockerClient implements DockerContainer {
 	}
 
 	/**
-	 * @return the container ID or <code>null</code> if no container was created
-	 *         yet
+	 * @return the container ID or <code>null</code> if no container was created yet
 	 */
 	public String getContainerId() {
 		if (container != null) {

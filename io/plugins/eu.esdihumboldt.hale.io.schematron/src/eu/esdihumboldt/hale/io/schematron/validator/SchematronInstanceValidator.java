@@ -43,8 +43,7 @@ public class SchematronInstanceValidator extends AbstractInstanceValidator
 	public static final String PROVIDER_ID = "eu.esdihumboldt.hale.io.schematron.validator";
 
 	/**
-	 * Set the location of the schematron rules definition to use for
-	 * validation.
+	 * Set the location of the schematron rules definition to use for validation.
 	 * 
 	 * @param location the schematron location
 	 */

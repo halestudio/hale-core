@@ -52,8 +52,8 @@ public class IgnoreOrderFlag extends AbstractFlagConstraint implements TypeConst
 	}
 
 	/**
-	 * Creates a default flag, which is disabled. If possible, instead of
-	 * creating an instance, use {@link #ENABLED} or {@link #DISABLED}.
+	 * Creates a default flag, which is disabled. If possible, instead of creating
+	 * an instance, use {@link #ENABLED} or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

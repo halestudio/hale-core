@@ -25,8 +25,8 @@ import eu.esdihumboldt.hale.common.core.parameter.NamedDefinition;
 public interface ParameterDefinition extends NamedDefinition {
 
 	/**
-	 * Value for {@link #getMaxOccurrence()} that represents an unbounded
-	 * maximum occurrence
+	 * Value for {@link #getMaxOccurrence()} that represents an unbounded maximum
+	 * occurrence
 	 */
 	public static final int UNBOUNDED = -1;
 

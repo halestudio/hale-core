@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy;
 
+import groovy.transform.CompileStatic
+
 import com.google.common.collect.ImmutableList
 
 import eu.esdihumboldt.hale.common.schema.model.Definition
@@ -27,7 +29,6 @@ import eu.esdihumboldt.hale.common.schema.paths.DefinitionResolver
 import eu.esdihumboldt.util.groovy.paths.AbstractAccessor
 import eu.esdihumboldt.util.groovy.paths.Path
 import eu.esdihumboldt.util.groovy.paths.PathImpl
-import groovy.transform.CompileStatic
 
 /**
  * Property accessor for {@link Definition}s.

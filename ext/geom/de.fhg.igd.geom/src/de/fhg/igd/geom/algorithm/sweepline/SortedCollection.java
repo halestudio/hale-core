@@ -244,8 +244,7 @@ public class SortedCollection<E> implements Collection<E> {
 	}
 
 	/**
-	 * Resorts this list (for example, if the comparator changed its internal
-	 * state)
+	 * Resorts this list (for example, if the comparator changed its internal state)
 	 */
 	public void resort() {
 		Collections.sort(_list, _comp);

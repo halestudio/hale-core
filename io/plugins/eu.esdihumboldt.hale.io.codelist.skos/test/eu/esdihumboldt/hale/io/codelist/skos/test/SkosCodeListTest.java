@@ -170,8 +170,8 @@ public class SkosCodeListTest {
 
 	/**
 	 * 
-	 * test read SKOS properties in preferred language, as "de" not available,
-	 * it will load "en" by default
+	 * test read SKOS properties in preferred language, as "de" not available, it
+	 * will load "en" by default
 	 * 
 	 * @throws Exception throws exception if something wrong occurs
 	 */

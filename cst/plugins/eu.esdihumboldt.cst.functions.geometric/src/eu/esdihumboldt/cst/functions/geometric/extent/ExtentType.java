@@ -21,6 +21,7 @@ package eu.esdihumboldt.cst.functions.geometric.extent;
  * @author Simon Templer
  */
 public enum ExtentType {
+
 	/** Bounding box */
 	BBOX(ExtentFunction.PARAM_BOUNDING_BOX), //
 	/** Convex hull */

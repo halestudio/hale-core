@@ -15,12 +15,14 @@
 
 package eu.esdihumboldt.hale.io.html.svg.json
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Test
+import static org.junit.Assert.*
+
+import groovy.json.JsonSlurper
 
 import java.nio.file.Files
 import java.nio.file.Path
 
+import org.junit.Test
 import org.osgi.framework.Version
 
 import eu.esdihumboldt.cst.test.TransformationExample
@@ -32,9 +34,7 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.hale.io.html.svg.mapping.json.JsonMappingExporter
-import groovy.json.JsonSlurper
-
-import static org.junit.Assert.*
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for {@link JsonMappingExporter}.

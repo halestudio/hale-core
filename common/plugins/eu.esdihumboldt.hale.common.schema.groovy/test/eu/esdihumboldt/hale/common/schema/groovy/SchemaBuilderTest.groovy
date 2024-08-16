@@ -15,6 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy
 
+import static org.junit.Assert.*
+
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.Schema
@@ -26,9 +30,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.NillableFlag
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.AbstractFlag
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag
-import org.junit.Test
-
-import static org.junit.Assert.*
 
 
 /**

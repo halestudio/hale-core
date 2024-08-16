@@ -23,6 +23,7 @@ import java.text.MessageFormat;
  * @author Florian Esser
  */
 public enum OwnerType {
+
 	/**
 	 * A user
 	 */

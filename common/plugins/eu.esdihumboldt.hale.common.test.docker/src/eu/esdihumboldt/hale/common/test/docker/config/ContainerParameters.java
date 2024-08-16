@@ -52,8 +52,8 @@ public interface ContainerParameters {
 	String DOCKER_HOST = "dockerHost";
 
 	/**
-	 * A configuration key which has a boolean value whether to start a
-	 * container with privileged mode or not.
+	 * A configuration key which has a boolean value whether to start a container
+	 * with privileged mode or not.
 	 */
 	String IS_PRIVILEGED = "isPrivileged";
 
@@ -123,8 +123,8 @@ public interface ContainerParameters {
 	public boolean getBooleanValue(String key, boolean defaultValue);
 
 	/**
-	 * gets a int value from a config map which maps the config key with the
-	 * config value.
+	 * gets a int value from a config map which maps the config key with the config
+	 * value.
 	 * 
 	 * @param key a config key
 	 * @param defaultValue a default value when no configuration is configured
@@ -133,8 +133,7 @@ public interface ContainerParameters {
 	public int getIntValue(String key, int defaultValue);
 
 	/**
-	 * returns a config which maps configuration key path to a configuration
-	 * value.
+	 * returns a config which maps configuration key path to a configuration value.
 	 * 
 	 * @return a config
 	 */

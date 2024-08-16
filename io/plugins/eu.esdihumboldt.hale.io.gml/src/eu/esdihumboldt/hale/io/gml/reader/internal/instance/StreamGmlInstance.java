@@ -31,8 +31,8 @@ public class StreamGmlInstance extends DefaultInstance implements Identifiable {
 	private final int indexInStream;
 
 	/**
-	 * Copy constructor. Creates an instance based on the properties and values
-	 * of the given instance.
+	 * Copy constructor. Creates an instance based on the properties and values of
+	 * the given instance.
 	 * 
 	 * @param instance the instance to copy
 	 * @param indexInStream the index of the instance in the stream

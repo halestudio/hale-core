@@ -370,10 +370,9 @@ public class Request {
 
 			// socket timeout
 			/*
-			 * Unclear when this setting would apply (doc says for non-blocking
-			 * I/O operations), it does not seem to be applied for requests as
-			 * done in openStream (instead the value in
-			 * RequestConfig.socketTimeout is used)
+			 * Unclear when this setting would apply (doc says for non-blocking I/O
+			 * operations), it does not seem to be applied for requests as done in
+			 * openStream (instead the value in RequestConfig.socketTimeout is used)
 			 */
 			SocketConfig socketconfig = SocketConfig.custom().setSoTimeout(socketTimeout).build();
 			// connection and socket timeout

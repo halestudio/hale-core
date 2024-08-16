@@ -28,15 +28,15 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TypeTransformat
  * 
  * @author Simon Templer
  */
-public class TypeTransformationExtension extends
-		AbstractTransformationExtension<TypeTransformation<?>, TypeTransformationFactory> {
+public class TypeTransformationExtension
+		extends AbstractTransformationExtension<TypeTransformation<?>, TypeTransformationFactory> {
 
 	/**
 	 * Factory for {@link TypeTransformation}s
 	 */
-	public static class TypeTransformationConfiguration extends
-			AbstractTransformationFactory<TypeTransformation<?>> implements
-			TypeTransformationFactory {
+	public static class TypeTransformationConfiguration
+			extends AbstractTransformationFactory<TypeTransformation<?>>
+			implements TypeTransformationFactory {
 
 		/**
 		 * @see AbstractTransformationFactory#AbstractTransformationFactory(IConfigurationElement)

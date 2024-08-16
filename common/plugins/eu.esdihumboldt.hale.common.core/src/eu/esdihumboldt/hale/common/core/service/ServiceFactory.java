@@ -26,8 +26,7 @@ public interface ServiceFactory {
 	 * Create a new instance of a service.
 	 * 
 	 * @param serviceInterface the service interface
-	 * @param serviceLocator the service provider for accessing dependency
-	 *            services
+	 * @param serviceLocator the service provider for accessing dependency services
 	 * @return the new service instance
 	 */
 	public <T> T createService(Class<T> serviceInterface, ServiceProvider serviceLocator);

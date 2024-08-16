@@ -16,13 +16,12 @@
 
 package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 
-import net.jcip.annotations.Immutable;
-
 import com.google.common.base.Preconditions;
 
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractPropertyDecorator;
+import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link PropertyDefinition}s that has a changed parent type

@@ -15,11 +15,11 @@
 
 package eu.esdihumboldt.hale.io.shp
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
+
+import groovy.transform.CompileStatic
 
 import java.nio.file.Files
 import java.nio.file.Path
@@ -56,7 +56,7 @@ import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeInstanceReader
 import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeSchemaReader
 import eu.esdihumboldt.hale.io.shp.writer.ShapefileInstanceWriter
 import eu.esdihumboldt.util.io.IOUtils
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 class ShapefileInstanceWriterTest extends AbstractPlatformTest {
 

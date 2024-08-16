@@ -60,8 +60,7 @@ public class CurveHelper {
 	}
 
 	/**
-	 * Combine the given {@link LineString}s to a curve /
-	 * {@link MultiLineString}.
+	 * Combine the given {@link LineString}s to a curve / {@link MultiLineString}.
 	 * 
 	 * @param lineStrings the line strings
 	 * @param fact a geometry factory
@@ -84,8 +83,8 @@ public class CurveHelper {
 	 * @param lineStrings the line strings
 	 * @param strict if it should be checked if the geometry fulfills the strict
 	 *            requirements of a curve
-	 * @param builder the builder function creating a combination of the
-	 *            individual {@link LineString}s
+	 * @param builder the builder function creating a combination of the individual
+	 *            {@link LineString}s
 	 * @return the combined {@link MultiLineString} or <code>null</code> if the
 	 *         geometry did not meet the requirements of the strict mode
 	 */
@@ -136,13 +135,13 @@ public class CurveHelper {
 	}
 
 	/**
-	 * Combine the given {@link MultiLineString} to a single {@link LineString}
-	 * if possible.
+	 * Combine the given {@link MultiLineString} to a single {@link LineString} if
+	 * possible.
 	 * 
 	 * @param lineStrings the multi line string
 	 * @param fact a geometry factory
-	 * @return the combined {@link LineString} or <code>null</code> if the
-	 *         geometry did not meet the requirements of the strict mode
+	 * @return the combined {@link LineString} or <code>null</code> if the geometry
+	 *         did not meet the requirements of the strict mode
 	 */
 	@Nullable
 	public static LineString combineCurve(MultiLineString lineStrings, GeometryFactory fact) {
@@ -159,8 +158,8 @@ public class CurveHelper {
 	 * 
 	 * @param lineStrings the line strings
 	 * @param fact a geometry factory
-	 * @return the combined {@link LineString} or <code>null</code> if the
-	 *         geometry did not meet the requirements of the strict mode
+	 * @return the combined {@link LineString} or <code>null</code> if the geometry
+	 *         did not meet the requirements of the strict mode
 	 */
 	@Nullable
 	public static LineString combineCurve(List<? extends LineString> lineStrings,

@@ -52,8 +52,8 @@ public interface ObjectDefinition<T> {
 	public T parse(String value);
 
 	/**
-	 * Represent the given object as a definition string, so that it can be used
-	 * to again create an object instance using {@link #parse(String)}.
+	 * Represent the given object as a definition string, so that it can be used to
+	 * again create an object instance using {@link #parse(String)}.
 	 * 
 	 * @param object the object to create a string representation for
 	 * @return the string representation of the object

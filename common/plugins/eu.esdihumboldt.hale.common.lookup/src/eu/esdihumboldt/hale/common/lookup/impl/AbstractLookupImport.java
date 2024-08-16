@@ -26,8 +26,8 @@ import eu.esdihumboldt.hale.common.lookup.LookupTableImport;
  * 
  * @author simon
  */
-public abstract class AbstractLookupImport extends AbstractImportProvider implements
-		LookupTableImport {
+public abstract class AbstractLookupImport extends AbstractImportProvider
+		implements LookupTableImport {
 
 	private String name;
 

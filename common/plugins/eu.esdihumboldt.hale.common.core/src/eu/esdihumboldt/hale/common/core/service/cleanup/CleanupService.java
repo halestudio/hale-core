@@ -31,8 +31,8 @@ import java.io.File;
 public interface CleanupService {
 
 	/**
-	 * Add a cleaner that shall perform a clean up of resources associated with
-	 * the given context.
+	 * Add a cleaner that shall perform a clean up of resources associated with the
+	 * given context.
 	 * 
 	 * @param context the clean up context
 	 * @param cleaner the cleaner performing the clean up
@@ -40,8 +40,8 @@ public interface CleanupService {
 	public void addCleaner(CleanupContext context, Cleanup cleaner);
 
 	/**
-	 * Add temporary files associated with the given context, that should be
-	 * deleted if the context is no longer valid.
+	 * Add temporary files associated with the given context, that should be deleted
+	 * if the context is no longer valid.
 	 * 
 	 * @param context the clean up context
 	 * @param files the temporary files

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
+import org.locationtech.jts.geom.Geometry;
 import org.opengis.geometry.MismatchedDimensionException;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
@@ -12,7 +13,6 @@ import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 
 import com.google.common.collect.ListMultimap;
-import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 import eu.esdihumboldt.hale.common.align.transformation.engine.TransformationEngine;
@@ -98,8 +98,8 @@ public class ReprojectGeometry
 	}
 
 	/**
-	 * Construct a {@link CoordinateReferenceSystem} instance by parsing the
-	 * input string via a {@link CRSDefinitionManager} instance.
+	 * Construct a {@link CoordinateReferenceSystem} instance by parsing the input
+	 * string via a {@link CRSDefinitionManager} instance.
 	 * 
 	 * @param crs string representation of the CRS
 	 * @return the {@link CoordinateReferenceSystem} instance
@@ -121,13 +121,13 @@ public class ReprojectGeometry
 	}
 
 	/**
-	 * Attempt to find a math transform between the specified Coordinate
-	 * Reference Systems.
+	 * Attempt to find a math transform between the specified Coordinate Reference
+	 * Systems.
 	 * <p>
-	 * The method first tries to look up a relevant MathTransform instance from
-	 * the provided {@code context} object; then, if none was found, it creates
-	 * a new one and stores it in the context, to allow its reuse by following
-	 * reproject transformations.
+	 * The method first tries to look up a relevant MathTransform instance from the
+	 * provided {@code context} object; then, if none was found, it creates a new
+	 * one and stores it in the context, to allow its reuse by following reproject
+	 * transformations.
 	 * </p>
 	 * 
 	 * @param sourceCRS The source CRS.
@@ -155,8 +155,8 @@ public class ReprojectGeometry
 	}
 
 	/**
-	 * Attempt to find a math transform between the specified Coordinate
-	 * Reference Systems.
+	 * Attempt to find a math transform between the specified Coordinate Reference
+	 * Systems.
 	 * 
 	 * @param sourceCRS The source CRS.
 	 * @param targetCRS The target CRS.

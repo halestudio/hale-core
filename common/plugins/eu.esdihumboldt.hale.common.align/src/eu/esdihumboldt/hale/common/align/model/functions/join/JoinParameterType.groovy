@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.model.functions.join;
 
+import groovy.xml.dom.DOMCategory
+
 import javax.xml.parsers.DocumentBuilderFactory
 
 import org.w3c.dom.Document
@@ -28,7 +30,6 @@ import eu.esdihumboldt.hale.common.align.model.impl.TypeEntityDefinition
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
 import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.model.TypeIndex
-import groovy.xml.dom.DOMCategory
 
 /**
  * Descriptor for conversion between DOM and JoinParameter.

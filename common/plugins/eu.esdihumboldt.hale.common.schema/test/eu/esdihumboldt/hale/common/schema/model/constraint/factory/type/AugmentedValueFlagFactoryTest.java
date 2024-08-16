@@ -24,8 +24,8 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.factory.Augmente
  * 
  * @author Simon Templer
  */
-public class AugmentedValueFlagFactoryTest extends
-		AbstractFlagConstraintFactoryTest<AugmentedValueFlag> {
+public class AugmentedValueFlagFactoryTest
+		extends AbstractFlagConstraintFactoryTest<AugmentedValueFlag> {
 
 	/**
 	 * Default constructor.

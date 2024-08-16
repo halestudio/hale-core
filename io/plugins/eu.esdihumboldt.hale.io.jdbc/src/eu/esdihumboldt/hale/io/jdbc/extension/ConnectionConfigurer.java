@@ -16,16 +16,17 @@
 
 package eu.esdihumboldt.hale.io.jdbc.extension;
 
-
 /**
  * Interface for extensions configuring a certain connection type.
+ * 
  * @author Simon Templer
  * @param <T> the concrete connection type
  */
 public interface ConnectionConfigurer<T> {
-	
+
 	/**
 	 * Configure a connection after it has been established.
+	 * 
 	 * @param connection the JDBC connection
 	 */
 	public void configureConnection(T connection);

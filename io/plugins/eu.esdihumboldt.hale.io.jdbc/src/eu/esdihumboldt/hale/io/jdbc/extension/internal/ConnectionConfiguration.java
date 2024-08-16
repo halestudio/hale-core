@@ -28,10 +28,11 @@ import eu.esdihumboldt.hale.io.jdbc.extension.ConnectionConfigurer;
 
 /**
  * Applies a {@link ConnectionConfigurer}.
+ * 
  * @author Simon Templer
  */
 public class ConnectionConfiguration implements Identifiable {
-	
+
 	private static final ALogger log = ALoggerFactory.getLogger(ConnectionConfiguration.class);
 
 	private final String elementId;
@@ -39,18 +40,18 @@ public class ConnectionConfiguration implements Identifiable {
 	private final Class<? extends ConnectionConfigurer<?>> configurerClass;
 
 	/**
-	 * Create a connection configuration from a corresponding 
-	 * configuration element.
+	 * Create a connection configuration from a corresponding configuration element.
+	 * 
 	 * @param elementId the identifier
 	 * @param element the configuration element
 	 */
 	@SuppressWarnings("unchecked")
-	public ConnectionConfiguration(String elementId,
-			IConfigurationElement element) {
+	public ConnectionConfiguration(String elementId, IConfigurationElement element) {
 		this.elementId = elementId;
-		
+
 		connectionType = ExtensionUtil.loadClass(element, "type");
-		configurerClass = (Class<? extends ConnectionConfigurer<?>>) ExtensionUtil.loadClass(element, "configurer");
+		configurerClass = (Class<? extends ConnectionConfigurer<?>>) ExtensionUtil
+				.loadClass(element, "configurer");
 	}
 
 	/**
@@ -60,11 +61,11 @@ public class ConnectionConfiguration implements Identifiable {
 	public String getId() {
 		return elementId;
 	}
-	
+
 	/**
-	 * Apply the configuration to a connection. Does nothing
-	 * if the configuration is not applicable for this type of
-	 * connection.
+	 * Apply the configuration to a connection. Does nothing if the configuration is
+	 * not applicable for this type of connection.
+	 * 
 	 * @param connection the database connection
 	 */
 	@SuppressWarnings("unchecked")

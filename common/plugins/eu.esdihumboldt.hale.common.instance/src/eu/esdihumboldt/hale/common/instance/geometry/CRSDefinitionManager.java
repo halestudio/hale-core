@@ -31,8 +31,8 @@ import eu.esdihumboldt.util.definition.AbstractObjectFactory;
  * 
  * @author Simon Templer
  */
-public class CRSDefinitionManager extends
-		AbstractObjectFactory<CRSDefinition, CRSDefinitionFactory<?>> {
+public class CRSDefinitionManager
+		extends AbstractObjectFactory<CRSDefinition, CRSDefinitionFactory<?>> {
 
 	private CRSDefinitionManager() {
 		super();

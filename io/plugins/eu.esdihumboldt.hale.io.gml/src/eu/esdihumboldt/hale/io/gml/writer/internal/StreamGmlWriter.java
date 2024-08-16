@@ -155,14 +155,14 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	private static final ALogger log = ALoggerFactory.getLogger(StreamGmlWriter.class);
 
 	/**
-	 * The parameter name for the flag specifying if a geometry should be
-	 * simplified before writing it, if possible. Defaults to true.
+	 * The parameter name for the flag specifying if a geometry should be simplified
+	 * before writing it, if possible. Defaults to true.
 	 */
 	public static final String PARAM_SIMPLIFY_GEOMETRY = "gml.geometry.simplify";
 
 	/**
-	 * The parameter name for the flag specifying if the output should be
-	 * indented. Defaults to <code>false</code>.
+	 * The parameter name for the flag specifying if the output should be indented.
+	 * Defaults to <code>false</code>.
 	 */
 	public static final String PARAM_PRETTY_PRINT = "xml.pretty";
 
@@ -173,8 +173,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	public static final String PARAM_CONTAINER_ID = "xml.containerId";
 
 	/**
-	 * The parameter name of the flag specifying if nilReason attributes should
-	 * be omitted if an element is not nil.
+	 * The parameter name of the flag specifying if nilReason attributes should be
+	 * omitted if an element is not nil.
 	 */
 	public static final String PARAM_OMIT_NIL_REASON = "xml.notNil.omitNilReason";
 
@@ -185,14 +185,14 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	public static final String PARAM_ADD_CODESPACE = "xml.add.codespace";
 
 	/**
-	 * The name of the parameter specifying how the output of geometry
-	 * coordinates should be formatted.
+	 * The name of the parameter specifying how the output of geometry coordinates
+	 * should be formatted.
 	 */
 	public static final String PARAM_GEOMETRY_FORMAT = "geometry.write.decimalFormat";
 
 	/**
-	 * The name of the parameter specifying how the output of Double values
-	 * should be formatted.
+	 * The name of the parameter specifying how the output of Double values should
+	 * be formatted.
 	 */
 	public static final String PARAM_DECIMAL_FORMAT = "xml.decimalFormat";
 
@@ -212,8 +212,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	public static final String PARAM_PARTITION_BY_EXTENT = "partition.byExtent";
 
 	/**
-	 * Name of the parameter to specify how much instances a tile can hold at
-	 * most before it is split up
+	 * Name of the parameter to specify how much instances a tile can hold at most
+	 * before it is split up
 	 */
 	public static final String PARAM_PARTITION_BY_EXTENT_MAX_NODES = "partition.byExtent.maxInstancesPerTile";
 
@@ -223,14 +223,14 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	public static final String PARAM_PARTITION_BY_EXTENT_MODE = "partition.byExtent.mode";
 
 	/**
-	 * Value for extent partitioning mode to use the bounding box of the dataset
-	 * as the quadtree boundary
+	 * Value for extent partitioning mode to use the bounding box of the dataset as
+	 * the quadtree boundary
 	 */
 	public static final String PARTITION_BY_EXTENT_MODE_DATASET = "dataset";
 
 	/**
-	 * Value for extent partitioning mode to use the world (WGS 84) as the
-	 * quadtree boundary
+	 * Value for extent partitioning mode to use the world (WGS 84) as the quadtree
+	 * boundary
 	 */
 	public static final String PARTITION_BY_EXTENT_MODE_WORLD = "world";
 
@@ -250,8 +250,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	public static final String PARTITION_MODE_CUT = "cut";
 
 	/**
-	 * Value for partitioning mode parameter that keeps related instances
-	 * together.
+	 * Value for partitioning mode parameter that keeps related instances together.
 	 */
 	public static final String PARTITION_MODE_RELATED = "related";
 
@@ -343,8 +342,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Add a schema that should be included for validation. Should be called
-	 * before or in
+	 * Add a schema that should be included for validation. Should be called before
+	 * or in
 	 * {@link #write(InstanceCollection, OutputStream, ProgressIndicator, IOReporter)}
 	 * prior to writing the schema locations, but after {@link #init()}
 	 * 
@@ -511,8 +510,9 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 			};
 
 			final Map<String, URI> keyToTargetMapping = new HashMap<>();
-			keyToRefsMapping.keySet().stream().forEach(k -> keyToTargetMapping.put(k,
-					new File(ExtentPartsHandler.getTargetFilename(k, getTarget().getLocation()))
+			keyToRefsMapping.keySet().stream()
+					.forEach(k -> keyToTargetMapping.put(k, new File(
+							ExtentPartsHandler.getTargetFilename(k, getTarget().getLocation()))
 							.toURI()));
 
 			final ExtentPartsHandler handler = new ExtentPartsHandler(keyToTargetMapping,
@@ -573,7 +573,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 		final Map<TypeDefinition, URI> typeToTargetMapping = new HashMap<>();
 		types.stream().forEach(t -> typeToTargetMapping.put(t, new File(
 				PerTypePartsHandler.getTargetFilename(t.getName(), getTarget().getLocation()))
-						.toURI()));
+				.toURI()));
 		final PerTypePartsHandler handler = new PerTypePartsHandler(typeToTargetMapping,
 				idToTypeMapping);
 		final PerTypeInstanceCollection instancesPerType = PerTypeInstanceCollection
@@ -600,8 +600,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Get the instance collection partitioner based on the provider
-	 * configuration of the partitioning mode.
+	 * Get the instance collection partitioner based on the provider configuration
+	 * of the partitioning mode.
 	 * 
 	 * @param provider the I/O provider
 	 * @param log the log
@@ -628,12 +628,10 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * Write the given {@link InstanceCollection}s to multiple files using the
 	 * configured target as a base file name.<br>
 	 * <br>
-	 * Parts can only be written if the configured target is a URI to a local
-	 * file.
+	 * Parts can only be written if the configured target is a URI to a local file.
 	 * 
 	 * @param instanceCollections the parts to write
-	 * @param handler Handler that provides the parts' file names and an XML
-	 *            writer
+	 * @param handler Handler that provides the parts' file names and an XML writer
 	 * @param progress Progress indicator
 	 * @param reporter the reporter to use for the execution report
 	 * @throws IOException if an I/O operation fails
@@ -850,8 +848,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Create and configure an <code>XMLStreamWriter</code> that writes to the
-	 * given <code>OutputStream</code>
+	 * Create and configure an <code>XMLStreamWriter</code> that writes to the given
+	 * <code>OutputStream</code>
 	 * 
 	 * @param outStream <code>OutputStream</code> to write to
 	 * @param reporter the reporter
@@ -916,8 +914,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Create and setup the type index and the GML namespace (Initializes
-	 * {@link #gmlNs} and {@link #targetIndex}, resets {@link #geometryWriter}
-	 * and {@link #additionalSchemas}).
+	 * {@link #gmlNs} and {@link #targetIndex}, resets {@link #geometryWriter} and
+	 * {@link #additionalSchemas}).
 	 */
 	protected void init() {
 		// reset target index
@@ -1126,8 +1124,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 			}
 
 			/*
-			 * Add schema for container to validation schemas, if the namespace
-			 * differs from the main namespace or additional schemas.
+			 * Add schema for container to validation schemas, if the namespace differs from
+			 * the main namespace or additional schemas.
 			 * 
 			 * Needed for validation based on schemaLocation attribute.
 			 */
@@ -1215,8 +1213,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 					TypeDefinition type = instance.getDefinition();
 
 					/*
-					 * Skip all objects that are no features when writing to a
-					 * GML feature collection.
+					 * Skip all objects that are no features when writing to a GML feature
+					 * collection.
 					 */
 					boolean skip = useFeatureCollection && !GmlWriterUtil.isFeatureType(type);
 					if (skip) {
@@ -1283,8 +1281,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Strip the fragment from a location (as it usually represents line and
-	 * column numbers)
+	 * Strip the fragment from a location (as it usually represents line and column
+	 * numbers)
 	 * 
 	 * @param location the location
 	 * @return the location w/o fragment
@@ -1303,9 +1301,9 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * This method is called after the container element is started and filled
-	 * with needed attributes. The default implementation ensures that a
-	 * mandatory boundedBy of GML 2 FeatureCollection is written.
+	 * This method is called after the container element is started and filled with
+	 * needed attributes. The default implementation ensures that a mandatory
+	 * boundedBy of GML 2 FeatureCollection is written.
 	 * 
 	 * @param writer the XML stream writer
 	 * @param containerDefinition the container type definition
@@ -1329,8 +1327,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Get the for an I/O provider configured target container element, assuming
-	 * the I/O provider uses the {@link #PARAM_ROOT_ELEMENT_NAMESPACE} and
+	 * Get the for an I/O provider configured target container element, assuming the
+	 * I/O provider uses the {@link #PARAM_ROOT_ELEMENT_NAMESPACE} and
 	 * {@value #PARAM_ROOT_ELEMENT_NAME} parameters for this.
 	 * 
 	 * @param provider the I/O provider
@@ -1441,8 +1439,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
-	 * Find a matching attribute for the given member type in the given
-	 * container type
+	 * Find a matching attribute for the given member type in the given container
+	 * type
 	 * 
 	 * @param container the container type
 	 * @param containerName the container element name
@@ -1566,8 +1564,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * @param allowElements if element properties may be written
 	 * @param parentIsNil if the parent property is nil
 	 * @param report the reporter
-	 * @param withinInspireType if the properties are contained within an
-	 *            INSPIRE feature type
+	 * @param withinInspireType if the properties are contained within an INSPIRE
+	 *            feature type
 	 * @param parentIsGmlIdentifier if the parent of the properties is a GML
 	 *            identifier element
 	 * @throws XMLStreamException if writing the properties fails
@@ -1598,13 +1596,12 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * 
 	 * @param parent the parent group
 	 * @param children the child definitions
-	 * @param attributes <code>true</code> if attribute properties shall be
-	 *            written, <code>false</code> if element properties shall be
-	 *            written
+	 * @param attributes <code>true</code> if attribute properties shall be written,
+	 *            <code>false</code> if element properties shall be written
 	 * @param parentIsNil if the parent property is nil
 	 * @param report the reporter
-	 * @param withinInspireType if the properties are contained within an
-	 *            INSPIRE feature type
+	 * @param withinInspireType if the properties are contained within an INSPIRE
+	 *            feature type
 	 * @param parentIsGmlIdentifier if the parent of the properties is a GML
 	 *            identifier element
 	 * @throws XMLStreamException if writing the attributes/elements fails
@@ -1824,8 +1821,8 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 					// possible
 
 					/*
-					 * XXX open question: should xsi:nil be there also if there
-					 * are other attributes than nilReason?
+					 * XXX open question: should xsi:nil be there also if there are other attributes
+					 * than nilReason?
 					 */
 
 					writeElementValue(null, propDef);
@@ -1841,8 +1838,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * 
 	 * @param group the group to test
 	 * @return <code>true</code> if the group has the nilReason attribute and no
-	 *         other children, or no children at all, <code>false</code>
-	 *         otherwise
+	 *         other children, or no children at all, <code>false</code> otherwise
 	 */
 	private boolean hasOnlyNilReason(Group group) {
 		int count = 0;

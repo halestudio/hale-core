@@ -67,8 +67,8 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 
 	/**
 	 * Set the property represented by the group. The property must have been
-	 * created with this group as parent and the {@link Cardinality} constraint
-	 * must have been already set.
+	 * created with this group as parent and the {@link Cardinality} constraint must
+	 * have been already set.
 	 * 
 	 * @param property the property to set
 	 */
@@ -131,8 +131,8 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 	}
 
 	/**
-	 * Collect all sub-types from the given type that may substitute it on
-	 * condition of the given element name.
+	 * Collect all sub-types from the given type that may substitute it on condition
+	 * of the given element name.
 	 * 
 	 * @param elementName the element name
 	 * @param type the type to be substituted
@@ -144,13 +144,12 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 		Queue<TypeDefinition> subTypes = new LinkedList<TypeDefinition>();
 
 		/*
-		 * Add type itself also to list of types to be checked for
-		 * substitutions. (this is needed e.g. in CityGML 0.4.0 schema
-		 * cityObjectMember substituting featureMember) This essentially then is
-		 * only a substitution in name and not in type. XXX if other elements,
-		 * that are in no relation to the type, should also be possible for
-		 * substitution, we would need some kond of substitution index in
-		 * XmlIndex
+		 * Add type itself also to list of types to be checked for substitutions. (this
+		 * is needed e.g. in CityGML 0.4.0 schema cityObjectMember substituting
+		 * featureMember) This essentially then is only a substitution in name and not
+		 * in type. XXX if other elements, that are in no relation to the type, should
+		 * also be possible for substitution, we would need some kond of substitution
+		 * index in XmlIndex
 		 */
 		subTypes.add(type);
 

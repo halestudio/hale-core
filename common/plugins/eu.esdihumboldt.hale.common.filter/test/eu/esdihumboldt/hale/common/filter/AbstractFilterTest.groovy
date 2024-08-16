@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     wetransform GmbH <http://www.wetransform.to>
  */
@@ -20,7 +20,6 @@ import static org.junit.Assert.*
 import java.text.SimpleDateFormat
 
 import org.junit.Before
-
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryFactory
@@ -35,7 +34,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 
 /**
  * Base class for filter tests providing test instances.
- * 
+ *
  * @author Simon Templer
  */
 abstract class AbstractFilterTest {
@@ -55,7 +54,8 @@ abstract class AbstractFilterTest {
 		def lineString = gf.createLineString([
 			new Coordinate(0, 0),
 			new Coordinate(1, 1),
-			new Coordinate(1, 0)] as Coordinate[])
+			new Coordinate(1, 0)
+		] as Coordinate[])
 		def lineGeom = new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), lineString)
 
 		def poly = gf.createPolygon([
@@ -63,7 +63,8 @@ abstract class AbstractFilterTest {
 			new Coordinate(1, 0),
 			new Coordinate(1, 1),
 			new Coordinate(0, 1),
-			new Coordinate(0, 0)] as Coordinate[])
+			new Coordinate(0, 0)
+		] as Coordinate[])
 		def polyGeom = new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), poly)
 
 		def poly2 = gf.createPolygon([
@@ -71,7 +72,8 @@ abstract class AbstractFilterTest {
 			new Coordinate(11, 10),
 			new Coordinate(11, 11),
 			new Coordinate(10, 11),
-			new Coordinate(10, 10)] as Coordinate[])
+			new Coordinate(10, 10)
+		] as Coordinate[])
 		def polyGeom2 = new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), poly2)
 
 		def dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
@@ -134,5 +136,4 @@ abstract class AbstractFilterTest {
 		// build instance
 		max = new InstanceBuilder(types: schema).Person(createMax)
 	}
-
 }

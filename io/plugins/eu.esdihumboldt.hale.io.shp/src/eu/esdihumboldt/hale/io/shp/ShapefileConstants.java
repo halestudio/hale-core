@@ -33,15 +33,15 @@ public interface ShapefileConstants {
 	public static final String SHAPEFILE_NS = "http://www.esdi-humboldt.eu/hale/shp";
 
 	/**
-	 * The shapefile augmentation namespace - types and properties that really
-	 * are not part of the data, but are some kind of augmented information or
-	 * metadata should use this namespace.
+	 * The shapefile augmentation namespace - types and properties that really are
+	 * not part of the data, but are some kind of augmented information or metadata
+	 * should use this namespace.
 	 */
 	public static final String SHAPEFILE_AUGMENT_NS = "http://www.esdi-humboldt.eu/hale/shp/augment";
 
 	/**
-	 * The local name of the augmented property specifying the Shapefile file
-	 * name an instance originated from.
+	 * The local name of the augmented property specifying the Shapefile file name
+	 * an instance originated from.
 	 */
 	public static final String AUGMENTED_PROPERTY_FILENAME = "filename";
 
@@ -51,29 +51,29 @@ public interface ShapefileConstants {
 	public static final String DEFAULT_TYPE_NAME = "Shapefile";
 
 	/**
-	 * Name of the parameter for {@link ShapeInstanceReader} to select the type
-	 * the instances should be associated to. The value is a {@link QName}
-	 * encoded as String.
+	 * Name of the parameter for {@link ShapeInstanceReader} to select the type the
+	 * instances should be associated to. The value is a {@link QName} encoded as
+	 * String.
 	 */
 	public static final String PARAM_TYPENAME = "typename";
 
 	/**
-	 * Name of the parameter for {@link ShapeInstanceReader} to auto detect
-	 * schema types when selecting instances for multiple schemas.
+	 * Name of the parameter for {@link ShapeInstanceReader} to auto detect schema
+	 * types when selecting instances for multiple schemas.
 	 */
 	public static final String PARAM_AUTO_DETECT_SCHEMA_TYPES = "autoDetectSchemaTypes";
 
 	/**
-	 * Name of the parameter for {@link ShapeInstanceReader} to activate
-	 * matching of Shapefile property names to schema property names by checking
-	 * if there is exactly one schema property whose name starts with the
-	 * Shapefile property name.
+	 * Name of the parameter for {@link ShapeInstanceReader} to activate matching of
+	 * Shapefile property names to schema property names by checking if there is
+	 * exactly one schema property whose name starts with the Shapefile property
+	 * name.
 	 */
 	public static final String PARAM_MATCH_SHORT_PROPERTY_NAMES = "matchShortPropertyNames";
 
 	/**
-	 * Constant for the geometry property for the shape files. Used when
-	 * exporting the data to the shape files.
+	 * Constant for the geometry property for the shape files. Used when exporting
+	 * the data to the shape files.
 	 */
 	public static final String THE_GEOM = "the_geom";
 
@@ -81,12 +81,12 @@ public interface ShapefileConstants {
 	 * Constant for the shape file extension.
 	 */
 	public static final String SHP_EXTENSION = ".shp";
-	
+
 	/**
 	 * Constant for the CPG file extension.
 	 */
 	public static final String CPG_EXTENSION = ".cpg";
-	
+
 	/**
 	 * Constant for underscore.
 	 */
@@ -98,8 +98,7 @@ public interface ShapefileConstants {
 	public static final String URL_STRING = "url";
 
 	/**
-	 * Constant used to create default transaction when writing to the shape
-	 * file.
+	 * Constant used to create default transaction when writing to the shape file.
 	 */
 	public static final String CREATE_CONSTANT = "create";
 

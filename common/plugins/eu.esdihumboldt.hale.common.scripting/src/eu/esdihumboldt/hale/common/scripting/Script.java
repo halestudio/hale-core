@@ -49,15 +49,14 @@ public interface Script {
 	 * @param script the script to validate
 	 * @param variables the variables to use
 	 * @param provider the service provider
-	 * @return <code>null</code> if the script validates, an error message
-	 *         otherwise
+	 * @return <code>null</code> if the script validates, an error message otherwise
 	 */
 	public String validate(String script, Iterable<PropertyValue> variables,
 			ServiceProvider provider);
 
 	/**
-	 * Returns the string representation of the given entity definition this
-	 * script is using.
+	 * Returns the string representation of the given entity definition this script
+	 * is using.
 	 * 
 	 * @param entityDefinition the entity definition
 	 * @return the string representation of the entity definition
@@ -72,13 +71,13 @@ public interface Script {
 	public String getId();
 
 	/**
-	 * States if transformation variables should be replaced in the script
-	 * string, before it is passed to evaluation.
+	 * States if transformation variables should be replaced in the script string,
+	 * before it is passed to evaluation.
 	 * 
-	 * @return <code>true</code> if the script expects transformation variables
-	 *         to be already replaced when evaluating it, <code>false</code> if
-	 *         transformation variables are handled by the script or not
-	 *         supported at all
+	 * @return <code>true</code> if the script expects transformation variables to
+	 *         be already replaced when evaluating it, <code>false</code> if
+	 *         transformation variables are handled by the script or not supported
+	 *         at all
 	 */
 	default boolean requiresReplacedTransformationVariables() {
 		return false;

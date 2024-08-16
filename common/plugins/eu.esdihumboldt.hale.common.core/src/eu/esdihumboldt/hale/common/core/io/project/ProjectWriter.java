@@ -37,14 +37,14 @@ public interface ProjectWriter extends ExportProvider {
 	 */
 	public enum ProjectWriterMode {
 		/**
-		 * The project is saved to a target location and the save configuration
-		 * is updated accordingly
+		 * The project is saved to a target location and the save configuration is
+		 * updated accordingly
 		 */
 		SAVE,
 
 		/**
-		 * The project is exported to a target location but the save
-		 * configuration is not updated
+		 * The project is exported to a target location but the save configuration is
+		 * not updated
 		 */
 		EXPORT
 	}
@@ -52,8 +52,8 @@ public interface ProjectWriter extends ExportProvider {
 	/**
 	 * Set the additional project files to write.
 	 * 
-	 * @param projectFiles the project files to write (file name mapped to
-	 *            project file)
+	 * @param projectFiles the project files to write (file name mapped to project
+	 *            file)
 	 */
 	public void setProjectFiles(Map<String, ProjectFile> projectFiles);
 

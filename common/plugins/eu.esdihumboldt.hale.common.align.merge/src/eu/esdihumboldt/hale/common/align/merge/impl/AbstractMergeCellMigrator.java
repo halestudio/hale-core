@@ -103,11 +103,11 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 	 * @param sources the old sources
 	 * @param mergeIndex the merge index
 	 * @param originalCell the original cell
-	 * @param migration the alignment migration (may be useful for cases where
-	 *            only entity replacement needs to be done)
-	 * @param getCellMigrator functions that yields a cell migrator for a
-	 *            function (may be useful for cases where only entity
-	 *            replacement needs to be done)
+	 * @param migration the alignment migration (may be useful for cases where only
+	 *            entity replacement needs to be done)
+	 * @param getCellMigrator functions that yields a cell migrator for a function
+	 *            (may be useful for cases where only entity replacement needs to be
+	 *            done)
 	 * @param log the migration process log
 	 * @return the merged cell or cells
 	 */
@@ -330,8 +330,8 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 	}
 
 	/**
-	 * Apply contexts/conditions from the original source to the source of the
-	 * new mapping cell that replaces it.
+	 * Apply contexts/conditions from the original source to the source of the new
+	 * mapping cell that replaces it.
 	 * 
 	 * @param newCell the cell to adapt
 	 * @param originalSource the original source

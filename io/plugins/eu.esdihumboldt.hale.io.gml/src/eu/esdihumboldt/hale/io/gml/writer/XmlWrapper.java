@@ -30,8 +30,7 @@ public interface XmlWrapper {
 
 	/**
 	 * Configure the stream writer after the initial setup by
-	 * {@link StreamGmlWriter}, but before the document is started to be
-	 * written.
+	 * {@link StreamGmlWriter}, but before the document is started to be written.
 	 * 
 	 * @param writer the stream writer
 	 * @param reporter the reporter to report any messages to
@@ -48,9 +47,8 @@ public interface XmlWrapper {
 	public void startWrap(XMLStreamWriter writer, IOReporter reporter) throws XMLStreamException;
 
 	/**
-	 * End the elements started in
-	 * {@link #startWrap(XMLStreamWriter, IOReporter)} to yield a valid XML
-	 * document.
+	 * End the elements started in {@link #startWrap(XMLStreamWriter, IOReporter)}
+	 * to yield a valid XML document.
 	 * 
 	 * @param writer the stream writer
 	 * @param reporter the reporter to report any messages to

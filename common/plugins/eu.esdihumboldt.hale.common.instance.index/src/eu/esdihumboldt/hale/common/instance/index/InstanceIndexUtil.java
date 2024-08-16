@@ -32,8 +32,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Reference;
 public abstract class InstanceIndexUtil {
 
 	/**
-	 * Test if two collections contain the same elements (independent of
-	 * ordering)
+	 * Test if two collections contain the same elements (independent of ordering)
 	 * 
 	 * @param c1 First collection
 	 * @param c2 Second collection
@@ -48,16 +47,16 @@ public abstract class InstanceIndexUtil {
 	 * 
 	 * @param value the value
 	 * @param property the entity definition the value is associated to
-	 * @return the processed value, possibly wrapped or replaced through a
-	 *         different representation
+	 * @return the processed value, possibly wrapped or replaced through a different
+	 *         representation
 	 */
 	public static Object processValue(Object value, PropertyEntityDefinition property) {
 		// extract the identifier from a reference
 		value = property.getDefinition().getConstraint(Reference.class).extractId(value);
 
 		/*
-		 * This is done so values will be classified as equal even if they are
-		 * of different types, e.g. Long and Integer or Integer and String.
+		 * This is done so values will be classified as equal even if they are of
+		 * different types, e.g. Long and Integer or Integer and String.
 		 */
 
 		/*

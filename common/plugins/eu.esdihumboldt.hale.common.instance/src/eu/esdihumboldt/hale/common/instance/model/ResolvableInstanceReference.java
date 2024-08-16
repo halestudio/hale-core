@@ -44,8 +44,8 @@ public class ResolvableInstanceReference extends InstanceReferenceDecorator
 	/**
 	 * Resolve this instance reference
 	 * 
-	 * @return the reoslved instance or null if the instance reference could not
-	 *         be resolved
+	 * @return the reoslved instance or null if the instance reference could not be
+	 *         resolved
 	 */
 	public Instance resolve() {
 		if (resolver != null) {

@@ -52,8 +52,8 @@ public abstract class AbstractReporter<T extends Message> implements Reporter<T>
 
 	/**
 	 * Create an empty report. It is set to not successful by default. But you
-	 * should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type

@@ -27,8 +27,8 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 public interface PropertyConstraintValidator extends ConstraintValidator {
 
 	/**
-	 * Validate <code>values</code> against <code>constraint</code>. The
-	 * constraint and the values belong to <code>property</code>.
+	 * Validate <code>values</code> against <code>constraint</code>. The constraint
+	 * and the values belong to <code>property</code>.
 	 * 
 	 * @param values the values to validate, may be <code>null</code>
 	 * @param constraint the constraint to validate

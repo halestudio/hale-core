@@ -64,8 +64,8 @@ import org.locationtech.jts.io.WKBReader;
 public class ExtendedWKBReader {
 
 	/**
-	 * Converts a hexadecimal string to a byte array. The hexadecimal digit
-	 * symbols are case-insensitive.
+	 * Converts a hexadecimal string to a byte array. The hexadecimal digit symbols
+	 * are case-insensitive.
 	 * 
 	 * @param hex a string containing hex digits
 	 * @return an array of bytes with the value of the hex string
@@ -329,8 +329,8 @@ public class ExtendedWKBReader {
 	}
 
 	/**
-	 * Reads a coordinate value with the specified dimensionality. Makes the X
-	 * and Y ordinates precise according to the precision model in use.
+	 * Reads a coordinate value with the specified dimensionality. Makes the X and Y
+	 * ordinates precise according to the precision model in use.
 	 * 
 	 * @throws IOException if an error occurs reading the coordinate
 	 */

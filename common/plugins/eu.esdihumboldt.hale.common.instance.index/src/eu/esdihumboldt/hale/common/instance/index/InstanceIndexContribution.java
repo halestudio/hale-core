@@ -30,9 +30,9 @@ import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 public interface InstanceIndexContribution {
 
 	/**
-	 * Provides a collection of groups of properties that need to be included in
-	 * the instance index. Every property group (i.e. the properties grouped
-	 * together in the inner lists) form a combined key in the index.
+	 * Provides a collection of groups of properties that need to be included in the
+	 * instance index. Every property group (i.e. the properties grouped together in
+	 * the inner lists) form a combined key in the index.
 	 * 
 	 * @param cell Cell to analyze
 	 * @return The property groups to be indexed

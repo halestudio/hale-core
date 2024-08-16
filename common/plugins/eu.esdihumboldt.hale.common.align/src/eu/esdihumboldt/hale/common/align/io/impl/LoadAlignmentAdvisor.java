@@ -82,8 +82,8 @@ public class LoadAlignmentAdvisor extends ConfigurationIOAdvisor<AlignmentReader
 	/**
 	 * Get the loaded alignment.
 	 * 
-	 * @return the alignment or <code>null</code> if it was not loaded or
-	 *         loading failed
+	 * @return the alignment or <code>null</code> if it was not loaded or loading
+	 *         failed
 	 */
 	public Alignment getAlignment() {
 		return alignment;

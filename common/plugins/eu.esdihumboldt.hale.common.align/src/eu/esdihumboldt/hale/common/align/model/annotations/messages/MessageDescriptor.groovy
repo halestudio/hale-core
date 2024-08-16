@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.model.annotations.messages;
 
+import groovy.transform.CompileStatic
+
 import java.util.function.Consumer
 
 import javax.xml.parsers.ParserConfigurationException
@@ -28,7 +30,6 @@ import eu.esdihumboldt.hale.common.core.io.Text
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
-import groovy.transform.CompileStatic
 
 /**
  * Annotation descriptor for generic messages attached to cells.

@@ -31,8 +31,8 @@ public class Identifiers<T> extends IdentifiersBase<T> {
 	 * Creates Identifiers with type name prefix
 	 * 
 	 * @param clazz the object type
-	 * @param useEquals if the objects shall be compared using equals instead of
-	 *            the == operator
+	 * @param useEquals if the objects shall be compared using equals instead of the
+	 *            == operator
 	 */
 	public Identifiers(Class<T> clazz, boolean useEquals) {
 		this(clazz.getSimpleName() + "_", useEquals);
@@ -42,8 +42,8 @@ public class Identifiers<T> extends IdentifiersBase<T> {
 	 * Creates Identifiers with the given prefix
 	 * 
 	 * @param prefix the identifier prefix
-	 * @param useEquals if the objects shall be compared using equals instead of
-	 *            the == operator
+	 * @param useEquals if the objects shall be compared using equals instead of the
+	 *            == operator
 	 */
 	public Identifiers(String prefix, boolean useEquals) {
 		this(prefix, useEquals, 0);
@@ -53,8 +53,8 @@ public class Identifiers<T> extends IdentifiersBase<T> {
 	 * Creates Identifiers with the given prefix
 	 * 
 	 * @param prefix the identifier prefix
-	 * @param useEquals if the objects shall be compared using equals instead of
-	 *            the == operator
+	 * @param useEquals if the objects shall be compared using equals instead of the
+	 *            == operator
 	 * @param startCounter number given to first identifier
 	 */
 	public Identifiers(String prefix, boolean useEquals, int startCounter) {

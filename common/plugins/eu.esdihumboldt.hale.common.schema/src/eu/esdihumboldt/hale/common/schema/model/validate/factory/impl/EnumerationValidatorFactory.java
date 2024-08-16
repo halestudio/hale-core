@@ -53,7 +53,8 @@ public class EnumerationValidatorFactory implements ValidatorFactory<Enumeration
 				values.add(str);
 			}
 			else {
-				throw new IllegalStateException("Enumeration value for validator could not be read");
+				throw new IllegalStateException(
+						"Enumeration value for validator could not be read");
 			}
 		}
 

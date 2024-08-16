@@ -30,8 +30,8 @@ import java.util.Iterator;
 public interface ResourceIterator<T> extends Iterator<T>, Closeable {
 
 	/**
-	 * Dispose the iterator. After calling this method {@link #next()} may not
-	 * be called.
+	 * Dispose the iterator. After calling this method {@link #next()} may not be
+	 * called.
 	 */
 	@Override
 	public void close();

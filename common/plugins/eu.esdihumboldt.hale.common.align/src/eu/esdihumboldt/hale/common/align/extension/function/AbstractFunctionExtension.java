@@ -36,8 +36,8 @@ import de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractFunctionExtension<T extends AbstractFunction<?>> extends
-		IdentifiableExtension<T> {
+public abstract class AbstractFunctionExtension<T extends AbstractFunction<?>>
+		extends IdentifiableExtension<T> {
 
 	private SetMultimap<String, T> categoryFunctions;
 
@@ -51,8 +51,8 @@ public abstract class AbstractFunctionExtension<T extends AbstractFunction<?>> e
 	}
 
 	/**
-	 * Calls {@link #doCreate(String, IConfigurationElement)} to create an
-	 * object for the given configuration element.
+	 * Calls {@link #doCreate(String, IConfigurationElement)} to create an object
+	 * for the given configuration element.
 	 * 
 	 * @see IdentifiableExtension#create(String, IConfigurationElement)
 	 */

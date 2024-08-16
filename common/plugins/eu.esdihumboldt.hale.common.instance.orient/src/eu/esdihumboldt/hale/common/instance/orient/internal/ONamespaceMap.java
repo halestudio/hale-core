@@ -67,9 +67,8 @@ public abstract class ONamespaceMap {
 	}
 
 	/**
-	 * Determine the original namespace of the given qualified name with a
-	 * namespace previously mapped with {@link #map(QName)} and return the
-	 * original name.
+	 * Determine the original namespace of the given qualified name with a namespace
+	 * previously mapped with {@link #map(QName)} and return the original name.
 	 * 
 	 * @param mapped the adapted qualified name
 	 * @return the original qualified name

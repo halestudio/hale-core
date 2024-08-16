@@ -44,11 +44,10 @@ public class PerTypeInstanceCollection extends MultiInstanceCollection
 	private final Map<TypeDefinition, InstanceCollection> collections;
 
 	/**
-	 * Create an instance collection consisting of the given instance
-	 * collections.
+	 * Create an instance collection consisting of the given instance collections.
 	 * 
-	 * @param collections the instance collections mapped to the type associated
-	 *            to the instances they contain
+	 * @param collections the instance collections mapped to the type associated to
+	 *            the instances they contain
 	 */
 	public PerTypeInstanceCollection(Map<TypeDefinition, InstanceCollection> collections) {
 		super(new ArrayList<>(collections.values()));

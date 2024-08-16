@@ -21,8 +21,8 @@ public interface GroovyService {
 	public interface ResultProcessor<T> {
 
 		/**
-		 * Process the script result. It is important that any closures created
-		 * in the script are executed within the processor.
+		 * Process the script result. It is important that any closures created in the
+		 * script are executed within the processor.
 		 * 
 		 * @param script the script
 		 * @param returnValue the script return value

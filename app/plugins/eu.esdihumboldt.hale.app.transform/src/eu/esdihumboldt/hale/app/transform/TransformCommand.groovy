@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.app.transform
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.app.ApplicationUtil
 import eu.esdihumboldt.util.cli.Command
 import eu.esdihumboldt.util.cli.CommandContext
-import groovy.transform.CompileStatic
 
 @CompileStatic
 class TransformCommand implements Command {
@@ -44,5 +45,4 @@ class TransformCommand implements Command {
 	}
 
 	final String shortDescription = 'Run a transformation based on a hale project'
-
 }

@@ -33,9 +33,8 @@ public class ConfigurationIOAdvisor<T extends IOProvider> extends AbstractIOAdvi
 	private IOConfiguration conf;
 
 	/**
-	 * Create an I/O advisor based on I/O configurations that have to be set
-	 * using {@link #setConfiguration(IOConfiguration)} before using the
-	 * advisor.
+	 * Create an I/O advisor based on I/O configurations that have to be set using
+	 * {@link #setConfiguration(IOConfiguration)} before using the advisor.
 	 */
 	public ConfigurationIOAdvisor() {
 		super();

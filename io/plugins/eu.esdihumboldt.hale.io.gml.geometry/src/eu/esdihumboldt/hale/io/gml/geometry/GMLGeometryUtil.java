@@ -29,11 +29,11 @@ import java.util.Locale;
 
 import javax.xml.namespace.QName;
 
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Geometry;
 import org.springframework.core.convert.ConversionException;
 
 import com.google.common.base.Splitter;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.Geometry;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -218,8 +218,8 @@ public abstract class GMLGeometryUtil {
 	 * @param directPosition the direct position instance
 	 * @return the coordinate or <code>null</code> if the instance contains not
 	 *         direct position
-	 * @throws GeometryNotSupportedException if no valid coordinate could be
-	 *             created from the direct position
+	 * @throws GeometryNotSupportedException if no valid coordinate could be created
+	 *             from the direct position
 	 */
 	public static Coordinate parseDirectPosition(Instance directPosition)
 			throws GeometryNotSupportedException {
@@ -256,8 +256,8 @@ public abstract class GMLGeometryUtil {
 	 * @param srsDimension the Dimension of the instance
 	 * @return the array of the coordinates or <code>null</code> if the instance
 	 *         contains not a PosList
-	 * @throws GeometryNotSupportedException if no valid coordinate could be
-	 *             created from the PosList
+	 * @throws GeometryNotSupportedException if no valid coordinate could be created
+	 *             from the PosList
 	 */
 	public static Coordinate[] parsePosList(Instance posList, int srsDimension)
 			throws GeometryNotSupportedException {
@@ -272,14 +272,13 @@ public abstract class GMLGeometryUtil {
 				List<Double> values = ConversionUtil.getAsList(value, Double.class, true);
 
 				/*
-				 * Filter null values that may have been created because of
-				 * whitespace, e.g. at the end or beginning of the list.
+				 * Filter null values that may have been created because of whitespace, e.g. at
+				 * the end or beginning of the list.
 				 * 
-				 * XXX An alternative would be trimming the list string before
-				 * splitting it (in SimpleTypeUtil.convertFromXml), though I am
-				 * not sure what the behavior actually should be according to
-				 * XML Schema (is whitespace at the beginning/end just ignored
-				 * or not?)
+				 * XXX An alternative would be trimming the list string before splitting it (in
+				 * SimpleTypeUtil.convertFromXml), though I am not sure what the behavior
+				 * actually should be according to XML Schema (is whitespace at the
+				 * beginning/end just ignored or not?)
 				 */
 				values.removeAll(Collections.singleton(null));
 
@@ -333,8 +332,7 @@ public abstract class GMLGeometryUtil {
 	 * 
 	 * @param instance the coord instance
 	 * @return the coordinate
-	 * @throws GeometryNotSupportedException if a valid coordinate can't be
-	 *             created
+	 * @throws GeometryNotSupportedException if a valid coordinate can't be created
 	 */
 	public static Coordinate parseCoord(Instance instance) throws GeometryNotSupportedException {
 		double x = Double.NaN;
@@ -362,12 +360,11 @@ public abstract class GMLGeometryUtil {
 	}
 
 	/**
-	 * Find the CRS definition to be associated with the geometry contained in
-	 * the given instance.
+	 * Find the CRS definition to be associated with the geometry contained in the
+	 * given instance.
 	 * 
 	 * @param instance the given instance
-	 * @return the CRS definition or <code>null</code> if none could be
-	 *         identified
+	 * @return the CRS definition or <code>null</code> if none could be identified
 	 */
 	public static CRSDefinition findCRS(Instance instance) {
 		BreadthFirstInstanceTraverser traverser = new BreadthFirstInstanceTraverser();

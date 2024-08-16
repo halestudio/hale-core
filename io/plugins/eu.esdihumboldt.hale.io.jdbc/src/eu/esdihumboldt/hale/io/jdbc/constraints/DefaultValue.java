@@ -26,6 +26,7 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
  */
 @Constraint(mutable = false)
 public class DefaultValue implements PropertyConstraint {
+
 	private static final Object NO_DEFAULT = new Object();
 
 	private final Object value;
@@ -47,9 +48,9 @@ public class DefaultValue implements PropertyConstraint {
 	}
 
 	/**
-	 * Returns the set default value. If no default value was set,
-	 * <code>null</code> will be returned. Use {@link #isSet()} to
-	 * differentiate between <code>null</code> as default value.
+	 * Returns the set default value. If no default value was set, <code>null</code>
+	 * will be returned. Use {@link #isSet()} to differentiate between
+	 * <code>null</code> as default value.
 	 *
 	 * @return the set default value, or <code>null</code> if none was set
 	 */

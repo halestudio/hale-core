@@ -39,8 +39,8 @@ import eu.esdihumboldt.hale.common.core.io.impl.DefaultResourceAdvisor;
  * 
  * @author Simon Templer
  */
-public class ResourceAdvisorExtension extends
-		AbstractExtension<ResourceAdvisor, ResourceAdvisorDescriptor> {
+public class ResourceAdvisorExtension
+		extends AbstractExtension<ResourceAdvisor, ResourceAdvisorDescriptor> {
 
 	/**
 	 * {@link ResourceAdvisor} factory based on a {@link IConfigurationElement}
@@ -95,8 +95,8 @@ public class ResourceAdvisorExtension extends
 						result.add(ct);
 					}
 					else {
-						log.error(MessageFormat.format(
-								"Content type with ID {0} not known by the platform", id));
+						log.error(MessageFormat
+								.format("Content type with ID {0} not known by the platform", id));
 					}
 				}
 

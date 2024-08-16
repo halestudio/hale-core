@@ -56,8 +56,7 @@ public class MergeSchemas {
 	}
 
 	/**
-	 * Namespace to use for combined schemas if no common namespace is
-	 * available.
+	 * Namespace to use for combined schemas if no common namespace is available.
 	 */
 	public static final String DEFAULT_COMBINED_NAMESPACE = HaleSchemaConstants.NS + "/combine";
 
@@ -65,9 +64,9 @@ public class MergeSchemas {
 	 * Merge the given schemas to a single schema.
 	 * 
 	 * @param schemas the schemas to merge
-	 * @param mergeAll <code>true</code> if all schemas should be merged
-	 *            independent of the namespace, <code>false</code> if only those
-	 *            with the same namespace should be merged
+	 * @param mergeAll <code>true</code> if all schemas should be merged independent
+	 *            of the namespace, <code>false</code> if only those with the same
+	 *            namespace should be merged
 	 * @return the merged schemas
 	 */
 	public static Iterable<? extends Schema> merge(Iterable<? extends Schema> schemas,

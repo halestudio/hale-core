@@ -57,13 +57,13 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 	 * Create a scavenger instance. Subclass constructors should call
 	 * {@link #triggerScan()} after to initialize the scavenger.
 	 * 
-	 * @param scavengeLocation the location to scan, if the location does not
-	 *            exist or is not accessible, a default location inside the
-	 *            platform instance location is used
+	 * @param scavengeLocation the location to scan, if the location does not exist
+	 *            or is not accessible, a default location inside the platform
+	 *            instance location is used
 	 * @param instanceLocPath the instance location sub-path to use if the
 	 *            scavengeLocation is invalid or <code>null</code>, may be
-	 *            <code>null</code> if the platform instance location should not
-	 *            be used as fall-back
+	 *            <code>null</code> if the platform instance location should not be
+	 *            used as fall-back
 	 */
 	public AbstractResourceScavenger(File scavengeLocation, String instanceLocPath) {
 		if (scavengeLocation == null || !scavengeLocation.exists() && instanceLocPath != null) {
@@ -174,8 +174,8 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 	}
 
 	/**
-	 * Called when a resource has been added, either when adding the resource on
-	 * the first scan or if it was added afterwards.
+	 * Called when a resource has been added, either when adding the resource on the
+	 * first scan or if it was added afterwards.
 	 * 
 	 * @param reference the resource reference
 	 * @param resourceId the resource identifier
@@ -202,8 +202,8 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 	 * Load a resource reference.
 	 * 
 	 * @param resourceFolder the resource folder
-	 * @param resourceFileName the name of the resource file in that folder, may
-	 *            be <code>null</code> if unknown
+	 * @param resourceFileName the name of the resource file in that folder, may be
+	 *            <code>null</code> if unknown
 	 * @param resourceId the resource identifier
 	 * @return the resource reference
 	 * @throws IOException if the resource cannot be accessed or loaded

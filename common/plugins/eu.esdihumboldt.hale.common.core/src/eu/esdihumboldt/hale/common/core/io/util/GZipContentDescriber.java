@@ -51,11 +51,10 @@ public class GZipContentDescriber implements IContentDescriber, IExecutableExten
 	}
 
 	/**
-	 * Constructor using an internal content describer for the uncompressed
-	 * content.
+	 * Constructor using an internal content describer for the uncompressed content.
 	 * 
-	 * @param internalContentDescriber the content describer for the
-	 *            uncompressed content
+	 * @param internalContentDescriber the content describer for the uncompressed
+	 *            content
 	 */
 	public GZipContentDescriber(IContentDescriber internalContentDescriber) {
 		super();
@@ -106,8 +105,8 @@ public class GZipContentDescriber implements IContentDescriber, IExecutableExten
 	 * Determines if the given content type is a GZip content type.
 	 * 
 	 * @param contentType the content type
-	 * @return <code>true</code> if the content type is the GZip content type or
-	 *         it extends the GZip content type
+	 * @return <code>true</code> if the content type is the GZip content type or it
+	 *         extends the GZip content type
 	 */
 	public static boolean isGZipContentType(IContentType contentType) {
 		if (contentType == null) {
@@ -126,8 +125,8 @@ public class GZipContentDescriber implements IContentDescriber, IExecutableExten
 	 *      String, Object)
 	 */
 	@Override
-	public void setInitializationData(IConfigurationElement config, String propertyName, Object data)
-			throws CoreException {
+	public void setInitializationData(IConfigurationElement config, String propertyName,
+			Object data) throws CoreException {
 		if (internalContentDescriber instanceof IExecutableExtension) {
 			// forward initialization data for internal configuration
 			((IExecutableExtension) internalContentDescriber).setInitializationData(config,

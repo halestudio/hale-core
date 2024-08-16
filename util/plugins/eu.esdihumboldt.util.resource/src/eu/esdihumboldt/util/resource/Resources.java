@@ -46,8 +46,8 @@ public abstract class Resources implements ResourcesConstants {
 	 * @param uri the URI to the resource
 	 * @param resourceType the resource type, <code>null</code> for any resource
 	 *            type
-	 * @return an input supplier for the resource or <code>null</code> if it was
-	 *         not found through resource resolvers
+	 * @return an input supplier for the resource or <code>null</code> if it was not
+	 *         found through resource resolvers
 	 */
 	public static final InputSupplier<? extends InputStream> tryResolve(URI uri,
 			String resourceType) {

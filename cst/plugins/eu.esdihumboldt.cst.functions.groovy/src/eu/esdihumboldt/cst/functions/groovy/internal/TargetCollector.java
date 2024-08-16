@@ -120,15 +120,15 @@ public class TargetCollector {
 	}
 
 	/**
-	 * Transforms the closures added to this collector to a {@link MultiValue}
-	 * using the supplied builder.
+	 * Transforms the closures added to this collector to a {@link MultiValue} using
+	 * the supplied builder.
 	 * 
 	 * @param builder the instance builder for creating target instances
 	 * @param type the type of the instance to create
 	 * @param log the log
 	 * @return a result value for all closures added to this collector
-	 * @throws TransformationException if some of the collected targets do not
-	 *             match the specified type
+	 * @throws TransformationException if some of the collected targets do not match
+	 *             the specified type
 	 */
 	public MultiValue toMultiValue(InstanceBuilder builder, TypeDefinition type, SimpleLog log)
 			throws TransformationException {

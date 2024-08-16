@@ -222,17 +222,17 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	}
 
 	/**
-	 * Determine the type out of the the mapping relevant types in the given
-	 * type index, that matches the given data type best.
+	 * Determine the type out of the the mapping relevant types in the given type
+	 * index, that matches the given data type best.
 	 * 
 	 * @param types the type index
 	 * @param dataType the Shapefile data type
 	 * @param preferredName the name of the preferred type
-	 * @param allowNonShapefileTypes if types should be considered that don't
-	 *            follow the conventions of the ShapeSchemaReader
-	 * @return the most compatible type found together with is compatibility
-	 *         rating or <code>null</code> if there is no type that at least has
-	 *         one matching property
+	 * @param allowNonShapefileTypes if types should be considered that don't follow
+	 *            the conventions of the ShapeSchemaReader
+	 * @return the most compatible type found together with is compatibility rating
+	 *         or <code>null</code> if there is no type that at least has one
+	 *         matching property
 	 * 
 	 * @see #checkCompatibility(TypeDefinition, TypeDefinition, boolean)
 	 */
@@ -301,11 +301,11 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	 * 
 	 * @param schemaType the type to test for compatibility
 	 * @param dataType the type representing the data to read
-	 * @param allowNonShapefileProperties if properties should be considered
-	 *            that don't follow the conventions of the ShapeSchemaReader
+	 * @param allowNonShapefileProperties if properties should be considered that
+	 *            don't follow the conventions of the ShapeSchemaReader
 	 * @return the percentage of compatibility (value from <code>0</code> to
-	 *         <code>100</code>), where <code>100</code> represents an exact
-	 *         match and <code>0</code> no compatibility
+	 *         <code>100</code>), where <code>100</code> represents an exact match
+	 *         and <code>0</code> no compatibility
 	 */
 	public static int checkCompatibility(TypeDefinition schemaType, TypeDefinition dataType,
 			boolean allowNonShapefileProperties) {
@@ -347,8 +347,8 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	 * 
 	 * @param schemaType the schema type.
 	 * @param propertyName the property name
-	 * @param allowNonShapefileProperties if properties should be considered
-	 *            even if the namespace does not match
+	 * @param allowNonShapefileProperties if properties should be considered even if
+	 *            the namespace does not match
 	 * @return the child that was found or <code>null</code>
 	 */
 	private static ChildDefinition<?> getChild(TypeDefinition schemaType, QName propertyName,

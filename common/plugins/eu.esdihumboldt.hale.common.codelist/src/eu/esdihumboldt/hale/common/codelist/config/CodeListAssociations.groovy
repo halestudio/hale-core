@@ -15,8 +15,8 @@
 
 package eu.esdihumboldt.hale.common.codelist.config;
 
-import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
-import eu.esdihumboldt.hale.common.codelist.CodeList;
+import eu.esdihumboldt.hale.common.align.model.EntityDefinition
+import eu.esdihumboldt.hale.common.codelist.CodeList
 
 /**
  * Configuration object holding code list associations.

@@ -77,8 +77,8 @@ public class ValueListTypeTest {
 	}
 
 	/**
-	 * Test if a simple list containing only {@link StringValue}s is the same
-	 * when converted to DOM and back again.
+	 * Test if a simple list containing only {@link StringValue}s is the same when
+	 * converted to DOM and back again.
 	 */
 	@Test
 	public void testStringValueList() {
@@ -104,8 +104,8 @@ public class ValueListTypeTest {
 	}
 
 	/**
-	 * Test if a simple list containing only {@link StringValue}s is the same
-	 * when converted to JSON and back again.
+	 * Test if a simple list containing only {@link StringValue}s is the same when
+	 * converted to JSON and back again.
 	 *
 	 * @throws Exception if an error occurs
 	 */

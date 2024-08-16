@@ -60,8 +60,8 @@ public class CityGMLInstanceWriter extends GmlInstanceWriter implements CityGMLC
 			}
 		}
 
-		throw new IllegalStateException(MessageFormat.format(
-				"Element {0} not found in the schema.", CITY_MODEL_ELEMENT));
+		throw new IllegalStateException(
+				MessageFormat.format("Element {0} not found in the schema.", CITY_MODEL_ELEMENT));
 	}
 
 	/**
@@ -85,8 +85,8 @@ public class CityGMLInstanceWriter extends GmlInstanceWriter implements CityGMLC
 				}
 
 				if (firstProperty != null
-						&& firstProperty.getName().getLocalPart()
-								.equals(CITY_OBJECT_MEMBER_ELEMENT) && type.equals(memberType)) {
+						&& firstProperty.getName().getLocalPart().equals(CITY_OBJECT_MEMBER_ELEMENT)
+						&& type.equals(memberType)) {
 					return path;
 				}
 

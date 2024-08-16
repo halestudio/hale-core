@@ -53,15 +53,13 @@ public class PoolingHttpClientConnectionManagerMetrics extends Collector
 	 */
 
 	/**
-	 * Install a metric collector for a
-	 * {@link PoolingHttpClientConnectionManager}.
+	 * Install a metric collector for a {@link PoolingHttpClientConnectionManager}.
 	 * 
 	 * @param connectionManager the connection manager
 	 * @param clientName the client name the metrics should be labeled with
-	 * @param enablePerHostMetrics if metrics that include information on routes
-	 *            per individual host should be collected
-	 * @param service the service for registering with the
-	 *            {@link CollectorRegistry}
+	 * @param enablePerHostMetrics if metrics that include information on routes per
+	 *            individual host should be collected
+	 * @param service the service for registering with the {@link CollectorRegistry}
 	 */
 	public static void install(PoolingHttpClientConnectionManager connectionManager,
 			String clientName, boolean enablePerHostMetrics, CollectorRegistryService service) {
@@ -120,13 +118,12 @@ public class PoolingHttpClientConnectionManagerMetrics extends Collector
 	private final List<String> clientNameAndLeased;
 
 	/**
-	 * Create a metric collector for a
-	 * {@link PoolingHttpClientConnectionManager}.
+	 * Create a metric collector for a {@link PoolingHttpClientConnectionManager}.
 	 * 
 	 * @param connectionManager the connection manager
 	 * @param clientName the client name the metrics should be labeled with
-	 * @param enablePerHostMetrics if metrics that include information on routes
-	 *            per individual host should be collected
+	 * @param enablePerHostMetrics if metrics that include information on routes per
+	 *            individual host should be collected
 	 */
 	public PoolingHttpClientConnectionManagerMetrics(
 			PoolingHttpClientConnectionManager connectionManager, String clientName,

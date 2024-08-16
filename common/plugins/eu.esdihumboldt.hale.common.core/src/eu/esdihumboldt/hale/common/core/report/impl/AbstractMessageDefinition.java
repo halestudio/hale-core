@@ -132,9 +132,8 @@ public abstract class AbstractMessageDefinition<T extends Message> implements Me
 	}
 
 	/**
-	 * Get a {@link Properties} representation of the given message that can be
-	 * used to create a new message instance using
-	 * {@link #createMessage(Properties)}.
+	 * Get a {@link Properties} representation of the given message that can be used
+	 * to create a new message instance using {@link #createMessage(Properties)}.
 	 * 
 	 * @param message the message
 	 * @return the properties representing the message

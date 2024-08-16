@@ -68,11 +68,11 @@ public class XLSLookupTableReader extends AbstractLookupImport {
 
 		int keyColumn = getParameter(LookupTableExportConstants.LOOKUP_KEY_COLUMN)
 				.as(Integer.class);
-		int valueColumn = getParameter(LookupTableExportConstants.LOOKUP_VALUE_COLUMN).as(
-				Integer.class);
+		int valueColumn = getParameter(LookupTableExportConstants.LOOKUP_VALUE_COLUMN)
+				.as(Integer.class);
 
-		boolean skipFirst = getParameter(LookupTableExportConstants.PARAM_SKIP_FIRST_LINE).as(
-				Boolean.class);
+		boolean skipFirst = getParameter(LookupTableExportConstants.PARAM_SKIP_FIRST_LINE)
+				.as(Boolean.class);
 
 		boolean ignoreEmptyStrings = getParameter(
 				LookupTableExportConstants.PARAM_IGNORE_EMPTY_STRING).as(Boolean.class);
@@ -96,7 +96,8 @@ public class XLSLookupTableReader extends AbstractLookupImport {
 		Map<Value, Value> map = reader.read(workbook, skipFirst, keyColumn, valueColumn,
 				ignoreEmptyStrings);
 
-		lookupTable = new LookupTableInfoImpl(new LookupTableImpl(map), getName(), getDescription());
+		lookupTable = new LookupTableInfoImpl(new LookupTableImpl(map), getName(),
+				getDescription());
 
 		reporter.setSuccess(true);
 		return reporter;

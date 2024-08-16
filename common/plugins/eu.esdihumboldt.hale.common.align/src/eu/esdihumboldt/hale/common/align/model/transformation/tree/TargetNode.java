@@ -29,14 +29,14 @@ import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
 public interface TargetNode extends GroupNode {
 
 	/**
-	 * Name of the value defined annotation. It specifies if a value is defined
-	 * for the source node.
+	 * Name of the value defined annotation. It specifies if a value is defined for
+	 * the source node.
 	 */
 	public static final String ANNOTATION_RESULT_DEFINED = "result:defined";
 
 	/**
-	 * Name of the value annotation. It specifies a concrete value for the node
-	 * from an instance.
+	 * Name of the value annotation. It specifies a concrete value for the node from
+	 * an instance.
 	 */
 	public static final String ANNOTATION_RESULT = "result";
 
@@ -62,8 +62,8 @@ public interface TargetNode extends GroupNode {
 	public EntityDefinition getEntityDefinition();
 
 	/**
-	 * Get the assignment names for the given cell. These are the names of the
-	 * cell entities the node is associated to.
+	 * Get the assignment names for the given cell. These are the names of the cell
+	 * entities the node is associated to.
 	 * 
 	 * @param assignment the assigned cell
 	 * @return the assignment names
@@ -74,8 +74,8 @@ public interface TargetNode extends GroupNode {
 	 * Get if the node result is defined.
 	 * 
 	 * @see #ANNOTATION_RESULT_DEFINED
-	 * @return the value of the result defined annotation, or <code>false</code>
-	 *         if it is not set
+	 * @return the value of the result defined annotation, or <code>false</code> if
+	 *         it is not set
 	 */
 	public boolean isDefined();
 
@@ -92,14 +92,13 @@ public interface TargetNode extends GroupNode {
 	 * transformation.
 	 * 
 	 * @see #ANNOTATION_RESULT
-	 * @return the property value associated to the node, may be
-	 *         <code>null</code>
+	 * @return the property value associated to the node, may be <code>null</code>
 	 */
 	public Object getResult();
 
 	/**
-	 * Set the value of the result annotation. When setting a result the value
-	 * of the result defined annotation is set to <code>true</code>.
+	 * Set the value of the result annotation. When setting a result the value of
+	 * the result defined annotation is set to <code>true</code>.
 	 * 
 	 * @see #ANNOTATION_RESULT
 	 * @see #ANNOTATION_RESULT_DEFINED

@@ -22,8 +22,8 @@ import eu.esdihumboldt.hale.common.align.model.Alignment;
  * 
  * @author Simon Templer
  */
-public class AlignmentTransformationFunctionService extends
-		AbstractDefaultTransformationFunctionService {
+public class AlignmentTransformationFunctionService
+		extends AbstractDefaultTransformationFunctionService {
 
 	private final Alignment alignment;
 

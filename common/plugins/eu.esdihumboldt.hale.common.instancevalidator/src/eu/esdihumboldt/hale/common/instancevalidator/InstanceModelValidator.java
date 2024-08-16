@@ -52,7 +52,7 @@ public interface InstanceModelValidator extends ValidatorBase {
 	 */
 	public void validateProperty(Object value, PropertyDefinition property,
 			@Nullable EntityDefinition entity, InstanceValidationContext context)
-					throws ValidationException;
+			throws ValidationException;
 
 	/**
 	 * Validate an instance, may be a top instance or a property.
@@ -76,7 +76,7 @@ public interface InstanceModelValidator extends ValidatorBase {
 	 */
 	public void validateGroup(Group group, GroupPropertyDefinition property,
 			@Nullable EntityDefinition entity, InstanceValidationContext context)
-					throws ValidationException;
+			throws ValidationException;
 
 	/**
 	 * @return the validation category

@@ -24,6 +24,7 @@ import org.osgi.framework.BundleContext;
 /**
  * Bundle activator. It registers the PostgreSQL driver with the
  * {@link DriverManager}.
+ * 
  * @author Simon Templer
  */
 public class Activator implements BundleActivator {
@@ -40,9 +41,9 @@ public class Activator implements BundleActivator {
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		
+
 		Class.forName("org.postgresql.Driver");
-		
+
 //		DriverManager.registerDriver(new Driver());
 	}
 

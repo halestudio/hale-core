@@ -31,8 +31,8 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 public interface GeoInstanceWriter extends InstanceWriter {
 
 	/**
-	 * Name of the parameter specifying a target CRS. Support of this parameter
-	 * is optional.
+	 * Name of the parameter specifying a target CRS. Support of this parameter is
+	 * optional.
 	 */
 	public static final String PARAM_TARGET_CRS = "crs";
 
@@ -48,16 +48,16 @@ public interface GeoInstanceWriter extends InstanceWriter {
 	public static final String PARAM_UNIFY_WINDING_ORDER = "geometry.unifyWindingOrder";
 
 	/**
-	 * Set the target CRS for written instances. Note that supporting the target
-	 * CRS conversion is optional for implementations.
+	 * Set the target CRS for written instances. Note that supporting the target CRS
+	 * conversion is optional for implementations.
 	 * 
 	 * @param crs the CRS definition
 	 */
 	public void setTargetCRS(@Nullable CRSDefinition crs);
 
 	/**
-	 * Get the target CRS to convert instance geometries to. Note that
-	 * supporting the target CRS conversion is optional for implementations.
+	 * Get the target CRS to convert instance geometries to. Note that supporting
+	 * the target CRS conversion is optional for implementations.
 	 * 
 	 * @return the target CRS definition or <code>null</code>
 	 */
@@ -67,8 +67,8 @@ public interface GeoInstanceWriter extends InstanceWriter {
 	/**
 	 * Set a custom prefix to be used to encode target EPSG CRS codes.
 	 * 
-	 * @param epsgPrefix the custom EPSG code prefix or <code>null</code> to
-	 *            leave the CRS code untouched
+	 * @param epsgPrefix the custom EPSG code prefix or <code>null</code> to leave
+	 *            the CRS code untouched
 	 */
 	public void setCustomEPSGPrefix(@Nullable String epsgPrefix);
 

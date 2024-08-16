@@ -44,8 +44,7 @@ public interface CSVConstants {
 	public static final String PARAM_DECIMAL = "decimal";
 
 	/**
-	 * The separating sign for the CSV file to be read (can be '\t' or ',' or '
-	 * ')
+	 * The separating sign for the CSV file to be read (can be '\t' or ',' or ' ')
 	 */
 	public static final char DEFAULT_SEPARATOR = '\t';
 

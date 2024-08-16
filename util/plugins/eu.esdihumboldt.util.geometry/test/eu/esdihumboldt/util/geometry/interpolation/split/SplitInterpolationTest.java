@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;

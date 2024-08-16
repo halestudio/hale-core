@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.io.json.internal.schema
 
+import groovy.transform.Canonical
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import org.locationtech.jts.geom.Geometry
@@ -39,8 +42,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.NillableFlag
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
-import groovy.transform.Canonical
-import groovy.transform.CompileStatic
 
 /**
  * Information collected on a Json property across different instances.

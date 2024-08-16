@@ -52,9 +52,9 @@ public class JsonInstanceWriter extends AbstractInstanceWriter {
 
 	/**
 	 *
-	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to
-	 * the draft version 6 by attributes for namespace prefix definitions and
-	 * specific feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
+	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to the
+	 * draft version 6 by attributes for namespace prefix definitions and specific
+	 * feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
 	 *
 	 * @param useGeoJsonFeatures if the output should be valid GeoJson output
 	 */

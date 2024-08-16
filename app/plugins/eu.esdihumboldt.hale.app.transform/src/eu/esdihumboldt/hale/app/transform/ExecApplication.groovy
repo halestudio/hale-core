@@ -17,6 +17,9 @@ package eu.esdihumboldt.hale.app.transform;
 
 import static eu.esdihumboldt.hale.app.transform.ExecUtil.*
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import javax.xml.parsers.DocumentBuilderFactory
 
 import org.eclipse.equinox.app.IApplicationContext
@@ -28,8 +31,6 @@ import eu.esdihumboldt.hale.common.app.AbstractApplication
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.impl.ElementValue
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 
 /**
@@ -264,7 +265,6 @@ $baseCommand
 		file.eachLine { line -> args << line }
 		//recall processCommandLineArguments function with args file parameter.
 		processCommandLineArguments(args as String[] ,executionContext )
-
 	}
 
 

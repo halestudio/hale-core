@@ -29,8 +29,8 @@ public interface ContextAwareFilter extends Filter {
 	/**
 	 * Determines if an instance matches the filter given an iteration context.
 	 * 
-	 * This method should be called when an iteration context is present,
-	 * instead of the original {@link #match(Instance)} method.
+	 * This method should be called when an iteration context is present, instead of
+	 * the original {@link #match(Instance)} method.
 	 * 
 	 * @param instance the instance to check the filter against
 	 * @param context the iteration context

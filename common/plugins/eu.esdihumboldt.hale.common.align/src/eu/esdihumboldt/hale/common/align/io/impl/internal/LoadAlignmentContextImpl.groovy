@@ -15,7 +15,7 @@
 
 package eu.esdihumboldt.hale.common.align.io.impl.internal
 
-import eu.esdihumboldt.hale.common.align.io.LoadAlignmentContext;
+import eu.esdihumboldt.hale.common.align.io.LoadAlignmentContext
 import eu.esdihumboldt.hale.common.schema.model.TypeIndex
 
 

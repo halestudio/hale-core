@@ -35,8 +35,8 @@ import eu.esdihumboldt.hale.common.core.io.Value;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractTransformationFunction<E extends TransformationEngine> implements
-		TransformationFunction<E> {
+public abstract class AbstractTransformationFunction<E extends TransformationEngine>
+		implements TransformationFunction<E> {
 
 	private ListMultimap<String, ParameterValue> parameters;
 	private ExecutionContext executionContext;
@@ -46,8 +46,8 @@ public abstract class AbstractTransformationFunction<E extends TransformationEng
 	 */
 	@Override
 	public void setParameters(ListMultimap<String, ParameterValue> parameters) {
-		this.parameters = (parameters == null) ? (null) : (Multimaps
-				.unmodifiableListMultimap(parameters));
+		this.parameters = (parameters == null) ? (null)
+				: (Multimaps.unmodifiableListMultimap(parameters));
 	}
 
 	/**
@@ -77,8 +77,8 @@ public abstract class AbstractTransformationFunction<E extends TransformationEng
 	}
 
 	/**
-	 * Checks if a certain parameter is defined at least a given number of
-	 * times. Throws a {@link TransformationException} otherwise.
+	 * Checks if a certain parameter is defined at least a given number of times.
+	 * Throws a {@link TransformationException} otherwise.
 	 * 
 	 * @param parameterName the parameter name
 	 * @param minCount the minimum count the parameter must be present
@@ -89,8 +89,8 @@ public abstract class AbstractTransformationFunction<E extends TransformationEng
 		if (parameters == null || parameters.get(parameterName) == null
 				|| parameters.get(parameterName).size() < minCount) {
 			if (minCount == 1) {
-				throw new TransformationException(MessageFormat.format(
-						"Mandatory parameter {0} not defined", parameterName));
+				throw new TransformationException(
+						MessageFormat.format("Mandatory parameter {0} not defined", parameterName));
 			}
 			else {
 				throw new TransformationException(MessageFormat.format(
@@ -105,14 +105,14 @@ public abstract class AbstractTransformationFunction<E extends TransformationEng
 	 * 
 	 * @param parameterName the parameter name
 	 * @return the parameter value
-	 * @throws TransformationException if a parameter with the given name
-	 *             doesn't exist
+	 * @throws TransformationException if a parameter with the given name doesn't
+	 *             exist
 	 */
 	public ParameterValue getParameterChecked(String parameterName) throws TransformationException {
 		if (getParameters() == null || getParameters().get(parameterName) == null
 				|| getParameters().get(parameterName).isEmpty()) {
-			throw new TransformationException(MessageFormat.format(
-					"Mandatory parameter {0} not defined", parameterName));
+			throw new TransformationException(
+					MessageFormat.format("Mandatory parameter {0} not defined", parameterName));
 		}
 
 		return getParameters().get(parameterName).get(0);

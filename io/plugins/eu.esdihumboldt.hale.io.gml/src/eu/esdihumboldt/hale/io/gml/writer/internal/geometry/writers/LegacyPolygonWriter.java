@@ -52,26 +52,30 @@ public class LegacyPolygonWriter extends AbstractGeometryWriter<Polygon> {
 
 		// verification patterns
 		addVerificationPattern("*/outerBoundaryIs/LinearRing"); // both exterior //$NON-NLS-1$
-		addVerificationPattern("*/innerBoundaryIs/LinearRing"); // and interior elements must be present //$NON-NLS-1$
+		addVerificationPattern("*/innerBoundaryIs/LinearRing"); // and interior //$NON-NLS-1$
+																// elements must be present
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat )
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat )
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, Polygon polygon, TypeDefinition elementType,
-			QName elementName, String gmlNs, DecimalFormat decimalFormatter) throws XMLStreamException {
+			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
+			throws XMLStreamException {
 		// write exterior ring
 		LineString exterior = polygon.getExteriorRing();
 		descendAndWriteCoordinates(writer, Pattern.parse("*/outerBoundaryIs/LinearRing"), //$NON-NLS-1$
-				exterior.getCoordinates(), elementType, elementName, gmlNs, false, decimalFormatter);
+				exterior.getCoordinates(), elementType, elementName, gmlNs, false,
+				decimalFormatter);
 
 		// write interior rings
 		for (int i = 0; i < polygon.getNumInteriorRing(); i++) {
 			LineString interior = polygon.getInteriorRingN(i);
 			descendAndWriteCoordinates(writer, Pattern.parse("*/innerBoundaryIs/LinearRing"), //$NON-NLS-1$
-					interior.getCoordinates(), elementType, elementName, gmlNs, false, decimalFormatter);
+					interior.getCoordinates(), elementType, elementName, gmlNs, false,
+					decimalFormatter);
 		}
 	}
 

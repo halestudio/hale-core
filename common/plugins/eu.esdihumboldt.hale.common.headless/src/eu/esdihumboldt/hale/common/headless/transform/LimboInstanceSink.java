@@ -169,9 +169,9 @@ public class LimboInstanceSink extends AbstractTransformationSink {
 	}
 
 	/**
-	 * Simple internal instance collection, does not support remove and filter
-	 * and uses {@link PseudoInstanceReference}s and
-	 * {@link TargetResourceIterator}. Only one iterator may be created.
+	 * Simple internal instance collection, does not support remove and filter and
+	 * uses {@link PseudoInstanceReference}s and {@link TargetResourceIterator}.
+	 * Only one iterator may be created.
 	 * 
 	 * @author Kai Schwierczek
 	 */

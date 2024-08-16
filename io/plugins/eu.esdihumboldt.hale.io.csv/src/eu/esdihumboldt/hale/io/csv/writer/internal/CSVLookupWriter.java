@@ -52,10 +52,10 @@ public class CSVLookupWriter extends AbstractLookupExport {
 	protected IOReport execute(ProgressIndicator progress, IOReporter reporter)
 			throws IOProviderConfigurationException, IOException {
 
-		String sourceColumn = getParameter(LookupTableExportConstants.PARAM_SOURCE_COLUMN).as(
-				String.class);
-		String targetColumn = getParameter(LookupTableExportConstants.PARAM_TARGET_COLUMN).as(
-				String.class);
+		String sourceColumn = getParameter(LookupTableExportConstants.PARAM_SOURCE_COLUMN)
+				.as(String.class);
+		String targetColumn = getParameter(LookupTableExportConstants.PARAM_TARGET_COLUMN)
+				.as(String.class);
 
 		CSVWriter writer = new CSVWriter(new OutputStreamWriter(getTarget().getOutput()),
 				CSVUtil.getSep(this), CSVUtil.getQuote(this), CSVUtil.getEscape(this));

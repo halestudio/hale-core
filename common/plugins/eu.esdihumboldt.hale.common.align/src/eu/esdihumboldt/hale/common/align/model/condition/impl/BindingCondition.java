@@ -16,8 +16,6 @@
 
 package eu.esdihumboldt.hale.common.align.model.condition.impl;
 
-import net.jcip.annotations.Immutable;
-
 import org.springframework.core.convert.ConversionService;
 
 import eu.esdihumboldt.hale.common.align.model.Entity;
@@ -30,6 +28,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.AugmentedValueFl
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.ElementType;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
+import net.jcip.annotations.Immutable;
 
 /**
  * Type condition that checks its binding and element type
@@ -47,10 +46,10 @@ public class BindingCondition implements TypeCondition {
 	 * Create a binding condition
 	 * 
 	 * @param compatibleClass the class the binding should be compatible to
-	 * @param allowConversion specifies if a binding is classified as compatible
-	 *            if conversion to the compatible class is possible
-	 * @param allowCollection specifies if a binding is classified as compatible
-	 *            if it is a collection of the compatible class
+	 * @param allowConversion specifies if a binding is classified as compatible if
+	 *            conversion to the compatible class is possible
+	 * @param allowCollection specifies if a binding is classified as compatible if
+	 *            it is a collection of the compatible class
 	 */
 	public BindingCondition(Class<?> compatibleClass, boolean allowConversion,
 			boolean allowCollection) {
@@ -101,8 +100,7 @@ public class BindingCondition implements TypeCondition {
 	}
 
 	/**
-	 * Check if the given binding is compatible to the configured compatible
-	 * class
+	 * Check if the given binding is compatible to the configured compatible class
 	 * 
 	 * @param binding the binding
 	 * @param to if a value of {@link #compatibleClass} shall be assigned to the
@@ -117,8 +115,8 @@ public class BindingCondition implements TypeCondition {
 	 * Check if the given binding is compatible to the given compatible class
 	 * 
 	 * @param binding the binding
-	 * @param to if a value of the compatible class shall be assigned to the
-	 *            binding or vice versa
+	 * @param to if a value of the compatible class shall be assigned to the binding
+	 *            or vice versa
 	 * @param compatibleClass the compatible class
 	 * @param allowConversion if conversion is allowed
 	 * @return if the binding is compatible

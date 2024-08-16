@@ -15,6 +15,12 @@
 
 package eu.esdihumboldt.cst.test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+
+import javax.annotation.Nullable;
+
 import eu.esdihumboldt.hale.common.align.model.Alignment;
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
@@ -22,11 +28,6 @@ import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.common.test.TestUtil;
-
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 
 /**
  * Transformation example default implementation.
@@ -107,8 +108,8 @@ public class TransformationExampleImpl implements TransformationExample {
 	}
 
 	@Override
-	public InstanceCollection getSourceInstances() throws IOProviderConfigurationException,
-			IOException {
+	public InstanceCollection getSourceInstances()
+			throws IOProviderConfigurationException, IOException {
 		if (sourceInstances == null) {
 			sourceInstances = TestUtil.loadInstances(sourceDataLocation, getSourceSchema());
 		}
@@ -116,8 +117,8 @@ public class TransformationExampleImpl implements TransformationExample {
 	}
 
 	@Override
-	public InstanceCollection getTargetInstances() throws IOProviderConfigurationException,
-			IOException {
+	public InstanceCollection getTargetInstances()
+			throws IOProviderConfigurationException, IOException {
 		if (targetDataLocation == null) {
 			throw new IllegalStateException("Example has no target data");
 		}

@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd;
 
+import groovy.xml.DOMBuilder
+
 import javax.xml.namespace.QName
 
 import org.w3c.dom.Element
@@ -39,7 +41,6 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
-import groovy.xml.DOMBuilder
 
 /**
  * Reads HALE Schema Definitions back to the HALE schema model.

@@ -67,8 +67,8 @@ public abstract class HaleIO {
 
 	/**
 	 * Tests whether a InputStream to the given URI can be opened. <br>
-	 * In case of a file it instead tests File.isFile and File.canRead() because
-	 * it is a lot faster.
+	 * In case of a file it instead tests File.isFile and File.canRead() because it
+	 * is a lot faster.
 	 * 
 	 * @param uri the URI to test
 	 * @param allowResource allow resolving through {@link Resources}
@@ -127,10 +127,9 @@ public abstract class HaleIO {
 	 * Filter I/O provider factories by configuration content type
 	 * 
 	 * @param factories the I/O provider factories
-	 * @param configurationContentType the configuration content type the
-	 *            factories must support
-	 * @return provider factories that support the given configuration content
-	 *         type
+	 * @param configurationContentType the configuration content type the factories
+	 *            must support
+	 * @return provider factories that support the given configuration content type
 	 */
 	public static List<IOProviderDescriptor> filterFactoriesByConfigurationType(
 			Collection<IOProviderDescriptor> factories, IContentType configurationContentType) {
@@ -152,8 +151,7 @@ public abstract class HaleIO {
 	}
 
 	/**
-	 * Find all content types that are of the same kind as the given content
-	 * type.
+	 * Find all content types that are of the same kind as the given content type.
 	 * 
 	 * @param candidates Content types to search
 	 * @param kind Parent content type
@@ -166,8 +164,7 @@ public abstract class HaleIO {
 	}
 
 	/**
-	 * Find all content types that are of the same kind as the given content
-	 * type.
+	 * Find all content types that are of the same kind as the given content type.
 	 * 
 	 * @param candidates Content types to search
 	 * @param kind Parent content type
@@ -196,10 +193,10 @@ public abstract class HaleIO {
 	 * type and only use the input supplier if absolutely needed.
 	 * 
 	 * @param types the types to match
-	 * @param in the input supplier to use for testing, may be <code>null</code>
-	 *            if the file name is not <code>null</code>
-	 * @param filename the file name, may be <code>null</code> if the input
-	 *            supplier is not <code>null</code>
+	 * @param in the input supplier to use for testing, may be <code>null</code> if
+	 *            the file name is not <code>null</code>
+	 * @param filename the file name, may be <code>null</code> if the input supplier
+	 *            is not <code>null</code>
 	 * @return the matched content types
 	 */
 	public static List<IContentType> findContentTypesFor(Collection<IContentType> types,
@@ -260,16 +257,14 @@ public abstract class HaleIO {
 				InputStream is = in.getInput();
 
 				/*
-				 * IContentTypeManager.findContentTypes seems to return all kind
-				 * of content types that match in any way, but ordered by
-				 * relevance - so if all but the allowed types are removed, the
-				 * remaining types may be very irrelevant and not a match that
-				 * actually was determined based on the input stream.
+				 * IContentTypeManager.findContentTypes seems to return all kind of content
+				 * types that match in any way, but ordered by relevance - so if all but the
+				 * allowed types are removed, the remaining types may be very irrelevant and not
+				 * a match that actually was determined based on the input stream.
 				 * 
-				 * Thus findContentTypesFor should not be used or only relied
-				 * upon the single best match that is returned. It is now only
-				 * used as fall-back if there is no result for
-				 * findContentTypeFor.
+				 * Thus findContentTypesFor should not be used or only relied upon the single
+				 * best match that is returned. It is now only used as fall-back if there is no
+				 * result for findContentTypeFor.
 				 */
 				// instead use findContentTypeFor
 				IContentType candidate = ctm.findContentTypeFor(is, null);
@@ -284,8 +279,8 @@ public abstract class HaleIO {
 
 			if (results.isEmpty()) {
 				/*
-				 * Fall-back to findContentTypesFor if there was no valid result
-				 * for findContentTypeFor.
+				 * Fall-back to findContentTypesFor if there was no valid result for
+				 * findContentTypeFor.
 				 */
 				try (InputStream is = in.getInput()) {
 					IContentType[] candidates = ctm.findContentTypesFor(is, filename);
@@ -302,10 +297,9 @@ public abstract class HaleIO {
 
 			if (results.isEmpty() && extensionResults != null) {
 				/*
-				 * If there was no valid result for the stream check, but for
-				 * the extension checks, use those results. This may happen for
-				 * instance for generic XML files, that have no specific root
-				 * element.
+				 * If there was no valid result for the stream check, but for the extension
+				 * checks, use those results. This may happen for instance for generic XML
+				 * files, that have no specific root element.
 				 */
 				results.addAll(extensionResults);
 			}
@@ -347,8 +341,8 @@ public abstract class HaleIO {
 	 * @param providerType the provider type, usually an interface
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
-	 * @param providerId the id of the provider to use, may be <code>null</code>
-	 *            if contentType is set
+	 * @param providerId the id of the provider to use, may be <code>null</code> if
+	 *            contentType is set
 	 * @return the I/O provider factory or <code>null</code> if no matching I/O
 	 *         provider factory is found
 	 */
@@ -389,10 +383,10 @@ public abstract class HaleIO {
 	 * @param providerType the provider type, usually an interface
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
-	 * @param providerId the id of the provider to use, may be <code>null</code>
-	 *            if contentType is set
-	 * @return the I/O provider preconfigured with the content type if it was
-	 *         given or <code>null</code> if no matching I/O provider is found
+	 * @param providerId the id of the provider to use, may be <code>null</code> if
+	 *            contentType is set
+	 * @return the I/O provider preconfigured with the content type if it was given
+	 *         or <code>null</code> if no matching I/O provider is found
 	 */
 	@SuppressWarnings("unchecked")
 	public static <P extends IOProvider> P createIOProvider(Class<P> providerType,
@@ -418,12 +412,12 @@ public abstract class HaleIO {
 	 * @param <P> the provider interface type
 	 * 
 	 * @param providerType the provider type, usually an interface
-	 * @param in the input supplier to use for testing, may be <code>null</code>
-	 *            if the file name is not <code>null</code>
-	 * @param filename the file name, may be <code>null</code> if the input
-	 *            supplier is not <code>null</code>
-	 * @return the content type or <code>null</code> if no matching content type
-	 *         is found
+	 * @param in the input supplier to use for testing, may be <code>null</code> if
+	 *            the file name is not <code>null</code>
+	 * @param filename the file name, may be <code>null</code> if the input supplier
+	 *            is not <code>null</code>
+	 * @return the content type or <code>null</code> if no matching content type is
+	 *         found
 	 */
 	public static <P extends IOProvider> IContentType findContentType(Class<P> providerType,
 			InputSupplier<? extends InputStream> in, String filename) {
@@ -452,12 +446,12 @@ public abstract class HaleIO {
 	 * @param <P> the provider interface type
 	 * 
 	 * @param providerType the provider type, usually an interface
-	 * @param in the input supplier to use for testing, may be <code>null</code>
-	 *            if the file name is not <code>null</code>
-	 * @param filename the file name, may be <code>null</code> if the input
-	 *            supplier is not <code>null</code>
-	 * @return the I/O provider or <code>null</code> if no matching I/O provider
-	 *         is found
+	 * @param in the input supplier to use for testing, may be <code>null</code> if
+	 *            the file name is not <code>null</code>
+	 * @param filename the file name, may be <code>null</code> if the input supplier
+	 *            is not <code>null</code>
+	 * @return the I/O provider or <code>null</code> if no matching I/O provider is
+	 *         found
 	 */
 	public static <P extends IOProvider> P findIOProvider(Class<P> providerType,
 			InputSupplier<? extends InputStream> in, String filename) {
@@ -475,12 +469,12 @@ public abstract class HaleIO {
 	 * @param <T> the provider interface type
 	 * 
 	 * @param providerType the provider type, usually an interface
-	 * @param in the input supplier to use for testing, may be <code>null</code>
-	 *            if the file name is not <code>null</code>
-	 * @param filename the file name, may be <code>null</code> if the input
-	 *            supplier is not <code>null</code>
-	 * @return a pair with the I/O provider and the corresponding identifier,
-	 *         both are <code>null</code> if no matching I/O provider was found
+	 * @param in the input supplier to use for testing, may be <code>null</code> if
+	 *            the file name is not <code>null</code>
+	 * @param filename the file name, may be <code>null</code> if the input supplier
+	 *            is not <code>null</code>
+	 * @return a pair with the I/O provider and the corresponding identifier, both
+	 *         are <code>null</code> if no matching I/O provider was found
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends IOProvider> Pair<T, String> findIOProviderAndId(Class<T> providerType,
@@ -506,8 +500,8 @@ public abstract class HaleIO {
 	}
 
 	/**
-	 * Automatically find an import provider to load a resource that is
-	 * available through an input stream that can only be read once.
+	 * Automatically find an import provider to load a resource that is available
+	 * through an input stream that can only be read once.
 	 * 
 	 * @param type the import provider type
 	 * @param in the input stream
@@ -529,8 +523,7 @@ public abstract class HaleIO {
 	 * 
 	 * @param parentType the parent content type
 	 * @param valueType the value content type
-	 * @return if the value content type is compatible with the parent content
-	 *         type
+	 * @return if the value content type is compatible with the parent content type
 	 */
 	public static boolean isCompatibleContentType(IContentType parentType, IContentType valueType) {
 		return valueType.isKindOf(parentType);
@@ -620,9 +613,8 @@ public abstract class HaleIO {
 	 * 
 	 * @param value the complex value
 	 * @return the DOM representation
-	 * @throws IllegalStateException if the value is neither a DOM element nor
-	 *             can be converted to one using the
-	 *             {@link ComplexValueExtension}
+	 * @throws IllegalStateException if the value is neither a DOM element nor can
+	 *             be converted to one using the {@link ComplexValueExtension}
 	 */
 	public static Element getComplexElement(Object value) {
 		if (value instanceof Element) {

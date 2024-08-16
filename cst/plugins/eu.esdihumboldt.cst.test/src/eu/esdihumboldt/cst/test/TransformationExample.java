@@ -15,12 +15,12 @@
 
 package eu.esdihumboldt.cst.test;
 
+import java.io.InputStream;
+
 import eu.esdihumboldt.hale.common.align.model.Alignment;
 import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
-
-import java.io.InputStream;
 
 /**
  * Transformation example for use in transformation testing.
@@ -56,8 +56,8 @@ public interface TransformationExample {
 	/**
 	 * Get the target container namespace (XML specific).
 	 *
-	 * @return the name of the target file root element namespace,
-	 *         <code>null</code> represents the target schema default namespace
+	 * @return the name of the target file root element namespace, <code>null</code>
+	 *         represents the target schema default namespace
 	 */
 	public String getTargetContainerNamespace();
 

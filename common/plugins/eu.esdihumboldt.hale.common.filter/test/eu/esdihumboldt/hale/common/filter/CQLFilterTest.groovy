@@ -17,11 +17,12 @@ package eu.esdihumboldt.hale.common.filter;
 
 import static org.junit.Assert.*
 
+import groovy.transform.CompileStatic
+
 import org.junit.Ignore
 import org.junit.Test
 
 import eu.esdihumboldt.hale.common.align.model.impl.TypeEntityDefinition
-import groovy.transform.CompileStatic
 
 /**
  * Tests for CQL filter.

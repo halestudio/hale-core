@@ -27,8 +27,7 @@ public interface Validator {
 	 * Checks whether the given value is valid.
 	 * 
 	 * @param value the value to check
-	 * @return null, if the value is valid, otherwise the reason why it's
-	 *         invalid
+	 * @return null, if the value is valid, otherwise the reason why it's invalid
 	 */
 	public String validate(Object value);
 
@@ -41,11 +40,11 @@ public interface Validator {
 
 	/**
 	 * Returns true, if this Validator validates all values to true.<br>
-	 * The result must not necessarily be correct. If the validator does not
-	 * know its result for sure it must return false.
+	 * The result must not necessarily be correct. If the validator does not know
+	 * its result for sure it must return false.
 	 * 
-	 * @return true, iff the validator knows for sure, that it validates all
-	 *         values to true
+	 * @return true, iff the validator knows for sure, that it validates all values
+	 *         to true
 	 */
 	public boolean isAlwaysTrue();
 }

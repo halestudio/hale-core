@@ -15,11 +15,10 @@
 
 package eu.esdihumboldt.hale.common.config
 
-import org.eclipse.equinox.nonosgi.registry.RegistryFactoryHelper
-import org.junit.BeforeClass
-
 import static org.junit.Assert.*
 
+import org.eclipse.equinox.nonosgi.registry.RegistryFactoryHelper
+import org.junit.BeforeClass
 import org.junit.Test
 
 import eu.esdihumboldt.hale.common.core.io.Value

@@ -19,7 +19,7 @@ import static org.junit.Assert.*
 
 import org.junit.Test
 
-import eu.esdihumboldt.hale.adv.merge.AdVMeasurementMigrator;
+import eu.esdihumboldt.hale.adv.merge.AdVMeasurementMigrator
 import eu.esdihumboldt.hale.common.align.io.impl.JaxbAlignmentIO
 import eu.esdihumboldt.hale.common.align.merge.test.AbstractMergeCellMigratorTest
 import eu.esdihumboldt.hale.common.align.model.CellUtil

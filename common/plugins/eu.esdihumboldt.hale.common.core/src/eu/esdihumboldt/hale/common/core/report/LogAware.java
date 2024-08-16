@@ -25,9 +25,9 @@ public interface LogAware {
 	/**
 	 * Set the log.
 	 * 
-	 * A <code>null</code> log can be set to indicate that an operation is
-	 * finished. In that case the log aware object should return to it's
-	 * internal default regarding logging.
+	 * A <code>null</code> log can be set to indicate that an operation is finished.
+	 * In that case the log aware object should return to it's internal default
+	 * regarding logging.
 	 * 
 	 * @param log the log, may be <code>null</code>
 	 */

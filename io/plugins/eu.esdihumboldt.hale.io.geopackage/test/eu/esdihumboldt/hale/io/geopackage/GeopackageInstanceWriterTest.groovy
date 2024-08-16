@@ -15,10 +15,10 @@
 
 package eu.esdihumboldt.hale.io.geopackage
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertTrue
+
+import groovy.transform.CompileStatic
 
 import java.nio.file.Files
 import java.nio.file.Path
@@ -46,7 +46,7 @@ import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.PrimaryKey
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 import mil.nga.geopackage.manager.GeoPackageManager
 
 /**

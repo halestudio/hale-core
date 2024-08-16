@@ -65,26 +65,24 @@ public class ProxyUtil {
 		return Proxy.NO_PROXY;
 
 		/*
-		 * The following code is obsolete System properties are handled
-		 * correctly by proxy selector The only thing that the code supports
-		 * additionally is setting using a proxy for the host that is the proxy
-		 * host
+		 * The following code is obsolete System properties are handled correctly by
+		 * proxy selector The only thing that the code supports additionally is setting
+		 * using a proxy for the host that is the proxy host
 		 */
 		/*
 		 * String strProxyHost = System.getProperty("http.proxyHost"); String
-		 * strProxyPort = System.getProperty("http.proxyPort"); String
-		 * strNonProxyHosts = System.getProperty("http.nonProxyHosts"); String[]
-		 * nonProxyHosts; if (strNonProxyHosts != null) { nonProxyHosts =
-		 * strNonProxyHosts.split("\\|"); } else { nonProxyHosts = new
-		 * String[0]; }
+		 * strProxyPort = System.getProperty("http.proxyPort"); String strNonProxyHosts
+		 * = System.getProperty("http.nonProxyHosts"); String[] nonProxyHosts; if
+		 * (strNonProxyHosts != null) { nonProxyHosts = strNonProxyHosts.split("\\|"); }
+		 * else { nonProxyHosts = new String[0]; }
 		 * 
-		 * if (strProxyHost != null && strProxyPort != null) { boolean noProxy =
-		 * false; for (int i = 0; i < nonProxyHosts.length; ++i) { if
-		 * (nonProxyHosts[i].equalsIgnoreCase(uri.getHost())) { noProxy = true;
-		 * break; } }
+		 * if (strProxyHost != null && strProxyPort != null) { boolean noProxy = false;
+		 * for (int i = 0; i < nonProxyHosts.length; ++i) { if
+		 * (nonProxyHosts[i].equalsIgnoreCase(uri.getHost())) { noProxy = true; break; }
+		 * }
 		 * 
-		 * if (!noProxy) { int proxyPort = Integer.parseInt(strProxyPort);
-		 * return new InetSocketAddress(strProxyHost, proxyPort); } }
+		 * if (!noProxy) { int proxyPort = Integer.parseInt(strProxyPort); return new
+		 * InetSocketAddress(strProxyHost, proxyPort); } }
 		 * 
 		 * return null;
 		 */

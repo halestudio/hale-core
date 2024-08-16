@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.merge.impl
 
+import groovy.transform.CompileStatic
+
 import javax.annotation.Nullable
 import javax.xml.namespace.QName
 
@@ -27,7 +29,6 @@ import eu.esdihumboldt.hale.common.align.model.impl.TypeEntityDefinition
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
 import eu.esdihumboldt.hale.common.schema.model.SchemaSpace
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
-import groovy.transform.CompileStatic
 
 /**
  * Default migration implementation supporting basic migration functionality like replacing namespaces.
@@ -184,5 +185,4 @@ class DefaultSchemaMigration implements AlignmentMigration {
 
 		candidate
 	}
-
 }

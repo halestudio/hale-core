@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.cst.functions.groovy.helpers
 
+import groovy.transform.CompileStatic
+
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 
 import javax.annotation.Nullable
 
 import eu.esdihumboldt.cst.functions.groovy.helper.spec.SpecBuilder
-import groovy.transform.CompileStatic
 
 /**
  * Cryptographic helper functions. 
@@ -35,8 +36,10 @@ class CryptoHelpers {
 	 */
 	public static final eu.esdihumboldt.cst.functions.groovy.helper.spec.Specification _sha256_spec = SpecBuilder.newSpec( //
 	description: 'Calculate a SHA-256 hash as a hex-encoded string.', //
-	result: 'Hex-encoded string representation of the hash. For a null input, null will be returned.') { //
-		input('Input to hash, usually a byte array or String. For Strings the UTF-8 encoded bytes will be hashed.') }
+	result: 'Hex-encoded string representation of the hash. For a null input, null will be returned.') {
+		//
+		input('Input to hash, usually a byte array or String. For Strings the UTF-8 encoded bytes will be hashed.')
+	}
 
 	@CompileStatic
 	@Nullable
@@ -62,5 +65,4 @@ class CryptoHelpers {
 		digest.update(data)
 		digest.digest().encodeHex()
 	}
-
 }

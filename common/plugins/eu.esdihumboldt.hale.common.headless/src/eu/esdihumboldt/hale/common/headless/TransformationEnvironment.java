@@ -62,17 +62,15 @@ public interface TransformationEnvironment extends ServiceProvider, AlignmentPro
 	/**
 	 * Get the export presets configured for the project.
 	 * 
-	 * @return copies of the export presets, fully configured except for the
-	 *         target
+	 * @return copies of the export presets, fully configured except for the target
 	 */
 	public Map<String, ? extends IOConfiguration> getExportPresets();
 
 	/**
-	 * Get export templates compatible to the target schema, not fully
-	 * configured.
+	 * Get export templates compatible to the target schema, not fully configured.
 	 * 
-	 * @return copies of the export templates, configured at least with the
-	 *         action and provider ID
+	 * @return copies of the export templates, configured at least with the action
+	 *         and provider ID
 	 */
 	public Map<String, ? extends IOConfiguration> getExportTemplates();
 

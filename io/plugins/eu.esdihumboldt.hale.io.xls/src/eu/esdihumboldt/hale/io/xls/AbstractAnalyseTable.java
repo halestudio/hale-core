@@ -94,13 +94,13 @@ public abstract class AbstractAnalyseTable {
 	 * Load a workbook from a stream.
 	 * 
 	 * @param input the input stream to load
-	 * @param location an optional location that can be used to determine the
-	 *            file type
+	 * @param location an optional location that can be used to determine the file
+	 *            type
 	 * @param isXlsx if the file should be loaded as XLSX file
 	 * @return the loaded workbook
 	 * @throws IOException if an error occurs reading the file
-	 * @throws InvalidFormatException if file has an invalid format when
-	 *             attempting to load as OpenXML file
+	 * @throws InvalidFormatException if file has an invalid format when attempting
+	 *             to load as OpenXML file
 	 */
 	public static Workbook loadWorkbook(InputStream input, URI location, boolean isXlsx)
 			throws IOException, InvalidFormatException {
@@ -147,8 +147,8 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Analyse the table content if skipNlines <=0 that don't analyse first row,
-	 * which has already been analyse into the header else analyse starting with
-	 * the skip line
+	 * which has already been analyse into the header else analyse starting with the
+	 * skip line
 	 * 
 	 * @param sheet the table sheet
 	 * @param skipNlines skip N lines

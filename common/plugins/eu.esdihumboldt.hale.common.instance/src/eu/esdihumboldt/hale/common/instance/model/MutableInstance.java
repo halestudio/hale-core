@@ -42,8 +42,8 @@ public interface MutableInstance extends Instance, MutableGroup {
 	// XXX more manipulation needed? e.g. for transformation?
 
 	/**
-	 * add Data to the MetaData, which the Instance can be associated with If
-	 * there is no MetaData in the Instance, a new container will be created
+	 * add Data to the MetaData, which the Instance can be associated with If there
+	 * is no MetaData in the Instance, a new container will be created
 	 * 
 	 * @param key a key the data to add will be associated with
 	 * @param obj the Data to add, may not be {@link Instance} or {@link Group}
@@ -51,8 +51,8 @@ public interface MutableInstance extends Instance, MutableGroup {
 	public void putMetaData(String key, Object obj);
 
 	/**
-	 * Sets the metadata of a certain key, may also delet or reset the value of
-	 * the key if the values parameter is null or empty
+	 * Sets the metadata of a certain key, may also delet or reset the value of the
+	 * key if the values parameter is null or empty
 	 * 
 	 * @param key the key the data is associated with
 	 * @param values the values to set, may not contain {@link Instance} or

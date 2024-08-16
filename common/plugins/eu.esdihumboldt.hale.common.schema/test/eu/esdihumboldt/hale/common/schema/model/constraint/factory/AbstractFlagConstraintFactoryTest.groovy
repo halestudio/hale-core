@@ -15,9 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.factory;
 
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint
 import eu.esdihumboldt.hale.common.schema.model.constraint.ConstraintUtil
-import org.junit.Test
 
 
 /**

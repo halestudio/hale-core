@@ -57,8 +57,8 @@ public class EngineManager {
 	 * 
 	 * @param engineId the transformation engine ID
 	 * @param log the transformation log to report any errors to
-	 * @return the transformation engine or <code>null</code> if none with the
-	 *         given ID was found or the creation failed
+	 * @return the transformation engine or <code>null</code> if none with the given
+	 *         ID was found or the creation failed
 	 */
 	public synchronized TransformationEngine get(String engineId, TransformationLog log) {
 		TransformationEngine engine = engines.get(engineId);
@@ -68,8 +68,8 @@ public class EngineManager {
 			EngineFactory engineFactory = ee.getFactory(engineId);
 
 			if (engineFactory == null) {
-				log.error(log.createMessage(MessageFormat.format(
-						"Transformation engine with ID {0} not found.", engineId), null));
+				log.error(log.createMessage(MessageFormat
+						.format("Transformation engine with ID {0} not found.", engineId), null));
 			}
 			else {
 				try {

@@ -55,8 +55,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 	public static final String FIELD_METADATA = "___metadata___";
 
 	/**
-	 * Name for the special field indicating if the instance was inserted
-	 * directly.
+	 * Name for the special field indicating if the instance was inserted directly.
 	 */
 	public static final String FIELD_INSERTED = "___insert___";
 
@@ -103,8 +102,8 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 	}
 
 	/**
-	 * Copy constructor. Creates an instance based on the properties and values
-	 * of the given instance.
+	 * Copy constructor. Creates an instance based on the properties and values of
+	 * the given instance.
 	 * 
 	 * @param org the instance to copy
 	 */

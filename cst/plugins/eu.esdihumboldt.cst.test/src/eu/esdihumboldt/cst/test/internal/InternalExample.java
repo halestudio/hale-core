@@ -15,11 +15,11 @@
 
 package eu.esdihumboldt.cst.test.internal;
 
-import eu.esdihumboldt.cst.test.TransformationExampleImpl;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import eu.esdihumboldt.cst.test.TransformationExampleImpl;
 
 /**
  * Transformation example contained in the CST test bundle.
@@ -29,9 +29,9 @@ import java.net.URL;
 public class InternalExample extends TransformationExampleImpl {
 
 	/**
-	 * Create a transformation example. All provided locations are specific to
-	 * this bundle. Relative locations refer to the {@link InternalExample}
-	 * class, absolute locations start with a <code>/</code>.
+	 * Create a transformation example. All provided locations are specific to this
+	 * bundle. Relative locations refer to the {@link InternalExample} class,
+	 * absolute locations start with a <code>/</code>.
 	 *
 	 * @param sourceSchemaLocation the source schema location
 	 * @param targetSchemaLocation the target schema location
@@ -56,8 +56,8 @@ public class InternalExample extends TransformationExampleImpl {
 	 * <code>getClass().getResource(location).toURI()</code>
 	 *
 	 * @param location the location
-	 * @param mustExist if the location must exist (i.e. if the result may not
-	 *            be <code>null</code>)
+	 * @param mustExist if the location must exist (i.e. if the result may not be
+	 *            <code>null</code>)
 	 * @return an URI for the location
 	 * @throws URISyntaxException if toURI throws an exception
 	 */

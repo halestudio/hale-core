@@ -34,9 +34,9 @@ public class PropertyTransformationExtension extends
 	/**
 	 * Factory for {@link PropertyTransformation}s that are defined directly
 	 */
-	public static class PropertyTransformationConfiguration extends
-			AbstractTransformationFactory<PropertyTransformation<?>> implements
-			PropertyTransformationFactory {
+	public static class PropertyTransformationConfiguration
+			extends AbstractTransformationFactory<PropertyTransformation<?>>
+			implements PropertyTransformationFactory {
 
 		/**
 		 * @see AbstractTransformationFactory#AbstractTransformationFactory(IConfigurationElement)

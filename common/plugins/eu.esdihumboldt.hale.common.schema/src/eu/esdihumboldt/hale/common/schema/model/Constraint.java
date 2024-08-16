@@ -44,13 +44,11 @@ public @interface Constraint {
 
 	/**
 	 * States if the default constraint is mutable. If possible the default
-	 * constraint should not be mutable if it is based on the default
-	 * constructor, as
-	 * {@link ConstraintUtil#getDefaultConstraint(Class, Definition)} will only
+	 * constraint should not be mutable if it is based on the default constructor,
+	 * as {@link ConstraintUtil#getDefaultConstraint(Class, Definition)} will only
 	 * be able to cache it in this case.
 	 * 
-	 * @return if the default constraint is mutable, <code>true</code> by
-	 *         default
+	 * @return if the default constraint is mutable, <code>true</code> by default
 	 */
 	boolean mutable() default true;
 

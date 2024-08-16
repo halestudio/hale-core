@@ -31,16 +31,16 @@ public interface ProjectInfoAware {
 	/**
 	 * Set information about the current project.
 	 * 
-	 * @param projectInfo the project information, may be <code>null</code> if
-	 *            no project is available
+	 * @param projectInfo the project information, may be <code>null</code> if no
+	 *            project is available
 	 */
 	public void setProjectInfo(ProjectInfo projectInfo);
 
 	/**
 	 * Set the location the project was loaded from.
 	 * 
-	 * @param location the project location or <code>null</code> if it was not
-	 *            saved yet
+	 * @param location the project location or <code>null</code> if it was not saved
+	 *            yet
 	 */
 	public void setProjectLocation(URI location);
 

@@ -58,8 +58,8 @@ public interface Command {
 	}
 
 	/**
-	 * States if this is an experimental command. Experimental commands cannot
-	 * be expected to be backwards compatible.
+	 * States if this is an experimental command. Experimental commands cannot be
+	 * expected to be backwards compatible.
 	 * 
 	 * @return if the command is experimental
 	 */

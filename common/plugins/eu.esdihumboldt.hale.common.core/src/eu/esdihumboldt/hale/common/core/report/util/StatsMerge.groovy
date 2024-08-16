@@ -124,7 +124,6 @@ class StatsMerge {
 				combined.add(a)
 				combined.addAll(b)
 				combined
-
 			}
 		}
 		else {
@@ -160,6 +159,4 @@ class StatsMerge {
 			}
 		}
 	}
-
 }
-

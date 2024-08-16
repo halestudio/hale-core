@@ -107,13 +107,13 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	}
 
 	/**
-	 * Performs a structural rename on the given source object to the given
-	 * target definition.
+	 * Performs a structural rename on the given source object to the given target
+	 * definition.
 	 * 
 	 * @param source the source value (or group/instance)
 	 * @param targetDefinition the target definition
-	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces
-	 *            may be ignored
+	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces may
+	 *            be ignored
 	 * @param instanceFactory the instance factory
 	 * @param copyGeometries specifies if geometry objects should be copied
 	 * @return the transformed value (or group/instance) or NO_MATCH
@@ -126,13 +126,13 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	}
 
 	/**
-	 * Performs a structural rename on the given source object to the given
-	 * target definition.
+	 * Performs a structural rename on the given source object to the given target
+	 * definition.
 	 * 
 	 * @param source the source value (or group/instance)
 	 * @param targetDefinition the target definition
-	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces
-	 *            may be ignored
+	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces may
+	 *            be ignored
 	 * @param instanceFactory the instance factory
 	 * @param copyGeometries specifies if geometry objects should be copied
 	 * @param skipChildren a set of direct children to skip or <code>null</code>
@@ -237,8 +237,8 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	 * Determines if the given value is a geometry object.
 	 * 
 	 * @param value the value
-	 * @return <code>true</code> if the value is a geometry object or
-	 *         collection, false otherwise
+	 * @return <code>true</code> if the value is a geometry object or collection,
+	 *         false otherwise
 	 */
 	private static boolean isGeometry(Object value) {
 		if (value instanceof GeometryProperty) {
@@ -275,8 +275,8 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	 * @param source the source group
 	 * @param target the target group
 	 * @param targetDefinition the target definition
-	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces
-	 *            may be ignored
+	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces may
+	 *            be ignored
 	 * @param instanceFactory the instance factory
 	 * @param copyGeometries specifies if geometry objects should be copied
 	 * @param skipChildren a set of direct children to skip or <code>null</code>

@@ -26,8 +26,7 @@ import org.sqlite.SQLiteConnection;
 public interface SpatiaLiteSupport {
 
 	/**
-	 * Extract metadata about the geometry type of the specified geometry
-	 * column.
+	 * Extract metadata about the geometry type of the specified geometry column.
 	 * 
 	 * @param conn connection to SpatiaLite DB
 	 * @param tableName table name

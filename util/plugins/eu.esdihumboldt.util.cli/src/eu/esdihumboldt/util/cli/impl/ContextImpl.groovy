@@ -1,7 +1,8 @@
 package eu.esdihumboldt.util.cli.impl
 
-import eu.esdihumboldt.util.cli.CommandContext
 import groovy.transform.Immutable
+
+import eu.esdihumboldt.util.cli.CommandContext
 
 @Immutable
 class ContextImpl implements CommandContext {

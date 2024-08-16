@@ -207,8 +207,8 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 	}
 
 	/**
-	 * AllowedPackage saves information to allow the use of all classes with a
-	 * given prefix.
+	 * AllowedPackage saves information to allow the use of all classes with a given
+	 * prefix.
 	 */
 	public static class AllowedPrefix {
 
@@ -229,8 +229,8 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 		}
 
 		/**
-		 * Checks whether the given class is allowed to be used because of this
-		 * allowed package.
+		 * Checks whether the given class is allowed to be used because of this allowed
+		 * package.
 		 * 
 		 * @param clazz the class to test
 		 * @return true, if the class may be used, false otherwise
@@ -254,13 +254,12 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 	/**
 	 * Constructor using additional allowed classes.
 	 * 
-	 * @param additionalAllowedClasses classes, which may be initialized, and
-	 *            all their declared methods may be used
-	 * @param additionalAllAllowedClasses classes, which may be initialized, and
-	 *            any call on them is allowed (has to implement methodMissing or
-	 *            equal)
-	 * @param additionalAllowedPackages packages whose classes and their
-	 *            declared methods may be used
+	 * @param additionalAllowedClasses classes, which may be initialized, and all
+	 *            their declared methods may be used
+	 * @param additionalAllAllowedClasses classes, which may be initialized, and any
+	 *            call on them is allowed (has to implement methodMissing or equal)
+	 * @param additionalAllowedPackages packages whose classes and their declared
+	 *            methods may be used
 	 */
 	public RestrictiveGroovyInterceptor(Set<Class<?>> additionalAllowedClasses,
 			Set<Class<?>> additionalAllAllowedClasses,

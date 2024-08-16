@@ -29,8 +29,8 @@ import org.locationtech.jts.geom.Polygon;
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @version $Id$
  */
-public class MultiLineStringToLineString extends
-		AbstractGeometryCollectionConverter<MultiLineString, LineString> {
+public class MultiLineStringToLineString
+		extends AbstractGeometryCollectionConverter<MultiLineString, LineString> {
 
 	/**
 	 * Default constructor

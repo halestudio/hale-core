@@ -43,8 +43,7 @@ public class GeometryFinder implements InstanceTraversalCallback {
 	private CRSDefinition defaultCrsDef = null;
 
 	/**
-	 * Constructor for GeometryFinder with the
-	 * CoordinateReferenceSystemDefinition
+	 * Constructor for GeometryFinder with the CoordinateReferenceSystemDefinition
 	 * 
 	 * @param crsDef The coordinate reference system definition
 	 */

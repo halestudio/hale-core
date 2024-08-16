@@ -103,7 +103,8 @@ public class BundleResolver implements ResourceResolver {
 			final ClassLoader loader = getClass().getClassLoader(); // ClassLoader.getSystemClassLoader();
 			String pathCandidate = uri.getPath();
 			final String path = (pathCandidate != null && pathCandidate.startsWith("/"))
-					? (pathCandidate.substring(1)) : (pathCandidate);
+					? (pathCandidate.substring(1))
+					: (pathCandidate);
 			Enumeration<URL> resources;
 			try {
 				resources = loader.getResources(path);

@@ -43,8 +43,8 @@ public class PerTypePartsHandler implements MultipartHandler {
 	 * Create the handler
 	 * 
 	 * @param typeToTargetMapping Mapping between feature type and target file
-	 * @param idToTypeMapping Mapping between the GML IDs and the associated
-	 *            feature type
+	 * @param idToTypeMapping Mapping between the GML IDs and the associated feature
+	 *            type
 	 */
 	public PerTypePartsHandler(Map<TypeDefinition, URI> typeToTargetMapping,
 			Map<String, TypeDefinition> idToTypeMapping) {

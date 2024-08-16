@@ -28,9 +28,8 @@ import java.util.List;
 public interface InstanceCollection extends InstanceResolver {
 
 	/**
-	 * Get an iterator over all instances contained in the collection. The
-	 * iterator must be disposed after use (using
-	 * {@link ResourceIterator#close()}).
+	 * Get an iterator over all instances contained in the collection. The iterator
+	 * must be disposed after use (using {@link ResourceIterator#close()}).
 	 * 
 	 * @return an iterator over the instances
 	 */
@@ -79,8 +78,7 @@ public interface InstanceCollection extends InstanceResolver {
 	/**
 	 * Helper for converting to list of instances.
 	 * 
-	 * Use with care only in cases where it is clear that the data is not too
-	 * big.
+	 * Use with care only in cases where it is clear that the data is not too big.
 	 * 
 	 * @return a list containing all instances
 	 */

@@ -48,8 +48,7 @@ public class Unique implements PropertyConstraint {
 	}
 
 	/**
-	 * Returns whether the unique constraint is enabled, the identifier is not
-	 * null.
+	 * Returns whether the unique constraint is enabled, the identifier is not null.
 	 * 
 	 * @return whether the unique constraint is enabled
 	 */

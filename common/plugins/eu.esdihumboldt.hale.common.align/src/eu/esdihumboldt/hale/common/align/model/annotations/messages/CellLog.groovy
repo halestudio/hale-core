@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.model.annotations.messages
 
+import groovy.transform.CompileStatic
+
 import java.nio.charset.StandardCharsets
 
 import de.fhg.igd.slf4jplus.ALogger
@@ -23,7 +25,6 @@ import eu.esdihumboldt.hale.common.align.model.Cell
 import eu.esdihumboldt.hale.common.core.io.Text
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
-import groovy.transform.CompileStatic
 
 
 /**

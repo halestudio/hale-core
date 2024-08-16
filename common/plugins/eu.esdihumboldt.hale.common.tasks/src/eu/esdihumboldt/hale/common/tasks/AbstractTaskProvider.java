@@ -38,8 +38,7 @@ public abstract class AbstractTaskProvider implements TaskProvider {
 
 	/**
 	 * Add a task factory. It must be added before
-	 * {@link #registerTaskTypes(TaskRegistry)} is called (e.g in the
-	 * constructor)
+	 * {@link #registerTaskTypes(TaskRegistry)} is called (e.g in the constructor)
 	 * 
 	 * @param factory the factory to add
 	 */

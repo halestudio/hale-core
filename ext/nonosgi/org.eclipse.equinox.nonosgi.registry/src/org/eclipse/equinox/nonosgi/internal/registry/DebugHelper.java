@@ -92,7 +92,7 @@ public final class DebugHelper {
 		}
 		s.append("[");
 		s.append(PLUGIN_NAME);
-		s.append("] ");		
+		s.append("] ");
 		if (message != null) {
 			s.append(message);
 		}

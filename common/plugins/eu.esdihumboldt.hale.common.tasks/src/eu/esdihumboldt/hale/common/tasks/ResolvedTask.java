@@ -60,8 +60,8 @@ public class ResolvedTask<C> implements Task<C> {
 	 * @param task the task to be resolved
 	 * @param userData the task user data, may be <code>null</code>
 	 * 
-	 * @return the resolved task or <code>null</code> if the task type could not
-	 *         be resolved
+	 * @return the resolved task or <code>null</code> if the task type could not be
+	 *         resolved
 	 */
 	public static <C> ResolvedTask<C> resolveTask(TaskRegistry registry, Task<C> task,
 			TaskUserData userData) {

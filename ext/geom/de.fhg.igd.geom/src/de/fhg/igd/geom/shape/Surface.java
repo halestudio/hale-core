@@ -41,8 +41,8 @@ public class Surface extends Shape {
 	private Polygon exterior_boundary;
 
 	/**
-	 * An Array of Polygons which defines the holes in this Surface. Hole
-	 * Polygons may neither intersect the outer boundary nor touch it.
+	 * An Array of Polygons which defines the holes in this Surface. Hole Polygons
+	 * may neither intersect the outer boundary nor touch it.
 	 */
 	private Polygon[] interior_boundaries;
 

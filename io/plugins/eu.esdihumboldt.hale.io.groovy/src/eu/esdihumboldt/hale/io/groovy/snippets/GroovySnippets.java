@@ -38,8 +38,7 @@ import groovy.lang.Script;
 public class GroovySnippets extends GroovyObjectSupport {
 
 	/**
-	 * Binding of the marker variable that specifies that the snippet runs in
-	 * hale.
+	 * Binding of the marker variable that specifies that the snippet runs in hale.
 	 */
 	public static final String BINDING_HALE_MARKER = "runs_in_hale";
 

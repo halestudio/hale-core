@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 import eu.esdihumboldt.hale.common.schema.model.Definition
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 
 /**
@@ -94,5 +95,4 @@ class CardinalityFactory extends OptionalContextConstraintFactory<Cardinality> {
 	private Cardinality createFromRange(Range range) {
 		return Cardinality.get(range.from, range.to)
 	}
-
 }

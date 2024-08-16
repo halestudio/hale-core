@@ -31,7 +31,7 @@ import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
  * @author Simon Templer
  */
 public abstract class InstanceWriterDecorator<T extends InstanceWriter>
-		extends ExportProviderDecorator<T>implements InstanceWriter {
+		extends ExportProviderDecorator<T> implements InstanceWriter {
 
 	/**
 	 * @see ExportProviderDecorator#ExportProviderDecorator(eu.esdihumboldt.hale.common.core.io.ExportProvider)

@@ -26,8 +26,8 @@ import de.fhg.igd.eclipse.util.extension.AbstractExtension;
  * 
  * @author Simon Templer
  */
-public class FilterDefinitionExtension extends
-		AbstractExtension<FilterDefinition<?>, FilterDefinitionFactory> {
+public class FilterDefinitionExtension
+		extends AbstractExtension<FilterDefinition<?>, FilterDefinitionFactory> {
 
 	/**
 	 * Factory for {@link FilterDefinition} based on an
@@ -37,8 +37,8 @@ public class FilterDefinitionExtension extends
 			AbstractConfigurationFactory<FilterDefinition<?>> implements FilterDefinitionFactory {
 
 		/**
-		 * Create a {@link FilterDefinition} factory based on the given
-		 * configuration element.
+		 * Create a {@link FilterDefinition} factory based on the given configuration
+		 * element.
 		 * 
 		 * @param conf the configuration element
 		 */

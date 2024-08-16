@@ -36,15 +36,15 @@ public interface ParameterValueDescriptor {
 	public Value getDefaultValue();
 
 	/**
-	 * @return description of the default value or general description
-	 *         concerning defaults, may be <code>null</code>
+	 * @return description of the default value or general description concerning
+	 *         defaults, may be <code>null</code>
 	 */
 	@Nullable
 	public String getDefaultDescription();
 
 	/**
-	 * @return the sample data of the parameter or <code>null</code> if no
-	 *         sample value is provided
+	 * @return the sample data of the parameter or <code>null</code> if no sample
+	 *         value is provided
 	 */
 	@Nullable
 	public Value getSampleData();

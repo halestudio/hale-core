@@ -27,7 +27,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.LocatableOutputSupplier;
  * @author Simon Templer
  */
 public abstract class ExportProviderDecorator<T extends ExportProvider>
-		extends IOProviderDecorator<T>implements ExportProvider {
+		extends IOProviderDecorator<T> implements ExportProvider {
 
 	/**
 	 * @see IOProviderDecorator#IOProviderDecorator(eu.esdihumboldt.hale.common.core.io.IOProvider)

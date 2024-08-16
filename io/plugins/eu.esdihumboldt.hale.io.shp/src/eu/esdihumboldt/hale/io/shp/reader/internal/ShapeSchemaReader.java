@@ -66,8 +66,8 @@ public class ShapeSchemaReader extends AbstractCachedSchemaReader implements Sha
 	private static final String PARAM_ADD_FILENAME_ATTRIBUTE = "addFilenameAttribute";
 
 	/**
-	 * Set if an attribute should be added that will be filled with the file
-	 * name when loading data from a Shapefile.
+	 * Set if an attribute should be added that will be filled with the file name
+	 * when loading data from a Shapefile.
 	 * 
 	 * @param addFilename if a filename attribute should be added
 	 */
@@ -239,8 +239,8 @@ public class ShapeSchemaReader extends AbstractCachedSchemaReader implements Sha
 	 * Get the type definition from a Shapefile.
 	 * 
 	 * @param source the Shapefile source
-	 * @return the type definition or <code>null</code> in case reading the type
-	 *         was not possible
+	 * @return the type definition or <code>null</code> in case reading the type was
+	 *         not possible
 	 */
 	public static TypeDefinition readShapeType(
 			LocatableInputSupplier<? extends InputStream> source) {

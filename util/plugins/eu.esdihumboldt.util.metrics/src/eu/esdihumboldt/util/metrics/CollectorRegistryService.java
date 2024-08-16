@@ -31,9 +31,8 @@ public interface CollectorRegistryService {
 	/**
 	 * Default registry service
 	 * 
-	 * Note: Originally wanted to provide this via hale service provider
-	 * mechanism, but this lead to not easily resolvable bundle dependency
-	 * cycles.
+	 * Note: Originally wanted to provide this via hale service provider mechanism,
+	 * but this lead to not easily resolvable bundle dependency cycles.
 	 */
 	CollectorRegistryService DEFAULT = new HaleCollectorRegistryService(
 			CollectorRegistry.defaultRegistry);
@@ -41,8 +40,8 @@ public interface CollectorRegistryService {
 	/**
 	 * Register a metric provider.
 	 * 
-	 * @param metricsProvider supplier for metrics provider that is called only
-	 *            if metric collection is enabled
+	 * @param metricsProvider supplier for metrics provider that is called only if
+	 *            metric collection is enabled
 	 */
 	void register(Supplier<MetricsProvider> metricsProvider);
 

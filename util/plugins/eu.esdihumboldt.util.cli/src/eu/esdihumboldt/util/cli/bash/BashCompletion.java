@@ -49,8 +49,8 @@ public interface BashCompletion {
 	}
 
 	/**
-	 * Return a Unix command to use to generate bash completions. Alternatively
-	 * a reserved keyword can be used to use a pre-configured completion.
+	 * Return a Unix command to use to generate bash completions. Alternatively a
+	 * reserved keyword can be used to use a pre-configured completion.
 	 * 
 	 * @return the Unix command or <code>null</code>
 	 */

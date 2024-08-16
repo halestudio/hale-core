@@ -26,7 +26,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
  * @author Simon Templer
  */
 public class GeoInstanceWriterDecorator<T extends GeoInstanceWriter>
-		extends InstanceWriterDecorator<T>implements GeoInstanceWriter {
+		extends InstanceWriterDecorator<T> implements GeoInstanceWriter {
 
 	/**
 	 * @see ExportProviderDecorator#ExportProviderDecorator(eu.esdihumboldt.hale.common.core.io.ExportProvider)

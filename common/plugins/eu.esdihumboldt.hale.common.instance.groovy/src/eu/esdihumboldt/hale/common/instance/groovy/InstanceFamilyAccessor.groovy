@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy;
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import com.google.common.base.Function
@@ -26,7 +28,6 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.util.groovy.paths.AbstractAccessor
 import eu.esdihumboldt.util.groovy.paths.Path
 import eu.esdihumboldt.util.groovy.paths.PathImpl
-import groovy.transform.CompileStatic
 
 /**
  * Accessor linked instances of a {@link FamilyInstance}s.
@@ -209,5 +210,4 @@ class InstanceFamilyAccessor extends AbstractAccessor<FamilyInstance> {
 	public InstanceAccessor getProperties() {
 		accessor()
 	}
-
 }

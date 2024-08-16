@@ -223,8 +223,8 @@ public class VertexEntityTransformation implements ASTTransformation {
 	}
 
 	/**
-	 * Create a static method that initializes a graph. For an
-	 * {@link OrientGraph} it registers the entity class as a schema type.
+	 * Create a static method that initializes a graph. For an {@link OrientGraph}
+	 * it registers the entity class as a schema type.
 	 * 
 	 * @param entityName the entity name
 	 * @param superEntityName the super entity name, may be <code>null</code>
@@ -286,8 +286,8 @@ public class VertexEntityTransformation implements ASTTransformation {
 	}
 
 	/**
-	 * Create a static method that allows creating a new vertex and adding it to
-	 * a graph.
+	 * Create a static method that allows creating a new vertex and adding it to a
+	 * graph.
 	 * 
 	 * @param clazz the entity class
 	 * @param entityName the entity name
@@ -365,8 +365,8 @@ public class VertexEntityTransformation implements ASTTransformation {
 		code.addStatement(callInitGraph(clazz, new VariableExpression("graph")));
 
 		/*
-		 * def vertices = VertexEntityDelegates.findAllDelegate(graph,
-		 * entityName, typeProperty)
+		 * def vertices = VertexEntityDelegates.findAllDelegate(graph, entityName,
+		 * typeProperty)
 		 */
 
 		VariableExpression vertices = new VariableExpression("vertices");
@@ -420,8 +420,8 @@ public class VertexEntityTransformation implements ASTTransformation {
 		code.addStatement(callInitGraph(clazz, new VariableExpression("graph")));
 
 		/*
-		 * def vertices = VertexEntityDelegates.findByDelegate(graph,
-		 * entityName, typeProperty, propertyName, value)
+		 * def vertices = VertexEntityDelegates.findByDelegate(graph, entityName,
+		 * typeProperty, propertyName, value)
 		 */
 
 		VariableExpression vertices = new VariableExpression("vertices");
@@ -512,8 +512,8 @@ public class VertexEntityTransformation implements ASTTransformation {
 		code.addStatement(callInitGraph(clazz, new VariableExpression("graph")));
 
 		/*
-		 * def vertex = VertexEntityDelegates.findUniqueByDelegate(graph,
-		 * entityName, typeProperty, propertyName, value)
+		 * def vertex = VertexEntityDelegates.findUniqueByDelegate(graph, entityName,
+		 * typeProperty, propertyName, value)
 		 */
 
 		VariableExpression vertex = new VariableExpression("vertex");
@@ -545,14 +545,13 @@ public class VertexEntityTransformation implements ASTTransformation {
 	}
 
 	/**
-	 * Create a constructor taking a Vertex and a Graph as an argument,
-	 * assigning them to the vertex and graph fields.
+	 * Create a constructor taking a Vertex and a Graph as an argument, assigning
+	 * them to the vertex and graph fields.
 	 * 
 	 * @param vertexField the vertex field
 	 * @param graphField the graph field
 	 * @param superClass the vertex entity super class or <code>null</code>
-	 * @param typeProperty the expression specifying the name of the type
-	 *            property
+	 * @param typeProperty the expression specifying the name of the type property
 	 * @param entityName the expression specifying the entity name
 	 * @return a constructor taking a Vertex as an argument
 	 */

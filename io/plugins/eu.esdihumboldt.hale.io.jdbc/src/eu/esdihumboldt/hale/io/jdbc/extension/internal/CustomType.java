@@ -71,8 +71,8 @@ public class CustomType implements Identifiable {
 
 	/**
 	 * @param connection current connection
-	 * @return true if current connection is an instance of configured
-	 *         connection type.
+	 * @return true if current connection is an instance of configured connection
+	 *         type.
 	 */
 	public boolean isInstance(Connection connection) {
 		return connectionType.isInstance(connection);

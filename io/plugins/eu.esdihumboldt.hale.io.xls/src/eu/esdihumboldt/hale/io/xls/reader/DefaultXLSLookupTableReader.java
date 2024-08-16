@@ -42,8 +42,8 @@ public class DefaultXLSLookupTableReader {
 	 * @param skipFirst true, if first row should be skipped
 	 * @param keyColumn source column of the lookup table
 	 * @param valueColumn target column of the lookup table
-	 * @param ignoreEmptyStrings if empty strings should be ignored and treated
-	 *            as <code>null</code>
+	 * @param ignoreEmptyStrings if empty strings should be ignored and treated as
+	 *            <code>null</code>
 	 * @return the lookup table as map
 	 */
 	public Map<Value, Value> read(Workbook workbook, boolean skipFirst, int keyColumn,

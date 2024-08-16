@@ -63,8 +63,8 @@ public class Point2D implements Localizable, Serializable, Comparable<Object>, C
 	/**
 	 * Copy constructor
 	 * 
-	 * @param p3d the Point3D to use as a template. x and y values will be
-	 *            copied. z will be discarded.
+	 * @param p3d the Point3D to use as a template. x and y values will be copied. z
+	 *            will be discarded.
 	 */
 	public Point2D(Point3D p3d) {
 		this.x = p3d.getX();
@@ -74,8 +74,7 @@ public class Point2D implements Localizable, Serializable, Comparable<Object>, C
 	// functional methods ......................................................
 
 	/**
-	 * returns this Point's BoundingBox. Min values and max values are
-	 * identical.
+	 * returns this Point's BoundingBox. Min values and max values are identical.
 	 * 
 	 * @see Localizable#getBoundingBox()
 	 */
@@ -87,9 +86,8 @@ public class Point2D implements Localizable, Serializable, Comparable<Object>, C
 	// canonical java methods ..................................................
 
 	/**
-	 * This equals method is consistent with the compareTo() method implemented
-	 * in this class, that means, it determines equality by comparing x and y
-	 * values.
+	 * This equals method is consistent with the compareTo() method implemented in
+	 * this class, that means, it determines equality by comparing x and y values.
 	 * 
 	 * @see Object#equals(Object)
 	 */
@@ -110,8 +108,8 @@ public class Point2D implements Localizable, Serializable, Comparable<Object>, C
 	}
 
 	/**
-	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y)
-	 * == true
+	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
+	 * true
 	 * 
 	 * @see java.lang.Object#hashCode()
 	 */

@@ -19,10 +19,10 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
+import net.jcip.annotations.Immutable;
 
 /**
  * Specifies a Java binding and optionally a {@link TypeDefinition} for a
@@ -78,8 +78,8 @@ public class ElementType implements TypeConstraint {
 	private final Class<?> binding;
 
 	/**
-	 * Creates a default element binding constraint with {@link Object} binding
-	 * and no type definition.
+	 * Creates a default element binding constraint with {@link Object} binding and
+	 * no type definition.
 	 * 
 	 * @see Constraint
 	 */

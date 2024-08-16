@@ -28,12 +28,11 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TransformationF
  * 
  * @author Simon Templer
  */
-public interface TransformationFactory<T extends TransformationFunction<?>> extends
-		ExtensionObjectFactory<T> {
+public interface TransformationFactory<T extends TransformationFunction<?>>
+		extends ExtensionObjectFactory<T> {
 
 	/**
-	 * Get the identifier of the engine the transformation must be executed
-	 * with.
+	 * Get the identifier of the engine the transformation must be executed with.
 	 * 
 	 * @return the engine ID or <code>null</code>
 	 */

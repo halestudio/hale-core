@@ -33,11 +33,11 @@ public class SourceNodeFactory {
 
 	/**
 	 * Get or create source node for the given entity definition. Source nodes
-	 * created from this factory are ensured to exist only once for the same
-	 * entity definition.
+	 * created from this factory are ensured to exist only once for the same entity
+	 * definition.
 	 * 
-	 * @param entityDefinition the entity definition the source node is
-	 *            associated to
+	 * @param entityDefinition the entity definition the source node is associated
+	 *            to
 	 * @return the source node
 	 */
 	public SourceNode getSourceNode(EntityDefinition entityDefinition) {

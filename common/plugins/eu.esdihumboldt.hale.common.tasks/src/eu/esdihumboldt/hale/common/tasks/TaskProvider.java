@@ -25,8 +25,8 @@ package eu.esdihumboldt.hale.common.tasks;
 public interface TaskProvider {
 
 	/**
-	 * Register the task types provided by this task provider. This method must
-	 * be called before calling {@link #activate(TaskService)}
+	 * Register the task types provided by this task provider. This method must be
+	 * called before calling {@link #activate(TaskService)}
 	 * 
 	 * @param taskRegistry the task type registry to register the types at
 	 */

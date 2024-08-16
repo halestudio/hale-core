@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.io.impl.dummy
 
+import groovy.transform.TypeChecked
+
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.AbstractEntityType
@@ -33,7 +35,6 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.DisplayName
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
-import groovy.transform.TypeChecked
 
 
 /**

@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl
 
+import static org.junit.Assert.*
+
 import org.eclipse.equinox.nonosgi.registry.RegistryFactoryHelper
 import org.junit.BeforeClass
 import org.junit.Test
@@ -24,8 +26,6 @@ import eu.esdihumboldt.hale.common.core.io.HaleIO
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.ValueList
 import eu.esdihumboldt.hale.common.core.io.ValueProperties
-
-import static org.junit.Assert.*
 
 
 /**

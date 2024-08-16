@@ -71,8 +71,8 @@ public class ResourceSchemaSpace implements SchemaSpace {
 	 * 
 	 * @param resourceId resource id of the schema.
 	 * 
-	 * @return returns the schema to which this map previously associated the
-	 *         key, or null if the map contained no mapping for the key.
+	 * @return returns the schema to which this map previously associated the key,
+	 *         or null if the map contained no mapping for the key.
 	 */
 	public Schema removeSchema(String resourceId) {
 		Schema removed = schemasMap.remove(resourceId);

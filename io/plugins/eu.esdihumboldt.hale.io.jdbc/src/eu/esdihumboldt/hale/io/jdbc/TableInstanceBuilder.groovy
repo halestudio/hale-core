@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.jdbc
 
+import groovy.transform.CompileStatic
+
 import java.lang.reflect.Array
 import java.sql.Connection
 import java.sql.ResultSet
@@ -34,7 +36,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType
 import eu.esdihumboldt.hale.io.jdbc.constraints.internal.GeometryAdvisorConstraint
 import eu.esdihumboldt.hale.io.jdbc.extension.internal.GeometryTypeExtension
 import eu.esdihumboldt.hale.io.jdbc.extension.internal.GeometryTypeInfo
-import groovy.transform.CompileStatic
 
 
 /**

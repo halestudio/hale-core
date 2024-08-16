@@ -65,8 +65,7 @@ public class CustomTypeContentHelper {
 	 * Apply a custom type configuration to the given schema.
 	 * 
 	 * @param index the XML schema
-	 * @param association the custom type configuration for an individual
-	 *            property
+	 * @param association the custom type configuration for an individual property
 	 */
 	public static void applyConfiguration(XmlIndex index,
 			CustomTypeContentAssociation association) {

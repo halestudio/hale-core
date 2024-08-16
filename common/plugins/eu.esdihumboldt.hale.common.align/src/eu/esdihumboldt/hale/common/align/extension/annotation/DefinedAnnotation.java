@@ -36,8 +36,8 @@ public class DefinedAnnotation implements Identifiable, AnnotationDescriptor<Obj
 	 * 
 	 * @param id the associated annotation type identifier
 	 * @param descriptor the annotation descriptor class
-	 * @throws IllegalAccessException if access to the default constructor of
-	 *             the descriptor class is not allowed
+	 * @throws IllegalAccessException if access to the default constructor of the
+	 *             descriptor class is not allowed
 	 * @throws InstantiationException if the descriptor object cannot be created
 	 */
 	@SuppressWarnings("unchecked")

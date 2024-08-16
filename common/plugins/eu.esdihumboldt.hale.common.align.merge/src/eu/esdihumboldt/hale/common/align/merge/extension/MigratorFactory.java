@@ -26,12 +26,12 @@ import eu.esdihumboldt.hale.common.align.merge.MergeCellMigrator;
 public interface MigratorFactory extends ExtensionObjectFactory<MergeCellMigrator> {
 
 	/**
-	 * States if the function with the given identifier is supported to be
-	 * migrated by the migrator.
+	 * States if the function with the given identifier is supported to be migrated
+	 * by the migrator.
 	 * 
 	 * @param functionId the function identifier
-	 * @return <code>true</code> if the function is supported,
-	 *         <code>false</code> otherwise
+	 * @return <code>true</code> if the function is supported, <code>false</code>
+	 *         otherwise
 	 */
 	boolean supportsFunction(String functionId);
 

@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.xsd.anytype.valuetypes;
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import org.w3c.dom.Element
@@ -29,7 +31,6 @@ import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentAssociation
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentMode
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
-import groovy.transform.CompileStatic
 
 /**
  * Complex value definition for {@link CustomTypeContentAssociation}.

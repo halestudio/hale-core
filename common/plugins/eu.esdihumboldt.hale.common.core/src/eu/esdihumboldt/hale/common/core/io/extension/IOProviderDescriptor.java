@@ -69,8 +69,8 @@ public interface IOProviderDescriptor extends ExtensionObjectFactory<IOProvider>
 	/**
 	 * States if loading duplicate resources with this provider is allowed.
 	 * 
-	 * @return <code>true</code> if loading duplicate resources with this
-	 *         provider is allowed, <code>false</code> otherwise
+	 * @return <code>true</code> if loading duplicate resources with this provider
+	 *         is allowed, <code>false</code> otherwise
 	 */
 	public boolean allowDuplicateResource();
 

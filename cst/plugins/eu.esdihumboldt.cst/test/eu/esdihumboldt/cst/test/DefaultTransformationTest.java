@@ -58,8 +58,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test based on a very simple mapping with a retype, renames and an
-	 * assignment.
+	 * Test based on a very simple mapping with a retype, renames and an assignment.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -80,8 +79,8 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test based on a simple mapping with a retype, rename and assign,
-	 * duplicated targets should also get the assigned values.
+	 * Test based on a simple mapping with a retype, rename and assign, duplicated
+	 * targets should also get the assigned values.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -111,9 +110,9 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test based on a retype and a formatted string with several inputs where
-	 * one input exists several times, whereas the others only exist once. So
-	 * those should be used all the times.
+	 * Test based on a retype and a formatted string with several inputs where one
+	 * input exists several times, whereas the others only exist once. So those
+	 * should be used all the times.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -123,12 +122,12 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test based on a retype and a formatted string with several inputs where
-	 * each input exists several times, so they should be combined accordingly.
+	 * Test based on a retype and a formatted string with several inputs where each
+	 * input exists several times, so they should be combined accordingly.
 	 * 
-	 * If some inputs exist more often than others there is no way to decide
-	 * which of the others to use, so none should be used, so formatted string
-	 * will not produce a value.
+	 * If some inputs exist more often than others there is no way to decide which
+	 * of the others to use, so none should be used, so formatted string will not
+	 * produce a value.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -139,12 +138,12 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test based on a retype and a formatted string with several inputs where
-	 * each input exists several times, so they should be combined accordingly.
+	 * Test based on a retype and a formatted string with several inputs where each
+	 * input exists several times, so they should be combined accordingly.
 	 * 
-	 * If some inputs exist more often than others there is no way to decide
-	 * which of the others to use, so none should be used, so formatted string
-	 * will not produce a value.
+	 * If some inputs exist more often than others there is no way to decide which
+	 * of the others to use, so none should be used, so formatted string will not
+	 * produce a value.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -185,10 +184,9 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test where elements with a high cardinality are mapped to an element
-	 * which may only occur once within an element that allows a high
-	 * cardinality. The elements should be grouped together to fill the target
-	 * element.
+	 * Test where elements with a high cardinality are mapped to an element which
+	 * may only occur once within an element that allows a high cardinality. The
+	 * elements should be grouped together to fill the target element.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -282,8 +280,8 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test for the generateduid. Since the uid is always different, just test
-	 * for them being unique.
+	 * Test for the generateduid. Since the uid is always different, just test for
+	 * them being unique.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */
@@ -330,8 +328,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	}
 
 	/**
-	 * Test for the classification with non matching values and use a fixed
-	 * value.
+	 * Test for the classification with non matching values and use a fixed value.
 	 * 
 	 * @throws Exception if an error occurs executing the test
 	 */

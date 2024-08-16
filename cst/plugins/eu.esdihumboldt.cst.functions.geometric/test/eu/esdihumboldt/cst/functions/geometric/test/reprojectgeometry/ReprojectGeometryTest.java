@@ -14,9 +14,8 @@ import javax.xml.namespace.QName;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
 import org.junit.Test;
-import org.opengis.referencing.operation.MathTransform;
-
 import org.locationtech.jts.geom.Geometry;
+import org.opengis.referencing.operation.MathTransform;
 
 import eu.esdihumboldt.cst.ConceptualSchemaTransformer;
 import eu.esdihumboldt.cst.test.AbstractTransformationTest;

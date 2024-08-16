@@ -115,12 +115,12 @@ public class Pattern {
 	public static final String GML_NAMESPACE_PLACEHOLDER = "_____________gml_____________";
 
 	/**
-	 * Parse a pattern from the given string. Pattern elements must be separated
-	 * by <code>/</code>. Valid elements are <code>*</code> (one XML element
-	 * with any name), <code>**</code> (any number of XML elements with any
-	 * name) and an XML element name. An XML element name may also include a
-	 * namespace, the namespace must be wrapped by quotes (<code>"</code>). If
-	 * no namespace is specified the GML namespace is assumed.
+	 * Parse a pattern from the given string. Pattern elements must be separated by
+	 * <code>/</code>. Valid elements are <code>*</code> (one XML element with any
+	 * name), <code>**</code> (any number of XML elements with any name) and an XML
+	 * element name. An XML element name may also include a namespace, the namespace
+	 * must be wrapped by quotes (<code>"</code>). If no namespace is specified the
+	 * GML namespace is assumed.
 	 * 
 	 * @param pattern the pattern string
 	 * 
@@ -174,14 +174,14 @@ public class Pattern {
 							String namespace = part.substring(1, index).trim();
 							String name = part.substring(index + 1).trim();
 
-							elements.add(new PatternElement(ElementType.NAMED_ELEMENT, new QName(
-									namespace, name)));
+							elements.add(new PatternElement(ElementType.NAMED_ELEMENT,
+									new QName(namespace, name)));
 						}
 					}
 					else {
 						// element name only, assuming GML namespace
-						elements.add(new PatternElement(ElementType.NAMED_ELEMENT, new QName(
-								GML_NAMESPACE_PLACEHOLDER, part)));
+						elements.add(new PatternElement(ElementType.NAMED_ELEMENT,
+								new QName(GML_NAMESPACE_PLACEHOLDER, part)));
 					}
 				}
 			}
@@ -290,8 +290,8 @@ public class Pattern {
 	 * @param type the type definition
 	 * @param path the definition path
 	 * @param gmlNs the GML namespace
-	 * @param checkedTypes the type definitions that have already been checked
-	 *            (to prevent cycles)
+	 * @param checkedTypes the type definitions that have already been checked (to
+	 *            prevent cycles)
 	 * @param remainingElements the remaining elements to match
 	 * 
 	 * @return the new path if there is a match, <code>null</code> otherwise
@@ -412,14 +412,15 @@ public class Pattern {
 
 			// step down properties
 			@java.lang.SuppressWarnings("unchecked")
-			Iterable<ChildDefinition<?>> children = (Iterable<ChildDefinition<?>>) ((path.isEmpty()) ? (type
-					.getChildren()) : (type.getDeclaredChildren()));
-			Iterable<DefinitionPath> childPaths = GmlWriterUtil.collectPropertyPaths(children,
-					path, true);
+			Iterable<ChildDefinition<?>> children = (Iterable<ChildDefinition<?>>) ((path.isEmpty())
+					? (type.getChildren())
+					: (type.getDeclaredChildren()));
+			Iterable<DefinitionPath> childPaths = GmlWriterUtil.collectPropertyPaths(children, path,
+					true);
 			for (DefinitionPath childPath : childPaths) {
 				DefinitionPath candidate = match(childPath.getLastType(), childPath, gmlNs,
-						new HashSet<TypeDefinition>(checkedTypes), new ArrayList<PatternElement>(
-								remainingElements));
+						new HashSet<TypeDefinition>(checkedTypes),
+						new ArrayList<PatternElement>(remainingElements));
 
 				if (candidate != null) {
 					return candidate;

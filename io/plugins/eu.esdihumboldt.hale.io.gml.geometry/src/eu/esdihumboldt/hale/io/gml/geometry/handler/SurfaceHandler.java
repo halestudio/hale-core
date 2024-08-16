@@ -100,8 +100,8 @@ public class SurfaceHandler extends GenericGeometryHandler {
 
 		if (GMLGeometryUtil.isCombineCompositesEnabled(reader) && GMLGeometryUtil.is2D(polygons)) {
 			/*
-			 * It was found that the UNION calculation as below seems to ignore
-			 * the third dimension. So only handle 2D polygons.
+			 * It was found that the UNION calculation as below seems to ignore the third
+			 * dimension. So only handle 2D polygons.
 			 */
 
 			try {
@@ -114,9 +114,8 @@ public class SurfaceHandler extends GenericGeometryHandler {
 					}
 					else {
 						/*
-						 * Probably a MultiPolygon, for instance for polygons
-						 * that only touch each other in one point or for 3D
-						 * polygons.
+						 * Probably a MultiPolygon, for instance for polygons that only touch each
+						 * other in one point or for 3D polygons.
 						 */
 						log.debug("Could not combine surface to single polygon");
 					}

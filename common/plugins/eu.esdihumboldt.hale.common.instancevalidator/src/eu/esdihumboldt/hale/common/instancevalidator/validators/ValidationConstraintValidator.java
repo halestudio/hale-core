@@ -36,10 +36,10 @@ public class ValidationConstraintValidator implements TypeConstraintValidator {
 	@Override
 	public void validateTypeConstraint(Instance instance, TypeConstraint constraint,
 			InstanceValidationContext context) throws ValidationException {
-		String result = ((ValidationConstraint) constraint).getValidator().validate(
-				instance.getValue());
+		String result = ((ValidationConstraint) constraint).getValidator()
+				.validate(instance.getValue());
 		if (result != null)
-			throw new ValidationException("Validation of the value (" + instance.getValue()
-					+ ") failed: " + result);
+			throw new ValidationException(
+					"Validation of the value (" + instance.getValue() + ") failed: " + result);
 	}
 }

@@ -61,8 +61,8 @@ public class ArchiveProjectImport extends AbstractImportProvider implements Impo
 
 		if (!baseFile.exists()) {
 			/*
-			 * If the archive was not saved as project archive but manually
-			 * created, the file name may not be correct.
+			 * If the archive was not saved as project archive but manually created, the
+			 * file name may not be correct.
 			 */
 
 			// TODO detect project file location?!

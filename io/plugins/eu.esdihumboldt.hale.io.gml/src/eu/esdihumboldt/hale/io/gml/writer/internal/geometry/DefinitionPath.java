@@ -103,9 +103,9 @@ public class DefinitionPath {
 		@Override
 		public void prepareWrite(XMLStreamWriter writer) throws XMLStreamException {
 			// add xsi:type
-			writer.writeAttribute(StreamGmlWriter.SCHEMA_INSTANCE_NS, "type", getType().getName()
-					.getLocalPart()); // XXX namespace needed for
-										// the attribute value?
+			writer.writeAttribute(StreamGmlWriter.SCHEMA_INSTANCE_NS, "type",
+					getType().getName().getLocalPart()); // XXX namespace needed for
+															// the attribute value?
 		}
 
 		/**
@@ -260,8 +260,8 @@ public class DefinitionPath {
 //	}
 
 	/**
-	 * Path element representing a group. XXX a {@link DefinitionPath} that is
-	 * used for writing should never end on a {@link GroupElement}!
+	 * Path element representing a group. XXX a {@link DefinitionPath} that is used
+	 * for writing should never end on a {@link GroupElement}!
 	 * 
 	 * @author Simon Templer
 	 */
@@ -516,8 +516,9 @@ public class DefinitionPath {
 	 * @param elements the path elements
 	 */
 	public DefinitionPath(List<PathElement> elements) {
-		this(elements.get(elements.size() - 1).getType(), elements.get(elements.size() - 1)
-				.getName(), elements.get(elements.size() - 1).isUnique());
+		this(elements.get(elements.size() - 1).getType(),
+				elements.get(elements.size() - 1).getName(),
+				elements.get(elements.size() - 1).isUnique());
 
 		steps.addAll(elements);
 	}
@@ -630,8 +631,8 @@ public class DefinitionPath {
 
 	/**
 	 * @param geometryWriter the geometryWriter to set
-	 * @param geometryCompatibleType the type that was identified as compatible
-	 *            type by the writer
+	 * @param geometryCompatibleType the type that was identified as compatible type
+	 *            by the writer
 	 */
 	public void setGeometryWriter(GeometryWriter<?> geometryWriter,
 			TypeDefinition geometryCompatibleType) {
@@ -676,11 +677,11 @@ public class DefinitionPath {
 	}
 
 	/**
-	 * Get if the last element in the path is unique, which means that it cannot
-	 * be repeated XXX not if last is a group
+	 * Get if the last element in the path is unique, which means that it cannot be
+	 * repeated XXX not if last is a group
 	 * 
-	 * @return if the last element in the path is unique, which means that it
-	 *         cannot be repeated
+	 * @return if the last element in the path is unique, which means that it cannot
+	 *         be repeated
 	 */
 	public boolean isLastUnique() {
 		return lastUnique;

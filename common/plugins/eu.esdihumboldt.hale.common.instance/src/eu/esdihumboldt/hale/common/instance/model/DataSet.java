@@ -23,6 +23,7 @@ import eu.esdihumboldt.hale.common.schema.SchemaSpaceID;
  * application.
  */
 public enum DataSet {
+
 	/** The source data set */
 	SOURCE,
 	/** The transformed data set */

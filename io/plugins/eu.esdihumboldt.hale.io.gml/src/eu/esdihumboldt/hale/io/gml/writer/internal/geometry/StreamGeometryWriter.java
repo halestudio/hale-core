@@ -78,8 +78,8 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 	 * 
 	 * @param gmlNs the GML namespace
 	 * @param simplifyGeometry if geometries should be simplified before writing
-	 *            them if possible (e.g. a MultiGeometry with only one geometry
-	 *            is reduced to the contained geometry)
+	 *            them if possible (e.g. a MultiGeometry with only one geometry is
+	 *            reduced to the contained geometry)
 	 * @return the geometry writer
 	 */
 	public static StreamGeometryWriter getDefaultInstance(String gmlNs, boolean simplifyGeometry) {
@@ -126,8 +126,8 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 	 * 
 	 * @param gmlNs the GML namespace
 	 * @param simplifyGeometry if geometries should be simplified before writing
-	 *            them if possible (e.g. a MultiGeometry with only one geometry
-	 *            is reduced to the contained geometry)
+	 *            them if possible (e.g. a MultiGeometry with only one geometry is
+	 *            reduced to the contained geometry)
 	 */
 	public StreamGeometryWriter(String gmlNs, boolean simplifyGeometry) {
 		super();
@@ -158,16 +158,15 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 	 * @param writer the XML stream writer
 	 * @param geometry the geometry
 	 * @param property the geometry property
-	 * @param srsName the SRS name of a common SRS for the whole document, may
-	 *            be <code>null</code>
+	 * @param srsName the SRS name of a common SRS for the whole document, may be
+	 *            <code>null</code>
 	 * @param report the reporter
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates
 	 * @throws XMLStreamException if any error occurs writing the geometry
 	 */
 	public void write(XMLStreamWriter writer, Geometry geometry, PropertyDefinition property,
 			String srsName, IOReporter report, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		// write eventual required id
 		GmlWriterUtil.writeRequiredID(writer, property.getPropertyType(), null, false);
 
@@ -325,8 +324,8 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 					 * 
 					 * General - prefer simple types over composite types
 					 * 
-					 * MultiPolygons - prefer MultiSurface over
-					 * CompositeSurface, because it is more flexible
+					 * MultiPolygons - prefer MultiSurface over CompositeSurface, because it is more
+					 * flexible
 					 * 
 					 * MultiLineString - rely on validity check
 					 */
@@ -381,8 +380,8 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 	 * @param writer the XML stream writer
 	 * @param geometry the geometry
 	 * @param path the definition path to use
-	 * @param srsName the SRS name of a common SRS for the whole document, may
-	 *            be <code>null</code>
+	 * @param srsName the SRS name of a common SRS for the whole document, may be
+	 *            <code>null</code>
 	 * @param decimalFormatter a decimal formatter for geometry values
 	 * @throws XMLStreamException if writing the geometry fails
 	 */

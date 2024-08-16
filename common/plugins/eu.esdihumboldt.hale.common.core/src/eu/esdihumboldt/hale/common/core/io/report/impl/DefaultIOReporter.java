@@ -37,9 +37,9 @@ public class DefaultIOReporter extends DefaultReporter<IOMessage>
 	private Locatable target;
 
 	/**
-	 * Create an empty I/O report. It is set to not successful by default. But
-	 * you should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * Create an empty I/O report. It is set to not successful by default. But you
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @see DefaultReporter#DefaultReporter(String, String, Class, boolean)
 	 * 

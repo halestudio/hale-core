@@ -45,8 +45,8 @@ public interface LookupTable {
 	public Set<Value> getKeys();
 
 	/**
-	 * Get the reverse of the lookup. Note that in the reverse representation
-	 * there may be multiple values for a key.
+	 * Get the reverse of the lookup. Note that in the reverse representation there
+	 * may be multiple values for a key.
 	 * 
 	 * @return the reverse representation of the lookup table
 	 */

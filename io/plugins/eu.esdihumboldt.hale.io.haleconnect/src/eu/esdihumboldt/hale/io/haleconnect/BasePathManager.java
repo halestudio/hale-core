@@ -36,8 +36,8 @@ public interface BasePathManager extends BasePathResolver {
 	 * Set the base path of a hale connect microservice (e.g.
 	 * "https://users.haleconnect.com/v1" for the user service)
 	 *
-	 * @param service service to set the base path for, usually one of the
-	 *            constants defined in {@link HaleConnectServices}
+	 * @param service service to set the base path for, usually one of the constants
+	 *            defined in {@link HaleConnectServices}
 	 * @param basePath Base path to set
 	 */
 	void setBasePath(String service, String basePath);

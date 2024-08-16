@@ -44,8 +44,8 @@ public class InspireCodeListAdvisor extends DefaultResourceAdvisor {
 
 	@Override
 	public void copyResource(LocatableInputSupplier<? extends InputStream> resource,
-			final Path target, IContentType resourceType, boolean includeRemote, IOReporter reporter)
-			throws IOException {
+			final Path target, IContentType resourceType, boolean includeRemote,
+			IOReporter reporter) throws IOException {
 
 		URI uri = resource.getLocation();
 		String uriScheme = uri.getScheme();
@@ -63,8 +63,8 @@ public class InspireCodeListAdvisor extends DefaultResourceAdvisor {
 					HttpEntity entity = response.getEntity();
 
 					if (status.getStatusCode() >= 300) {
-						throw new HttpResponseException(status.getStatusCode(), status
-								.getReasonPhrase());
+						throw new HttpResponseException(status.getStatusCode(),
+								status.getReasonPhrase());
 					}
 					if (entity == null) {
 						throw new ClientProtocolException();

@@ -25,8 +25,8 @@ import java.util.Optional;
 public interface TransformationSettings {
 
 	/**
-	 * If present, states if the temporary database should be used. If not
-	 * present, default behavior should be used.
+	 * If present, states if the temporary database should be used. If not present,
+	 * default behavior should be used.
 	 * 
 	 * @return if the temporary database should be used
 	 */

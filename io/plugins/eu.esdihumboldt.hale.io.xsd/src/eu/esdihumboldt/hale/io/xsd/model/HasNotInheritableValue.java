@@ -15,8 +15,8 @@
 
 package eu.esdihumboldt.hale.io.xsd.model;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
+import net.jcip.annotations.Immutable;
 
 /**
  * {@link HasValueFlag} that marks a type as having a value, but doesn't inherit

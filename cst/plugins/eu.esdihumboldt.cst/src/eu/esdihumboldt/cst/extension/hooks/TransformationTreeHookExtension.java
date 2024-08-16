@@ -27,8 +27,8 @@ import eu.esdihumboldt.cst.extension.hooks.internal.DefaultTreeHookFactory;
  * 
  * @author Simon Templer
  */
-public class TransformationTreeHookExtension extends
-		AbstractExtension<TransformationTreeHook, TransformationTreeHookFactory> {
+public class TransformationTreeHookExtension
+		extends AbstractExtension<TransformationTreeHook, TransformationTreeHookFactory> {
 
 	/**
 	 * The extension ID

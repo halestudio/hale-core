@@ -84,8 +84,8 @@ public class LookupStreamResource {
 	 * @param input the input stream
 	 * @param location the location represented by the input stream, may be
 	 *            <code>null</code>
-	 * @param lookupLimit the limit of bytes that may be read from a lookup
-	 *            input stream
+	 * @param lookupLimit the limit of bytes that may be read from a lookup input
+	 *            stream
 	 */
 	public LookupStreamResource(InputStream input, URI location, int lookupLimit) {
 		super();
@@ -101,10 +101,9 @@ public class LookupStreamResource {
 
 	/**
 	 * Get an input supplier that supplies streams that may only be read to a
-	 * certain amount of bytes. Only one instance of such a stream may be used
-	 * at a time (as they are all backed by the same stream) and the instance
-	 * should be closed before the stream is retrieved through
-	 * {@link #getInputSupplier()}.
+	 * certain amount of bytes. Only one instance of such a stream may be used at a
+	 * time (as they are all backed by the same stream) and the instance should be
+	 * closed before the stream is retrieved through {@link #getInputSupplier()}.
 	 * 
 	 * @return the input supplier
 	 */
@@ -139,8 +138,8 @@ public class LookupStreamResource {
 	}
 
 	/**
-	 * Get an input supplier that supplies the underlying stream, which can be
-	 * fully consumed only once.
+	 * Get an input supplier that supplies the underlying stream, which can be fully
+	 * consumed only once.
 	 * 
 	 * @return the input supplier
 	 */

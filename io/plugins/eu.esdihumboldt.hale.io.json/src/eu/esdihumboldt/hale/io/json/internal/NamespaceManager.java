@@ -54,8 +54,8 @@ public interface NamespaceManager {
 	public void setPrefix(String namespace, String prefix);
 
 	/**
-	 * Get the prefix associated to the given namespace. Associates a new prefix
-	 * if none was associated before.
+	 * Get the prefix associated to the given namespace. Associates a new prefix if
+	 * none was associated before.
 	 *
 	 * @param namespace the namespace
 	 * @return the prefix
@@ -72,8 +72,8 @@ public interface NamespaceManager {
 	public String addNamespace(String namespace, Optional<String> desiredPrefix);
 
 	/**
-	 * Add namespace prefixes from a map. Tries to reuse the given prefixes
-	 * where possible.
+	 * Add namespace prefixes from a map. Tries to reuse the given prefixes where
+	 * possible.
 	 *
 	 * @param prefixes a map of namespaces to prefixes
 	 */

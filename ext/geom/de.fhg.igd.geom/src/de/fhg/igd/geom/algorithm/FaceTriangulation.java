@@ -46,8 +46,8 @@ public class FaceTriangulation {
 	}
 
 	/**
-	 * Checks if the vertex p2 is convex by calculating the determinant of
-	 * p1,p2,p3 which is negative if p2 convex and positive if it is not.
+	 * Checks if the vertex p2 is convex by calculating the determinant of p1,p2,p3
+	 * which is negative if p2 convex and positive if it is not.
 	 * 
 	 * @param p1 the point prior to p2
 	 * @param p2 the point to check
@@ -199,11 +199,11 @@ public class FaceTriangulation {
 	}
 
 	/**
-	 * This method calculates the signed 2D area of a Polygon. If the result is
-	 * < 0.0 the Polygon is oriented clockwise, otherwise it's counterclockwise.
+	 * This method calculates the signed 2D area of a Polygon. If the result is <
+	 * 0.0 the Polygon is oriented clockwise, otherwise it's counterclockwise.
 	 * 
-	 * @param points the Polygon, whereas the first point MUST NOT equal the
-	 *            last one
+	 * @param points the Polygon, whereas the first point MUST NOT equal the last
+	 *            one
 	 * @return true if the Polygon is clockwise, false otherwise
 	 */
 	private static boolean isClockwise(List<Point3D> points) {
@@ -221,8 +221,8 @@ public class FaceTriangulation {
 	 * Reverses a list of points
 	 * 
 	 * @param a the list
-	 * @param indices the index array that connects the points with the vertices
-	 *            in the corresponding face
+	 * @param indices the index array that connects the points with the vertices in
+	 *            the corresponding face
 	 */
 	private static void reversePoints(List<Point3D> a, int[] indices) {
 		for (int i = 0; i < a.size() / 2; ++i) {
@@ -271,8 +271,8 @@ public class FaceTriangulation {
 	}
 
 	/**
-	 * Projects a Face onto a 2D plane using a given normal. Also compacts the
-	 * face (removes consecutive duplicate points).
+	 * Projects a Face onto a 2D plane using a given normal. Also compacts the face
+	 * (removes consecutive duplicate points).
 	 * 
 	 * @param f the Face
 	 * @param k the normal

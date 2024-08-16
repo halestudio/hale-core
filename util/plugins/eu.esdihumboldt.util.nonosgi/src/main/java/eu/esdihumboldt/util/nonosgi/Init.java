@@ -14,18 +14,19 @@ import groovy.lang.GroovySystem;
  */
 public class Init {
 
-    private static AtomicBoolean initialized = new AtomicBoolean(false);
+	private static AtomicBoolean initialized = new AtomicBoolean(false);
 
-    public static void init() {
-        if (initialized.compareAndSet(false, true)) {
-            SLF4JBridgeHandler.install();
+	public static void init() {
+		if (initialized.compareAndSet(false, true)) {
+			SLF4JBridgeHandler.install();
 
-            // initialize registry
-            RegistryFactoryHelper.getRegistry();
+			// initialize registry
+			RegistryFactoryHelper.getRegistry();
 
-            // initialize meta extensions
-            GroovySystem.getMetaClassRegistry().setMetaClassCreationHandle(new CustomMetaClassCreationHandle());
-        }
-    }
+			// initialize meta extensions
+			GroovySystem.getMetaClassRegistry()
+					.setMetaClassCreationHandle(new CustomMetaClassCreationHandle());
+		}
+	}
 
 }

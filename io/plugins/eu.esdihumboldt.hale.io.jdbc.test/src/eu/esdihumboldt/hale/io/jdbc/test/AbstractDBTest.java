@@ -31,7 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.After;
 import org.junit.Before;
 
@@ -59,6 +58,7 @@ import eu.esdihumboldt.hale.io.jdbc.JDBCInstanceWriter;
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 import eu.esdihumboldt.hale.io.jdbc.SQLSchemaReader;
 import eu.esdihumboldt.hale.io.jdbc.constraints.SQLType;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Base class for database tests.
@@ -76,8 +76,8 @@ public abstract class AbstractDBTest extends AbstractPlatformTest {
 	private URI jdbcUri;
 
 	/**
-	 * @param imageParams the config parameters required while creating and
-	 *            starting the container.
+	 * @param imageParams the config parameters required while creating and starting
+	 *            the container.
 	 *
 	 */
 	public AbstractDBTest(DBImageParameters imageParams) {
@@ -87,8 +87,8 @@ public abstract class AbstractDBTest extends AbstractPlatformTest {
 	/**
 	 * Create a new database test class.
 	 *
-	 * @param configName the name of the docker configuration to use for ramping
-	 *            up the database
+	 * @param configName the name of the docker configuration to use for ramping up
+	 *            the database
 	 * @param contextClass the class in which context (class loader) the
 	 *            configuration is defined
 	 */
@@ -99,8 +99,8 @@ public abstract class AbstractDBTest extends AbstractPlatformTest {
 	/**
 	 * Setup host and database.
 	 *
-	 * @throws InterruptedException thrown while creating, starting or
-	 *             inspecting a container.
+	 * @throws InterruptedException thrown while creating, starting or inspecting a
+	 *             container.
 	 */
 	@Before
 	public void setupDB() throws InterruptedException {
@@ -252,12 +252,12 @@ public abstract class AbstractDBTest extends AbstractPlatformTest {
 	 * It checks if the binding of a data type read from schema and the expected
 	 * binding are equal.
 	 *
-	 * @param map It maps a data type with a binding class to be expected. e.g.
-	 *            for postgresql db, for data type VARCHAR, the expected binding
-	 *            class is String.class
+	 * @param map It maps a data type with a binding class to be expected. e.g. for
+	 *            postgresql db, for data type VARCHAR, the expected binding class
+	 *            is String.class
 	 * @param schema the schema read.
-	 * @throws Exception exception may thrown while getting the value of a
-	 *             static or instance field of type int.
+	 * @throws Exception exception may thrown while getting the value of a static or
+	 *             instance field of type int.
 	 */
 	protected void checkBindingAndSqlType(Schema schema, Map<String, Class<?>> map)
 			throws Exception {
@@ -336,8 +336,8 @@ public abstract class AbstractDBTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read the instances from the db, check if it is same as instances written
-	 * to the db.
+	 * Read the instances from the db, check if it is same as instances written to
+	 * the db.
 	 *
 	 * @param originalInstances instance created and written to db
 	 * @param schema schema read

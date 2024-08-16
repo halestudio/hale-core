@@ -25,12 +25,11 @@ import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
  * 
  * @author Simon Templer
  */
-public interface SchemaReaderAdvisorDescriptor extends
-		ExtensionObjectFactory<JDBCSchemaReaderAdvisor> {
+public interface SchemaReaderAdvisorDescriptor
+		extends ExtensionObjectFactory<JDBCSchemaReaderAdvisor> {
 
 	/**
-	 * Determines if the advisor applies to a database with the given
-	 * connection.
+	 * Determines if the advisor applies to a database with the given connection.
 	 * 
 	 * @param connection the database connection
 	 * @return if the advisor should be used for the database

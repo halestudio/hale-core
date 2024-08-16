@@ -47,8 +47,8 @@ public class SchemaBuilderContext {
 	/**
 	 * 
 	 * @param defaultNamespace the namespace to use for common types
-	 * @param sharedTypes the shared types (e.g. from other loaded schemas) for
-	 *            type reuse
+	 * @param sharedTypes the shared types (e.g. from other loaded schemas) for type
+	 *            reuse
 	 */
 	public SchemaBuilderContext(String defaultNamespace, TypeIndex sharedTypes) {
 		super();

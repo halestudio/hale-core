@@ -54,8 +54,8 @@ public class ProjectReference<C> {
 	public static final String CONFIG_FILE_NAME = "project.properties";
 
 	/**
-	 * The name of the log file in the project folder, containing the reports
-	 * from loading the project.
+	 * The name of the log file in the project folder, containing the reports from
+	 * loading the project.
 	 */
 	public static final String REPORT_FILE_NAME = "project-load.log";
 
@@ -81,11 +81,11 @@ public class ProjectReference<C> {
 
 	/**
 	 * @param projectFolder the project folder
-	 * @param overrideProjectFile the name of the project file if it should
-	 *            override the configuration, otherwise <code>null</code>
+	 * @param overrideProjectFile the name of the project file if it should override
+	 *            the configuration, otherwise <code>null</code>
 	 * @param projectId the project identifier
-	 * @param defaultSettings the properties with default project settings, may
-	 *            be <code>null</code>
+	 * @param defaultSettings the properties with default project settings, may be
+	 *            <code>null</code>
 	 * @throws IOException if accessing the project configuration file failed
 	 */
 	public ProjectReference(final File projectFolder, final String overrideProjectFile,
@@ -112,8 +112,8 @@ public class ProjectReference<C> {
 
 	/**
 	 * Updates the project status from the configuration and if needed loads the
-	 * project and transformation environment and adds or removes the
-	 * transformation environment.
+	 * project and transformation environment and adds or removes the transformation
+	 * environment.
 	 * 
 	 * @param context the update context
 	 */
@@ -154,19 +154,17 @@ public class ProjectReference<C> {
 	}
 
 	/**
-	 * States if the report file should be deleted in {@link #update(Object)}
-	 * even if the project info is already loaded.
+	 * States if the report file should be deleted in {@link #update(Object)} even
+	 * if the project info is already loaded.
 	 * 
-	 * @return if the report file should be deleted for an already loaded
-	 *         project
+	 * @return if the report file should be deleted for an already loaded project
 	 */
 	protected boolean isForceClearReports() {
 		return false;
 	}
 
 	/**
-	 * Called when the project was successfully loaded in
-	 * {@link #update(Object)}.
+	 * Called when the project was successfully loaded in {@link #update(Object)}.
 	 * 
 	 * @param context the update context
 	 * @param projectId the project identifier
@@ -240,21 +238,20 @@ public class ProjectReference<C> {
 	 * 
 	 * @param projectFile the project file
 	 * @param reportHandler the report handler
-	 * @return the project info or <code>null</code> if the project file could
-	 *         not be loaded
+	 * @return the project info or <code>null</code> if the project file could not
+	 *         be loaded
 	 */
 	protected Project loadProjectInfo(File projectFile, ReportHandler reportHandler) {
 		FileIOSupplier in = new FileIOSupplier(projectFile);
-		ProjectReader reader = HaleIO
-				.findIOProvider(ProjectReader.class, in, projectFile.getName());
+		ProjectReader reader = HaleIO.findIOProvider(ProjectReader.class, in,
+				projectFile.getName());
 		reader.setSource(in);
 		try {
 			IOReport report = reader.execute(null);
 			reportHandler.publishReport(report);
 		} catch (Exception e) {
-			log.error(
-					"Failed to load project information for project at "
-							+ projectFile.getAbsolutePath(), e);
+			log.error("Failed to load project information for project at "
+					+ projectFile.getAbsolutePath(), e);
 			return null;
 		}
 		return reader.getProject();

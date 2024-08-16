@@ -44,8 +44,8 @@ public interface IOAdvisor<T extends IOProvider> {
 	public void setActionId(String actionId);
 
 	/**
-	 * Set the service provider through which the advisor can access services in
-	 * the current context. This method must be called before
+	 * Set the service provider through which the advisor can access services in the
+	 * current context. This method must be called before
 	 * {@link #prepareProvider(IOProvider)},
 	 * {@link #updateConfiguration(IOProvider)} or
 	 * {@link #handleResults(IOProvider)} is called
@@ -55,8 +55,8 @@ public interface IOAdvisor<T extends IOProvider> {
 	public void setServiceProvider(ServiceProvider serviceProvider);
 
 	/**
-	 * Prepare the I/O provider when it is created. This may be executed even if
-	 * for the provider no execution takes place.<br>
+	 * Prepare the I/O provider when it is created. This may be executed even if for
+	 * the provider no execution takes place.<br>
 	 * <br>
 	 * This for instance allows configuration pages on IOWizards to base on this
 	 * preparation.

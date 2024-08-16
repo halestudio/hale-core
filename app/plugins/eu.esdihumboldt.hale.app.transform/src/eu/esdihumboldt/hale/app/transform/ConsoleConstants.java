@@ -26,17 +26,17 @@ public interface ConsoleConstants {
 	 * Prefix for messages on System out.
 	 */
 	public static final String MSG_PREFIX = "(I) ";
-	
+
 	/**
 	 * Prefix for status messages on System out.
 	 */
 	public static final String STATUS_PREFIX = "(S) ";
-	
+
 	/**
 	 * Prefix for warning messages on System out.
 	 */
 	public static final String WARN_PREFIX = "(W) ";
-	
+
 	/**
 	 * Prefix for error messages on System out.
 	 */

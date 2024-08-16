@@ -60,10 +60,10 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	 * @param expectGeoJson if the input is expected to be GeoJson
 	 * @param defaultType the feature type to use for all features or
 	 *            <code>null</code>
-	 * @param forceDefault if the default type should be always used (disables
-	 *            other mechanisms to determine the type)
-	 * @param schema if a schema is specified, the feature type may be
-	 *            determined based on the schema
+	 * @param forceDefault if the default type should be always used (disables other
+	 *            mechanisms to determine the type)
+	 * @param schema if a schema is specified, the feature type may be determined
+	 *            based on the schema
 	 */
 	public JsonToInstance(boolean expectGeoJson, TypeDefinition defaultType, boolean forceDefault,
 			TypeIndex schema, SimpleLog log) {
@@ -77,10 +77,10 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	 * @param expectGeoJson if the input is expected to be GeoJson
 	 * @param defaultType the default type to use for all features or
 	 *            <code>null</code>
-	 * @param forceDefault if the default type should be always used (disables
-	 *            other mechanisms to determine the type)
-	 * @param schema if a schema is specified, the feature type may be
-	 *            determined based on the schema
+	 * @param forceDefault if the default type should be always used (disables other
+	 *            mechanisms to determine the type)
+	 * @param schema if a schema is specified, the feature type may be determined
+	 *            based on the schema
 	 */
 	public JsonToInstance(JsonReadMode mode, boolean expectGeoJson, TypeDefinition defaultType,
 			boolean forceDefault, TypeIndex schema, SimpleLog log) {
@@ -95,10 +95,10 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	 * @param expectGeoJson if the input is expected to be GeoJson
 	 * @param defaultType the feature type to use for all features or
 	 *            <code>null</code>
-	 * @param forceDefault if the default type should be always used (disables
-	 *            other mechanisms to determine the type)
-	 * @param schema if a schema is specified, the feature type may be
-	 *            determined based on the schema
+	 * @param forceDefault if the default type should be always used (disables other
+	 *            mechanisms to determine the type)
+	 * @param schema if a schema is specified, the feature type may be determined
+	 *            based on the schema
 	 * @param namespaces the namespace manager
 	 */
 	public JsonToInstance(JsonReadMode mode, boolean expectGeoJson, TypeDefinition defaultType,
@@ -127,8 +127,8 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	/**
 	 * Determine default type if none is specified.
 	 * 
-	 * Note: This functionality should be removed once any kind of
-	 * auto-detection based on the actual content is implemented.
+	 * Note: This functionality should be removed once any kind of auto-detection
+	 * based on the actual content is implemented.
 	 */
 	private static TypeDefinition determineDefaultType(TypeIndex schema, SimpleLog log) {
 		if (schema == null) {
@@ -170,10 +170,10 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 		// determine schema type
 
 		/*
-		 * Currently only configuration of a fixed type that should be assumed
-		 * for all features is supported. This could be extended later with some
-		 * form of type detection (e.g. using the information in @type in case
-		 * the data was written with InstanceToJson)
+		 * Currently only configuration of a fixed type that should be assumed for all
+		 * features is supported. This could be extended later with some form of type
+		 * detection (e.g. using the information in @type in case the data was written
+		 * with InstanceToJson)
 		 */
 		TypeDefinition type = defaultType;
 

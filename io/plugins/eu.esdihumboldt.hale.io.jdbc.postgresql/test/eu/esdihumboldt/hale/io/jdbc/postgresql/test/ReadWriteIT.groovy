@@ -17,11 +17,9 @@ package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
 
+import groovy.sql.Sql
+
 import org.junit.Test
-
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
-
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryFactory
@@ -35,7 +33,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import groovy.sql.Sql
+import ru.yandex.qatools.allure.annotations.Features
+import ru.yandex.qatools.allure.annotations.Stories
 
 
 /**
@@ -89,7 +88,8 @@ class ReadWriteIT extends AbstractDBTest{
 					name "Some feature $i"
 					geom new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), gf.createLineString([
 						new Coordinate(0, 0),
-						new Coordinate(i, i)] as Coordinate[]))
+						new Coordinate(i, i)
+					] as Coordinate[]))
 					dat([0, 1, i, 1, 0] as byte[])
 				}
 			}
@@ -108,5 +108,4 @@ class ReadWriteIT extends AbstractDBTest{
 
 		assertEquals(20, count)
 	}
-
 }

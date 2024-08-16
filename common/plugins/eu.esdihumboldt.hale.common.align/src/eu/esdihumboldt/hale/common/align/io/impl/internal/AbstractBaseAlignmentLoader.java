@@ -61,8 +61,8 @@ import eu.esdihumboldt.util.io.IOUtils;
 public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
-	 * Load a alignment representation from the given stream. This method must
-	 * close the stream after it is done.
+	 * Load a alignment representation from the given stream. This method must close
+	 * the stream after it is done.
 	 * 
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
@@ -92,8 +92,8 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	protected abstract Collection<C> getCells(A alignment);
 
 	/**
-	 * Returns a collection of property function definitions of the given
-	 * alignment representation.
+	 * Returns a collection of property function definitions of the given alignment
+	 * representation.
 	 * 
 	 * @param alignment the alignment representation in question
 	 * @param sourceTypes the source types to use for resolving definition
@@ -114,9 +114,8 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	protected abstract String getCellId(C cell);
 
 	/**
-	 * Create a cell from the given cell representation. Implementations can
-	 * return {@link UnmigratedCell}s which will be migrated by this alignment
-	 * loader.
+	 * Create a cell from the given cell representation. Implementations can return
+	 * {@link UnmigratedCell}s which will be migrated by this alignment loader.
 	 * 
 	 * @param cell the cell representation
 	 * @param sourceTypes the source types to use for resolving definition
@@ -180,8 +179,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Private class for a pair of URIs. The used URI and the absolute URI.
 	 * 
-	 * {@link #equals(Object)} and {@link #hashCode()} only use the absolute
-	 * URI.
+	 * {@link #equals(Object)} and {@link #hashCode()} only use the absolute URI.
 	 */
 	private class URIPair {
 
@@ -228,7 +226,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 */
 	protected final void internalAddBaseAlignment(MutableAlignment alignment, URI newBase,
 			URI projectLocation, TypeIndex sourceTypes, TypeIndex targetTypes, IOReporter reporter)
-					throws IOException {
+			throws IOException {
 		Map<A, Map<String, String>> prefixMapping = new HashMap<A, Map<String, String>>();
 		Map<A, AlignmentInfo> alignmentToInfo = new HashMap<A, AlignmentInfo>();
 
@@ -247,8 +245,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 *            references
 	 * @param targetTypes the target types to use for resolving definition
 	 *            references
-	 * @param prefixMapping gets filled with a mapping from local to global
-	 *            prefixes
+	 * @param prefixMapping gets filled with a mapping from local to global prefixes
 	 * @param alignmentToInfo gets filled with a mapping from base alignment
 	 *            representations to prefixes and URIs
 	 * @param reporter the I/O reporter to report any errors to, may be
@@ -321,8 +318,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 * @param addBase the URI of the new base alignment to add
 	 * @param projectLocation the project location or <code>null</code>
 	 * @param existingBases the map of existing bases
-	 * @param prefixMapping gets filled with a mapping from local to global
-	 *            prefixes
+	 * @param prefixMapping gets filled with a mapping from local to global prefixes
 	 * @param alignmentToInfo gets filled with a mapping from base alignment
 	 *            representations to prefixes and URIs
 	 * @param reporter the reporter
@@ -364,9 +360,9 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 		uriToPrefix.put(absoluteAddBaseURI, newPrefix);
 
 		/*
-		 * XXX Adding a base alignment could only use a PathUpdate for the
-		 * movement of the base alignment which is not known in the current
-		 * project. Maybe could try the one of the current project either way?
+		 * XXX Adding a base alignment could only use a PathUpdate for the movement of
+		 * the base alignment which is not known in the current project. Maybe could try
+		 * the one of the current project either way?
 		 */
 
 		// find all alignments to load (also missing ones) and load the beans
@@ -523,8 +519,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 * Function to fill the prefixMapping and alignmentToInfo maps.
 	 * 
 	 * @param start the main alignment representation
-	 * @param prefixMapping gets filled with a mapping from local to global
-	 *            prefixes
+	 * @param prefixMapping gets filled with a mapping from local to global prefixes
 	 * @param alignmentToInfo gets filled with a mapping from base alignment
 	 *            representations to prefixes and URIs
 	 * @param updater the location updater to use for base alignments
@@ -533,7 +528,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 */
 	private void generatePrefixMapping(A start, Map<A, Map<String, String>> prefixMapping,
 			Map<A, AlignmentInfo> alignmentToInfo, PathUpdate updater, IOReporter reporter)
-					throws IOException {
+			throws IOException {
 		// XXX What if the project file path would change?
 		// Alignment is a project file, so it is in the same directory.
 		URI currentAbsolute = updater.getNewLocation();
@@ -638,8 +633,8 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	 *            {@link #getCell(Alignment, String, String, Map, IOReporter)})
 	 * @param defaultPrefix the default prefix (may be <code>null</code>) (see
 	 *            {@link #getCell(Alignment, String, String, Map, IOReporter)})
-	 * @param base whether the added modifiers are from a base alignment or the
-	 *            main alignment
+	 * @param base whether the added modifiers are from a base alignment or the main
+	 *            alignment
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
 	 */
@@ -692,15 +687,15 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	}
 
 	/**
-	 * Returns the cell in question or null, if it could not be found in which
-	 * case a suitable warning was generated.
+	 * Returns the cell in question or null, if it could not be found in which case
+	 * a suitable warning was generated.
 	 * 
 	 * @param alignment the alignment which contains the cell
 	 * @param cellId the cell id
 	 * @param defaultPrefix the prefix to use if the cell id does not contain a
 	 *            prefix, may be <code>null</code>
-	 * @param prefixMapping the prefix map to transform the prefix of the cell
-	 *            id with, if it has one
+	 * @param prefixMapping the prefix map to transform the prefix of the cell id
+	 *            with, if it has one
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
 	 * @return the cell in question or <code>null</code>

@@ -26,7 +26,6 @@ import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 import org.w3c.dom.Element;
 
@@ -35,6 +34,7 @@ import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContent;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentAssociation;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentConfiguration;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentMode;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test {@link CustomTypeContentConfiguration} serialization.

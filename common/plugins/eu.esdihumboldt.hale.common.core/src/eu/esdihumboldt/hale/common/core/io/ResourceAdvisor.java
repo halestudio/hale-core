@@ -36,15 +36,15 @@ public interface ResourceAdvisor {
 	 * 
 	 * @param resource the resource to copy
 	 * @param target the target location, usually a file
-	 * @param resourceType the resource content type, may be <code>null</code>
-	 *            if unknown
+	 * @param resourceType the resource content type, may be <code>null</code> if
+	 *            unknown
 	 * @param includeRemote specifies if auxiliary resources associated to the
-	 *            resource that are available in a remote location should be
-	 *            copied too
-	 * @param reporter the reporter of the I/O process any errors should be
-	 *            reported to
-	 * @throws IOException if copying the resource fails or copying the resource
-	 *             is not possible
+	 *            resource that are available in a remote location should be copied
+	 *            too
+	 * @param reporter the reporter of the I/O process any errors should be reported
+	 *            to
+	 * @throws IOException if copying the resource fails or copying the resource is
+	 *             not possible
 	 */
 	public void copyResource(LocatableInputSupplier<? extends InputStream> resource, Path target,
 			IContentType resourceType, boolean includeRemote, IOReporter reporter)

@@ -54,8 +54,8 @@ public class DefaultInstance extends DefaultGroup implements MutableInstance {
 	}
 
 	/**
-	 * Copy constructor. Creates an instance based on the properties and values
-	 * of the given instance.
+	 * Copy constructor. Creates an instance based on the properties and values of
+	 * the given instance.
 	 * 
 	 * @param org the instance to copy
 	 */

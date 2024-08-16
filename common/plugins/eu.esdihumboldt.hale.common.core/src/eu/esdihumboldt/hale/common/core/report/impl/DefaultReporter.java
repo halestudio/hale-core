@@ -33,8 +33,8 @@ public class DefaultReporter<T extends Message> extends AllInMemoryReporter<T> {
 	private static final ALogger logger = ALoggerFactory.getLogger(DefaultReporter.class);
 
 	/**
-	 * Maximum number of messages per message type in a report. Negative values
-	 * mean unlimited messages.
+	 * Maximum number of messages per message type in a report. Negative values mean
+	 * unlimited messages.
 	 */
 	public static final int MESSAGE_CAP = getMessageCap();
 
@@ -44,8 +44,8 @@ public class DefaultReporter<T extends Message> extends AllInMemoryReporter<T> {
 
 	/**
 	 * Create an empty report. It is set to not successful by default. But you
-	 * should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
@@ -58,8 +58,8 @@ public class DefaultReporter<T extends Message> extends AllInMemoryReporter<T> {
 	}
 
 	/**
-	 * Determine message cap from system property or environment variable,
-	 * otherwise return a default value.
+	 * Determine message cap from system property or environment variable, otherwise
+	 * return a default value.
 	 * 
 	 * @return the message cap
 	 */

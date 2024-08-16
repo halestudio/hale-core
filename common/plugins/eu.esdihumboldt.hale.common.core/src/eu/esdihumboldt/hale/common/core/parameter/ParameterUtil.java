@@ -140,8 +140,7 @@ public class ParameterUtil {
 	public static final String CONF_PARAMETER_ENUMERATION = "parameterEnumeration";
 
 	/**
-	 * Name of the configuration element defining a class binding for a
-	 * parameter.
+	 * Name of the configuration element defining a class binding for a parameter.
 	 */
 	public static final String CONF_PARAMETER_BINDING = "parameterBinding";
 
@@ -162,8 +161,7 @@ public class ParameterUtil {
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the binding class or <code>null</code>
 	 */
-	public static @Nullable
-	Class<?> getBinding(IConfigurationElement parameterConf) {
+	public static @Nullable Class<?> getBinding(IConfigurationElement parameterConf) {
 		IConfigurationElement[] bindingElement = parameterConf.getChildren(CONF_PARAMETER_BINDING);
 		IConfigurationElement[] enumerationElement = parameterConf
 				.getChildren(CONF_PARAMETER_ENUMERATION);
@@ -202,8 +200,8 @@ public class ParameterUtil {
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the complex value definition or <code>null</code>
 	 */
-	public static @Nullable
-	ComplexValueDefinition getComplexValueDefinition(IConfigurationElement parameterConf) {
+	public static @Nullable ComplexValueDefinition getComplexValueDefinition(
+			IConfigurationElement parameterConf) {
 		IConfigurationElement[] complexValueElement = parameterConf
 				.getChildren(CONF_PARAMETER_COMPLEX_VALUE);
 		if (complexValueElement.length > 0) {
@@ -220,12 +218,12 @@ public class ParameterUtil {
 	/**
 	 * Get the value descriptor of a defined parameter.
 	 * 
-	 * @param parameterConf the configuration element defining the parameter, it
-	 *            can describe a providerParameter or functionParameter.
+	 * @param parameterConf the configuration element defining the parameter, it can
+	 *            describe a providerParameter or functionParameter.
 	 * @return the value descriptor or <code>null</code>
 	 */
-	public static @Nullable
-	ParameterValueDescriptor getValueDescriptor(IConfigurationElement parameterConf) {
+	public static @Nullable ParameterValueDescriptor getValueDescriptor(
+			IConfigurationElement parameterConf) {
 
 		ParameterValueDescriptor pv = null;
 		if (parameterConf != null
@@ -256,8 +254,7 @@ public class ParameterUtil {
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the list of values or <code>null</code>
 	 */
-	public static @Nullable
-	List<String> getEnumeration(IConfigurationElement parameterConf) {
+	public static @Nullable List<String> getEnumeration(IConfigurationElement parameterConf) {
 		IConfigurationElement[] enumerationElement = parameterConf
 				.getChildren(CONF_PARAMETER_ENUMERATION);
 		if (enumerationElement.length > 0) {
@@ -281,8 +278,7 @@ public class ParameterUtil {
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the validator or <code>null</code>
 	 */
-	public static @Nullable
-	Validator getValidator(IConfigurationElement parameterConf) {
+	public static @Nullable Validator getValidator(IConfigurationElement parameterConf) {
 		IConfigurationElement[] bindingElement = parameterConf.getChildren(CONF_PARAMETER_BINDING);
 		IConfigurationElement[] enumerationElement = parameterConf
 				.getChildren(CONF_PARAMETER_ENUMERATION);

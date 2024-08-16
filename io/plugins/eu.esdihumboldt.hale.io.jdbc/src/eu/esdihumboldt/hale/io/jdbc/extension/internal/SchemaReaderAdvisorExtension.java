@@ -34,17 +34,17 @@ import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
  * 
  * @author Simon Templer
  */
-public class SchemaReaderAdvisorExtension extends
-		AbstractExtension<JDBCSchemaReaderAdvisor, SchemaReaderAdvisorDescriptor> {
+public class SchemaReaderAdvisorExtension
+		extends AbstractExtension<JDBCSchemaReaderAdvisor, SchemaReaderAdvisorDescriptor> {
 
 	private static final ALogger log = ALoggerFactory.getLogger(SchemaReaderAdvisorExtension.class);
 
 	/**
 	 * Default factory for {@link JDBCSchemaReaderAdvisor}s.
 	 */
-	private static class ConfigurationFactory extends
-			AbstractConfigurationFactory<JDBCSchemaReaderAdvisor> implements
-			SchemaReaderAdvisorDescriptor {
+	private static class ConfigurationFactory
+			extends AbstractConfigurationFactory<JDBCSchemaReaderAdvisor>
+			implements SchemaReaderAdvisorDescriptor {
 
 		private final Class<?> connectionType;
 
@@ -124,9 +124,8 @@ public class SchemaReaderAdvisorExtension extends
 				try {
 					return factory.createExtensionObject();
 				} catch (Exception e) {
-					log.error(
-							"Could not create JDBC schema reader advisor "
-									+ factory.getIdentifier(), e);
+					log.error("Could not create JDBC schema reader advisor "
+							+ factory.getIdentifier(), e);
 				}
 			}
 		}

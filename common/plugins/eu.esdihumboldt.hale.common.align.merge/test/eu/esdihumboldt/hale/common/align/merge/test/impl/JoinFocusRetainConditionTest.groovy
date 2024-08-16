@@ -209,5 +209,4 @@ class JoinFocusRetainConditionTest extends AbstractMergeCellMigratorTest {
 
 		assertEquals(expected, names)
 	}
-
 }

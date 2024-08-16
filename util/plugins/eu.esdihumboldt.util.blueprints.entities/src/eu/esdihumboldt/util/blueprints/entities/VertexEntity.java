@@ -30,7 +30,8 @@ import org.codehaus.groovy.transform.GroovyASTTransformationClass;
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target({ ElementType.TYPE })
-@GroovyASTTransformationClass({ "eu.esdihumboldt.util.blueprints.entities.VertexEntityTransformation" })
+@GroovyASTTransformationClass({
+		"eu.esdihumboldt.util.blueprints.entities.VertexEntityTransformation" })
 public @interface VertexEntity {
 
 	/**
@@ -39,8 +40,8 @@ public @interface VertexEntity {
 	String value();
 
 	/**
-	 * @return the name of the vertex property the entity class name is stored
-	 *         in (not applicable for OrientGraph)
+	 * @return the name of the vertex property the entity class name is stored in
+	 *         (not applicable for OrientGraph)
 	 */
 	String typeProperty() default "_type";
 }

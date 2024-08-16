@@ -127,8 +127,8 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		final Set<TypeDefinition> planTypes = collectPlanTypes(getTargetSchema().getTypes());
 
 		/*
-		 * Split instances into plan and non-plan instances. Associate the ID of
-		 * a plan with its plan type and the plan instance.
+		 * Split instances into plan and non-plan instances. Associate the ID of a plan
+		 * with its plan type and the plan instance.
 		 */
 		final XMLInspector gadget = new XMLInspector();
 		final DefaultInstanceCollection nonPlanInstances = new DefaultInstanceCollection();

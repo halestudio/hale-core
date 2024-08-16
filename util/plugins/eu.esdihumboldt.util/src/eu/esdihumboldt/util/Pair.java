@@ -61,9 +61,10 @@ public class Pair<F, S> {
 	public S getSecond() {
 		return second;
 	}
-	
+
 	/**
 	 * Pair creation helper.
+	 * 
 	 * @param <F> the type of the first element in the pair
 	 * @param <S> the type of the second element
 	 * @param first the first object

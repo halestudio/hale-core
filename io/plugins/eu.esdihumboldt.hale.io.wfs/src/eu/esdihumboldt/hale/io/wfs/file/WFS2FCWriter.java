@@ -21,9 +21,10 @@ import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.locationtech.jts.geom.Geometry;
+
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;
@@ -71,8 +72,8 @@ public class WFS2FCWriter extends WFSFeatureCollectionWriter {
 		super.execute(progress, reporter);
 
 		// run feed writer if applicable
-		if (getParameter(InspireInstanceWriter.PARAM_SPATIAL_DATA_SET_CREATE_FEED).as(
-				Boolean.class, false)) {
+		if (getParameter(InspireInstanceWriter.PARAM_SPATIAL_DATA_SET_CREATE_FEED).as(Boolean.class,
+				false)) {
 			InspireDatasetFeedWriter feedWriter = new InspireDatasetFeedWriter();
 			for (String copyParam : InspireDatasetFeedWriter.getAdditionalParams()) {
 				feedWriter.setParameter(copyParam, getParameter(copyParam));

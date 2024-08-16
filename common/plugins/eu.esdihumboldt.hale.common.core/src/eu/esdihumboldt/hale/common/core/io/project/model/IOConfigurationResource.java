@@ -38,9 +38,9 @@ public class IOConfigurationResource implements Resource {
 	 * Create a new resource.
 	 * 
 	 * @param config the I/O configuration to wrap
-	 * @param projectLocation the location of the project relative URIs should
-	 *            be resolved against, should be <code>null</code> only if there
-	 *            are no relative resources
+	 * @param projectLocation the location of the project relative URIs should be
+	 *            resolved against, should be <code>null</code> only if there are no
+	 *            relative resources
 	 */
 	public IOConfigurationResource(IOConfiguration config, URI projectLocation) {
 		super();

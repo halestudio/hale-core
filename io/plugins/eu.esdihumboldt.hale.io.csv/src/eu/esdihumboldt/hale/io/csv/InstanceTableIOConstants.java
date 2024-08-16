@@ -35,8 +35,8 @@ public class InstanceTableIOConstants {
 	public static final String USE_SCHEMA = "useSchema";
 
 	/**
-	 * Parameter for XLS import Provider to decide which Excel sheet should be
-	 * read. Sheet indices are 0-based.
+	 * Parameter for XLS import Provider to decide which Excel sheet should be read.
+	 * Sheet indices are 0-based.
 	 */
 	public static final String SHEET_INDEX = "sheetIndex";
 

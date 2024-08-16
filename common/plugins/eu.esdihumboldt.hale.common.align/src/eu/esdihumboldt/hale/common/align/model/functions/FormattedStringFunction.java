@@ -33,9 +33,8 @@ import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 public interface FormattedStringFunction {
 
 	/**
-	 * Name of the parameter specifying the pattern for the string format. See
-	 * the function definition in <code>eu.esdihumboldt.hale.common.align</code>
-	 * .
+	 * Name of the parameter specifying the pattern for the string format. See the
+	 * function definition in <code>eu.esdihumboldt.hale.common.align</code> .
 	 */
 	public static final String PARAMETER_PATTERN = "pattern";
 
@@ -51,8 +50,8 @@ public interface FormattedStringFunction {
 	public static final String ID = "eu.esdihumboldt.hale.align.formattedstring";
 
 	/**
-	 * Add a value to the given map of values, with the variable names derived
-	 * from the associated property definition.
+	 * Add a value to the given map of values, with the variable names derived from
+	 * the associated property definition.
 	 * 
 	 * @param values the map associating variable names to values
 	 * @param value the value

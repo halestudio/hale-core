@@ -16,11 +16,11 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Constraint that can provide a custom display name. By default has no custom
@@ -54,8 +54,8 @@ public class DisplayName implements GroupPropertyConstraint, PropertyConstraint,
 	/**
 	 * Get the custom display name.
 	 * 
-	 * @return the customName the custom display name or <code>null</code> if
-	 *         there is no custom name
+	 * @return the customName the custom display name or <code>null</code> if there
+	 *         is no custom name
 	 */
 	public String getCustomName() {
 		return customName;

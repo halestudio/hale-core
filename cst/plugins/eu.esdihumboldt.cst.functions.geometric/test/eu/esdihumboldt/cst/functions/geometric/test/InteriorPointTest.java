@@ -23,7 +23,6 @@ import java.io.File;
 import java.nio.file.Path;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LinearRing;
@@ -83,8 +82,8 @@ public class InteriorPointTest {
 
 		if (GEN_IMAGES) {
 			/*
-			 * Stuff related to SVG commented out because of issues with
-			 * dependencies in test product.
+			 * Stuff related to SVG commented out because of issues with dependencies in
+			 * test product.
 			 */
 
 			PaintSettings settings = new PaintSettings(geometry.getEnvelopeInternal(), MAX_SIZE,
@@ -161,19 +160,14 @@ public class InteriorPointTest {
 	 */
 	@Test
 	public void testCurve() throws Exception {
-		LinearRing outer = factory
-				.createLinearRing(
-						new Coordinate[] { new Coordinate(49.87377, 8.65508),
-								new Coordinate(49.87369, 8.65529), new Coordinate(49.87356,
-										8.65544),
-								new Coordinate(49.87349, 8.65549),
-								new Coordinate(49.87327, 8.65566), new Coordinate(49.87325, 8.6556),
-								new Coordinate(49.8734, 8.65548), new Coordinate(49.87351, 8.6554),
-								new Coordinate(49.87357, 8.65532),
-								new Coordinate(49.87365, 8.65518),
-								new Coordinate(49.87371, 8.65497),
-								new Coordinate(49.87376, 8.65444), new Coordinate(49.87385, 8.6545),
-								new Coordinate(49.87377, 8.65508) });
+		LinearRing outer = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(49.87377, 8.65508), new Coordinate(49.87369, 8.65529),
+				new Coordinate(49.87356, 8.65544), new Coordinate(49.87349, 8.65549),
+				new Coordinate(49.87327, 8.65566), new Coordinate(49.87325, 8.6556),
+				new Coordinate(49.8734, 8.65548), new Coordinate(49.87351, 8.6554),
+				new Coordinate(49.87357, 8.65532), new Coordinate(49.87365, 8.65518),
+				new Coordinate(49.87371, 8.65497), new Coordinate(49.87376, 8.65444),
+				new Coordinate(49.87385, 8.6545), new Coordinate(49.87377, 8.65508) });
 		Polygon geom = factory.createPolygon(outer);
 		testPointWithin(geom);
 	}
@@ -217,36 +211,23 @@ public class InteriorPointTest {
 	 */
 	@Test
 	public void testFootprint() throws Exception {
-		LinearRing outer = factory
-				.createLinearRing(
-						new Coordinate[] { new Coordinate(49.87367, 8.65714),
-								new Coordinate(49.87362, 8.65741), new Coordinate(49.87365,
-										8.65758),
-								new Coordinate(49.87396, 8.65748),
-								new Coordinate(49.87399, 8.65766),
-								new Coordinate(49.87362, 8.65778),
-								new Coordinate(49.87365, 8.65796), new Coordinate(49.874, 8.65785),
-								new Coordinate(49.87409, 8.65856),
-								new Coordinate(49.87403, 8.65858), new Coordinate(49.87402, 8.6585),
-								new Coordinate(49.87365, 8.65863),
-								new Coordinate(49.87362, 8.65874),
-								new Coordinate(49.87369, 8.65873), new Coordinate(49.87372,
-										8.65907),
-								new Coordinate(49.87343, 8.65915),
-								new Coordinate(49.87339, 8.65884),
-								new Coordinate(49.87356, 8.65874),
-								new Coordinate(49.87353, 8.65864),
-								new Coordinate(49.87348, 8.65867),
-								new Coordinate(49.87339, 8.65805), new Coordinate(49.8736, 8.65797),
-								new Coordinate(49.87358, 8.6578),
-								new Coordinate(49.87336, 8.65788), new Coordinate(49.87332,
-										8.65768),
-								new Coordinate(49.87356, 8.65758),
-								new Coordinate(49.87354, 8.65745),
-								new Coordinate(49.87347, 8.65744),
-								new Coordinate(49.87338, 8.65723), new Coordinate(49.8734, 8.65701),
-								new Coordinate(49.8736, 8.65698),
-								new Coordinate(49.87367, 8.65714) });
+		LinearRing outer = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(49.87367, 8.65714), new Coordinate(49.87362, 8.65741),
+				new Coordinate(49.87365, 8.65758), new Coordinate(49.87396, 8.65748),
+				new Coordinate(49.87399, 8.65766), new Coordinate(49.87362, 8.65778),
+				new Coordinate(49.87365, 8.65796), new Coordinate(49.874, 8.65785),
+				new Coordinate(49.87409, 8.65856), new Coordinate(49.87403, 8.65858),
+				new Coordinate(49.87402, 8.6585), new Coordinate(49.87365, 8.65863),
+				new Coordinate(49.87362, 8.65874), new Coordinate(49.87369, 8.65873),
+				new Coordinate(49.87372, 8.65907), new Coordinate(49.87343, 8.65915),
+				new Coordinate(49.87339, 8.65884), new Coordinate(49.87356, 8.65874),
+				new Coordinate(49.87353, 8.65864), new Coordinate(49.87348, 8.65867),
+				new Coordinate(49.87339, 8.65805), new Coordinate(49.8736, 8.65797),
+				new Coordinate(49.87358, 8.6578), new Coordinate(49.87336, 8.65788),
+				new Coordinate(49.87332, 8.65768), new Coordinate(49.87356, 8.65758),
+				new Coordinate(49.87354, 8.65745), new Coordinate(49.87347, 8.65744),
+				new Coordinate(49.87338, 8.65723), new Coordinate(49.8734, 8.65701),
+				new Coordinate(49.8736, 8.65698), new Coordinate(49.87367, 8.65714) });
 		Polygon geom = factory.createPolygon(outer);
 		testPointWithin(geom);
 	}
@@ -365,19 +346,14 @@ public class InteriorPointTest {
 						new Coordinate(49.8724, 8.65521), new Coordinate(49.87244, 8.65509),
 						new Coordinate(49.87252, 8.65494), new Coordinate(49.87258, 8.65483),
 						new Coordinate(49.87267, 8.65475), new Coordinate(49.87274, 8.6547) });
-		LinearRing inner = factory
-				.createLinearRing(
-						new Coordinate[] { new Coordinate(49.87246, 8.65545),
-								new Coordinate(49.87245, 8.65551), new Coordinate(49.87244,
-										8.65555),
-								new Coordinate(49.87241, 8.65557), new Coordinate(49.87236, 8.6556),
-								new Coordinate(49.87232, 8.6556), new Coordinate(49.87225, 8.65556),
-								new Coordinate(49.8722, 8.65552), new Coordinate(49.87233, 8.65539),
-								new Coordinate(49.87235, 8.65539),
-								new Coordinate(49.87238, 8.65539),
-								new Coordinate(49.87243, 8.65539),
-								new Coordinate(49.87245, 8.65541),
-								new Coordinate(49.87246, 8.65545) });
+		LinearRing inner = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(49.87246, 8.65545), new Coordinate(49.87245, 8.65551),
+				new Coordinate(49.87244, 8.65555), new Coordinate(49.87241, 8.65557),
+				new Coordinate(49.87236, 8.6556), new Coordinate(49.87232, 8.6556),
+				new Coordinate(49.87225, 8.65556), new Coordinate(49.8722, 8.65552),
+				new Coordinate(49.87233, 8.65539), new Coordinate(49.87235, 8.65539),
+				new Coordinate(49.87238, 8.65539), new Coordinate(49.87243, 8.65539),
+				new Coordinate(49.87245, 8.65541), new Coordinate(49.87246, 8.65545) });
 		Polygon geom = factory.createPolygon(outer, new LinearRing[] { inner });
 		testPointWithin(geom);
 	}
@@ -449,18 +425,13 @@ public class InteriorPointTest {
 	 */
 	@Test
 	public void testProblemCase() throws Exception {
-		LinearRing outer1 = factory
-				.createLinearRing(new Coordinate[] { new Coordinate(466713.482, 5974979.283),
-						new Coordinate(466737.125, 5974995.621),
-						new Coordinate(466737.125, 5974995.621),
-						new Coordinate(467230.558, 5975071.481),
-						new Coordinate(467230.558, 5975071.481), new Coordinate(467309.28,
-								5975083.867),
-						new Coordinate(467309.28, 5975083.867),
-						new Coordinate(466776.829, 5975009.807),
-						new Coordinate(466776.829, 5975009.807),
-						new Coordinate(466742.764, 5974999.507),
-						new Coordinate(466713.482, 5974979.283) });
+		LinearRing outer1 = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(466713.482, 5974979.283), new Coordinate(466737.125, 5974995.621),
+				new Coordinate(466737.125, 5974995.621), new Coordinate(467230.558, 5975071.481),
+				new Coordinate(467230.558, 5975071.481), new Coordinate(467309.28, 5975083.867),
+				new Coordinate(467309.28, 5975083.867), new Coordinate(466776.829, 5975009.807),
+				new Coordinate(466776.829, 5975009.807), new Coordinate(466742.764, 5974999.507),
+				new Coordinate(466713.482, 5974979.283) });
 		Polygon poly1 = factory.createPolygon(outer1);
 
 		testPointWithin(factory.createMultiPolygon(new Polygon[] { poly1 }));

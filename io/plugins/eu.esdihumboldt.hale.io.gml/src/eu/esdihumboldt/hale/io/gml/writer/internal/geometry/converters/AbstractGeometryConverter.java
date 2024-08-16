@@ -31,8 +31,8 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.geometry.GeometryConverter;
  * @param <S> the source geometry type
  * @param <T> the target geometry type
  */
-public abstract class AbstractGeometryConverter<S extends Geometry, T extends Geometry> implements
-		GeometryConverter<S, T> {
+public abstract class AbstractGeometryConverter<S extends Geometry, T extends Geometry>
+		implements GeometryConverter<S, T> {
 
 	/**
 	 * The geometry factory

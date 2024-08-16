@@ -39,9 +39,7 @@ import net.jcip.annotations.Immutable;
 /**
  * {@link IConfigurationElement} based function base class
  * 
- * @param
- * 			<P>
- *            the parameter type
+ * @param <P> the parameter type
  * @author Simon Templer
  */
 @Immutable

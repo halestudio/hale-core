@@ -36,19 +36,18 @@ public class SimpleLogContext {
 	};
 
 	/**
-	 * Get the log associated to the current thread. If there is none, a logger
-	 * is returned that does not log any messages.
+	 * Get the log associated to the current thread. If there is none, a logger is
+	 * returned that does not log any messages.
 	 * 
-	 * @return the log associated to the current thread or
-	 *         {@link SimpleLog#NO_LOG}
+	 * @return the log associated to the current thread or {@link SimpleLog#NO_LOG}
 	 */
 	public static SimpleLog getLog() {
 		return getLog(SimpleLog.NO_LOG);
 	}
 
 	/**
-	 * Get the log associated to the current thread. If there is none, returns
-	 * the provided default logger.
+	 * Get the log associated to the current thread. If there is none, returns the
+	 * provided default logger.
 	 * 
 	 * @param def the default logger
 	 * @return the log associated to the current thread or the default log
@@ -62,8 +61,8 @@ public class SimpleLogContext {
 	}
 
 	/**
-	 * Get the log associated to the current thread. If there is none, returns
-	 * the provided default logger.
+	 * Get the log associated to the current thread. If there is none, returns the
+	 * provided default logger.
 	 * 
 	 * @param def the default logger
 	 * @return the log associated to the current thread or the default log
@@ -77,8 +76,8 @@ public class SimpleLogContext {
 	}
 
 	/**
-	 * Associate the given log with the current thread while the given function
-	 * is called.
+	 * Associate the given log with the current thread while the given function is
+	 * called.
 	 * 
 	 * @param log the log to associated to the thread
 	 * @param fun the function to execute
@@ -98,8 +97,8 @@ public class SimpleLogContext {
 	}
 
 	/**
-	 * Associate the given log with the current thread while the given function
-	 * is called.
+	 * Associate the given log with the current thread while the given function is
+	 * called.
 	 * 
 	 * @param log the log to associated to the thread
 	 * @param fun the function to execute

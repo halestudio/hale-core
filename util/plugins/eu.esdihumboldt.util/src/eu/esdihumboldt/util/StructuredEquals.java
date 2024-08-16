@@ -89,8 +89,8 @@ public class StructuredEquals {
 	}
 
 	/**
-	 * Collect all objects contained in an {@link Iterable} or array and in
-	 * their elements.
+	 * Collect all objects contained in an {@link Iterable} or array and in their
+	 * elements.
 	 * 
 	 * @param object the object to collect objects on
 	 * @return the collected objects
@@ -110,8 +110,8 @@ public class StructuredEquals {
 	}
 
 	/**
-	 * Returns an iterable for the given objects contents, or null if it does
-	 * not contain anything that needs to be compared.
+	 * Returns an iterable for the given objects contents, or null if it does not
+	 * contain anything that needs to be compared.
 	 * 
 	 * @param object the object in question
 	 * @return an iterable for the given object

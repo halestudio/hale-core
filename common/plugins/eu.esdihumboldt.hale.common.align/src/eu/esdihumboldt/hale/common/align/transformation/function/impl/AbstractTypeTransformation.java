@@ -35,8 +35,8 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceFactory;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractTypeTransformation<E extends TransformationEngine> extends
-		AbstractTransformationFunction<E> implements TypeTransformation<E> {
+public abstract class AbstractTypeTransformation<E extends TransformationEngine>
+		extends AbstractTransformationFunction<E> implements TypeTransformation<E> {
 
 	private PropertyTransformer propertyTransformer;
 	private ListMultimap<String, ? extends Type> target;
@@ -51,8 +51,7 @@ public abstract class AbstractTypeTransformation<E extends TransformationEngine>
 	}
 
 	/**
-	 * Get the property transformer to publish any source/target instance pair
-	 * to
+	 * Get the property transformer to publish any source/target instance pair to
 	 * 
 	 * @return the property transformer
 	 */

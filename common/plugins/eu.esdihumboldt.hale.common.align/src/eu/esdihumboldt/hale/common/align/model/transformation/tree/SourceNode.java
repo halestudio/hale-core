@@ -30,26 +30,25 @@ import eu.esdihumboldt.hale.common.schema.model.Definition;
 public interface SourceNode extends TransformationNode {
 
 	/**
-	 * Name of the value defined annotation. It specifies if a value is defined
-	 * for the source node.
+	 * Name of the value defined annotation. It specifies if a value is defined for
+	 * the source node.
 	 */
 	public static final String ANNOTATION_VALUE_DEFINED = "value:defined";
 
 	/**
-	 * Name of the value annotation. It specifies a concrete value for the node
-	 * from an instance.
+	 * Name of the value annotation. It specifies a concrete value for the node from
+	 * an instance.
 	 */
 	public static final String ANNOTATION_VALUE = "value";
 
 	/**
-	 * Name of the all values annotation. It holds all original values for the
-	 * node from an instance.
+	 * Name of the all values annotation. It holds all original values for the node
+	 * from an instance.
 	 */
 	public static final String ANNOTATION_ALL_VALUES = "all-values";
 
 	/**
-	 * Name of the children annotation. It represents a list of additional
-	 * children.
+	 * Name of the children annotation. It represents a list of additional children.
 	 */
 	public static final String ANNOTATION_CHILDREN = "children";
 
@@ -66,8 +65,7 @@ public interface SourceNode extends TransformationNode {
 	public static final String ANNOTATION_RELATIONS = "relations";
 
 	/**
-	 * Name of the parent annotation. It represents a parent of a type source
-	 * node.
+	 * Name of the parent annotation. It represents a parent of a type source node.
 	 */
 	public static final String ANNOTATION_PARENT = "parent";
 
@@ -100,8 +98,8 @@ public interface SourceNode extends TransformationNode {
 	public void addChild(SourceNode child);
 
 	/**
-	 * Add a child node as annotation. This means resetting the node will remove
-	 * the child.
+	 * Add a child node as annotation. This means resetting the node will remove the
+	 * child.
 	 * 
 	 * @param child the child node to add
 	 */
@@ -130,16 +128,16 @@ public interface SourceNode extends TransformationNode {
 	public TransformationContext getContext();
 
 	/**
-	 * Set the left over values associated to the node's entity, but not
-	 * represented by the node.
+	 * Set the left over values associated to the node's entity, but not represented
+	 * by the node.
 	 * 
 	 * @param leftovers the leftovers
 	 */
 	public void setLeftovers(Leftovers leftovers);
 
 	/**
-	 * Get the left over values associated to the node's entity, but not
-	 * represented by the node.
+	 * Get the left over values associated to the node's entity, but not represented
+	 * by the node.
 	 * 
 	 * @return the leftovers, may be <code>null</code>
 	 */
@@ -149,8 +147,8 @@ public interface SourceNode extends TransformationNode {
 	 * Get if the source node value is defined.
 	 * 
 	 * @see #ANNOTATION_VALUE_DEFINED
-	 * @return the value of the defined annotation, or <code>false</code> if it
-	 *         is not set
+	 * @return the value of the defined annotation, or <code>false</code> if it is
+	 *         not set
 	 */
 	public boolean isDefined();
 
@@ -166,15 +164,14 @@ public interface SourceNode extends TransformationNode {
 	 * Get the value of the node in the context of a specific source instance.
 	 * 
 	 * @see #ANNOTATION_VALUE
-	 * @return the property value associated to the node, may be
-	 *         <code>null</code>
+	 * @return the property value associated to the node, may be <code>null</code>
 	 */
 	public Object getValue();
 
 	/**
-	 * Set the value of the value annotation. When setting a value the value of
-	 * the defined annotation is set to <code>true</code>. Will also set the all
-	 * values annotation if it is not set yet.
+	 * Set the value of the value annotation. When setting a value the value of the
+	 * defined annotation is set to <code>true</code>. Will also set the all values
+	 * annotation if it is not set yet.
 	 * 
 	 * @see #ANNOTATION_VALUE
 	 * @see #ANNOTATION_VALUE_DEFINED
@@ -197,8 +194,7 @@ public interface SourceNode extends TransformationNode {
 	 * Get all values of the node in the context of a specific source instance.
 	 * 
 	 * @see #ANNOTATION_ALL_VALUES
-	 * @return the property values associated to the node, may be
-	 *         <code>null</code>
+	 * @return the property values associated to the node, may be <code>null</code>
 	 */
 	public Object[] getAllValues();
 

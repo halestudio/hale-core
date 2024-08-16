@@ -50,8 +50,8 @@ public class ElementName extends DisplayName {
 			// only use the element name if it is unique
 			return elements.iterator().next().getDisplayName();
 			/*
-			 * FIXME do something else if there are multiple elements? prefer
-			 * ones that are flagged Mappable? (not done currently)
+			 * FIXME do something else if there are multiple elements? prefer ones that are
+			 * flagged Mappable? (not done currently)
 			 */
 		}
 

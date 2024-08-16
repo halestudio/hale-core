@@ -38,8 +38,7 @@ import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
 public class JDBCUtil {
 
 	/**
-	 * Removes one pair of leading/trailing quotes ("x" or 'x' or `x` becomes
-	 * x).
+	 * Removes one pair of leading/trailing quotes ("x" or 'x' or `x` becomes x).
 	 * 
 	 * @param s the string to remove quotes from
 	 * @return the string with one pair of quotes less if possible

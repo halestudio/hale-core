@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.locationtech.jts.geom.Geometry;
 
 import de.fhg.igd.eclipse.util.extension.ExtensionUtil;
@@ -47,7 +46,8 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
  * 
  * @author Simon Templer
  */
-public final class PropertyParameter extends AbstractParameter implements PropertyParameterDefinition {
+public final class PropertyParameter extends AbstractParameter
+		implements PropertyParameterDefinition {
 
 	private static final ALogger log = ALoggerFactory.getLogger(PropertyParameter.class);
 

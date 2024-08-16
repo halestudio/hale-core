@@ -50,8 +50,8 @@ public interface InstanceCollectionPartitioner {
 	 * Partition an instance collection.
 	 * 
 	 * @param instances the instances to partition
-	 * @param maxObjects the maximum objects threshold that should be met for a
-	 *            part if possible
+	 * @param maxObjects the maximum objects threshold that should be met for a part
+	 *            if possible
 	 * @param log the operation log
 	 * @return the iterator of the parts
 	 */

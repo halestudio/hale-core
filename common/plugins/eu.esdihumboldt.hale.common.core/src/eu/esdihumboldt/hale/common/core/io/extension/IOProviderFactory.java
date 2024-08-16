@@ -24,8 +24,8 @@ import eu.esdihumboldt.hale.common.core.io.IOProvider;
  * 
  * @author Simon Templer
  */
-public interface IOProviderFactory extends
-		ExtensionObjectFactoryCollection<IOProvider, IOProviderDescriptor> {
+public interface IOProviderFactory
+		extends ExtensionObjectFactoryCollection<IOProvider, IOProviderDescriptor> {
 
 	// concrete typed interface
 

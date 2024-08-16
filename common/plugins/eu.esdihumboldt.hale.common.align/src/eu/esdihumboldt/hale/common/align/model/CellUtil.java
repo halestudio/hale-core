@@ -38,8 +38,8 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 public abstract class CellUtil {
 
 	/**
-	 * Get the first entity from the given entities map (as contained e.g. as
-	 * source or target in a cell).
+	 * Get the first entity from the given entities map (as contained e.g. as source
+	 * or target in a cell).
 	 * 
 	 * @param entities the entities map
 	 * @return first entity or <code>null</code> if there is none
@@ -133,8 +133,8 @@ public abstract class CellUtil {
 	}
 
 	private static String entitiesText(Collection<? extends Entity> entities) {
-		return Joiner.on(", ").join(
-				Collections2.transform(entities, new Function<Entity, String>() {
+		return Joiner.on(", ")
+				.join(Collections2.transform(entities, new Function<Entity, String>() {
 
 					@Override
 					public String apply(Entity input) {

@@ -30,8 +30,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractChildDefinition<C> extends AbstractDefinition<C> implements
-		ChildDefinition<C> {
+public abstract class AbstractChildDefinition<C> extends AbstractDefinition<C>
+		implements ChildDefinition<C> {
 
 	/**
 	 * The parent group

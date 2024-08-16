@@ -81,7 +81,8 @@ public class DuplicationVisitor extends AbstractSourceToTargetVisitor {
 				Pair<SourceNode, Set<Cell>> leftover;
 				// completely consume leftovers
 				while ((leftover = leftovers.consumeValue()) != null) {
-					context.duplicateContext(source, leftover.getFirst(), leftover.getSecond(), log);
+					context.duplicateContext(source, leftover.getFirst(), leftover.getSecond(),
+							log);
 					// XXX is this the place where this should be propagated to
 					// the duplicated source children?
 					// XXX trying it out
@@ -89,8 +90,8 @@ public class DuplicationVisitor extends AbstractSourceToTargetVisitor {
 					Object value = node.getValue();
 					if (value instanceof Group) {
 						InstanceVisitor instanceVisitor = new InstanceVisitor(null, null, log);
-						for (SourceNode child : node.getChildren(instanceVisitor
-								.includeAnnotatedNodes())) {
+						for (SourceNode child : node
+								.getChildren(instanceVisitor.includeAnnotatedNodes())) {
 							// annotate children with leftovers
 							child.accept(instanceVisitor);
 							// run the duplication on the children
@@ -115,8 +116,8 @@ public class DuplicationVisitor extends AbstractSourceToTargetVisitor {
 	}
 
 	/**
-	 * Duplicates assignments without connections to source nodes. Should be
-	 * called after all duplication is done.
+	 * Duplicates assignments without connections to source nodes. Should be called
+	 * after all duplication is done.
 	 */
 	public void doAugmentationTrackback() {
 		TargetContext.augmentationTrackback(tree);

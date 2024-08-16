@@ -250,8 +250,8 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 	 * Gets or creates a property definition for the given column. Its type
 	 * definition is created, too, if necessary.
 	 * 
-	 * @param tableType the type definition of the parent table this column
-	 *            belongs too
+	 * @param tableType the type definition of the parent table this column belongs
+	 *            too
 	 * @param column the column to get or create a property definition for
 	 * @param namespace the schema namespace
 	 * @param typeIndex the type index

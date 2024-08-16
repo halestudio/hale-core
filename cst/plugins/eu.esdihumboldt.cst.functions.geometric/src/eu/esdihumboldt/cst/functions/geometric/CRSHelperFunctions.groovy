@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.cst.functions.geometric
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.cst.functions.groovy.helper.spec.SpecBuilder
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
 import eu.esdihumboldt.hale.common.instance.geometry.impl.WKTDefinition
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition
-import groovy.transform.CompileStatic
 
 /**
  * CRS related helper functions.
@@ -74,12 +75,13 @@ class CRSHelperFunctions {
 	 */
 	public static final eu.esdihumboldt.cst.functions.groovy.helper.spec.Specification _fromWKT_spec = SpecBuilder.newSpec( //
 	description: 'Build a CRS definition from a well-known text (WKT) representation.', //
-	result: 'the CRS definition') { //
-		wkt('Well-known text definition of a coordinate reference system') } //
+	result: 'the CRS definition') {
+		//
+		wkt('Well-known text definition of a coordinate reference system')
+	} //
 
 	@CompileStatic
 	static CRSDefinition _fromWKT(def wkt) {
 		new WKTDefinition(wkt as String, null)
 	}
-
 }

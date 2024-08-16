@@ -114,9 +114,8 @@ public class JaxbAlignmentIO {
 	 * @param pathUpdate to update relative paths in case of a path change
 	 * @throws Exception if converting or writing the alignment fails
 	 * @deprecated use {@link #convert(Alignment, IOReporter, PathUpdate)} and
-	 *             {@link #save(AlignmentType, IOReporter, OutputStream)}
-	 *             instead to prevent an empty file being written on conversion
-	 *             errors
+	 *             {@link #save(AlignmentType, IOReporter, OutputStream)} instead to
+	 *             prevent an empty file being written on conversion errors
 	 */
 	@Deprecated
 	public static void save(Alignment alignment, IOReporter reporter, OutputStream out,
@@ -187,8 +186,8 @@ public class JaxbAlignmentIO {
 	}
 
 	/**
-	 * Print a cell to an output stream (intended for tests/debugging). The
-	 * stream is closed when the cell was written.
+	 * Print a cell to an output stream (intended for tests/debugging). The stream
+	 * is closed when the cell was written.
 	 * 
 	 * @param cell the cell to print
 	 * @param out the output stream

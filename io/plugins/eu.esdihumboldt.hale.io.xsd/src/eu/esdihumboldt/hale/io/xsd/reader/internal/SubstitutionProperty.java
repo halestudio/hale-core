@@ -41,7 +41,8 @@ public class SubstitutionProperty extends DefaultPropertyDefinition {
 	 * @param substitutionGroup the parent group
 	 */
 	public SubstitutionProperty(XmlElement substitution,
-			DefaultPropertyDefinition originialProperty, SubstitutionGroupProperty substitutionGroup) {
+			DefaultPropertyDefinition originialProperty,
+			SubstitutionGroupProperty substitutionGroup) {
 		super(substitution.getName(), substitutionGroup, substitution.getType());
 
 		this.originialProperty = originialProperty;

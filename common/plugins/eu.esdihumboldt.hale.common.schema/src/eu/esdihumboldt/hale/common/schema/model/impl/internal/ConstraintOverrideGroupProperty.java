@@ -19,13 +19,13 @@ package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.ConstraintUtil;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractGroupPropertyDecorator;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractPropertyDecorator;
+import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link GroupPropertyDefinition}s that overrides given
@@ -39,8 +39,8 @@ public class ConstraintOverrideGroupProperty extends AbstractGroupPropertyDecora
 	private final AbstractDefinition<GroupPropertyConstraint> constraints;
 
 	/**
-	 * Create a decorator for the given group property where the given
-	 * constraints override the constraints of the group.
+	 * Create a decorator for the given group property where the given constraints
+	 * override the constraints of the group.
 	 * 
 	 * @param property the property to decorate
 	 * @param constraints the overriding constraints

@@ -33,8 +33,8 @@ public interface CompatibilityMode {
 	 * checks the functions id of compatibility
 	 * 
 	 * @param id the functions id
-	 * @param serviceProvider the service provider, may be <code>null</code> if
-	 *            none is available in the context
+	 * @param serviceProvider the service provider, may be <code>null</code> if none
+	 *            is available in the context
 	 * @return true, if the function is compatible
 	 */
 	public boolean supportsFunction(String id, @Nullable ServiceProvider serviceProvider);

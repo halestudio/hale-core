@@ -32,7 +32,8 @@ import org.junit.Test;
  */
 public class LookupStreamResourceTest {
 
-	private static byte[] data = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+	private static byte[] data = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+			16 };
 	private static short previewLimit = 6;
 
 	/**
@@ -188,8 +189,8 @@ public class LookupStreamResourceTest {
 	/**
 	 * Read the input stream up to the preview limit {@link #previewLimit}.
 	 * 
-	 * @param in the input stream where the first {@link #data} bytes can be
-	 *            read from
+	 * @param in the input stream where the first {@link #data} bytes can be read
+	 *            from
 	 * @throws IOException if reading the stream fails
 	 */
 	private void preview(InputStream in) throws IOException {

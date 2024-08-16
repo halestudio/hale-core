@@ -36,8 +36,8 @@ public class TransformationLogWrapper {
 	}
 
 	/**
-	 * Adds an info to the report. If configured accordingly a log message will
-	 * also be created.
+	 * Adds an info to the report. If configured accordingly a log message will also
+	 * be created.
 	 * 
 	 * @param message the message string
 	 */
@@ -46,8 +46,8 @@ public class TransformationLogWrapper {
 	}
 
 	/**
-	 * Adds an info to the report. If configured accordingly a log message will
-	 * also be created.
+	 * Adds an info to the report. If configured accordingly a log message will also
+	 * be created.
 	 * 
 	 * @param message the message string
 	 * @param throwable a throwable associated to the message, may be null
@@ -57,8 +57,8 @@ public class TransformationLogWrapper {
 	}
 
 	/**
-	 * Adds a warning to the report. If configured accordingly a log message
-	 * will also be created.
+	 * Adds a warning to the report. If configured accordingly a log message will
+	 * also be created.
 	 * 
 	 * @param message the message string
 	 */
@@ -67,8 +67,8 @@ public class TransformationLogWrapper {
 	}
 
 	/**
-	 * Adds a warning to the report. If configured accordingly a log message
-	 * will also be created.
+	 * Adds a warning to the report. If configured accordingly a log message will
+	 * also be created.
 	 * 
 	 * @param message the message string
 	 * @param throwable a throwable associated to the message, may be null

@@ -46,9 +46,8 @@ public abstract class FixedConstraintsGeometryHandler extends AbstractGeometryHa
 	}
 
 	/**
-	 * Check if the given type definition is supported by the geometry handler.
-	 * This implementation assumes the type is valid. Override to change this
-	 * behavior.
+	 * Check if the given type definition is supported by the geometry handler. This
+	 * implementation assumes the type is valid. Override to change this behavior.
 	 * 
 	 * @param type the type definition to check
 	 * @throws GeometryNotSupportedException if the check failed

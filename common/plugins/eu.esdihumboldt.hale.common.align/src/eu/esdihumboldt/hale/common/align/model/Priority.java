@@ -24,6 +24,7 @@ import java.util.Comparator;
  * @author Andrea Antonello
  */
 public enum Priority {
+
 	/**
 	 * Highest priority.
 	 */
@@ -100,8 +101,8 @@ public enum Priority {
 	 * 
 	 * @param priority1 the first priority.
 	 * @param priority2 the second priority.
-	 * @return a negative integer, zero, or a positive integer as p1 is less
-	 *         than, equal to, or greater than p2.
+	 * @return a negative integer, zero, or a positive integer as p1 is less than,
+	 *         equal to, or greater than p2.
 	 */
 	public static int compare(Priority priority1, Priority priority2) {
 		if (priority1.getPriorityNumber() > priority2.getPriorityNumber()) {

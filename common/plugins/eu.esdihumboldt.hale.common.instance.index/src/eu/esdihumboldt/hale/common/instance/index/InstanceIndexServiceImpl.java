@@ -251,9 +251,8 @@ public class InstanceIndexServiceImpl implements InstanceIndexService {
 		// Because only the indexed values of a single property are of interest
 		// here, find all IndexedPropertyValues where the propertyPath matches
 		// and flatten the result into a 1-D list
-		List<IndexedPropertyValue> matches = values.stream()
-				.filter(ipvs -> ipvs.stream()
-						.anyMatch(ipv -> propertyPath.equals(ipv.getPropertyPath())))
+		List<IndexedPropertyValue> matches = values.stream().filter(
+				ipvs -> ipvs.stream().anyMatch(ipv -> propertyPath.equals(ipv.getPropertyPath())))
 				.flatMap(List::stream).collect(Collectors.toList());
 
 		return matches;

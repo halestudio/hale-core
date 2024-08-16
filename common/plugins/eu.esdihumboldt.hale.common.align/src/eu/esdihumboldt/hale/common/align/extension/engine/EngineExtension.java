@@ -35,8 +35,8 @@ public class EngineExtension extends AbstractExtension<TransformationEngine, Eng
 	 * {@link TransformationEngine} factory based on an
 	 * {@link IConfigurationElement}
 	 */
-	public static class ConfigurationFactory extends
-			AbstractConfigurationFactory<TransformationEngine> implements EngineFactory {
+	public static class ConfigurationFactory
+			extends AbstractConfigurationFactory<TransformationEngine> implements EngineFactory {
 
 		/**
 		 * Create a {@link TransformationEngine} factory based on the given

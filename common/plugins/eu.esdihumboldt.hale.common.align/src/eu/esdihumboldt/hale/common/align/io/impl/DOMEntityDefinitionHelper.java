@@ -78,8 +78,8 @@ public class DOMEntityDefinitionHelper {
 	}
 
 	/**
-	 * Converts the given element to a property entity definition. If any
-	 * exception occurs <code>null</code> is returned.
+	 * Converts the given element to a property entity definition. If any exception
+	 * occurs <code>null</code> is returned.
 	 * 
 	 * @param fragment the fragment to convert
 	 * @param types the type index to use for unmarshalling

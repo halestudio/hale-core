@@ -44,8 +44,8 @@ public interface CRSResolveCache {
 	 * {@link CoordinateReferenceSystem}
 	 * 
 	 * @param crs the CRS
-	 * @param crsDef the CRS definition or <code>null</code> to remove the
-	 *            cached definition
+	 * @param crsDef the CRS definition or <code>null</code> to remove the cached
+	 *            definition
 	 */
 	void reviseCache(CoordinateReferenceSystem crs, CRSDefinition crsDef);
 }

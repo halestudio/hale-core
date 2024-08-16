@@ -15,11 +15,13 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
-import eu.esdihumboldt.hale.common.schema.model.constraint.property.ChoiceFlag
+import static org.junit.Assert.*
+
 import groovy.transform.CompileStatic
+
 import org.junit.Test
 
-import static org.junit.Assert.*
+import eu.esdihumboldt.hale.common.schema.model.constraint.property.ChoiceFlag
 
 /**
  * Tests creation of {@link ChoiceFlag} constraints w/ {@link ChoiceFactory}.

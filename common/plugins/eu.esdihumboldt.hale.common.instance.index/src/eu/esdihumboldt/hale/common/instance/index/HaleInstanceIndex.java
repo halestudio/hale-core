@@ -32,8 +32,7 @@ public interface HaleInstanceIndex extends
 		InstanceIndex<List<IndexedPropertyValue>, PropertyEntityDefinitionMapping, ResolvableInstanceReference> {
 
 	/**
-	 * Retrieve instance references from the index grouped by the given
-	 * properties.
+	 * Retrieve instance references from the index grouped by the given properties.
 	 * 
 	 * @param keyProperties Properties to group by
 	 * @return Grouped instance references

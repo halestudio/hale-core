@@ -26,21 +26,21 @@ import eu.esdihumboldt.util.scavenger.AbstractResourceScavenger;
  * @param <T> the concrete project reference type
  * @author Simon Templer
  */
-public abstract class AbstractProjectScavenger<C, T extends ProjectReference<C>> extends
-		AbstractResourceScavenger<T> {
+public abstract class AbstractProjectScavenger<C, T extends ProjectReference<C>>
+		extends AbstractResourceScavenger<T> {
 
 	private final C context;
 
 	/**
 	 * Create a new project scavenger.
 	 * 
-	 * @param scavengeLocation the location to scan, if the location does not
-	 *            exist or is not accessible, a default location inside the
-	 *            platform instance location is used
+	 * @param scavengeLocation the location to scan, if the location does not exist
+	 *            or is not accessible, a default location inside the platform
+	 *            instance location is used
 	 * @param instanceLocPath the instance location sub-path to use if the
 	 *            scavengeLocation is invalid or <code>null</code>, may be
-	 *            <code>null</code> if the platform instance location should not
-	 *            be used as fall-back
+	 *            <code>null</code> if the platform instance location should not be
+	 *            used as fall-back
 	 * @param context the update context
 	 */
 	public AbstractProjectScavenger(File scavengeLocation, String instanceLocPath, C context) {

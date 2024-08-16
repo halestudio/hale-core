@@ -31,8 +31,8 @@ import eu.esdihumboldt.util.validator.Validator;
  * @author Simon Templer
  * @param <T> the concrete combined validator type
  */
-public abstract class AbstractCombinedValidatorFactory<T extends CombinedValidator> implements
-		ValidatorFactory<T> {
+public abstract class AbstractCombinedValidatorFactory<T extends CombinedValidator>
+		implements ValidatorFactory<T> {
 
 	@Override
 	public Value store(T validator) throws Exception {

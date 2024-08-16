@@ -35,8 +35,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
  * 
  * @author Kai Schwierczek
  */
-public class ConstraintValidatorExtension extends
-		AbstractExtension<ConstraintValidator, ConstraintValidatorFactory> {
+public class ConstraintValidatorExtension
+		extends AbstractExtension<ConstraintValidator, ConstraintValidatorFactory> {
 
 	private static final ALogger log = ALoggerFactory.getLogger(ConstraintValidatorExtension.class);
 
@@ -125,7 +125,8 @@ public class ConstraintValidatorExtension extends
 	 * @see de.fhg.igd.eclipse.util.extension.AbstractExtension#createFactory(org.eclipse.core.runtime.IConfigurationElement)
 	 */
 	@Override
-	protected ConstraintValidatorFactory createFactory(IConfigurationElement conf) throws Exception {
+	protected ConstraintValidatorFactory createFactory(IConfigurationElement conf)
+			throws Exception {
 		return new ConstraintValidatorFactory(conf);
 	}
 
@@ -148,11 +149,9 @@ public class ConstraintValidatorExtension extends
 	}
 
 	/**
-	 * Returns a map with all registered
-	 * {@link GroupPropertyConstraintValidator}.
+	 * Returns a map with all registered {@link GroupPropertyConstraintValidator}.
 	 * 
-	 * @return a map with all registered
-	 *         {@link GroupPropertyConstraintValidator}
+	 * @return a map with all registered {@link GroupPropertyConstraintValidator}
 	 */
 	public Map<Class<GroupPropertyConstraint>, GroupPropertyConstraintValidator> getGroupPropertyConstraintValidators() {
 		return groupPropertyValidators;

@@ -34,8 +34,8 @@ public class ValidatorFactoryDescriptor implements Identifiable {
 	private final ValidatorFactory<?> factory;
 
 	/**
-	 * Create a new {@link ValidatorFactory} descriptor based on the definition
-	 * in the extension point.
+	 * Create a new {@link ValidatorFactory} descriptor based on the definition in
+	 * the extension point.
 	 * 
 	 * @param id the descriptor identifier
 	 * @param conf the configuration element defining the descriptor

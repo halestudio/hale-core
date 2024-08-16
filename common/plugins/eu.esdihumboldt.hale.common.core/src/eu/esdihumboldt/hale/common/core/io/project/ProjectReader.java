@@ -32,8 +32,8 @@ public interface ProjectReader extends ImportProvider {
 	/**
 	 * Set the project files to read if applicable.
 	 * 
-	 * @param projectFiles the project files to read (file name mapped to
-	 *            project file)
+	 * @param projectFiles the project files to read (file name mapped to project
+	 *            file)
 	 */
 	public void setProjectFiles(Map<String, ProjectFile> projectFiles);
 

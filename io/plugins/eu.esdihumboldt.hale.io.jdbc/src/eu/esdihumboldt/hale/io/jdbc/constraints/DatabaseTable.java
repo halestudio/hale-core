@@ -60,13 +60,13 @@ public class DatabaseTable implements TypeConstraint {
 	}
 
 	/**
-	 * Create a constraint with the given schema and table names and quotation
-	 * usage decision as boolean value
+	 * Create a constraint with the given schema and table names and quotation usage
+	 * decision as boolean value
 	 * 
 	 * @param schemaName the schema name, may be <code>null</code>
 	 * @param tableName the table name
-	 * @param useQuote true if quotation needed in {@link #getFullTableName},
-	 *            else false
+	 * @param useQuote true if quotation needed in {@link #getFullTableName}, else
+	 *            false
 	 */
 	public DatabaseTable(String schemaName, String tableName, boolean useQuote) {
 		super();
@@ -77,8 +77,8 @@ public class DatabaseTable implements TypeConstraint {
 	}
 
 	/**
-	 * @return the schema name of the database table, may be <code>null</code>
-	 *         or empty
+	 * @return the schema name of the database table, may be <code>null</code> or
+	 *         empty
 	 */
 	public String getSchemaName() {
 		return schemaName;
@@ -133,8 +133,7 @@ public class DatabaseTable implements TypeConstraint {
 	}
 
 	/**
-	 * @return the boolean value for quotation usage in
-	 *         {@link #getFullTableName}.
+	 * @return the boolean value for quotation usage in {@link #getFullTableName}.
 	 */
 	public boolean useQuote() {
 		return useQuote;

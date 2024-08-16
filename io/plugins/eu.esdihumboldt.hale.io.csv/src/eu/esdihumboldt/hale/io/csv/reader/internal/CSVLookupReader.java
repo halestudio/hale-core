@@ -72,11 +72,11 @@ public class CSVLookupReader extends AbstractLookupImport {
 
 		int keyColumn = getParameter(LookupTableExportConstants.LOOKUP_KEY_COLUMN)
 				.as(Integer.class);
-		int valueColumn = getParameter(LookupTableExportConstants.LOOKUP_VALUE_COLUMN).as(
-				Integer.class);
+		int valueColumn = getParameter(LookupTableExportConstants.LOOKUP_VALUE_COLUMN)
+				.as(Integer.class);
 
-		boolean skipFirst = getParameter(LookupTableExportConstants.PARAM_SKIP_FIRST_LINE).as(
-				Boolean.class);
+		boolean skipFirst = getParameter(LookupTableExportConstants.PARAM_SKIP_FIRST_LINE)
+				.as(Boolean.class);
 
 		DefaultCSVLookupReader reader = new DefaultCSVLookupReader();
 		Map<Value, Value> values = reader.read(getSource().getInput(), getCharset(),

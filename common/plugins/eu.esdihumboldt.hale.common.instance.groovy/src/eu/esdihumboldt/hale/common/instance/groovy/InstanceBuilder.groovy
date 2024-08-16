@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import org.springframework.core.convert.ConversionException
@@ -43,7 +45,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag
 import eu.esdihumboldt.util.groovy.builder.BuilderBase
 import eu.esdihumboldt.util.groovy.paths.Path
-import groovy.transform.CompileStatic
 
 
 /**

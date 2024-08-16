@@ -74,9 +74,9 @@ public class SQLQueryInstanceCollection implements InstanceCollection {
 				handle = new DatabaseHandle(ref.getDatabase());
 
 				/*
-				 * FIXME use asynchronous query instead, to be able to provide
-				 * instances iteratively instead of retrieving all at once (as
-				 * the query below actually yields a list)
+				 * FIXME use asynchronous query instead, to be able to provide instances
+				 * iteratively instead of retrieving all at once (as the query below actually
+				 * yields a list)
 				 */
 				iterator = (Iterator<ODocument>) ref.getDatabase()
 						.query(new OSQLSynchQuery<ODocument>(sqlQuery, limit)).iterator();
@@ -138,8 +138,8 @@ public class SQLQueryInstanceCollection implements InstanceCollection {
 	 * @param database the database to query
 	 * @param sqlQuery the SQL query string (make sure type names are properly
 	 *            encoded using {@link ONamespaceMap})
-	 * @param types the type index where type definitions to associate are
-	 *            retrieved from
+	 * @param types the type index where type definitions to associate are retrieved
+	 *            from
 	 * @param dataSet the data set to associated to the instances
 	 */
 	public SQLQueryInstanceCollection(LocalOrientDB database, String sqlQuery, TypeIndex types,

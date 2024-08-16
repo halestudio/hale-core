@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.hale.common.align.io
 
+import groovy.xml.DOMBuilder
+import groovy.xml.dom.DOMCategory
+
 import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.align.model.AnnotationDescriptor
-import groovy.xml.DOMBuilder
-import groovy.xml.dom.DOMCategory
 
 
 /**

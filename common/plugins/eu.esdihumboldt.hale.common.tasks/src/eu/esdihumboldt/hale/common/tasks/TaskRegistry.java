@@ -40,8 +40,8 @@ public interface TaskRegistry {
 	 * 
 	 * @param typeName the task type name
 	 * 
-	 * @return the task type or <code>null</code> if no type with the given name
-	 *         is registered
+	 * @return the task type or <code>null</code> if no type with the given name is
+	 *         registered
 	 */
 	TaskType<?> getType(String typeName);
 }

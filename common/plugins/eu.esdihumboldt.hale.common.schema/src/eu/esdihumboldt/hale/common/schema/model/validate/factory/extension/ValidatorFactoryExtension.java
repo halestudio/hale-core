@@ -72,8 +72,8 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 	 * Create a {@link Value} representation of a {@link Validator}.
 	 * 
 	 * @param validator the validator
-	 * @return a pair of the validator ID and the validator's value
-	 *         representation, or <code>null</code>
+	 * @return a pair of the validator ID and the validator's value representation,
+	 *         or <code>null</code>
 	 * @throws Exception if creating the value representation fails
 	 */
 	@SuppressWarnings("unchecked")
@@ -145,8 +145,7 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 	}
 
 	/**
-	 * Get the validator descriptor directly associated to the given validator
-	 * type.
+	 * Get the validator descriptor directly associated to the given validator type.
 	 * 
 	 * @param validatorType the constraint type
 	 * @return the descriptor or <code>null</code> if none is registered for the

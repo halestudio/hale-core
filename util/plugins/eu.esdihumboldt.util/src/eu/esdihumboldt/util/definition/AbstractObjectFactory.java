@@ -54,14 +54,14 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 	protected abstract List<D> getDefinitions();
 
 	/**
-	 * Represent the given object as a definition string, so that it can be used
-	 * to again create an object instance using {@link #parse(String)}.
+	 * Represent the given object as a definition string, so that it can be used to
+	 * again create an object instance using {@link #parse(String)}.
 	 * 
-	 * @param <X> the object type, an {@link ObjectDefinition} supporting this
-	 *            type must be available
+	 * @param <X> the object type, an {@link ObjectDefinition} supporting this type
+	 *            must be available
 	 * @param object the object to create a string representation for
-	 * @return the string representation of the object or <code>null</code> if
-	 *         no corresponding {@link ObjectDefinition} is available
+	 * @return the string representation of the object or <code>null</code> if no
+	 *         corresponding {@link ObjectDefinition} is available
 	 * 
 	 * @see #getDefinitions()
 	 */
@@ -76,16 +76,16 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 	}
 
 	/**
-	 * Get the object type identifier and the string representation of the
-	 * object. Please note that the string representation is not the same as the
-	 * definition string retrieved through {@link #asString(Object)}.
+	 * Get the object type identifier and the string representation of the object.
+	 * Please note that the string representation is not the same as the definition
+	 * string retrieved through {@link #asString(Object)}.
 	 * 
-	 * @param <X> the object type, an {@link ObjectDefinition} supporting this
-	 *            type must be available
+	 * @param <X> the object type, an {@link ObjectDefinition} supporting this type
+	 *            must be available
 	 * @param object the object to create a string representation for
-	 * @return the object type identifier and string representation of the
-	 *         object, <code>null</code> if no corresponding
-	 *         {@link ObjectDefinition} is available
+	 * @return the object type identifier and string representation of the object,
+	 *         <code>null</code> if no corresponding {@link ObjectDefinition} is
+	 *         available
 	 * 
 	 * @see #getDefinitions()
 	 */
@@ -165,8 +165,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 					}
 
 					/*
-					 * if it's not a super class/interface add it to result and
-					 * remove it from list
+					 * if it's not a super class/interface add it to result and remove it from list
 					 */
 					if (!isSuper) {
 						result.add(def);

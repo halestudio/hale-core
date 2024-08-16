@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.hale.app.transform
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
+import groovy.transform.TypeCheckingMode
+
 import org.joda.time.Period
 import org.joda.time.format.PeriodFormat
 
 import eu.esdihumboldt.hale.common.core.report.Report
-import groovy.transform.CompileStatic;
-import groovy.transform.TypeChecked;
-import groovy.transform.TypeCheckingMode;
 
 /**
  * Utilities for console output.
@@ -30,7 +31,7 @@ import groovy.transform.TypeCheckingMode;
  */
 @TypeChecked
 class ExecUtil implements ConsoleConstants {
-	
+
 	static void printSummary(Report report) {
 		// print report summary
 		println "${MSG_PREFIX}Action summary: ${report.taskName}"
@@ -39,40 +40,39 @@ class ExecUtil implements ConsoleConstants {
 
 		// state success
 		print(report.isSuccess() ?
-			"${MSG_PREFIX}   Completed" : 
-			"${ERROR_PREFIX}   Failed")
-		
+				"${MSG_PREFIX}   Completed" :
+				"${ERROR_PREFIX}   Failed")
+
 		// add duration if applicable
 		if (report.startTime) {
 			def duration = PeriodFormat.wordBased().print(
-				new Period(report.startTime.time, report.timestamp.time))
-			
-			print(report.isSuccess() ? ' in ' : ' after ') 
+					new Period(report.startTime.time, report.timestamp.time))
+
+			print(report.isSuccess() ? ' in ' : ' after ')
 			print duration
 		}
 		// complete success line
 		println ''
 	}
-	
+
 	static void info(String msg) {
 		println "${MSG_PREFIX}$msg"
 	}
-	
+
 	static void warn(String msg) {
 		println "${WARN_PREFIX}$msg"
 	}
-	
+
 	static void error(String msg) {
 		println "${ERROR_PREFIX}$msg"
 	}
-	
+
 	static void status(String msg) {
 		println "${STATUS_PREFIX}$msg"
 	}
-	
+
 	static IllegalStateException fail(String msg) {
 		error(msg)
 		throw new IllegalStateException(msg)
 	}
-
 }

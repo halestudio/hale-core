@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd.json
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.core.io.JsonValueUtil
@@ -33,7 +35,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappingRelevantF
 import eu.esdihumboldt.hale.common.schema.persist.hsd.SchemaEncoderBase
 import eu.esdihumboldt.util.Pair
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
-import groovy.transform.CompileStatic
 
 
 /**

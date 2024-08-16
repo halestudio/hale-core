@@ -33,7 +33,8 @@ public class PropertyTypeOverrideProperty extends AbstractPropertyDecorator {
 	 * @param property the original property
 	 * @param newPropertyType the replacement property type
 	 */
-	public PropertyTypeOverrideProperty(PropertyDefinition property, TypeDefinition newPropertyType) {
+	public PropertyTypeOverrideProperty(PropertyDefinition property,
+			TypeDefinition newPropertyType) {
 		super(property);
 		this.newPropertyType = newPropertyType;
 	}

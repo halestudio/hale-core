@@ -34,11 +34,10 @@ public abstract class AbstractDockerTest {
 
 	/**
 	 * It gets the class loader of the unit test class which will be useful for
-	 * fetching the configuration from the classpath. It delegates the call with
-	 * the given class loader.
+	 * fetching the configuration from the classpath. It delegates the call with the
+	 * given class loader.
 	 * 
-	 * @see DockerConfigHelper#withContainer(String, RunWithContainer,
-	 *      ClassLoader)
+	 * @see DockerConfigHelper#withContainer(String, RunWithContainer, ClassLoader)
 	 * @param configName a configuration name key
 	 * @param runInstance an anonymous class object
 	 * @throws Exception if it fails delegate the method call

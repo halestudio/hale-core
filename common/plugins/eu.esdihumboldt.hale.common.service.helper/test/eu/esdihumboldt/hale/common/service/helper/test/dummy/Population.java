@@ -35,12 +35,12 @@ public interface Population {
 	public int getOverallCount();
 
 	/**
-	 * Get how many of the parents of the property actually have at least one
-	 * value for this property. For instances the overall count is returned as
-	 * they have no parents.
+	 * Get how many of the parents of the property actually have at least one value
+	 * for this property. For instances the overall count is returned as they have
+	 * no parents.
 	 * 
-	 * @return the count of parents that have such a property value, or the
-	 *         overall count if the population is associated to an instance
+	 * @return the count of parents that have such a property value, or the overall
+	 *         count if the population is associated to an instance
 	 */
 	public int getParentsCount();
 

@@ -30,26 +30,23 @@ import eu.esdihumboldt.util.Pair;
 public interface Leftovers {
 
 	/**
-	 * Consume a left over value completely (for all remaining cells). The
-	 * returned source node associated as annotated child to the parent of the
-	 * original source node.
+	 * Consume a left over value completely (for all remaining cells). The returned
+	 * source node associated as annotated child to the parent of the original
+	 * source node.
 	 * 
-	 * @return the source node created for the value paired with the set of
-	 *         cells that have already been consumed for the value, or
-	 *         <code>null</code> if there is no value that hasn't been consumed
-	 *         completely
+	 * @return the source node created for the value paired with the set of cells
+	 *         that have already been consumed for the value, or <code>null</code>
+	 *         if there is no value that hasn't been consumed completely
 	 */
 	Pair<SourceNode, Set<Cell>> consumeValue();
 
 	/**
-	 * Consume a left over value regarding the given cell. The returned source
-	 * node associated as annotated child to the parent of the original source
-	 * node.
+	 * Consume a left over value regarding the given cell. The returned source node
+	 * associated as annotated child to the parent of the original source node.
 	 * 
 	 * @param cell the cell
-	 * @return the source node created for the value or <code>null</code> if
-	 *         there is no value that is not yet consumed completely or for the
-	 *         given cell
+	 * @return the source node created for the value or <code>null</code> if there
+	 *         is no value that is not yet consumed completely or for the given cell
 	 */
 	SourceNode consumeValue(Cell cell);
 

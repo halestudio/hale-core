@@ -112,8 +112,8 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	@Override
 	public InstanceCollection select(Filter filter) {
 		/*
-		 * Delegate filter to each collection - there may some optimization take
-		 * place, e.g. with type filters
+		 * Delegate filter to each collection - there may some optimization take place,
+		 * e.g. with type filters
 		 */
 		List<InstanceCollection> result = new ArrayList<>();
 		for (InstanceCollection collection : collections) {
@@ -138,9 +138,8 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	}
 
 	/**
-	 * Internal resource iterator iterating over all given instance collections
-	 * in order. Supports {@link #remove()} if the underlying iterator supports
-	 * remove.
+	 * Internal resource iterator iterating over all given instance collections in
+	 * order. Supports {@link #remove()} if the underlying iterator supports remove.
 	 * 
 	 * @author Kai Schwierczek
 	 */
@@ -217,8 +216,8 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	}
 
 	/**
-	 * Internal class for decorating the instances with the index of the
-	 * instance collection list.
+	 * Internal class for decorating the instances with the index of the instance
+	 * collection list.
 	 * 
 	 * @author Kai Schwierczek
 	 */
@@ -239,8 +238,8 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	}
 
 	/**
-	 * Internal class for decorating the references with the index of the
-	 * instance collection list.
+	 * Internal class for decorating the references with the index of the instance
+	 * collection list.
 	 * 
 	 * @author Kai Schwierczek
 	 */

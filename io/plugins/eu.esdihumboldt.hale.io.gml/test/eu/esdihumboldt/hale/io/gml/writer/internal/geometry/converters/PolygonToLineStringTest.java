@@ -19,7 +19,6 @@ package eu.esdihumboldt.hale.io.gml.writer.internal.geometry.converters;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.LinearRing;

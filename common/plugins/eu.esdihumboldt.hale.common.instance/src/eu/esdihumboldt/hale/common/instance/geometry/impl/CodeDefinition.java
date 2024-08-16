@@ -90,8 +90,7 @@ public class CodeDefinition implements CRSDefinition {
 	 * Create a code definition with only a code.
 	 * 
 	 * @param code the code
-	 * @param longitudeFirst if the axis order should be assumed as longitude
-	 *            first
+	 * @param longitudeFirst if the axis order should be assumed as longitude first
 	 */
 	public CodeDefinition(String code, boolean longitudeFirst) {
 		this.code = code;
@@ -220,8 +219,8 @@ public class CodeDefinition implements CRSDefinition {
 	 * Try to resolve the CRS with the given code
 	 * 
 	 * @param code CRS code
-	 * @return a resolved CodeDefinition or <code>null</code> if the code could
-	 *         not be resolved
+	 * @return a resolved CodeDefinition or <code>null</code> if the code could not
+	 *         be resolved
 	 */
 	public static CodeDefinition tryResolve(String code) {
 		CodeDefinition candidate = new CodeDefinition(code, false);

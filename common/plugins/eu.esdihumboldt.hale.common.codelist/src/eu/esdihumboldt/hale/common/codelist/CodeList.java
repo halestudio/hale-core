@@ -90,8 +90,8 @@ public interface CodeList {
 	/**
 	 * Get the code list entries
 	 * 
-	 * @return the code list entries, changes to the returned collection will
-	 *         not be reflected in the code list
+	 * @return the code list entries, changes to the returned collection will not be
+	 *         reflected in the code list
 	 */
 	public Collection<CodeEntry> getEntries();
 

@@ -59,8 +59,8 @@ public class SimpleWFSWriter extends AbstractWFSWriter<GmlInstanceWriter> {
 	@Override
 	protected XmlWrapper createTransaction() {
 		String idgen = getParameter(PARAM_ID_GEN).as(String.class);
-		String inputFormat = getParameter(PARAM_INPUT_FORMAT)
-				.as(String.class, DEFAULT_INPUT_FORMAT);
+		String inputFormat = getParameter(PARAM_INPUT_FORMAT).as(String.class,
+				DEFAULT_INPUT_FORMAT);
 		return new WFSInsert(getWFSVersion(), idgen, inputFormat);
 	}
 

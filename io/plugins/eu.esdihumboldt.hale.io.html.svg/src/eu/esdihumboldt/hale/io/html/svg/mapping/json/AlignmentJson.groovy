@@ -15,17 +15,20 @@
 
 package eu.esdihumboldt.hale.io.html.svg.mapping.json
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 import java.util.Map.Entry
 
 import org.w3c.dom.Element
 
-import com.vladsch.flexmark.html.HtmlRenderer;
-import com.vladsch.flexmark.parser.Parser;
-import com.vladsch.flexmark.profile.pegdown.Extensions;
+import com.vladsch.flexmark.html.HtmlRenderer
+import com.vladsch.flexmark.parser.Parser
+import com.vladsch.flexmark.profile.pegdown.Extensions
 import com.vladsch.flexmark.profile.pegdown.PegdownOptionsAdapter
-import com.vladsch.flexmark.util.data.DataHolder;
+import com.vladsch.flexmark.util.data.DataHolder
 
 import eu.esdihumboldt.hale.common.align.extension.function.FunctionDefinition
 import eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition
@@ -49,8 +52,6 @@ import eu.esdihumboldt.hale.common.schema.model.SchemaSpace
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
 import eu.esdihumboldt.util.xml.XmlUtil
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 /**
  * Alignment JSON representation helper.

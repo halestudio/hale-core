@@ -172,8 +172,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	/**
 	 * Retrieve the default cell migrator for a given transformation.
 	 * 
-	 * @param transformationIdentifier the identifier of the transformation
-	 *            function
+	 * @param transformationIdentifier the identifier of the transformation function
 	 * @return the cell migrator
 	 */
 	protected CellMigrator getCellMigrator(String transformationIdentifier) {
@@ -187,8 +186,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	 * Check if the given cell's target matches the expected target.
 	 * 
 	 * @param cell the cell to check
-	 * @param targetDef the expected target entity (simple definition as name
-	 *            list)
+	 * @param targetDef the expected target entity (simple definition as name list)
 	 */
 	protected void assertCellTargetEquals(Cell cell, List<String> targetDef) {
 		Entity entity = CellUtil.getFirstEntity(cell.getTarget());
@@ -198,12 +196,11 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	}
 
 	/**
-	 * Check if the given cell's sources match the expected sources (order does
-	 * not matter).
+	 * Check if the given cell's sources match the expected sources (order does not
+	 * matter).
 	 * 
 	 * @param cell the cell to check
-	 * @param expected the expected source entities (simple definition as name
-	 *            list)
+	 * @param expected the expected source entities (simple definition as name list)
 	 */
 	protected void assertCellSourcesEqual(Cell cell,
 			@SuppressWarnings("unchecked") List<String>... expected) {
@@ -251,8 +248,8 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	/**
 	 * Check if an entity equals the given simple definition
 	 * 
-	 * @param expected the list of expected entities (each a simple definition
-	 *            as name list)
+	 * @param expected the list of expected entities (each a simple definition as
+	 *            name list)
 	 * @param def the entity definition to check
 	 * @return the match from the expected entities
 	 */

@@ -50,9 +50,8 @@ public class HooksUtil {
 						try {
 							hook.processTransformationTree(tree, state, target);
 						} catch (Exception e) {
-							log.error(
-									"Error processing transformation tree hook "
-											+ def.getDisplayName(), e);
+							log.error("Error processing transformation tree hook "
+									+ def.getDisplayName(), e);
 						}
 					}
 				}

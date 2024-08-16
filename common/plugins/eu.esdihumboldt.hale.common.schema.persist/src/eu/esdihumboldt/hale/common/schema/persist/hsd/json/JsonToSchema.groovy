@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd.json;
 
+import groovy.json.JsonSlurper
+
 import javax.xml.namespace.QName
 
 import de.fhg.igd.slf4jplus.ALogger
@@ -36,7 +38,6 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultGroupPropertyDefinit
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
-import groovy.json.JsonSlurper
 
 /**
  * Reads HALE Schema Definitions back to the HALE schema model.

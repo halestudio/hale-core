@@ -34,11 +34,9 @@ import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -84,6 +82,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.hale.io.xsd.model.XmlIndex;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 import eu.esdihumboldt.util.geometry.WindingOrder;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for {@link StreamGmlWriter}.
@@ -479,8 +478,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive
-	 * type
+	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive type
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -502,8 +500,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive
-	 * type
+	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive type
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -525,8 +522,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive
-	 * type
+	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry primitive type
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -548,8 +544,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry aggregate
-	 * type
+	 * Test writing a {@link MultiLineString} to a GML 3.2 geometry aggregate type
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -638,8 +633,8 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type
-	 * with Winding Order in CounterClockWise
+	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type with
+	 * Winding Order in CounterClockWise
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -661,8 +656,8 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type
-	 * with Winding Order in ClockWise
+	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type with
+	 * Winding Order in ClockWise
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -685,8 +680,8 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type
-	 * with Winding Order in ClockWise
+	 * Test writing a {@link MultiPolygon} to a GML 3.2 geometry primitive type with
+	 * Winding Order in ClockWise
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -709,14 +704,14 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Create a feature, fill it with values, write it as GML, validate the GML
-	 * and load the GML file again to compare the loaded values with the ones
-	 * that were written
+	 * Create a feature, fill it with values, write it as GML, validate the GML and
+	 * load the GML file again to compare the loaded values with the ones that were
+	 * written
 	 *
 	 * @param elementName the element name of the feature type to use, if
 	 *            <code>null</code> a random element will be used
-	 * @param targetSchema the schema to use, the first element will be used for
-	 *            the type of the feature
+	 * @param targetSchema the schema to use, the first element will be used for the
+	 *            type of the feature
 	 * @param values the values to set on the feature
 	 * @param testName the name of the test
 	 * @param srsName the SRS name
@@ -729,21 +724,21 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Create a feature, fill it with values, write it as GML, validate the GML
-	 * and load the GML file again to compare the loaded values with the ones
-	 * that were written
+	 * Create a feature, fill it with values, write it as GML, validate the GML and
+	 * load the GML file again to compare the loaded values with the ones that were
+	 * written
 	 *
 	 * @param elementName the element name of the feature type to use, if
 	 *            <code>null</code> a random element will be used
-	 * @param targetSchema the schema to use, the first element will be used for
-	 *            the type of the feature
+	 * @param targetSchema the schema to use, the first element will be used for the
+	 *            type of the feature
 	 * @param values the values to set on the feature
 	 * @param testName the name of the test
 	 * @param srsName the SRS name
 	 * @param skipValueTest if the check for equality shall be skipped
 	 * @param expectWriteFail if the GML writing is expected to fail
-	 * @return the validation report or the GML writing report if writing
-	 *         expected to fail
+	 * @return the validation report or the GML writing report if writing expected
+	 *         to fail
 	 * @throws Exception if any error occurs
 	 */
 	private IOReport fillFeatureTest(String elementName, URI targetSchema,
@@ -754,22 +749,22 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Create a feature, fill it with values, write it as GML, validate the GML
-	 * and load the GML file again to compare the loaded values with the ones
-	 * that were written
+	 * Create a feature, fill it with values, write it as GML, validate the GML and
+	 * load the GML file again to compare the loaded values with the ones that were
+	 * written
 	 *
 	 * @param elementName the element name of the feature type to use, if
 	 *            <code>null</code> a random element will be used
-	 * @param targetSchema the schema to use, the first element will be used for
-	 *            the type of the feature
+	 * @param targetSchema the schema to use, the first element will be used for the
+	 *            type of the feature
 	 * @param values the values to set on the feature
 	 * @param testName the name of the test
 	 * @param srsName the SRS name
 	 * @param skipValueTest if the check for equality shall be skipped
 	 * @param expectWriteFail if the GML writing is expected to fail
 	 * @param windingOrderParam winding order parameter or <code>null</code>
-	 * @return the validation report or the GML writing report if writing
-	 *         expected to fail
+	 * @return the validation report or the GML writing report if writing expected
+	 *         to fail
 	 * @throws Exception if any error occurs
 	 */
 	private IOReport fillFeatureTest(String elementName, URI targetSchema,
@@ -1023,8 +1018,8 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	 * @param xmlLocation the location of the XML file
 	 * @param validationSchemas schemas needed for validation
 	 * @return the validation report
-	 * @throws IOProviderConfigurationException if the validator is not
-	 *             configured correctly
+	 * @throws IOProviderConfigurationException if the validator is not configured
+	 *             correctly
 	 * @throws IOException if I/O operations fail
 	 */
 	public static IOReport validate(URI xmlLocation, List<? extends Locatable> validationSchemas)

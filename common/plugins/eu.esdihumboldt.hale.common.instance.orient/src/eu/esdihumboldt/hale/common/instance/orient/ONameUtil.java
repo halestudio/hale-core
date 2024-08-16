@@ -54,8 +54,7 @@ public class ONameUtil {
 	}
 
 	/**
-	 * Encode text to a string that is a valid name for {@link ODocument}
-	 * fields.
+	 * Encode text to a string that is a valid name for {@link ODocument} fields.
 	 * 
 	 * @param text the text to encode
 	 * @return the encoded name

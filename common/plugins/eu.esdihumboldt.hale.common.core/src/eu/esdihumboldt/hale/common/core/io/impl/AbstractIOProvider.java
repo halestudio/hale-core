@@ -163,8 +163,7 @@ public abstract class AbstractIOProvider implements IOProvider {
 
 	/**
 	 * Uses {@link #setParameter(String, Value)} to load the configuration. For
-	 * changing the behavior please override
-	 * {@link #setParameter(String, Value)}
+	 * changing the behavior please override {@link #setParameter(String, Value)}
 	 * 
 	 * @see IOProvider#loadConfiguration(Map)
 	 */
@@ -177,8 +176,8 @@ public abstract class AbstractIOProvider implements IOProvider {
 
 	/**
 	 * Stores all parameters that were set using
-	 * {@link #setParameter(String, Value)} in the configuration. For changing
-	 * the behavior please override this method.
+	 * {@link #setParameter(String, Value)} in the configuration. For changing the
+	 * behavior please override this method.
 	 * 
 	 * @see IOProvider#storeConfiguration(Map)
 	 */

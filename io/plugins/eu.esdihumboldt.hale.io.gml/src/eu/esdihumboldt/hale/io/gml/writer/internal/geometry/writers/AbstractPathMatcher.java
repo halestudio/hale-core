@@ -44,8 +44,8 @@ public abstract class AbstractPathMatcher {
 	private final Set<Pattern> verifyPatterns = new HashSet<Pattern>();
 
 	/**
-	 * Add a base pattern. When matching the path the pattern path is appended
-	 * to the base path.
+	 * Add a base pattern. When matching the path the pattern path is appended to
+	 * the base path.
 	 * 
 	 * @param pattern the pattern string
 	 * @see Pattern#parse(String)
@@ -62,9 +62,9 @@ public abstract class AbstractPathMatcher {
 
 	/**
 	 * Add a verification pattern. If a match for a base pattern is found the
-	 * verification patterns will be used to verify the structure. For a path to
-	 * be accepted, all verification patterns must match and the resulting
-	 * end-points of the verification patterns must be valid.
+	 * verification patterns will be used to verify the structure. For a path to be
+	 * accepted, all verification patterns must match and the resulting end-points
+	 * of the verification patterns must be valid.
 	 * 
 	 * @see #verifyEndPoint(TypeDefinition)
 	 * 
@@ -83,9 +83,9 @@ public abstract class AbstractPathMatcher {
 
 	/**
 	 * Add a verification pattern. If a match for a base pattern is found the
-	 * verification patterns will be used to verify the structure. For a path to
-	 * be accepted, all verification patterns must match and the resulting
-	 * end-points of the verification patterns must be valid.
+	 * verification patterns will be used to verify the structure. For a path to be
+	 * accepted, all verification patterns must match and the resulting end-points
+	 * of the verification patterns must be valid.
 	 * 
 	 * @see #verifyEndPoint(TypeDefinition)
 	 * 
@@ -143,9 +143,9 @@ public abstract class AbstractPathMatcher {
 				}
 
 				/*
-				 * now either all verification patterns matched and the
-				 * end-points were valid, or no verification patterns were
-				 * specified and the base pattern end-point was valid
+				 * now either all verification patterns matched and the end-points were valid,
+				 * or no verification patterns were specified and the base pattern end-point was
+				 * valid
 				 */
 				return path;
 			}
@@ -163,26 +163,25 @@ public abstract class AbstractPathMatcher {
 	 * @param elementName the encompassing element name
 	 * @param defaultNs the pattern default namespace
 	 * @param unique if the path's start element cannot be repeated
-	 * @return the descent that was opened, it must be closed to close the
-	 *         opened elements
+	 * @return the descent that was opened, it must be closed to close the opened
+	 *         elements
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
 	public static Descent descend(XMLStreamWriter writer, Pattern descendPattern,
 			TypeDefinition elementType, QName elementName, String defaultNs, boolean unique)
 			throws XMLStreamException {
-		DefinitionPath path = descendPattern.match(elementType, new DefinitionPath(elementType,
-				elementName, unique), defaultNs);
+		DefinitionPath path = descendPattern.match(elementType,
+				new DefinitionPath(elementType, elementName, unique), defaultNs);
 
 		return Descent.descend(writer, path, null, true);
 	}
 
 	/**
 	 * Verify the verification end point. After reaching the end-point of a
-	 * verification pattern this method is called with the
-	 * {@link TypeDefinition} of the end-point to assure the needed structure is
-	 * present (e.g. a DirectPositionListType element). If no verification
-	 * pattern is present the end-point of the matched base pattern will be
-	 * verified.
+	 * verification pattern this method is called with the {@link TypeDefinition} of
+	 * the end-point to assure the needed structure is present (e.g. a
+	 * DirectPositionListType element). If no verification pattern is present the
+	 * end-point of the matched base pattern will be verified.
 	 * 
 	 * @param endPoint the end-point type definition
 	 * 

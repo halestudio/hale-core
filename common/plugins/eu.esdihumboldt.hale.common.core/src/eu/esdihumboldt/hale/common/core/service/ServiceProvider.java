@@ -26,8 +26,8 @@ public interface ServiceProvider {
 	 * Get the service of the given type if available.
 	 * 
 	 * @param serviceInterface the service interface or type
-	 * @return the service instance in the current context or <code>null</code>
-	 *         if no such service exists
+	 * @return the service instance in the current context or <code>null</code> if
+	 *         no such service exists
 	 */
 	public <T> T getService(Class<T> serviceInterface);
 

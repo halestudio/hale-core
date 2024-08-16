@@ -21,10 +21,10 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Reference;
+import net.jcip.annotations.Immutable;
 
 /**
  * Specifies a type's primary key, which may be the target of {@link Reference}
@@ -67,8 +67,8 @@ public class PrimaryKey implements TypeConstraint {
 	}
 
 	/**
-	 * Returns the path to the primary key. This is <code>null</code> if and
-	 * only if {@link #hasPrimaryKey()} returns false.
+	 * Returns the path to the primary key. This is <code>null</code> if and only if
+	 * {@link #hasPrimaryKey()} returns false.
 	 * 
 	 * @return the path to the primary key, may be <code>null</code>
 	 */

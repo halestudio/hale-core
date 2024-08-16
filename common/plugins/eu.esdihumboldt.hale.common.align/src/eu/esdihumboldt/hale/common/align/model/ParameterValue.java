@@ -15,11 +15,10 @@
 
 package eu.esdihumboldt.hale.common.align.model;
 
-import net.jcip.annotations.Immutable;
-
 import org.w3c.dom.Element;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
+import net.jcip.annotations.Immutable;
 
 /**
  * Class to represent the value of a transformation parameter.
@@ -37,8 +36,8 @@ public class ParameterValue extends Value {
 	public static final ParameterValue NULL = new ParameterValue(Value.NULL);
 
 	/**
-	 * The name of the default type of value. <code>null</code> represents also
-	 * the default type.
+	 * The name of the default type of value. <code>null</code> represents also the
+	 * default type.
 	 */
 	public static final String DEFAULT_TYPE = "default";
 

@@ -89,5 +89,4 @@ class DOMValueUtil {
 			builder(tagName, [value: value.stringRepresentation])
 		}
 	}
-
 }

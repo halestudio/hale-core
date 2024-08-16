@@ -33,8 +33,7 @@ public class MappableUsingXsiType extends MappableFlag {
 	private final XmlTypeDefinition type;
 
 	/**
-	 * Create a mapping constraint that checks if a type is mappable using
-	 * xsi:type.
+	 * Create a mapping constraint that checks if a type is mappable using xsi:type.
 	 * 
 	 * @param type the type defintion
 	 */

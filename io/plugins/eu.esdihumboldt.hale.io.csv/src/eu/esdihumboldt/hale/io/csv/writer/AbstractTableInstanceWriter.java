@@ -57,11 +57,11 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 	 * 
 	 * @param instance the Instance to check
 	 * @param headerRow the current header row of the table
-	 * @param solveNestedProperties <code>true</code> if nested properties
-	 *            should be solved, otherwise <code>false</code>
-	 * @param useSchema <code>true</code> if properties should be defined from
-	 *            the schema, otherwise <code>false</code> and properties are
-	 *            defined from the Instances
+	 * @param solveNestedProperties <code>true</code> if nested properties should be
+	 *            solved, otherwise <code>false</code>
+	 * @param useSchema <code>true</code> if properties should be defined from the
+	 *            schema, otherwise <code>false</code> and properties are defined
+	 *            from the Instances
 	 * @param reporter IOReporter
 	 * @return a map of properties with string of localpart of the QName of the
 	 *         property as key
@@ -265,8 +265,7 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 	 * Call this to get an instance collection based on the selected Type
 	 * 
 	 * @param typeName the QName of the typeDefinition
-	 * @return The instance collection for the given type, can be empty
-	 *         collection
+	 * @return The instance collection for the given type, can be empty collection
 	 */
 	protected InstanceCollection getInstanceCollection(QName typeName) {
 

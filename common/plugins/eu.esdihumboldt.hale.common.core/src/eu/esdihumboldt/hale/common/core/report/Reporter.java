@@ -54,8 +54,8 @@ public interface Reporter<T extends Message> extends Report<T>, ReportLog<T>, St
 
 	/**
 	 * Set the start time of the report. This is optional. If a start time is
-	 * present the {@link #getTimestamp()} can be seen as an end time and used
-	 * to compute a duration.
+	 * present the {@link #getTimestamp()} can be seen as an end time and used to
+	 * compute a duration.
 	 * 
 	 * @param starttime the starttime
 	 */
@@ -72,8 +72,8 @@ public interface Reporter<T extends Message> extends Report<T>, ReportLog<T>, St
 	void countError(int number);
 
 	/**
-	 * Add an error w/o a message, e.g. if no message is available or the reason
-	 * is not known.
+	 * Add an error w/o a message, e.g. if no message is available or the reason is
+	 * not known.
 	 */
 	default void countError() {
 		countError(1);
@@ -87,16 +87,15 @@ public interface Reporter<T extends Message> extends Report<T>, ReportLog<T>, St
 	void countWarning(int number);
 
 	/**
-	 * Add a warning w/o a message, e.g. if no message is available or the
-	 * reason is not known.
+	 * Add a warning w/o a message, e.g. if no message is available or the reason is
+	 * not known.
 	 */
 	default void countWarning() {
 		countError(1);
 	}
 
 	/**
-	 * Add a number of info messages w/o message, e.g. if no message is
-	 * available.
+	 * Add a number of info messages w/o message, e.g. if no message is available.
 	 * 
 	 * @param number the number of info messages
 	 */

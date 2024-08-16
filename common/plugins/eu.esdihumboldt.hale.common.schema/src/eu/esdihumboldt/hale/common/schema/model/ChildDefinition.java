@@ -26,8 +26,8 @@ package eu.esdihumboldt.hale.common.schema.model;
 public interface ChildDefinition<C> extends Definition<C> {
 
 	/**
-	 * Get the parent type of the child. This can either be the declaring type
-	 * or a sub-type.
+	 * Get the parent type of the child. This can either be the declaring type or a
+	 * sub-type.
 	 * 
 	 * @return the parent type of the property
 	 */
@@ -41,8 +41,8 @@ public interface ChildDefinition<C> extends Definition<C> {
 	public DefinitionGroup getDeclaringGroup();
 
 	/**
-	 * Return as a property definition is possible. This is convenience for
-	 * avoiding casts and instanceof expressions when handling children.
+	 * Return as a property definition is possible. This is convenience for avoiding
+	 * casts and instanceof expressions when handling children.
 	 * 
 	 * @return a property definition if this child definition is one, otherwise
 	 *         <code>null</code>
@@ -50,8 +50,8 @@ public interface ChildDefinition<C> extends Definition<C> {
 	public PropertyDefinition asProperty();
 
 	/**
-	 * Return as a group definition is possible. This is convenience for
-	 * avoiding casts and instanceof expressions when handling children.
+	 * Return as a group definition is possible. This is convenience for avoiding
+	 * casts and instanceof expressions when handling children.
 	 * 
 	 * @return a group definition if this child definition is one, otherwise
 	 *         <code>null</code>

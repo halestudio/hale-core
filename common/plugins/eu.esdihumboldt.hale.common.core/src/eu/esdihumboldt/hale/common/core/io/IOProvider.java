@@ -118,16 +118,16 @@ public interface IOProvider {
 	public IContentType getContentType();
 
 	/**
-	 * Set the character set that should be used for encoding/decoding. There
-	 * might be I/O providers thought, that don't respect this setting.
+	 * Set the character set that should be used for encoding/decoding. There might
+	 * be I/O providers thought, that don't respect this setting.
 	 * 
 	 * @param charset the character set
 	 */
 	public void setCharset(Charset charset);
 
 	/**
-	 * Get the configured character set. Implementations may fall back to a
-	 * default character set if none is configured.
+	 * Get the configured character set. Implementations may fall back to a default
+	 * character set if none is configured.
 	 * 
 	 * @return the character set or <code>null</code>
 	 */
@@ -151,9 +151,8 @@ public interface IOProvider {
 	 * Set a parameter
 	 * 
 	 * @param name the parameter name
-	 * @param value the parameter value, it is either a string, a DOM elements
-	 *            or a complex value types defined in the
-	 *            {@link ComplexValueExtension}
+	 * @param value the parameter value, it is either a string, a DOM elements or a
+	 *            complex value types defined in the {@link ComplexValueExtension}
 	 */
 	public void setParameter(String name, Value value);
 
@@ -161,8 +160,8 @@ public interface IOProvider {
 	 * Get the value for the given parameter name
 	 * 
 	 * @param name the parameter name
-	 * @return the parameter value or the NULL value, the value is either a
-	 *         string, a DOM elements or a complex value types defined in the
+	 * @return the parameter value or the NULL value, the value is either a string,
+	 *         a DOM elements or a complex value types defined in the
 	 *         {@link ComplexValueExtension}
 	 */
 	public Value getParameter(String name);
@@ -170,8 +169,8 @@ public interface IOProvider {
 	/**
 	 * Load the configuration from a map of key/value pairs
 	 * 
-	 * @param configuration the configuration to load, values are either
-	 *            strings, DOM elements or complex value types defined in the
+	 * @param configuration the configuration to load, values are either strings,
+	 *            DOM elements or complex value types defined in the
 	 *            {@link ComplexValueExtension}
 	 */
 	public void loadConfiguration(Map<String, Value> configuration);
