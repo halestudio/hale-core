@@ -6,6 +6,16 @@ hale {
   bundleName = 'GML/XML Instance I/O'
 }
 
+tasks.test {
+  // workaround for system rules
+  /*
+   jvmArgs = [
+   '--add-opens',
+   'java.base/java.util=ALL-UNNAMED'
+   ]
+   */
+}
+
 dependencies {
   implementation libs.slf4jplus.api
 
@@ -45,6 +55,7 @@ dependencies {
   runtimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.xml')
 
   testImplementation testLibs.junit4
+  testImplementation testLibs.junit.system.rules
 
   testRuntimeOnly libs.geotools.epsg
 

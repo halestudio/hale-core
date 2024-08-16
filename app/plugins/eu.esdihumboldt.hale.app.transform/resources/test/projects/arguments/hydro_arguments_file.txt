@@ -1,7 +1,7 @@
 -project
-platform:/plugin/eu.esdihumboldt.hale.app.transform.test/projects/hydro/project.halex
+RESOLVE:projects/hydro/project.halex
 -source
-platform:/plugin/eu.esdihumboldt.hale.app.transform.test/projects/hydro/hydro-source.gml.gz
+RESOLVE:projects/hydro/hydro-source.gml.gz
 -Sinspire.sds.localId
 1234
 -filter

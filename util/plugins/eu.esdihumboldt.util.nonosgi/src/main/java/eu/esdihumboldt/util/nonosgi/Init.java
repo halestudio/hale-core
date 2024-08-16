@@ -18,14 +18,14 @@ public class Init {
 
 	public static void init() {
 		if (initialized.compareAndSet(false, true)) {
+			// initialize meta extensions
+			GroovySystem.getMetaClassRegistry()
+					.setMetaClassCreationHandle(new CustomMetaClassCreationHandle());
+
 			SLF4JBridgeHandler.install();
 
 			// initialize registry
 			RegistryFactoryHelper.getRegistry();
-
-			// initialize meta extensions
-			GroovySystem.getMetaClassRegistry()
-					.setMetaClassCreationHandle(new CustomMetaClassCreationHandle());
 		}
 	}
 

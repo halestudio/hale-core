@@ -17,8 +17,6 @@ dependencies {
 
   testImplementation testLibs.junit4
 
-  /*
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
   testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
-   */
 }

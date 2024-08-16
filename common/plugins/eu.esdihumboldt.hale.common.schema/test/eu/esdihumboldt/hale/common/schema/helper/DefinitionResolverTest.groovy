@@ -51,7 +51,7 @@ class DefinitionResolverTest {
 
 	@CompileStatic(TypeCheckingMode.SKIP)
 	@Before
-	protected void setUp() throws Exception {
+	void setUp() throws Exception {
 		new SchemaBuilder(defaultPropertyTypeNamespace: PROPERTY_NS).schema(MAIN_NS) {
 			itemType = Item {
 				name()

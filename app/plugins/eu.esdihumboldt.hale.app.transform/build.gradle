@@ -33,6 +33,7 @@ dependencies {
   testImplementation libs.groovy.xml
 
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')
 
   testRuntimeOnly project(':io:features:eu.esdihumboldt.hale.io.feature.core')
   testRuntimeOnly project(':cst:features:eu.esdihumboldt.cst.feature')

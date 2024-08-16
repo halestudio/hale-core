@@ -24,13 +24,14 @@ import eu.esdihumboldt.hale.io.groovy.snippets.impl.SnippetServiceImpl
 import eu.esdihumboldt.hale.io.groovy.snippets.impl.StringSnippet
 import eu.esdihumboldt.util.groovy.sandbox.DefaultGroovyService
 import eu.esdihumboldt.util.groovy.sandbox.GroovyService
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for accessing snippets via GroovySnippets.
  *
  * @author Simon Templer
  */
-class GroovySnippetsTest {
+class GroovySnippetsTest extends AbstractPlatformTest {
 
 	private ServiceProvider services
 

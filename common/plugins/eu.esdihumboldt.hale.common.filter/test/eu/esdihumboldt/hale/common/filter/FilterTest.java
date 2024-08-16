@@ -56,6 +56,7 @@ import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeInstanceReader;
 import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeSchemaReader;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 import eu.esdihumboldt.util.io.IOUtils;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * TODO Type description
@@ -63,7 +64,7 @@ import eu.esdihumboldt.util.io.IOUtils;
  * @author Basti
  */
 @SuppressWarnings({ "restriction", "javadoc" })
-public class FilterTest {
+public class FilterTest extends AbstractPlatformTest {
 
 	static InstanceCollection complexinstances;
 	static boolean init = false;

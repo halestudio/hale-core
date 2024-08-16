@@ -51,6 +51,7 @@ import eu.esdihumboldt.hale.io.gml.reader.internal.GmlInstanceReader;
 import eu.esdihumboldt.hale.io.gml.reader.internal.StreamGmlReader;
 import eu.esdihumboldt.hale.io.gml.reader.internal.XmlInstanceReader;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for {@link PropertyResolver}
@@ -58,7 +59,7 @@ import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
  * @author Sebastian Reinhardt
  */
 @SuppressWarnings("restriction")
-public class PropertyResolverTest {
+public class PropertyResolverTest extends AbstractPlatformTest {
 
 	/**
 	 * Wait for needed services to be running

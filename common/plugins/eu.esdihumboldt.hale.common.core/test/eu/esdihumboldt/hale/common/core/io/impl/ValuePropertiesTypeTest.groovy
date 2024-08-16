@@ -26,6 +26,7 @@ import eu.esdihumboldt.hale.common.core.io.HaleIO
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.ValueList
 import eu.esdihumboldt.hale.common.core.io.ValueProperties
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 
 /**
@@ -33,13 +34,7 @@ import eu.esdihumboldt.hale.common.core.io.ValueProperties
  *
  * @author Simon Templer
  */
-class ValuePropertiesTypeTest {
-
-	@BeforeClass
-	static void init() {
-		// initialize registry
-		RegistryFactoryHelper.getRegistry()
-	}
+class ValuePropertiesTypeTest extends AbstractPlatformTest {
 
 	/**
 	 * Test if a simple properties map containing only simple values is the same
@@ -48,9 +43,9 @@ class ValuePropertiesTypeTest {
 	@Test
 	public void testValueProperties() {
 		ValueProperties vp = new ValueProperties()
-		Value name = 'Peter' as Value
+		Value name = Value.of('Peter')
 		vp['name'] = name
-		vp['city'] = 'Petersburg' as Value
+		vp['city'] = Value.of('Petersburg')
 		vp['age'] = 2.power(5) as Value
 
 		// convert to DOM
@@ -70,9 +65,9 @@ class ValuePropertiesTypeTest {
 	@Test
 	public void testValuePropertiesJson() {
 		ValueProperties vp = new ValueProperties()
-		Value name = 'Peter' as Value
+		Value name = Value.of('Peter')
 		vp['name'] = name
-		vp['city'] = 'Petersburg' as Value
+		vp['city'] = Value.of('Petersburg')
 		vp['age'] = 2.power(5) as Value
 
 		// converter
@@ -98,12 +93,12 @@ class ValuePropertiesTypeTest {
 	@Test
 	public void testValuePropertiesList() {
 		ValueProperties vp = new ValueProperties()
-		vp['name'] = 'Peter' as Value
-		vp['cities'] = new ValueList([
-			'Petersburg' as Value,
-			'Katzenhirn' as Value,
-			'Munich' as Value
-		]) as Value
+		vp['name'] = Value.of('Peter')
+		vp['cities'] = Value.of(new ValueList([
+			Value.of('Petersburg'),
+			Value.of('Katzenhirn'),
+			Value.of('Munich')
+		]))
 		vp['age'] = 42 - 10 as Value
 
 		// convert to DOM
@@ -124,12 +119,12 @@ class ValuePropertiesTypeTest {
 	@Test
 	public void testValuePropertiesListJson() {
 		ValueProperties vp = new ValueProperties()
-		vp['name'] = 'Peter' as Value
-		vp['cities'] = new ValueList([
-			'Petersburg' as Value,
-			'Katzenhirn' as Value,
-			'Munich' as Value
-		]) as Value
+		vp['name'] = Value.of('Peter')
+		vp['cities'] = Value.of(new ValueList([
+			Value.of('Petersburg'),
+			Value.of('Katzenhirn'),
+			Value.of('Munich')
+		]))
 		vp['age'] = 42 - 10 as Value
 
 		// converter

@@ -39,5 +39,8 @@ dependencies {
   implementation libs.model.project
 
   testImplementation testLibs.junit4
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+
   testImplementation project(':ext:nonosgi:org.eclipse.equinox.nonosgi.registry')
 }

@@ -59,6 +59,9 @@ import eu.esdihumboldt.util.test.AbstractPlatformTest
  */
 class StreamGmlWriter2Test extends AbstractPlatformTest {
 
+	//	@Rule
+	//	public final EnvironmentVariables environmentVariables = new EnvironmentVariables()
+
 	/**
 	 * If temporary files shall be deleted
 	 */
@@ -71,6 +74,12 @@ class StreamGmlWriter2Test extends AbstractPlatformTest {
 	public static void initAll() {
 		TestUtil.startConversionService();
 	}
+
+	//	@Before
+	//	void setEnv() {
+	//		environmentVariables.set('HALE_REQUEST_MAX_CONNECTIONS', '200')
+	//		environmentVariables.set('HALE_REQUEST_MAX_CONNECTIONS_PER_ROUTE', '50')
+	//	}
 
 	/**
 	 * Test if a codespace attribute is automatically added to a GML identifier within an INSPIRE type.

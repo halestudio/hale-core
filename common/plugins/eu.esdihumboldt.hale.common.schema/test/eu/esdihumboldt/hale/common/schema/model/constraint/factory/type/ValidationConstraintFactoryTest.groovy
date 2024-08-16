@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.factory.type
 
+import static org.junit.Assert.*
+
 import javax.xml.namespace.QName
 
 import org.junit.Test
@@ -32,7 +34,6 @@ import eu.esdihumboldt.util.validator.NumberValidator
 import eu.esdihumboldt.util.validator.OrValidator
 import eu.esdihumboldt.util.validator.PatternValidator
 import eu.esdihumboldt.util.validator.Validator
-
 
 /**
  * Tests for {@link ValidationConstraintFactory}.

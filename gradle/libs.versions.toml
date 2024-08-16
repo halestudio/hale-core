@@ -154,6 +154,7 @@ skos = {module = "eu.esdihumboldt.unpuzzled:org.semanticweb.owlapi.osgi.skos", v
 
 deegree-featurestore-sql = {module = "org.deegree:deegree-featurestore-sql", version.ref = "deegree"}
 deegree-postgis = {module = "org.deegree:deegree-sqldialect-postgis", version.ref = "deegree"}
+deegree-cs = {module = "org.deegree:deegree-core-cs", version.ref = "deegree"}
 
 staxon = {module = "de.odysseus.staxon:staxon", version = "1.3"}
 
@@ -196,7 +197,7 @@ hc-api = ['hc-users', 'hc-projects', 'hc-projectstore', 'hc-buckets']
 
 geopackage = ['geopackage-core', 'geopackage-lib']
 
-deegree = ['deegree-featurestore-sql', 'deegree-postgis']
+deegree = ['deegree-featurestore-sql', 'deegree-postgis', 'deegree-cs']
 
 poi = ['poi-core', 'poi-ooxml', 'poi-ooxml-lite']
 

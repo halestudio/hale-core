@@ -1,5 +1,5 @@
 plugins {
-  id 'hale.migrated-java'
+  id 'hale.migrated-groovy'
 }
 
 hale {

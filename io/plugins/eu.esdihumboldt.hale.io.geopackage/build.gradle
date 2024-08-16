@@ -38,4 +38,6 @@ dependencies {
   testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
 
   testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
 }

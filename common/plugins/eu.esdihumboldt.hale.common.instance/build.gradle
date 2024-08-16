@@ -31,9 +31,13 @@ dependencies {
 
   testImplementation testLibs.junit4
 
+  testRuntimeOnly libs.geotools.epsg
+
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.shp')
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
 
   testImplementation libs.spring.core
   testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert')

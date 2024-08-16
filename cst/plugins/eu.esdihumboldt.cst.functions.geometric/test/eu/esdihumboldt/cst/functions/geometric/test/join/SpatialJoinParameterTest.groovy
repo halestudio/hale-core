@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.cst.functions.geometric.test.join
 
+import static org.junit.Assert.*
+
 import javax.xml.namespace.QName
 
 import org.junit.Test

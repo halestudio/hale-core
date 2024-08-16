@@ -75,7 +75,13 @@ public class TestUtil {
 			throws IOProviderConfigurationException, IOException {
 		DefaultInputSupplier input = new DefaultInputSupplier(location);
 
-		SchemaReader reader = HaleIO.findIOProvider(SchemaReader.class, input, location.getPath());
+		String path = location.getPath();
+		if (path == null && location.getScheme().equals("jar")) {
+			// workaround for JAR URLs to include an extension if possible
+			path = location.getSchemeSpecificPart();
+		}
+
+		SchemaReader reader = HaleIO.findIOProvider(SchemaReader.class, input, path);
 		if (reader == null) {
 			// assume XML schema as default
 			reader = new XmlSchemaReader();
@@ -142,8 +148,13 @@ public class TestUtil {
 			throws IOProviderConfigurationException, IOException {
 		DefaultInputSupplier input = new DefaultInputSupplier(location);
 
-		InstanceReader instanceReader = HaleIO.findIOProvider(InstanceReader.class, input,
-				location.getPath());
+		String path = location.getPath();
+		if (path == null && location.getScheme().equals("jar")) {
+			// workaround for JAR URLs to include an extension if possible
+			path = location.getSchemeSpecificPart();
+		}
+
+		InstanceReader instanceReader = HaleIO.findIOProvider(InstanceReader.class, input, path);
 		if (instanceReader == null) {
 			// assume XML as default
 			instanceReader = new XmlInstanceReader();
