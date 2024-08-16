@@ -19,6 +19,13 @@ spotless {
 
     // https://github.com/diffplug/spotless/tree/main/plugin-gradle#eclipse-jdt
     eclipse().configFile(rootProject.file('eclipse-format.xml'))
+
+    if (HaleBuild.useDefaultHeader(project)) {
+      licenseHeader(HaleBuild.LICENSE_HEADER_DEFAULT)
+    }
+
+    trimTrailingWhitespace()
+    endWithNewline()
   }
 }
 
