@@ -29,5 +29,13 @@ dependencies {
 
   testImplementation testLibs.junit4
 
+  testImplementation libs.jakarta.xml.bind.api
+
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+
+  // unsafe providers
+  testRuntimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.schemabuilder')
+  testRuntimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.instancebuilder')
 }

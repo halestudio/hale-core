@@ -17,8 +17,6 @@ package eu.esdihumboldt.hale.common.core.io.impl
 
 import static org.junit.Assert.*
 
-import org.eclipse.equinox.nonosgi.registry.RegistryFactoryHelper
-import org.junit.BeforeClass
 import org.junit.Test
 import org.w3c.dom.Element
 
@@ -26,19 +24,15 @@ import eu.esdihumboldt.hale.common.core.io.HaleIO
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.ValueList
 import eu.esdihumboldt.hale.common.core.io.ValueMap
+import eu.esdihumboldt.util.nonosgi.Init
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests XML serialization of {@link ValueMap}.
  *
  * @author Simon Templer
  */
-class ValueMapTypeTest {
-
-	@BeforeClass
-	static void init() {
-		// initialize registry
-		RegistryFactoryHelper.getRegistry()
-	}
+class ValueMapTypeTest extends AbstractPlatformTest {
 
 	/**
 	 * Test if a map containing simple values and complex values is the same
@@ -47,13 +41,16 @@ class ValueMapTypeTest {
 	@Test
 	public void testValueMap() {
 		ValueMap vm = new ValueMap()
-		vm['languages' as Value] = new ValueList(['de' as Value, 'en' as Value]) as Value
+		vm[Value.of('languages')] = Value.of(new ValueList([
+			Value.of('de'),
+			Value.of('en')
+		]))
 		vm[6*7 as Value] = 42 as Value
-		vm[new ValueList([
+		vm[Value.of(new ValueList([
 				1 as Value,
 				2 as Value,
 				3 as Value
-			]) as Value] = 123 as Value
+			]))] = 123 as Value
 
 		// convert to DOM
 		Element fragment = HaleIO.getComplexElement(vm)
@@ -73,13 +70,16 @@ class ValueMapTypeTest {
 	@Test
 	public void testValueMapJson() {
 		ValueMap vm = new ValueMap()
-		vm['languages' as Value] = new ValueList(['de' as Value, 'en' as Value]) as Value
+		vm[Value.of('languages')] = Value.of(new ValueList([
+			Value.of('de'),
+			Value.of('en')
+		]))
 		vm[6*7 as Value] = 42 as Value
-		vm[new ValueList([
+		vm[Value.of(new ValueList([
 				1 as Value,
 				2 as Value,
 				3 as Value
-			]) as Value] = 123 as Value
+			]))] = 123 as Value
 
 		// converter
 		ValueMapType vmt = new ValueMapType()

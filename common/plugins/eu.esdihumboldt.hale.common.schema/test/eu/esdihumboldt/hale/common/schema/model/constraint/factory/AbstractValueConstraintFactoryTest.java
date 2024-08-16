@@ -40,6 +40,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Base class for {@link ValueConstraintFactory} tests.
@@ -47,7 +48,7 @@ import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder;
  * @author Simon Templer
  * @param <T> the constraint type
  */
-public abstract class AbstractValueConstraintFactoryTest<T> {
+public abstract class AbstractValueConstraintFactoryTest<T> extends AbstractPlatformTest {
 
 	private static final QName DEF_PROPERTY_TYPE_NAME = new QName("TestPropertyType");
 	private static final QName DEF_TYPE_NAME = new QName("TestType");

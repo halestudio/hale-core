@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy
 
+import static org.junit.Assert.*
+
 import org.junit.Before
 import org.junit.Test
 

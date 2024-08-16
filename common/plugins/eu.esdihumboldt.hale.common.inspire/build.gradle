@@ -9,6 +9,9 @@ hale {
 dependencies {
   implementation libs.slf4jplus.api
 
+  implementation libs.groovy.xml
+  implementation libs.groovy.json
+
   implementation libs.guava
   implementation libs.apache.http.client
   implementation libs.apache.http.fluent
@@ -21,6 +24,7 @@ dependencies {
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align.groovy')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
 
   implementation project(':io:plugins:eu.esdihumboldt.hale.io.codelist.xml')
   implementation project(':io:plugins:eu.esdihumboldt.hale.io.gml.geometry')

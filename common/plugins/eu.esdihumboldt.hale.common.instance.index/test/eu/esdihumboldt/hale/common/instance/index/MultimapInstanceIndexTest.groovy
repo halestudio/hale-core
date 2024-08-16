@@ -15,17 +15,17 @@
 
 package eu.esdihumboldt.hale.common.instance.index;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*
 
-import javax.xml.namespace.QName;
+import javax.xml.namespace.QName
 
-import org.junit.Test;
+import org.junit.Test
 
-import eu.esdihumboldt.hale.common.align.model.ChildContext;
-import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
-import eu.esdihumboldt.hale.common.schema.SchemaSpaceID;
-import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition;
-import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
+import eu.esdihumboldt.hale.common.align.model.ChildContext
+import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition
+import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
+import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
+import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 
 /**
  * Tests for {@link MultimapInstanceIndex}

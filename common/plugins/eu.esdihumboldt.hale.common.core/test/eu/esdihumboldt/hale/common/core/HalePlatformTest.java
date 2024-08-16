@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.eclipse.equinox.nonosgi.registry.RegistryFactoryHelper;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.osgi.framework.Version;
 
@@ -39,6 +40,7 @@ public class HalePlatformTest {
 
 	@SuppressWarnings("javadoc")
 	@Test
+	@Ignore("Does not work in dev environment because manifest file is not present yet")
 	public void testGetVersion() {
 		Version version = HalePlatform.getCoreVersion();
 		assertNotNull(version);

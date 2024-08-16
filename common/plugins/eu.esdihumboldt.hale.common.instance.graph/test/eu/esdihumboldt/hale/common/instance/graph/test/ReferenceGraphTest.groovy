@@ -12,6 +12,8 @@ import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
+import eu.esdihumboldt.util.nonosgi.Init
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 class ReferenceGraphTest {
 
@@ -19,6 +21,8 @@ class ReferenceGraphTest {
 
 	@BeforeClass
 	static void init() {
+		Init.init()
+
 		TestUtil.startConversionService()
 		def inspireAddressesUri = URI.create("http://inspire.ec.europa.eu/schemas/au/3.0/AdministrativeUnits.xsd")
 		INSPIRE_ADDRESSES_SCHEMA = TestUtil.loadSchema(inspireAddressesUri)

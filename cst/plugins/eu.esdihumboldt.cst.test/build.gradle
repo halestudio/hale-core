@@ -20,4 +20,12 @@ dependencies {
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
 
   api project(':util:plugins:eu.esdihumboldt.util.test')
+
+  runtimeOnly project(':io:features:eu.esdihumboldt.hale.io.feature.core')
+
+  runtimeOnly project(':cst:plugins:eu.esdihumboldt.cst.functions.string')
+
+  // unsafe providers
+  runtimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.schemabuilder')
+  runtimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.instancebuilder')
 }

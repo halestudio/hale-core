@@ -122,6 +122,9 @@ class ExecuteTest extends AbstractPlatformTest {
 		tempArgsFile.deleteOnExit()
 		createTempFile(MULTITYPE_ARGS_2_FILE_PATH, tempArgsFile);
 
+		// replace RESOLVE: for correct URL
+		resolveArgResources(tempArgsFile)
+
 		println ">> Arguments will be read from ${tempArgsFile}"
 		println ">> Transformed data will be written to ${targetFile}..."
 		transform([
@@ -158,6 +161,9 @@ class ExecuteTest extends AbstractPlatformTest {
 		File tempArgsFile = File.createTempFile('arguments', '.txt')
 		tempArgsFile.deleteOnExit()
 		createTempFile(MULTITYPE_ARGS_FILE_PATH, tempArgsFile);
+
+		// replace RESOLVE: for correct URL
+		resolveArgResources(tempArgsFile)
 
 		println ">> Arguments will be read from ${tempArgsFile}"
 		println ">> Transformed data will be written to ${targetFile}..."
@@ -385,6 +391,9 @@ class ExecuteTest extends AbstractPlatformTest {
 		File tempArgsFile = File.createTempFile('arguments', '.txt')
 		tempArgsFile.deleteOnExit()
 		createTempFile(HYDRO_ARGS_FILE_PATH, tempArgsFile);
+
+		// replace RESOLVE: for correct URL
+		resolveArgResources(tempArgsFile)
 
 		println ">> Arguments will be read from ${tempArgsFile}"
 		println ">> Transformed data will be written to ${targetFile}..."
@@ -1101,5 +1110,17 @@ assert aggregated['eu.esdihumboldt.hale.instance.validation.internal'].report.wa
 		}
 
 		return res
+	}
+
+	def void resolveArgResources(File argFile) {
+		argFile.text = argFile.readLines().collect {line ->
+			if (line.startsWith('RESOLVE:')) {
+				def path = line.substring('RESOLVE:'.length())
+				getClass().getClassLoader().getResource(path).toString()
+			}
+			else {
+				line
+			}
+		}.join('\n')
 	}
 }

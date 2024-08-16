@@ -56,7 +56,7 @@ class ElementTypeFactoryTest extends AbstractPropertiesCompareConstraintFactoryT
 	void testTypeBinding() {
 		TypeDefinition type = new DefaultTypeDefinition(new QName('BindingType'))
 
-		def typeIndex = [(type): 'someid' as Value]
+		def typeIndex = [(type): Value.of('someid')]
 
 		storeRestoreTest(ElementType.createFromType(type), typeIndex, null)
 	}

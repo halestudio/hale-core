@@ -32,6 +32,9 @@ dependencies {
   testRuntimeOnly libs.logback.core
   testRuntimeOnly libs.logback.classic
   testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.logback.config.test')
+
+  // make offline resources available to all tests
+  testRuntimeOnly project(':util:features:eu.esdihumboldt.util.feature.resource')
 }
 
 task sourcesJar(type: Jar) {

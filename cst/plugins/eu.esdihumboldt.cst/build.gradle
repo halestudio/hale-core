@@ -37,4 +37,6 @@ dependencies {
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
   testImplementation project(':cst:plugins:eu.esdihumboldt.cst.test')
   testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.groovy.sandbox.enable')
 }

@@ -34,6 +34,8 @@ dependencies {
   testImplementation testLibs.junit4
   testImplementation testLibs.assertj
 
+  testRuntimeOnly libs.geotools.epsg
+
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.filter')

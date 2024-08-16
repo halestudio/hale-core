@@ -13,7 +13,7 @@
  *     wetransform GmbH <http://www.wetransform.to>
  */
 
-package eu.esdihumboldt.hale.common.filter;
+package eu.esdihumboldt.hale.common.filter
 
 import static org.junit.Assert.*
 
@@ -31,13 +31,14 @@ import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Base class for filter tests providing test instances.
  *
  * @author Simon Templer
  */
-abstract class AbstractFilterTest {
+abstract class AbstractFilterTest extends AbstractPlatformTest {
 
 	private static final String defaultNs = "http://www.my.namespace"
 

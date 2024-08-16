@@ -51,6 +51,7 @@ import eu.esdihumboldt.hale.common.schema.persist.hsd.HaleSchemaReader
 import eu.esdihumboldt.hale.common.schema.persist.hsd.HaleSchemaUtil
 import eu.esdihumboldt.hale.common.schema.persist.hsd.HaleSchemaWriter
 import eu.esdihumboldt.hale.common.test.TestUtil
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 import eu.esdihumboldt.util.validator.EnumerationValidator
 import eu.esdihumboldt.util.validator.Validator
 
@@ -60,7 +61,7 @@ import eu.esdihumboldt.util.validator.Validator
  *
  * @author Simon Templer
  */
-class HaleSchemaWriterTest {
+class HaleSchemaWriterTest extends AbstractPlatformTest {
 
 	/**
 	 * Test with a simple schema with the type Person, result is validated based on the HSD XSD.

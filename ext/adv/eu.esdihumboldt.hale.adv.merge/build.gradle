@@ -20,4 +20,8 @@ dependencies {
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.headless.test')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.align.merge.test')
+
+  // unsafe providers
+  testRuntimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.schemabuilder')
+  testRuntimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.instancebuilder')
 }

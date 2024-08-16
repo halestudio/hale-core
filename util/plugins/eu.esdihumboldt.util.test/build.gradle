@@ -7,5 +7,5 @@ description = 'General utilities for tests'
 dependencies {
   implementation testLibs.junit4
 
-  implementation project(':util:plugins:eu.esdihumboldt.util.nonosgi')
+  api project(':util:plugins:eu.esdihumboldt.util.nonosgi')
 }

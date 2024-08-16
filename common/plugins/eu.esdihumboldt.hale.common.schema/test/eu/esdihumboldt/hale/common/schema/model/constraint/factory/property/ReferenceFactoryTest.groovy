@@ -57,7 +57,7 @@ class ReferenceFactoryTest extends AbstractPropertiesCompareConstraintFactoryTes
 		TypeDefinition type = new DefaultTypeDefinition(new QName('ReferencedType'))
 		Reference ref = new Reference(type)
 
-		def typeIndex = [(type): 'someid' as Value]
+		def typeIndex = [(type): Value.of('someid')]
 
 		storeRestoreTest(ref, typeIndex, null)
 	}

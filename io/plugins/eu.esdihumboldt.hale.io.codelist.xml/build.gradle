@@ -24,4 +24,6 @@ dependencies {
   implementation project(':util:plugins:eu.esdihumboldt.util.resource')
 
   implementation project(':ext:nonosgi:eu.esdihumboldt.hale.util.nonosgi')
+
+  testImplementation testLibs.junit4
 }
