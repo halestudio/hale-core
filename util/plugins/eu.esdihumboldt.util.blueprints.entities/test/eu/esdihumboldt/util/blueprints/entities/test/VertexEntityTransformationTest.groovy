@@ -16,6 +16,8 @@
 package eu.esdihumboldt.util.blueprints.entities.test;
 
 import org.codehaus.groovy.ast.builder.AstBuilder
+import org.junit.Ignore
+import org.junit.Test
 
 import com.google.common.collect.Iterables
 import com.tinkerpop.blueprints.Graph
@@ -25,8 +27,6 @@ import com.tinkerpop.blueprints.impls.tg.TinkerGraph
 import com.tinkerpop.blueprints.impls.tg.TinkerGraphFactory
 
 import eu.esdihumboldt.util.blueprints.entities.NonUniqueResultException
-import org.junit.Ignore
-import org.junit.Test
 
 /**
  * VertexEntityTransformation tests on sample entities.

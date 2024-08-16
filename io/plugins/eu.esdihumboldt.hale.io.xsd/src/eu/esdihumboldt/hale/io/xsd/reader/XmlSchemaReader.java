@@ -169,8 +169,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 		/**
 		 * Add existing identifiers (to avoid conflicts).
 		 * 
-		 * @param objectsAndIdentifiers objects (namespaces) mapped to
-		 *            identifiers (prefixes)
+		 * @param objectsAndIdentifiers objects (namespaces) mapped to identifiers
+		 *            (prefixes)
 		 */
 		public void addIdentifiers(Map<String, String> objectsAndIdentifiers) {
 			for (Entry<String, String> entry : objectsAndIdentifiers.entrySet()) {
@@ -180,8 +180,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	}
 
 	/**
-	 * Name of the parameter specifying the elements that represent mapping
-	 * relevant types.
+	 * Name of the parameter specifying the elements that represent mapping relevant
+	 * types.
 	 */
 	public static final String PARAM_RELEVANT_ELEMENTS = "relevantElements";
 
@@ -192,17 +192,16 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	public static final String PARAM_ONLY_ELEMENTS_MAPPABLE = "onlyElementsMappable";
 
 	/**
-	 * Name of the parameter specifying which mode to use to determine the
-	 * default mapping relevant types.
+	 * Name of the parameter specifying which mode to use to determine the default
+	 * mapping relevant types.
 	 * 
-	 * Valid values currently are {@value #MAPPING_RELEVANT_MODE_MAIN_SCHEMA}
-	 * and {@value #MAPPING_RELEVANT_MODE_FEATURE_TYPES}.
+	 * Valid values currently are {@value #MAPPING_RELEVANT_MODE_MAIN_SCHEMA} and
+	 * {@value #MAPPING_RELEVANT_MODE_FEATURE_TYPES}.
 	 */
 	public static final String PARAM_MAPPING_RELEVANT_MODE = "relevantMode";
 
 	/**
-	 * Mapping relevant type mode that marks types from the main schema as
-	 * relevant.
+	 * Mapping relevant type mode that marks types from the main schema as relevant.
 	 */
 	public static final String MAPPING_RELEVANT_MODE_MAIN_SCHEMA = "mainSchema";
 
@@ -497,8 +496,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	}
 
 	/**
-	 * Set if only elements should be mappable. Otherwise all types with a
-	 * global type definition are mappable.
+	 * Set if only elements should be mappable. Otherwise all types with a global
+	 * type definition are mappable.
 	 * 
 	 * @param onlyElements if only elements should be mappable
 	 */
@@ -507,8 +506,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	}
 
 	/**
-	 * @return states if only types with associated global elements are
-	 *         classified as mappable types
+	 * @return states if only types with associated global elements are classified
+	 *         as mappable types
 	 */
 	public boolean isOnlyElementsMappable() {
 		return getParameter(PARAM_ONLY_ELEMENTS_MAPPABLE).as(Boolean.class, true);
@@ -519,8 +518,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	 * 
 	 * @param schemaLocation the schema location
 	 * @param xmlSchema the schema
-	 * @param imports the imports/includes that were already loaded or where
-	 *            loading has been started
+	 * @param imports the imports/includes that were already loaded or where loading
+	 *            has been started
 	 * @param progress the progress indicator
 	 * @param mainSchema states if this is a main schema and therefore elements
 	 *            declared here should be flagged mappable
@@ -827,13 +826,12 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	}
 
 	/**
-	 * Create a type definition from the given schema type and add it to the
-	 * index or enhance an existing type definition if it is already in the
-	 * index.
+	 * Create a type definition from the given schema type and add it to the index
+	 * or enhance an existing type definition if it is already in the index.
 	 * 
 	 * @param schemaType the schema type
-	 * @param typeName the type name to use for the type, <code>null</code> if
-	 *            the name of the schema type shall be used
+	 * @param typeName the type name to use for the type, <code>null</code> if the
+	 *            name of the schema type shall be used
 	 * @param schemaLocation the schema location
 	 * @param schemaNamespace the schema namespace
 	 * @param mainSchema if the type definition is a global definition in a main
@@ -1097,8 +1095,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 			long min = groupRef.getMinOccurs();
 
 			/*
-			 * Only allow flatten if group is not forced and appears exactly
-			 * once
+			 * Only allow flatten if group is not forced and appears exactly once
 			 */
 			XmlGroupReferenceProperty property = new XmlGroupReferenceProperty(groupName,
 					declaringGroup, index, groupName, !forceGroup && min == 1 && max == 1);
@@ -1385,14 +1382,14 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	}
 
 	/**
-	 * Get a type identifier from the given group. If the group is a type
-	 * definition its identifier will be returned, if it is a child definition
-	 * the identifier of the parent type will be returned.
+	 * Get a type identifier from the given group. If the group is a type definition
+	 * its identifier will be returned, if it is a child definition the identifier
+	 * of the parent type will be returned.
 	 * 
 	 * @param group the group
 	 * @return the type identifier
-	 * @throws IllegalArgumentException if the group is neither a type nor a
-	 *             child definition
+	 * @throws IllegalArgumentException if the group is neither a type nor a child
+	 *             definition
 	 */
 	private static String getTypeIdentifier(DefinitionGroup group) throws IllegalArgumentException {
 		if (group instanceof TypeDefinition) {
@@ -1417,8 +1414,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 		type.setConstraint(AbstractFlag.get(complexType.isAbstract()));
 
 		/*
-		 * HasValue and Binding and all other inheritable constraints from super
-		 * type, override constraints for special types
+		 * HasValue and Binding and all other inheritable constraints from super type,
+		 * override constraints for special types
 		 */
 
 		// special bindings (geometries)
@@ -1437,14 +1434,12 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 				// XXX how to treat mixed type?
 				// XXX for now represent as a string value
 				/*
-				 * Types inheriting from a mixed don't necessarily are mixed
-				 * themselves.
+				 * Types inheriting from a mixed don't necessarily are mixed themselves.
 				 */
 				type.setConstraint(HasNotInheritableValue.INSTANCE);
 			}
 			/*
-			 * XXX String binding is a problem as it is inherited to non-mixed
-			 * types
+			 * XXX String binding is a problem as it is inherited to non-mixed types
 			 */
 //			type.setConstraint(Binding.get(String.class));
 			// mark as mixed type
@@ -1912,9 +1907,8 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 				&& (attribute.getQName().getNamespaceURI() == null || attribute.getQName()
 						.getNamespaceURI().equals(XMLConstants.NULL_NS_URI))) {
 			/*
-			 * It seems in this case the namespace is not included in
-			 * attribute.getQName(). Is this a bug in the schema parser? As a
-			 * workaround we provide the namespace.
+			 * It seems in this case the namespace is not included in attribute.getQName().
+			 * Is this a bug in the schema parser? As a workaround we provide the namespace.
 			 */
 			return new QName(schemaNamespace, attribute.getQName().getLocalPart());
 		}

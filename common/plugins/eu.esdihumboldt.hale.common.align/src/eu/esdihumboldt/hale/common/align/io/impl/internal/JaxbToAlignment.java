@@ -142,8 +142,8 @@ public class JaxbToAlignment
 	}
 
 	/**
-	 * Load a {@link AlignmentType} from an input stream. The stream is closed
-	 * at the end.
+	 * Load a {@link AlignmentType} from an input stream. The stream is closed at
+	 * the end.
 	 * 
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
@@ -354,8 +354,7 @@ public class JaxbToAlignment
 			 * <ul>
 			 * <li>non-null entity - entity could be resolved</li>
 			 * <li>null entity - entity could not be resolved, continue</li>
-			 * <li>IllegalStateException - entity could not be resolved, reject
-			 * cell</li>
+			 * <li>IllegalStateException - entity could not be resolved, reject cell</li>
 			 * </ul>
 			 */
 

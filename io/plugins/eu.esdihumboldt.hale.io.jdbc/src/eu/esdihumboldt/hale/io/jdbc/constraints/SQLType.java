@@ -24,10 +24,12 @@ import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 
 /**
  * Constraint for the SQL type.
+ * 
  * @author Kai Schwierczek
  */
 @Constraint(mutable = false)
 public class SQLType implements TypeConstraint {
+
 	private static final Map<Integer, SQLType> types = new HashMap<Integer, SQLType>();
 
 	private final int type;
@@ -64,8 +66,7 @@ public class SQLType implements TypeConstraint {
 	}
 
 	/**
-	 * Returns the set SQL type. If no type was set it is
-	 * {@link Integer#MIN_VALUE}.
+	 * Returns the set SQL type. If no type was set it is {@link Integer#MIN_VALUE}.
 	 *
 	 * @see java.sql.Types
 	 * @return the set SQL type or {@link Integer#MIN_VALUE}

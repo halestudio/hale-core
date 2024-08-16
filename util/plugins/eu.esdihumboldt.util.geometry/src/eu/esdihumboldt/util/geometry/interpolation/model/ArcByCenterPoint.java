@@ -50,9 +50,8 @@ public interface ArcByCenterPoint extends Arc {
 	Angle getEndAngle();
 
 	/**
-	 * Get the angle between start and end of the arc. This is a positive value
-	 * if the arc is counter-clockwise, a negative value if the arc is
-	 * clockwise.
+	 * Get the angle between start and end of the arc. This is a positive value if
+	 * the arc is counter-clockwise, a negative value if the arc is clockwise.
 	 * 
 	 * @return the angle between start and end angle (a positive value is
 	 *         counter-clockwise)

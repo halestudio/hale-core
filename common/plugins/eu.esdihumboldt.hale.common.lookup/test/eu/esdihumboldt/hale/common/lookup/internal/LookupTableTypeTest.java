@@ -51,8 +51,8 @@ public class LookupTableTypeTest {
 	}
 
 	/**
-	 * Test if a simple lookup table containing only string values is the same
-	 * when converted to DOM and back again.
+	 * Test if a simple lookup table containing only string values is the same when
+	 * converted to DOM and back again.
 	 */
 	@Test
 	public void testStringLookup() {
@@ -70,8 +70,8 @@ public class LookupTableTypeTest {
 	}
 
 	/**
-	 * Test if a simple lookup table containing only string values is the same
-	 * when converted to JSON and back again.
+	 * Test if a simple lookup table containing only string values is the same when
+	 * converted to JSON and back again.
 	 */
 	@Test
 	public void testStringLookupJson() {

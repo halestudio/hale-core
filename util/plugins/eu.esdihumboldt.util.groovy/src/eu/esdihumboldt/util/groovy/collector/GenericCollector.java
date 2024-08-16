@@ -193,8 +193,8 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 	/**
 	 * Iterate over the child collectors.
 	 * 
-	 * @param closure the closure called for each collector key and collector
-	 *            (two arguments) or only the collector (one argument)
+	 * @param closure the closure called for each collector key and collector (two
+	 *            arguments) or only the collector (one argument)
 	 */
 	public void eachCollector(Closure<?> closure) {
 		// iterate map

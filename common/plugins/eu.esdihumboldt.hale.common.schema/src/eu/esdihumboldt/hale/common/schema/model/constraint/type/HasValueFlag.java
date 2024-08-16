@@ -16,11 +16,11 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type has a direct value, apart from eventual properties, defined
@@ -59,9 +59,8 @@ public class HasValueFlag extends AbstractFlagConstraint implements TypeConstrai
 	}
 
 	/**
-	 * Creates a default simple type flag, which is disabled. If possible,
-	 * instead of creating an instance, use {@link #ENABLED} or
-	 * {@link #DISABLED}.
+	 * Creates a default simple type flag, which is disabled. If possible, instead
+	 * of creating an instance, use {@link #ENABLED} or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

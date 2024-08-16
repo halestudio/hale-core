@@ -37,8 +37,8 @@ public class ComplexValue extends Value {
 	 * Create a complex value.
 	 * 
 	 * @param value the value, must be of a type registered with the
-	 *            {@link ComplexValueExtension} (though this is not checked in
-	 *            the constructor)
+	 *            {@link ComplexValueExtension} (though this is not checked in the
+	 *            constructor)
 	 */
 	public ComplexValue(Object value) {
 		super();

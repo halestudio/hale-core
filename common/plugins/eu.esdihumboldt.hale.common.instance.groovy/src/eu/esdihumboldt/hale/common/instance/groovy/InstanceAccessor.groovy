@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy;
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import com.google.common.base.Function
@@ -29,7 +31,6 @@ import eu.esdihumboldt.util.groovy.paths.AbstractAccessor
 import eu.esdihumboldt.util.groovy.paths.Path
 import eu.esdihumboldt.util.groovy.paths.PathImpl
 import eu.esdihumboldt.util.groovy.paths.PathWithNulls
-import groovy.transform.CompileStatic
 
 /**
  * Property accessor for {@link Instance}s.
@@ -262,5 +263,4 @@ class InstanceAccessor extends AbstractAccessor<Object> {
 	public List<Object> values() {
 		list(false)
 	}
-
 }

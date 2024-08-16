@@ -51,8 +51,7 @@ public class ValidatorFactory {
 	}
 
 	/**
-	 * Create a validator that relies on the schema locations specified in the
-	 * file.
+	 * Create a validator that relies on the schema locations specified in the file.
 	 * 
 	 * @return the validator
 	 */

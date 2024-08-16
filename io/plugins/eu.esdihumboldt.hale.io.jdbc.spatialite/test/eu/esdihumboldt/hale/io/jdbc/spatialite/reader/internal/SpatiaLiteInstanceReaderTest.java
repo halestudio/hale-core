@@ -15,13 +15,13 @@
 
 package eu.esdihumboldt.hale.io.jdbc.spatialite.reader.internal;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 
 import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuite;
 import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuiteVersion3;
 import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuiteVersion4;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 

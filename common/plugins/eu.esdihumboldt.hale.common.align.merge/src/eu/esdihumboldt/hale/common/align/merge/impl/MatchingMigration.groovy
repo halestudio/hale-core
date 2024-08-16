@@ -15,14 +15,15 @@
 
 package eu.esdihumboldt.hale.common.align.merge.impl
 
+import groovy.transform.CompileStatic
+
 import java.util.function.Function
 
 import eu.esdihumboldt.hale.common.align.model.AlignmentUtil
 import eu.esdihumboldt.hale.common.align.model.Cell
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition
-import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment;
+import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment
 import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
-import groovy.transform.CompileStatic;;;
 
 /**
  * Alignment migration based on a alignment representing a matching between different schemas.

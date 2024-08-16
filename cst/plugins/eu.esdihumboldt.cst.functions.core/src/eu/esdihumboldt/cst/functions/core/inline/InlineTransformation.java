@@ -57,8 +57,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Simon Templer
  */
-public class InlineTransformation extends
-		AbstractSingleTargetPropertyTransformation<TransformationEngine> {
+public class InlineTransformation
+		extends AbstractSingleTargetPropertyTransformation<TransformationEngine> {
 
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,
@@ -76,7 +76,8 @@ public class InlineTransformation extends
 			throw new NoResultException("Source value is null");
 		}
 		if (!(sourceValue instanceof Instance)) {
-			throw new TransformationException("Sources for inline transformation must be instances");
+			throw new TransformationException(
+					"Sources for inline transformation must be instances");
 		}
 		Instance sourceInstance = (Instance) sourceValue;
 		TypeDefinition sourceType = sourceInstance.getDefinition();
@@ -88,12 +89,12 @@ public class InlineTransformation extends
 		// identify relevant type cell(s)
 		MutableCell queryCell = new DefaultCell();
 		ListMultimap<String, Type> sourceEntities = ArrayListMultimap.create();
-		sourceEntities.put(null, new DefaultType(new TypeEntityDefinition(sourceType,
-				SchemaSpaceID.SOURCE, null)));
+		sourceEntities.put(null,
+				new DefaultType(new TypeEntityDefinition(sourceType, SchemaSpaceID.SOURCE, null)));
 		queryCell.setSource(sourceEntities);
 		ListMultimap<String, Type> targetEntities = ArrayListMultimap.create();
-		targetEntities.put(null, new DefaultType(new TypeEntityDefinition(resultProperty
-				.getDefinition().getPropertyType(), SchemaSpaceID.TARGET, null)));
+		targetEntities.put(null, new DefaultType(new TypeEntityDefinition(
+				resultProperty.getDefinition().getPropertyType(), SchemaSpaceID.TARGET, null)));
 		queryCell.setTarget(targetEntities);
 		Collection<? extends Cell> candidates = alignment.getTypeCells(queryCell);
 		if (candidates.isEmpty()) {

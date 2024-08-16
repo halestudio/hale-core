@@ -39,10 +39,9 @@ public interface JsonInstanceProcessor<T> {
 	 * @param <T> the processing result type per instance
 	 * @param json the Json reader
 	 * @param processor the instance processor
-	 * @param handler a handler for individual instance processing results, may
-	 *            be <code>null</code>
-	 * @param limit the maximum limit of instances to process, negative for no
-	 *            limit
+	 * @param handler a handler for individual instance processing results, may be
+	 *            <code>null</code>
+	 * @param limit the maximum limit of instances to process, negative for no limit
 	 * 
 	 * @throws JsonParseException if the Json cannot be parsed
 	 * @throws IOException if an error occurs processing the Json
@@ -78,8 +77,8 @@ public interface JsonInstanceProcessor<T> {
 	void init(JsonParser parser) throws JsonParseException, IOException;
 
 	/**
-	 * Read a single instance from the given parser. It is expected that the
-	 * current position of the parser is at the start of an object.
+	 * Read a single instance from the given parser. It is expected that the current
+	 * position of the parser is at the start of an object.
 	 * 
 	 * @param parser the JSON parser
 	 * @return the parsed instance

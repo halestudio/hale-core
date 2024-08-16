@@ -16,7 +16,6 @@
 
 package eu.esdihumboldt.hale.common.service.helper.test.dummy;
 
-
 /**
  * Default implementation instance/property {@link Population}
  * 

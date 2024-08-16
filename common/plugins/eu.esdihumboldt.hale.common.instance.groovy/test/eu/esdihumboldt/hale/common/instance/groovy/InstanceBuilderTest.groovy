@@ -15,11 +15,14 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Before
-import org.junit.Test
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import javax.xml.namespace.QName
+
+import org.junit.Before
+import org.junit.Test
 
 import eu.esdihumboldt.hale.common.instance.model.Group
 import eu.esdihumboldt.hale.common.instance.model.Instance
@@ -28,9 +31,7 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
-import groovy.transform.CompileStatic
-
-import static org.junit.Assert.*
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for {@link InstanceBuilder}.

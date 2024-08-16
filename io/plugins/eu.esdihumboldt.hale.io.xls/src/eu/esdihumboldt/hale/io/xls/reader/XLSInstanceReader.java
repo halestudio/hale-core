@@ -119,9 +119,9 @@ public class XLSInstanceReader extends AbstractInstanceReader {
 	}
 
 	/**
-	 * Try to match the given type name to a schema type based on the name.
-	 * Prefers a full match of the qualified name but also test for display name
-	 * and local name matching the provided local name.
+	 * Try to match the given type name to a schema type based on the name. Prefers
+	 * a full match of the qualified name but also test for display name and local
+	 * name matching the provided local name.
 	 * 
 	 * @param typeName the type name to match
 	 * @param schema the schema to check

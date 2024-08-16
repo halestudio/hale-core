@@ -92,8 +92,9 @@ public class PartitioningWFSWriter extends AbstractGeoInstanceWriter
 							InstanceCollection part = parts.next();
 							partitionProgress.end();
 
-							progress.setCurrentTask("Upload part " + partCount + ((part.hasSize())
-									? (" (" + part.size() + " instances)") : ("")));
+							progress.setCurrentTask("Upload part " + partCount
+									+ ((part.hasSize()) ? (" (" + part.size() + " instances)")
+											: ("")));
 
 							IOReport report = uploadInstances(part, reporter,
 									new SubtaskProgressIndicator(progress));
@@ -148,8 +149,9 @@ public class PartitioningWFSWriter extends AbstractGeoInstanceWriter
 							if (partCount == 1)
 								partitionProgress.end();
 
-							progress.setCurrentTask("Upload part " + partCount + ((part.hasSize())
-									? (" (" + part.size() + " instances)") : ("")));
+							progress.setCurrentTask("Upload part " + partCount
+									+ ((part.hasSize()) ? (" (" + part.size() + " instances)")
+											: ("")));
 
 							final int currentPart = partCount;
 							requestThread.submit(new Runnable() {
@@ -228,7 +230,7 @@ public class PartitioningWFSWriter extends AbstractGeoInstanceWriter
 	 */
 	protected IOReport uploadInstances(final InstanceCollection instances,
 			final IOReporter reporter, final ProgressIndicator progress)
-					throws IOProviderConfigurationException, IOException {
+			throws IOProviderConfigurationException, IOException {
 		SimpleWFSWriter writer = new SimpleWFSWriter() {
 
 			@Override

@@ -83,13 +83,15 @@ class JoinMergeTest extends AbstractMergeCellMigratorTest {
 				['Lake', 'id'],
 				[
 					'LakeProperties',
-					'lakeId']
+					'lakeId'
+				]
 			],
 			[
 				['Lake', 'id'],
 				[
 					'Connection',
-					'standingId']
+					'standingId'
+				]
 			]
 		])
 	}
@@ -342,5 +344,4 @@ class JoinMergeTest extends AbstractMergeCellMigratorTest {
 
 		assertTrue("Expected conditions not found ${remaining}", remaining.empty)
 	}
-
 }

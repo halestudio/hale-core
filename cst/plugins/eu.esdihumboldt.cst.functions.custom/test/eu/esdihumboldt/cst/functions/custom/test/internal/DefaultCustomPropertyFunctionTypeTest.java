@@ -26,7 +26,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 import org.w3c.dom.Element;
 
@@ -37,6 +36,7 @@ import eu.esdihumboldt.hale.common.align.custom.DefaultCustomPropertyFunctionPar
 import eu.esdihumboldt.hale.common.core.io.HaleIO;
 import eu.esdihumboldt.hale.common.core.io.Text;
 import eu.esdihumboldt.hale.common.core.io.Value;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import groovy.xml.XmlUtil;
 
 /**
@@ -47,8 +47,8 @@ import groovy.xml.XmlUtil;
 public class DefaultCustomPropertyFunctionTypeTest extends AbstractPlatformTest {
 
 	/**
-	 * Test if a simple lookup table containing only string values is the same
-	 * when converted to DOM and back again.
+	 * Test if a simple lookup table containing only string values is the same when
+	 * converted to DOM and back again.
 	 */
 	@Test
 	public void testWriteRead() {

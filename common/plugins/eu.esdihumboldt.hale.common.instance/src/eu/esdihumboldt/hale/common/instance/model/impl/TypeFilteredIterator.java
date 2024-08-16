@@ -32,8 +32,8 @@ public class TypeFilteredIterator extends FullInstanceIteratorSupport {
 	/**
 	 * Create an iterator that only returns instances of a specific type.
 	 * 
-	 * @param it the iterator to wrap, if the iterator supports type peeking,
-	 *            the type filtered iterator will make use of it
+	 * @param it the iterator to wrap, if the iterator supports type peeking, the
+	 *            type filtered iterator will make use of it
 	 * @param type the type that instances have to match
 	 */
 	public TypeFilteredIterator(ResourceIterator<Instance> it, TypeDefinition type) {

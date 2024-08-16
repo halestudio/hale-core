@@ -21,9 +21,9 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import net.jcip.annotations.Immutable;
-
 import org.eclipse.core.runtime.IConfigurationElement;
+
+import net.jcip.annotations.Immutable;
 
 /**
  * Property function
@@ -31,8 +31,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
  * @author Simon Templer
  */
 @Immutable
-public final class PropertyFunction extends AbstractFunction<PropertyParameterDefinition> implements
-		PropertyFunctionDefinition {
+public final class PropertyFunction extends AbstractFunction<PropertyParameterDefinition>
+		implements PropertyFunctionDefinition {
 
 	private final Set<PropertyParameter> source;
 	private final Set<PropertyParameter> target;

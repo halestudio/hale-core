@@ -28,12 +28,12 @@ import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
 public interface MergeIndex {
 
 	/**
-	 * Get cells with a specific target. The target is usually a source of a
-	 * cell that is to be migrated.
+	 * Get cells with a specific target. The target is usually a source of a cell
+	 * that is to be migrated.
 	 * 
 	 * @param def the entity definition of the target
-	 * @return the cells have the given target, conditions or other contexts on
-	 *         the entity are ignored
+	 * @return the cells have the given target, conditions or other contexts on the
+	 *         entity are ignored
 	 */
 	List<Cell> getCellsForTarget(EntityDefinition def);
 

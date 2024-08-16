@@ -41,14 +41,14 @@ public interface DefinitionGroup {
 	 * 
 	 * @param name the child name
 	 * 
-	 * @return the child definition or <code>null</code> if no child with the
-	 *         given name is available
+	 * @return the child definition or <code>null</code> if no child with the given
+	 *         name is available
 	 */
 	public ChildDefinition<?> getChild(QName name);
 
 	/**
-	 * Add a declared child, this is called by the
-	 * {@link AbstractChildDefinition} constructor.
+	 * Add a declared child, this is called by the {@link AbstractChildDefinition}
+	 * constructor.
 	 * 
 	 * @param child the child definition
 	 */

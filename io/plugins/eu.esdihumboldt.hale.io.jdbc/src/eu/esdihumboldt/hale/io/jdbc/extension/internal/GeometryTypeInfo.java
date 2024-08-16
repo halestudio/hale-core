@@ -41,8 +41,7 @@ public class GeometryTypeInfo implements Identifiable {
 	private final GeometryAdvisorConstraint constraint;
 
 	/**
-	 * Create a connection configuration from a corresponding configuration
-	 * element.
+	 * Create a connection configuration from a corresponding configuration element.
 	 * 
 	 * @param elementId the identifier
 	 * @param element the configuration element

@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy
 
-import eu.esdihumboldt.hale.common.schema.model.Definition
-import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
-import eu.esdihumboldt.util.test.AbstractPlatformTest
+import static org.junit.Assert.*
+
 import org.junit.Before
 import org.junit.Test
 
-import static org.junit.Assert.*
+import eu.esdihumboldt.hale.common.schema.model.Definition
+import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 
 /**

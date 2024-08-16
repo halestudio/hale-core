@@ -32,13 +32,13 @@ import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
  * 
  * @author Simon Templer
  */
-public interface TypeTransformation<E extends TransformationEngine> extends
-		TransformationFunction<E> {
+public interface TypeTransformation<E extends TransformationEngine>
+		extends TransformationFunction<E> {
 
 	/**
-	 * Set the property transformer to publish the source/target instance pairs
-	 * to. Type transformations have no result, instead they must publish the
-	 * instance pairs created during
+	 * Set the property transformer to publish the source/target instance pairs to.
+	 * Type transformations have no result, instead they must publish the instance
+	 * pairs created during
 	 * {@link #execute(String, TransformationEngine, java.util.Map, TransformationLog, eu.esdihumboldt.hale.common.align.model.Cell)}
 	 * ion to the property transformer using
 	 * {@link PropertyTransformer#publish(FamilyInstance, MutableInstance, TransformationLog, eu.esdihumboldt.hale.common.align.model.Cell)}

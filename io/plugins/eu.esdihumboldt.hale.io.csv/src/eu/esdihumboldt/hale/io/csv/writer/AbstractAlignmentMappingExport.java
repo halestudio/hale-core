@@ -44,8 +44,8 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
  * 
  * @author Patrick Lieb
  */
-public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWriter implements
-		MappingTableConstants {
+public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWriter
+		implements MappingTableConstants {
 
 	private Cell currentTypeCell;
 	private boolean includeNamespaces = false;
@@ -69,8 +69,8 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 
 		cellTypes = new ArrayList<CellType>();
 		includeNamespaces = getParameter(INCLUDE_NAMESPACES).as(Boolean.class);
-		transformationAndDisabledMode = getParameter(TRANSFORMATION_AND_DISABLED_FOR).as(
-				Boolean.class);
+		transformationAndDisabledMode = getParameter(TRANSFORMATION_AND_DISABLED_FOR)
+				.as(Boolean.class);
 		// disable namespace and transformationAndDisable columns if necessary
 		for (CellType type : CellType.values()) {
 			if (includeNamespaces
@@ -265,13 +265,13 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 					if (child != null) {
 
 						// column source properties
-						cellInfos.get(CellType.SOURCE_PROPERTIES).addText(
-								child.getName().getLocalPart(), position);
+						cellInfos.get(CellType.SOURCE_PROPERTIES)
+								.addText(child.getName().getLocalPart(), position);
 
 						if (includeNamespaces)
 							// column source properties namespace
-							cellInfos.get(CellType.SOURCE_PROPERTIES_NAMESPACE).addText(
-									child.getName().getNamespaceURI(), position);
+							cellInfos.get(CellType.SOURCE_PROPERTIES_NAMESPACE)
+									.addText(child.getName().getNamespaceURI(), position);
 
 						Filter contextFilter;
 						if (childContext.getCondition() != null) {
@@ -299,8 +299,8 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 			int position = 0;
 			for (Entity entity : cell.getTarget().values()) {
 				// column target type
-				cellInfos.get(CellType.TARGET_TYPE).addText(
-						entity.getDefinition().getType().getDisplayName(), position);
+				cellInfos.get(CellType.TARGET_TYPE)
+						.addText(entity.getDefinition().getType().getDisplayName(), position);
 
 				if (includeNamespaces)
 					// column target type namespace
@@ -311,13 +311,13 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 					PropertyDefinition child = childContext.getChild().asProperty();
 					if (child != null) {
 						// column target properties
-						cellInfos.get(CellType.TARGET_PROPERTIES).addText(
-								child.getName().getLocalPart(), position);
+						cellInfos.get(CellType.TARGET_PROPERTIES)
+								.addText(child.getName().getLocalPart(), position);
 
 						if (includeNamespaces)
 							// column target properties namespace
-							cellInfos.get(CellType.TARGET_PROPERTIES_NAMESPACE).addText(
-									child.getName().getNamespaceURI(), position);
+							cellInfos.get(CellType.TARGET_PROPERTIES_NAMESPACE)
+									.addText(child.getName().getNamespaceURI(), position);
 
 						// add dummy to adapt position of target type
 						cellInfos.get(CellType.TARGET_TYPE).addText("", position);
@@ -329,8 +329,8 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 			}
 		}
 
-		FunctionDefinition<?> function = FunctionUtil.getFunction(
-				cell.getTransformationIdentifier(), getServiceProvider());
+		FunctionDefinition<?> function = FunctionUtil
+				.getFunction(cell.getTransformationIdentifier(), getServiceProvider());
 
 		if (function != null) {
 			// column relation name
@@ -339,8 +339,8 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 			// column cell explanation
 			CellExplanation cellExpl = function.getExplanation();
 			if (cellExpl != null) {
-				cellInfos.get(CellType.CELL_EXPLANATION).addText(
-						function.getExplanation().getExplanation(cell, null), 0);
+				cellInfos.get(CellType.CELL_EXPLANATION)
+						.addText(function.getExplanation().getExplanation(cell, null), 0);
 			}
 		}
 
@@ -368,8 +368,8 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 		if (transformationAndDisabledMode) {
 			if (AlignmentUtil.isTypeCell(cell)) {
 				currentTypeCell = cell;
-				cellInfos.get(CellType.TRANSFORMATION_AND_DISABLED).addText(
-						cell.getTransformationMode().displayName(), 0);
+				cellInfos.get(CellType.TRANSFORMATION_AND_DISABLED)
+						.addText(cell.getTransformationMode().displayName(), 0);
 			}
 			else {
 				Set<String> disabledCells = cell.getDisabledFor();
@@ -386,8 +386,7 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 	}
 
 	/**
-	 * @return if the writer mode is configured to display the cells per type
-	 *         cell
+	 * @return if the writer mode is configured to display the cells per type cell
 	 */
 	protected boolean isByTypeCell() {
 		String mode = getParameter(PARAMETER_MODE).as(String.class);

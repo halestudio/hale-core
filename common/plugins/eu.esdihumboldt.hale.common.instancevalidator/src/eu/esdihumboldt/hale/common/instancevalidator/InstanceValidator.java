@@ -166,8 +166,8 @@ public class InstanceValidator {
 	}
 
 	/**
-	 * Validate the information collected in the instance validation context.
-	 * Should be performed after all instances haven been validated.
+	 * Validate the information collected in the instance validation context. Should
+	 * be performed after all instances haven been validated.
 	 * 
 	 * @param context the validation context
 	 * @param reporter the validation reporter
@@ -273,8 +273,8 @@ public class InstanceValidator {
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
 	 * @param path the current property path
-	 * @param onlyCheckExistingChildren whether to only validate existing
-	 *            children (in case of a choice) or not
+	 * @param onlyCheckExistingChildren whether to only validate existing children
+	 *            (in case of a choice) or not
 	 * @param reference the instance reference
 	 * @param context the instance validation context
 	 * @param presentIn the child definition this instance is present in, if
@@ -323,8 +323,8 @@ public class InstanceValidator {
 	}
 
 	/**
-	 * Determines if validation should be skipped for a certain property type
-	 * and value.
+	 * Determines if validation should be skipped for a certain property type and
+	 * value.
 	 * 
 	 * @param typeDef the property type
 	 * @param value the property value
@@ -343,12 +343,11 @@ public class InstanceValidator {
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
 	 * @param path the current property path
-	 * @param onlyCheckExistingChildren whether to only validate existing
-	 *            children (in case of a choice) or not
+	 * @param onlyCheckExistingChildren whether to only validate existing children
+	 *            (in case of a choice) or not
 	 * @param reference the instance reference
 	 * @param context the instance validation context
-	 * @param presentIn the child definition this group is present in, if
-	 *            applicable
+	 * @param presentIn the child definition this group is present in, if applicable
 	 * @param groupEntity the group's entity definition or <code>null</code>
 	 */
 	private void validateGroupChildren(Group group, InstanceValidationReporter reporter, QName type,
@@ -396,13 +395,13 @@ public class InstanceValidator {
 	 * definition.
 	 * 
 	 * @param group the group to validate
-	 * @param childDefs the pre-determined children to validate (can be all
-	 *            children or a subset)
+	 * @param childDefs the pre-determined children to validate (can be all children
+	 *            or a subset)
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
 	 * @param path the current property path
-	 * @param onlyCheckExistingChildren whether to only validate existing
-	 *            children (in case of a choice) or not
+	 * @param onlyCheckExistingChildren whether to only validate existing children
+	 *            (in case of a choice) or not
 	 * @param reference the instance reference
 	 * @param context the instance validation context
 	 * @param parent the parent group's entity definition or <code>null</code>
@@ -578,8 +577,8 @@ public class InstanceValidator {
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
 	 * @param path the current property path
-	 * @param onlyCheckExistingChildren whether to only validate existing
-	 *            children (in case of a choice) or not
+	 * @param onlyCheckExistingChildren whether to only validate existing children
+	 *            (in case of a choice) or not
 	 * @param reference the instance reference
 	 * @param context the instance validation context
 	 * @param entity the entity definition related to the property values or
@@ -624,9 +623,9 @@ public class InstanceValidator {
 			// no property value
 
 			/*
-			 * Special case: No property value, but a combination of minimum
-			 * cardinality greater than zero and NillableFlag is set. Then there
-			 * can be sub-properties that are required.
+			 * Special case: No property value, but a combination of minimum cardinality
+			 * greater than zero and NillableFlag is set. Then there can be sub-properties
+			 * that are required.
 			 * 
 			 * Applicable for XML (simple) types with mandatory attributes.
 			 */

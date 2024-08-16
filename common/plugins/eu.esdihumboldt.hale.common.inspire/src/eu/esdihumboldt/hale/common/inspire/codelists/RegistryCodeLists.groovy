@@ -15,6 +15,10 @@
 
 package eu.esdihumboldt.hale.common.inspire.codelists;
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+import groovy.xml.dom.DOMCategory
+
 import java.lang.ref.SoftReference
 
 import org.w3c.dom.Document
@@ -25,9 +29,6 @@ import com.google.common.collect.Multimap
 import de.fhg.igd.slf4jplus.ALogger
 import de.fhg.igd.slf4jplus.ALoggerFactory
 import eu.esdihumboldt.hale.io.codelist.inspire.reader.INSPIRECodeListReader
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
-import groovy.xml.dom.DOMCategory
 
 /**
  * Provides access to code lists in INSPIRE registry.

@@ -59,8 +59,8 @@ public class XmlGroupReferenceProperty extends LazyGroupPropertyDefinition {
 		XmlGroup group = resolveGroup();
 
 		if (group == null) {
-			throw new IllegalStateException("Referenced group could not be found: "
-					+ groupName.toString());
+			throw new IllegalStateException(
+					"Referenced group could not be found: " + groupName.toString());
 		}
 
 		// redeclare children

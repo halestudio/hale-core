@@ -56,11 +56,11 @@ public class GroupUtil {
 	/**
 	 * Determine the property definition for the given property name.
 	 * 
-	 * @param groups the stack of the current group objects. The topmost element
-	 *            is the current group object
+	 * @param groups the stack of the current group objects. The topmost element is
+	 *            the current group object
 	 * @param propertyName the property name
-	 * @param allowFallback states if falling back to non-strict mode is allowed
-	 *            for determining the property definition
+	 * @param allowFallback states if falling back to non-strict mode is allowed for
+	 *            determining the property definition
 	 * @param ignoreNamespaces if a property with a differing namespace may be
 	 *            accepted
 	 * @return the group property or <code>null</code> if none is found
@@ -73,14 +73,14 @@ public class GroupUtil {
 	/**
 	 * Determine the property definition for the given property name.
 	 * 
-	 * @param groups the stack of the current group objects. The topmost element
-	 *            is the current group object
+	 * @param groups the stack of the current group objects. The topmost element is
+	 *            the current group object
 	 * @param propertyName the property name
-	 * @param strict states if for assessing possible property definitions
-	 *            strict checks regarding the structure are applied
-	 * @param allowFallback states if with strict mode being enabled, falling
-	 *            back to non-strict mode is allowed (this will not be
-	 *            propagated to subsequent calls)
+	 * @param strict states if for assessing possible property definitions strict
+	 *            checks regarding the structure are applied
+	 * @param allowFallback states if with strict mode being enabled, falling back
+	 *            to non-strict mode is allowed (this will not be propagated to
+	 *            subsequent calls)
 	 * @param ignoreNamespaces if a property with a differing namespace may be
 	 *            accepted
 	 * @return the group property or <code>null</code> if none is found
@@ -99,19 +99,18 @@ public class GroupUtil {
 		/*
 		 * Policy: find the property as high in the hierarchy as possible
 		 * 
-		 * This might lead to problems with some special schemas, e.g. if a
-		 * group is defined that allows unbounded occurrences of an element X
-		 * and the parent type allows one occurrence there will be trouble if we
-		 * have more than two or three of those elements (depending on group and
-		 * element cardinalities).
+		 * This might lead to problems with some special schemas, e.g. if a group is
+		 * defined that allows unbounded occurrences of an element X and the parent type
+		 * allows one occurrence there will be trouble if we have more than two or three
+		 * of those elements (depending on group and element cardinalities).
 		 * 
-		 * If this really poses a problem in the practice we might need
-		 * configuration parameters to use different policies. IMHO (ST) in well
-		 * designed schemas this problem will not occur.
+		 * If this really poses a problem in the practice we might need configuration
+		 * parameters to use different policies. IMHO (ST) in well designed schemas this
+		 * problem will not occur.
 		 * 
-		 * This problem only arises because we read all the data from the stream
-		 * and don't know anything about what comes ahead - another possibility
-		 * could be to change this behavior where needed.
+		 * This problem only arises because we read all the data from the stream and
+		 * don't know anything about what comes ahead - another possibility could be to
+		 * change this behavior where needed.
 		 */
 
 		// preferred 1: property of a parent group
@@ -206,9 +205,9 @@ public class GroupUtil {
 		if (strict && allowFallback) {
 			// fall-back: property in any group without validity checks
 			// XXX though allowClose will still be strict
-			log.warn(MessageFormat
-					.format("Could not find valid property path for {0}, source data might be invalid regarding the source schema.",
-							propertyName));
+			log.warn(MessageFormat.format(
+					"Could not find valid property path for {0}, source data might be invalid regarding the source schema.",
+					propertyName));
 			return determineProperty(groups, propertyName, false, false, ignoreNamespaces);
 		}
 
@@ -220,8 +219,7 @@ public class GroupUtil {
 	 * 
 	 * @param parent the parent type or group
 	 * @param propertyName the property name
-	 * @param ignoreNamespaces if matches with differing namespace should be
-	 *            allowed
+	 * @param ignoreNamespaces if matches with differing namespace should be allowed
 	 * @return the child definition or <code>null</code>
 	 */
 	@Nullable
@@ -243,17 +241,17 @@ public class GroupUtil {
 	}
 
 	/**
-	 * Determines if a property value for the given property name may be added
-	 * to the given group and returns the corresponding property definition.
+	 * Determines if a property value for the given property name may be added to
+	 * the given group and returns the corresponding property definition.
 	 * 
 	 * @param group the group
 	 * @param propertyName the property name
-	 * @param strict states if additional checks are applied apart from whether
-	 *            the property exists
+	 * @param strict states if additional checks are applied apart from whether the
+	 *            property exists
 	 * @param ignoreNamespaces if a property with a differing namespace may be
 	 *            accepted
-	 * @return the property definition or <code>null</code> if none is found or
-	 *         no value may be added
+	 * @return the property definition or <code>null</code> if none is found or no
+	 *         value may be added
 	 */
 	private static PropertyDefinition determineDirectProperty(MutableGroup group,
 			QName propertyName, boolean strict, boolean ignoreNamespaces) {
@@ -267,19 +265,17 @@ public class GroupUtil {
 	}
 
 	/**
-	 * Determine the property definition for the given property name in
-	 * sub-groups of the given group stack.
+	 * Determine the property definition for the given property name in sub-groups
+	 * of the given group stack.
 	 * 
-	 * @param paths the group paths whose children shall be checked for the
-	 *            property
+	 * @param paths the group paths whose children shall be checked for the property
 	 * @param propertyName the property name
-	 * @param leafs the queue is populated with the leafs in the explored
-	 *            definition group tree that are not processed because of the
-	 *            max descent, may be <code>null</code> if no population is
-	 *            needed
+	 * @param leafs the queue is populated with the leafs in the explored definition
+	 *            group tree that are not processed because of the max descent, may
+	 *            be <code>null</code> if no population is needed
 	 * @param maxDescent the maximum descent, -1 for no maximum descent
-	 * @param strict states if additional checks are applied apart from whether
-	 *            the property exists
+	 * @param strict states if additional checks are applied apart from whether the
+	 *            property exists
 	 * @param ignoreNamespaces if a property with a differing namespace may be
 	 *            accepted
 	 * @return the property definition or <code>null</code> if none is found
@@ -326,10 +322,10 @@ public class GroupUtil {
 						.getAllChildren(lastDef);
 
 				for (ChildDefinition<?> child : children) {
-					if (child.asGroup() != null
-							&& (path.getChildren() == null || !path.getChildren().contains(
-									child.asGroup()))) { // (check for
-															// definition cycle)
+					if (child.asGroup() != null && (path.getChildren() == null
+							|| !path.getChildren().contains(child.asGroup()))) { // (check for
+																					// definition
+																					// cycle)
 						List<DefinitionGroup> childDefs = new ArrayList<DefinitionGroup>();
 						if (path.getChildren() != null) {
 							childDefs.addAll(path.getChildren());
@@ -371,15 +367,16 @@ public class GroupUtil {
 		}
 
 		if (currentGroup.getDefinition() instanceof GroupPropertyDefinition
-				&& ((GroupPropertyDefinition) currentGroup.getDefinition()).getConstraint(
-						ChoiceFlag.class).isEnabled()) {
+				&& ((GroupPropertyDefinition) currentGroup.getDefinition())
+						.getConstraint(ChoiceFlag.class).isEnabled()) {
 			// group is a choice
 			Iterator<QName> it = currentGroup.getPropertyNames().iterator();
 			if (it.hasNext()) {
 				// choice has at least on value set -> check cardinality for the
 				// corresponding property
 				QName name = it.next();
-				return isValidCardinality(currentGroup, currentGroup.getDefinition().getChild(name));
+				return isValidCardinality(currentGroup,
+						currentGroup.getDefinition().getChild(name));
 			}
 			// else check all children like below
 		}
@@ -404,8 +401,8 @@ public class GroupUtil {
 	 * 
 	 * @param group the group
 	 * @param childDef the child definition
-	 * @return if the minimum cardinality of the child definition is matched in
-	 *         the group
+	 * @return if the minimum cardinality of the child definition is matched in the
+	 *         group
 	 */
 	static boolean isValidCardinality(Group group, ChildDefinition<?> childDef) {
 		Cardinality cardinality = null;
@@ -435,12 +432,12 @@ public class GroupUtil {
 	}
 
 	/**
-	 * Determines if another value of the given property may be added to the
-	 * given group.
+	 * Determines if another value of the given property may be added to the given
+	 * group.
 	 * 
 	 * @param group the group, <code>null</code> represents an empty group
-	 * @param groupDef the definition of the given group, may be
-	 *            <code>null</code> if the group is not <code>null</code>
+	 * @param groupDef the definition of the given group, may be <code>null</code>
+	 *            if the group is not <code>null</code>
 	 * @param propertyName the property name
 	 * @return if another property value may be added to the group
 	 */
@@ -527,9 +524,9 @@ public class GroupUtil {
 	}
 
 	/**
-	 * Determines if another value of the given property may be added to the
-	 * given group based on values available in the group and the order of the
-	 * child definitions in the given definition group.
+	 * Determines if another value of the given property may be added to the given
+	 * group based on values available in the group and the order of the child
+	 * definitions in the given definition group.
 	 * 
 	 * @param group the group, <code>null</code> represents an empty group
 	 * @param propertyName the property name
@@ -549,12 +546,13 @@ public class GroupUtil {
 			}
 			else {
 				// ignore XML attributes
-				if (childDef.asProperty() != null
-						&& childDef.asProperty().getConstraint(XmlAttributeFlag.class).isEnabled()) {
+				if (childDef.asProperty() != null && childDef.asProperty()
+						.getConstraint(XmlAttributeFlag.class).isEnabled()) {
 					continue;
 				}
 				// ignore groups that contain no elements
-				if (childDef.asGroup() != null && !StreamGmlHelper.hasElements(childDef.asGroup())) {
+				if (childDef.asGroup() != null
+						&& !StreamGmlHelper.hasElements(childDef.asGroup())) {
 					continue;
 				}
 
@@ -583,8 +581,8 @@ public class GroupUtil {
 	}
 
 	/**
-	 * Determines if another value of the given property may be added to the
-	 * given group based on the cardinality of the property.
+	 * Determines if another value of the given property may be added to the given
+	 * group based on the cardinality of the property.
 	 * 
 	 * @param group the group
 	 * @param propertyName the property name

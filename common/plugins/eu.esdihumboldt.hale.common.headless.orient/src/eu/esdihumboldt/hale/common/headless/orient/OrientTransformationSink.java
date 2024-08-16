@@ -176,8 +176,8 @@ public class OrientTransformationSink extends AbstractTransformationSink {
 		this.orientSink = new OrientInstanceSink(database, false);
 
 		/*
-		 * create limbo sink (for first iteration while data it still stored in
-		 * the Orient database)
+		 * create limbo sink (for first iteration while data it still stored in the
+		 * Orient database)
 		 */
 		this.limboSink = new LimboInstanceSink();
 

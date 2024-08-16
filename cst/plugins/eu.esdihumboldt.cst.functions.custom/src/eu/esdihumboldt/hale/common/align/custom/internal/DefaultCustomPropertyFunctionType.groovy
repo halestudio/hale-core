@@ -318,5 +318,4 @@ ComplexValueType<DefaultCustomPropertyFunction, LoadAlignmentContext> {
 	public Class<? extends LoadAlignmentContext> getContextType() {
 		return LoadAlignmentContext.class;
 	}
-
 }

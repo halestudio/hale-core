@@ -16,6 +16,7 @@
 package eu.esdihumboldt.util.groovy.collector
 
 import static org.junit.Assert.*
+
 import groovy.json.JsonOutput
 
 import org.junit.Test

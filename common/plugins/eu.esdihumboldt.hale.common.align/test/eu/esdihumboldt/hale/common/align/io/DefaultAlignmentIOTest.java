@@ -36,7 +36,6 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -74,6 +73,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 import eu.esdihumboldt.hale.common.test.TestUtil;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test saving and loading an alignment
@@ -119,22 +119,22 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		ListMultimap<String, Type> source1 = ArrayListMultimap.create();
 		QName source1TypeName;
 		String source1EntityName;
-		TypeDefinition sourceType1 = new DefaultTypeDefinition(source1TypeName = new QName(
-				"source1Type"));
+		TypeDefinition sourceType1 = new DefaultTypeDefinition(
+				source1TypeName = new QName("source1Type"));
 		String filterText = "someproperty > 12";
 		Filter filter = new FilterGeoCqlImpl(filterText);
-		source1.put(source1EntityName = null, new DefaultType(new TypeEntityDefinition(sourceType1,
-				SchemaSpaceID.SOURCE, filter)));
+		source1.put(source1EntityName = null, new DefaultType(
+				new TypeEntityDefinition(sourceType1, SchemaSpaceID.SOURCE, filter)));
 		cell1.setSource(source1);
 		source.addType(sourceType1);
 
 		ListMultimap<String, Type> target1 = ArrayListMultimap.create();
 		QName target1TypeName;
 		String target1EntityName;
-		TypeDefinition targetType1 = new DefaultTypeDefinition(target1TypeName = new QName(
-				"http://some.name.space/t1", "target1Type"));
-		target1.put(target1EntityName = "Some name", new DefaultType(new TypeEntityDefinition(
-				targetType1, SchemaSpaceID.TARGET, null)));
+		TypeDefinition targetType1 = new DefaultTypeDefinition(
+				target1TypeName = new QName("http://some.name.space/t1", "target1Type"));
+		target1.put(target1EntityName = "Some name",
+				new DefaultType(new TypeEntityDefinition(targetType1, SchemaSpaceID.TARGET, null)));
 		cell1.setTarget(target1);
 		target.addType(targetType1);
 
@@ -163,8 +163,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 
 		ListMultimap<String, Type> target2 = ArrayListMultimap.create();
 		TypeDefinition targetType2 = new DefaultTypeDefinition(new QName("target2Type"));
-		target2.put("Some other name", new DefaultType(new TypeEntityDefinition(targetType2,
-				SchemaSpaceID.TARGET, null)));
+		target2.put("Some other name",
+				new DefaultType(new TypeEntityDefinition(targetType2, SchemaSpaceID.TARGET, null)));
 		cell2.setTarget(target2);
 		target.addType(targetType2);
 
@@ -281,20 +281,20 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 	public void testIDSaveLoad() throws Exception {
 		DefaultAlignment alignment = new DefaultAlignment();
 
-		Schema schema = TestUtil.loadSchema(getClass().getResource("/testdata/simple/t1.xsd")
-				.toURI());
+		Schema schema = TestUtil
+				.loadSchema(getClass().getResource("/testdata/simple/t1.xsd").toURI());
 
 		DefaultCell cell = new DefaultCell();
 		cell.setTransformationIdentifier("trans1");
 
 		ListMultimap<String, Type> source = ArrayListMultimap.create();
-		source.put(null, new DefaultType(new TypeEntityDefinition(schema.getMappingRelevantTypes()
-				.iterator().next(), SchemaSpaceID.SOURCE, null)));
+		source.put(null, new DefaultType(new TypeEntityDefinition(
+				schema.getMappingRelevantTypes().iterator().next(), SchemaSpaceID.SOURCE, null)));
 		cell.setSource(source);
 
 		ListMultimap<String, Type> target = ArrayListMultimap.create();
-		target.put(null, new DefaultType(new TypeEntityDefinition(schema.getMappingRelevantTypes()
-				.iterator().next(), SchemaSpaceID.TARGET, null)));
+		target.put(null, new DefaultType(new TypeEntityDefinition(
+				schema.getMappingRelevantTypes().iterator().next(), SchemaSpaceID.TARGET, null)));
 		cell.setTarget(target);
 
 		// add cell and check id generation
@@ -325,8 +325,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		DefaultAlignment baseAlignment = new DefaultAlignment();
 		MutableAlignment alignment = new DefaultAlignment();
 
-		Schema schema = TestUtil.loadSchema(getClass().getResource("/testdata/simple/t1.xsd")
-				.toURI());
+		Schema schema = TestUtil
+				.loadSchema(getClass().getResource("/testdata/simple/t1.xsd").toURI());
 		Iterator<? extends TypeDefinition> iter = schema.getMappingRelevantTypes().iterator();
 		TypeDefinition t = iter.next();
 		if (!t.getName().getLocalPart().equals("T1")) {
@@ -351,13 +351,13 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		PropertyDefinition child = DefinitionUtil.getChild(t, new QName("a1")).asProperty();
 		childContext.add(new ChildContext(child));
 		ListMultimap<String, Property> source2 = ArrayListMultimap.create();
-		source2.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext,
-				SchemaSpaceID.SOURCE, null)));
+		source2.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext, SchemaSpaceID.SOURCE, null)));
 		cell2.setSource(source2);
 
 		ListMultimap<String, Property> target2 = ArrayListMultimap.create();
-		target2.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext,
-				SchemaSpaceID.TARGET, null)));
+		target2.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext, SchemaSpaceID.TARGET, null)));
 		cell2.setTarget(target2);
 
 		// add cell1 to base alignment
@@ -366,8 +366,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		// save base alignment
 		File baseAlignmentFile = tmp.newFile("alignment_base.xml");
 		System.out.println(baseAlignmentFile.getAbsolutePath());
-		saveAlignment(baseAlignment, new BufferedOutputStream(new FileOutputStream(
-				baseAlignmentFile)));
+		saveAlignment(baseAlignment,
+				new BufferedOutputStream(new FileOutputStream(baseAlignmentFile)));
 
 		// add as base alignment to extended alignment
 		addBaseAlignment(alignment, baseAlignmentFile.toURI(), schema, schema);
@@ -375,8 +375,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		String usedPrefix = alignment.getBaseAlignments().keySet().iterator().next();
 
 		assertEquals(1, alignment.getCells().size());
-		assertEquals(usedPrefix + ":" + cell1.getId(), alignment.getCells().iterator().next()
-				.getId());
+		assertEquals(usedPrefix + ":" + cell1.getId(),
+				alignment.getCells().iterator().next().getId());
 
 		// add cell2 to extended alignment
 		alignment.addCell(cell2);
@@ -398,7 +398,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		assertTrue(typeCell instanceof BaseAlignmentCell);
 		assertEquals(usedPrefix + ":" + cell1.getId(), typeCell.getId());
 		assertEquals(1, alignment2.getPropertyCells(typeCell).size());
-		assertFalse(alignment2.getPropertyCells(typeCell).iterator().next() instanceof BaseAlignmentCell);
+		assertFalse(alignment2.getPropertyCells(typeCell).iterator()
+				.next() instanceof BaseAlignmentCell);
 	}
 
 	/**
@@ -411,8 +412,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		DefaultAlignment baseAlignment = new DefaultAlignment();
 		MutableAlignment alignment = new DefaultAlignment();
 
-		Schema schema = TestUtil.loadSchema(getClass().getResource("/testdata/simple/t1.xsd")
-				.toURI());
+		Schema schema = TestUtil
+				.loadSchema(getClass().getResource("/testdata/simple/t1.xsd").toURI());
 
 		Iterator<? extends TypeDefinition> iter = schema.getMappingRelevantTypes().iterator();
 		TypeDefinition t = iter.next();
@@ -439,13 +440,13 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		PropertyDefinition child2 = DefinitionUtil.getChild(t, new QName("a1")).asProperty();
 		childContext2.add(new ChildContext(child2));
 		ListMultimap<String, Property> source2 = ArrayListMultimap.create();
-		source2.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext2,
-				SchemaSpaceID.SOURCE, null)));
+		source2.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext2, SchemaSpaceID.SOURCE, null)));
 		cell2.setSource(source2);
 
 		ListMultimap<String, Property> target2 = ArrayListMultimap.create();
-		target2.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext2,
-				SchemaSpaceID.TARGET, null)));
+		target2.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext2, SchemaSpaceID.TARGET, null)));
 		cell2.setTarget(target2);
 
 		DefaultCell cell3 = new DefaultCell();
@@ -455,13 +456,13 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		PropertyDefinition child3 = DefinitionUtil.getChild(t, new QName("b1")).asProperty();
 		childContext3.add(new ChildContext(child3));
 		ListMultimap<String, Property> source3 = ArrayListMultimap.create();
-		source3.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext3,
-				SchemaSpaceID.SOURCE, null)));
+		source3.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext3, SchemaSpaceID.SOURCE, null)));
 		cell3.setSource(source3);
 
 		ListMultimap<String, Property> target3 = ArrayListMultimap.create();
-		target3.put(null, new DefaultProperty(new PropertyEntityDefinition(t, childContext3,
-				SchemaSpaceID.TARGET, null)));
+		target3.put(null, new DefaultProperty(
+				new PropertyEntityDefinition(t, childContext3, SchemaSpaceID.TARGET, null)));
 		cell3.setTarget(target3);
 
 		baseAlignment.addCell(cell1);
@@ -485,8 +486,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		// save base alignment
 		File baseAlignmentFile = tmp.newFile("alignment_base.xml");
 		System.out.println(baseAlignmentFile.getAbsolutePath());
-		saveAlignment(baseAlignment, new BufferedOutputStream(new FileOutputStream(
-				baseAlignmentFile)));
+		saveAlignment(baseAlignment,
+				new BufferedOutputStream(new FileOutputStream(baseAlignmentFile)));
 
 		// load base alignment
 		MutableAlignment baseAlignment2 = loadAlignment(new FileInputStream(baseAlignmentFile),
@@ -538,7 +539,8 @@ public abstract class DefaultAlignmentIOTest extends AbstractPlatformTest {
 		assertTrue(extendedDisableCell instanceof BaseAlignmentCell);
 		assertEquals(1, extendedDisableCell.getDisabledFor().size());
 		assertEquals(0, ((BaseAlignmentCell) extendedDisableCell).getBaseDisabledFor().size());
-		assertEquals(1, ((BaseAlignmentCell) extendedDisableCell).getAdditionalDisabledFor().size());
+		assertEquals(1,
+				((BaseAlignmentCell) extendedDisableCell).getAdditionalDisabledFor().size());
 
 	}
 

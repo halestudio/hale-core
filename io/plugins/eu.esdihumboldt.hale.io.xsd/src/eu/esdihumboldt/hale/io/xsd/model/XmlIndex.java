@@ -74,8 +74,8 @@ public class XmlIndex extends DefaultSchema {
 	}
 
 	/**
-	 * Get the type definition with the given name. If the type doesn't exist a
-	 * new type definition will be created.
+	 * Get the type definition with the given name. If the type doesn't exist a new
+	 * type definition will be created.
 	 * 
 	 * @param name the type name
 	 * @return the type definition

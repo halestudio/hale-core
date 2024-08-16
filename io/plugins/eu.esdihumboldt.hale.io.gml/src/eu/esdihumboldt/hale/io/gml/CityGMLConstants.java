@@ -23,8 +23,8 @@ package eu.esdihumboldt.hale.io.gml;
 public interface CityGMLConstants {
 
 	/**
-	 * The local name of the member element of the root element where city
-	 * objects occur.
+	 * The local name of the member element of the root element where city objects
+	 * occur.
 	 */
 	public static final String CITY_OBJECT_MEMBER_ELEMENT = "cityObjectMember";
 

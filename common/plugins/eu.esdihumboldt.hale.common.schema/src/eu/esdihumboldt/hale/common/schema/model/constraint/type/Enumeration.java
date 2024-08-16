@@ -18,9 +18,9 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
 import java.util.Collection;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Constraint that holds allowed values for a type
@@ -38,8 +38,8 @@ public class Enumeration<T> implements TypeConstraint {
 	private final boolean allowOthers;
 
 	/**
-	 * Creates a default constraint where no restriction on the allowed values
-	 * is present.
+	 * Creates a default constraint where no restriction on the allowed values is
+	 * present.
 	 */
 	public Enumeration() {
 		super();
@@ -50,8 +50,8 @@ public class Enumeration<T> implements TypeConstraint {
 	/**
 	 * Create a constraint that holds allowed values for a type
 	 * 
-	 * @param values the collection of allowed values, ownership of the
-	 *            collection is transferred to the constraint
+	 * @param values the collection of allowed values, ownership of the collection
+	 *            is transferred to the constraint
 	 * @param allowOthers if other values are allowed
 	 */
 	public Enumeration(Collection<? extends T> values, boolean allowOthers) {
@@ -61,8 +61,8 @@ public class Enumeration<T> implements TypeConstraint {
 	}
 
 	/**
-	 * @return the collection of allowed values, <code>null</code> there is no
-	 *         such restriction
+	 * @return the collection of allowed values, <code>null</code> there is no such
+	 *         restriction
 	 */
 	public Collection<? extends T> getValues() {
 		return values;

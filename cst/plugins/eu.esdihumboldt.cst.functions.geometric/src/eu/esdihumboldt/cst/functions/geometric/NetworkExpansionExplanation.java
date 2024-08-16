@@ -58,7 +58,7 @@ public class NetworkExpansionExplanation extends AbstractCellExplanation
 				Map<String, String> varToProperty = variables.stream()
 						.collect(Collectors.toMap(entity -> {
 							return getEntityNameWithoutCondition(entity);
-						} , entity -> {
+						}, entity -> {
 							return formatEntity(entity, true, false, locale);
 						}));
 				explanation += buildReplacementTable(varToProperty, locale);

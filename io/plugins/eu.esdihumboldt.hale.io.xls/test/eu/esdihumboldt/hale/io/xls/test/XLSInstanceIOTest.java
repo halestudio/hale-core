@@ -1,12 +1,12 @@
 package eu.esdihumboldt.hale.io.xls.test;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.eclipse.core.runtime.content.IContentType;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,8 +28,7 @@ import eu.esdihumboldt.hale.io.csv.reader.CommonSchemaConstants;
 import eu.esdihumboldt.hale.io.xls.reader.XLSInstanceReader;
 import eu.esdihumboldt.hale.io.xls.reader.XLSSchemaReader;
 import eu.esdihumboldt.hale.io.xls.writer.XLSInstanceWriter;
-
-import static org.junit.Assert.*;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for reading and writing instances in XLS file format
@@ -47,10 +46,10 @@ public class XLSInstanceIOTest extends AbstractPlatformTest {
 	 * Exports the instances created by
 	 * {@link XLSInstanceWriterTestExamples#createInstanceCollection} into a
 	 * temporary XLS file by executing {@link XLSInstanceWriter#execute}.
-	 * Afterwards, the schema is read by {@link XLSSchemaReader} and the
-	 * instances are loaded by {@link XLSInstanceReader}. Each of the imported
-	 * instances are compared with the original instances. In addtion, a
-	 * different set of instances is compared with the imported instances.
+	 * Afterwards, the schema is read by {@link XLSSchemaReader} and the instances
+	 * are loaded by {@link XLSInstanceReader}. Each of the imported instances are
+	 * compared with the original instances. In addtion, a different set of
+	 * instances is compared with the imported instances.
 	 */
 	@Test
 	public void test() {

@@ -67,13 +67,13 @@ public class CodeListAssocationFactory implements ValueConstraintFactory<CodeLis
 	@Override
 	public CodeListAssociation restore(Value value, Definition<?> definition,
 			TypeResolver typeIndex, ClassResolver resolver) throws Exception {
-				
+
 		// is it a simple value? (single String code list reference)
 		String single = value.as(String.class);
 		if (single != null) {
 			return new CodeListAssociation(Collections.singleton(single));
 		}
-		
+
 		// is it a value list? (multiple String code list references)
 		ValueList list = value.as(ValueList.class);
 		if (list != null) {

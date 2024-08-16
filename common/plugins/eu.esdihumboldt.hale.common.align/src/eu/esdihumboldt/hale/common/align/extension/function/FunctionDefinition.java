@@ -28,9 +28,7 @@ import eu.esdihumboldt.hale.common.align.model.CellExplanation;
 /**
  * Basic interface for function definitions
  * 
- * @param
- * 			<P>
- *            entity parameter definition type
+ * @param <P> entity parameter definition type
  * @author Simon Templer
  */
 public interface FunctionDefinition<P extends ParameterDefinition> extends Identifiable {
@@ -103,8 +101,8 @@ public interface FunctionDefinition<P extends ParameterDefinition> extends Ident
 	/**
 	 * Get the associated cell explanation.
 	 * 
-	 * @return the cell explanation or <code>null</code> if none is available
-	 *         for this function
+	 * @return the cell explanation or <code>null</code> if none is available for
+	 *         this function
 	 */
 	public CellExplanation getExplanation();
 

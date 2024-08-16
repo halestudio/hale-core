@@ -50,12 +50,12 @@ public class InstanceValidationContext {
 	}
 
 	/**
-	 * Returns true, if and only if there is a context object present for the
-	 * given validator class.
+	 * Returns true, if and only if there is a context object present for the given
+	 * validator class.
 	 * 
 	 * @param validatorClass the validator class
-	 * @return true, if and only if there is a context object present for the
-	 *         given validator class
+	 * @return true, if and only if there is a context object present for the given
+	 *         validator class
 	 */
 	public boolean containsContext(Class<? extends ConstraintValidator> validatorClass) {
 		return contextMap.containsKey(validatorClass);
@@ -67,10 +67,10 @@ public class InstanceValidationContext {
 	 * The object may not be <code>null</code>.
 	 * 
 	 * @param validatorClass the validator class
-	 * @param contextObject the new associated object, may not be
-	 *            <code>null</code>
+	 * @param contextObject the new associated object, may not be <code>null</code>
 	 */
-	public void putContext(Class<? extends ConstraintValidator> validatorClass, Object contextObject) {
+	public void putContext(Class<? extends ConstraintValidator> validatorClass,
+			Object contextObject) {
 		contextMap.put(validatorClass, contextObject);
 	}
 }

@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.property;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Specifies the cardinality for a property, default is for a property to occur
@@ -42,8 +42,8 @@ public class Cardinality implements GroupPropertyConstraint, PropertyConstraint 
 	public static final Cardinality CC_EXACTLY_ONCE = new Cardinality(1, 1);
 
 	/**
-	 * Cardinality constraint for properties that occur once or not at all (zero
-	 * to one)
+	 * Cardinality constraint for properties that occur once or not at all (zero to
+	 * one)
 	 */
 	public static final Cardinality CC_OPTIONAL = new Cardinality(0, 1);
 
@@ -62,8 +62,8 @@ public class Cardinality implements GroupPropertyConstraint, PropertyConstraint 
 	/**
 	 * Get the cardinality constraint with the given occurrences
 	 * 
-	 * @param minOccurs the number of minimum occurrences of a property, may not
-	 *            be negative
+	 * @param minOccurs the number of minimum occurrences of a property, may not be
+	 *            negative
 	 * @param maxOccurs the number of maximum occurrences of a property,
 	 *            {@value #UNBOUNDED} for an infinite maximum occurrence
 	 * @return the cardinality constraint
@@ -117,8 +117,8 @@ public class Cardinality implements GroupPropertyConstraint, PropertyConstraint 
 	 * NOTE: Instead of using the constructor to create new instances please use
 	 * {@link #get(long, long)} if possible.
 	 * 
-	 * @param minOccurs the number of minimum occurrences of a property, may not
-	 *            be negative
+	 * @param minOccurs the number of minimum occurrences of a property, may not be
+	 *            negative
 	 * @param maxOccurs the number of maximum occurrences of a property,
 	 *            {@value #UNBOUNDED} for an infinite maximum occurrence
 	 */

@@ -33,7 +33,8 @@ public class LookupServiceImpl implements LookupService {
 	private final Map<String, LookupTableInfo> tables = new HashMap<String, LookupTableInfo>();
 
 	@Override
-	public void registerTable(String id, LookupTableInfo tableInfo) throws IllegalArgumentException {
+	public void registerTable(String id, LookupTableInfo tableInfo)
+			throws IllegalArgumentException {
 		synchronized (tables) {
 			if (tables.containsKey(id))
 				throw new IllegalArgumentException("Lookup table identifier already taken.");

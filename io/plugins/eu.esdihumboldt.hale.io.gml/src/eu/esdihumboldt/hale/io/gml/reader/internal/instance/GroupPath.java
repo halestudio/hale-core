@@ -49,10 +49,9 @@ public class GroupPath {
 	/**
 	 * Create a group path
 	 * 
-	 * @param parents the list of parent groups, may neither be
-	 *            <code>null</code> nor empty
-	 * @param children the list of child definition groups, may be
-	 *            <code>null</code>
+	 * @param parents the list of parent groups, may neither be <code>null</code>
+	 *            nor empty
+	 * @param children the list of child definition groups, may be <code>null</code>
 	 */
 	public GroupPath(List<MutableGroup> parents, List<DefinitionGroup> children) {
 		super();
@@ -80,8 +79,8 @@ public class GroupPath {
 
 	/**
 	 * Create groups for the children in the path (which are only represented as
-	 * definitions). May only be called if the path is valid. This will also
-	 * update the path to include the groups instead of the definitions.
+	 * definitions). May only be called if the path is valid. This will also update
+	 * the path to include the groups instead of the definitions.
 	 * 
 	 * @return the list of created groups
 	 * 
@@ -116,8 +115,8 @@ public class GroupPath {
 	}
 
 	/**
-	 * Determines if the group path in this configuration is valid in respect to
-	 * the creation of new groups based on the contained definition groups.
+	 * Determines if the group path in this configuration is valid in respect to the
+	 * creation of new groups based on the contained definition groups.
 	 * 
 	 * @return if the path is valid
 	 */
@@ -149,12 +148,12 @@ public class GroupPath {
 	}
 
 	/**
-	 * Determines if the adding a property value for the given property to the
-	 * last element in the path is allowed.
+	 * Determines if the adding a property value for the given property to the last
+	 * element in the path is allowed.
 	 * 
 	 * @param propertyName the property name
-	 * @param strict states if additional checks are applied apart from whether
-	 *            the property exists
+	 * @param strict states if additional checks are applied apart from whether the
+	 *            property exists
 	 * @param ignoreNamespaces if a property with a differing namespace may be
 	 *            accepted
 	 * @return if adding the property value to the last element in the path is
@@ -176,15 +175,14 @@ public class GroupPath {
 		else {
 			// check last child
 			DefinitionGroup child = children.get(children.size() - 1);
-			ChildDefinition<?> property = GroupUtil
-					.findChild(child, propertyName, ignoreNamespaces);
+			ChildDefinition<?> property = GroupUtil.findChild(child, propertyName,
+					ignoreNamespaces);
 			if (property == null) {
 				return false;
 			}
 
-			if (child instanceof GroupPropertyDefinition
-					&& ((GroupPropertyDefinition) child).getConstraint(ChoiceFlag.class)
-							.isEnabled()) {
+			if (child instanceof GroupPropertyDefinition && ((GroupPropertyDefinition) child)
+					.getConstraint(ChoiceFlag.class).isEnabled()) {
 				// group is a choice
 				return true;
 			}

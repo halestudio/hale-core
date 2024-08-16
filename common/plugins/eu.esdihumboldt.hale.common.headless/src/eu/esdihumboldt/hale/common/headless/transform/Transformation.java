@@ -97,12 +97,11 @@ public class Transformation {
 	 * @param processId the identifier for the transformation process, may be
 	 *            <code>null</code> if grouping the jobs to a job family is not
 	 *            necessary
-	 * @param validators the instance validator, may be <code>null</code> or
-	 *            empty
+	 * @param validators the instance validator, may be <code>null</code> or empty
 	 * @param settings the transformation settings
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 */
 	public static ListenableFuture<Boolean> transform(List<InstanceReader> sources,
 			InstanceWriter target, final TransformationEnvironment environment,
@@ -126,8 +125,8 @@ public class Transformation {
 	 *            necessary
 	 * @param settings the transformation settings
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 */
 	public static ListenableFuture<Boolean> transform(List<InstanceReader> sources,
 			InstanceWriter target, final TransformationEnvironment environment,
@@ -146,14 +145,13 @@ public class Transformation {
 	 * @param processId the identifier for the transformation process, may be
 	 *            <code>null</code> if grouping the jobs to a job family is not
 	 *            necessary
-	 * @param validators the instance validators, may be <code>null</code> or
-	 *            empty
-	 * @param filterDefinition {@link InstanceFilterDefinition} object as a
-	 *            filter may be <code>null</code>
+	 * @param validators the instance validators, may be <code>null</code> or empty
+	 * @param filterDefinition {@link InstanceFilterDefinition} object as a filter
+	 *            may be <code>null</code>
 	 * @param settings the transformation settings
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 */
 	public static ListenableFuture<Boolean> transform(List<InstanceReader> sources,
 			InstanceWriter target, final TransformationEnvironment environment,
@@ -168,8 +166,8 @@ public class Transformation {
 	}
 
 	/**
-	 * Transform the instances provided by the given instance collection and
-	 * supply the result to the given instance writer.
+	 * Transform the instances provided by the given instance collection and supply
+	 * the result to the given instance writer.
 	 * 
 	 * @param sources the source instance collction
 	 * @param target the target instance writer
@@ -178,12 +176,11 @@ public class Transformation {
 	 * @param processId the identifier for the transformation process, may be
 	 *            <code>null</code> if grouping the jobs to a job family is not
 	 *            necessary
-	 * @param validators the instance validators, may be <code>null</code> or
-	 *            empty
+	 * @param validators the instance validators, may be <code>null</code> or empty
 	 * @param settings the transformation settings
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 */
 	public static ListenableFuture<Boolean> transform(InstanceCollection sources,
 			InstanceWriter target, final TransformationEnvironment environment,
@@ -267,8 +264,8 @@ public class Transformation {
 				if (environment instanceof ProjectTransformationEnvironment) {
 					// set project CRS manager as CRS provider
 					/*
-					 * Resource based CRS settings will however not work, as the
-					 * resource identifiers will not match
+					 * Resource based CRS settings will however not work, as the resource
+					 * identifiers will not match
 					 */
 					provider.setCRSProvider(new ProjectCRSManager(provider, null,
 							((ProjectTransformationEnvironment) environment).getProject()));
@@ -313,8 +310,8 @@ public class Transformation {
 	 *            necessary
 	 * @param settings the transformation settings
 	 * @return the future representing the successful completion of the
-	 *         transformation (note that a successful completion doesn't
-	 *         necessary mean there weren't any internal transformation errors)
+	 *         transformation (note that a successful completion doesn't necessary
+	 *         mean there weren't any internal transformation errors)
 	 */
 	public static ListenableFuture<Boolean> transform(InstanceCollection sources,
 			final TransformationSink targetSink, final ExportJob exportJob,
@@ -334,9 +331,8 @@ public class Transformation {
 
 			for (Cell cell : alignment.getActiveTypeCells()) {
 				/*
-				 * XXX right now the source is read for each type transformation
-				 * - does it makes sense to use the DB if there is a certain
-				 * number of type transformations?
+				 * XXX right now the source is read for each type transformation - does it makes
+				 * sense to use the DB if there is a certain number of type transformations?
 				 */
 
 				if (!isStreamingTypeTransformation(cell.getTransformationIdentifier())) {
@@ -580,8 +576,8 @@ public class Transformation {
 	}
 
 	/**
-	 * Determine if a function is streaming capable (and does not need an index
-	 * to be built).
+	 * Determine if a function is streaming capable (and does not need an index to
+	 * be built).
 	 * 
 	 * @param transformationIdentifier the function ID
 	 * @return <code>true</code> if the function is streaming capable,
@@ -604,8 +600,7 @@ public class Transformation {
 	private static void failure(SettableFuture<Boolean> result, IJobChangeEvent event) {
 		// signal if was canceled
 		/*
-		 * XXX disabled as the transform job will cancel the export job if it
-		 * fails
+		 * XXX disabled as the transform job will cancel the export job if it fails
 		 */
 //		if (event.getResult().matches(IStatus.CANCEL)) {
 //			result.cancel(false);

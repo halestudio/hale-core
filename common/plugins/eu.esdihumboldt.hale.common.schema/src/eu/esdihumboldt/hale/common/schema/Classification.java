@@ -37,6 +37,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
  * @since 2.2
  */
 public enum Classification {
+
 	/** Abstract feature type */
 	ABSTRACT_FT("abstractFeatureType"),
 	/** Concrete feature type */

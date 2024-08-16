@@ -28,8 +28,8 @@ package eu.esdihumboldt.hale.common.core.report;
 public interface ReportLog<T extends Message> {
 
 	/**
-	 * Adds a warning to the report. If configured accordingly a log message
-	 * will also be created.
+	 * Adds a warning to the report. If configured accordingly a log message will
+	 * also be created.
 	 * 
 	 * @param message the warning message
 	 */
@@ -44,8 +44,8 @@ public interface ReportLog<T extends Message> {
 	public void error(T message);
 
 	/**
-	 * Adds an info to the report. If configured accordingly a log message will
-	 * also be created.
+	 * Adds an info to the report. If configured accordingly a log message will also
+	 * be created.
 	 * 
 	 * @param message the info message
 	 */

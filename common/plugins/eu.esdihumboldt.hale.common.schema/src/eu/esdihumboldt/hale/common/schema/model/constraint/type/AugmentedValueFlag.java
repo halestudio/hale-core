@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if an augmented value is present for a type, meaning a value that is
@@ -60,8 +60,7 @@ public class AugmentedValueFlag extends AbstractFlagConstraint implements TypeCo
 
 	/**
 	 * Creates a default augmented value flag, which is disabled. If possible,
-	 * instead of creating an instance, use {@link #ENABLED} or
-	 * {@link #DISABLED}.
+	 * instead of creating an instance, use {@link #ENABLED} or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

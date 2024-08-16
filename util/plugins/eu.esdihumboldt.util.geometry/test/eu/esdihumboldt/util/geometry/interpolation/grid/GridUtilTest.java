@@ -21,7 +21,6 @@ import static org.junit.Assert.assertTrue;
 import java.text.MessageFormat;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 
 import ru.yandex.qatools.allure.annotations.Features;

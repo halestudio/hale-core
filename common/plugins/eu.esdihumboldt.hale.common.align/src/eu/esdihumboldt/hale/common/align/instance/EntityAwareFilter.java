@@ -35,8 +35,8 @@ public interface EntityAwareFilter extends Filter {
 	 * 
 	 * @param context the filter entity context
 	 * @return the list of referenced entities, for each distinct variable
-	 *         encountered in the filter there should be an entry, if may be
-	 *         empty if the reference cannot be resolved in the given context
+	 *         encountered in the filter there should be an entry, if may be empty
+	 *         if the reference cannot be resolved in the given context
 	 */
 	List<Optional<EntityDefinition>> getReferencedEntities(EntityDefinition context);
 
@@ -50,8 +50,7 @@ public interface EntityAwareFilter extends Filter {
 	boolean supportsMigration();
 
 	/**
-	 * Migrate the filter based on the given entity context and alignment
-	 * migration.
+	 * Migrate the filter based on the given entity context and alignment migration.
 	 * 
 	 * @param context the entity context
 	 * @param migration the alignment migration

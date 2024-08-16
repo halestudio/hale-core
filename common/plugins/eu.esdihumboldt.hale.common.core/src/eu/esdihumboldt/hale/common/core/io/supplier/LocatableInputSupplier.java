@@ -36,8 +36,8 @@ public interface LocatableInputSupplier<T> extends InputSupplier<T>, Locatable {
 	/**
 	 * Returns the used location, which may be relative.
 	 * 
-	 * @return the used location; either the same as {@link #getLocation()}, or
-	 *         a relative URI
+	 * @return the used location; either the same as {@link #getLocation()}, or a
+	 *         relative URI
 	 */
 	public URI getUsedLocation();
 

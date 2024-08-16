@@ -17,8 +17,8 @@ package eu.esdihumboldt.hale.io.jdbc.extension;
 
 import javax.annotation.Nullable;
 
-import schemacrawler.schemacrawler.SchemaCrawlerOptions;
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
+import schemacrawler.schemacrawler.SchemaCrawlerOptions;
 
 /**
  * Advisor for the behavior of a {@link JDBCSchemaReader}.
@@ -28,20 +28,18 @@ import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 public interface JDBCSchemaReaderAdvisor {
 
 	/**
-	 * Adapt the options passed to SchemaCrawler to retrieve the database
-	 * schema.
+	 * Adapt the options passed to SchemaCrawler to retrieve the database schema.
 	 * 
 	 * @param options the schema crawler options
 	 */
 	void configureSchemaCrawler(SchemaCrawlerOptions options);
 
 	/**
-	 * Determine the path that should be included in the namespace for table
-	 * types.
+	 * Determine the path that should be included in the namespace for table types.
 	 * 
 	 * @param path the JDBC URI path
-	 * @return the string to use for the namespace in addition to the protocol,
-	 *         e.g. the database name
+	 * @return the string to use for the namespace in addition to the protocol, e.g.
+	 *         the database name
 	 */
 	@Nullable
 	String adaptPathForNamespace(String path);

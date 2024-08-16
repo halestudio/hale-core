@@ -99,8 +99,8 @@ public class XmlUtil {
 		else {
 			transformer = factory.newTransformer();
 		}
-		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, omitXmlDeclaration ? "yes"
-				: "no");
+		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION,
+				omitXmlDeclaration ? "yes" : "no");
 		// transformer.setOutputProperty(OutputKeys.INDENT, indent ? "yes" :
 		// "no");
 		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
@@ -113,8 +113,8 @@ public class XmlUtil {
 	 * 
 	 * @param source the source, e.g. {@link DOMSource}
 	 * @param target the target, e.g. {@link StreamResult}
-	 * @throws TransformerException if the XSLT transformation for pretty
-	 *             printing cannot be loaded
+	 * @throws TransformerException if the XSLT transformation for pretty printing
+	 *             cannot be loaded
 	 */
 	public static void prettyPrint(Source source, Result target) throws TransformerException {
 

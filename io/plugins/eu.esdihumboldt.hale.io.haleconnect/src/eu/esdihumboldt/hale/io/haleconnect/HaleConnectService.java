@@ -147,9 +147,9 @@ public interface HaleConnectService {
 	 *            <code>RESOURCE_</code> constants defined in
 	 *            {@link HaleConnectService}.
 	 * @param role The assumed role. This has to be either <code>user</code> (to
-	 *            test if the user has a permission in his own right) or the ID
-	 *            of an organisation (to test if a user has a permission on
-	 *            behalf of an organisation).
+	 *            test if the user has a permission in his own right) or the ID of
+	 *            an organisation (to test if a user has a permission on behalf of
+	 *            an organisation).
 	 * @param permission the permission to test, usually one of the
 	 *            <code>PERMISSION_</code> constants defined in
 	 *            {@link HaleConnectService}.
@@ -168,8 +168,8 @@ public interface HaleConnectService {
 	 * 
 	 * @param owner Owner of the project
 	 * @param projectId ID of the project
-	 * @return Information on the specified project or null if the project does
-	 *         not exist
+	 * @return Information on the specified project or null if the project does not
+	 *         exist
 	 * @throws HaleConnectException thrown on any API exception
 	 */
 	HaleConnectProjectInfo getProject(Owner owner, String projectId) throws HaleConnectException;
@@ -178,9 +178,9 @@ public interface HaleConnectService {
 	 * Get a list of available hale connect transformation projects
 	 * 
 	 * @param contextOrganisation If provided, projects owned by the given
-	 *            organisation will be returned if the currently logged in user
-	 *            has sufficient permissions. If <code>null</code> is passed,
-	 *            projects owned by the current user will be returned.
+	 *            organisation will be returned if the currently logged in user has
+	 *            sufficient permissions. If <code>null</code> is passed, projects
+	 *            owned by the current user will be returned.
 	 * @return a list of available projects
 	 * @throws HaleConnectException thrown on any API error
 	 */
@@ -191,9 +191,9 @@ public interface HaleConnectService {
 	 * Get a list of available hale connect transformation projects
 	 *
 	 * @param contextOrganisation If provided, projects owned by the given
-	 *            organisation will be returned if the currently logged in user
-	 *            has sufficient permissions. If <code>null</code> is passed,
-	 *            projects owned by the current user will be returned.
+	 *            organisation will be returned if the currently logged in user has
+	 *            sufficient permissions. If <code>null</code> is passed, projects
+	 *            owned by the current user will be returned.
 	 * @return {@link ListenableFuture} of the result
 	 * @throws HaleConnectException thrown on any API error
 	 */
@@ -245,8 +245,7 @@ public interface HaleConnectService {
 	 * @param file the file to upload
 	 * @param progress a progress indicator
 	 * @return a {@link ListenableFuture} whose value will be set to true upon
-	 *         successful completion of the request or false when the request
-	 *         fails
+	 *         successful completion of the request or false when the request fails
 	 * @throws HaleConnectException thrown on any API exception
 	 */
 	ListenableFuture<Boolean> uploadProjectFileAsync(String projectId, Owner owner, File file,

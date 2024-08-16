@@ -19,8 +19,6 @@ package eu.esdihumboldt.cst.functions.core;
 import java.util.Map;
 import java.util.UUID;
 
-import net.jcip.annotations.Immutable;
-
 import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.functions.GenerateUIDFunction;
@@ -31,6 +29,7 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TransformationE
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.scripting.transformation.AbstractSingleTargetScriptedPropertyTransformation;
+import net.jcip.annotations.Immutable;
 
 /**
  * Generate unique id function.
@@ -38,9 +37,9 @@ import eu.esdihumboldt.hale.common.scripting.transformation.AbstractSingleTarget
  * @author Andrea Antonello
  */
 @Immutable
-public class GenerateUID extends
-		AbstractSingleTargetScriptedPropertyTransformation<TransformationEngine> implements
-		GenerateUIDFunction {
+public class GenerateUID
+		extends AbstractSingleTargetScriptedPropertyTransformation<TransformationEngine>
+		implements GenerateUIDFunction {
 
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,

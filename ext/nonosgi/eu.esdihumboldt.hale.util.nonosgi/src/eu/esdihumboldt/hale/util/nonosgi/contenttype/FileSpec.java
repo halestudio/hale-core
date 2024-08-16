@@ -13,10 +13,11 @@ package eu.esdihumboldt.hale.util.nonosgi.contenttype;
 import org.eclipse.core.runtime.content.IContentType;
 
 /**
- * Provides a uniform representation for file specifications, such 
- * as file names, file extensions and regular expressions.
+ * Provides a uniform representation for file specifications, such as file
+ * names, file extensions and regular expressions.
  */
 public class FileSpec {
+
 	final static int BASIC_TYPE = IContentType.FILE_EXTENSION_SPEC | IContentType.FILE_NAME_SPEC;
 	private String text;
 	private int type;
@@ -46,7 +47,8 @@ public class FileSpec {
 	}
 
 	public boolean equals(final String text, final int otherType, final boolean strict) {
-		return ((!strict && getBasicType(type) == getBasicType(otherType)) || type == otherType) && this.text.equalsIgnoreCase(text);
+		return ((!strict && getBasicType(type) == getBasicType(otherType)) || type == otherType)
+				&& this.text.equalsIgnoreCase(text);
 	}
 
 	public int hashCode() {
@@ -61,4 +63,3 @@ public class FileSpec {
 		return getText();
 	}
 }
-

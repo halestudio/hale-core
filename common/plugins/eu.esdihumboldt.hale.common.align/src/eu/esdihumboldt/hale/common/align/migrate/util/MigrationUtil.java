@@ -35,9 +35,9 @@ import eu.esdihumboldt.hale.common.align.model.functions.RetypeFunction;
 public class MigrationUtil {
 
 	/**
-	 * Remove base alignment cells from the mapping by removing the base
-	 * alignments. Custom functions will be retained as functions defined
-	 * directly in the alignment.
+	 * Remove base alignment cells from the mapping by removing the base alignments.
+	 * Custom functions will be retained as functions defined directly in the
+	 * alignment.
 	 * 
 	 * @param alignment the alignment to adapt
 	 */

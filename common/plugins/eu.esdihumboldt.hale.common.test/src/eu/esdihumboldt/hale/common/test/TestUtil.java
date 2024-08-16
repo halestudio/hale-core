@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import eu.esdihumboldt.hale.common.core.HalePlatform;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
@@ -38,6 +37,7 @@ import eu.esdihumboldt.hale.common.align.io.AlignmentIO;
 import eu.esdihumboldt.hale.common.align.io.impl.CastorAlignmentIO;
 import eu.esdihumboldt.hale.common.align.io.impl.JaxbAlignmentIO;
 import eu.esdihumboldt.hale.common.align.model.Alignment;
+import eu.esdihumboldt.hale.common.core.HalePlatform;
 import eu.esdihumboldt.hale.common.core.io.HaleIO;
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.PathUpdate;
@@ -67,8 +67,8 @@ public class TestUtil {
 	 *
 	 * @param location the URI specifying the location of the schema
 	 * @return the loaded schema
-	 * @throws IOProviderConfigurationException if the schema reader
-	 *             configuration failed
+	 * @throws IOProviderConfigurationException if the schema reader configuration
+	 *             failed
 	 * @throws IOException if the schema could not be loaded
 	 */
 	public static Schema loadSchema(URI location)
@@ -93,8 +93,8 @@ public class TestUtil {
 	}
 
 	/**
-	 * Loads the specified alignment. Assumes that its base alignments don't
-	 * need a location update.
+	 * Loads the specified alignment. Assumes that its base alignments don't need a
+	 * location update.
 	 *
 	 * @param location the URI specifying the location of the alignment
 	 * @param sourceTypes the source type index
@@ -128,15 +128,15 @@ public class TestUtil {
 	}
 
 	/**
-	 * Loads an instance collection from the specified file with the given
-	 * source types.
+	 * Loads an instance collection from the specified file with the given source
+	 * types.
 	 *
 	 * @param location the URI specifying the location of the instance file
 	 * @param types the type index
 	 * @return the loaded instance collection
 	 * @throws IOException if loading the instance failed
-	 * @throws IOProviderConfigurationException if configuring the instance
-	 *             reader failed
+	 * @throws IOProviderConfigurationException if configuring the instance reader
+	 *             failed
 	 */
 	public static InstanceCollection loadInstances(URI location, Schema types)
 			throws IOProviderConfigurationException, IOException {
@@ -200,8 +200,7 @@ public class TestUtil {
 	}
 
 	/**
-	 * Start the given bundles and then check that the given service is
-	 * available.
+	 * Start the given bundles and then check that the given service is available.
 	 *
 	 * XXX HACKHACK
 	 *

@@ -34,8 +34,8 @@ public interface ProgressIndicator {
 	 * Start the progress tracking
 	 * 
 	 * @param taskName the main task name
-	 * @param totalWork the total work units for the progress indicator, if
-	 *            unknown use {@link #UNKNOWN}
+	 * @param totalWork the total work units for the progress indicator, if unknown
+	 *            use {@link #UNKNOWN}
 	 */
 	public void begin(String taskName, int totalWork);
 

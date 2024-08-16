@@ -57,15 +57,15 @@ public class GeometryCondition implements TypeCondition {
 	 * @param allowConversion if conversion is allowed regarding the geometry
 	 *            binding check (only applicable if bindings is not
 	 *            <code>null</code>)
-	 * @param allowCollection if a collection of geometries is allowed regarding
-	 *            the geometry binding check (only applicable if bindings is not
+	 * @param allowCollection if a collection of geometries is allowed regarding the
+	 *            geometry binding check (only applicable if bindings is not
 	 *            <code>null</code>)
 	 */
 	public GeometryCondition(Collection<Class<? extends Geometry>> bindings,
 			boolean allowConversion, boolean allowCollection) {
 		super();
-		this.bindings = (bindings == null) ? (null) : (new HashSet<Class<? extends Geometry>>(
-				bindings));
+		this.bindings = (bindings == null) ? (null)
+				: (new HashSet<Class<? extends Geometry>>(bindings));
 		this.allowConversion = allowConversion;
 		this.allowCollection = allowCollection;
 	}
@@ -128,19 +128,19 @@ public class GeometryCondition implements TypeCondition {
 	 * Determine if the given binding is compatible to the compatible class.
 	 * 
 	 * @param binding the geometry binding
-	 * @param to <code>true</code> if the binding is the target,
-	 *            <code>false</code> if it is the source
+	 * @param to <code>true</code> if the binding is the target, <code>false</code>
+	 *            if it is the source
 	 * @param compatibleClass the geometry compatible class requested
 	 * @param allowConversion if conversion is allowed
-	 * @return if the binding is classified as compatible to the geometry
-	 *         compatible class
+	 * @return if the binding is classified as compatible to the geometry compatible
+	 *         class
 	 */
 	private boolean isCompatibleClass(Class<? extends Geometry> binding, boolean to,
 			Class<? extends Geometry> compatibleClass, boolean allowConversion) {
 		if (to && compatibleClass.equals(Geometry.class)) {
 			/*
-			 * Special case: It is not further specified, which type of geometry
-			 * is produced. So we allow any geometry binding.
+			 * Special case: It is not further specified, which type of geometry is
+			 * produced. So we allow any geometry binding.
 			 */
 			return true;
 		}

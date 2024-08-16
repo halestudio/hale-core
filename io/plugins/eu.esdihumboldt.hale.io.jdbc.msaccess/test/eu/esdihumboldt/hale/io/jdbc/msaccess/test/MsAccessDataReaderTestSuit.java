@@ -96,8 +96,8 @@ public abstract class MsAccessDataReaderTestSuit {
 	}
 
 	/**
-	 * Generates a random path (within the system's temporary folder) for the
-	 * source database.
+	 * Generates a random path (within the system's temporary folder) for the source
+	 * database.
 	 * 
 	 * @return the absolute path of the source temp file
 	 */
@@ -202,8 +202,7 @@ public abstract class MsAccessDataReaderTestSuit {
 	}
 
 	/**
-	 * Reads instances from from a MsAccess database file with the provided
-	 * schema.
+	 * Reads instances from from a MsAccess database file with the provided schema.
 	 * 
 	 * @param sourceSchema the schema of the source database
 	 * @param sourceFile the file of the source database.
@@ -227,8 +226,8 @@ public abstract class MsAccessDataReaderTestSuit {
 	}
 
 	/**
-	 * Check table names should not be in excluded table list (UCA_METADATA
-	 * table list)
+	 * Check table names should not be in excluded table list (UCA_METADATA table
+	 * list)
 	 * 
 	 * @param tableNames table names collection return from Schema
 	 */

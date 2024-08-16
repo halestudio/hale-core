@@ -45,8 +45,8 @@ public class TypeBean extends EntityBean<TypeEntityDefinition> {
 	 * @param type the type entity
 	 */
 	public TypeBean(Type type) {
-		super(type.getDefinition().getDefinition().getName(), FilterDefinitionManager.getInstance()
-				.asString(type.getDefinition().getFilter()));
+		super(type.getDefinition().getDefinition().getName(),
+				FilterDefinitionManager.getInstance().asString(type.getDefinition().getFilter()));
 	}
 
 	/**
@@ -61,10 +61,11 @@ public class TypeBean extends EntityBean<TypeEntityDefinition> {
 	 * @see EntityBean#createEntityDefinition(TypeIndex, SchemaSpaceID)
 	 */
 	@Override
-	protected TypeEntityDefinition createEntityDefinition(TypeIndex index, SchemaSpaceID schemaSpace) {
+	protected TypeEntityDefinition createEntityDefinition(TypeIndex index,
+			SchemaSpaceID schemaSpace) {
 		TypeDefinition typeDef = index.getType(getTypeName());
-		return new TypeEntityDefinition(typeDef, schemaSpace, FilterDefinitionManager.getInstance()
-				.parse(getFilter()));
+		return new TypeEntityDefinition(typeDef, schemaSpace,
+				FilterDefinitionManager.getInstance().parse(getFilter()));
 	}
 
 }

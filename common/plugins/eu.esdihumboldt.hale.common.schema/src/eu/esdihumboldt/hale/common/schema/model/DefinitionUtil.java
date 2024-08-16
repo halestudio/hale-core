@@ -75,8 +75,8 @@ public abstract class DefinitionUtil {
 	}
 
 	/**
-	 * Get all children of a definition group. For {@link TypeDefinition} also
-	 * the inherited children will be returned.
+	 * Get all children of a definition group. For {@link TypeDefinition} also the
+	 * inherited children will be returned.
 	 * 
 	 * @param group the definition group
 	 * @return the children
@@ -91,9 +91,9 @@ public abstract class DefinitionUtil {
 	}
 
 	/**
-	 * Get all properties of a definition group. For {@link TypeDefinition} also
-	 * the inherited children will be returned. If there are children that are
-	 * groups, their properties are also added.
+	 * Get all properties of a definition group. For {@link TypeDefinition} also the
+	 * inherited children will be returned. If there are children that are groups,
+	 * their properties are also added.
 	 * 
 	 * @param group the definition group
 	 * @return the children
@@ -173,11 +173,11 @@ public abstract class DefinitionUtil {
 	 * 
 	 * @param definition the definition
 	 * @param name the name of the child
-	 * @param allowIgnoreNamespace specifies if when the child with the exact
-	 *            name is not present, a child with a similar local name should
-	 *            be returned
-	 * @return the child with the given name if it exists, a child with a
-	 *         similar local name if it exists or <code>null</code>
+	 * @param allowIgnoreNamespace specifies if when the child with the exact name
+	 *            is not present, a child with a similar local name should be
+	 *            returned
+	 * @return the child with the given name if it exists, a child with a similar
+	 *         local name if it exists or <code>null</code>
 	 * @throws IllegalStateException if the given definition isn't group nor
 	 *             property definition
 	 */
@@ -231,8 +231,8 @@ public abstract class DefinitionUtil {
 	 * Get the represented definition group of a definition.
 	 * 
 	 * @param def the definition
-	 * @return for a property definition its property type, for a type
-	 *         definition or a group property definition the definition itself
+	 * @return for a property definition its property type, for a type definition or
+	 *         a group property definition the definition itself
 	 */
 	public static DefinitionGroup getDefinitionGroup(Definition<?> def) {
 		if (def instanceof TypeDefinition) {
@@ -259,8 +259,8 @@ public abstract class DefinitionUtil {
 	}
 
 	/**
-	 * Checks whether <code>superType</code> is a super type of
-	 * <code>subType</code> or if they are the same.
+	 * Checks whether <code>superType</code> is a super type of <code>subType</code>
+	 * or if they are the same.
 	 * 
 	 * @param subType the type in question
 	 * @param superType the super type
@@ -282,10 +282,10 @@ public abstract class DefinitionUtil {
 	 * The result is
 	 * <ul>
 	 * <li>{@code true} if {@code a} and {@code b} are both null.
-	 * <li>{@code true} if {@code a} and {@code b} are both non-null, their
-	 * names are equal and both are of the same: {@link TypeDefinition},
-	 * {@link PropertyDefinition}, {@link GroupPropertyDefinition} or exactly
-	 * the same class.
+	 * <li>{@code true} if {@code a} and {@code b} are both non-null, their names
+	 * are equal and both are of the same: {@link TypeDefinition},
+	 * {@link PropertyDefinition}, {@link GroupPropertyDefinition} or exactly the
+	 * same class.
 	 * <li>{@code false} in all other situations.
 	 * </ul>
 	 * 

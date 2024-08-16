@@ -39,8 +39,8 @@ public class InspireUtil implements InspireConstants {
 		}
 
 		// first try with default namespace
-		XmlElement result = index.getElements().get(
-				new QName(DEFAULT_INSPIRE_NAMESPACE_BASETYPES, ELEMENT_SPATIAL_DATASET));
+		XmlElement result = index.getElements()
+				.get(new QName(DEFAULT_INSPIRE_NAMESPACE_BASETYPES, ELEMENT_SPATIAL_DATASET));
 
 		if (result == null) {
 			// then try with namespace prefix

@@ -9,9 +9,10 @@ import eu.esdihumboldt.cst.test.TransformationExampleImpl;
 public class TestData extends TransformationExampleImpl {
 
 	public TestData(TestDataConfiguration configuration) throws URISyntaxException {
-		super(toLocalURI(configuration.getSourceSchema()), toLocalURI(configuration
-				.getTargetSchema()), toLocalURI(configuration.getAlignment()),
-				toLocalURI(configuration.getSourceData()), null, null, null);
+		super(toLocalURI(configuration.getSourceSchema()),
+				toLocalURI(configuration.getTargetSchema()),
+				toLocalURI(configuration.getAlignment()), toLocalURI(configuration.getSourceData()),
+				null, null, null);
 	}
 
 	private static URI toLocalURI(String location) throws URISyntaxException {

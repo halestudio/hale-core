@@ -129,11 +129,10 @@ public class InterpolationHelper {
 	}
 
 	/**
-	 * Determine if the interpolation algorithm requires all geometries being
-	 * moved to a grid.
+	 * Determine if the interpolation algorithm requires all geometries being moved
+	 * to a grid.
 	 * 
-	 * @param instanceReader the instance reader w/ the interpolation
-	 *            configuration
+	 * @param instanceReader the instance reader w/ the interpolation configuration
 	 * @return if geometries should be moved to a grid
 	 */
 	public static boolean requiresGeometriesMovedToGrid(IOProvider instanceReader) {

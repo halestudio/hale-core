@@ -17,6 +17,8 @@ package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
 
+import groovy.sql.Sql
+
 import java.sql.Date
 import java.sql.Timestamp
 
@@ -36,7 +38,6 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
-import groovy.sql.Sql
 import ru.yandex.qatools.allure.annotations.Features
 import ru.yandex.qatools.allure.annotations.Stories
 
@@ -105,7 +106,8 @@ public class PostDataTypesIT extends AbstractDBTest {
 					b_array 	   ([0, 1, i, 1, 0] as byte[])
 					geometry_test  new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), gf.createLineString([
 						new Coordinate(0, 0),
-						new Coordinate(i, i)] as Coordinate[]))
+						new Coordinate(i, i)
+					] as Coordinate[]))
 					hire_date      Date.valueOf("2015-04-$i")
 					last_login     new Timestamp(c.getTimeInMillis())
 					share_price    new Double(i)
@@ -195,6 +197,5 @@ public class PostDataTypesIT extends AbstractDBTest {
 		m.put("DECIMAL", BigDecimal.class);
 		m.put("GEOMETRY", GeometryProperty.class);
 		return Collections.unmodifiableMap(m);
-
 	}
 }

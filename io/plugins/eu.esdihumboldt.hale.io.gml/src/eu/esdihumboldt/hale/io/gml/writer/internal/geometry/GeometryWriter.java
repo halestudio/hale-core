@@ -45,12 +45,11 @@ public interface GeometryWriter<T extends Geometry> {
 	public Class<T> getGeometryType();
 
 	/**
-	 * Get the compatible types' names for the geometry type that can be handled
-	 * by this writer. The compatible types serve as entry points for the
-	 * matching.
+	 * Get the compatible types' names for the geometry type that can be handled by
+	 * this writer. The compatible types serve as entry points for the matching.
 	 * 
-	 * @return the type names, a <code>null</code> namespace in a name
-	 *         references the GML namespace
+	 * @return the type names, a <code>null</code> namespace in a name references
+	 *         the GML namespace
 	 */
 	public Set<QName> getCompatibleTypes();
 
@@ -68,22 +67,20 @@ public interface GeometryWriter<T extends Geometry> {
 	/**
 	 * Write a geometry.
 	 * 
-	 * At this point we can assume that the wrapping element matches one of the
-	 * base patterns. The corresponding element name and its type definition are
-	 * given.
+	 * At this point we can assume that the wrapping element matches one of the base
+	 * patterns. The corresponding element name and its type definition are given.
 	 * 
 	 * @param writer the XML stream writer
 	 * @param geometry the geometry to write
 	 * @param elementType the last type definition in the matching path
 	 * @param elementName the corresponding element name
 	 * @param gmlNs the GML namespace
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates
 	 * @throws XMLStreamException if an error occurs writing the geometry
 	 */
 	public void write(XMLStreamWriter writer, T geometry, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException;
+			throws XMLStreamException;
 
 	/**
 	 * Determines if a geometry is valid to be written with the writer.

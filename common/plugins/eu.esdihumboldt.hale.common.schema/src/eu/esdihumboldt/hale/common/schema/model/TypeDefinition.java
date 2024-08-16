@@ -40,8 +40,8 @@ public interface TypeDefinition extends Definition<TypeConstraint>, DefinitionGr
 	public Collection<? extends TypeDefinition> getSubTypes();
 
 	/**
-	 * Get all children that an instance of the type may have. Usually these are
-	 * the declared children and the super type children.
+	 * Get all children that an instance of the type may have. Usually these are the
+	 * declared children and the super type children.
 	 * 
 	 * @return the child definitions
 	 */

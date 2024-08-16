@@ -15,6 +15,11 @@
 
 package eu.esdihumboldt.hale.common.inspire.apps.templates;
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+import groovy.xml.StreamingMarkupBuilder
+import groovy.xml.XmlUtil
+
 import java.util.regex.Matcher
 
 import javax.xml.XMLConstants
@@ -57,10 +62,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.AbstractFlag
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappableFlag
 import eu.esdihumboldt.hale.io.codelist.inspire.reader.INSPIRECodeListReader
 import eu.esdihumboldt.hale.io.gml.geometry.GMLConstants
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
-import groovy.xml.StreamingMarkupBuilder
-import groovy.xml.XmlUtil
 
 /**
  * Generate INSPIRE mapping templates.

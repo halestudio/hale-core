@@ -56,8 +56,8 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	private int _size;
 
 	/**
-	 * the size assumed for non-present dimensions - only important for
-	 * optimization of mixed dimensionality, should be > 0
+	 * the size assumed for non-present dimensions - only important for optimization
+	 * of mixed dimensionality, should be > 0
 	 */
 	private final double _nonDimensionSize;
 
@@ -65,8 +65,8 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	 * Default constructor
 	 * 
 	 * @param pageSize the page size (number of children that can be attached to
-	 *            this node before it gets splitted). Must be even and greater
-	 *            than or equal to 4.
+	 *            this node before it gets splitted). Must be even and greater than
+	 *            or equal to 4.
 	 */
 	public RTree(int pageSize) {
 		this(pageSize, DEFAULT_NON_DIMEMSION_SIZE);
@@ -76,11 +76,10 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	 * Default constructor
 	 * 
 	 * @param pageSize the page size (number of children that can be attached to
-	 *            this node before it gets splitted). Must be even and greater
-	 *            than or equal to 4.
-	 * @param nonDimemsionSize the size assumed for non-present dimensions -
-	 *            only important for optimization of mixed dimensionality,
-	 *            should be > 0
+	 *            this node before it gets splitted). Must be even and greater than
+	 *            or equal to 4.
+	 * @param nonDimemsionSize the size assumed for non-present dimensions - only
+	 *            important for optimization of mixed dimensionality, should be > 0
 	 */
 	public RTree(int pageSize, double nonDimemsionSize) {
 		Preconditions.checkArgument(pageSize >= 4 && pageSize % 2 == 0 && nonDimemsionSize > 0);
@@ -97,8 +96,7 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	}
 
 	/**
-	 * Sets the new root node. Package visible, because only Node shall access
-	 * it.
+	 * Sets the new root node. Package visible, because only Node shall access it.
 	 * 
 	 * @param root the new root node
 	 */
@@ -176,8 +174,8 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	}
 
 	/**
-	 * Traverses through the given list of candidates and finds those that match
-	 * the given verifier
+	 * Traverses through the given list of candidates and finds those that match the
+	 * given verifier
 	 * 
 	 * @param <L> the type of localizables to search
 	 * @param loc the localizable to match against

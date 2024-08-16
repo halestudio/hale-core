@@ -43,7 +43,7 @@ public abstract class AbstractSingleTargetScriptedPropertyTransformation<E exten
 			ListMultimap<String, PropertyValue> variables,
 			ListMultimap<String, PropertyEntityDefinition> resultNames,
 			Map<String, String> executionParameters, TransformationLog log)
-					throws TransformationException {
+			throws TransformationException {
 		assert resultNames.size() == 1;
 		Entry<String, PropertyEntityDefinition> entry = resultNames.entries().iterator().next();
 		ListMultimap<String, Object> resultMap = ArrayListMultimap.create(1, 1);
@@ -68,8 +68,8 @@ public abstract class AbstractSingleTargetScriptedPropertyTransformation<E exten
 	 * @param resultName the name of the result
 	 * @param resultProperty the property entity definition associated with the
 	 *            result
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @return the evaluation result

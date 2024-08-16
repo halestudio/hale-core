@@ -133,8 +133,8 @@ public class OGroup implements MutableGroup {
 			// reset class name
 			ODocument doc = (ODocument) document;
 			/*
-			 * Attention: Two long class names cause problems as file names will
-			 * be based on them.
+			 * Attention: Two long class names cause problems as file names will be based on
+			 * them.
 			 */
 			String className = null;
 			if (definition != null) {
@@ -232,8 +232,8 @@ public class OGroup implements MutableGroup {
 	}
 
 	/**
-	 * Copy constructor. Creates a group based on the properties and values of
-	 * the given group.
+	 * Copy constructor. Creates a group based on the properties and values of the
+	 * given group.
 	 * 
 	 * @param org the instance to copy
 	 */
@@ -278,8 +278,9 @@ public class OGroup implements MutableGroup {
 				// default: use list
 				List<Object> valueList = new ArrayList<Object>();
 				valueList.add(value);
-				document.field(pName, valueList, (isInstanceDocument)
-						? (getCollectionType(propertyName)) : (OType.EMBEDDEDLIST));
+				document.field(pName, valueList,
+						(isInstanceDocument) ? (getCollectionType(propertyName))
+								: (OType.EMBEDDEDLIST));
 			}
 			else if (oldValue instanceof Collection<?>) {
 				// add value to collection
@@ -291,8 +292,9 @@ public class OGroup implements MutableGroup {
 				Object[] values = new Object[oldArray.length + 1];
 				System.arraycopy(oldArray, 0, values, 0, oldArray.length);
 				values[oldArray.length] = value;
-				document.field(pName, values, (isInstanceDocument)
-						? (getCollectionType(propertyName)) : (OType.EMBEDDEDLIST));
+				document.field(pName, values,
+						(isInstanceDocument) ? (getCollectionType(propertyName))
+								: (OType.EMBEDDEDLIST));
 			}
 		}
 		else {
@@ -331,8 +333,8 @@ public class OGroup implements MutableGroup {
 	}
 
 	/**
-	 * Converts {@link Group}s and {@link Instance}s to {@link ODocument} but
-	 * leaves other objects untouched.
+	 * Converts {@link Group}s and {@link Instance}s to {@link ODocument} but leaves
+	 * other objects untouched.
 	 * 
 	 * @param value the object to convert
 	 * @return the converted object

@@ -31,7 +31,6 @@ import java.util.Iterator;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 
 import com.google.common.base.Objects;
@@ -59,6 +58,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeIndex;
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements;
 import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.hale.io.xsd.model.XmlIndex;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for XML schema reading
@@ -68,8 +68,8 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlIndex;
 public class XmlSchemaReaderTest extends AbstractPlatformTest {
 
 	/**
-	 * Test reading a simple XML schema that contains one big element. Focuses
-	 * on structure, simple type bindings and cardinalities.
+	 * Test reading a simple XML schema that contains one big element. Focuses on
+	 * structure, simple type bindings and cardinalities.
 	 *
 	 * @throws Exception if reading the schema fails
 	 */
@@ -92,8 +92,8 @@ public class XmlSchemaReaderTest extends AbstractPlatformTest {
 
 	/**
 	 * Test reading a simple XML schema that contains one big element and where
-	 * elementFormDefault/attributeFromDefault is set to unqualified and no
-	 * target namespace is set. Focuses on structure, simple type bindings and
+	 * elementFormDefault/attributeFromDefault is set to unqualified and no target
+	 * namespace is set. Focuses on structure, simple type bindings and
 	 * cardinalities.
 	 *
 	 * @throws Exception if reading the schema fails
@@ -165,8 +165,8 @@ public class XmlSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test reading a simple XML schema that uses several custom named types and
-	 * has a cycle.
+	 * Test reading a simple XML schema that uses several custom named types and has
+	 * a cycle.
 	 *
 	 * @throws Exception if reading the schema fails
 	 */
@@ -196,8 +196,8 @@ public class XmlSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test reading a simple XML schema that uses several custom named types.
-	 * The types are referenced before they are declared.
+	 * Test reading a simple XML schema that uses several custom named types. The
+	 * types are referenced before they are declared.
 	 *
 	 * @throws Exception if reading the schema fails
 	 */
@@ -268,8 +268,8 @@ public class XmlSchemaReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test reading a simple XML schema that is split into several files. Tests
-	 * also the {@link XmlElements} and {@link MappingRelevantFlag} constraints
+	 * Test reading a simple XML schema that is split into several files. Tests also
+	 * the {@link XmlElements} and {@link MappingRelevantFlag} constraints
 	 *
 	 * @throws Exception if reading the schema fails
 	 */
@@ -624,8 +624,8 @@ public class XmlSchemaReaderTest extends AbstractPlatformTest {
 	 *
 	 * @param input the input supplier
 	 * @return the schema
-	 * @throws IOProviderConfigurationException if the configuration of the
-	 *             reader is invalid
+	 * @throws IOProviderConfigurationException if the configuration of the reader
+	 *             is invalid
 	 * @throws IOException if reading the schema fails
 	 */
 	public static Schema readSchema(LocatableInputSupplier<? extends InputStream> input)

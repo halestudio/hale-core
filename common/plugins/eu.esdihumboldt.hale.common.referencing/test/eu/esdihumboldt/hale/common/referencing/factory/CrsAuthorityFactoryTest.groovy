@@ -17,10 +17,10 @@ package eu.esdihumboldt.hale.common.referencing.factory
 
 import static org.junit.Assert.*
 
+import groovy.transform.CompileStatic
+
 import org.geotools.referencing.CRS
 import org.junit.Test
-
-import groovy.transform.CompileStatic
 
 /**
  * Tests for {@link CRSAuthorityFactory} implementations

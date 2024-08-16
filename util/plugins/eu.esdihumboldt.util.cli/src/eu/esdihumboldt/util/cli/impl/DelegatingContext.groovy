@@ -15,8 +15,9 @@
 
 package eu.esdihumboldt.util.cli.impl
 
-import eu.esdihumboldt.util.cli.CommandContext
 import groovy.transform.CompileStatic
+
+import eu.esdihumboldt.util.cli.CommandContext
 
 /**
  * Context for delegating commands.

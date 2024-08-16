@@ -103,8 +103,8 @@ public class DependencyOrderedList<T> {
 	 * Find an object in the list
 	 * 
 	 * @param object the object to find
-	 * @return the object's index or <code>-1</code> if there is no such object
-	 *         in the list
+	 * @return the object's index or <code>-1</code> if there is no such object in
+	 *         the list
 	 */
 	private int find(T object) {
 		return list.indexOf(object);

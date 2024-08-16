@@ -31,11 +31,14 @@ import org.osgi.service.prefs.BackingStoreException;
 
 @SuppressWarnings("restriction")
 public class ContentTypeManager extends ContentTypeMatcher implements IContentTypeManager {
+
 	private static class ContentTypeRegistryChangeListener implements IRegistryChangeListener {
+
 		@Override
 		public void registryChanged(IRegistryChangeEvent event) {
 			// no changes related to the content type registry
-			if (event.getExtensionDeltas(IContentConstants.RUNTIME_NAME, ContentTypeBuilder.PT_CONTENTTYPES).length == 0
+			if (event.getExtensionDeltas(IContentConstants.RUNTIME_NAME,
+					ContentTypeBuilder.PT_CONTENTTYPES).length == 0
 					&& event.getExtensionDeltas(IContentConstants.CONTENT_NAME,
 							ContentTypeBuilder.PT_CONTENTTYPES).length == 0)
 				return;
@@ -49,30 +52,32 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 	private static ContentTypeManager instance;
 
 	public static final int BLOCK_SIZE = 0x400;
-	public static final String CONTENT_TYPE_PREF_NODE = IContentConstants.RUNTIME_NAME + IPath.SEPARATOR + "content-types"; //$NON-NLS-1$
+	public static final String CONTENT_TYPE_PREF_NODE = IContentConstants.RUNTIME_NAME
+			+ IPath.SEPARATOR + "content-types"; //$NON-NLS-1$
 
 	/*
-	 * org.eclipse.core.internal.content.Activator can't be used b/c it is not being initialized.
-	 * TODO Do we need to support a config option here or is simply setting it to false fine?
+	 * org.eclipse.core.internal.content.Activator can't be used b/c it is not being
+	 * initialized. TODO Do we need to support a config option here or is simply
+	 * setting it to false fine?
 	 */
 //	private static final String OPTION_DEBUG_CONTENT_TYPES = "org.eclipse.core.contenttype/debug"; //$NON-NLS-1$;
 //	static final boolean DEBUGGING = Activator.getDefault().getBooleanDebugOption(OPTION_DEBUG_CONTENT_TYPES, false);
-	static final boolean DEBUGGING = Boolean.FALSE; 
+	static final boolean DEBUGGING = Boolean.FALSE;
 
 	private ContentTypeCatalog catalog;
 	private int catalogGeneration;
 
 	/**
 	 * List of registered listeners (element type:
-	 * <code>IContentTypeChangeListener</code>).
-	 * These listeners are to be informed when
-	 * something in a content type changes.
+	 * <code>IContentTypeChangeListener</code>). These listeners are to be informed
+	 * when something in a content type changes.
 	 */
 	protected final ListenerList<IContentTypeChangeListener> contentTypeListeners = new ListenerList<>();
 
 	/**
-	 * Creates and initializes the platform's content type manager. A reference to the
-	 * content type manager can later be obtained by calling <code>getInstance()</code>.
+	 * Creates and initializes the platform's content type manager. A reference to
+	 * the content type manager can later be obtained by calling
+	 * <code>getInstance()</code>.
 	 */
 	// TODO we can remove this sometime, it is no longer needed
 	public static void startup() {
@@ -83,14 +88,17 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 		if (registry == null)
 			return;
 		// Different instances of listener required. See documentation of
-		// IExtensionRegistry.addRegistryChangeListener(IRegistryChangeListener, String).
-		registry.addRegistryChangeListener(runtimeExtensionListener, IContentConstants.RUNTIME_NAME);
-		registry.addRegistryChangeListener(contentExtensionListener, IContentConstants.CONTENT_NAME);
+		// IExtensionRegistry.addRegistryChangeListener(IRegistryChangeListener,
+		// String).
+		registry.addRegistryChangeListener(runtimeExtensionListener,
+				IContentConstants.RUNTIME_NAME);
+		registry.addRegistryChangeListener(contentExtensionListener,
+				IContentConstants.CONTENT_NAME);
 	}
 
 	/**
-	 * Shuts down the platform's content type manager. After this call returns,
-	 * the content type manager will be closed for business.
+	 * Shuts down the platform's content type manager. After this call returns, the
+	 * content type manager will be closed for business.
 	 */
 	public static void shutdown() {
 		// there really is nothing left to do except null the instance.
@@ -121,7 +129,8 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 	 */
 	static String getFileExtension(String fileName) {
 		int dotPosition = fileName.lastIndexOf('.');
-		return (dotPosition == -1 || dotPosition == fileName.length() - 1) ? "" : fileName.substring(dotPosition + 1); //$NON-NLS-1$
+		return (dotPosition == -1 || dotPosition == fileName.length() - 1) ? "" //$NON-NLS-1$
+				: fileName.substring(dotPosition + 1);
 	}
 
 	protected static ILazySource readBuffer(InputStream contents) {
@@ -164,7 +173,8 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 			// only remember catalog if building it was successful
 			catalog = newCatalog;
 		} catch (InvalidRegistryObjectException e) {
-			// the registry has stale objects... just don't remember the returned (incomplete) catalog
+			// the registry has stale objects... just don't remember the returned
+			// (incomplete) catalog
 		}
 		newCatalog.organize();
 		return newCatalog;
@@ -178,7 +188,8 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 	}
 
 	@Override
-	public IContentTypeMatcher getMatcher(final ISelectionPolicy customPolicy, final IScopeContext context) {
+	public IContentTypeMatcher getMatcher(final ISelectionPolicy customPolicy,
+			final IScopeContext context) {
 		return new ContentTypeMatcher(customPolicy, context == null ? getContext() : context);
 	}
 
@@ -212,13 +223,16 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 	public void fireContentTypeChangeEvent(IContentType type) {
 		IContentType eventObject = type;
 		if (type instanceof ContentType) {
-			eventObject = new ContentTypeHandler((ContentType) type, ((ContentType) type).getCatalog().getGeneration());
-		} else {
+			eventObject = new ContentTypeHandler((ContentType) type,
+					((ContentType) type).getCatalog().getGeneration());
+		}
+		else {
 			eventObject = type;
 		}
 		for (final IContentTypeChangeListener listener : this.contentTypeListeners) {
 			final ContentTypeChangeEvent event = new ContentTypeChangeEvent(eventObject);
 			ISafeRunnable job = new ISafeRunnable() {
+
 				@Override
 				public void handleException(Throwable exception) {
 					// already logged in SafeRunner#run()
@@ -253,14 +267,17 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 		}
 		getCatalog().removeContentType(contentType.getId());
 		// Remove preferences for this content type.
-		List<String> userDefinedIds = new ArrayList<>(Arrays.asList(getUserDefinedContentTypeIds()));
+		List<String> userDefinedIds = new ArrayList<>(
+				Arrays.asList(getUserDefinedContentTypeIds()));
 		userDefinedIds.remove(contentType.getId());
 		getContext().getNode(ContentType.PREF_USER_DEFINED).put(ContentType.PREF_USER_DEFINED,
-				userDefinedIds.stream().collect(Collectors.joining(ContentType.PREF_USER_DEFINED__SEPARATOR)));
+				userDefinedIds.stream()
+						.collect(Collectors.joining(ContentType.PREF_USER_DEFINED__SEPARATOR)));
 		try {
 			getContext().getNode(ContentType.PREF_USER_DEFINED).flush();
 		} catch (BackingStoreException e) {
-			String message = NLS.bind(ContentMessages.content_errorSavingSettings, contentType.getId());
+			String message = NLS.bind(ContentMessages.content_errorSavingSettings,
+					contentType.getId());
 			IStatus status = new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, e);
 			throw new CoreException(status);
 		}
@@ -269,19 +286,21 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 	}
 
 	@Override
-	public final IContentType addContentType(String id, String name, IContentType baseType) throws CoreException {
+	public final IContentType addContentType(String id, String name, IContentType baseType)
+			throws CoreException {
 		if (id == null) {
 			throw new IllegalArgumentException("Content-type 'id' mustn't be null");//$NON-NLS-1$
 		}
 		if (id.contains(ContentType.PREF_USER_DEFINED__SEPARATOR)) {
-			throw new IllegalArgumentException(
-					"Content-Type id mustn't contain '" + ContentType.PREF_USER_DEFINED__SEPARATOR + '\''); //$NON-NLS-1$
+			throw new IllegalArgumentException("Content-Type id mustn't contain '" //$NON-NLS-1$
+					+ ContentType.PREF_USER_DEFINED__SEPARATOR + '\'');
 		}
 		if (getContentType(id) != null) {
 			throw new IllegalArgumentException("Content-type '" + id + "' already exists.");//$NON-NLS-1$ //$NON-NLS-2$
 		}
-		ContentType contentType = ContentType.createContentType(getCatalog(), id, name, (byte) 0, new String[0],
-				new String[0], new String[0], baseType != null ? baseType.getId() : null, null, null, null);
+		ContentType contentType = ContentType.createContentType(getCatalog(), id, name, (byte) 0,
+				new String[0], new String[0], new String[0],
+				baseType != null ? baseType.getId() : null, null, null, null);
 		getCatalog().addContentType(contentType);
 		// Add preferences for this content type.
 		String currentUserDefined = getContext().getNode(ContentType.PREF_USER_DEFINED)
@@ -289,7 +308,8 @@ public class ContentTypeManager extends ContentTypeMatcher implements IContentTy
 		if (currentUserDefined.length() > 0) {
 			currentUserDefined += ContentType.PREF_USER_DEFINED__SEPARATOR;
 		}
-		getContext().getNode(ContentType.PREF_USER_DEFINED).put(ContentType.PREF_USER_DEFINED, currentUserDefined + id);
+		getContext().getNode(ContentType.PREF_USER_DEFINED).put(ContentType.PREF_USER_DEFINED,
+				currentUserDefined + id);
 		contentType.setValidation(ContentType.STATUS_UNKNOWN);
 		IEclipsePreferences contextTypeNode = getContext().getNode(contentType.getId());
 		contextTypeNode.put(ContentType.PREF_USER_DEFINED__NAME, name);

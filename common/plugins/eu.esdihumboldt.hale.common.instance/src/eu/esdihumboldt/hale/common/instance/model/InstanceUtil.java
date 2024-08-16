@@ -51,13 +51,13 @@ public final class InstanceUtil {
 	}
 
 	/**
-	 * Checks whether the two given instances equal each other disregarding
-	 * their data set.
+	 * Checks whether the two given instances equal each other disregarding their
+	 * data set.
 	 * 
 	 * @param a the first instance
 	 * @param b the second instance
-	 * @param propertyOrderRelevant whether the order of properties of the same
-	 *            name is relevant or not
+	 * @param propertyOrderRelevant whether the order of properties of the same name
+	 *            is relevant or not
 	 * @return true, iff both instances are equal to each other except for their
 	 *         data set
 	 */
@@ -99,8 +99,8 @@ public final class InstanceUtil {
 				else if (g1.getGeometry() != null && g2.getGeometry() != null) {
 					boolean crsEquals;
 					if (g1.getCRSDefinition() != null && g2.getCRSDefinition() != null) {
-						crsEquals = Objects.equal(g1.getCRSDefinition().getCRS(), g2
-								.getCRSDefinition().getCRS());
+						crsEquals = Objects.equal(g1.getCRSDefinition().getCRS(),
+								g2.getCRSDefinition().getCRS());
 					}
 					else {
 						crsEquals = Objects.equal(g1.getCRSDefinition(), g2.getCRSDefinition());
@@ -157,8 +157,7 @@ public final class InstanceUtil {
 	 * 
 	 * @param instance the instance to test
 	 * @param candidates the candidates to compare the instance against
-	 * @return the error message if the check failed, otherwise
-	 *         <code>null</code>
+	 * @return the error message if the check failed, otherwise <code>null</code>
 	 */
 	public static String checkInstance(Instance instance, Collection<Instance> candidates) {
 		boolean found = false;
@@ -188,8 +187,8 @@ public final class InstanceUtil {
 	 * 
 	 * @param a the first group
 	 * @param b the second group
-	 * @param propertyOrderRelevant whether the order of properties of the same
-	 *            name is relevant or not
+	 * @param propertyOrderRelevant whether the order of properties of the same name
+	 *            is relevant or not
 	 * @return true, if both groups are equal to each
 	 */
 	public static boolean groupEqual(Group a, Group b, boolean propertyOrderRelevant) {

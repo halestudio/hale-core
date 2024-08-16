@@ -42,9 +42,9 @@ public interface InstanceReader extends ImportProvider {
 	public void setSourceSchema(TypeIndex sourceSchema);
 
 	/**
-	 * Set a CRS provider that is queried if no CRS can be determined for a
-	 * property value and no default CRS is configured for the associated
-	 * property definition.
+	 * Set a CRS provider that is queried if no CRS can be determined for a property
+	 * value and no default CRS is configured for the associated property
+	 * definition.
 	 * 
 	 * @param crsProvider the CRS provider
 	 */

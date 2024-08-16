@@ -42,8 +42,7 @@ import eu.esdihumboldt.util.PropertiesFile;
 public class WorkspaceServiceImpl implements WorkspaceService {
 
 	/**
-	 * Prefix of property names that are part of the external workspace
-	 * settings.
+	 * Prefix of property names that are part of the external workspace settings.
 	 */
 	private static final String PROPERTY_SETTING_PREFIX = "setting_";
 
@@ -66,9 +65,9 @@ public class WorkspaceServiceImpl implements WorkspaceService {
 	/**
 	 * Create a workspace service instance.
 	 * 
-	 * @param workspacesDir the base directory for workspaces, if the location
-	 *            does not exist or is not accessible, a default location inside
-	 *            the platform instance location is used
+	 * @param workspacesDir the base directory for workspaces, if the location does
+	 *            not exist or is not accessible, a default location inside the
+	 *            platform instance location is used
 	 */
 	public WorkspaceServiceImpl(File workspacesDir) {
 		if (workspacesDir == null || !workspacesDir.exists()) {
@@ -217,8 +216,8 @@ public class WorkspaceServiceImpl implements WorkspaceService {
 	}
 
 	/**
-	 * Triggers the service scanning for workspace folders where the lease time
-	 * has ended and deletes them.
+	 * Triggers the service scanning for workspace folders where the lease time has
+	 * ended and deletes them.
 	 */
 	public void trigger() {
 		for (File candidate : parentDir.listFiles(new FileFilter() {

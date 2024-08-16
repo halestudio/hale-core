@@ -37,8 +37,8 @@ public class DefaultTreeHookFactory extends AbstractConfigurationFactory<Transfo
 	private final TreeState state;
 
 	/**
-	 * Create a {@link TransformationTreeHook} factory from the given
-	 * configuration element.
+	 * Create a {@link TransformationTreeHook} factory from the given configuration
+	 * element.
 	 * 
 	 * @param conf the configuration element
 	 * @param state the associated tree state

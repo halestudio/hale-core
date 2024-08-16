@@ -32,8 +32,8 @@ public interface InstanceTraverser {
 	 * 
 	 * @param instance the instance
 	 * @param callback the traversal callback
-	 * @return if traversal shall be continued, can be safely ignored if called
-	 *         from outside the traverser
+	 * @return if traversal shall be continued, can be safely ignored if called from
+	 *         outside the traverser
 	 */
 	public boolean traverse(Instance instance, InstanceTraversalCallback callback);
 
@@ -42,19 +42,19 @@ public interface InstanceTraverser {
 	 * 
 	 * @param group the group
 	 * @param callback the traversal callback
-	 * @return if traversal shall be continued, can be safely ignored if called
-	 *         from outside the traverser
+	 * @return if traversal shall be continued, can be safely ignored if called from
+	 *         outside the traverser
 	 */
 	public boolean traverse(Group group, InstanceTraversalCallback callback);
 
 	/**
 	 * Traverse the given value.
 	 * 
-	 * @param value the value, if a {@link Group} or {@link Instance} the call
-	 *            must be handed over to the respective traverse methods
+	 * @param value the value, if a {@link Group} or {@link Instance} the call must
+	 *            be handed over to the respective traverse methods
 	 * @param callback the traversal callback
-	 * @return if traversal shall be continued, can be safely ignored if called
-	 *         from outside the traverser
+	 * @return if traversal shall be continued, can be safely ignored if called from
+	 *         outside the traverser
 	 */
 	public boolean traverse(Object value, InstanceTraversalCallback callback);
 

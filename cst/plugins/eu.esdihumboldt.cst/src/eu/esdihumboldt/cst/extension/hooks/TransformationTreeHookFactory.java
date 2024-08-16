@@ -24,8 +24,8 @@ import eu.esdihumboldt.cst.extension.hooks.TransformationTreeHook.TreeState;
  * 
  * @author Simon Templer
  */
-public interface TransformationTreeHookFactory extends
-		ExtensionObjectFactory<TransformationTreeHook> {
+public interface TransformationTreeHookFactory
+		extends ExtensionObjectFactory<TransformationTreeHook> {
 
 	/**
 	 * Get the tree state associated to the hook.

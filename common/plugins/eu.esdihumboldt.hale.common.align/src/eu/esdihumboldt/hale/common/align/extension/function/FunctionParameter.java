@@ -20,14 +20,13 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.jcip.annotations.Immutable;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueDefinition;
 import eu.esdihumboldt.hale.common.core.parameter.ParameterUtil;
 import eu.esdihumboldt.hale.common.core.parameter.ParameterValueDescriptor;
 import eu.esdihumboldt.hale.common.core.parameter.Validator;
+import net.jcip.annotations.Immutable;
 
 /**
  * Definition of a function parameter.
@@ -35,7 +34,8 @@ import eu.esdihumboldt.hale.common.core.parameter.Validator;
  * @author Simon Templer
  */
 @Immutable
-public final class FunctionParameter extends AbstractParameter implements FunctionParameterDefinition {
+public final class FunctionParameter extends AbstractParameter
+		implements FunctionParameterDefinition {
 
 	private final Class<?> binding;
 	private final Validator validator;
@@ -67,8 +67,7 @@ public final class FunctionParameter extends AbstractParameter implements Functi
 	 * @see eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition#getBinding()
 	 */
 	@Override
-	public @Nullable
-	Class<?> getBinding() {
+	public @Nullable Class<?> getBinding() {
 		return binding;
 	}
 
@@ -76,8 +75,7 @@ public final class FunctionParameter extends AbstractParameter implements Functi
 	 * @see eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition#getEnumeration()
 	 */
 	@Override
-	public @Nullable
-	List<String> getEnumeration() {
+	public @Nullable List<String> getEnumeration() {
 		return enumeration;
 	}
 
@@ -85,8 +83,7 @@ public final class FunctionParameter extends AbstractParameter implements Functi
 	 * @see eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition#getValidator()
 	 */
 	@Override
-	public @Nullable
-	Validator getValidator() {
+	public @Nullable Validator getValidator() {
 		return validator;
 	}
 
@@ -110,8 +107,7 @@ public final class FunctionParameter extends AbstractParameter implements Functi
 	 * @see eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition#getComplexBinding()
 	 */
 	@Override
-	public @Nullable
-	ComplexValueDefinition getComplexBinding() {
+	public @Nullable ComplexValueDefinition getComplexBinding() {
 		return complexBinding;
 	}
 
@@ -119,8 +115,7 @@ public final class FunctionParameter extends AbstractParameter implements Functi
 	 * @see eu.esdihumboldt.hale.common.align.extension.function.FunctionParameterDefinition#getValueDescriptor()
 	 */
 	@Override
-	public @Nullable
-	ParameterValueDescriptor getValueDescriptor() {
+	public @Nullable ParameterValueDescriptor getValueDescriptor() {
 		return valueDescriptor;
 	}
 }

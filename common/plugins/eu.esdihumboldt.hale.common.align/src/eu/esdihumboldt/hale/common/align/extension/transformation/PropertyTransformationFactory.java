@@ -23,8 +23,8 @@ import eu.esdihumboldt.hale.common.align.transformation.function.PropertyTransfo
  * 
  * @author Simon Templer
  */
-public interface PropertyTransformationFactory extends
-		TransformationFactory<PropertyTransformation<?>> {
+public interface PropertyTransformationFactory
+		extends TransformationFactory<PropertyTransformation<?>> {
 
 	// concrete typed interface
 

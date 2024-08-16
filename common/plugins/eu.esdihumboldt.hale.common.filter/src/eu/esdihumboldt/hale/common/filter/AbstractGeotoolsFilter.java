@@ -30,8 +30,8 @@ import org.opengis.filter.expression.PropertyName;
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
 import eu.esdihumboldt.hale.common.align.groovy.accessor.EntityAccessor;
-import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement;
 import eu.esdihumboldt.hale.common.align.groovy.accessor.internal.EntityAccessorUtil;
+import eu.esdihumboldt.hale.common.align.groovy.accessor.path.PathElement;
 import eu.esdihumboldt.hale.common.align.instance.EntityAwareFilter;
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration;
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
@@ -226,8 +226,8 @@ public abstract class AbstractGeotoolsFilter
 				Path<PathElement> selected = candidates.get(0);
 
 				/*
-				 * XXX dirty hack to work around conditions in AdV
-				 * GeographicalNames alignment not being defined properly
+				 * XXX dirty hack to work around conditions in AdV GeographicalNames alignment
+				 * not being defined properly
 				 */
 				if (candidates.size() > 1) {
 					// prefer next candidate if this one is name in gml

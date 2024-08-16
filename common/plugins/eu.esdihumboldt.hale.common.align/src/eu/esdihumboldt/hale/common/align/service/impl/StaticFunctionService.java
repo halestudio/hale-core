@@ -71,7 +71,8 @@ public class StaticFunctionService implements FunctionService {
 	}
 
 	@Override
-	public Collection<? extends PropertyFunctionDefinition> getPropertyFunctions(String categoryId) {
+	public Collection<? extends PropertyFunctionDefinition> getPropertyFunctions(
+			String categoryId) {
 		return PropertyFunctionExtension.getInstance().getFunctions(categoryId);
 	}
 

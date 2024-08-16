@@ -34,8 +34,8 @@ public interface InstanceTraversalCallback {
 	 * Visit an instance.
 	 * 
 	 * @param instance the instance
-	 * @param name the property name the instance is a value of,
-	 *            <code>null</code> if it is the traversal root
+	 * @param name the property name the instance is a value of, <code>null</code>
+	 *            if it is the traversal root
 	 * @param parent the parent group, if applicable
 	 * @return if traversal shall be continued
 	 */
@@ -45,8 +45,8 @@ public interface InstanceTraversalCallback {
 	 * Visit a group that is not an {@link Instance}.
 	 * 
 	 * @param group the group
-	 * @param name the property name the group is a value of, <code>null</code>
-	 *            if it is the traversal root
+	 * @param name the property name the group is a value of, <code>null</code> if
+	 *            it is the traversal root
 	 * @param parent the parent group, if applicable
 	 * @return if traversal shall be continued
 	 */
@@ -56,8 +56,8 @@ public interface InstanceTraversalCallback {
 	 * Visit a value that is neither {@link Instance} nor {@link Group}.
 	 * 
 	 * @param value the value
-	 * @param name the property name the object is a value of, <code>null</code>
-	 *            if it is the traversal root
+	 * @param name the property name the object is a value of, <code>null</code> if
+	 *            it is the traversal root
 	 * @param parent the parent group, if applicable
 	 * @return if traversal shall be continued
 	 */

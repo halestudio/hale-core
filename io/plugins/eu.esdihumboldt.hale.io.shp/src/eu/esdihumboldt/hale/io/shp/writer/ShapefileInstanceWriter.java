@@ -184,8 +184,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	}
 
 	/**
-	 * Step 1. Method to create feature type for the shape file. This is the
-	 * first step, which creates the schema for the shape file.
+	 * Step 1. Method to create feature type for the shape file. This is the first
+	 * step, which creates the schema for the shape file.
 	 * 
 	 * shape file restrictions: <br>
 	 * a single geometry column named the_geom <br>
@@ -199,8 +199,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * @param instances the instance to write.
 	 * @param progress the progress indicator.
 	 * @param reporter the reporter.
-	 * @return map of SimpleFeatureType type used as a template to describe the
-	 *         file contents.
+	 * @return map of SimpleFeatureType type used as a template to describe the file
+	 *         contents.
 	 */
 	private Map<String, Map<String, SimpleFeatureType>> createFeatureType(
 			InstanceCollection instances, ProgressIndicator progress, IOReporter reporter) {
@@ -257,12 +257,11 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * @param instance instance.
 	 * @param localPart local part of <code>QName</code> which tracks multiple
 	 *            schemas.
-	 * @param geometryBuilderMap SimpleFeatureType to build schema definition
-	 *            for the shape file.
-	 * @param missingGeomsForSchemas track all the schemas with missing
-	 *            geometry, so that later they can be logged in the reporter and
-	 *            prevent throwing exception in case of more than one schema to
-	 *            export.
+	 * @param geometryBuilderMap SimpleFeatureType to build schema definition for
+	 *            the shape file.
+	 * @param missingGeomsForSchemas track all the schemas with missing geometry, so
+	 *            that later they can be logged in the reporter and prevent throwing
+	 *            exception in case of more than one schema to export.
 	 */
 	private void writeGeometrySchema(Instance instance, String localPart,
 			Map<String, SimpleFeatureTypeBuilder> geometryBuilderMap,
@@ -294,8 +293,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * 
 	 * @param instance instance to write to.
 	 * @param type type definition.
-	 * @param geometryBuilderMap SimpleFeatureType to build schema definition
-	 *            for the shape file.
+	 * @param geometryBuilderMap SimpleFeatureType to build schema definition for
+	 *            the shape file.
 	 */
 	private void writePropertiesSchema(Instance instance, TypeDefinition type,
 			Map<String, SimpleFeatureTypeBuilder> geometryBuilderMap) {
@@ -322,8 +321,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	}
 
 	/**
-	 * Method to truncate the property names up to 10 characters by splitting
-	 * them from camelCase, snake_case, or alphanumeric characters. E.g. <br/>
+	 * Method to truncate the property names up to 10 characters by splitting them
+	 * from camelCase, snake_case, or alphanumeric characters. E.g. <br/>
 	 * camelCase: caCa<br/>
 	 * snake_case: snca <br/>
 	 * alpha1234; al12 <br/>
@@ -332,12 +331,11 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * population: population
 	 * 
 	 * As the Shapefile DB doesn't allow more than 10 characters, the change is
-	 * required to avoid exporting null values to the columns whose name is
-	 * greater than 10 characters. This method intentionally truncates to 8
-	 * characters to leave a room for the unexpected scenario(s) where the
-	 * truncated names might clash, then the values will be appended with the
-	 * integers by the library and the null values will be exported (should be a
-	 * rare scenario).
+	 * required to avoid exporting null values to the columns whose name is greater
+	 * than 10 characters. This method intentionally truncates to 8 characters to
+	 * leave a room for the unexpected scenario(s) where the truncated names might
+	 * clash, then the values will be appended with the integers by the library and
+	 * the null values will be exported (should be a rare scenario).
 	 * 
 	 * @param propName property name to be truncated.
 	 * @return unchanged property name if <= 10 chars long or truncated property
@@ -405,8 +403,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * 
 	 * @param localPart local part of <code>QName</code> which tracks multiple
 	 *            schemas.
-	 * @param geometryBuilderMap simpleFeatureTypeBuilder which adds schema info
-	 *            for the shape file.
+	 * @param geometryBuilderMap simpleFeatureTypeBuilder which adds schema info for
+	 *            the shape file.
 	 * @param geom geometry.
 	 * @param geoProp GeometryProperty.
 	 */
@@ -437,8 +435,7 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * 
 	 * @param location location to store the shape files.
 	 * 
-	 * @param schemaSftMap type is used as a template to describe the file
-	 *            contents.
+	 * @param schemaSftMap type is used as a template to describe the file contents.
 	 * @return shape file data store.
 	 * @throws IOException exception if any.
 	 */
@@ -528,16 +525,15 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	}
 
 	/**
-	 * * Step 3. method to create features for the shape files and write them as
-	 * per the schema definition.<br>
-	 * Always the first entry should be "the_geom" then rest of the properties
-	 * can be written.
+	 * * Step 3. method to create features for the shape files and write them as per
+	 * the schema definition.<br>
+	 * Always the first entry should be "the_geom" then rest of the properties can
+	 * be written.
 	 * 
 	 * @param instances instance to write.
 	 * @param progress the progress indicator.
 	 * @param reporter the reporter.
-	 * @param schemaFtMap type is used as a template to describe the file
-	 *            contents.
+	 * @param schemaFtMap type is used as a template to describe the file contents.
 	 * @return list all the features to be added to the file bundled in map for
 	 *         multiple schemas and multiple geometries.
 	 */
@@ -660,8 +656,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 *            schema.
 	 * @param localPart local part of <code>QName</code> which tracks multiple
 	 *            schemas.
-	 * @param geometryProperty geometry property to extract the CRS definition
-	 *            and the geometry.
+	 * @param geometryProperty geometry property to extract the CRS definition and
+	 *            the geometry.
 	 */
 	private void addGeometryData(IOReporter reporter,
 			Map<String, Map<String, SimpleFeatureBuilder>> schemaFbMap, String localPart,
@@ -680,8 +676,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * 
 	 * @param schemaDataStoreMap data store for the shape file.
 	 * @param schemaFtMap used as a template to describe the file contents.
-	 * @param schemaFeaturesMap for each schema, each geom list of features to
-	 *            be written to the shape file.
+	 * @param schemaFeaturesMap for each schema, each geom list of features to be
+	 *            written to the shape file.
 	 * @return List of file names that were written (without suffixes)
 	 * @throws IOException if any.
 	 */
@@ -743,8 +739,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	/**
 	 * Create the CPG file starting from the Shapefile
 	 * 
-	 * @param cpgFilePath Path of the file to be written with just one line of
-	 *            the encoding
+	 * @param cpgFilePath Path of the file to be written with just one line of the
+	 *            encoding
 	 * @throws IOException exception in any.
 	 */
 	public void writeCodePageFile(String cpgFilePath) throws IOException {

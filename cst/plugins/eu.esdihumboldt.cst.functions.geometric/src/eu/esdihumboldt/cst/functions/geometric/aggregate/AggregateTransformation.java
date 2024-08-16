@@ -22,9 +22,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.ListMultimap;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryCollection;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -34,6 +31,10 @@ import org.locationtech.jts.geom.MultiPoint;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.Cell;
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
@@ -57,9 +58,9 @@ import eu.esdihumboldt.util.geometry.CurveHelper;
  * 
  * @author Simon Templer
  */
-public class AggregateTransformation extends
-		AbstractSingleTargetPropertyTransformation<TransformationEngine> implements
-		AggregateFunction {
+public class AggregateTransformation
+		extends AbstractSingleTargetPropertyTransformation<TransformationEngine>
+		implements AggregateFunction {
 
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,
@@ -85,13 +86,12 @@ public class AggregateTransformation extends
 	 * @param cell the currently process cell or <code>null</code>
 	 * @param log the transformation log or <code>null</code>
 	 * @return the aggregated geometry
-	 * @throws TransformationException if source geometries don't have a common
-	 *             CRS
+	 * @throws TransformationException if source geometries don't have a common CRS
 	 * @throws NoResultException if the result extent would be <code>null</code>
 	 */
 	public static GeometryProperty<?> aggregateGeometries(Iterable<?> geometries,
-			@Nullable TransformationLog log, @Nullable Cell cell) throws NoResultException,
-			TransformationException {
+			@Nullable TransformationLog log, @Nullable Cell cell)
+			throws NoResultException, TransformationException {
 		InstanceTraverser traverser = new DepthFirstInstanceTraverser(true);
 		GeometryFinder geoFind = new GeometryFinder(null);
 
@@ -178,8 +178,8 @@ public class AggregateTransformation extends
 					.toArray(new Polygon[collectedGeometries.size()]));
 		}
 		else {
-			return fact.createGeometryCollection(collectedGeometries
-					.toArray(new Geometry[collectedGeometries.size()]));
+			return fact.createGeometryCollection(
+					collectedGeometries.toArray(new Geometry[collectedGeometries.size()]));
 		}
 	}
 

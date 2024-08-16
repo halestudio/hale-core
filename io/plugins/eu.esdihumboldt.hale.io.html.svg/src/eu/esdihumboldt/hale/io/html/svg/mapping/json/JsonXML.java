@@ -57,12 +57,12 @@ public class JsonXML {
 			throws XMLStreamException, FactoryConfigurationError, TransformerConfigurationException,
 			TransformerException, TransformerFactoryConfigurationError {
 		/*
-		 * If we want to insert JSON array boundaries for multiple elements, we
-		 * need to set the <code>autoArray</code> property. If our XML source
-		 * was decorated with <code>&lt;?xml-multiple?&gt;</code> processing
-		 * instructions, we'd set the <code>multiplePI</code> property instead.
-		 * With the <code>autoPrimitive</code> property set, element text gets
-		 * automatically converted to JSON primitives (number, boolean, null).
+		 * If we want to insert JSON array boundaries for multiple elements, we need to
+		 * set the <code>autoArray</code> property. If our XML source was decorated with
+		 * <code>&lt;?xml-multiple?&gt;</code> processing instructions, we'd set the
+		 * <code>multiplePI</code> property instead. With the <code>autoPrimitive</code>
+		 * property set, element text gets automatically converted to JSON primitives
+		 * (number, boolean, null).
 		 */
 		JsonXMLConfig config = new JsonXMLConfigBuilder().namespaceDeclarations(true)
 				.autoArray(true).autoPrimitive(true).prettyPrint(false).build();
@@ -90,12 +90,11 @@ public class JsonXML {
 			throws XMLStreamException, FactoryConfigurationError, TransformerConfigurationException,
 			TransformerException, TransformerFactoryConfigurationError {
 		/*
-		 * If the <code>multiplePI</code> property is set to <code>true</code>,
-		 * the StAXON reader will generate <code>&lt;xml-multiple&gt;</code>
-		 * processing instructions which would be copied to the XML output.
-		 * These can be used by StAXON when converting back to JSON to trigger
-		 * array starts. Set to <code>false</code> if you don't need to go back
-		 * to JSON.
+		 * If the <code>multiplePI</code> property is set to <code>true</code>, the
+		 * StAXON reader will generate <code>&lt;xml-multiple&gt;</code> processing
+		 * instructions which would be copied to the XML output. These can be used by
+		 * StAXON when converting back to JSON to trigger array starts. Set to
+		 * <code>false</code> if you don't need to go back to JSON.
 		 */
 		JsonXMLConfig config = new JsonXMLConfigBuilder().multiplePI(false).build();
 		/*
@@ -123,8 +122,8 @@ public class JsonXML {
 			TransformerException, TransformerFactoryConfigurationError,
 			ParserConfigurationException, IOException, SAXException {
 		/*
-		 * Sadly not working like this - we get a NullPointerException because
-		 * during the transformation setXmlVersion is called with null
+		 * Sadly not working like this - we get a NullPointerException because during
+		 * the transformation setXmlVersion is called with null
 		 */
 //        JsonXMLConfig config = new JsonXMLConfigBuilder().multiplePI(false).build();
 //        // Create source (JSON).

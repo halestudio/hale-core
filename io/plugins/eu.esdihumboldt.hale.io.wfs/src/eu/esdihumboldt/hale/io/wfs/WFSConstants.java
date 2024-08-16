@@ -28,8 +28,8 @@ public interface WFSConstants {
 	public static final String CONTENT_TYPE_ID_WFST = "eu.esdihumboldt.hale.io.wfs-t";
 
 	/**
-	 * Name of the parameter specifying the WFS version for I/O providers
-	 * related to WFS.
+	 * Name of the parameter specifying the WFS version for I/O providers related to
+	 * WFS.
 	 */
 	public static final String PARAM_WFS_VERSION = "wfsVersion";
 

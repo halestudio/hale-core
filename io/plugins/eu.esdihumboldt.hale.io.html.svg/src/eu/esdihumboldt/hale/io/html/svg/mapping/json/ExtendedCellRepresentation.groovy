@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.html.svg.mapping.json
 
+import groovy.transform.CompileStatic
+
 import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 
@@ -33,7 +35,6 @@ import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition
 import eu.esdihumboldt.hale.common.align.model.impl.TypeEntityDefinition
 import eu.esdihumboldt.hale.common.core.service.ServiceProvider
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
-import groovy.transform.CompileStatic
 
 
 /**
@@ -125,5 +126,4 @@ class ExtendedCellRepresentation implements CellJsonExtension {
 			jaxbJson.writeEntity(json, xentity)
 		}
 	}
-
 }

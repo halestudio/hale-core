@@ -49,13 +49,12 @@ public abstract class ConstraintUtil {
 	 * @param <T> the constraint type
 	 * 
 	 * @param constraintType the concrete constraint type, i.e. a type annotated
-	 *            with {@link Constraint} and defining a default constructor
-	 *            and/or a constructor taking a {@link Definition} as an
-	 *            argument
+	 *            with {@link Constraint} and defining a default constructor and/or
+	 *            a constructor taking a {@link Definition} as an argument
 	 * @param definition the definition the constraint will be associated to
 	 * @return the default constraint of the given type
-	 * @throws IllegalArgumentException if the given type is no constraint type
-	 *             or creating the default constraint fails
+	 * @throws IllegalArgumentException if the given type is no constraint type or
+	 *             creating the default constraint fails
 	 * 
 	 * @see Constraint
 	 * @see Definition#getConstraint(Class)
@@ -64,8 +63,8 @@ public abstract class ConstraintUtil {
 	public static <T> T getDefaultConstraint(Class<T> constraintType, Definition<?> definition)
 			throws IllegalArgumentException {
 		if (!constraintType.isAnnotationPresent(Constraint.class)) {
-			throw new IllegalArgumentException("The type " + constraintType.getName()
-					+ " is no constraint type.");
+			throw new IllegalArgumentException(
+					"The type " + constraintType.getName() + " is no constraint type.");
 		}
 
 		Object cached = cachedDefaults.get(constraintType);
@@ -126,8 +125,8 @@ public abstract class ConstraintUtil {
 	}
 
 	/**
-	 * Determine the constraint type in the hierarchy of the given type, i.e.
-	 * the type that is marked with {@link Constraint}
+	 * Determine the constraint type in the hierarchy of the given type, i.e. the
+	 * type that is marked with {@link Constraint}
 	 * 
 	 * @param type the type to determine the constraint type for
 	 * @return the constraint type
@@ -137,8 +136,8 @@ public abstract class ConstraintUtil {
 	public static Class<?> getConstraintType(Class<?> type) throws IllegalArgumentException {
 		while (!type.isAnnotationPresent(Constraint.class)) {
 			if (type.equals(Object.class)) {
-				throw new IllegalArgumentException("The type " + type.getName()
-						+ " has no constraint type in its hierarchy.");
+				throw new IllegalArgumentException(
+						"The type " + type.getName() + " has no constraint type in its hierarchy.");
 			}
 
 			type = type.getSuperclass();

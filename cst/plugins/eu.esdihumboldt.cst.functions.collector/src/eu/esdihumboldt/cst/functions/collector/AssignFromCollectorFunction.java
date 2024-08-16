@@ -28,8 +28,8 @@ public interface AssignFromCollectorFunction {
 	public static final String ID = "eu.esdihumboldt.cst.functions.collector.assign";
 
 	/**
-	 * Name of the parameter specifying the name of the collector to assign
-	 * values from.
+	 * Name of the parameter specifying the name of the collector to assign values
+	 * from.
 	 */
 	public static final String PARAMETER_COLLECTOR = "collector";
 

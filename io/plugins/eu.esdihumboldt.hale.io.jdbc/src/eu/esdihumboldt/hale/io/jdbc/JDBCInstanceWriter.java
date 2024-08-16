@@ -174,16 +174,16 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Write instances to a database connection Auto incremental keys are
-	 * written to the database with the new generated values, and updated the
-	 * foreign key values with this newly generated auto incremental values of
-	 * the referenced column.
+	 * Write instances to a database connection Auto incremental keys are written to
+	 * the database with the new generated values, and updated the foreign key
+	 * values with this newly generated auto incremental values of the referenced
+	 * column.
 	 * 
 	 * <p>
 	 * <b>Limitation:</b>
 	 * </p>
-	 * This implementation for auto generated key insert is supported only for
-	 * those tables which has only single auto generated fields.
+	 * This implementation for auto generated key insert is supported only for those
+	 * tables which has only single auto generated fields.
 	 * 
 	 * @param connection the database connection
 	 * @param instances the instances to write
@@ -292,12 +292,11 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * 
-	 * This helps to store the mapping of the old value to the auto generated
-	 * value for a particular type. If same type appears twice that means the
-	 * sorting and filtering of the types has not been done properly.
+	 * This helps to store the mapping of the old value to the auto generated value
+	 * for a particular type. If same type appears twice that means the sorting and
+	 * filtering of the types has not been done properly.
 	 * 
-	 * @param type a type definition whose child has the auto incremented
-	 *            constraint
+	 * @param type a type definition whose child has the auto incremented constraint
 	 * @param orgId original id as string
 	 * @param genId auto incremented id
 	 */
@@ -321,29 +320,29 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * 
-	 * Retrieves the target schema and orders it based on the references, so
-	 * that there should not be any integrity constrain violation exception.
+	 * Retrieves the target schema and orders it based on the references, so that
+	 * there should not be any integrity constrain violation exception.
 	 * <p>
 	 * <b> Algorithm for sorting </b>
 	 * </p>
 	 * The steps for sorting the types based on references are as follows:
 	 * <ol>
 	 * <li>Create a new <code>set</code> for the sorted types</li>
-	 * <li>Create a visited type map to keep hold of the types whose references
-	 * have already been checked.
+	 * <li>Create a visited type map to keep hold of the types whose references have
+	 * already been checked.
 	 * 
 	 * <li>Iterate over the types that needs to be sorted
 	 * <ol>
-	 * <li>If the type is already in the visited map means references for this
-	 * type have already been checked. (Again checking could lead to cyclic
-	 * referencing in the infinite loop)</li>
+	 * <li>If the type is already in the visited map means references for this type
+	 * have already been checked. (Again checking could lead to cyclic referencing
+	 * in the infinite loop)</li>
 	 * <li>Exit the current recursion.</li>
 	 * <li>Iterate over the child definition of the types and check for the
 	 * referenced types</li>
-	 * <li>If there are reference types then iterate over each referenced type
-	 * and recurse to the step (3.1) with this iterated referenced type</li>
-	 * <li>Traverse till the type whose childs do not have any reference, add
-	 * this type to the sorted set first</li>
+	 * <li>If there are reference types then iterate over each referenced type and
+	 * recurse to the step (3.1) with this iterated referenced type</li>
+	 * <li>Traverse till the type whose childs do not have any reference, add this
+	 * type to the sorted set first</li>
 	 * <li>Add the iterated type</li>
 	 * 
 	 * </ol>
@@ -374,10 +373,10 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * gets the list of the referenced type definitions. This is used for
-	 * sorting the types based on the references. This method recursively calls
-	 * itself till it finds a type which does not have any reference and that
-	 * type to the sorted list as first element.
+	 * gets the list of the referenced type definitions. This is used for sorting
+	 * the types based on the references. This method recursively calls itself till
+	 * it finds a type which does not have any reference and that type to the sorted
+	 * list as first element.
 	 * 
 	 * @param td type definition of the reference
 	 * @return list of type definitions of referenced
@@ -412,8 +411,8 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Filters the set of properties to only contain properties that can be used
-	 * for inserting (e. g. no groups).
+	 * Filters the set of properties to only contain properties that can be used for
+	 * inserting (e. g. no groups).
 	 * 
 	 * @param type the type definition
 	 * @param properties the available properties
@@ -435,8 +434,8 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * Currently, auto incremented fields are not inserted into the statement.
 	 * 
 	 * @param type the type definition
-	 * @param properties the set properties of the instance for which this
-	 *            statement is
+	 * @param properties the set properties of the instance for which this statement
+	 *            is
 	 * @param typeStatements the already created statements
 	 * @param connection the database connection
 	 * @return the insert statement
@@ -507,12 +506,12 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Populate a prepared insert statement with values from the given instance.
 	 * Checks if the property has auto incremental constraint, if it has then it
-	 * maps the original old id to the id that is auto incremented while
-	 * inserting the value. This mapping is used when inserting the foreign key
-	 * values associated with those auto incremented column ids whose value has
-	 * been changed. Thus, insertion of the foreign key wont fail. It will
-	 * either execute the statement directly or add it into the batches
-	 * depending upon the auto incremented flag.
+	 * maps the original old id to the id that is auto incremented while inserting
+	 * the value. This mapping is used when inserting the foreign key values
+	 * associated with those auto incremented column ids whose value has been
+	 * changed. Thus, insertion of the foreign key wont fail. It will either execute
+	 * the statement directly or add it into the batches depending upon the auto
+	 * incremented flag.
 	 * 
 	 * 
 	 * @param statement the insert statement

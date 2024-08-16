@@ -100,8 +100,8 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	// serialization
 
 	/**
-	 * Get the collector as map/list structure. This method is not thread safe
-	 * and should not be used while the collector is modified.
+	 * Get the collector as map/list structure. This method is not thread safe and
+	 * should not be used while the collector is modified.
 	 * 
 	 * @param compact if a compact representation should be used
 	 * 
@@ -160,8 +160,8 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	}
 
 	/**
-	 * Get the collector as Json string. This method is not thread safe and
-	 * should not be used while the collector is modified.
+	 * Get the collector as Json string. This method is not thread safe and should
+	 * not be used while the collector is modified.
 	 * 
 	 * @param compact if a compact representation should be used
 	 * 
@@ -172,8 +172,8 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	}
 
 	/**
-	 * Load the collector from a map/list structure. This method is not thread
-	 * safe and should not be used while the collector is modified.
+	 * Load the collector from a map/list structure. This method is not thread safe
+	 * and should not be used while the collector is modified.
 	 * 
 	 * @param from the list or map to load the collector from
 	 */

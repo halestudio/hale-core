@@ -38,8 +38,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractPropertyTransformation<E extends TransformationEngine> extends
-		AbstractTransformationFunction<E> implements PropertyTransformation<E> {
+public abstract class AbstractPropertyTransformation<E extends TransformationEngine>
+		extends AbstractTransformationFunction<E> implements PropertyTransformation<E> {
 
 	private ListMultimap<String, Object> results;
 	private ListMultimap<String, PropertyValue> variables;
@@ -57,8 +57,8 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 	}
 
 	/**
-	 * Get the target type of the instance that is to be populated with the
-	 * function result.
+	 * Get the target type of the instance that is to be populated with the function
+	 * result.
 	 * 
 	 * @return the target instance type
 	 */
@@ -121,8 +121,8 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 	 * @param variables the input variables
 	 * @param resultNames the expected results (names associated with the
 	 *            corresponding entity definitions)
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @return the evaluation result

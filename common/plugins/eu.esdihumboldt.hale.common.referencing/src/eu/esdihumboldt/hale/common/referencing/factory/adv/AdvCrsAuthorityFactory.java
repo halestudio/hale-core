@@ -103,8 +103,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	private final Map<String, CoordinateReferenceSystem> cache = new HashMap<String, CoordinateReferenceSystem>();
 
 	/**
-	 * The name used in {@link Hints#FORCE_AXIS_ORDER_HONORING} for this
-	 * factory.
+	 * The name used in {@link Hints#FORCE_AXIS_ORDER_HONORING} for this factory.
 	 */
 	public static final String HINTS_AUTHORITY = "urn";
 
@@ -143,8 +142,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * Add an AdV CRS definition
 	 * 
 	 * @param code the CRS code (e.g. DE_DHDN_3GK3)
-	 * @param epsgCode the code of the corresponding EPSG CRS (must include
-	 *            prefix)
+	 * @param epsgCode the code of the corresponding EPSG CRS (must include prefix)
 	 */
 	public void addCodeMapping(String code, String epsgCode) {
 		Objects.requireNonNull("AdV code must not be null", code);
@@ -164,8 +162,8 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	/**
 	 * Get the EPSG code for the given AdV code
 	 * 
-	 * @param code the CRS code (e.g. DE_DHDN_3GK3 or urn:adv:crs:DE_DHDN_3GK3)
-	 *            that the AdV CRS is associated with
+	 * @param code the CRS code (e.g. DE_DHDN_3GK3 or urn:adv:crs:DE_DHDN_3GK3) that
+	 *            the AdV CRS is associated with
 	 * @return the EPSG code or <code>null</code>
 	 */
 	public String getEpsgCode(String code) {

@@ -15,18 +15,18 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
-import org.junit.Test
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import javax.xml.namespace.QName
 
+import org.junit.Test
 import org.locationtech.jts.geom.Polygon
 
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
-import groovy.transform.CompileStatic
-
-import static org.junit.Assert.*
 
 /**
  * Tests creation of {@link GeometryType} constraints w/ {@link GeometryFactory}.

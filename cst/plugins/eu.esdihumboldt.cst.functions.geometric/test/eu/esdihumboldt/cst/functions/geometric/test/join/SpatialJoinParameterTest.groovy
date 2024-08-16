@@ -15,18 +15,15 @@
 
 package eu.esdihumboldt.cst.functions.geometric.test.join
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Test
-
 import javax.xml.namespace.QName
 
+import org.junit.Test
+import org.locationtech.jts.geom.Geometry
 import org.w3c.dom.Element
 
-import org.locationtech.jts.geom.Geometry
-
 import eu.esdihumboldt.cst.functions.geometric.join.SpatialJoinParameter
-import eu.esdihumboldt.cst.functions.geometric.join.SpatialJoinParameterType
 import eu.esdihumboldt.cst.functions.geometric.join.SpatialJoinParameter.SpatialJoinCondition
+import eu.esdihumboldt.cst.functions.geometric.join.SpatialJoinParameterType
 import eu.esdihumboldt.cst.functions.geometric.join.SpatialRelationEvaluator.StandardRelation
 import eu.esdihumboldt.hale.common.align.io.LoadAlignmentContext
 import eu.esdihumboldt.hale.common.align.io.impl.internal.LoadAlignmentContextImpl
@@ -37,6 +34,7 @@ import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for {@link SpatialJoinParameter}

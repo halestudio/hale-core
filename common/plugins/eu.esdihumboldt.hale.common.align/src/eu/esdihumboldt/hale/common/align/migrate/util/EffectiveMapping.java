@@ -38,10 +38,10 @@ import eu.esdihumboldt.hale.common.align.model.impl.DefaultCell;
 public class EffectiveMapping {
 
 	/**
-	 * Convert an alignment into an expanded version where all effective
-	 * mappings are defined explicitly, i.e. mappings effective due to
-	 * inheritance are converted to use the respective sub-types. Also, base
-	 * alignment cells are converted into normal cells.
+	 * Convert an alignment into an expanded version where all effective mappings
+	 * are defined explicitly, i.e. mappings effective due to inheritance are
+	 * converted to use the respective sub-types. Also, base alignment cells are
+	 * converted into normal cells.
 	 * 
 	 * @param alignment the alignment to convert
 	 * @return the expanded copy of the alignment

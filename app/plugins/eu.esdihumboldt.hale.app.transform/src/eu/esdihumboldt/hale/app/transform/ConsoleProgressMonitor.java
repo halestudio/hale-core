@@ -28,39 +28,40 @@ import com.google.common.base.Objects;
  * @author Simon Templer
  */
 public class ConsoleProgressMonitor implements IProgressMonitor, ConsoleConstants {
-	
+
 	private static final String PROG_PREFIX = MSG_PREFIX + "-- ";
 
 	private static final long TRIGGER_CLOCK_MS = 500;
-	
+
 	private String mainTaskName;
-	
+
 	private String currentTask;
-	
+
 	private int totalWork;
-	
+
 	private int worked = 0;
-	
+
 	private boolean canceled = false;
-	
+
 	private long lastTrigger = -1;
 
 	@Override
 	public void beginTask(String name, int totalWork) {
 		this.mainTaskName = name;
 		this.totalWork = totalWork;
-		
+
 //		System.out.println(PROG_PREFIX + "Starting task: " + mainTaskName);
 	}
-	
+
 	private void trigger(boolean force) {
 		long now = new Date().getTime();
-		
+
 		if (force || lastTrigger < 0 || now - lastTrigger > TRIGGER_CLOCK_MS) {
 			if (totalWork > 0 && totalWork != UNKNOWN) {
-				System.out.println(PROG_PREFIX + MessageFormat.format((currentTask == null) ? ("{0} - {1,number,percent}")
-						: ("{0} - {1,number,percent} - {2}"), mainTaskName, (float) worked
-						/ (float) totalWork, currentTask));
+				System.out.println(PROG_PREFIX + MessageFormat.format(
+						(currentTask == null) ? ("{0} - {1,number,percent}")
+								: ("{0} - {1,number,percent} - {2}"),
+						mainTaskName, (float) worked / (float) totalWork, currentTask));
 			}
 			else {
 				if (currentTask != null) {
@@ -71,7 +72,7 @@ public class ConsoleProgressMonitor implements IProgressMonitor, ConsoleConstant
 					System.out.println(PROG_PREFIX + mainTaskName);
 				}
 			}
-			
+
 			lastTrigger = now;
 		}
 	}

@@ -55,8 +55,7 @@ public class DriverConfiguration implements Identifiable {
 	private final boolean isFileBased;
 
 	/**
-	 * Create a connection configuration from a corresponding configuration
-	 * element.
+	 * Create a connection configuration from a corresponding configuration element.
 	 * 
 	 * @param elementId the identifier
 	 * @param element the configuration element
@@ -142,8 +141,7 @@ public class DriverConfiguration implements Identifiable {
 	/**
 	 * Loading a driver
 	 * 
-	 * @return Driver the {@link Driver} implements instance or
-	 *         <code>null</code>
+	 * @return Driver the {@link Driver} implements instance or <code>null</code>
 	 * 
 	 * @throws ClassNotFoundException throws a Class not found exception
 	 */

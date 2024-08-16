@@ -36,8 +36,8 @@ public class MultiValue extends ArrayList<Object> {
 	}
 
 	/**
-	 * Constructs a list containing the elements of the specified collection, in
-	 * the order they are returned by the collection's iterator.
+	 * Constructs a list containing the elements of the specified collection, in the
+	 * order they are returned by the collection's iterator.
 	 * 
 	 * @param c the collection whose elements are to be placed into this list
 	 */

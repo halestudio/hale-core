@@ -49,8 +49,8 @@ public interface ClassificationMappingFunction {
 	public static final String PARAMETER_NOT_CLASSIFIED_ACTION = "notClassifiedAction";
 
 	/**
-	 * Value for PARAMETER_NOT_CLASSIFIED_ACTION specifying that the source
-	 * value should be used.
+	 * Value for PARAMETER_NOT_CLASSIFIED_ACTION specifying that the source value
+	 * should be used.
 	 */
 	public static final String USE_SOURCE_ACTION = "source";
 

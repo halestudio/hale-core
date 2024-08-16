@@ -19,8 +19,8 @@ package eu.esdihumboldt.hale.common.core.report.impl;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.core.report.Message;
+import net.jcip.annotations.Immutable;
 
 /**
  * Default message implementation

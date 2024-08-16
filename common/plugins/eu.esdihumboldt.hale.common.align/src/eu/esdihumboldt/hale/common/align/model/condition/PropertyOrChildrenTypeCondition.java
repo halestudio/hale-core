@@ -87,8 +87,8 @@ public class PropertyOrChildrenTypeCondition implements PropertyCondition {
 		}
 
 		// test the children
-		for (ChildDefinition<?> child : DefinitionUtil.getAllChildren(DefinitionUtil
-				.getDefinitionGroup(def))) {
+		for (ChildDefinition<?> child : DefinitionUtil
+				.getAllChildren(DefinitionUtil.getDefinitionGroup(def))) {
 			EntityDefinition childDef = AlignmentUtil.getChild(entityDef, child.getName());
 			if (accept(childDef, tested)) {
 				return true;

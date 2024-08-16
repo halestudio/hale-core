@@ -53,8 +53,8 @@ public class ComplexValueDefinition implements Identifiable, ComplexValueType<Ob
 	 * @param jsonConverter the complex value JSON converter class, may be
 	 *            <code>null</code>
 	 * @param valueType the complex value type
-	 * @throws IllegalAccessException if access to the default constructor of
-	 *             the descriptor class is not allowed
+	 * @throws IllegalAccessException if access to the default constructor of the
+	 *             descriptor class is not allowed
 	 * @throws InstantiationException if the descriptor object cannot be created
 	 */
 	@SuppressWarnings("rawtypes")
@@ -129,8 +129,7 @@ public class ComplexValueDefinition implements Identifiable, ComplexValueType<Ob
 	 * @return the JSON converter or <code>null</code>
 	 */
 	@SuppressWarnings("unchecked")
-	public @Nullable
-	ComplexValueJson<Object, Object> getJsonConverter() {
+	public @Nullable ComplexValueJson<Object, Object> getJsonConverter() {
 		return jsonConverter;
 	}
 

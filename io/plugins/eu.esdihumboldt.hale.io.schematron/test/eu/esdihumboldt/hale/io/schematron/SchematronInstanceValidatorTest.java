@@ -17,11 +17,11 @@ package eu.esdihumboldt.hale.io.schematron;
 
 import static org.junit.Assert.assertEquals;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.io.schematron.validator.SchematronInstanceValidator;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for the {@link SchematronInstanceValidator}.

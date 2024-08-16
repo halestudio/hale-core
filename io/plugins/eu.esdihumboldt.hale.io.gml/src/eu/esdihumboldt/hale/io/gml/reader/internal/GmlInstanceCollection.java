@@ -92,8 +92,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		private TypeDefinition nextType;
 
 		/**
-		 * The index in the stream for the element returned next with
-		 * {@link #next()}
+		 * The index in the stream for the element returned next with {@link #next()}
 		 */
 		private int elementIndex = 0;
 
@@ -103,8 +102,8 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		private boolean rootEncountered = false;
 
 		/**
-		 * Variable for tracking current type to be able to determine types
-		 * based on internal nested elements.
+		 * Variable for tracking current type to be able to determine types based on
+		 * internal nested elements.
 		 * 
 		 * Uses a linked list to allow null items.
 		 */
@@ -367,15 +366,15 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		}
 
 		/**
-		 * Process an eventual exception / error report document. This method is
-		 * called at the START_ELEMENT event of the root element.
+		 * Process an eventual exception / error report document. This method is called
+		 * at the START_ELEMENT event of the root element.
 		 * 
 		 * @throws XMLStreamException if an error occurs parsing the document
 		 */
 		private void processExceptionReport() throws XMLStreamException {
 			/*
-			 * This code is very specific, handling certain cases of error
-			 * documents that may be encountered.
+			 * This code is very specific, handling certain cases of error documents that
+			 * may be encountered.
 			 */
 
 			QName elementName = reader.getName();
@@ -456,8 +455,8 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 				// WFS 1.0.0 Exception Report
 
 				/*
-				 * Seems to be returned even by some WFS 1.1/WFS 2 services and
-				 * without proper namespace definition.
+				 * Seems to be returned even by some WFS 1.1/WFS 2 services and without proper
+				 * namespace definition.
 				 */
 				StringBuilder message = new StringBuilder(
 						"Document is a OGC ServiceExceptionReport");
@@ -579,8 +578,8 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		}
 
 		/**
-		 * Get the type of the next instance. Must be called after
-		 * {@link #hasNext()} but before {@link #next()} or {@link #skip()}
+		 * Get the type of the next instance. Must be called after {@link #hasNext()}
+		 * but before {@link #next()} or {@link #skip()}
 		 * 
 		 * @return the type of the next instance
 		 */
@@ -678,16 +677,16 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 	 * 
 	 * @param source the source
 	 * @param sourceSchema the source schema
-	 * @param restrictToFeatures if only instances that are GML features shall
-	 *            be loaded
+	 * @param restrictToFeatures if only instances that are GML features shall be
+	 *            loaded
 	 * @param ignoreRoot if the root element should be ignored for creating
 	 *            instances even if it is recognized as an allowed instance type
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
 	 * @param provider the I/O provider to get values

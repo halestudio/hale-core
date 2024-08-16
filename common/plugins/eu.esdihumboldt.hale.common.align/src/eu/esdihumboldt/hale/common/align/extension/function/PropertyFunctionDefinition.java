@@ -20,7 +20,8 @@ package eu.esdihumboldt.hale.common.align.extension.function;
  * 
  * @author Simon Templer
  */
-public interface PropertyFunctionDefinition extends FunctionDefinition<PropertyParameterDefinition> {
+public interface PropertyFunctionDefinition
+		extends FunctionDefinition<PropertyParameterDefinition> {
 
 	// concrete typed interface
 

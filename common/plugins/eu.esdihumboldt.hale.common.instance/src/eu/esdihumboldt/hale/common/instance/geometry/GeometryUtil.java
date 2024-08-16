@@ -56,7 +56,8 @@ public class GeometryUtil {
 	 *            will yield no geometries
 	 * @return the default geometries or an empty collection if there is none
 	 */
-	public static Collection<GeometryProperty<?>> getGeometries(Instance instance, List<QName> path) {
+	public static Collection<GeometryProperty<?>> getGeometries(Instance instance,
+			List<QName> path) {
 		Collection<GeometryProperty<?>> geometries = new ArrayList<GeometryProperty<?>>();
 		if (path == null) {
 			return geometries;
@@ -145,8 +146,7 @@ public class GeometryUtil {
 	 * Try to get/create geometry properties from a property value.
 	 * 
 	 * @param value the property value, e.g. a {@link Geometry},
-	 *            {@link GeometryProperty}, a {@link Collection} or
-	 *            {@link Instance}
+	 *            {@link GeometryProperty}, a {@link Collection} or {@link Instance}
 	 * @return the geometry properties or an empty list if none could be created
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })

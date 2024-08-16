@@ -27,8 +27,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
  * @param <T> the provider type
  * @author Stefano Costa, GeoSolutions
  */
-public abstract class InstanceReaderDecorator<T extends InstanceReader> extends
-		ImportProviderDecorator<T> implements InstanceReader {
+public abstract class InstanceReaderDecorator<T extends InstanceReader>
+		extends ImportProviderDecorator<T> implements InstanceReader {
 
 	/**
 	 * @see ImportProviderDecorator#ImportProviderDecorator(eu.esdihumboldt.hale.common.core.io.ImportProvider)

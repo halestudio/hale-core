@@ -47,8 +47,7 @@ public abstract class CRSDefinitionUtil {
 	private static final Map<CRSDefinition, String> crsCodes = new HashMap<>();
 
 	/**
-	 * Create a {@link CRSDefinition} from an existing coordinate reference
-	 * system.
+	 * Create a {@link CRSDefinition} from an existing coordinate reference system.
 	 * 
 	 * @param crs the coordinate reference system
 	 * @param cache the cache for CRS resolving
@@ -92,9 +91,8 @@ public abstract class CRSDefinitionUtil {
 	/**
 	 * Try to lookup the given CRS via Geotools. If the CRS can be resolved, the
 	 * returned {@link CRSDefinition} will contain a
-	 * {@link CoordinateReferenceSystem} with additional information like
-	 * Bursa-Wolf parameters, otherwise the WKT definition of the input CRS will
-	 * be used as is.
+	 * {@link CoordinateReferenceSystem} with additional information like Bursa-Wolf
+	 * parameters, otherwise the WKT definition of the input CRS will be used as is.
 	 * 
 	 * @param crs The CRS to look up
 	 * @return A {@link CodeDefinition} with the resolved CRS or a

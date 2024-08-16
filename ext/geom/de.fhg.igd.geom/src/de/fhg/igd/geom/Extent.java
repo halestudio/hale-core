@@ -169,8 +169,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * @param ext the Extent that may have any relation to this Extent
-	 * @return true if the specified Extent has ANY spacial relation to this
-	 *         Extent.
+	 * @return true if the specified Extent has ANY spacial relation to this Extent.
 	 */
 	public boolean any(Extent ext) {
 		return (this.intersects(ext) || this.covers(ext) || ext.covers(this) || ext.equals(this)
@@ -178,11 +177,11 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	}
 
 	/**
-	 * This method will return true if 1..2 corners of the given extent lie
-	 * within this Extent. If you want to check for all spatial relationships,
-	 * use intersectsOrCovers(Extent). It will also return true if the extents
-	 * have a cross-shaped intersections, that is, if no points lie in the other
-	 * extent but when the lines of the extent actually cut each other.
+	 * This method will return true if 1..2 corners of the given extent lie within
+	 * this Extent. If you want to check for all spatial relationships, use
+	 * intersectsOrCovers(Extent). It will also return true if the extents have a
+	 * cross-shaped intersections, that is, if no points lie in the other extent but
+	 * when the lines of the extent actually cut each other.
 	 * 
 	 * @param ex the extent that may be intersected by this extent
 	 * @return true if this Extent intersects the given one
@@ -236,8 +235,8 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	// canonical java methods ..................................................
 
 	/**
-	 * Two extents are defined as being equal when their LL and UR coordinates
-	 * are equal.
+	 * Two extents are defined as being equal when their LL and UR coordinates are
+	 * equal.
 	 * 
 	 * @param o the extent to compare to
 	 * @return true if both extents are equal
@@ -256,8 +255,8 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	}
 
 	/**
-	 * checks if min* and max* are actually in the expected relation. If a pair
-	 * is real and in the wrong order, it is swapped.
+	 * checks if min* and max* are actually in the expected relation. If a pair is
+	 * real and in the wrong order, it is swapped.
 	 */
 	private void normalize() {
 		if (MathHelper.isReal(minX) && MathHelper.isReal(maxX) && maxX < minX) {
@@ -273,8 +272,8 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	}
 
 	/**
-	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y)
-	 * == true
+	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
+	 * true
 	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -399,8 +398,8 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	 * Compares the area of this extent to another one
 	 * 
 	 * @param e the other extent to compare to
-	 * @return -1, 0, 1 if the area of this extent is greater than, equal to or
-	 *         less than the other one.
+	 * @return -1, 0, 1 if the area of this extent is greater than, equal to or less
+	 *         than the other one.
 	 */
 	@Override
 	public int compareTo(Extent e) {

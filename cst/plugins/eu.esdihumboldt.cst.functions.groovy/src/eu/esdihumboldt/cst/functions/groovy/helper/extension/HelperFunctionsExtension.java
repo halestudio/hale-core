@@ -99,8 +99,8 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 	}
 
 	/**
-	 * Initialize the extension point from the registered extensions (if not
-	 * already done).
+	 * Initialize the extension point from the registered extensions (if not already
+	 * done).
 	 */
 	protected void init() {
 		if (initialized.compareAndSet(false, true)) {
@@ -175,8 +175,8 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 	 * 
 	 * @param helperClass the helper class, either a {@link HelperFunction} or a
 	 *            class that defines helper functions by convention
-	 * @param customName the custom name for a helper function, only applicable
-	 *            for {@link HelperFunction} classes
+	 * @param customName the custom name for a helper function, only applicable for
+	 *            {@link HelperFunction} classes
 	 * @return the functions that were loaded from the class
 	 * @throws Exception if loading the functions failed
 	 */
@@ -199,9 +199,13 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 			List<HelperFunctionWrapper> functions = new ArrayList<>();
 			for (Method method : helperClass.getMethods()) {
 				int modifiers = method.getModifiers();
-				if (method.getName().startsWith("_")
-						&& !method.getName().startsWith(
-								"__") /* exclude __$swapInit and the like */
+				if (method.getName().startsWith("_") && !method.getName().startsWith("__") /*
+																							 * exclude
+																							 * __$swapInit
+																							 * and
+																							 * the
+																							 * like
+																							 */
 						&& !Modifier.isAbstract(modifiers)
 						&& !method.getName().endsWith(SPEC_END)) {
 					HelperFunctionWrapper function = loadFunction(method, helperClass);

@@ -48,8 +48,8 @@ public interface CellNode extends TransformationNode {
 	public List<SourceNode> getSources();
 
 	/**
-	 * Get the entity names for the given source node. These are the names of
-	 * the cell entities the node is associated to.
+	 * Get the entity names for the given source node. These are the names of the
+	 * cell entities the node is associated to.
 	 * 
 	 * @param source the source node
 	 * @return the source names
@@ -80,8 +80,8 @@ public interface CellNode extends TransformationNode {
 	public void setValid(boolean valid);
 
 	/**
-	 * Get the value of the valid annotation. Returns <code>false</code> in any
-	 * case if no validation has been performed yet.
+	 * Get the value of the valid annotation. Returns <code>false</code> in any case
+	 * if no validation has been performed yet.
 	 * 
 	 * @return if the cell node is valid in its configuration for transformation
 	 *         execution

@@ -15,12 +15,13 @@
 
 package eu.esdihumboldt.hale.io.wfs.capabilities
 
+import groovy.transform.CompileStatic
+import groovy.transform.Immutable
+
 import javax.annotation.Nullable
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.io.wfs.WFSVersion
-import groovy.transform.CompileStatic
-import groovy.transform.Immutable
 
 
 /**

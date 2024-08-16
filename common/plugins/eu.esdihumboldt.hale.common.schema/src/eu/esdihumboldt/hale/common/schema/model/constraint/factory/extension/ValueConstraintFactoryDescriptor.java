@@ -42,7 +42,8 @@ public class ValueConstraintFactoryDescriptor implements Identifiable {
 	 * @throws Exception if an error occurs loading the classes or creating the
 	 *             factory
 	 */
-	public ValueConstraintFactoryDescriptor(String id, IConfigurationElement conf) throws Exception {
+	public ValueConstraintFactoryDescriptor(String id, IConfigurationElement conf)
+			throws Exception {
 		this.id = id;
 		constraintType = ExtensionUtil.loadClass(conf, "type");
 		String fcName = conf.getAttribute("factory");

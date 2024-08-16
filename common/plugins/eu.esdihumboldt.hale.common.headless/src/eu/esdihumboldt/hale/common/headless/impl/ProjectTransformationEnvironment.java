@@ -271,8 +271,8 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 	}
 
 	/**
-	 * Create a copy of the transformation environment with the alignment
-	 * replaced by the given alignment.
+	 * Create a copy of the transformation environment with the alignment replaced
+	 * by the given alignment.
 	 * 
 	 * @param alignment the alignment to use for the copy
 	 * @return the transformation environment

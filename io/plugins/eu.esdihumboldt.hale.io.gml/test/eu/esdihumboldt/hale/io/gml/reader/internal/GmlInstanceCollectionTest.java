@@ -28,7 +28,6 @@ import java.util.Collection;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -46,6 +45,7 @@ import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements;
 import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests for {@link GmlInstanceCollection}
@@ -65,8 +65,8 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test loading a simple XML file with one instance, containing mixed
-	 * content elements.
+	 * Test loading a simple XML file with one instance, containing mixed content
+	 * elements.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -95,9 +95,8 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 			assertTrue(item1 instanceof Instance);
 
 			/*
-			 * XXX mixed content properties currently are treated rather
-			 * special, currently ignoring elements and only using the
-			 * attributes and text.
+			 * XXX mixed content properties currently are treated rather special, currently
+			 * ignoring elements and only using the attributes and text.
 			 */
 
 			Object[] note1 = ((Instance) item1).getProperty(new QName(ns, "note"));
@@ -312,8 +311,7 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test loading a simple XML file with one instance including an <xs:all>
-	 * group.
+	 * Test loading a simple XML file with one instance including an <xs:all> group.
 	 *
 	 * @throws Exception if an error occurs
 	 */

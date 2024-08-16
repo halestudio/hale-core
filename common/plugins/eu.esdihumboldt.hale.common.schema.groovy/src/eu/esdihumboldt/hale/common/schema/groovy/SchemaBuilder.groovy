@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.schema.groovy.constraints.AugmentedValueFactory
@@ -46,8 +49,6 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeIndex
 import eu.esdihumboldt.util.groovy.builder.BuilderBase
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 
 
@@ -428,5 +429,4 @@ class SchemaBuilder extends BuilderBase {
 
 		name
 	}
-
 }

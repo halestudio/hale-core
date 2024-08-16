@@ -20,7 +20,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.net.URI;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,6 +33,7 @@ import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.io.jdbc.JDBCInstanceReader;
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 import eu.esdihumboldt.hale.io.jdbc.mssql.MsSqlURIBuilder;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
@@ -143,8 +143,7 @@ public class MsSQLServer14Test extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Reads instances from from a MsAccess database file with the provided
-	 * schema.
+	 * Reads instances from from a MsAccess database file with the provided schema.
 	 *
 	 * @param sourceSchema the schema of the source database
 	 * @return the read instances

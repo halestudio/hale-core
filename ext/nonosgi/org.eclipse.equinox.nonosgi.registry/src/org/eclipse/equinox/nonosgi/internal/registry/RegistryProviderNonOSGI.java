@@ -62,14 +62,13 @@ public class RegistryProviderNonOSGI implements IRegistryProvider {
 			// RegistryStrategy
 
 			// 1. Create an instance of RegistryStrategy for no OSGi-env.
-			RegistryStrategy strategy = new RegistryStrategyNonOSGI(
-					storageDirs, cacheReadOnly, masterRegistryKey);
+			RegistryStrategy strategy = new RegistryStrategyNonOSGI(storageDirs, cacheReadOnly,
+					masterRegistryKey);
 
 			// 2. Create an instance of IExtensionRegistry by using the instance
 			// of
 			// RegistryStrategy
-			registry = RegistryFactory.createRegistry(strategy,
-					masterRegistryKey, userRegistryKey);
+			registry = RegistryFactory.createRegistry(strategy, masterRegistryKey, userRegistryKey);
 		}
 		return registry;
 	}

@@ -51,8 +51,7 @@ public interface WorkspaceService {
 	public File getWorkspaceFolder(String id) throws FileNotFoundException;
 
 	/**
-	 * Get the lease end date and time of the workspace with the given
-	 * identifier.
+	 * Get the lease end date and time of the workspace with the given identifier.
 	 * 
 	 * @param workspaceId the workspace identifier
 	 * @return the lease end, if the workspace exists
@@ -72,8 +71,8 @@ public interface WorkspaceService {
 	 * 
 	 * @see #set(String, String, String)
 	 */
-	public Map<String, String> getSettings(String workspaceId) throws FileNotFoundException,
-			IOException;
+	public Map<String, String> getSettings(String workspaceId)
+			throws FileNotFoundException, IOException;
 
 	/**
 	 * Change a workspace setting.
@@ -87,8 +86,8 @@ public interface WorkspaceService {
 	 * 
 	 * @see #getSettings(String)
 	 */
-	public void set(String workspaceId, String setting, String value) throws FileNotFoundException,
-			IOException;
+	public void set(String workspaceId, String setting, String value)
+			throws FileNotFoundException, IOException;
 
 	/**
 	 * Delete the workspace with the given identifier.

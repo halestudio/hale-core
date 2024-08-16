@@ -36,13 +36,13 @@ public abstract class SRSUtil {
 	private static final ALogger log = ALoggerFactory.getLogger(SRSUtil.class);
 
 	/**
-	 * get SRS code. First find in cache, if unsuccessful then get from database
-	 * and also store in cache.
+	 * get SRS code. First find in cache, if unsuccessful then get from database and
+	 * also store in cache.
 	 * 
 	 * @param srId a spatial reference id attached to object
 	 * @param con A {@link SQLServerConnection} object
-	 * @return String value of SRS code or <code>null</code> if absent in cache
-	 *         and fail to load from database
+	 * @return String value of SRS code or <code>null</code> if absent in cache and
+	 *         fail to load from database
 	 */
 	public static String getSRS(int srId, SQLServerConnection con) {
 		if (cache.get(srId) == null) {
@@ -70,8 +70,8 @@ public abstract class SRSUtil {
 	}
 
 	/**
-	 * get SRS text. First find in cache, if unsuccessful then get from database
-	 * and also store in cache.
+	 * get SRS text. First find in cache, if unsuccessful then get from database and
+	 * also store in cache.
 	 * 
 	 * @param srId a spatial reference id attached to object
 	 * @param con A {@link SQLServerConnection} object

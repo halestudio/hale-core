@@ -11,6 +11,7 @@
 package eu.esdihumboldt.hale.util.nonosgi.contenttype;
 
 public interface ContentTypeVisitor {
+
 	int CONTINUE = 0;
 	int RETURN = 1;
 	int STOP = 2;

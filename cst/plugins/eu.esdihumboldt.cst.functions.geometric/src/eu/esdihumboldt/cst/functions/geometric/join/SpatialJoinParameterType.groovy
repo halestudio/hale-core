@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.cst.functions.geometric.join;
 
+import groovy.xml.dom.DOMCategory
+
 import javax.xml.parsers.DocumentBuilderFactory
 
 import org.w3c.dom.Document
@@ -30,7 +32,6 @@ import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.model.TypeIndex
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 import eu.esdihumboldt.util.xml.XmlUtil
-import groovy.xml.dom.DOMCategory
 
 /**
  * Descriptor for conversion between DOM and SpatialJoinParameter.

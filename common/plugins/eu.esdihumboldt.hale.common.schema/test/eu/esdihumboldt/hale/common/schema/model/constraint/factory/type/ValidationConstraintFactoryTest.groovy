@@ -15,9 +15,9 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.factory.type
 
-import org.junit.Test
-
 import javax.xml.namespace.QName
+
+import org.junit.Test
 
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.factory.AbstractValueConstraintFactoryTest

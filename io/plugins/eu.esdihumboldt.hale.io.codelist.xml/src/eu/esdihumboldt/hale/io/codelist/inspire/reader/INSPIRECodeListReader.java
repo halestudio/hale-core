@@ -118,8 +118,8 @@ public class INSPIRECodeListReader extends AbstractImportProvider implements Cod
 	}
 
 	/**
-	 * Load an XML document via HTTP, providing headers to request proper format
-	 * and language.
+	 * Load an XML document via HTTP, providing headers to request proper format and
+	 * language.
 	 * 
 	 * @param loc the location
 	 * @return the XML document
@@ -269,9 +269,9 @@ public class INSPIRECodeListReader extends AbstractImportProvider implements Cod
 
 	/**
 	 * This method creates a fluent request for the given URI reference resource
-	 * location, adds header to accept application/xml content type. Sets the
-	 * proxy if proxy is configured. Executes the fluent request and returns the
-	 * fluent response
+	 * location, adds header to accept application/xml content type. Sets the proxy
+	 * if proxy is configured. Executes the fluent request and returns the fluent
+	 * response
 	 * 
 	 * @param uri uri reference of the resource location.
 	 * @return Executor, returns the executor for executing fluent request

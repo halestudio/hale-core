@@ -46,8 +46,8 @@ public interface LookupService {
 	 * Remove the lookup table with the given identifier.
 	 * 
 	 * @param id the resource ID identifying the lookup table to remove
-	 * @return <code>true</code> if the lookup table was present and
-	 *         successfully removed, <code>false</code> otherwise
+	 * @return <code>true</code> if the lookup table was present and successfully
+	 *         removed, <code>false</code> otherwise
 	 */
 	public boolean removeTable(String id);
 

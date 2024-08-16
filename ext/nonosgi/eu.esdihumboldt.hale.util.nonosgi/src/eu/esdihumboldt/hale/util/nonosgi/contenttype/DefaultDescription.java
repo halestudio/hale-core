@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.content.IContentDescription;
 
 /**
- * A content description for which all  properties have default values. 
+ * A content description for which all properties have default values.
  */
 public final class DefaultDescription extends BasicDescription {
 

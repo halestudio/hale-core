@@ -52,8 +52,8 @@ public class UnionBinding extends Binding {
 			Class<?> binding = it.next().getConstraint(Binding.class).getBinding();
 
 			while (it.hasNext()) {
-				binding = findCompatibleClass(binding, it.next().getConstraint(Binding.class)
-						.getBinding());
+				binding = findCompatibleClass(binding,
+						it.next().getConstraint(Binding.class).getBinding());
 			}
 
 			return binding;
@@ -78,7 +78,8 @@ public class UnionBinding extends Binding {
 		}
 		// special treatment for string - if any binding is compatible to
 		// String, it is returned
-		else if (String.class.isAssignableFrom(binding) || String.class.isAssignableFrom(binding2)) {
+		else if (String.class.isAssignableFrom(binding)
+				|| String.class.isAssignableFrom(binding2)) {
 			return String.class;
 		}
 		else {

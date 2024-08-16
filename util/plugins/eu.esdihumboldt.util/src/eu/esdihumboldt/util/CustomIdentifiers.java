@@ -52,8 +52,8 @@ public class CustomIdentifiers<T> extends Identifiers<T> {
 	 * 
 	 * @param object the object to identify
 	 * @param desiredId the desired identifier
-	 * @return the object identifier, if the identifier was newly assigned this
-	 *         is either the desiredId or the desiredId with a suffix
+	 * @return the object identifier, if the identifier was newly assigned this is
+	 *         either the desiredId or the desiredId with a suffix
 	 */
 	public String getId(T object, final String desiredId) {
 		String currentId = fetchId(object);

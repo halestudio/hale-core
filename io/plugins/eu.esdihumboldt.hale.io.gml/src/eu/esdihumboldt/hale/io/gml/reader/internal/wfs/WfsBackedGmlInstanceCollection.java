@@ -118,26 +118,25 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	 * 
 	 * @param source the source
 	 * @param sourceSchema the source schema
-	 * @param restrictToFeatures if only instances that are GML features shall
-	 *            be loaded
+	 * @param restrictToFeatures if only instances that are GML features shall be
+	 *            loaded
 	 * @param ignoreRoot if the root element should be ignored for creating
 	 *            instances even if it is recognized as an allowed instance type
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
 	 * @param provider the I/O provider to get values
-	 * @param featuresPerRequest Number of features to retrieve at most with one
-	 *            WFS GetFeature request, or {@value #UNLIMITED} to disable
-	 *            pagination
-	 * @param ignoreNumberMatched If featuresPerRequest is set, ignore the
-	 *            number of matches reported by the WFS
-	 * @throws URISyntaxException thrown if the WFS request URL cannot be
-	 *             generated from the source location URI
+	 * @param featuresPerRequest Number of features to retrieve at most with one WFS
+	 *            GetFeature request, or {@value #UNLIMITED} to disable pagination
+	 * @param ignoreNumberMatched If featuresPerRequest is set, ignore the number of
+	 *            matches reported by the WFS
+	 * @throws URISyntaxException thrown if the WFS request URL cannot be generated
+	 *             from the source location URI
 	 */
 	public WfsBackedGmlInstanceCollection(LocatableInputSupplier<? extends InputStream> source,
 			TypeIndex sourceSchema, boolean restrictToFeatures, boolean ignoreRoot, boolean strict,
@@ -153,27 +152,26 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	 * 
 	 * @param source the source
 	 * @param sourceSchema the source schema
-	 * @param restrictToFeatures if only instances that are GML features shall
-	 *            be loaded
+	 * @param restrictToFeatures if only instances that are GML features shall be
+	 *            loaded
 	 * @param ignoreRoot if the root element should be ignored for creating
 	 *            instances even if it is recognized as an allowed instance type
-	 * @param strict if associating elements with properties should be done
-	 *            strictly according to the schema, otherwise a fall-back is
-	 *            used trying to populate values also on invalid property paths
-	 * @param ignoreNamespaces if parsing of the XML instances should allow
-	 *            types and properties with namespaces that differ from those
-	 *            defined in the schema
+	 * @param strict if associating elements with properties should be done strictly
+	 *            according to the schema, otherwise a fall-back is used trying to
+	 *            populate values also on invalid property paths
+	 * @param ignoreNamespaces if parsing of the XML instances should allow types
+	 *            and properties with namespaces that differ from those defined in
+	 *            the schema
 	 * @param crsProvider CRS provider in case no CRS is specified, may be
 	 *            <code>null</code>
 	 * @param provider the I/O provider to get values
-	 * @param featuresPerRequest Number of features to retrieve at most with one
-	 *            WFS GetFeature request, or {@value #UNLIMITED} to disable
-	 *            pagination
-	 * @param ignoreNumberMatched If featuresPerRequest is set, ignore the
-	 *            number of matches reported by the WFS
+	 * @param featuresPerRequest Number of features to retrieve at most with one WFS
+	 *            GetFeature request, or {@value #UNLIMITED} to disable pagination
+	 * @param ignoreNumberMatched If featuresPerRequest is set, ignore the number of
+	 *            matches reported by the WFS
 	 * @param tmpDirPath tmp dir path to download all wfs files
-	 * @throws URISyntaxException thrown if the WFS request URL cannot be
-	 *             generated from the source location URI
+	 * @throws URISyntaxException thrown if the WFS request URL cannot be generated
+	 *             from the source location URI
 	 */
 	public WfsBackedGmlInstanceCollection(LocatableInputSupplier<? extends InputStream> source,
 			TypeIndex sourceSchema, boolean restrictToFeatures, boolean ignoreRoot, boolean strict,
@@ -271,9 +269,8 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	/**
 	 * Set an absolute limit for the amount of features to be retrieved.
 	 * 
-	 * @param maxNumberOfFeatures valid values are -1 for unlimited retrieval or
-	 *            a positive integer (or zero) to impose an absolute feature
-	 *            limit.
+	 * @param maxNumberOfFeatures valid values are -1 for unlimited retrieval or a
+	 *            positive integer (or zero) to impose an absolute feature limit.
 	 */
 	public void setMaxNumberOfFeatures(int maxNumberOfFeatures) {
 		if (maxNumberOfFeatures < -1) {
@@ -405,10 +402,10 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 	 * 
 	 * The iterator will not load more features per WFS GetFeature request than
 	 * specified in the {@link WfsBackedGmlInstanceCollection}. If the WFS query
-	 * yields more results, multiple GetFeature request will be issued
-	 * transparently to the WFS until all results have been retrieved or the
-	 * maximum number of features as specified in the
-	 * {@link WfsBackedGmlInstanceCollection} was reached.
+	 * yields more results, multiple GetFeature request will be issued transparently
+	 * to the WFS until all results have been retrieved or the maximum number of
+	 * features as specified in the {@link WfsBackedGmlInstanceCollection} was
+	 * reached.
 	 * 
 	 * @author Florian Esser
 	 */
@@ -426,9 +423,9 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		}
 
 		/**
-		 * Closes the iterator of the currently active GmlInstanceCollection and
-		 * creates a new one for the next WFS request. If the new request yields
-		 * no result, this {@link WfsBackedGmlInstanceIterator} is closed.
+		 * Closes the iterator of the currently active GmlInstanceCollection and creates
+		 * a new one for the next WFS request. If the new request yields no result, this
+		 * {@link WfsBackedGmlInstanceIterator} is closed.
 		 */
 		private void proceedOrClose() {
 			iterator.close();
@@ -551,9 +548,9 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		}
 
 		/**
-		 * @return true if the number of features processed is equal to (or
-		 *         exceeds) the maximum number of features to processed or the
-		 *         number of results reported by the WFS.
+		 * @return true if the number of features processed is equal to (or exceeds) the
+		 *         maximum number of features to processed or the number of results
+		 *         reported by the WFS.
 		 */
 		protected boolean isFeatureLimitReached() {
 			return (maxNumberOfFeatures != UNLIMITED
@@ -587,8 +584,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 		}
 
 		/**
-		 * @return true if all results from the original WFS request have been
-		 *         retrieved
+		 * @return true if all results from the original WFS request have been retrieved
 		 */
 		public boolean isClosed() {
 			return iterator == null;

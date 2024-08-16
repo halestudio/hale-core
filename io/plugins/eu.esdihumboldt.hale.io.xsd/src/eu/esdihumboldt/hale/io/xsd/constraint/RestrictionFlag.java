@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.io.xsd.constraint;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type's super type relation is a restriction, disabled by default
@@ -41,9 +41,8 @@ public final class RestrictionFlag extends AbstractFlagConstraint implements Typ
 	public static final RestrictionFlag DISABLED = new RestrictionFlag(false);
 
 	/**
-	 * Creates a default restriction flag, which is disabled. If possible,
-	 * instead of creating an instance, use {@link #ENABLED} or
-	 * {@link #DISABLED}.
+	 * Creates a default restriction flag, which is disabled. If possible, instead
+	 * of creating an instance, use {@link #ENABLED} or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

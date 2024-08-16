@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.cli.project
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 import eu.esdihumboldt.hale.common.core.report.ReportHandler
 import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment
-import groovy.transform.CompileStatic
 
 @CompileStatic
 abstract class AbstractProjectEnvironmentCommand extends AbstractProjectCommand<ProjectTransformationEnvironment> {

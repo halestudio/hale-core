@@ -36,8 +36,8 @@ public class PredefinedProjectFile implements ProjectFile {
 	private final InputSupplier<? extends InputStream> source;
 
 	/**
-	 * Create a pre-defined project file with the given input supplier
-	 * specifying the file content.
+	 * Create a pre-defined project file with the given input supplier specifying
+	 * the file content.
 	 * 
 	 * @param source the file content source
 	 */

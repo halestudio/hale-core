@@ -51,9 +51,9 @@ public class DockerConfigInstance implements ContainerParameters {
 	}
 
 	/**
-	 * It checks if the global configuration for the docker host is available.
-	 * It overrides the local configuration for the docker host and takes the
-	 * global configuration.
+	 * It checks if the global configuration for the docker host is available. It
+	 * overrides the local configuration for the docker host and takes the global
+	 * configuration.
 	 * 
 	 * @see eu.esdihumboldt.hale.common.test.docker.config.ContainerParameters#getDockerHost()
 	 */

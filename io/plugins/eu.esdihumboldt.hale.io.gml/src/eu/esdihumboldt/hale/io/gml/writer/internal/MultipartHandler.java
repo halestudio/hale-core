@@ -37,9 +37,8 @@ public interface MultipartHandler {
 	String getTargetFilename(InstanceCollection part, URI originalTarget);
 
 	/**
-	 * Extension point to provide a stream writer with special capabilities.
-	 * Returns the provided writer unless overridden by the handler
-	 * implementation.
+	 * Extension point to provide a stream writer with special capabilities. Returns
+	 * the provided writer unless overridden by the handler implementation.
 	 * 
 	 * @param writer Original writer
 	 * @param target Output target

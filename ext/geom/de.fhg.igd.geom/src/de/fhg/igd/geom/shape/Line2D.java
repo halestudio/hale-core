@@ -60,22 +60,21 @@ public class Line2D extends Shape {
 	 * @param geometryFactory the factory for JTS geometries
 	 * @return the converted LineString
 	 */
-	private org.locationtech.jts.geom.LineString toJTSLineString(
-			GeometryFactory geometryFactory) {
+	private org.locationtech.jts.geom.LineString toJTSLineString(GeometryFactory geometryFactory) {
 		Coordinate[] coords = new Coordinate[this.getPoints().length];
 		for (int i = 0; i < this.getPoints().length; i++) {
 			coords[i] = new Coordinate(this.getPoints()[i].getX(), this.getPoints()[i].getY());
 		}
 		CoordinateSequenceFactory csf = CoordinateArraySequenceFactory.instance();
 		CoordinateSequence cs = csf.create(coords);
-		org.locationtech.jts.geom.LineString jts_ls = new org.locationtech.jts.geom.LineString(
-				cs, geometryFactory);
+		org.locationtech.jts.geom.LineString jts_ls = new org.locationtech.jts.geom.LineString(cs,
+				geometryFactory);
 		return jts_ls;
 	}
 
 	/**
-	 * @param buffer - a value that defines how far around the line the buffer
-	 *            shall extend.
+	 * @param buffer - a value that defines how far around the line the buffer shall
+	 *            extend.
 	 * @return a Polygon that is the buffer area.
 	 */
 	public Surface computeBuffer(double buffer) {

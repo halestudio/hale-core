@@ -65,13 +65,13 @@ public abstract class AbstractMultiPolygonWriter extends AbstractGeometryWriter<
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, MultiPolygon geometry, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		for (int i = 0; i < geometry.getNumGeometries(); i++) {
 			if (i > 0) {
 				writer.writeStartElement(elementName.getNamespaceURI(), elementName.getLocalPart());

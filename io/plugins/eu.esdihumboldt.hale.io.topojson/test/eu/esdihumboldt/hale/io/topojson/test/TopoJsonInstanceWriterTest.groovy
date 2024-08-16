@@ -15,11 +15,12 @@
 
 package eu.esdihumboldt.hale.io.topojson.test
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNull
 import static org.junit.Assert.assertTrue
+
+import groovy.json.JsonSlurper
+import groovy.transform.CompileStatic
 
 import java.nio.file.Files
 import java.nio.file.Path
@@ -40,8 +41,7 @@ import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.hale.io.topojson.TopoJsonInstanceWriter
-import groovy.json.JsonSlurper
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 
 /**

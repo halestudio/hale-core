@@ -53,7 +53,8 @@ public interface EntityResolver {
 	 * @return the schema property entity
 	 * @throws IllegalStateException if resolving the entity is not possible
 	 */
-	public Property resolveProperty(PropertyType entity, TypeIndex schema, SchemaSpaceID schemaSpace);
+	public Property resolveProperty(PropertyType entity, TypeIndex schema,
+			SchemaSpaceID schemaSpace);
 
 	/**
 	 * Resolve a schema type entity based on the given JAXB type.

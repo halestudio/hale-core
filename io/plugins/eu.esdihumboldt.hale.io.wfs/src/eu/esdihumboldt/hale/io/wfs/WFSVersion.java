@@ -23,15 +23,16 @@ import java.net.URI;
  * @author Simon Templer
  */
 public enum WFSVersion {
+
 	/** WFS 1.1.0 */
-	V1_1_0("1.1.0", "http://www.opengis.net/wfs", URI
-			.create("http://schemas.opengis.net/wfs/1.1.0/wfs.xsd")),
+	V1_1_0("1.1.0", "http://www.opengis.net/wfs",
+			URI.create("http://schemas.opengis.net/wfs/1.1.0/wfs.xsd")),
 	/** WFS 2.0.0 */
-	V2_0_0("2.0.0", "http://www.opengis.net/wfs/2.0", URI
-			.create("http://schemas.opengis.net/wfs/2.0/wfs.xsd")),
+	V2_0_0("2.0.0", "http://www.opengis.net/wfs/2.0",
+			URI.create("http://schemas.opengis.net/wfs/2.0/wfs.xsd")),
 	/** WFS 2.0.2 */
-	V2_0_2("2.0.2", "http://www.opengis.net/wfs/2.0", URI
-			.create("http://schemas.opengis.net/wfs/2.0/wfs.xsd"));
+	V2_0_2("2.0.2", "http://www.opengis.net/wfs/2.0",
+			URI.create("http://schemas.opengis.net/wfs/2.0/wfs.xsd"));
 
 	/**
 	 * The version string.
@@ -61,8 +62,8 @@ public enum WFSVersion {
 	 * Derive a WFS version from a version string.
 	 * 
 	 * @param version the version string
-	 * @param defVersion the default version to return if it cannot be
-	 *            determined from the given string
+	 * @param defVersion the default version to return if it cannot be determined
+	 *            from the given string
 	 * @return the detected or default version
 	 */
 	public static WFSVersion fromString(String version, WFSVersion defVersion) {

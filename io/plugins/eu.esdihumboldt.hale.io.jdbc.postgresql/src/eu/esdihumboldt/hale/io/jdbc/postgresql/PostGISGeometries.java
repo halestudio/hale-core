@@ -24,11 +24,6 @@ import java.util.function.Supplier;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.geometry.jts.WKTReader2;
 import org.geotools.referencing.CRS;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.MathTransform;
-import org.postgis.PGgeometry;
-import org.postgresql.PGConnection;
-
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.MultiLineString;
@@ -36,6 +31,10 @@ import org.locationtech.jts.geom.MultiPoint;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.operation.MathTransform;
+import org.postgis.PGgeometry;
+import org.postgresql.PGConnection;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -64,9 +63,9 @@ public class PostGISGeometries implements GeometryAdvisor<PGConnection> {
 	@Override
 	public boolean isFixedType(ColumnDataType columnType) {
 		/*
-		 * Concrete information on geometry type and SRS is not stored in the
-		 * column but as metadata in the database. Therefore every column has to
-		 * be configured on its own.
+		 * Concrete information on geometry type and SRS is not stored in the column but
+		 * as metadata in the database. Therefore every column has to be configured on
+		 * its own.
 		 */
 		return false;
 	}
@@ -82,8 +81,8 @@ public class PostGISGeometries implements GeometryAdvisor<PGConnection> {
 			Statement stmt = con.createStatement();
 			// Get the srid, dimension and geometry type
 			/*
-			 * FIXME this query should also take into account the schema and
-			 * possibly the column name.
+			 * FIXME this query should also take into account the schema and possibly the
+			 * column name.
 			 */
 			ResultSet rs = stmt.executeQuery(
 					"SELECT srid,type,coord_dimension FROM geometry_columns WHERE f_table_name = "
@@ -187,9 +186,9 @@ public class PostGISGeometries implements GeometryAdvisor<PGConnection> {
 		pGeometry = new PGgeometry(targetGeometry.toText());
 		try {
 			/*
-			 * FIXME This assumes that the code is the same as the SRID, which
-			 * often is the case, but we cannot rely on that. Should the SRID be
-			 * stored as additional information in the geometry metadata?
+			 * FIXME This assumes that the code is the same as the SRID, which often is the
+			 * case, but we cannot rely on that. Should the SRID be stored as additional
+			 * information in the geometry metadata?
 			 */
 			pGeometry.getGeometry().setSrid(Integer.parseInt(columnTypeMetadata.getSrs()));
 		} catch (Exception e) {

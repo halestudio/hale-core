@@ -32,11 +32,9 @@ public class ContributorFactoryNonOSGI {
 	 * Creates registry contributor object based on a "Bundle-SymbolicName". The
 	 * symbolicName must not be <code>null</code>.
 	 * 
-	 * @param symbolicName
-	 *            "Bundle-SymbolicName" metadata from Bundle MANIFEST.MF
+	 * @param symbolicName "Bundle-SymbolicName" metadata from Bundle MANIFEST.MF
 	 *            associated with the contribution
-	 * @return new registry contributor based on the "Bundle-SymbolicName"
-	 *         metadata.
+	 * @return new registry contributor based on the "Bundle-SymbolicName" metadata.
 	 */
 	public static RegistryContributor createContributor(String symbolicName) {
 		String id = Long.toString(bundleId++);

@@ -61,9 +61,9 @@ public class ClientUtil {
 	 *            <code>null</code> to use the default (20)
 	 * @param maxConnPerRoute the maximum number of connections per route or
 	 *            <code>null</code> to use the default (2)
-	 * @param enablePerHostMetrics if metrics that include information on routes
-	 *            per individual host should be collected (if metric collection
-	 *            is enabled)
+	 * @param enablePerHostMetrics if metrics that include information on routes per
+	 *            individual host should be collected (if metric collection is
+	 *            enabled)
 	 * 
 	 * @return the created HTTP client
 	 */

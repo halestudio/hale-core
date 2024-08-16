@@ -234,8 +234,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * @param bb the BoundingBox that may have any relation to this one
-	 * @return true if the given BoundingBox has any spatial relation to this
-	 *         one.
+	 * @return true if the given BoundingBox has any spatial relation to this one.
 	 */
 	public boolean any(BoundingBox bb) {
 		return (this.intersects(bb) || this.covers(bb) || bb.covers(this) || bb.equals(this)
@@ -256,8 +255,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * This checks if this Bounding Box completely contains the parameter
-	 * Bounding Box.
+	 * This checks if this Bounding Box completely contains the parameter Bounding
+	 * Box.
 	 * 
 	 * @param bbox the other BoundingBox
 	 * @return true if this Box contains bbox, false otherwise
@@ -341,8 +340,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * Test emptiness, i.e. whether at least one axis has zero width and the box
-	 * is regular.
+	 * Test emptiness, i.e. whether at least one axis has zero width and the box is
+	 * regular.
 	 * 
 	 * @return whether the bounding box is empty.
 	 */
@@ -380,8 +379,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * Checks if this BoundingBox intersects with or covers the given
-	 * BoundingBox bb
+	 * Checks if this BoundingBox intersects with or covers the given BoundingBox bb
 	 * 
 	 * @param bb the BoundingBox to check against
 	 * @return true if this BoundingBox intersects with or covers bb, false
@@ -424,9 +422,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	 * @param x the x ordinate of the point to add
 	 * @param y the y ordinate
 	 * @param z the z ordinate
-	 * @param result an array containing the current bounding box. This array
-	 *            will be updated by this method. The structure is as follows:
-	 *            <br />
+	 * @param result an array containing the current bounding box. This array will
+	 *            be updated by this method. The structure is as follows: <br />
 	 *            result[0] - maximum x<br />
 	 *            result[1] - minimum x<br />
 	 *            result[2] - maximum y<br />
@@ -619,8 +616,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * checks if min* and max* are actually in the expected relation. If a pair
-	 * is real and in the wrong order, it is swapped.
+	 * checks if min* and max* are actually in the expected relation. If a pair is
+	 * real and in the wrong order, it is swapped.
 	 */
 	public void normalize() {
 		if (MathHelper.isReal(minX) && MathHelper.isReal(maxX) && maxX < minX) {
@@ -641,8 +638,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * This method will return a 2D Extent that uses only the X and Y
-	 * coordinates of this BoundingBox.
+	 * This method will return a 2D Extent that uses only the X and Y coordinates of
+	 * this BoundingBox.
 	 * 
 	 * @return Extent
 	 */
@@ -702,8 +699,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y)
-	 * == true
+	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
+	 * true
 	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -737,9 +734,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * @return true if all limits of this bb have been initialized in a
-	 *         meaningful way (i.e. not NaN, Infinity or NegativeInfinty) and is
-	 *         regular.
+	 * @return true if all limits of this bb have been initialized in a meaningful
+	 *         way (i.e. not NaN, Infinity or NegativeInfinty) and is regular.
 	 * @see #isRegular()
 	 */
 	public boolean checkIntegrity() {
@@ -747,8 +743,8 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	}
 
 	/**
-	 * @return true if all limits of this bb have been initialized in a
-	 *         meaningful way (i.e. not NaN, Infinity or NegativeInfinty)
+	 * @return true if all limits of this bb have been initialized in a meaningful
+	 *         way (i.e. not NaN, Infinity or NegativeInfinty)
 	 */
 	private boolean isRealValued() {
 		double[] values = new double[] { minX, minY, minZ, maxX, maxY, maxZ };

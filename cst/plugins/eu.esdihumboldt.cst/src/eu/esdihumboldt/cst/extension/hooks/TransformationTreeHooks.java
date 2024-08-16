@@ -23,8 +23,8 @@ import de.fhg.igd.eclipse.util.extension.selective.SelectiveExtension;
  * 
  * @author Simon Templer
  */
-public interface TransformationTreeHooks extends
-		SelectiveExtension<TransformationTreeHook, TransformationTreeHookFactory> {
+public interface TransformationTreeHooks
+		extends SelectiveExtension<TransformationTreeHook, TransformationTreeHookFactory> {
 
 	// marker interface
 

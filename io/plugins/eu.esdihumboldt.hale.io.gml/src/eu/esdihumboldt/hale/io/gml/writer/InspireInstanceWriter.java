@@ -81,8 +81,8 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 	public static final String ID = "eu.esdihumboldt.hale.io.inspiregml.writer";
 
 	/**
-	 * The parameter name for the identifier.localId attribute, defaults to an
-	 * empty string.
+	 * The parameter name for the identifier.localId attribute, defaults to an empty
+	 * string.
 	 */
 	public static final String PARAM_SPATIAL_DATA_SET_LOCALID = "inspire.sds.localId";
 
@@ -103,8 +103,8 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 	public static final String PARAM_SPATIAL_DATA_SET_METADATA_DOM = "inspire.sds.metadata.inline";
 
 	/**
-	 * The parameter specifying whether a dataset feed should be created,
-	 * defaults to <code>false</code>.
+	 * The parameter specifying whether a dataset feed should be created, defaults
+	 * to <code>false</code>.
 	 */
 	public static final String PARAM_SPATIAL_DATA_SET_CREATE_FEED = "inspire.sds.create_feed";
 
@@ -219,8 +219,8 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 	}
 
 	/**
-	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter,
-	 *      TypeDefinition, IOReporter)
+	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter, TypeDefinition,
+	 *      IOReporter)
 	 */
 	@Override
 	protected void writeAdditionalElements(XMLStreamWriter writer,

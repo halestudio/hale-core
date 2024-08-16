@@ -15,8 +15,6 @@
 
 package eu.esdihumboldt.hale.io.json.test
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.assertj.core.api.Assertions.*
 
 import java.nio.charset.Charset
@@ -37,6 +35,7 @@ import eu.esdihumboldt.hale.io.json.internal.JsonInstanceCollection
 import eu.esdihumboldt.hale.io.json.internal.JsonReadMode
 import eu.esdihumboldt.hale.io.json.internal.JsonToInstance
 import eu.esdihumboldt.util.io.StringInputSupplier
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for translating collections of Json/GeoJson objects to hale instance model.

@@ -15,16 +15,16 @@
 
 package eu.esdihumboldt.util.groovy.paths;
 
-import groovy.lang.GroovyObjectSupport;
-import groovy.lang.MissingMethodException;
-import groovy.lang.MissingPropertyException;
-
 import java.util.Collections;
 import java.util.List;
 
 import org.codehaus.groovy.runtime.InvokerHelper;
 
 import com.google.common.collect.ImmutableList;
+
+import groovy.lang.GroovyObjectSupport;
+import groovy.lang.MissingMethodException;
+import groovy.lang.MissingPropertyException;
 
 /**
  * Base class for path accessors.
@@ -44,8 +44,8 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 	/**
 	 * Creates a new accessor.
 	 * 
-	 * @param parentPath the root path, usually containing only one path with
-	 *            the parent element
+	 * @param parentPath the root path, usually containing only one path with the
+	 *            parent element
 	 */
 	public AbstractAccessor(Path<C> parentPath) {
 		this(ImmutableList.of(parentPath));
@@ -54,8 +54,8 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 	/**
 	 * Creates a new accessor.
 	 * 
-	 * @param initialPaths the initial paths, usually containing only one path
-	 *            with the parent element
+	 * @param initialPaths the initial paths, usually containing only one path with
+	 *            the parent element
 	 */
 	public AbstractAccessor(List<? extends Path<C>> initialPaths) {
 		this.accessorPaths = initialPaths;
@@ -138,8 +138,8 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 	 * 
 	 * @param unique if the path must be unique
 	 * @return a child path or <code>null</code> if none was found
-	 * @throws IllegalStateException if there are multiple paths but a unique
-	 *             path was requested
+	 * @throws IllegalStateException if there are multiple paths but a unique path
+	 *             was requested
 	 */
 	public Path<C> eval(boolean unique) {
 		if (accessorPaths == null || accessorPaths.isEmpty()) {

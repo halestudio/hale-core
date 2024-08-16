@@ -181,8 +181,8 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 	 * @param childGeometries the child geometries found in the instance
 	 * @param defaultCrs the definition of the default CRS for this instance
 	 * @param reader the IO provider
-	 * @return the geometry value derived from the instance, the return type
-	 *         should match the {@link Binding} created in
+	 * @return the geometry value derived from the instance, the return type should
+	 *         match the {@link Binding} created in
 	 *         {@link #getTypeConstraints(TypeDefinition)}.
 	 * @throws GeometryNotSupportedException if the type definition doesn't
 	 *             represent a geometry type supported by the handler
@@ -190,7 +190,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 	@SuppressWarnings("unused")
 	protected Collection<GeometryProperty<?>> createGeometry(Instance instance,
 			List<GeometryProperty<?>> childGeometries, CRSDefinition defaultCrs, IOProvider reader)
-					throws GeometryNotSupportedException {
+			throws GeometryNotSupportedException {
 
 		List<Geometry> geomList = new ArrayList<Geometry>();
 
@@ -285,7 +285,8 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 			if (geom != null) {
 				// returned combined property
 				CRSDefinition crs = (commonCrs != null && commonCrs.getCrsDef() != null)
-						? (commonCrs.getCrsDef()) : (defaultCrs);
+						? (commonCrs.getCrsDef())
+						: (defaultCrs);
 				return Collections.<GeometryProperty<?>> singleton(
 						new DefaultGeometryProperty<Geometry>(crs, geom));
 			}

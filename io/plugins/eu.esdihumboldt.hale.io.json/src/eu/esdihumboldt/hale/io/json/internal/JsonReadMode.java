@@ -23,8 +23,7 @@ package eu.esdihumboldt.hale.io.json.internal;
 public enum JsonReadMode {
 
 	/**
-	 * Auto detection of mode to use (limited to FeatureCollection and Json
-	 * array).
+	 * Auto detection of mode to use (limited to FeatureCollection and Json array).
 	 */
 	auto("Auto-detection (supports GeoJson FeatureCollection and root Json array)"),
 	/**

@@ -15,6 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd.test.json
 
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
+
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -27,9 +31,6 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.hale.common.schema.persist.hsd.json.HaleSchemaReaderJson
 import eu.esdihumboldt.hale.common.schema.persist.hsd.json.HaleSchemaWriterJson
 import eu.esdihumboldt.hale.common.schema.persist.hsd.test.HaleSchemaWriterTest
-import groovy.transform.CompileStatic
-
-import static org.junit.Assert.*
 
 /**
  * Tests for {@link HaleSchemaWriterJson}.

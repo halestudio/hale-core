@@ -121,11 +121,11 @@ public abstract class ProjectIO {
 	public static final String PROJECT_ARCHIVE_CONTENT_TYPE_ID = "eu.esdihumboldt.hale.io.project.hale25.zip";
 
 	/**
-	 * Create a set of default project files for use with {@link ProjectReader}
-	 * and {@link ProjectWriter}
+	 * Create a set of default project files for use with {@link ProjectReader} and
+	 * {@link ProjectWriter}
 	 * 
-	 * @param serviceProvider the service provider to use for eventual I/O
-	 *            advisors created
+	 * @param serviceProvider the service provider to use for eventual I/O advisors
+	 *            created
 	 * @return the default project files
 	 */
 	public static Map<String, ProjectFile> createDefaultProjectFiles(
@@ -152,8 +152,8 @@ public abstract class ProjectIO {
 	}
 
 	/**
-	 * Find the HALE project file in a directory. If there are multiple it will
-	 * only find one.
+	 * Find the HALE project file in a directory. If there are multiple it will only
+	 * find one.
 	 * 
 	 * @param projectDir the project directory
 	 * @return the name of the project file candidate in that directory,
@@ -164,8 +164,8 @@ public abstract class ProjectIO {
 	}
 
 	/**
-	 * Find the HALE project file in a directory. If there are multiple it will
-	 * only find one.
+	 * Find the HALE project file in a directory. If there are multiple it will only
+	 * find one.
 	 * 
 	 * @param projectDir the project directory
 	 * @param supportedExtensions the set of supported extensions, each with a

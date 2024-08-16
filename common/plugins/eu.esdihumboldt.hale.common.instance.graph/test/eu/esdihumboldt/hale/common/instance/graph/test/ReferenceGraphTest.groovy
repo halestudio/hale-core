@@ -409,5 +409,4 @@ class ReferenceGraphTest {
 		assertEquals('Unexpected combined part size', 50, collections[0].size() + collections[1].size() + collections[2].size())
 		assertTrue('Part with 21 instances not found', collections[0].size() == 21 || collections[1].size() == 21  || collections[2].size() == 21)
 	}
-
 }

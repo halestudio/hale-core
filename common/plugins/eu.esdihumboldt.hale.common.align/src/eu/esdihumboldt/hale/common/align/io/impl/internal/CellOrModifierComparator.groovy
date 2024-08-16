@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.io.impl.internal
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.AbstractEntityType
@@ -25,7 +27,6 @@ import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ConditionTyp
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ModifierType
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.NamedEntityType
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.PropertyType
-import groovy.transform.CompileStatic
 
 
 /**

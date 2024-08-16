@@ -31,14 +31,14 @@ import org.slf4j.LoggerFactory;
 /**
  * This class is a sidekick for ContentTypeManager that provides mechanisms for
  * creating content types from the extension registry (which ContentTypeManager
- *  is oblivious to).
+ * is oblivious to).
  */
-@SuppressWarnings({"restriction"})
+@SuppressWarnings({ "restriction" })
 public class ContentTypeBuilder {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(ContentTypeBuilder.class);
-	
-	public static final String PT_CONTENTTYPES = "contentTypes"; //$NON-NLS-1$	
+
+	public static final String PT_CONTENTTYPES = "contentTypes"; //$NON-NLS-1$
 	private ContentTypeCatalog catalog;
 
 	private static String getUniqueId(String namespace, String baseTypeId) {
@@ -75,7 +75,7 @@ public class ContentTypeBuilder {
 			return ContentType.PRIORITY_LOW;
 		if (!priority.equals("normal")) //$NON-NLS-1$
 			return ContentType.PRIORITY_NORMAL;
-		//TODO: should log - INVALID PRIORITY
+		// TODO: should log - INVALID PRIORITY
 		return ContentType.PRIORITY_NORMAL;
 	}
 
@@ -83,16 +83,22 @@ public class ContentTypeBuilder {
 		this.catalog = catalog;
 	}
 
-	private void addFileAssociation(IConfigurationElement fileAssociationElement, ContentType target) {
+	private void addFileAssociation(IConfigurationElement fileAssociationElement,
+			ContentType target) {
 		String[] fileNames = Util.parseItems(fileAssociationElement.getAttribute("file-names")); //$NON-NLS-1$
 		for (String fileName : fileNames)
-			target.internalAddFileSpec(fileName, IContentType.FILE_NAME_SPEC | ContentType.SPEC_PRE_DEFINED);
-		String[] fileExtensions = Util.parseItems(fileAssociationElement.getAttribute("file-extensions")); //$NON-NLS-1$
+			target.internalAddFileSpec(fileName,
+					IContentType.FILE_NAME_SPEC | ContentType.SPEC_PRE_DEFINED);
+		String[] fileExtensions = Util
+				.parseItems(fileAssociationElement.getAttribute("file-extensions")); //$NON-NLS-1$
 		for (String fileExtension : fileExtensions)
-			target.internalAddFileSpec(fileExtension, IContentType.FILE_EXTENSION_SPEC | ContentType.SPEC_PRE_DEFINED);
-		String[] filePatterns = Util.parseItems(fileAssociationElement.getAttribute("file-patterns")); //$NON-NLS-1$
+			target.internalAddFileSpec(fileExtension,
+					IContentType.FILE_EXTENSION_SPEC | ContentType.SPEC_PRE_DEFINED);
+		String[] filePatterns = Util
+				.parseItems(fileAssociationElement.getAttribute("file-patterns")); //$NON-NLS-1$
 		for (String filePattern : filePatterns)
-			target.internalAddFileSpec(filePattern, IContentType.FILE_PATTERN_SPEC | ContentType.SPEC_PRE_DEFINED);
+			target.internalAddFileSpec(filePattern,
+					IContentType.FILE_PATTERN_SPEC | ContentType.SPEC_PRE_DEFINED);
 	}
 
 	/**
@@ -108,8 +114,8 @@ public class ContentTypeBuilder {
 			catalog.addContentType(ContentType.createContentType(catalog, id,
 					node.get(ContentType.PREF_USER_DEFINED__NAME, ContentType.EMPTY_STRING),
 					(byte) 0, new String[0], new String[0], new String[0],
-					node.get(ContentType.PREF_USER_DEFINED__BASE_TYPE_ID, null), null, Collections.emptyMap(),
-					null));
+					node.get(ContentType.PREF_USER_DEFINED__BASE_TYPE_ID, null), null,
+					Collections.emptyMap(), null));
 		}
 		for (IConfigurationElement allContentTypeCE : allContentTypeCEs)
 			if (allContentTypeCE.getName().equals("file-association")) //$NON-NLS-1$
@@ -125,6 +131,7 @@ public class ContentTypeBuilder {
 			final ContentTypeCatalog localCatalog = catalog;
 			final IEclipsePreferences root = localCatalog.getManager().getPreferences();
 			root.accept(new IPreferenceNodeVisitor() {
+
 				@Override
 				public boolean visit(IEclipsePreferences node) {
 					if (node == root)
@@ -144,7 +151,8 @@ public class ContentTypeBuilder {
 	/**
 	 * @throws CoreException if mandatory attributes are missing in the markup
 	 */
-	private ContentType createContentType(IConfigurationElement contentTypeCE) throws CoreException {
+	private ContentType createContentType(IConfigurationElement contentTypeCE)
+			throws CoreException {
 		String namespace = contentTypeCE.getContributor().getName();
 		String simpleId = contentTypeCE.getAttribute("id"); //$NON-NLS-1$
 		String name = contentTypeCE.getAttribute("name"); //$NON-NLS-1$
@@ -178,7 +186,8 @@ public class ContentTypeBuilder {
 				QualifiedName qualifiedKey = parseQualifiedName(namespace, propertyKey);
 				if (qualifiedKey == null) {
 					if (ContentTypeManager.DEBUGGING) {
-						String message = NLS.bind(ContentMessages.content_invalidProperty, propertyKey, getUniqueId(namespace, simpleId));
+						String message = NLS.bind(ContentMessages.content_invalidProperty,
+								propertyKey, getUniqueId(namespace, simpleId));
 						log.error(message);
 					}
 					continue;
@@ -189,11 +198,13 @@ public class ContentTypeBuilder {
 		String defaultCharset = contentTypeCE.getAttribute("default-charset"); //$NON-NLS-1$
 		if (defaultCharset != null)
 			if (defaultProperties == null)
-				defaultProperties = Collections.singletonMap(IContentDescription.CHARSET, defaultCharset);
+				defaultProperties = Collections.singletonMap(IContentDescription.CHARSET,
+						defaultCharset);
 			else if (!defaultProperties.containsKey(IContentDescription.CHARSET))
 				defaultProperties.put(IContentDescription.CHARSET, defaultCharset);
-		return ContentType.createContentType(catalog, uniqueId, name, priority, fileExtensions, fileNames, filePatterns,
-				baseTypeId, aliasTargetTypeId, defaultProperties, contentTypeCE);
+		return ContentType.createContentType(catalog, uniqueId, name, priority, fileExtensions,
+				fileNames, filePatterns, baseTypeId, aliasTargetTypeId, defaultProperties,
+				contentTypeCE);
 	}
 
 	// Store this around for performance
@@ -201,9 +212,8 @@ public class ContentTypeBuilder {
 
 	/**
 	 * Gets configuration elements for both "backward compatible" extension point
-	 * 		org.eclipse.core.runtime.contentTypes
-	 * and "new" extension point controlled by this plugin:
-	 * 		org.eclipse.core.contenttype.contentTypes
+	 * org.eclipse.core.runtime.contentTypes and "new" extension point controlled by
+	 * this plugin: org.eclipse.core.contenttype.contentTypes
 	 */
 	protected IConfigurationElement[] getConfigurationElements() {
 		IExtensionRegistry registry = RegistryFactory.getRegistry();
@@ -212,24 +222,30 @@ public class ContentTypeBuilder {
 		IConfigurationElement[] oldConfigElements = emptyConfArray;
 		IConfigurationElement[] newConfigElements = emptyConfArray;
 		// "old" extension point
-		IExtensionPoint oldPoint = registry.getExtensionPoint(IContentConstants.RUNTIME_NAME, PT_CONTENTTYPES);
+		IExtensionPoint oldPoint = registry.getExtensionPoint(IContentConstants.RUNTIME_NAME,
+				PT_CONTENTTYPES);
 		if (oldPoint != null)
 			oldConfigElements = oldPoint.getConfigurationElements();
 		// "new" extension point
-		IExtensionPoint newPoint = registry.getExtensionPoint(IContentConstants.CONTENT_NAME, PT_CONTENTTYPES);
+		IExtensionPoint newPoint = registry.getExtensionPoint(IContentConstants.CONTENT_NAME,
+				PT_CONTENTTYPES);
 		if (newPoint != null)
 			newConfigElements = newPoint.getConfigurationElements();
 
-		IConfigurationElement[] allContentTypeCEs = new IConfigurationElement[oldConfigElements.length + newConfigElements.length];
+		IConfigurationElement[] allContentTypeCEs = new IConfigurationElement[oldConfigElements.length
+				+ newConfigElements.length];
 		System.arraycopy(oldConfigElements, 0, allContentTypeCEs, 0, oldConfigElements.length);
-		System.arraycopy(newConfigElements, 0, allContentTypeCEs, oldConfigElements.length, newConfigElements.length);
+		System.arraycopy(newConfigElements, 0, allContentTypeCEs, oldConfigElements.length,
+				newConfigElements.length);
 
 		return allContentTypeCEs;
 	}
 
-	private void missingMandatoryAttribute(String messageKey, String argument) throws CoreException {
+	private void missingMandatoryAttribute(String messageKey, String argument)
+			throws CoreException {
 		String message = NLS.bind(messageKey, argument);
-		throw new CoreException(new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, null));
+		throw new CoreException(
+				new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, null));
 	}
 
 	private void registerContentType(IConfigurationElement contentTypeCE) {
@@ -242,12 +258,14 @@ public class ContentTypeBuilder {
 		}
 	}
 
-	/* Adds extra file associations to existing content types. If the content
-	 * type has not been added, the file association is ignored.
+	/*
+	 * Adds extra file associations to existing content types. If the content type
+	 * has not been added, the file association is ignored.
 	 */
 	private void registerFileAssociation(IConfigurationElement fileAssociationElement) {
-		//TODO: need to ensure the config. element is valid
-		String contentTypeId = getUniqueId(fileAssociationElement.getContributor().getName(), fileAssociationElement.getAttribute("content-type")); //$NON-NLS-1$
+		// TODO: need to ensure the config. element is valid
+		String contentTypeId = getUniqueId(fileAssociationElement.getContributor().getName(),
+				fileAssociationElement.getAttribute("content-type")); //$NON-NLS-1$
 		ContentType target = catalog.internalGetContentType(contentTypeId);
 		if (target == null)
 			return;

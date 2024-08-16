@@ -36,8 +36,8 @@ public interface TaskFactory<C> {
 	TaskType<C> getTaskType();
 
 	/**
-	 * Create a task for the given definitions. The task factory must check if
-	 * input is valid before creating a task
+	 * Create a task for the given definitions. The task factory must check if input
+	 * is valid before creating a task
 	 * 
 	 * @param context Context object
 	 * 

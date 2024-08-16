@@ -53,8 +53,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
  * 
  * @author Simon Templer
  */
-public class AlignmentBean extends
-		AbstractBaseAlignmentLoader<AlignmentBean, CellBean, ModifierBean> {
+public class AlignmentBean
+		extends AbstractBaseAlignmentLoader<AlignmentBean, CellBean, ModifierBean> {
 
 	private Map<String, URI> base = new HashMap<String, URI>();
 	private Collection<CellBean> cells = new LinkedHashSet<CellBean>();
@@ -76,8 +76,8 @@ public class AlignmentBean extends
 	public AlignmentBean(Alignment alignment, final PathUpdate pathUpdate) {
 		super();
 
-		base = new HashMap<String, URI>(Maps.transformValues(alignment.getBaseAlignments(),
-				new Function<URI, URI>() {
+		base = new HashMap<String, URI>(
+				Maps.transformValues(alignment.getBaseAlignments(), new Function<URI, URI>() {
 
 					@Override
 					public URI apply(URI input) {
@@ -96,8 +96,7 @@ public class AlignmentBean extends
 	}
 
 	/**
-	 * Load an AlignmentBean from an input stream. The stream is closed at the
-	 * end.
+	 * Load an AlignmentBean from an input stream. The stream is closed at the end.
 	 * 
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
@@ -108,11 +107,11 @@ public class AlignmentBean extends
 	 * @throws MarshalException if the alignment could not be read
 	 * @throws ValidationException if the input stream did not provide valid XML
 	 */
-	public static AlignmentBean load(InputStream in, IOReporter reporter) throws MappingException,
-			MarshalException, ValidationException {
+	public static AlignmentBean load(InputStream in, IOReporter reporter)
+			throws MappingException, MarshalException, ValidationException {
 		Mapping mapping = new Mapping(AlignmentBean.class.getClassLoader());
-		mapping.loadMapping(new InputSource(AlignmentBean.class
-				.getResourceAsStream("AlignmentBean.xml")));
+		mapping.loadMapping(
+				new InputSource(AlignmentBean.class.getResourceAsStream("AlignmentBean.xml")));
 
 		XMLContext context = new XMLContext();
 		context.addMapping(mapping);

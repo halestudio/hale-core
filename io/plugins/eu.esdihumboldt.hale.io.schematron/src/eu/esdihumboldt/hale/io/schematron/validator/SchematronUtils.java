@@ -38,8 +38,7 @@ import org.opengis.cite.validation.SchematronValidator;
 public abstract class SchematronUtils {
 
 	/**
-	 * Writes the content of the given {@link Result} into a
-	 * {@link StringWriter}
+	 * Writes the content of the given {@link Result} into a {@link StringWriter}
 	 * 
 	 * @param result {@link Result} from {@link SchematronValidator} validation
 	 * @param writer {@link StringWriter} to write report to

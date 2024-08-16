@@ -109,8 +109,8 @@ public class PropertiesFile extends Properties {
 	}
 
 	/**
-	 * Sync the properties with the file. For duplicate properties you can
-	 * either prefer the runtime property values or the file property values.
+	 * Sync the properties with the file. For duplicate properties you can either
+	 * prefer the runtime property values or the file property values.
 	 * 
 	 * @param preferRuntime if the runtime properties should be preferred
 	 * @throws IOException if loading or saving the file fails

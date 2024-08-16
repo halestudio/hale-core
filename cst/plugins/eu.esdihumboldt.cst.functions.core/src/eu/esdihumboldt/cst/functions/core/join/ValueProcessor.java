@@ -26,13 +26,13 @@ import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 public interface ValueProcessor {
 
 	/**
-	 * Process a value of a property in a join condition before using it with
-	 * the index.
+	 * Process a value of a property in a join condition before using it with the
+	 * index.
 	 * 
 	 * @param value the value
 	 * @param property the entity definition the value is associated to
-	 * @return the processed value, possibly wrapped or replaced through a
-	 *         different representation
+	 * @return the processed value, possibly wrapped or replaced through a different
+	 *         representation
 	 */
 	Object processValue(Object value, PropertyEntityDefinition property);
 }

@@ -60,11 +60,10 @@ public class SpatiaLiteSupportFactory {
 	 * Create a {@link SpatiaLiteSupport} instances matching the version of the
 	 * connected database.
 	 * <p>
-	 * {@link SpatiaLiteSupport} instances are internally cached; the connection
-	 * URL is used as cache key, so if the method is invoked multiple times
-	 * providing connection objects pointing to the same physical DB, only one
-	 * instance of {@link SpatiaLiteSupport} is created and re-used multiple
-	 * times.
+	 * {@link SpatiaLiteSupport} instances are internally cached; the connection URL
+	 * is used as cache key, so if the method is invoked multiple times providing
+	 * connection objects pointing to the same physical DB, only one instance of
+	 * {@link SpatiaLiteSupport} is created and re-used multiple times.
 	 * </p>
 	 * 
 	 * @param connection the DB connection

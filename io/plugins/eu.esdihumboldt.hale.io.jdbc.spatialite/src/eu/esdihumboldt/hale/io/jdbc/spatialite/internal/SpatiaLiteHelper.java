@@ -43,8 +43,7 @@ public class SpatiaLiteHelper {
 	 * 
 	 * @param connection the database connection
 	 * @return <code>true</code> if the SpatiaLite module is loaded,
-	 *         <code>false</code> if it is not or the status cannot be
-	 *         determined
+	 *         <code>false</code> if it is not or the status cannot be determined
 	 */
 	private static boolean isSpatiaLiteLoaded(SQLiteConnection connection) {
 		PreparedStatement statement = null;
@@ -80,17 +79,17 @@ public class SpatiaLiteHelper {
 			.weakKeys().build();
 
 	/**
-	 * Determine if SpatiaLite is loaded for the given connection. If not,
-	 * reports to the user about the misconfiguration. A report is done only
-	 * once per unique connection.
+	 * Determine if SpatiaLite is loaded for the given connection. If not, reports
+	 * to the user about the misconfiguration. A report is done only once per unique
+	 * connection.
 	 * 
 	 * @param connection the database connection
 	 * @param error if the report should be an error, otherwise it is a warning
 	 * @return <code>true</code> if the SpatiaLite module is loaded,
-	 *         <code>false</code> if it is not or the status cannot be
-	 *         determined
+	 *         <code>false</code> if it is not or the status cannot be determined
 	 */
-	public static boolean isSpatialLiteLoadedReport(final SQLiteConnection connection, boolean error) {
+	public static boolean isSpatialLiteLoadedReport(final SQLiteConnection connection,
+			boolean error) {
 		try {
 			Boolean result = loadedCache.getIfPresent(connection);
 			if (result != null) {

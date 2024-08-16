@@ -41,37 +41,36 @@ import eu.esdihumboldt.hale.io.gml.reader.internal.wfs.WfsBackedGmlInstanceColle
 public class StreamGmlReader extends AbstractInstanceReader {
 
 	/**
-	 * The name of the parameter specifying if the root element should be
-	 * ignored and thus not be loaded as an instance. Parameter value defaults
-	 * to <code>true</code>.
+	 * The name of the parameter specifying if the root element should be ignored
+	 * and thus not be loaded as an instance. Parameter value defaults to
+	 * <code>true</code>.
 	 */
 	public static final String PARAM_IGNORE_ROOT = "ignoreRoot";
 
 	/**
-	 * The name of the parameter specifying if parsing of the XML instances
-	 * should happen strictly according to the schema or if also invalid
-	 * property paths will be allowed. Parameter value defaults to
-	 * <code>false</code>.
+	 * The name of the parameter specifying if parsing of the XML instances should
+	 * happen strictly according to the schema or if also invalid property paths
+	 * will be allowed. Parameter value defaults to <code>false</code>.
 	 */
 	public static final String PARAM_STRICT = "strict";
 
 	/**
-	 * The name of the parameter specifying if parsing of the XML instances
-	 * should allow types and properties with namespaces that differ from those
-	 * defined in the schema. Parameter value defaults to <code>false</code>.
+	 * The name of the parameter specifying if parsing of the XML instances should
+	 * allow types and properties with namespaces that differ from those defined in
+	 * the schema. Parameter value defaults to <code>false</code>.
 	 */
 	public static final String PARAM_IGNORE_NAMESPACES = "ignoreNamespaces";
 
 	/**
-	 * The name of the parameter specifying if pagination should be activated
-	 * for WFS GetFeature requests.
+	 * The name of the parameter specifying if pagination should be activated for
+	 * WFS GetFeature requests.
 	 */
 	public static final String PARAM_PAGINATE_REQUEST = "paginateRequest";
 
 	/**
 	 * The name of the parameter specifying the maximum number of features to
-	 * retrieve per single WFS GetFeature request. Only useful if source is a
-	 * WFS GetFeature request URI.
+	 * retrieve per single WFS GetFeature request. Only useful if source is a WFS
+	 * GetFeature request URI.
 	 */
 	public static final String PARAM_FEATURES_PER_WFS_REQUEST = "featuresPerWfsRequest";
 
@@ -82,8 +81,8 @@ public class StreamGmlReader extends AbstractInstanceReader {
 	public static final String PARAM_TMP_DIR_PATH = "tmpDirPath";
 
 	/**
-	 * The name of the parameter specifying if hale should ignore the total
-	 * number of features reported by the WFS.
+	 * The name of the parameter specifying if hale should ignore the total number
+	 * of features reported by the WFS.
 	 */
 	public static final String PARAM_IGNORE_NUMBER_MATCHED = "ignoreNumberMatched";
 
@@ -91,8 +90,8 @@ public class StreamGmlReader extends AbstractInstanceReader {
 	 * The name of the parameter specifying if the selection of mapping relevant
 	 * types for instances that are processed should be ignored.
 	 * 
-	 * Essentially if this is enabled the behavior is like if any type in the
-	 * schema is classified as mapping relevant.
+	 * Essentially if this is enabled the behavior is like if any type in the schema
+	 * is classified as mapping relevant.
 	 */
 	public static final String PARAM_IGNORE_MAPPING_RELEVANT = "ignoreMappingRelevant";
 
@@ -109,8 +108,8 @@ public class StreamGmlReader extends AbstractInstanceReader {
 	/**
 	 * Constructor
 	 * 
-	 * @param restrictToFeatures if only instances that are GML features shall
-	 *            be loaded
+	 * @param restrictToFeatures if only instances that are GML features shall be
+	 *            loaded
 	 */
 	public StreamGmlReader(boolean restrictToFeatures) {
 		super();

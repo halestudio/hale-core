@@ -31,8 +31,8 @@ public class DecimalFormatUtil {
 	}
 
 	/**
-	 * Create a {@link DecimalFormat} instance for the given pattern that uses
-	 * '.' as the decimal separator.
+	 * Create a {@link DecimalFormat} instance for the given pattern that uses '.'
+	 * as the decimal separator.
 	 * 
 	 * @param pattern the pattern string
 	 * @return A {@link DecimalFormat} for the given pattern

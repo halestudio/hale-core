@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     HUMBOLDT EU Integrated Project #030962
  *     Data Harmonisation Panel <http://www.dhpanel.eu>
@@ -59,7 +59,7 @@ import eu.esdihumboldt.util.io.IOUtils;
 
 /**
  * TODO Type description
- * 
+ *
  * @author Basti
  */
 @SuppressWarnings({ "restriction", "javadoc" })
@@ -151,7 +151,7 @@ public class FilterTest {
 
 	/**
 	 * Test loading a simple XML file with one instance
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Ignore
@@ -209,22 +209,20 @@ public class FilterTest {
 	@Test
 	public void testComplexInstancesCQL() throws Exception {
 		/*
-		 * SchemaReader reader = new XmlSchemaReader();
-		 * reader.setSharedTypes(null); reader.setSource(new
-		 * DefaultInputSupplier
+		 * SchemaReader reader = new XmlSchemaReader(); reader.setSharedTypes(null);
+		 * reader.setSource(new DefaultInputSupplier
 		 * ((getClass().getResource("/testdata/inspire3/HydroPhysicalWaters.xsd"
 		 * ).toURI()))); IOReport report = reader.execute(null);
 		 * assertTrue(report.isSuccess()); Schema schema = reader.getSchema();
-		 * 
+		 *
 		 * StreamGmlReader instanceReader = new GmlInstanceReader();
-		 * instanceReader.setSource(new
-		 * DefaultInputSupplier(getClass().getResource
+		 * instanceReader.setSource(new DefaultInputSupplier(getClass().getResource
 		 * ("/testdata/out/transformWrite_ERM_HPW.gml").toURI()));
 		 * instanceReader.setSourceSchema(schema);
-		 * 
+		 *
 		 * instanceReader.validate(); report = instanceReader.execute(null);
 		 * assertTrue(report.isSuccess());
-		 * 
+		 *
 		 * InstanceCollection instances = instanceReader.getInstances();
 		 * assertFalse(instances.isEmpty());
 		 */
@@ -287,8 +285,8 @@ public class FilterTest {
 					foundIt3 = true;
 				}
 				/*
-				 * if(cqlfilter4.match(inst)){ foundIt4 = true; }
-				 * if(cqlfilter5.match(inst)){ foundIt5 = true; }
+				 * if(cqlfilter4.match(inst)){ foundIt4 = true; } if(cqlfilter5.match(inst)){
+				 * foundIt5 = true; }
 				 */
 			}
 
@@ -428,7 +426,7 @@ public class FilterTest {
 
 	/**
 	 * Test loading a simple XML file with one instance
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Ignore
@@ -483,22 +481,20 @@ public class FilterTest {
 	@Test
 	public void testComplexInstancesECQL() throws Exception {
 		/*
-		 * SchemaReader reader = new XmlSchemaReader();
-		 * reader.setSharedTypes(null); reader.setSource(new
-		 * DefaultInputSupplier
+		 * SchemaReader reader = new XmlSchemaReader(); reader.setSharedTypes(null);
+		 * reader.setSource(new DefaultInputSupplier
 		 * ((getClass().getResource("/testdata/inspire3/HydroPhysicalWaters.xsd"
 		 * ).toURI()))); IOReport report = reader.execute(null);
 		 * assertTrue(report.isSuccess()); Schema schema = reader.getSchema();
-		 * 
+		 *
 		 * StreamGmlReader instanceReader = new GmlInstanceReader();
-		 * instanceReader.setSource(new
-		 * DefaultInputSupplier(getClass().getResource
+		 * instanceReader.setSource(new DefaultInputSupplier(getClass().getResource
 		 * ("/testdata/out/transformWrite_ERM_HPW.gml").toURI()));
 		 * instanceReader.setSourceSchema(schema);
-		 * 
+		 *
 		 * instanceReader.validate(); report = instanceReader.execute(null);
 		 * assertTrue(report.isSuccess());
-		 * 
+		 *
 		 * InstanceCollection instances = instanceReader.getInstances();
 		 * assertFalse(instances.isEmpty());
 		 */

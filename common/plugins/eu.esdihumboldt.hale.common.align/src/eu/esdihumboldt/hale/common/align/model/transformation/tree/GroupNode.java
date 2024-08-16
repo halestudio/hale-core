@@ -26,8 +26,7 @@ import java.util.List;
 public interface GroupNode extends TransformationNode {
 
 	/**
-	 * Name of the children annotation. It represents a list of additional
-	 * children.
+	 * Name of the children annotation. It represents a list of additional children.
 	 */
 	public static final String ANNOTATION_CHILDREN = "children";
 

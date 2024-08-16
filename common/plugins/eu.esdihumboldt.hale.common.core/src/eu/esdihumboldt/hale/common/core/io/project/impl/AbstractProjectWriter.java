@@ -37,8 +37,7 @@ public abstract class AbstractProjectWriter extends AbstractExportProvider
 		implements ProjectWriter {
 
 	/**
-	 * The additional project files, file names are mapped to project file
-	 * objects
+	 * The additional project files, file names are mapped to project file objects
 	 */
 	private Map<String, ProjectFile> projectFiles;
 

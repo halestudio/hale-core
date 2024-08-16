@@ -29,7 +29,8 @@ import eu.esdihumboldt.hale.common.app.AbstractApplication;
 public class GenerateTemplatesApplication extends AbstractApplication<GenerateTemplatesContext> {
 
 	@Override
-	protected Object run(GenerateTemplatesContext executionContext, IApplicationContext appContext) {
+	protected Object run(GenerateTemplatesContext executionContext,
+			IApplicationContext appContext) {
 		new GenerateTemplates(executionContext).generate();
 
 		return EXIT_OK;

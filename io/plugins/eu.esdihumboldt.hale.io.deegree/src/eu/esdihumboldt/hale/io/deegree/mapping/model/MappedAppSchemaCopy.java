@@ -48,8 +48,8 @@ public class MappedAppSchemaCopy extends MappedAppSchema {
 	}
 
 	/**
-	 * Creates a copy of a {@link MappedAppSchema} where all feature type
-	 * mappings can be adapted.
+	 * Creates a copy of a {@link MappedAppSchema} where all feature type mappings
+	 * can be adapted.
 	 * 
 	 * @param ms the original mapped schema
 	 * @param adaptMappings the function to adapt the mappings
@@ -65,13 +65,13 @@ public class MappedAppSchemaCopy extends MappedAppSchema {
 	}
 
 	/**
-	 * Creates a copy of a {@link MappedAppSchema} where all feature type
-	 * mappings can be adapted.
+	 * Creates a copy of a {@link MappedAppSchema} where all feature type mappings
+	 * can be adapted.
 	 * 
 	 * @param ms the original mapped schema
 	 * @param adaptMappings the function to adapt the mappings
-	 * @param includeFeatureCollections whether to include feature collections
-	 *            in the mapping
+	 * @param includeFeatureCollections whether to include feature collections in
+	 *            the mapping
 	 * @param includeAbstracts whether to include abstract types in the mapping
 	 */
 	public MappedAppSchemaCopy(MappedAppSchema ms,

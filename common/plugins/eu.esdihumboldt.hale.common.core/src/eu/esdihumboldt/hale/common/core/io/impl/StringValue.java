@@ -43,9 +43,8 @@ public class StringValue extends Value {
 	}
 
 	/**
-	 * Create a new string value from an arbitrary value. The value is converted
-	 * to string using the {@link ConversionService} or with
-	 * <code>toString()</code>.
+	 * Create a new string value from an arbitrary value. The value is converted to
+	 * string using the {@link ConversionService} or with <code>toString()</code>.
 	 * 
 	 * @param value the value
 	 */

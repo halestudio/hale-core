@@ -15,51 +15,52 @@
 
 package eu.esdihumboldt.hale.io.haleconnect.internal;
 
-import java.text.MessageFormat;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicLong;
+import groovy.transform.CompileStatic
 
-import org.apache.commons.lang.StringUtils;
+import java.text.MessageFormat
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CopyOnWriteArraySet
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.atomic.AtomicLong
+
+import org.apache.commons.lang.StringUtils
 
 import com.google.common.util.concurrent.AbstractFuture
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
-import com.haleconnect.api.projectstore.v1.ApiCallback;
-import com.haleconnect.api.projectstore.v1.api.BucketsApi;
-import com.haleconnect.api.projectstore.v1.api.FilesApi;
-import com.haleconnect.api.projectstore.v1.api.PermissionsApi;
-import com.haleconnect.api.projectstore.v1.model.BucketDetail;
-import com.haleconnect.api.projectstore.v1.model.BucketIdent;
-import com.haleconnect.api.projectstore.v1.model.Feedback;
-import com.haleconnect.api.projectstore.v1.model.NewBucket;
-import com.haleconnect.api.user.v1.ApiException;
-import com.haleconnect.api.user.v1.api.LoginApi;
-import com.haleconnect.api.user.v1.api.OrganisationsApi;
-import com.haleconnect.api.user.v1.api.UsersApi;
-import com.haleconnect.api.user.v1.model.Credentials;
+import com.google.common.util.concurrent.ListenableFuture
+import com.google.common.util.concurrent.SettableFuture
+import com.haleconnect.api.projectstore.v1.ApiCallback
+import com.haleconnect.api.projectstore.v1.api.BucketsApi
+import com.haleconnect.api.projectstore.v1.api.FilesApi
+import com.haleconnect.api.projectstore.v1.api.PermissionsApi
+import com.haleconnect.api.projectstore.v1.model.BucketDetail
+import com.haleconnect.api.projectstore.v1.model.BucketIdent
+import com.haleconnect.api.projectstore.v1.model.Feedback
+import com.haleconnect.api.projectstore.v1.model.NewBucket
+import com.haleconnect.api.user.v1.ApiException
+import com.haleconnect.api.user.v1.api.LoginApi
+import com.haleconnect.api.user.v1.api.OrganisationsApi
+import com.haleconnect.api.user.v1.api.UsersApi
+import com.haleconnect.api.user.v1.model.Credentials
 import com.haleconnect.api.user.v1.model.OrganisationInfo
-import com.haleconnect.api.user.v1.model.Token;
-import com.haleconnect.api.user.v1.model.UserInfo;
+import com.haleconnect.api.user.v1.model.Token
+import com.haleconnect.api.user.v1.model.UserInfo
 
-import de.fhg.igd.slf4jplus.ALogger;
-import de.fhg.igd.slf4jplus.ALoggerFactory;
-import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;
-import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
-import eu.esdihumboldt.hale.io.haleconnect.BasePathManager;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectException;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectInputSupplier;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectOrganisationInfo;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectProjectInfo;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectService;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServiceListener;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectSession;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUrnBuilder;
-import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUserInfo;
-import eu.esdihumboldt.hale.io.haleconnect.Owner;
-import eu.esdihumboldt.hale.io.haleconnect.project.SharingOptions;
-import groovy.transform.CompileStatic
+import de.fhg.igd.slf4jplus.ALogger
+import de.fhg.igd.slf4jplus.ALoggerFactory
+import eu.esdihumboldt.hale.common.core.io.ProgressIndicator
+import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier
+import eu.esdihumboldt.hale.io.haleconnect.BasePathManager
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectException
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectInputSupplier
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectOrganisationInfo
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectProjectInfo
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectService
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServiceListener
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectSession
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUrnBuilder
+import eu.esdihumboldt.hale.io.haleconnect.HaleConnectUserInfo
+import eu.esdihumboldt.hale.io.haleconnect.Owner
+import eu.esdihumboldt.hale.io.haleconnect.project.SharingOptions
 
 /**
  * hale connect service facade implementation
@@ -733,5 +734,4 @@ public class HaleConnectServiceImpl implements HaleConnectService, BasePathManag
 
 		return true;
 	}
-
 }

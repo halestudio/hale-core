@@ -48,8 +48,8 @@ public class ResourceType implements Identifiable {
 	}
 
 	/**
-	 * Get the resource type name. If no name was explicitly specified the name
-	 * is equal to the resource type ID.
+	 * Get the resource type name. If no name was explicitly specified the name is
+	 * equal to the resource type ID.
 	 * 
 	 * @return the resource type name
 	 */

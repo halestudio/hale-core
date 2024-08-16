@@ -49,8 +49,8 @@ public interface Task<C> extends Comparable<Task<C>> {
 	List<? extends C> getContext();
 
 	/**
-	 * Clean up the task. This method is called when a task is removed from the
-	 * task service
+	 * Clean up the task. This method is called when a task is removed from the task
+	 * service
 	 */
 	void dispose();
 
@@ -58,8 +58,7 @@ public interface Task<C> extends Comparable<Task<C>> {
 	 * Compare this task's main context object to the given one
 	 * 
 	 * @param context the context object to compare
-	 * @return true if the context objects are equal or are both
-	 *         <code>null</code>
+	 * @return true if the context objects are equal or are both <code>null</code>
 	 */
 	boolean hasMainContext(Object context);
 }

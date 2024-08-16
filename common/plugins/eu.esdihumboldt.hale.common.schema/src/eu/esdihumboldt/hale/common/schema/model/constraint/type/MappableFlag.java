@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type is mappable, i.e. that it is a valid source or target for a
@@ -52,8 +52,8 @@ public class MappableFlag extends AbstractFlagConstraint implements TypeConstrai
 	}
 
 	/**
-	 * Creates a default mappable flag, which is disabled. If possible, instead
-	 * of creating an instance, use {@link #get(boolean)}, {@link #ENABLED} or
+	 * Creates a default mappable flag, which is disabled. If possible, instead of
+	 * creating an instance, use {@link #get(boolean)}, {@link #ENABLED} or
 	 * {@link #DISABLED}.
 	 * 
 	 * @see Constraint

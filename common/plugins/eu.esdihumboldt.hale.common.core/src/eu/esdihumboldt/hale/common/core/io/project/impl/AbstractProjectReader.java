@@ -45,8 +45,7 @@ public abstract class AbstractProjectReader extends AbstractImportProvider
 	private static final ALogger log = ALoggerFactory.getLogger(AbstractProjectReader.class);
 
 	/**
-	 * The additional project files, file names are mapped to project file
-	 * objects
+	 * The additional project files, file names are mapped to project file objects
 	 */
 	private Map<String, ProjectFile> projectFiles;
 

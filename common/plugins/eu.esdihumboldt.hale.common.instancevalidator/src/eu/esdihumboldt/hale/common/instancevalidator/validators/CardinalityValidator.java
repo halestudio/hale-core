@@ -46,7 +46,7 @@ public class CardinalityValidator
 	@Override
 	public void validateGroupPropertyConstraint(Object[] values, GroupPropertyConstraint constraint,
 			GroupPropertyDefinition property, InstanceValidationContext context)
-					throws ValidationException {
+			throws ValidationException {
 		validateConstraint(values, (Cardinality) constraint, false);
 	}
 

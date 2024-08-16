@@ -36,9 +36,8 @@ public class RTreeSpatialIndexService implements SpatialIndexService<Localizable
 	private final RTree<Localizable> index;
 
 	/**
-	 * Verifier to determine whether the bounding box of a given
-	 * {@link Localizable} has any spatial relation to another
-	 * {@link BoundingBox}.
+	 * Verifier to determine whether the bounding box of a given {@link Localizable}
+	 * has any spatial relation to another {@link BoundingBox}.
 	 */
 	public static final Verifier<Localizable, BoundingBox> ANY_RELATION_VERIFIER = new Verifier<Localizable, BoundingBox>() {
 

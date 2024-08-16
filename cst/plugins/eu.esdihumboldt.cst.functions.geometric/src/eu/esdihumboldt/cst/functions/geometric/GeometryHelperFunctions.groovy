@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.cst.functions.geometric;
 
+import groovy.transform.CompileStatic
+
 import java.text.MessageFormat
 
 import javax.annotation.Nullable
@@ -54,7 +56,6 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.SchemaSpace
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
-import groovy.transform.CompileStatic
 
 /**
  * Geometry helper functions for Groovy scripts.
@@ -74,8 +75,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _centroid_spec = SpecBuilder.newSpec( //
 	description: 'Calculate the centroid of a geometry.',
-	result: 'The Point geometry that is the centroid of the given geometry (wrapped in a GeometryProperty) or null.') { //
-		geometry(GEOM_HOLDER_DESC) }
+	result: 'The Point geometry that is the centroid of the given geometry (wrapped in a GeometryProperty) or null.') {
+		//
+		geometry(GEOM_HOLDER_DESC)
+	}
 
 	/**
 	 * Calculate the centroid of a given geometry.
@@ -99,7 +102,8 @@ class GeometryHelperFunctions {
 			return null;
 		}
 
-		if (!result.geometry || ((Geometry)result.geometry).isEmpty()) { // Explicit cast to circumvent type inferring problems of Groovy 2.3.11
+		if (!result.geometry || ((Geometry)result.geometry).isEmpty()) {
+			// Explicit cast to circumvent type inferring problems of Groovy 2.3.11
 			return null;
 		}
 
@@ -111,8 +115,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _interiorPoint_spec = SpecBuilder.newSpec( //
 	description: 'Computes an interior point of a geometry (up to 2D). An interior point is guaranteed to lie in the interior of the geometry, if it is possible to calculate such a point exactly. Otherwise, the point may lie on the boundary of the geometry  (e.g. if the geometry is a line).',
-	result: 'A point geometry that lies within (or, if this is not possible, on the boundary) of the given geometry (wrapped in a GeometryProperty) or null.') { //
-		geometry(GEOM_HOLDER_DESC) }
+	result: 'A point geometry that lies within (or, if this is not possible, on the boundary) of the given geometry (wrapped in a GeometryProperty) or null.') {
+		//
+		geometry(GEOM_HOLDER_DESC)
+	}
 
 	/**
 	 * Calculate an interior point of a given geometry.
@@ -126,7 +132,8 @@ class GeometryHelperFunctions {
 	static GeometryProperty<? extends Geometry> _interiorPoint(def geometryHolder) {
 		GeometryProperty<?> result = InteriorPoint.calculateInteriorPoint(geometryHolder);
 
-		if (!result.geometry || ((Geometry)result.geometry).isEmpty()) { // Explicit cast to circumvent type inferring problems of Groovy 2.3.11
+		if (!result.geometry || ((Geometry)result.geometry).isEmpty()) {
+			// Explicit cast to circumvent type inferring problems of Groovy 2.3.11
 			return null;
 		}
 
@@ -317,7 +324,6 @@ class GeometryHelperFunctions {
 				// all are already type definitions
 				types = argTypes as List
 			}
-
 		}
 
 		if (box != null) {
@@ -353,8 +359,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _find_spec = SpecBuilder.newSpec( //
 	description: 'Find a geometry in the given objects.',
-	result: 'the first geometry found (wrapped in a GeometryProperty) or null.') { //
-		objects('An object or a list of objects to search for geometries') }
+	result: 'the first geometry found (wrapped in a GeometryProperty) or null.') {
+		//
+		objects('An object or a list of objects to search for geometries')
+	}
 
 	@CompileStatic
 	static GeometryProperty<? extends Geometry> _find(def geometryHolder) {
@@ -390,8 +398,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _findAll_spec = SpecBuilder.newSpec( //
 	description: 'Find geometries in the given objects.',
-	result: 'the list of found geometries (each wrapped in a GeometryProperty)') { //
-		objects('An object or a list of objects to search for geometries') }
+	result: 'the list of found geometries (each wrapped in a GeometryProperty)') {
+		//
+		objects('An object or a list of objects to search for geometries')
+	}
 
 	@CompileStatic
 	static List<GeometryProperty<? extends Geometry>> _findAll(def geometryHolder) {
@@ -421,8 +431,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _aggregate_spec = SpecBuilder.newSpec( //
 	description: 'Aggregate geometries in the given objects.',
-	result: 'the aggregated geometry (wrapped in a GeometryProperty) or null') { //
-		geometries('A single or multiple (as a list/iterable) geometries, geometry properties or instances holding a geometry') }
+	result: 'the aggregated geometry (wrapped in a GeometryProperty) or null') {
+		//
+		geometries('A single or multiple (as a list/iterable) geometries, geometry properties or instances holding a geometry')
+	}
 
 	@CompileStatic
 	static GeometryProperty<? extends Geometry> _aggregate(def geometryHolders) {
@@ -448,8 +460,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _findPolygons_spec = SpecBuilder.newSpec( //
 	description: 'Find polygon or multi-polygon geometries in the given objects.',
-	result: 'the list of found geometries (each wrapped in a GeometryProperty)') { //
-		objects('An object or a list of objects to search for geometries') }
+	result: 'the list of found geometries (each wrapped in a GeometryProperty)') {
+		//
+		objects('An object or a list of objects to search for geometries')
+	}
 
 	@CompileStatic
 	static Collection<GeometryProperty<? extends Geometry>> _findPolygons(def geometryHolders) {
@@ -466,8 +480,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _findLines_spec = SpecBuilder.newSpec( //
 	description: 'Find line or multi-line geometries in the given objects.',
-	result: 'the list of found geometries (each wrapped in a GeometryProperty)') { //
-		objects('An object or a list of objects to search for geometries') }
+	result: 'the list of found geometries (each wrapped in a GeometryProperty)') {
+		//
+		objects('An object or a list of objects to search for geometries')
+	}
 
 	@CompileStatic
 	static Collection<GeometryProperty<? extends Geometry>> _findLines(def geometryHolders) {
@@ -484,8 +500,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _findPoints_spec = SpecBuilder.newSpec( //
 	description: 'Find point or multi-point geometries in the given objects.',
-	result: 'the list of found geometries (each wrapped in a GeometryProperty)') { //
-		objects('An object or a list of objects to search for geometries') }
+	result: 'the list of found geometries (each wrapped in a GeometryProperty)') {
+		//
+		objects('An object or a list of objects to search for geometries')
+	}
 
 	@CompileStatic
 	static Collection<GeometryProperty<? extends Geometry>> _findPoints(def geometryHolders) {
@@ -502,8 +520,10 @@ class GeometryHelperFunctions {
 	 */
 	public static final Specification _splitMulti_spec = SpecBuilder.newSpec( //
 	description: 'Split multi-geometries into separate geometries.',
-	result: 'the list of single geometries (each wrapped in a GeometryProperty)') { //
-		geometries('A single or multiple (as a list/iterable) geometries, geometry properties or instances holding a geometry') }
+	result: 'the list of single geometries (each wrapped in a GeometryProperty)') {
+		//
+		geometries('A single or multiple (as a list/iterable) geometries, geometry properties or instances holding a geometry')
+	}
 
 	@CompileStatic
 	static Collection<GeometryProperty<? extends Geometry>> _splitMulti(def geometryHolders) {
@@ -548,7 +568,8 @@ class GeometryHelperFunctions {
 	result: 'the geometry wrapped in a GeometryProperty and with the given CRS associated') {
 		//
 		geometry('A geometry object, a WKT geometry definition, a geometry property or an instance holding a geometry') //
-		crs('the coordinate reference system definition object or code') }
+		crs('the coordinate reference system definition object or code')
+	}
 
 	@CompileStatic
 	static GeometryProperty<? extends Geometry> _with(Map args) {
@@ -591,5 +612,4 @@ class GeometryHelperFunctions {
 			null
 		}
 	}
-
 }

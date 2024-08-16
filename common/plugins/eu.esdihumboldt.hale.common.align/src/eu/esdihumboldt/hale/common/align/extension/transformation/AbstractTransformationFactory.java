@@ -20,14 +20,13 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import net.jcip.annotations.Immutable;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import de.fhg.igd.eclipse.util.extension.AbstractConfigurationFactory;
 import de.fhg.igd.eclipse.util.extension.ExtensionObjectDefinition;
 import de.fhg.igd.eclipse.util.extension.ExtensionObjectFactory;
 import eu.esdihumboldt.hale.common.align.transformation.function.TransformationFunction;
+import net.jcip.annotations.Immutable;
 
 /**
  * Base class for transformation function factories
@@ -37,8 +36,8 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TransformationF
  * @author Simon Templer
  */
 @Immutable
-public abstract class AbstractTransformationFactory<T extends TransformationFunction<?>> extends
-		AbstractConfigurationFactory<T> implements TransformationFactory<T> {
+public abstract class AbstractTransformationFactory<T extends TransformationFunction<?>>
+		extends AbstractConfigurationFactory<T> implements TransformationFactory<T> {
 
 	private final Map<String, String> parameters;
 

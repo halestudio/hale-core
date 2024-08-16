@@ -31,8 +31,8 @@ public interface MutableAlignment extends Alignment {
 	/**
 	 * Add a cell to the alignment.
 	 * 
-	 * @param cell the cell to add. It should be already configured, especially
-	 *            with the cell target. A cell id may be generated for new cells
+	 * @param cell the cell to add. It should be already configured, especially with
+	 *            the cell target. A cell id may be generated for new cells
 	 */
 	public void addCell(MutableCell cell);
 

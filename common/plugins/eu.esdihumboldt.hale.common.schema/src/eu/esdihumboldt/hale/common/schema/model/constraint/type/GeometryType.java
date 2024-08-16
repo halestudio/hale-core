@@ -20,14 +20,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.jcip.annotations.Immutable;
-
 import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
+import net.jcip.annotations.Immutable;
 
 /**
  * Specifies the geometry type for properties with a {@link GeometryProperty}
@@ -42,9 +41,9 @@ public class GeometryType implements TypeConstraint {
 
 	/**
 	 * Geometry binding singletons, binding class mapped to the corresponding
-	 * geometry type constraint. Defaults to the type binding as geometry
-	 * binding if it is a {@link Geometry} binding or to {@link Geometry} if it
-	 * is a {@link GeometryProperty} binding.
+	 * geometry type constraint. Defaults to the type binding as geometry binding if
+	 * it is a {@link Geometry} binding or to {@link Geometry} if it is a
+	 * {@link GeometryProperty} binding.
 	 */
 	private static final Map<Class<? extends Geometry>, GeometryType> singletons = new HashMap<Class<? extends Geometry>, GeometryType>();
 
@@ -85,8 +84,8 @@ public class GeometryType implements TypeConstraint {
 	}
 
 	/**
-	 * Creates a geometry type constraint that determines the geometry binding
-	 * from the given type definition.
+	 * Creates a geometry type constraint that determines the geometry binding from
+	 * the given type definition.
 	 * 
 	 * @param type the type definition
 	 */
@@ -98,8 +97,8 @@ public class GeometryType implements TypeConstraint {
 	 * Creates a constraint with the given geometry binding
 	 * 
 	 * @param binding the JTS geometry binding
-	 * @param type the definition of the type the constraint is associated to,
-	 *            may be <code>null</code>
+	 * @param type the definition of the type the constraint is associated to, may
+	 *            be <code>null</code>
 	 */
 	private GeometryType(Class<? extends Geometry> binding, TypeDefinition type) {
 		super();

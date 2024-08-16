@@ -15,9 +15,6 @@
 
 package eu.esdihumboldt.util.geometry;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.cs.AxisDirection;
-
 import org.locationtech.jts.algorithm.CGAlgorithms;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
@@ -26,6 +23,8 @@ import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LinearRing;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Polygon;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.cs.AxisDirection;
 
 /**
  * Winding order changer for Geometry objects.
@@ -104,8 +103,7 @@ public class WindingOrder {
 	 * LinearRing) as CounterClockwise or Clockwise.
 	 * 
 	 * @param geometry Geometry object for unifying.
-	 * @param counterClockWise true, if unify geometry counterClockwise else
-	 *            false.
+	 * @param counterClockWise true, if unify geometry counterClockwise else false.
 	 * @param crs Coordinate Reference System
 	 * @return Geometry unified object.
 	 */
@@ -198,9 +196,8 @@ public class WindingOrder {
 	 * Unify order of the Multipolygon including all polygons and holes in it.
 	 * 
 	 * @param multiPoly Multipolygon object for unifying it.
-	 * @param counterClockWise boolean value. true, if want shell of
-	 *            multipolygon as counter clock wise and holes as clockwise,
-	 *            else false.
+	 * @param counterClockWise boolean value. true, if want shell of multipolygon as
+	 *            counter clock wise and holes as clockwise, else false.
 	 * @return Multipolygon unified Object
 	 */
 	public static MultiPolygon unifyWindingOrderForMultiPolygon(MultiPolygon multiPoly,
@@ -223,8 +220,8 @@ public class WindingOrder {
 	 * Unify order of the GeometryCollection including all Geometries in it.
 	 * 
 	 * @param geoCollection GeometryCollection object for unifying.
-	 * @param counterClockWise boolean value. true, if want all geometry object
-	 *            * as counter clock wise, else false.
+	 * @param counterClockWise boolean value. true, if want all geometry object * as
+	 *            counter clock wise, else false.
 	 * @return GeometryCollection unified Object
 	 */
 	public static GeometryCollection unifyWindingOrderForGeometryCollection(

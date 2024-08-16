@@ -30,15 +30,15 @@ public interface HelperFunctionOrCategory {
 	String getName();
 
 	/**
-	 * @return the category if this object represents a category,
-	 *         <code>null</code> otherwise
+	 * @return the category if this object represents a category, <code>null</code>
+	 *         otherwise
 	 */
 	@Nullable
 	Category asCategory();
 
 	/**
-	 * @return the function if this object represents a function,
-	 *         <code>null</code> otherwise
+	 * @return the function if this object represents a function, <code>null</code>
+	 *         otherwise
 	 */
 	@Nullable
 	HelperFunction<?> asFunction();

@@ -240,9 +240,8 @@ public class Project implements ProjectInfo, Cloneable {
 	}
 
 	/**
-	 * @return the project properties, values are either strings, DOM elements
-	 *         or complex value types defined in the
-	 *         {@link ComplexValueExtension}
+	 * @return the project properties, values are either strings, DOM elements or
+	 *         complex value types defined in the {@link ComplexValueExtension}
 	 */
 	public Map<String, Value> getProperties() {
 		return properties;

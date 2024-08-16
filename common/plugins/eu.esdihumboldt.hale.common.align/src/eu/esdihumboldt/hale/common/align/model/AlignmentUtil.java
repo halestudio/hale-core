@@ -96,10 +96,10 @@ public abstract class AlignmentUtil {
 	 * types.
 	 * 
 	 * @param alignment the alignment
-	 * @param sourceType the source type, may be <code>null</code> for any
-	 *            source type
-	 * @param targetType the target type, may be <code>null</code> for any
-	 *            target type
+	 * @param sourceType the source type, may be <code>null</code> for any source
+	 *            type
+	 * @param targetType the target type, may be <code>null</code> for any target
+	 *            type
 	 * @return if a relation between the given types exists in the alignment
 	 */
 	public static boolean hasTypeRelation(Alignment alignment, TypeEntityDefinition sourceType,
@@ -142,8 +142,7 @@ public abstract class AlignmentUtil {
 	 * Get the parent entity definition for the given entity definition.
 	 * 
 	 * @param entity the entity definition
-	 * @return the parent entity definition or <code>null</code> if it has no
-	 *         parent
+	 * @return the parent entity definition or <code>null</code> if it has no parent
 	 */
 	public static EntityDefinition getParent(EntityDefinition entity) {
 		List<ChildContext> path = entity.getPropertyPath();
@@ -165,8 +164,8 @@ public abstract class AlignmentUtil {
 	 * 
 	 * @param entity the parent entity
 	 * @param childName the child name
-	 * @return the child entity or <code>null</code> if no child with the given
-	 *         name exists
+	 * @return the child entity or <code>null</code> if no child with the given name
+	 *         exists
 	 */
 	public static EntityDefinition getChild(EntityDefinition entity, QName childName) {
 		ChildDefinition<?> child = DefinitionUtil.getChild(entity.getDefinition(), childName);
@@ -222,8 +221,8 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Create an entity definition from a definition path. Child contexts will
-	 * all be defaults contexts.
+	 * Create an entity definition from a definition path. Child contexts will all
+	 * be defaults contexts.
 	 * 
 	 * @param path the definition path, the topmost element has to represent a
 	 *            {@link TypeDefinition}, all other elements must be
@@ -257,8 +256,8 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Create an entity definition from a definition path. Child contexts will
-	 * all be defaults contexts.
+	 * Create an entity definition from a definition path. Child contexts will all
+	 * be defaults contexts.
 	 * 
 	 * @param type the path parent
 	 * @param path the child path
@@ -318,9 +317,9 @@ public abstract class AlignmentUtil {
 	 * default instance context for each path entry and w/o filter.
 	 * 
 	 * @param entity the entity definition
-	 * @return the entity definition with the default context in all path
-	 *         elements and w/o type filter, if no contexts and type filter are
-	 *         present the supplied entity is returned directly
+	 * @return the entity definition with the default context in all path elements
+	 *         and w/o type filter, if no contexts and type filter are present the
+	 *         supplied entity is returned directly
 	 */
 	public static EntityDefinition getAllDefaultEntity(EntityDefinition entity) {
 		return getAllDefaultEntity(entity, false);
@@ -331,11 +330,11 @@ public abstract class AlignmentUtil {
 	 * default instance context for each path entry and w/o filter.
 	 * 
 	 * @param entity the entity definition
-	 * @param stripSchemaSpace if the schema space information should be
-	 *            stripped from the entity
-	 * @return the entity definition with the default context in all path
-	 *         elements and w/o type filter, if no contexts and type filter are
-	 *         present the supplied entity is returned directly
+	 * @param stripSchemaSpace if the schema space information should be stripped
+	 *            from the entity
+	 * @return the entity definition with the default context in all path elements
+	 *         and w/o type filter, if no contexts and type filter are present the
+	 *         supplied entity is returned directly
 	 */
 	public static EntityDefinition getAllDefaultEntity(EntityDefinition entity,
 			final boolean stripSchemaSpace) {
@@ -381,8 +380,8 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Apply the given schema space to the entity definition. Creates a new
-	 * entity definition if necessary.
+	 * Apply the given schema space to the entity definition. Creates a new entity
+	 * definition if necessary.
 	 * 
 	 * @param entity the entity definition
 	 * @param schemaSpace the schema space to apply
@@ -409,9 +408,9 @@ public abstract class AlignmentUtil {
 	 * 
 	 * @param entity the entity definition
 	 * @param pathLength the maximum path length
-	 * @return the entity definition derived from the given entity definition
-	 *         but with the property path shortened if needed, otherwise the
-	 *         given definition will be returned
+	 * @return the entity definition derived from the given entity definition but
+	 *         with the property path shortened if needed, otherwise the given
+	 *         definition will be returned
 	 */
 	public static EntityDefinition deriveEntity(EntityDefinition entity, int pathLength) {
 		if (pathLength < 0) {
@@ -439,8 +438,8 @@ public abstract class AlignmentUtil {
 	 * 
 	 * @param parent the parent
 	 * @param child the potential child
-	 * @return if the first entity definition is a parent of the second or if
-	 *         both are equal
+	 * @return if the first entity definition is a parent of the second or if both
+	 *         are equal
 	 */
 	public static boolean isParent(EntityDefinition parent, EntityDefinition child) {
 		if (!parent.getType().equals(child.getType())) {
@@ -476,13 +475,13 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * States if the given entity definition or one of its children is mapped in
-	 * the given alignment.
+	 * States if the given entity definition or one of its children is mapped in the
+	 * given alignment.
 	 * 
 	 * @param entity the entity definition
 	 * @param alignment the alignment
-	 * @return if the alignment contains a relation where the given entity or
-	 *         one of its children (including grand-children etc.) is involved
+	 * @return if the alignment contains a relation where the given entity or one of
+	 *         its children (including grand-children etc.) is involved
 	 */
 	public static boolean entityOrChildMapped(EntityDefinition entity, Alignment alignment) {
 		// check for a direct mapping
@@ -508,8 +507,8 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Determines if the given entity definition or one of its children is
-	 * contained in the given entity candidates.
+	 * Determines if the given entity definition or one of its children is contained
+	 * in the given entity candidates.
 	 * 
 	 * @param entity the entity definition
 	 * @param candidates the entity candidates to test
@@ -609,8 +608,8 @@ public abstract class AlignmentUtil {
 	 * Get a text representation for the entity definition context.
 	 * 
 	 * @param entityDef the entity definition
-	 * @return the context text or <code>null</code> if it is the default
-	 *         context or the context has no text representation
+	 * @return the context text or <code>null</code> if it is the default context or
+	 *         the context has no text representation
 	 */
 	public static String getContextText(EntityDefinition entityDef) {
 		List<ChildContext> path = entityDef.getPropertyPath();
@@ -671,13 +670,12 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Assures that an entity is a {@link TypeEntityDefinition},
-	 * {@link PropertyEntityDefinition} or {@link ChildEntityDefinition} and
-	 * that the inherent classification is correct.
+	 * {@link PropertyEntityDefinition} or {@link ChildEntityDefinition} and that
+	 * the inherent classification is correct.
 	 * 
 	 * @param entity the entity definition
-	 * @return the entity that is guaranteed to be a
-	 *         {@link TypeEntityDefinition}, {@link PropertyEntityDefinition} or
-	 *         {@link ChildEntityDefinition}
+	 * @return the entity that is guaranteed to be a {@link TypeEntityDefinition},
+	 *         {@link PropertyEntityDefinition} or {@link ChildEntityDefinition}
 	 */
 	public static EntityDefinition normalizeEntity(EntityDefinition entity) {
 		if (entity instanceof TypeEntityDefinition) {
@@ -750,8 +748,8 @@ public abstract class AlignmentUtil {
 	 * 
 	 * @param condition the property condition
 	 * @param value the property value
-	 * @param parent the parent of the property value, may be <code>null</code>
-	 *            if there is none
+	 * @param parent the parent of the property value, may be <code>null</code> if
+	 *            there is none
 	 * @return if the value matched the property condition
 	 */
 	public static boolean matchCondition(Condition condition, Object value, Object parent) {
@@ -768,19 +766,19 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Returns a cell like the given property cell with all source and target
-	 * types matching those off the given type cell.<br>
-	 * If the types already match they are unchanged. If the types are sub types
-	 * of the types of the type cell they are changed. If no change is necessary
-	 * the cell itself is returned.
+	 * Returns a cell like the given property cell with all source and target types
+	 * matching those off the given type cell.<br>
+	 * If the types already match they are unchanged. If the types are sub types of
+	 * the types of the type cell they are changed. If no change is necessary the
+	 * cell itself is returned.
 	 * 
 	 * @param propertyCell the property cell to update
 	 * @param typeCell the type cell with the target types
-	 * @param strict If false and the target type cell has no sources or target,
-	 *            the property cell is updated to have the sources/target in
-	 *            their declaring type. If true, said properties are left
-	 *            unchanged. Does not matter for complete type cells, since they
-	 *            have sources and a target.
+	 * @param strict If false and the target type cell has no sources or target, the
+	 *            property cell is updated to have the sources/target in their
+	 *            declaring type. If true, said properties are left unchanged. Does
+	 *            not matter for complete type cells, since they have sources and a
+	 *            target.
 	 * @return the updated cell or <code>null</code> if an update isn't possible
 	 */
 	public static Cell reparentCell(Cell propertyCell, Cell typeCell, boolean strict) {
@@ -922,8 +920,8 @@ public abstract class AlignmentUtil {
 	}
 
 	/**
-	 * Checks whether the given entity (or one of its children) is associated
-	 * with the given cell (considering inheritance).
+	 * Checks whether the given entity (or one of its children) is associated with
+	 * the given cell (considering inheritance).
 	 * 
 	 * @param entity the entity to check
 	 * @param cell the cell to check the entity against
@@ -974,8 +972,8 @@ public abstract class AlignmentUtil {
 	 * 
 	 * @param instance the instance to collect values from
 	 * @param definition the property
-	 * @param onlyValues whether to only return values, or to return whatever
-	 *            can be found (including groups/instances)
+	 * @param onlyValues whether to only return values, or to return whatever can be
+	 *            found (including groups/instances)
 	 * @return all values of the given property
 	 */
 	public static Multiset<Object> getValues(Instance instance, PropertyEntityDefinition definition,
@@ -991,8 +989,8 @@ public abstract class AlignmentUtil {
 	 * @param group the parent group
 	 * @param path the path on the group
 	 * @param collectedValues the set to add the values to
-	 * @param onlyValues whether to only return values, or to return whatever
-	 *            can be found (including groups/instances)
+	 * @param onlyValues whether to only return values, or to return whatever can be
+	 *            found (including groups/instances)
 	 */
 	public static void addValues(Group group, List<ChildContext> path,
 			Multiset<Object> collectedValues, boolean onlyValues) {

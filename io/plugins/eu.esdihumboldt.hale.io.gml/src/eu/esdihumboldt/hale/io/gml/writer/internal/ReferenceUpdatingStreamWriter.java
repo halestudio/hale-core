@@ -46,8 +46,8 @@ public class ReferenceUpdatingStreamWriter extends PrefixAwareStreamWriterDecora
 	}
 
 	/**
-	 * Create the writer that updates the specified attribute. If the attribute
-	 * to update contains only a local part (i.e. no prefix and namespace are
+	 * Create the writer that updates the specified attribute. If the attribute to
+	 * update contains only a local part (i.e. no prefix and namespace are
 	 * specified), all attributes with that local part will be updated.
 	 * 
 	 * @param decoratee Writer to decorate

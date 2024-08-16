@@ -18,12 +18,13 @@ package eu.esdihumboldt.cst.functions.geometric.extent;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.ListMultimap;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryCollection;
 import org.locationtech.jts.geom.GeometryFactory;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.ParameterValue;
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
@@ -50,10 +51,9 @@ public class ExtentTransformation extends
 
 	/**
 	 * Number of Geometries to be processed at once by either extent option.
-	 * Especially the "union" process run time depends on this value. A too
-	 * large value causes a @code{java.lang.OutOfMemoryError}. The chosen value
-	 * results in fairly good processing time of 30-60 seconds per 10,000
-	 * geometries.
+	 * Especially the "union" process run time depends on this value. A too large
+	 * value causes a @code{java.lang.OutOfMemoryError}. The chosen value results in
+	 * fairly good processing time of 30-60 seconds per 10,000 geometries.
 	 */
 	private static final short SIMULTAN_PROCESS_GEOMS = 768;
 
@@ -81,8 +81,7 @@ public class ExtentTransformation extends
 	 * @param geometries the geometries or instances containing geometries
 	 * @param type the type of extent to calculate
 	 * @return the calculated extent
-	 * @throws TransformationException if source geometries don't have a common
-	 *             CRS
+	 * @throws TransformationException if source geometries don't have a common CRS
 	 * @throws NoResultException if the result extent would be <code>null</code>
 	 */
 	public static GeometryProperty<?> calculateExtent(Iterable<?> geometries, ExtentType type)
@@ -143,8 +142,9 @@ public class ExtentTransformation extends
 		}
 
 		Geometry extent = resolveParam(
-				new GeometryCollection(Arrays.copyOfRange(geomsCollectingArray, 0,
-						geomsCollectedIdx), fact), type);
+				new GeometryCollection(
+						Arrays.copyOfRange(geomsCollectingArray, 0, geomsCollectedIdx), fact),
+				type);
 
 		if (extent != null) {
 			return new DefaultGeometryProperty<Geometry>(commonCrs, extent);

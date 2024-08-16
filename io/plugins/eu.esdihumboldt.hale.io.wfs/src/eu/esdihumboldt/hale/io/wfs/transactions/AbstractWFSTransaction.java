@@ -57,7 +57,8 @@ public abstract class AbstractWFSTransaction implements XmlWrapper {
 			try {
 				writer.setPrefix(WFS_DESIRED_PREFIX, wfsVersion.wfsNamespace);
 			} catch (XMLStreamException e) {
-				reporter.warn(new IOMessageImpl("Failed to set the prefix for the WFS namespace", e));
+				reporter.warn(
+						new IOMessageImpl("Failed to set the prefix for the WFS namespace", e));
 			}
 		}
 	}

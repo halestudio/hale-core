@@ -34,8 +34,8 @@ public interface PropertyParameterDefinition extends ParameterDefinition {
 	public abstract List<PropertyCondition> getConditions();
 
 	/**
-	 * Get if the property is eager, i.e. if it wants to consume all property
-	 * values instead of one at a time.
+	 * Get if the property is eager, i.e. if it wants to consume all property values
+	 * instead of one at a time.
 	 * 
 	 * @return if the property is eager
 	 */

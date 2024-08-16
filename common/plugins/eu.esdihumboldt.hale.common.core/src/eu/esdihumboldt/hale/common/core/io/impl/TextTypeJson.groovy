@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl
 
-import eu.esdihumboldt.hale.common.core.io.ComplexValueJson
-import eu.esdihumboldt.hale.common.core.io.Text
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+
+import eu.esdihumboldt.hale.common.core.io.ComplexValueJson
+import eu.esdihumboldt.hale.common.core.io.Text
 
 
 /**

@@ -77,7 +77,6 @@ import schemacrawler.schema.BaseColumn;
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Column;
 import schemacrawler.schema.ColumnDataType;
-//import schemacrawler.schema.Database;
 import schemacrawler.schema.IndexColumn;
 import schemacrawler.schema.PrimaryKey;
 import schemacrawler.schema.ResultsColumn;
@@ -358,8 +357,8 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 	 * definition is created, too, if necessary.
 	 * 
 	 * @param schema the schema the table belongs to
-	 * @param tableType the type definition of the parent table this column
-	 *            belongs too
+	 * @param tableType the type definition of the parent table this column belongs
+	 *            too
 	 * @param column the column to get or create a property definition for
 	 * @param overallNamespace the database namespace
 	 * @param namespace the schema namespace
@@ -512,9 +511,8 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 		CustomType cust = CustomTypeExtension.getInstance().getCustomType(localName, connection);
 		/*
-		 * Oracle jdbc was returning sqltype -6 for NUMBER data type, but it is
-		 * bound to boolean by Types.java class. Configured the sqltype 6 for
-		 * NUMBER data type.
+		 * Oracle jdbc was returning sqltype -6 for NUMBER data type, but it is bound to
+		 * boolean by Types.java class. Configured the sqltype 6 for NUMBER data type.
 		 */
 		if (cust != null) {
 			type.setConstraint(SQLType.get(cust.getSQLType()));
@@ -586,14 +584,15 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 					/*
 					 * Postgres:
 					 * 
-					 * Dimensions and size are not part of the schema, they can
-					 * only be determined for a value.
+					 * Dimensions and size are not part of the schema, they can only be determined
+					 * for a value.
 					 */
 
 					// XXX for now, stick to what we can determine
 					int dimension = SQLArray.UNKNOWN_DIMENSION;
 					String specificTypeName = (itemType != null)
-							? (itemType.getDatabaseSpecificTypeName()) : (null);
+							? (itemType.getDatabaseSpecificTypeName())
+							: (null);
 					type.setConstraint(
 							new SQLArray(elementBinding, specificTypeName, dimension, null));
 
@@ -712,7 +711,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 								Collections.<QName> singletonList(getOrCreateProperty(schema, type,
 										table.getColumn(columns.get(0).getName()), overallNamespace,
 										namespace, types, connection, reporter, catalog)
-												.getName())));
+										.getName())));
 			}
 		}
 

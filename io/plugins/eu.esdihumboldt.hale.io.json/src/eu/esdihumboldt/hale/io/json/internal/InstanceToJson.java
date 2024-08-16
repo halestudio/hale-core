@@ -79,9 +79,9 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 *
-	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to
-	 * the draft version 6 by attributes for namespace prefix definitions and
-	 * specific feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
+	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to the
+	 * draft version 6 by attributes for namespace prefix definitions and specific
+	 * feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
 	 *
 	 * @param geoJson if the output should be valid GeoJson output
 	 */
@@ -92,9 +92,9 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 *
-	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to
-	 * the draft version 6 by attributes for namespace prefix definitions and
-	 * specific feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
+	 * Note: The GeoJson output follows the RFC SPEC but extends it similar to the
+	 * draft version 6 by attributes for namespace prefix definitions and specific
+	 * feature type: http://wiki.geojson.org/GeoJSON_draft_version_6
 	 *
 	 * @param geoJson if the output should be valid GeoJson output
 	 */
@@ -106,8 +106,8 @@ public class InstanceToJson implements InstanceJsonConstants {
 	 *
 	 * @param geoJson geojson
 	 * @param namespaces namespace
-	 * @param decimals the number of decimals to use when encoding floating
-	 *            point numbers
+	 * @param decimals the number of decimals to use when encoding floating point
+	 *            numbers
 	 */
 	public InstanceToJson(boolean geoJson, NamespaceManager namespaces, int decimals) {
 		super();
@@ -656,8 +656,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 		// correct winding order as per right-hand rule, i.e.,
 		// exterior rings are counterclockwise, and holes are
 		// clockwise.
-		geom = WindingOrder.unifyWindingOrder(geometry, true,
-				geomProp.getCRSDefinition().getCRS());
+		geom = WindingOrder.unifyWindingOrder(geometry, true, geomProp.getCRSDefinition().getCRS());
 
 		// FIXME what to do in case of an invalid geometry?
 

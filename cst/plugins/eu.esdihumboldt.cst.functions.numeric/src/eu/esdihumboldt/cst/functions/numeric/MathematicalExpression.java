@@ -48,8 +48,8 @@ public class MathematicalExpression
 
 	/**
 	 * @see AbstractSingleTargetPropertyTransformation#evaluate(String,
-	 *      TransformationEngine, ListMultimap, String,
-	 *      PropertyEntityDefinition, Map, TransformationLog)
+	 *      TransformationEngine, ListMultimap, String, PropertyEntityDefinition,
+	 *      Map, TransformationLog)
 	 */
 	@Override
 	protected Object evaluate(String transformationIdentifier, TransformationEngine engine,
@@ -74,8 +74,8 @@ public class MathematicalExpression
 	/**
 	 * Evaluate a mathematical expression.
 	 * 
-	 * @param expression the mathematical expression. It may contain references
-	 *            to variables
+	 * @param expression the mathematical expression. It may contain references to
+	 *            variables
 	 * @param vars the list of available property values that may be bound to
 	 *            variables
 	 * @return the evaluated expression, which can be Double, Integer or String

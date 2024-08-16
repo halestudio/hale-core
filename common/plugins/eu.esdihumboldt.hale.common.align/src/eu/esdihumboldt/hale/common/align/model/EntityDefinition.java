@@ -40,9 +40,9 @@ public interface EntityDefinition {
 	public Definition<?> getDefinition();
 
 	/**
-	 * Get the type definition that is associated with the entity. This is
-	 * either the type represented by the entity or the topmost parent to the
-	 * property represented by the entity.
+	 * Get the type definition that is associated with the entity. This is either
+	 * the type represented by the entity or the topmost parent to the property
+	 * represented by the entity.
 	 * 
 	 * @return the type definition
 	 */
@@ -56,9 +56,8 @@ public interface EntityDefinition {
 	public Filter getFilter();
 
 	/**
-	 * Get the property path. Each path item is an instance context name paired
-	 * with a child definition. The default instance context name is
-	 * <code>null</code>.
+	 * Get the property path. Each path item is an instance context name paired with
+	 * a child definition. The default instance context name is <code>null</code>.
 	 * 
 	 * @return the path down to the property represented by the entity, an empty
 	 *         list if the entity represents a type
@@ -66,10 +65,10 @@ public interface EntityDefinition {
 	public List<ChildContext> getPropertyPath();
 
 	/**
-	 * Get the schema space the entity definition is associated to. The schema
-	 * space itself is no characteristic of the entity, but is needed as
-	 * additional information to differentiate between source and target schema
-	 * entities with the same names.
+	 * Get the schema space the entity definition is associated to. The schema space
+	 * itself is no characteristic of the entity, but is needed as additional
+	 * information to differentiate between source and target schema entities with
+	 * the same names.
 	 * 
 	 * @return the identifier of the entity definition's schema space
 	 */

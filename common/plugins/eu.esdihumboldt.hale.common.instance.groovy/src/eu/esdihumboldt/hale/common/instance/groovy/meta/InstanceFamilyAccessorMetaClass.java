@@ -48,7 +48,8 @@ public class InstanceFamilyAccessorMetaClass extends DelegatingMetaClass {
 
 	@Override
 	public Object getProperty(Object object, String property) {
-		if (object instanceof FamilyInstance && ("links".equals(property) || "l".equals(property))) {
+		if (object instanceof FamilyInstance
+				&& ("links".equals(property) || "l".equals(property))) {
 			return new InstanceFamilyAccessor((FamilyInstance) object);
 		}
 		return super.getProperty(object, property);

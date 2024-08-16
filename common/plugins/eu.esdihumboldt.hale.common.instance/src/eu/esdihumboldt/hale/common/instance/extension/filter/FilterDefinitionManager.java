@@ -64,7 +64,8 @@ public class FilterDefinitionManager extends AbstractObjectFactory<Filter, Filte
 						try {
 							return input.createExtensionObject();
 						} catch (Exception e) {
-							throw new IllegalStateException("Could not create filter definition", e);
+							throw new IllegalStateException("Could not create filter definition",
+									e);
 						}
 					}
 				});

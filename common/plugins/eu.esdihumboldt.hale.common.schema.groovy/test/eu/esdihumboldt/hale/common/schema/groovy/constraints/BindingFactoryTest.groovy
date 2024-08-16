@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
-import groovy.transform.CompileStatic
-import org.junit.Test
-
 import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
+
+import org.junit.Test
 
 /**
  * Tests creation of {@link Binding} constraints w/ {@link BindingFactory}.

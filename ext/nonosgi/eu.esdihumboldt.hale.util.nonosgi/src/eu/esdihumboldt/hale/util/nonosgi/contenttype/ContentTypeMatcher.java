@@ -26,9 +26,9 @@ import org.slf4j.LoggerFactory;
 /**
  * @since 3.1
  */
-@SuppressWarnings({"restriction"})
+@SuppressWarnings({ "restriction" })
 public class ContentTypeMatcher implements IContentTypeMatcher {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(ContentTypeMatcher.class);
 
 	private IScopeContext context;
@@ -40,10 +40,13 @@ public class ContentTypeMatcher implements IContentTypeMatcher {
 	}
 
 	@Override
-	public IContentType findContentTypeFor(InputStream contents, String fileName) throws IOException {
+	public IContentType findContentTypeFor(InputStream contents, String fileName)
+			throws IOException {
 		ContentTypeCatalog currentCatalog = getCatalog();
 		IContentType[] all = currentCatalog.findContentTypesFor(this, contents, fileName);
-		return all.length > 0 ? new ContentTypeHandler((ContentType) all[0], currentCatalog.getGeneration()) : null;
+		return all.length > 0
+				? new ContentTypeHandler((ContentType) all[0], currentCatalog.getGeneration())
+				: null;
 	}
 
 	@Override
@@ -51,11 +54,14 @@ public class ContentTypeMatcher implements IContentTypeMatcher {
 		// basic implementation just gets all content types
 		ContentTypeCatalog currentCatalog = getCatalog();
 		IContentType[] associated = currentCatalog.findContentTypesFor(this, fileName);
-		return associated.length == 0 ? null : new ContentTypeHandler((ContentType) associated[0], currentCatalog.getGeneration());
+		return associated.length == 0 ? null
+				: new ContentTypeHandler((ContentType) associated[0],
+						currentCatalog.getGeneration());
 	}
 
 	@Override
-	public IContentType[] findContentTypesFor(InputStream contents, String fileName) throws IOException {
+	public IContentType[] findContentTypesFor(InputStream contents, String fileName)
+			throws IOException {
 		ContentTypeCatalog currentCatalog = getCatalog();
 		IContentType[] types = currentCatalog.findContentTypesFor(this, contents, fileName);
 		IContentType[] result = new IContentType[types.length];
@@ -81,12 +87,14 @@ public class ContentTypeMatcher implements IContentTypeMatcher {
 	}
 
 	@Override
-	public IContentDescription getDescriptionFor(InputStream contents, String fileName, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(InputStream contents, String fileName,
+			QualifiedName[] options) throws IOException {
 		return getCatalog().getDescriptionFor(this, contents, fileName, options);
 	}
 
 	@Override
-	public IContentDescription getDescriptionFor(Reader contents, String fileName, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(Reader contents, String fileName,
+			QualifiedName[] options) throws IOException {
 		return getCatalog().getDescriptionFor(this, contents, fileName, options);
 	}
 
@@ -99,14 +107,17 @@ public class ContentTypeMatcher implements IContentTypeMatcher {
 	}
 
 	/**
-	 * Enumerates all content types whose settings satisfy the given file spec type mask.
+	 * Enumerates all content types whose settings satisfy the given file spec type
+	 * mask.
 	 */
 	@SuppressWarnings("unchecked")
-	public Collection<ContentType> getDirectlyAssociated(final ContentTypeCatalog catalog, final String fileSpec, final int typeMask) {
+	public Collection<ContentType> getDirectlyAssociated(final ContentTypeCatalog catalog,
+			final String fileSpec, final int typeMask) {
 		if ((typeMask & (IContentType.FILE_EXTENSION_SPEC | IContentType.FILE_NAME_SPEC)) == 0) {
-			throw new IllegalArgumentException("This method only apply to name or extension based associations"); //$NON-NLS-1$
+			throw new IllegalArgumentException(
+					"This method only apply to name or extension based associations"); //$NON-NLS-1$
 		}
-		//TODO: make sure we include built-in associations as well
+		// TODO: make sure we include built-in associations as well
 		final IEclipsePreferences root = context.getNode(ContentTypeManager.CONTENT_TYPE_PREF_NODE);
 		final Set<ContentType> result = new HashSet<>(3);
 		try {
@@ -158,16 +169,19 @@ public class ContentTypeMatcher implements IContentTypeMatcher {
 	}
 
 	public IContentDescription getSpecificDescription(BasicDescription description) {
-		if (description == null || ContentTypeManager.getInstance().getContext().equals(getContext()))
+		if (description == null
+				|| ContentTypeManager.getInstance().getContext().equals(getContext()))
 			// no need for specific content descriptions
 			return description;
 		// default description
 		if (description instanceof DefaultDescription)
 			// return an context specific description instead
-			return new DefaultDescription(new ContentTypeSettings((ContentType) description.getContentTypeInfo(), context));
+			return new DefaultDescription(new ContentTypeSettings(
+					(ContentType) description.getContentTypeInfo(), context));
 		// non-default description
 		// replace info object with context specific settings
-		((ContentDescription) description).setContentTypeInfo(new ContentTypeSettings((ContentType) description.getContentTypeInfo(), context));
+		((ContentDescription) description).setContentTypeInfo(
+				new ContentTypeSettings((ContentType) description.getContentTypeInfo(), context));
 		return description;
 	}
 }

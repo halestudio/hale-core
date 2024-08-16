@@ -29,16 +29,16 @@ import eu.esdihumboldt.hale.common.core.parameter.Validator;
 public interface FunctionParameterDefinition extends ParameterDefinition {
 
 	/**
-	 * Returns the binding class for this function parameter or null if there is
-	 * an enumeration present.
+	 * Returns the binding class for this function parameter or null if there is an
+	 * enumeration present.
 	 * 
 	 * @return the binding or <code>null</code>
 	 */
 	public abstract Class<?> getBinding();
 
 	/**
-	 * Returns the enumeration of allowed values for this function parameter or
-	 * null if there is a binding present.
+	 * Returns the enumeration of allowed values for this function parameter or null
+	 * if there is a binding present.
 	 * 
 	 * @return the value enumeration or <code>null</code>
 	 */

@@ -15,14 +15,14 @@
 
 package eu.esdihumboldt.util.config
 
+import groovy.transform.CompileStatic
+
 import java.nio.charset.StandardCharsets
 
 import org.yaml.snakeyaml.DumperOptions
 import org.yaml.snakeyaml.LoaderOptions
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.SafeConstructor
-
-import groovy.transform.CompileStatic
 
 /**
  * Helper for converting a Config from and to YAML.

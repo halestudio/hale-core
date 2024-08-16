@@ -51,13 +51,13 @@ public class PointWriter extends AbstractGeometryWriter<Point> {
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, Point geometry, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		writeCoordinates(writer, geometry.getCoordinates(), elementType, gmlNs, decimalFormatter);
 	}
 

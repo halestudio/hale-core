@@ -32,9 +32,9 @@ public class SweepPoint2DXYComparator implements Comparator<Point2D> {
 	 * 
 	 * @param p1 the first point
 	 * @param p2 the second point
-	 * @return -1 if the x ordinate of p1 is lower than the one of p2, +1 if
-	 *         it's greater. If both ordinates are equal the method will compare
-	 *         the y ordinates.
+	 * @return -1 if the x ordinate of p1 is lower than the one of p2, +1 if it's
+	 *         greater. If both ordinates are equal the method will compare the y
+	 *         ordinates.
 	 */
 	@Override
 	public int compare(Point2D p1, Point2D p2) {

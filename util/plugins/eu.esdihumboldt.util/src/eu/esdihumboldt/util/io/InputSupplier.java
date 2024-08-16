@@ -28,8 +28,8 @@ public interface InputSupplier<T> {
 	/**
 	 * Returns an object that encapsulates a readable resource.
 	 * 
-	 * This method may be called repeatedly to get independent channels to the
-	 * same underlying resource.
+	 * This method may be called repeatedly to get independent channels to the same
+	 * underlying resource.
 	 * 
 	 * @return a new input source, the caller is responsible for cleanup
 	 * @throws IOException if a new input source cannot be opened

@@ -67,12 +67,11 @@ public class InstancePropertyAccessorFactory implements PropertyAccessorFactory 
 		protected Object unwrap(Object obj) {
 			if (obj instanceof GeometryProperty) {
 				/*
-				 * Extract geometry from GeometryProperty, as a Geometry is
-				 * usually expected in Geotools filters related to geometries.
+				 * Extract geometry from GeometryProperty, as a Geometry is usually expected in
+				 * Geotools filters related to geometries.
 				 * 
-				 * XXX A better alternative might be adding a Geotools converter
-				 * factory that supports this conversions (also see Geotools
-				 * Converters class).
+				 * XXX A better alternative might be adding a Geotools converter factory that
+				 * supports this conversions (also see Geotools Converters class).
 				 */
 				return ((GeometryProperty<?>) obj).getGeometry();
 			}
@@ -87,17 +86,15 @@ public class InstancePropertyAccessorFactory implements PropertyAccessorFactory 
 				Collection<Object> values = PropertyResolver.getValues((Instance) object, xpath);
 				if (values.size() == 1) {
 					/*
-					 * Always yield single value if there is only a single
-					 * value. This is required for instance for the IS NULL
-					 * filter. It does not work on lists.
+					 * Always yield single value if there is only a single value. This is required
+					 * for instance for the IS NULL filter. It does not work on lists.
 					 */
 					return unwrap(values.iterator().next());
 				}
 				else if (values.isEmpty()) {
 					/*
-					 * No values -> return null. This is required for instance
-					 * for the IS NULL filter. It treats a list always as not
-					 * null.
+					 * No values -> return null. This is required for instance for the IS NULL
+					 * filter. It treats a list always as not null.
 					 */
 					return null;
 				}

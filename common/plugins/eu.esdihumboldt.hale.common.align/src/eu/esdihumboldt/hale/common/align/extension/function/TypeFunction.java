@@ -21,9 +21,9 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import net.jcip.annotations.Immutable;
-
 import org.eclipse.core.runtime.IConfigurationElement;
+
+import net.jcip.annotations.Immutable;
 
 /**
  * Type function
@@ -31,8 +31,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
  * @author Simon Templer
  */
 @Immutable
-public final class TypeFunction extends AbstractFunction<TypeParameterDefinition> implements
-		TypeFunctionDefinition {
+public final class TypeFunction extends AbstractFunction<TypeParameterDefinition>
+		implements TypeFunctionDefinition {
 
 	private final Set<TypeParameter> source;
 	private final Set<TypeParameter> target;
@@ -51,7 +51,8 @@ public final class TypeFunction extends AbstractFunction<TypeParameterDefinition
 		addTypes(target, conf.getChildren("targetTypes"));
 	}
 
-	private static void addTypes(Set<TypeParameter> collector, IConfigurationElement[] typesElements) {
+	private static void addTypes(Set<TypeParameter> collector,
+			IConfigurationElement[] typesElements) {
 		if (typesElements != null) {
 			for (IConfigurationElement typesElement : typesElements) {
 				IConfigurationElement[] types = typesElement.getChildren("type");

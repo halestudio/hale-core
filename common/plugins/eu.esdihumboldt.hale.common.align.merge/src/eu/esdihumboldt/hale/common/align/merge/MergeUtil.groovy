@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.hale.common.align.merge
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.align.model.ChildContext
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition
 import eu.esdihumboldt.hale.common.instance.extension.filter.FilterDefinitionManager
-import groovy.transform.CompileStatic
 
 /**
  * Some utility methods related to alignment migration/merge.

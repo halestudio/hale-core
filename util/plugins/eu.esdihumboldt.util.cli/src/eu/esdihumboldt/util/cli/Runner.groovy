@@ -15,10 +15,11 @@
 
 package eu.esdihumboldt.util.cli
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.util.cli.bash.BashCompletion
 import eu.esdihumboldt.util.cli.extension.GroupCommand
 import eu.esdihumboldt.util.cli.impl.ContextImpl
-import groovy.transform.CompileStatic
 
 /**
  * Command line runner.

@@ -19,10 +19,11 @@ package eu.esdihumboldt.cst.functions.geometric;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.ListMultimap;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
+
+import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 import eu.esdihumboldt.hale.common.align.transformation.engine.TransformationEngine;
@@ -64,7 +65,8 @@ public class Centroid extends AbstractSingleTargetPropertyTransformation<Transfo
 		TypeDefinition targetType = resultProperty.getDefinition().getPropertyType();
 		// TODO check element type?
 		Class<?> binding = targetType.getConstraint(Binding.class).getBinding();
-		if (Geometry.class.isAssignableFrom(binding) && binding.isAssignableFrom(result.getClass())) {
+		if (Geometry.class.isAssignableFrom(binding)
+				&& binding.isAssignableFrom(result.getClass())) {
 			return result.getGeometry();
 		}
 		return result;
@@ -76,8 +78,8 @@ public class Centroid extends AbstractSingleTargetPropertyTransformation<Transfo
 	 * @param geometryHolder {@link Geometry}, {@link GeometryProperty} or
 	 *            {@link Instance} holding a geometry
 	 * @return the centroid of the geometry
-	 * @throws TransformationException if the no geometry could be extracted
-	 *             from the input
+	 * @throws TransformationException if the no geometry could be extracted from
+	 *             the input
 	 */
 	public static GeometryProperty<?> calculateCentroid(Object geometryHolder)
 			throws TransformationException {

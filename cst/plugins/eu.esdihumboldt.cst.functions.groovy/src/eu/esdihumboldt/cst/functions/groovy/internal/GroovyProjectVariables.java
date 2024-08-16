@@ -83,8 +83,7 @@ public class GroovyProjectVariables extends GroovyObjectSupport {
 	}
 
 	/**
-	 * Get a variable value. Fail with an exception if the variable does not
-	 * exist.
+	 * Get a variable value. Fail with an exception if the variable does not exist.
 	 * 
 	 * @param name the variable name
 	 * @return the variable value

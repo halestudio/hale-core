@@ -27,14 +27,14 @@ public class Utils {
 	private static final String TRUE = "true";
 
 	/**
-	 * Properties files (coming from fragment linked to this bundle) which
-	 * configure NO OSGi-env.
+	 * Properties files (coming from fragment linked to this bundle) which configure
+	 * NO OSGi-env.
 	 */
 	private static final String NONOSGIREGISTRY_PROPERTIES = "nonosgiregistry.properties";
-	
+
 	/**
-	 * Return a map of the whole MANIFEST.MF founded into the ClassPath. The key
-	 * map is the baseDir of the URI of the MANIFEST.MF file.
+	 * Return a map of the whole MANIFEST.MF founded into the ClassPath. The key map
+	 * is the baseDir of the URI of the MANIFEST.MF file.
 	 * 
 	 * @param cl
 	 * @return
@@ -95,8 +95,7 @@ public class Utils {
 	 * @param resourcePath
 	 * @return
 	 */
-	private static Enumeration<URL> getResources(ClassLoader cl,
-			String resourcePath) {
+	private static Enumeration<URL> getResources(ClassLoader cl, String resourcePath) {
 		try {
 			return cl == null ? ClassLoader.getSystemResources(resourcePath)
 					: cl.getResources(resourcePath);
@@ -111,8 +110,7 @@ public class Utils {
 	 * Checks if a String is empty ("") or null.
 	 * </p>
 	 * 
-	 * @param value
-	 *            the String to check, may be null
+	 * @param value the String to check, may be null
 	 * @return <code>true</code> if the String is empty or null
 	 */
 	public static boolean isEmpty(String value) {
@@ -129,13 +127,12 @@ public class Utils {
 	 */
 	public static boolean isTrue(String value, boolean defaultValue) {
 		if (value != null)
-			return value.equalsIgnoreCase(TRUE); //$NON-NLS-1$
+			return value.equalsIgnoreCase(TRUE); // $NON-NLS-1$
 		return defaultValue;
 	}
 
 	/**
-	 * Load springclrfactory.properties from OSGi fragments linked to this
-	 * bundle..
+	 * Load springclrfactory.properties from OSGi fragments linked to this bundle..
 	 * 
 	 * @param cl
 	 * @return
@@ -146,9 +143,9 @@ public class Utils {
 
 		Enumeration<URL> nonosgiregistryProperties = null;
 		try {
-			nonosgiregistryProperties = cl == null ? ClassLoader
-					.getSystemResources(NONOSGIREGISTRY_PROPERTIES) : cl
-					.getResources(NONOSGIREGISTRY_PROPERTIES);
+			nonosgiregistryProperties = cl == null
+					? ClassLoader.getSystemResources(NONOSGIREGISTRY_PROPERTIES)
+					: cl.getResources(NONOSGIREGISTRY_PROPERTIES);
 		} catch (IOException e) {
 			if (DebugHelper.DEBUG) {
 				DebugHelper.logError(e);

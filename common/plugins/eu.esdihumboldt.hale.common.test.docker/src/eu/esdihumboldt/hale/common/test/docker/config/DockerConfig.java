@@ -12,20 +12,22 @@ import com.typesafe.config.ConfigFactory;
  * configuration information. It searches for the configuration in System
  * properties, working directory, home directory and classpath.
  * <p>
- * <strong>Example </strong></br> Mandatory configurations are:
+ * <strong>Example </strong></br>
+ * Mandatory configurations are:
  * <ul>
  * <li>dockerHost</li>
  * <li>dockerImage</>
  * </ul>
- * </br>Optional configuration are:
+ * </br>
+ * Optional configuration are:
  * <ul>
  * <li>exposedPorts (default: exposed ports in the image, if mentioned then it
  * will be added to the image's exposed port list )</li>
  * <li>exposeAllPorts (default: true, while starting a container, if all ports
  * to be exposed for providing services outside the container.) This should be
- * true to start the communication with the container from HALE.</>
- * <li>command (default: commands used in the image will be used)</>
- * <li>isPrivileged (default: false)</>
+ * true to start the communication with the container from HALE.</><li>command
+ * (default: commands used in the image will be used)</><li>isPrivileged
+ * (default: false)</>
  * </ul>
  * 
  * The docker configuration example is as below:
@@ -43,9 +45,8 @@ import com.typesafe.config.ConfigFactory;
  * </pre>
  * 
  * <p>
- * <h2>Preference order</h2>
- * Hale looks for the docker configuration in the following files in the
- * following order:
+ * <h2>Preference order</h2> Hale looks for the docker configuration in the
+ * following files in the following order:
  * <ul>
  * <li>System.getProperty("docker.conf.file")</li>
  * <li>HOMEDIR/.hale/hale-docker.conf</li>
@@ -59,9 +60,17 @@ import com.typesafe.config.ConfigFactory;
  * <p>
  * <strong>Global configuration </strong> Hale gives more precedence to the
  * global docker host configuration than the embedded one. <strong> Example
- * </strong> </br></br> global{</br> dockerHost="http://192.168.59.103:2375"
- * </br>}</br></br> takes more precedence over </br></br> postgis{</br>
- * dockerHost="http://127.0.0.1:2375"</br> }
+ * </strong> </br>
+ * </br>
+ * global{</br>
+ * dockerHost="http://192.168.59.103:2375" </br>
+ * }</br>
+ * </br>
+ * takes more precedence over </br>
+ * </br>
+ * postgis{</br>
+ * dockerHost="http://127.0.0.1:2375"</br>
+ * }
  * 
  * 
  * 
@@ -99,8 +108,7 @@ public class DockerConfig {
 	/**
 	 * Looks for the configuration file in the working directory
 	 * 
-	 * @return the absolute path of the configuration file in the working
-	 *         directory
+	 * @return the absolute path of the configuration file in the working directory
 	 */
 	private static String getWorkDirConf() {
 
@@ -108,8 +116,8 @@ public class DockerConfig {
 	}
 
 	/**
-	 * Checks for the configuration file in the system properties, home
-	 * directory, working directory and then class path.
+	 * Checks for the configuration file in the system properties, home directory,
+	 * working directory and then class path.
 	 * 
 	 * @param cl a class loader to fetch the configuration from class path
 	 * 

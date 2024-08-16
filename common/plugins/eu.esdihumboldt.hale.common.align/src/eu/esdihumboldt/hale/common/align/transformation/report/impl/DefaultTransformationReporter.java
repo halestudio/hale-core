@@ -43,14 +43,13 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 		implements TransformationReport, TransformationReporter {
 
 	/**
-	 * Maximum number of messages per cell. Negative values mean unlimited
-	 * messages.
+	 * Maximum number of messages per cell. Negative values mean unlimited messages.
 	 */
 	private static final int MESSAGE_CAP = getMessageCap();
 
 	/**
-	 * Determine message cap from system property or environment variable,
-	 * otherwise return a default value.
+	 * Determine message cap from system property or environment variable, otherwise
+	 * return a default value.
 	 * 
 	 * @return the message cap
 	 */
@@ -81,8 +80,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 	/**
 	 * Transformation message key that decides on message equality. Messages are
-	 * equal if the cell ID and message are the same, the stack trace is
-	 * ignored.
+	 * equal if the cell ID and message are the same, the stack trace is ignored.
 	 */
 	public class TMessageKey {
 
@@ -187,8 +185,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 		}
 
 		/**
-		 * Get the collected messages, if applicable extended with the message
-		 * count.
+		 * Get the collected messages, if applicable extended with the message count.
 		 * 
 		 * @return the messages
 		 */
@@ -260,8 +257,8 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 	/**
 	 * Create an empty report. It is set to not successful by default. But you
-	 * should call {@link #setSuccess(boolean)} nonetheless to update the
-	 * timestamp after the task has finished.
+	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
+	 * after the task has finished.
 	 * 
 	 * @param taskName the name of the task the report is related to
 	 * @param doLog if added messages shall also be logged using {@link ALogger}

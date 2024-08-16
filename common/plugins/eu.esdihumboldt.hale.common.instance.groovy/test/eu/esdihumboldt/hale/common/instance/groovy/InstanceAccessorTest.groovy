@@ -15,14 +15,15 @@
 
 package eu.esdihumboldt.hale.common.instance.groovy
 
+import org.junit.Before
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.instance.model.Group
 import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Before
-import org.junit.Test
 
 
 /**

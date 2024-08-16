@@ -51,9 +51,10 @@ public class ChildContextBean {
 	 */
 	public ChildContextBean(ChildContext context) {
 		this(context.getContextName(), context.getIndex(),
-				(context.getCondition() == null) ? (null) : (FilterDefinitionManager.getInstance()
-						.asString(context.getCondition().getFilter())), context.getChild()
-						.getName());
+				(context.getCondition() == null) ? (null)
+						: (FilterDefinitionManager.getInstance()
+								.asString(context.getCondition().getFilter())),
+				context.getChild().getName());
 	}
 
 	/**

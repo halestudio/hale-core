@@ -117,8 +117,8 @@ public class VertexEntityDelegates {
 	 * @param propertyName the name of the property to check for the given value
 	 * @param value the value that vertices should have for the given property
 	 * @return the found vertex or <code>null</code> if it does not exist
-	 * @throws NonUniqueResultException if there are multiple vertices matching
-	 *             the criteria
+	 * @throws NonUniqueResultException if there are multiple vertices matching the
+	 *             criteria
 	 */
 	public static Vertex getByDelegate(Graph graph, String className, String typeProperty,
 			String propertyName, Object value) throws NonUniqueResultException {

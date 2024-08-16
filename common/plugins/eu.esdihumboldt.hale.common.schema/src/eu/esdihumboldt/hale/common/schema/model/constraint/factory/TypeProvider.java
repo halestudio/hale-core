@@ -28,8 +28,8 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 public interface TypeProvider extends TypeResolver {
 
 	/**
-	 * Get an existing type definition or create a new one. This is meant for
-	 * the purpose of populating a type with information read from the schema.
+	 * Get an existing type definition or create a new one. This is meant for the
+	 * purpose of populating a type with information read from the schema.
 	 * 
 	 * @param typeName the type name
 	 * @param id the identifier of the type

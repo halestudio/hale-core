@@ -15,17 +15,18 @@
 
 package eu.esdihumboldt.hale.io.xsd.anytype.valuetypes;
 
-import org.w3c.dom.Element;
-
-import eu.esdihumboldt.hale.common.core.io.ComplexValueType;
-import eu.esdihumboldt.hale.common.core.io.DOMValueUtil;
-import eu.esdihumboldt.hale.common.core.io.Value;
-import eu.esdihumboldt.hale.common.core.io.ValueList;
-import eu.esdihumboldt.hale.io.xsd.XMLSchemaIO;
-import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentAssociation;
-import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentConfiguration;
-import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder;
 import groovy.transform.CompileStatic
+
+import org.w3c.dom.Element
+
+import eu.esdihumboldt.hale.common.core.io.ComplexValueType
+import eu.esdihumboldt.hale.common.core.io.DOMValueUtil
+import eu.esdihumboldt.hale.common.core.io.Value
+import eu.esdihumboldt.hale.common.core.io.ValueList
+import eu.esdihumboldt.hale.io.xsd.XMLSchemaIO
+import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentAssociation
+import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentConfiguration
+import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 
 /**
  * Complex value definition for {@link CustomTypeContentConfiguration}.

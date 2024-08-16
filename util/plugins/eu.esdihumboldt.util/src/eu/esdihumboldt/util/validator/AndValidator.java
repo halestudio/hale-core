@@ -43,8 +43,7 @@ public class AndValidator implements CombinedValidator {
 
 	/**
 	 * Adds the given Validator to this Validator.<br>
-	 * Validators which are always true are ignored and AndValidators get
-	 * flattened.
+	 * Validators which are always true are ignored and AndValidators get flattened.
 	 * 
 	 * @param validator the validator to add
 	 */

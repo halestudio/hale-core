@@ -119,8 +119,8 @@ public abstract class XmlTypeUtil {
 			"anyType");
 
 	/**
-	 * Set of XML schema types that should get a String binding but don't get
-	 * one through the Geotools bindings
+	 * Set of XML schema types that should get a String binding but don't get one
+	 * through the Geotools bindings
 	 * 
 	 * @see "http://www.w3schools.com/Schema/schema_dtypes_string.asp"
 	 */
@@ -458,8 +458,7 @@ public abstract class XmlTypeUtil {
 	}
 
 	/**
-	 * Configure a type definition for a simple type based on a simple type
-	 * list.
+	 * Configure a type definition for a simple type based on a simple type list.
 	 * 
 	 * @param type the type definition
 	 * @param list the simple type list
@@ -506,8 +505,7 @@ public abstract class XmlTypeUtil {
 	}
 
 	/**
-	 * Configure a type definition for a simple type based on a simple type
-	 * union.
+	 * Configure a type definition for a simple type based on a simple type union.
 	 * 
 	 * @param type the type definition
 	 * @param union the simple type union

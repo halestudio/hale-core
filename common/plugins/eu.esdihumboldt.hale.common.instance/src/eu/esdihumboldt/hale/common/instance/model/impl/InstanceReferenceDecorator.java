@@ -56,10 +56,10 @@ public class InstanceReferenceDecorator implements InstanceReference {
 	}
 
 	/**
-	 * Determines if a given object is an InstanceReferenceDecorator and itself
-	 * or its original reference is decorated with the given type. If the
-	 * original reference is an InstanceReferenceDecorator itself, the method
-	 * will that object's original reference recursively.
+	 * Determines if a given object is an InstanceReferenceDecorator and itself or
+	 * its original reference is decorated with the given type. If the original
+	 * reference is an InstanceReferenceDecorator itself, the method will that
+	 * object's original reference recursively.
 	 * 
 	 * @param decorator Object to check
 	 * @param decoratorType Decorator type to search

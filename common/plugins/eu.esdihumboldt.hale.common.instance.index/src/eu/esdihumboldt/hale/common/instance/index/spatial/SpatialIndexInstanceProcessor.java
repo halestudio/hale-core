@@ -85,9 +85,8 @@ public class SpatialIndexInstanceProcessor extends AbstractInstanceProcessor {
 
 	/**
 	 * @return the spatial index service
-	 * @throws IllegalStateException thrown if there is no
-	 *             {@link ServiceProvider} or no {@link SpatialIndexService}
-	 *             provided
+	 * @throws IllegalStateException thrown if there is no {@link ServiceProvider}
+	 *             or no {@link SpatialIndexService} provided
 	 */
 	private SpatialIndexService<Localizable, Localizable> getSpatialIndexService() {
 		final ServiceProvider serviceProvider = Optional.ofNullable(this.getServiceProvider())

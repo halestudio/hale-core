@@ -66,8 +66,8 @@ public class HalePlatform {
 	private static final ServiceProvider serviceProvider = new PlatformServiceProvider();
 
 	/**
-	 * Get the content type manager. Uses the default Eclipse content type
-	 * manager if running in OSGi, otherwise an adapted version.
+	 * Get the content type manager. Uses the default Eclipse content type manager
+	 * if running in OSGi, otherwise an adapted version.
 	 *
 	 * @return the content type manager
 	 */
@@ -81,9 +81,9 @@ public class HalePlatform {
 	}
 
 	/**
-	 * Get a service based on it's interface type. The service provided here
-	 * have global scope, services that are UI-specific are not included, use
-	 * HaleUI instead to access those services.
+	 * Get a service based on it's interface type. The service provided here have
+	 * global scope, services that are UI-specific are not included, use HaleUI
+	 * instead to access those services.
 	 *
 	 * @param serviceClass the service class
 	 * @return the service instance or <code>null</code>
@@ -138,8 +138,8 @@ public class HalePlatform {
 	/**
 	 * Determine if the HALE core bundle/library is a SNAPSHOT version.
 	 *
-	 * @return <code>true</code> if the HALE core bundle/library used is
-	 *         verified to be a SNAPSHOT version, <code>false</code> otherwise
+	 * @return <code>true</code> if the HALE core bundle/library used is verified to
+	 *         be a SNAPSHOT version, <code>false</code> otherwise
 	 */
 	public static boolean isSnapshotVersion() {
 		String qualifier = getCoreVersion().getQualifier();

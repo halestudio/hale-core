@@ -60,8 +60,8 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	private URI location;
 
 	/**
-	 * Creates a new definition with the given name. Description and location
-	 * are not set.
+	 * Creates a new definition with the given name. Description and location are
+	 * not set.
 	 * 
 	 * @param name the qualified definition name
 	 */
@@ -112,8 +112,8 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	}
 
 	/**
-	 * Determines if the constraint with the given type is set explicitly for
-	 * the definition.
+	 * Determines if the constraint with the given type is set explicitly for the
+	 * definition.
 	 * 
 	 * @param constraintType the constraint type
 	 * @return if the constraint is set explicitly
@@ -139,15 +139,14 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	}
 
 	/**
-	 * Set a constraint on the definition if none of the same type has been set
-	 * yet.
+	 * Set a constraint on the definition if none of the same type has been set yet.
 	 * 
 	 * @param constraint the constraint to set
 	 */
 	@SuppressWarnings("unchecked")
 	public void setConstraintIfNotSet(C constraint) {
-		if (!hasConstraint((Class<? extends C>) ConstraintUtil.getConstraintType(constraint
-				.getClass()))) {
+		if (!hasConstraint(
+				(Class<? extends C>) ConstraintUtil.getConstraintType(constraint.getClass()))) {
 			setConstraint(constraint);
 		}
 	}
@@ -237,8 +236,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	}
 
 	/**
-	 * Two definitions are equal if their name is equal (namespace and local
-	 * part)
+	 * Two definitions are equal if their name is equal (namespace and local part)
 	 * 
 	 * @see Object#equals(Object)
 	 */

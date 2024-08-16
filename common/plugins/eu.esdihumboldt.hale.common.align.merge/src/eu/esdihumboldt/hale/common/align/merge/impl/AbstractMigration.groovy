@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.align.merge.impl
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.align.instance.EntityAwareFilter
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration
 import eu.esdihumboldt.hale.common.align.model.AlignmentUtil
@@ -27,7 +29,6 @@ import eu.esdihumboldt.hale.common.instance.extension.filter.FilterDefinitionMan
 import eu.esdihumboldt.hale.common.schema.SchemaSpaceID
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType
-import groovy.transform.CompileStatic
 
 /**
  * Alignment migration base class.
@@ -209,7 +210,7 @@ abstract class AbstractMigration implements AlignmentMigration {
 	protected Optional<EntityDefinition> findParentMatch(EntityDefinition entity) {
 		//XXX only allow parent matches for specific cases right now
 		if (!(entity.definition instanceof PropertyDefinition) ||
-		!((PropertyDefinition) entity.definition).propertyType.getConstraint(GeometryType).isGeometry()) {
+				!((PropertyDefinition) entity.definition).propertyType.getConstraint(GeometryType).isGeometry()) {
 			// not a geometry
 			return Optional.empty()
 		}
@@ -225,5 +226,4 @@ abstract class AbstractMigration implements AlignmentMigration {
 
 		return Optional.empty()
 	}
-
 }

@@ -18,12 +18,11 @@ package eu.esdihumboldt.cst.functions.geometric;
 
 import java.util.Map;
 
-import net.jcip.annotations.Immutable;
-
-import com.google.common.collect.ListMultimap;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
+
+import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition;
 import eu.esdihumboldt.hale.common.align.transformation.engine.TransformationEngine;
@@ -35,6 +34,7 @@ import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty;
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
+import net.jcip.annotations.Immutable;
 
 /**
  * Ordinates to point function.
@@ -42,9 +42,9 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
  * @author Kai Schwierczek
  */
 @Immutable
-public class OrdinatesToPoint extends
-		AbstractSingleTargetPropertyTransformation<TransformationEngine> implements
-		OrdinatesToPointFunction {
+public class OrdinatesToPoint
+		extends AbstractSingleTargetPropertyTransformation<TransformationEngine>
+		implements OrdinatesToPointFunction {
 
 	/**
 	 * @see eu.esdihumboldt.hale.common.align.transformation.function.impl.AbstractPropertyTransformation#evaluate(java.lang.String,
@@ -79,8 +79,8 @@ public class OrdinatesToPoint extends
 		if (z == null)
 			resultPoint = geomFactory.createPoint(new Coordinate(xValue, yValue));
 		else
-			resultPoint = geomFactory.createPoint(new Coordinate(xValue, yValue, z
-					.getValueAs(Double.class)));
+			resultPoint = geomFactory
+					.createPoint(new Coordinate(xValue, yValue, z.getValueAs(Double.class)));
 
 		// pack result into geometry property and return it
 		GeometryProperty<Point> result = new DefaultGeometryProperty<Point>(crsDef, resultPoint);

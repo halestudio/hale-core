@@ -54,8 +54,8 @@ public class NamedEntityBean {
 			this.entity = new PropertyBean((Property) entity);
 		}
 		else {
-			throw new IllegalArgumentException("Unsupported entity type: "
-					+ entity.getClass().getSimpleName());
+			throw new IllegalArgumentException(
+					"Unsupported entity type: " + entity.getClass().getSimpleName());
 		}
 	}
 

@@ -15,15 +15,18 @@
 
 package eu.esdihumboldt.hale.io.gml.writer.internal
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import java.util.function.Consumer
 
+import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Ignore
+import org.junit.Rule
 import org.junit.Test
+import org.junit.contrib.java.lang.system.EnvironmentVariables
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.LineString
 import org.locationtech.jts.geom.MultiLineString
@@ -47,7 +50,7 @@ import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.gml.writer.GmlInstanceWriter
 import eu.esdihumboldt.hale.io.xsd.model.XmlIndex
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * GML writer tests with a focus on geometries.

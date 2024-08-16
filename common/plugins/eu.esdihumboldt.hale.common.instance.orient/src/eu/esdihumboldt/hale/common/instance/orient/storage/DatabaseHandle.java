@@ -135,9 +135,8 @@ public class DatabaseHandle {
 	}
 
 	/**
-	 * Augment an instance and add a reference for the database connection.
-	 * Makes sure child instances or groups also reference the database
-	 * connection.
+	 * Augment an instance and add a reference for the database connection. Makes
+	 * sure child instances or groups also reference the database connection.
 	 * 
 	 * @param instance the instance to augment
 	 * @return the augmented instance
@@ -153,8 +152,8 @@ public class DatabaseHandle {
 	}
 
 	/**
-	 * Augment a group and add a reference for the database connection. Makes
-	 * sure child instances or groups also reference the database connection.
+	 * Augment a group and add a reference for the database connection. Makes sure
+	 * child instances or groups also reference the database connection.
 	 * 
 	 * @param group the group to augment
 	 * @return the augmented group

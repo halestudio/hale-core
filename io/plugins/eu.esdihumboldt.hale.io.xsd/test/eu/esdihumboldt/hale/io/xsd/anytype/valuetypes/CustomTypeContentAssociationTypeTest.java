@@ -23,7 +23,6 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 import org.w3c.dom.Element;
 
@@ -31,6 +30,7 @@ import eu.esdihumboldt.hale.common.core.io.HaleIO;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContent;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentAssociation;
 import eu.esdihumboldt.hale.io.xsd.anytype.CustomTypeContentMode;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test {@link CustomTypeContentAssociation} serialization.
@@ -76,8 +76,8 @@ public class CustomTypeContentAssociationTypeTest extends AbstractPlatformTest {
 		assertEquals(name2, conv.getProperty().get(1));
 		assertEquals(name3, conv.getProperty().get(2));
 
-		assertEquals("Mode does not match", CustomTypeContentMode.elements, conv.getConfig()
-				.getMode());
+		assertEquals("Mode does not match", CustomTypeContentMode.elements,
+				conv.getConfig().getMode());
 		assertEquals(2, conv.getConfig().getElements().size());
 		assertEquals(elem1, conv.getConfig().getElements().get(0));
 		assertEquals(elem2, conv.getConfig().getElements().get(1));

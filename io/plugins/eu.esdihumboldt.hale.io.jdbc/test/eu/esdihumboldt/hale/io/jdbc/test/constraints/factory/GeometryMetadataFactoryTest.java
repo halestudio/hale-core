@@ -19,13 +19,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Test;
 
 import eu.esdihumboldt.hale.common.schema.model.constraint.factory.extension.ValueConstraintExtension;
 import eu.esdihumboldt.hale.common.schema.model.constraint.factory.extension.ValueConstraintFactoryDescriptor;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.factory.GeometryMetadataFactory;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Tests related to the geometry metadata value constraint factory.
@@ -35,8 +35,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.factory.Geometry
 public class GeometryMetadataFactoryTest extends AbstractPlatformTest {
 
 	/**
-	 * Test if alias "jdbc.geometry" for geometry metadata constraint is
-	 * working.
+	 * Test if alias "jdbc.geometry" for geometry metadata constraint is working.
 	 */
 	@Test
 	public void testAlias() {

@@ -33,14 +33,14 @@ public interface InstanceIterator extends ResourceIterator<Instance> {
 	 * Peek at the type of the next instance. May only be called if
 	 * {@link #supportsTypePeek()} yields <code>true</code>.
 	 * 
-	 * @return the type definition of the next instance, may be
-	 *         <code>null</code> if there is no next instance
+	 * @return the type definition of the next instance, may be <code>null</code> if
+	 *         there is no next instance
 	 */
 	public TypeDefinition typePeek();
 
 	/**
-	 * States if the iterator suports peeking at the type of the next instances
-	 * with {@link #typePeek()}.
+	 * States if the iterator suports peeking at the type of the next instances with
+	 * {@link #typePeek()}.
 	 * 
 	 * @return if calls to {@link #typePeek()} are allowed
 	 */

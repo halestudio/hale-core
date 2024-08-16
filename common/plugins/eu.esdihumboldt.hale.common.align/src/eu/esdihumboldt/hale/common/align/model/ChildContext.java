@@ -16,8 +16,8 @@
 
 package eu.esdihumboldt.hale.common.align.model;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
+import net.jcip.annotations.Immutable;
 
 /**
  * Associates an instance context with a child definition.

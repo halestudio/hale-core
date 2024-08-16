@@ -26,7 +26,6 @@ import java.util.Map;
 import java.util.Random;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;

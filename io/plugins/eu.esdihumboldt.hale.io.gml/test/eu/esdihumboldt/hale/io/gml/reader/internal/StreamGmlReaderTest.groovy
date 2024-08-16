@@ -15,9 +15,9 @@
 
 package eu.esdihumboldt.hale.io.gml.reader.internal
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
+import static org.junit.Assert.*
 
-import static org.junit.Assert.*;
+import groovy.transform.CompileStatic
 
 import org.junit.Ignore
 import org.junit.Test
@@ -33,7 +33,7 @@ import eu.esdihumboldt.hale.common.instance.model.ext.InstanceIterator
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for {@link StreamGmlReader}

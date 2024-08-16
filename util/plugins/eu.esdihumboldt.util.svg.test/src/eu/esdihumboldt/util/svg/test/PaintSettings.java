@@ -41,10 +41,8 @@ public class PaintSettings {
 	 * Create a new settings object based on the given values.
 	 * 
 	 * @param scaleFactor the scale factor
-	 * @param minX the offset on the X axis (which is subtracted from X
-	 *            ordinates)
-	 * @param maxY the offset on the Y axis (which Y ordinates are substracted
-	 *            from)
+	 * @param minX the offset on the X axis (which is subtracted from X ordinates)
+	 * @param maxY the offset on the Y axis (which Y ordinates are substracted from)
 	 * @param pointSize the size of individual drawn points
 	 * @param canvasSize the canvas size or <code>null</code>
 	 */

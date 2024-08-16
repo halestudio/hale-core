@@ -51,8 +51,8 @@ public class IOMessageImplDefinition extends AbstractMessageDefinition<IOMessage
 	protected IOMessageImpl createMessage(Properties props) {
 		return new IOMessageImpl(props.getProperty(KEY_MESSAGE), null,
 				props.getProperty(KEY_STACK_TRACE),
-				Integer.parseInt(props.getProperty(KEY_IO_LINE)), Integer.parseInt(props
-						.getProperty(KEY_IO_COLUMN)));
+				Integer.parseInt(props.getProperty(KEY_IO_LINE)),
+				Integer.parseInt(props.getProperty(KEY_IO_COLUMN)));
 	}
 
 	/**

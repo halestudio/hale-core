@@ -38,8 +38,8 @@ public class MergeSettings {
 	}
 
 	/**
-	 * States if contexts should be tried to be transferred to the Join focus,
-	 * if applicable.
+	 * States if contexts should be tried to be transferred to the Join focus, if
+	 * applicable.
 	 * 
 	 * @return <code>true</code> if the setting is enabled, <code>false</code>
 	 *         otherwise

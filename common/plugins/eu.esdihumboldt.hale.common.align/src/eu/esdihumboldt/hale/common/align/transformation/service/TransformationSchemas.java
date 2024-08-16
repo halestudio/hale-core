@@ -29,8 +29,8 @@ public interface TransformationSchemas {
 	/**
 	 * Get the source or target schema space.
 	 * 
-	 * @param spaceID the schema space ID, either {@link SchemaSpaceID#SOURCE}
-	 *            or {@link SchemaSpaceID#TARGET}
+	 * @param spaceID the schema space ID, either {@link SchemaSpaceID#SOURCE} or
+	 *            {@link SchemaSpaceID#TARGET}
 	 * @return the schema space
 	 */
 	public SchemaSpace getSchemas(SchemaSpaceID spaceID);

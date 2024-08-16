@@ -68,8 +68,8 @@ public abstract class LazyGroupPropertyDefinition extends DefaultGroupPropertyDe
 	}
 
 	/**
-	 * Initialize the children. {@link #addChild(ChildDefinition)} can be used
-	 * to add them.
+	 * Initialize the children. {@link #addChild(ChildDefinition)} can be used to
+	 * add them.
 	 */
 	protected abstract void initChildren();
 

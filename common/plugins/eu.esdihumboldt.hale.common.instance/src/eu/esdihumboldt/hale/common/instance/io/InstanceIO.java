@@ -52,10 +52,10 @@ public abstract class InstanceIO {
 	 * 
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
-	 * @param providerId the id of the provider to use, may be <code>null</code>
-	 *            if contentType is set
-	 * @return the I/O provider preconfigured with the content type if it was
-	 *         given or <code>null</code> if no matching I/O provider is found
+	 * @param providerId the id of the provider to use, may be <code>null</code> if
+	 *            contentType is set
+	 * @return the I/O provider preconfigured with the content type if it was given
+	 *         or <code>null</code> if no matching I/O provider is found
 	 */
 	public static InstanceWriter createInstanceWriter(IContentType contentType, String providerId) {
 		return HaleIO.createIOProvider(InstanceWriter.class, contentType, providerId);

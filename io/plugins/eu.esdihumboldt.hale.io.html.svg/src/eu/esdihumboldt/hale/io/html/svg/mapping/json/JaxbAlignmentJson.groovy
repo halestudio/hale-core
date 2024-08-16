@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.html.svg.mapping.json
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ChildContextType
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ClassType
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ConditionType
@@ -22,7 +24,6 @@ import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.NamedEntityT
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.ObjectFactory
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.PropertyType
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
-import groovy.transform.CompileStatic
 
 /**
  * JSON format for Alignment based on the JAXB model types.

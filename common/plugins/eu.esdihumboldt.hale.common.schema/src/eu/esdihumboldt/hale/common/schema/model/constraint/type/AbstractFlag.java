@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type is abstract, disabled by default
@@ -51,8 +51,8 @@ public class AbstractFlag extends AbstractFlagConstraint implements TypeConstrai
 	}
 
 	/**
-	 * Creates a default abstract flag, which is disabled. If possible, instead
-	 * of creating an instance, use {@link #get(boolean)}, {@link #ENABLED} or
+	 * Creates a default abstract flag, which is disabled. If possible, instead of
+	 * creating an instance, use {@link #get(boolean)}, {@link #ENABLED} or
 	 * {@link #DISABLED}.
 	 * 
 	 * @see Constraint

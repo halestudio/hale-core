@@ -18,16 +18,17 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.factory;
 import java.util.Collections;
 import java.util.List;
 
-import eu.esdihumboldt.hale.common.schema.model.constraint.DisplayName;
 import org.junit.Test;
+
+import eu.esdihumboldt.hale.common.schema.model.constraint.DisplayName;
 
 /**
  * Tests for {@link DisplayNameFactory}.
  *
  * @author Simon Templer
  */
-public class DisplayNameFactoryTest extends
-		AbstractPropertiesCompareConstraintFactoryTest<DisplayName> {
+public class DisplayNameFactoryTest
+		extends AbstractPropertiesCompareConstraintFactoryTest<DisplayName> {
 
 	/**
 	 * Test with a custom name.

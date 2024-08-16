@@ -15,7 +15,9 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd.test
 
-import org.junit.Test
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import java.nio.file.Files
 import java.nio.file.Path
@@ -24,6 +26,8 @@ import javax.xml.XMLConstants
 import javax.xml.namespace.QName
 import javax.xml.transform.stream.StreamSource
 import javax.xml.validation.SchemaFactory
+
+import org.junit.Test
 
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
@@ -49,9 +53,6 @@ import eu.esdihumboldt.hale.common.schema.persist.hsd.HaleSchemaWriter
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.util.validator.EnumerationValidator
 import eu.esdihumboldt.util.validator.Validator
-import groovy.transform.CompileStatic
-
-import static org.junit.Assert.*
 
 
 /**
@@ -229,4 +230,3 @@ class HaleSchemaWriterTest {
 		tempFile
 	}
 }
-

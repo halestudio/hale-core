@@ -40,8 +40,8 @@ public interface TypeIndex {
 	 * Get the type with the given name
 	 * 
 	 * @param name the type name
-	 * @return the type definition or <code>null</code> if no type with the
-	 *         given name exists in the index
+	 * @return the type definition or <code>null</code> if no type with the given
+	 *         name exists in the index
 	 */
 	public TypeDefinition getType(QName name);
 

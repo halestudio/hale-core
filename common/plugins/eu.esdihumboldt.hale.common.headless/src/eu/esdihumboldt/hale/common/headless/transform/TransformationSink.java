@@ -46,8 +46,8 @@ public interface TransformationSink extends InstanceSink {
 	public void done(boolean cancel);
 
 	/**
-	 * Returns the associated instance collection, whose iterator will receive
-	 * the instances that are added to the instance sink.
+	 * Returns the associated instance collection, whose iterator will receive the
+	 * instances that are added to the instance sink.
 	 * 
 	 * @return the instance collection for this sink
 	 */

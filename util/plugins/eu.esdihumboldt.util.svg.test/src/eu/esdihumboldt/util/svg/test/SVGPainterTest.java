@@ -19,7 +19,6 @@ import java.awt.Color;
 import java.io.IOException;
 
 import org.junit.Test;
-
 import org.locationtech.jts.geom.Coordinate;
 
 /**

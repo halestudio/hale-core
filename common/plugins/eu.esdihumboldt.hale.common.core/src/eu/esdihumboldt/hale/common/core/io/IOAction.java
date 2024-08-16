@@ -51,8 +51,8 @@ public interface IOAction extends Identifiable {
 	/**
 	 * Get the dependencies of the action.
 	 * 
-	 * @return the list of identifiers of other actions the action depends on
-	 *         for sequential execution, e.g. when loading a project
+	 * @return the list of identifiers of other actions the action depends on for
+	 *         sequential execution, e.g. when loading a project
 	 */
 	public Set<String> getDependencies();
 

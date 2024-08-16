@@ -57,8 +57,8 @@ public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
 	 * 
 	 * @param templates map of localized templates
 	 * @param functionResolver the custom resolver for the associated function
-	 *            definition, to be used instead of the usual mechanism to
-	 *            resolve functions
+	 *            definition, to be used instead of the usual mechanism to resolve
+	 *            functions
 	 */
 	public DefaultCustomFunctionExplanation(Map<Locale, Value> templates,
 			@Nullable Supplier<FunctionDefinition<?>> functionResolver) {
@@ -99,9 +99,9 @@ public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
 	}
 
 	/**
-	 * @param functionResolver the the custom resolver for the associated
-	 *            function definition, to be used instead of the usual mechanism
-	 *            to resolve functions
+	 * @param functionResolver the the custom resolver for the associated function
+	 *            definition, to be used instead of the usual mechanism to resolve
+	 *            functions
 	 */
 	public void setFunctionResolver(@Nullable Supplier<FunctionDefinition<?>> functionResolver) {
 		this.functionResolver = functionResolver;

@@ -23,8 +23,8 @@ package eu.esdihumboldt.hale.io.gml.geometry;
 public interface GMLConstants {
 
 	/**
-	 * The core part of the GML namespace that is independent of the version
-	 * number (and is the namespace of GML versions up to 3.1.1).
+	 * The core part of the GML namespace that is independent of the version number
+	 * (and is the namespace of GML versions up to 3.1.1).
 	 */
 	public static final String GML_NAMESPACE_CORE = "http://www.opengis.net/gml";
 

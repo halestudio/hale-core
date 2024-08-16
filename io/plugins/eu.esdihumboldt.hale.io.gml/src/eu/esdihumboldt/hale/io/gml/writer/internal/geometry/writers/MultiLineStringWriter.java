@@ -45,7 +45,22 @@ public class MultiLineStringWriter extends AbstractGeometryWriter<MultiLineStrin
 		super(MultiLineString.class);
 
 		// compatible types to serve as entry point
-		addCompatibleType(new QName("http://www.opengis.net/gml", "MultiLineStringType")); // restrict to "old" gml namespace (is depreceated since 3.0) -> use Curve instead in GML 3.2 //$NON-NLS-1$ //$NON-NLS-2$
+		addCompatibleType(new QName("http://www.opengis.net/gml", "MultiLineStringType")); // restrict //$NON-NLS-1$ //$NON-NLS-2$
+																							// to
+																							// "old"
+																							// gml
+																							// namespace
+																							// (is
+																							// depreceated
+																							// since
+																							// 3.0)
+																							// ->
+																							// use
+																							// Curve
+																							// instead
+																							// in
+																							// GML
+																							// 3.2
 
 		// patterns for matching inside compatible types
 		addBasePattern("*/lineStringMember"); //$NON-NLS-1$
@@ -55,12 +70,13 @@ public class MultiLineStringWriter extends AbstractGeometryWriter<MultiLineStrin
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, MultiLineString geometry, TypeDefinition elementType,
-			QName elementName, String gmlNs, DecimalFormat decimalFormatter) throws XMLStreamException {
+			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
+			throws XMLStreamException {
 		for (int i = 0; i < geometry.getNumGeometries(); i++) {
 			if (i > 0) {
 				writer.writeStartElement(elementName.getNamespaceURI(), elementName.getLocalPart());
@@ -70,7 +86,8 @@ public class MultiLineStringWriter extends AbstractGeometryWriter<MultiLineStrin
 					elementType, elementName, gmlNs, false);
 
 			LineString line = (LineString) geometry.getGeometryN(i);
-			writeCoordinates(writer, line.getCoordinates(), descent.getPath().getLastType(), gmlNs, decimalFormatter);
+			writeCoordinates(writer, line.getCoordinates(), descent.getPath().getLastType(), gmlNs,
+					decimalFormatter);
 
 			descent.close();
 

@@ -91,8 +91,8 @@ public class EntityFinder {
 	 * Find entities matching the condition in (and including) the given parent.
 	 * 
 	 * @param parent the entity to search
-	 * @param checked the set of already checked type definitions (to avoid
-	 *            endless recursion)
+	 * @param checked the set of already checked type definitions (to avoid endless
+	 *            recursion)
 	 * @return the entities found matching the condition
 	 */
 	protected List<EntityDefinition> find(EntityDefinition parent, Set<DefinitionGroup> checked) {

@@ -45,8 +45,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Simon Templer
  */
-public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint> implements
-		TypeDefinition {
+public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
+		implements TypeDefinition {
 
 	/**
 	 * The definition of the super type

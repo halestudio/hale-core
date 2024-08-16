@@ -66,9 +66,10 @@ public class CellBean {
 		this.transformationIdentifier = cell.getTransformationIdentifier();
 
 		if (cell.getTransformationParameters() != null) {
-			for (Entry<String, ParameterValue> param : cell.getTransformationParameters().entries()) {
-				transformationParameters.add(new ParameterValueBean(param.getKey(), param
-						.getValue()));
+			for (Entry<String, ParameterValue> param : cell.getTransformationParameters()
+					.entries()) {
+				transformationParameters
+						.add(new ParameterValueBean(param.getKey(), param.getValue()));
 			}
 		}
 
@@ -97,7 +98,8 @@ public class CellBean {
 	 *            references
 	 * @return the created cell or <code>null</code>
 	 */
-	public MutableCell createCell(IOReporter reporter, TypeIndex sourceTypes, TypeIndex targetTypes) {
+	public MutableCell createCell(IOReporter reporter, TypeIndex sourceTypes,
+			TypeIndex targetTypes) {
 		MutableCell cell = new DefaultCell();
 
 		cell.setTransformationIdentifier(getTransformationIdentifier());

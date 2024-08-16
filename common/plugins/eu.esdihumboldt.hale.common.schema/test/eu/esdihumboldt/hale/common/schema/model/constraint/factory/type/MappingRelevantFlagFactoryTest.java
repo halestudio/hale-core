@@ -23,8 +23,8 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappingRelevantF
  * 
  * @author Simon Templer
  */
-public class MappingRelevantFlagFactoryTest extends
-		AbstractFlagConstraintFactoryTest<MappingRelevantFlag> {
+public class MappingRelevantFlagFactoryTest
+		extends AbstractFlagConstraintFactoryTest<MappingRelevantFlag> {
 
 	/**
 	 * Default constructor.

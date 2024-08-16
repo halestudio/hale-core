@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.io.html.svg.mapping.json;
 
+import groovy.transform.CompileStatic
+
 import java.nio.charset.StandardCharsets
 
 import eu.esdihumboldt.hale.common.align.io.impl.AbstractAlignmentWriter
@@ -24,7 +26,6 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter
 import eu.esdihumboldt.hale.common.core.io.report.impl.IOMessageImpl
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
-import groovy.transform.CompileStatic
 
 /**
  * Exports an alignment to a JSON representation.

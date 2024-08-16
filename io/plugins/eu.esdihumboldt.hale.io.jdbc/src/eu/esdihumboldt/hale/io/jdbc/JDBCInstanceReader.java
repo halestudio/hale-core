@@ -80,8 +80,7 @@ public class JDBCInstanceReader extends AbstractInstanceReader
 	}
 
 	/**
-	 * To test Connection. Override this to load the customized connection
-	 * testing
+	 * To test Connection. Override this to load the customized connection testing
 	 * 
 	 * @return true if connection succeeded or <code>null</code>
 	 * @throws SQLException if connection could not be made.

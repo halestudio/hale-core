@@ -41,16 +41,16 @@ public interface InstanceResolver {
 	 * Get the instance referenced by the given reference.
 	 * 
 	 * @param reference the instance reference
-	 * @return the referenced instance or <code>null</code> if it does not exist
-	 *         or the reference is invalid
+	 * @return the referenced instance or <code>null</code> if it does not exist or
+	 *         the reference is invalid
 	 */
 	public Instance getInstance(InstanceReference reference);
 
 	/**
 	 * Get an instance collection based on the given instance references.
 	 * 
-	 * This method allows implementors to optimize retrieval of multiple
-	 * references, and to do a lazy resolving.
+	 * This method allows implementors to optimize retrieval of multiple references,
+	 * and to do a lazy resolving.
 	 * 
 	 * The default implementation delegates to
 	 * {@link #getInstance(InstanceReference)} in the iterator.

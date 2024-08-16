@@ -15,8 +15,9 @@
 
 package eu.esdihumboldt.cst.functions.groovy.helpers
 
-import eu.esdihumboldt.cst.functions.groovy.helper.spec.SpecBuilder
 import groovy.json.*
+
+import eu.esdihumboldt.cst.functions.groovy.helper.spec.SpecBuilder
 
 /**
  * Helper functions for using JSON data.

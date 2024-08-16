@@ -17,6 +17,8 @@ package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
 
+import groovy.sql.Sql
+
 import org.junit.Before
 import org.junit.Test
 
@@ -27,7 +29,6 @@ import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
-import groovy.sql.Sql
 import ru.yandex.qatools.allure.annotations.Features
 import ru.yandex.qatools.allure.annotations.Stories
 
@@ -124,10 +125,12 @@ class MultiDimensionalArraysIT extends AbstractDBTest {
 
 				puzzle ([
 					['A', 'B', 'C'] as String[],
-					['X', 'Y', 'Z'] as String[]] as String[][])
+					['X', 'Y', 'Z'] as String[]
+				] as String[][])
 				puzzle ([
 					['a', 'b', 'c'] as String[],
-					['x', 'y', 'z'] as String[]] as String[][])
+					['x', 'y', 'z'] as String[]
+				] as String[][])
 			}
 		}
 
@@ -139,5 +142,4 @@ class MultiDimensionalArraysIT extends AbstractDBTest {
 		int count = readAndCountInstances(instances, schema, gType)
 		assertEquals(1, count)
 	}
-
 }

@@ -48,9 +48,11 @@ import org.eclipse.core.runtime.content.ITextContentDescriber;
  * @see "http://www.w3.org/TR/REC-xml *"
  * @since org.eclipse.core.contenttype 3.4
  */
-@SuppressWarnings({"restriction", "rawtypes"})
+@SuppressWarnings({ "restriction", "rawtypes" })
 public class XMLContentDescriber extends TextContentDescriber implements ITextContentDescriber {
-	private static final QualifiedName[] SUPPORTED_OPTIONS = new QualifiedName[] {IContentDescription.CHARSET, IContentDescription.BYTE_ORDER_MARK};
+
+	private static final QualifiedName[] SUPPORTED_OPTIONS = new QualifiedName[] {
+			IContentDescription.CHARSET, IContentDescription.BYTE_ORDER_MARK };
 	private static final String XML_PREFIX = "<?xml "; //$NON-NLS-1$
 	private static final String XML_DECL_END = "?>"; //$NON-NLS-1$
 	private static final String BOM = "org.eclipse.core.runtime.content.XMLContentDescriber.bom"; //$NON-NLS-1$
@@ -62,7 +64,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 		return describe2(input, description, new HashMap());
 	}
 
-	int describe2(InputStream input, IContentDescription description, Map properties) throws IOException {
+	int describe2(InputStream input, IContentDescription description, Map properties)
+			throws IOException {
 		if (!isProcessed(properties))
 			fillContentProperties(input, description, properties);
 		return internalDescribe(description, properties);
@@ -72,7 +75,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 		return describe2(input, description, new HashMap());
 	}
 
-	int describe2(Reader input, IContentDescription description, Map properties) throws IOException {
+	int describe2(Reader input, IContentDescription description, Map properties)
+			throws IOException {
 		if (!isProcessed(properties))
 			fillContentProperties(readXMLDecl(input), description, properties);
 		return internalDescribe(description, properties);
@@ -86,7 +90,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 	}
 
 	@SuppressWarnings("unchecked")
-	private void fillContentProperties(InputStream input, IContentDescription description, Map properties) throws IOException {
+	private void fillContentProperties(InputStream input, IContentDescription description,
+			Map properties) throws IOException {
 		byte[] bom = Util.getByteOrderMark(input);
 		String xmlDeclEncoding = "UTF-8"; //$NON-NLS-1$
 		input.reset();
@@ -103,7 +108,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 	}
 
 	@SuppressWarnings("unchecked")
-	private void fillContentProperties(String line, IContentDescription description, Map properties) throws IOException {
+	private void fillContentProperties(String line, IContentDescription description, Map properties)
+			throws IOException {
 		// XMLDecl should be the first string (no blanks allowed)
 		if (line != null && line.startsWith(XML_PREFIX))
 			properties.put(FULL_XML_DECL, new Boolean(true));
@@ -157,7 +163,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 		int c = 0;
 		int read = 0;
 
-		// count is incremented when subsequent read characters match the xmlDeclEnd bytes,
+		// count is incremented when subsequent read characters match the xmlDeclEnd
+		// bytes,
 		// the end of xmlDecl is reached, when count equals the xmlDeclEnd length
 		int count = 0;
 
@@ -194,7 +201,7 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 		char quoteChar = '"';
 		int firstQuote = firstLine.indexOf('"', encodingPos);
 		int firstApostrophe = firstLine.indexOf('\'', encodingPos);
-		//use apostrophe if there is no quote, or an apostrophe comes first
+		// use apostrophe if there is no quote, or an apostrophe comes first
 		if (firstQuote == -1 || (firstApostrophe != -1 && firstApostrophe < firstQuote)) {
 			quoteChar = '\'';
 			firstQuote = firstApostrophe;
@@ -203,7 +210,10 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 			return null;
 		int secondQuote = firstLine.indexOf(quoteChar, firstQuote + 1);
 		if (secondQuote == -1)
-			return isFullXMLDecl(firstLine) ? firstLine.substring(firstQuote + 1, firstLine.lastIndexOf(XML_DECL_END)).trim() : null;
+			return isFullXMLDecl(firstLine)
+					? firstLine.substring(firstQuote + 1, firstLine.lastIndexOf(XML_DECL_END))
+							.trim()
+					: null;
 		return firstLine.substring(firstQuote + 1, secondQuote);
 	}
 
@@ -218,11 +228,14 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 				char c = line.charAt(i);
 				if (c == '=' && !equals) {
 					equals = true;
-				} else if (c == 0x20 || c == 0x09 || c == 0x0D || c == 0x0A) {
+				}
+				else if (c == 0x20 || c == 0x09 || c == 0x0D || c == 0x0A) {
 					// white space characters to ignore
-				} else if ((c == '"' || c == '\'') && equals) {
-						return position;
-				} else {
+				}
+				else if ((c == '"' || c == '\'') && equals) {
+					return position;
+				}
+				else {
 					break;
 				}
 			}
@@ -240,7 +253,8 @@ public class XMLContentDescriber extends TextContentDescriber implements ITextCo
 
 		for (int i = 1; i < charset.length(); i++) {
 			c = charset.charAt(i);
-			if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.')
+			if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')
+					|| c == '-' || c == '_' || c == '.')
 				continue;
 			return false;
 		}

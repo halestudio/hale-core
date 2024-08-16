@@ -37,9 +37,8 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 public interface ExecutionContext extends ServiceProvider {
 
 	/**
-	 * Get the execution context for the cell associated to the executed
-	 * function. This context is shared only between function executions
-	 * handling this cell.
+	 * Get the execution context for the cell associated to the executed function.
+	 * This context is shared only between function executions handling this cell.
 	 * 
 	 * When invoking multiple operations on the context map, make sure to use
 	 * synchronization if appropriate.
@@ -49,8 +48,8 @@ public interface ExecutionContext extends ServiceProvider {
 	public Map<Object, Object> getCellContext();
 
 	/**
-	 * Get the execution context for the executed function. This context is
-	 * shared between functions of the same type.
+	 * Get the execution context for the executed function. This context is shared
+	 * between functions of the same type.
 	 * 
 	 * When invoking multiple operations on the context map, make sure to use
 	 * synchronization if appropriate.

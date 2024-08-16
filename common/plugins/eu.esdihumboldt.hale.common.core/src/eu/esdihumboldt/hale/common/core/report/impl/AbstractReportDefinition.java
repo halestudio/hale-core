@@ -254,9 +254,8 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 	}
 
 	/**
-	 * Get a {@link Properties} representation of the given report that can be
-	 * used to create a new report instance using
-	 * {@link #createReport(Properties)}.
+	 * Get a {@link Properties} representation of the given report that can be used
+	 * to create a new report instance using {@link #createReport(Properties)}.
 	 * 
 	 * @param report the message
 	 * @return the properties representing the report

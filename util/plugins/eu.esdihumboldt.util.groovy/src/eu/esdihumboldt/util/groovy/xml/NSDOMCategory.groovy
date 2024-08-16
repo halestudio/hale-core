@@ -68,7 +68,7 @@ public class NSDOMCategory extends DOMCategory {
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
 			if (node instanceof Element && (localName == null || node.getLocalName().equals(localName))
-			&& (ns == null || ns.equals(node.getNamespaceURI()))) {
+					&& (ns == null || ns.equals(node.getNamespaceURI()))) {
 				return (Element) node;
 			}
 		}
@@ -90,7 +90,7 @@ public class NSDOMCategory extends DOMCategory {
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
 			if (node instanceof Element && node.getLocalName().equals(localName)
-			&& (ns == null || ns.equals(node.getNamespaceURI()))) {
+					&& (ns == null || ns.equals(node.getNamespaceURI()))) {
 				result.add((Element) node);
 			}
 		}

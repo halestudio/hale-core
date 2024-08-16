@@ -92,8 +92,7 @@ public class ProtocolBufferInstanceWriter extends AbstractInstanceWriter {
 	 * 
 	 * @param jsonSource reader of the JSON to convert
 	 * @param target supplier for the target output stream
-	 * @throws IOException if an error occurs reading, converting or writing
-	 *             data
+	 * @throws IOException if an error occurs reading, converting or writing data
 	 */
 	public static void writeJsonToProtocolBuffer(Reader jsonSource,
 			OutputSupplier<? extends OutputStream> target) throws IOException {

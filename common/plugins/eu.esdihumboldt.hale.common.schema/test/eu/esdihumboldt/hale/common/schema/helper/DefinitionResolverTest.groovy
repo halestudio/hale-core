@@ -15,18 +15,20 @@
 
 package eu.esdihumboldt.hale.common.schema.helper
 
+import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
+import org.junit.Before
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Definition
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.paths.DefinitionResolver
 import eu.esdihumboldt.util.groovy.paths.Path
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
-import org.junit.Before
-import org.junit.Test
-
-import static org.junit.Assert.*
 
 
 /**

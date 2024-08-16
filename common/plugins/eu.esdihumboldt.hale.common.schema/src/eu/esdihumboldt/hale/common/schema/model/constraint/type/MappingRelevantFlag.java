@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
+import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a type is mapping relevant, i.e. that it is a valid source or target
@@ -53,8 +53,8 @@ public class MappingRelevantFlag extends AbstractFlagConstraint implements TypeC
 
 	/**
 	 * Creates a default mapping relevant flag, which is disabled. If possible,
-	 * instead of creating an instance, use {@link #get(boolean)},
-	 * {@link #ENABLED} or {@link #DISABLED}.
+	 * instead of creating an instance, use {@link #get(boolean)}, {@link #ENABLED}
+	 * or {@link #DISABLED}.
 	 * 
 	 * @see Constraint
 	 */

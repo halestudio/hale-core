@@ -32,8 +32,8 @@ public interface DBImageParameters extends ContainerParameters {
 	 */
 	String START_URL = "startURL";
 	/**
-	 * Configuration key for a DB uptime which is the time taken by docker
-	 * database image to get started
+	 * Configuration key for a DB uptime which is the time taken by docker database
+	 * image to get started
 	 */
 	String DB_UPTIME = "dbUPTime";
 

@@ -41,7 +41,8 @@ public class RegistryFactoryHelper {
 			if (OSGI_ENV == null) {
 				OSGI_ENV = true;
 			}
-		} else {
+		}
+		else {
 			try {
 				OSGI_ENV = false;
 				// NONE OSGi-env, load the whole "plugin.xml" founded from the
@@ -55,30 +56,31 @@ public class RegistryFactoryHelper {
 		if (DebugHelper.DEBUG) {
 			// Debug mode, trace
 			if (OSGI_ENV) {
-				DebugHelper.log("Returns IExtensionRegistry from the OSGi-env. Thread=" + Thread.currentThread());
-			} else {
-				DebugHelper.log("Returns IExtensionRegistry from the NO OSGi-env. Thread=" + Thread.currentThread());
+				DebugHelper.log("Returns IExtensionRegistry from the OSGi-env. Thread="
+						+ Thread.currentThread());
+			}
+			else {
+				DebugHelper.log("Returns IExtensionRegistry from the NO OSGi-env. Thread="
+						+ Thread.currentThread());
 			}
 		}
 		return registry;
 	}
 
 	/**
-	 * Create No OSG-env {@link IExtensionRegistry}. This method is synchronized
-	 * to avoid loading twice the plugin.xml files with multi Thread context.
+	 * Create No OSG-env {@link IExtensionRegistry}. This method is synchronized to
+	 * avoid loading twice the plugin.xml files with multi Thread context.
 	 * 
 	 * @return
 	 * @throws CoreException
 	 */
-	private static synchronized IExtensionRegistry createNoOSGIRegistry()
-			throws CoreException {
+	private static synchronized IExtensionRegistry createNoOSGIRegistry() throws CoreException {
 		IExtensionRegistry registry = RegistryFactory.getRegistry();
 		if (registry != null) {
 			// Registry was already created with another Thread.
 			return registry;
 		}
-		RegistryFactory
-				.setDefaultRegistryProvider(new RegistryProviderNonOSGI());
+		RegistryFactory.setDefaultRegistryProvider(new RegistryProviderNonOSGI());
 		return RegistryFactory.getRegistry();
 	}
 }

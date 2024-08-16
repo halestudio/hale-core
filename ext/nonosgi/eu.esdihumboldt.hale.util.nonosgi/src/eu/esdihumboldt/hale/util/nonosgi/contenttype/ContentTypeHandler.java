@@ -12,23 +12,25 @@ package eu.esdihumboldt.hale.util.nonosgi.contenttype;
 
 import java.io.*;
 import java.lang.ref.SoftReference;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.content.*;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 
 /**
- * The only content types exposed to clients. Allows the content type registry to change 
- * underneath preserving handlers kept by clients.
+ * The only content types exposed to clients. Allows the content type registry
+ * to change underneath preserving handlers kept by clients.
  */
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class ContentTypeHandler implements IContentType {
 
 	/**
-	 * A dummy description object to be returned by getDescription when this 
-	 * handler's target cannot be determined. 
+	 * A dummy description object to be returned by getDescription when this
+	 * handler's target cannot be determined.
 	 */
 	private class DummyContentDescription implements IContentDescription {
+
 		public String getCharset() {
 			return null;
 		}
@@ -79,7 +81,9 @@ public class ContentTypeHandler implements IContentType {
 		if (target == null)
 			return null;
 		final ContentType baseType = (ContentType) target.getBaseType();
-		return (baseType != null) ? new ContentTypeHandler(baseType, baseType.getCatalog().getGeneration()) : null;
+		return (baseType != null)
+				? new ContentTypeHandler(baseType, baseType.getCatalog().getGeneration())
+				: null;
 	}
 
 	public String getDefaultCharset() {
@@ -92,12 +96,14 @@ public class ContentTypeHandler implements IContentType {
 		return (target != null) ? target.getDefaultDescription() : new DummyContentDescription();
 	}
 
-	public IContentDescription getDescriptionFor(InputStream contents, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(InputStream contents, QualifiedName[] options)
+			throws IOException {
 		final IContentType target = getTarget();
 		return (target != null) ? target.getDescriptionFor(contents, options) : null;
 	}
 
-	public IContentDescription getDescriptionFor(Reader contents, QualifiedName[] options) throws IOException {
+	public IContentDescription getDescriptionFor(Reader contents, QualifiedName[] options)
+			throws IOException {
 		final IContentType target = getTarget();
 		return (target != null) ? target.getDescriptionFor(contents, options) : null;
 	}
@@ -120,15 +126,16 @@ public class ContentTypeHandler implements IContentType {
 		final ContentType target = getTarget();
 		if (target == null)
 			return null;
-		// the content type may returned itself as the settings object (instance scope context)
+		// the content type may returned itself as the settings object (instance scope
+		// context)
 		final IContentTypeSettings settings = target.getSettings(context);
-		// in that case, return this same handler; otherwise, just return the settings 
+		// in that case, return this same handler; otherwise, just return the settings
 		return settings == target ? this : settings;
 	}
 
 	/**
-	 * Returns the content type this handler represents. 
-	 * Note that this handles the case of aliasing.
+	 * Returns the content type this handler represents. Note that this handles the
+	 * case of aliasing.
 	 * 
 	 * Public for testing purposes only.
 	 */

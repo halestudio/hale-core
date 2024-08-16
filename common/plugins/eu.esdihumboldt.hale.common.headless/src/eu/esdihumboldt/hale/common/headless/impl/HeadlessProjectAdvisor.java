@@ -136,8 +136,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Default constructor
 	 * 
-	 * @param reportHandler the report handler to use when executing contained
-	 *            I/O configurations, may be <code>null</code>
+	 * @param reportHandler the report handler to use when executing contained I/O
+	 *            configurations, may be <code>null</code>
 	 * @param serviceProvider the service provider in the current context
 	 */
 	public HeadlessProjectAdvisor(ReportHandler reportHandler, ServiceProvider serviceProvider) {
@@ -147,8 +147,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Default constructor
 	 * 
-	 * @param reportHandler the report handler to use when executing contained
-	 *            I/O configurations, may be <code>null</code>
+	 * @param reportHandler the report handler to use when executing contained I/O
+	 *            configurations, may be <code>null</code>
 	 * @param serviceProvider the service provider in the current context
 	 * @param additionalAdvisors a map with additional I/O advisors, action ID
 	 *            mapped to advisor, may be <code>null</code>
@@ -198,7 +198,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 						null, null, null, this) // give null for save related
 												// parts
 												// (should not be called)
-		{
+				{
 
 					@Override
 					protected IOAdvisor<?> getLoadAdvisor(String loadActionId,
@@ -255,8 +255,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	}
 
 	/**
-	 * Get the loaded project. Can be retrieved after the project was
-	 * successfully loaded.
+	 * Get the loaded project. Can be retrieved after the project was successfully
+	 * loaded.
 	 * 
 	 * @return the project
 	 */
@@ -265,8 +265,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	}
 
 	/**
-	 * Get the alignment between source and target schemas. Can be retrieved
-	 * after the project was successfully loaded.
+	 * Get the alignment between source and target schemas. Can be retrieved after
+	 * the project was successfully loaded.
 	 * 
 	 * @return the alignment
 	 */
@@ -275,8 +275,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	}
 
 	/**
-	 * Get the source schemas. Can be retrieved after the project was
-	 * successfully loaded.
+	 * Get the source schemas. Can be retrieved after the project was successfully
+	 * loaded.
 	 * 
 	 * @return the source schemas
 	 */
@@ -285,8 +285,8 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	}
 
 	/**
-	 * Get the target schemas. Can be retrieved after the project was
-	 * successfully loaded.
+	 * Get the target schemas. Can be retrieved after the project was successfully
+	 * loaded.
 	 * 
 	 * @return the target schemas
 	 */

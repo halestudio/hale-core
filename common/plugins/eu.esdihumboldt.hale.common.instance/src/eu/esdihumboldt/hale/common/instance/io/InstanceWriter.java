@@ -65,9 +65,9 @@ public interface InstanceWriter extends ExportProvider {
 	public List<? extends Locatable> getValidationSchemas();
 
 	/**
-	 * Validate the basic {@link InstanceWriter} configuration, to determine if
-	 * the target schema (and instances if set) are compatible to the writer.
-	 * Other parameters should be ignored for the check.
+	 * Validate the basic {@link InstanceWriter} configuration, to determine if the
+	 * target schema (and instances if set) are compatible to the writer. Other
+	 * parameters should be ignored for the check.
 	 * 
 	 * @throws IOProviderConfigurationException if the I/O provider was not
 	 *             configured properly
@@ -75,11 +75,10 @@ public interface InstanceWriter extends ExportProvider {
 	public void checkCompatibility() throws IOProviderConfigurationException;
 
 	/**
-	 * States if the instance writer directly streams the supplied instances in
-	 * one go, i.e. it only acquires the iterator once and consumes it.
+	 * States if the instance writer directly streams the supplied instances in one
+	 * go, i.e. it only acquires the iterator once and consumes it.
 	 * 
-	 * @return the instance writer directly streams the supplied instances in
-	 *         one go
+	 * @return the instance writer directly streams the supplied instances in one go
 	 */
 	public boolean isPassthrough();
 

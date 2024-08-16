@@ -21,6 +21,7 @@ package eu.esdihumboldt.hale.common.align.model;
  * @author Simon Templer
  */
 public enum TransformationMode {
+
 	/**
 	 * The cell is active and will initiate transformations.
 	 */

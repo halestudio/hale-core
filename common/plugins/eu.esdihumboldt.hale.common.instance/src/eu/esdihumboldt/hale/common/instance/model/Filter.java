@@ -35,9 +35,9 @@ public interface Filter {
 	public boolean match(Instance instance);
 
 	/*
-	 * XXX it might be a good option to include the information about valid
-	 * instance types in the filter interface, as this would allow an easier
-	 * optimization for filtering instance collections based on types!
+	 * XXX it might be a good option to include the information about valid instance
+	 * types in the filter interface, as this would allow an easier optimization for
+	 * filtering instance collections based on types!
 	 */
 //	public Set<TypeDefinition> getAllowedTypes();
 

@@ -50,7 +50,8 @@ public class InstanceBuilder {
 	 * @param tree the transformation tree
 	 * @param typeLog the type transformation log
 	 */
-	public void populate(MutableInstance target, TransformationTree tree, TransformationLog typeLog) {
+	public void populate(MutableInstance target, TransformationTree tree,
+			TransformationLog typeLog) {
 		populateGroup(target, tree, typeLog);
 	}
 
@@ -97,8 +98,8 @@ public class InstanceBuilder {
 						value = ((Instance) value).getValue();
 					}
 
-					MutableInstance instance = new DefaultInstance(node.getDefinition()
-							.asProperty().getPropertyType(), null);
+					MutableInstance instance = new DefaultInstance(
+							node.getDefinition().asProperty().getPropertyType(), null);
 					instance.setValue(value);
 
 					// XXX since this is the same for all instances maybe do
@@ -156,7 +157,8 @@ public class InstanceBuilder {
 
 					// check cardinality
 					Cardinality card = DefinitionUtil.getCardinality(child.getDefinition());
-					if (card.getMaxOccurs() != Cardinality.UNBOUNDED && card.getMaxOccurs() < toAdd) {
+					if (card.getMaxOccurs() != Cardinality.UNBOUNDED
+							&& card.getMaxOccurs() < toAdd) {
 						toAdd = (int) card.getMaxOccurs();
 						typeLog.warn(typeLog.createMessage("Too many values present for "
 								+ child.getDefinition().getDisplayName()

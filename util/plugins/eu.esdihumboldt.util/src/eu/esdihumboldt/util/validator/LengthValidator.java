@@ -29,8 +29,8 @@ public class LengthValidator extends AbstractValidator {
 	private final int length;
 
 	/**
-	 * Construct a validator that checks the length of the input to match the
-	 * given type and value.
+	 * Construct a validator that checks the length of the input to match the given
+	 * type and value.
 	 * 
 	 * @param type the length attribute to check for
 	 * @param length the length to check for

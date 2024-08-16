@@ -26,8 +26,8 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractSingleTypeTransformation<E extends TransformationEngine> extends
-		AbstractTypeTransformation<E> {
+public abstract class AbstractSingleTypeTransformation<E extends TransformationEngine>
+		extends AbstractTypeTransformation<E> {
 
 	/**
 	 * Get the source instance.

@@ -97,8 +97,8 @@ public class TreePropertyTransformer implements PropertyTransformer {
 	 * Create a simple property transformer
 	 * 
 	 * @param alignment the alignment
-	 * @param reporter the transformation log to report any transformation
-	 *            messages to
+	 * @param reporter the transformation log to report any transformation messages
+	 *            to
 	 * @param sink the target instance sink
 	 * @param engines the transformation engine manager
 	 * @param context the transformation execution context
@@ -148,8 +148,8 @@ public class TreePropertyTransformer implements PropertyTransformer {
 							return true;
 
 							/*
-							 * Alternative could be calling offer in a loop with
-							 * a wait until it returns true.
+							 * Alternative could be calling offer in a loop with a wait until it
+							 * returns true.
 							 */
 						}
 
@@ -248,8 +248,8 @@ public class TreePropertyTransformer implements PropertyTransformer {
 					});
 				} catch (Throwable e) {
 					/*
-					 * Catch any error, as exceptions in the executor service
-					 * will only result in a message on the console.
+					 * Catch any error, as exceptions in the executor service will only result in a
+					 * message on the console.
 					 */
 					typeLog.error(
 							typeLog.createMessage("Error performing property transformations", e));

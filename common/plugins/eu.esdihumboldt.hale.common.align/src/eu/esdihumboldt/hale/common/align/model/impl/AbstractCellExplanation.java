@@ -68,8 +68,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * Get the explanation string in the specified format.
 	 * 
 	 * @param cell the cell to create an explanation for
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param provider the service provider, if available
 	 * @param locale the locale for the explanation, to be matched if content is
 	 *            available
@@ -82,8 +81,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * Format an entity for inclusion in an explanation.
 	 * 
 	 * @param entity the entity, may be <code>null</code>
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param indexInFront whether index conditions should be in front of the
 	 *            property name or behind in brackets
 	 * @param locale the locale for the explanation, to be matched if content is
@@ -103,8 +101,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * Format an entity for inclusion in an explanation.
 	 * 
 	 * @param entityDef the entity definition, may be <code>null</code>
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param indexInFront whether index conditions should be in front of the
 	 *            property name or behind in brackets
 	 * @param locale the locale for the explanation, to be matched if content is
@@ -181,8 +178,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * Quote or otherwise format (in case of HTML) the given text.
 	 * 
 	 * @param text the text, may be <code>null</code>
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
 	 *         input
 	 */
@@ -199,8 +195,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * Quote or otherwise format (in case of HTML) the given value.
 	 * 
 	 * @param value the value to quote, may be <code>null</code>
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
 	 *         input
 	 */
@@ -214,12 +209,11 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	}
 
 	/**
-	 * Quote or otherwise format (in case of HTML) the given name (e.g. an
-	 * entity or parameter name).
+	 * Quote or otherwise format (in case of HTML) the given name (e.g. an entity or
+	 * parameter name).
 	 * 
 	 * @param name the name to quote, may be <code>null</code>
-	 * @param html if the format should be HMTL, otherwise the format is just
-	 *            text
+	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
 	 *         input
 	 */
@@ -330,13 +324,11 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	 * 
 	 * @param clazz the clazz the resource resides next to
 	 * @param baseName the base name of the resource
-	 * @param suffix the suffix of the resource file, e.g.
-	 *            <code>properties</code>
+	 * @param suffix the suffix of the resource file, e.g. <code>properties</code>
 	 * @param defaultLocale the default locale to be assumed for an unqualified
 	 *            resource
 	 * @return the set of locales the resource is available for
-	 * @throws IOException if an error occurs trying to determine the resource
-	 *             files
+	 * @throws IOException if an error occurs trying to determine the resource files
 	 */
 	public static Set<Locale> findLocales(final Class<?> clazz, final String baseName,
 			final String suffix, Locale defaultLocale) throws IOException {
@@ -425,8 +417,8 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	/**
 	 * Build a replacement table (HTML only).
 	 * 
-	 * @param varToProperty variable expressions mapped to the entities that
-	 *            replace them
+	 * @param varToProperty variable expressions mapped to the entities that replace
+	 *            them
 	 * @param locale the locale
 	 * @return the replacement table as string
 	 */

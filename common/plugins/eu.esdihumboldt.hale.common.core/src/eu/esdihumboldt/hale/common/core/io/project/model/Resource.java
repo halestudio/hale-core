@@ -69,9 +69,8 @@ public interface Resource {
 	/**
 	 * Copy the resource I/O configuration.
 	 * 
-	 * @param absolute <code>true</code> if an absolute URI should be used for
-	 *            the source if possible, <code>false</code> if the copy should
-	 *            be exact
+	 * @param absolute <code>true</code> if an absolute URI should be used for the
+	 *            source if possible, <code>false</code> if the copy should be exact
 	 * @return the configuration copy
 	 */
 	public IOConfiguration copyConfiguration(boolean absolute);

@@ -41,13 +41,13 @@ import schemacrawler.schema.ColumnDataType;
 public interface GeometryAdvisor<C> {
 
 	/**
-	 * Determines if for a column type detected as geometry type and associated
-	 * to this advisor is a fixed type, i.e. if it is to be configured the same
-	 * for all columns where it is used.
+	 * Determines if for a column type detected as geometry type and associated to
+	 * this advisor is a fixed type, i.e. if it is to be configured the same for all
+	 * columns where it is used.
 	 * 
 	 * @param columnType the column data type
-	 * @return if there should be only one type definition for all columns with
-	 *         the given type
+	 * @return if there should be only one type definition for all columns with the
+	 *         given type
 	 */
 	public boolean isFixedType(ColumnDataType columnType);
 
@@ -56,12 +56,12 @@ public interface GeometryAdvisor<C> {
 	 * 
 	 * @param connection the JDBC connection
 	 * @param column the geometry column
-	 * @param type the type definition associated to the column. It may be
-	 *            adapted by adding custom constraints, but {@link GeometryType}
-	 *            and {@link Binding} will be set by the caller
+	 * @param type the type definition associated to the column. It may be adapted
+	 *            by adding custom constraints, but {@link GeometryType} and
+	 *            {@link Binding} will be set by the caller
 	 * @param log the log
-	 * @return the geometry type that should be used for the
-	 *         {@link GeometryType} binding
+	 * @return the geometry type that should be used for the {@link GeometryType}
+	 *         binding
 	 */
 	public Class<? extends Geometry> configureGeometryColumnType(C connection, BaseColumn<?> column,
 			DefaultTypeDefinition type, SimpleLog log);
@@ -71,8 +71,8 @@ public interface GeometryAdvisor<C> {
 	 * 
 	 * @param geom the geometry property value consisting of geometry and the
 	 *            associated CRS definition
-	 * @param columnType the type definition of the associated geometry column
-	 *            that was previously configured using
+	 * @param columnType the type definition of the associated geometry column that
+	 *            was previously configured using
 	 *            {@link #configureGeometryColumnType(Object, BaseColumn, DefaultTypeDefinition, SimpleLog)}
 	 * @param connection Connection
 	 * @param log the log
@@ -86,8 +86,8 @@ public interface GeometryAdvisor<C> {
 	 * Convert a geometry read from the database to a geometry property.
 	 * 
 	 * @param geom the geometry read from the database
-	 * @param columnType the type definition of the associated geometry column
-	 *            that was previously configured using
+	 * @param columnType the type definition of the associated geometry column that
+	 *            was previously configured using
 	 *            {@link #configureGeometryColumnType(Object, BaseColumn, DefaultTypeDefinition, SimpleLog)}
 	 * @param connection The connection
 	 * @param crsProvider The CRS provider

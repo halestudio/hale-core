@@ -118,8 +118,8 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 	public static final String DEFAULT_SPATIAL_INDEX_TYPE = "rtree";
 
 	/**
-	 * The parameter name for the flag specifying if tables should be created
-	 * for all mapping-relevant types, even if they're empty. Defaults to
+	 * The parameter name for the flag specifying if tables should be created for
+	 * all mapping-relevant types, even if they're empty. Defaults to
 	 * <code>false</code>.
 	 */
 	public static final String PARAM_CREATE_EMPTY_TABLES = "createEmptyTables";
@@ -208,10 +208,10 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 			geoPackage = GeoPackageManager.open(file, true);
 
 			/*
-			 * XXX Not sure how to make a transaction work (running into
-			 * different kinds of errors in the tests with this) Might be that
-			 * the tables would have to be created first (with auto-commit on)
-			 * and the transaction only used for inserting the data.
+			 * XXX Not sure how to make a transaction work (running into different kinds of
+			 * errors in the tests with this) Might be that the tables would have to be
+			 * created first (with auto-commit on) and the transaction only used for
+			 * inserting the data.
 			 */
 //			connection = geoPackage.getConnection().getConnection();
 //			connection.setAutoCommit(false);
@@ -227,9 +227,8 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 				 * Set<TypeDefinition> sortedSet = getSortedSchemas(
 				 * getTargetSchema().getMappingRelevantTypes());
 				 * 
-				 * for (TypeDefinition td : sortedSet) {
-				 * writeInstances(geoPackage, instances.select(new
-				 * TypeFilter(td)), progress, reporter); }
+				 * for (TypeDefinition td : sortedSet) { writeInstances(geoPackage,
+				 * instances.select(new TypeFilter(td)), progress, reporter); }
 				 */
 			}
 

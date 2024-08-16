@@ -71,8 +71,7 @@ public abstract class TransformationTreeUtil {
 	 * @param source the source node
 	 * @param log the transformation log, may be <code>null</code>
 	 * @param serviceProvider the service provider
-	 * @return if the cell has eager source parameters connected to the source
-	 *         node
+	 * @return if the cell has eager source parameters connected to the source node
 	 */
 	public static boolean isEager(Cell cell, SourceNode source, TransformationLog log,
 			ServiceProvider serviceProvider) {
@@ -96,16 +95,16 @@ public abstract class TransformationTreeUtil {
 	 * @param source the source node
 	 * @param log the transformation log, may be <code>null</code>
 	 * @param serviceProvider the service provider
-	 * @return if the cell contained in the cell node has eager source
-	 *         parameters connected to the source node
+	 * @return if the cell contained in the cell node has eager source parameters
+	 *         connected to the source node
 	 */
 	public static boolean isEager(CellNode cell, SourceNode source, TransformationLog log,
 			ServiceProvider serviceProvider) {
 		// get all entity names the cell is associated to the source node with
 		Set<String> names = cell.getSourceNames(source);
 
-		PropertyFunctionDefinition function = FunctionUtil.getPropertyFunction(cell.getCell()
-				.getTransformationIdentifier(), serviceProvider);
+		PropertyFunctionDefinition function = FunctionUtil
+				.getPropertyFunction(cell.getCell().getTransformationIdentifier(), serviceProvider);
 		if (function != null) {
 			Set<? extends PropertyParameterDefinition> defSources = function.getSource();
 			Set<String> eager = new HashSet<String>();
@@ -120,8 +119,7 @@ public abstract class TransformationTreeUtil {
 				// if any connection is eager we cannot duplicate the cell
 
 				if (log != null && eager.size() != names.size()) {
-					log.warn(new TransformationMessageImpl(
-							cell.getCell(),
+					log.warn(new TransformationMessageImpl(cell.getCell(),
 							"Source node with a mix of eager and non-eager connections to a cell, treating as eager.",
 							null));
 				}

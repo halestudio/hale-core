@@ -20,7 +20,6 @@ import java.util.Set;
 import de.fhg.igd.geom.BoundingBox;
 import de.fhg.igd.geom.Localizable;
 import de.fhg.igd.geom.Verifier;
-import de.fhg.igd.geom.indices.NNComparator;
 
 /**
  * This interface describes the access methods that a spatial index has to

@@ -15,10 +15,10 @@
 
 package eu.esdihumboldt.util.geometry.quadtree
 
+import groovy.transform.CompileStatic
+
 import org.locationtech.jts.geom.Envelope
 import org.locationtech.jts.geom.Point
-
-import groovy.transform.CompileStatic
 
 /**
  * Quadtree implementation where contained Point geometries all lie within a 

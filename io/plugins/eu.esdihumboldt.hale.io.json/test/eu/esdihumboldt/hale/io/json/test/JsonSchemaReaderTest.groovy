@@ -15,8 +15,6 @@
 
 package eu.esdihumboldt.hale.io.json.test
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.assertj.core.api.Assertions.*
 
 import java.nio.charset.Charset
@@ -41,6 +39,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType
 import eu.esdihumboldt.hale.io.json.JsonSchemaReader
 import eu.esdihumboldt.hale.io.json.internal.schema.JsonType
 import eu.esdihumboldt.util.io.StringInputSupplier
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests for reading a schema from Json data.

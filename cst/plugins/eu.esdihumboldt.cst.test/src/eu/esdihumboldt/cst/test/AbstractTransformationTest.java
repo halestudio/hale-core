@@ -16,19 +16,20 @@
 
 package eu.esdihumboldt.cst.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import org.junit.BeforeClass;
+
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.InstanceUtil;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.util.test.AbstractPlatformTest;
-import org.junit.BeforeClass;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Base class for transformation tests.
@@ -48,8 +49,8 @@ public abstract class AbstractTransformationTest extends AbstractPlatformTest {
 
 	/**
 	 * Execute the transformation on a transformation example and test if the
-	 * transformation result conforms to the expected target instances provided
-	 * by the example.
+	 * transformation result conforms to the expected target instances provided by
+	 * the example.
 	 *
 	 * @param example the transformation example
 	 *
@@ -62,8 +63,8 @@ public abstract class AbstractTransformationTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Compares the two given collections for equality. Order of occurrence
-	 * doesn't matter for this implementation.
+	 * Compares the two given collections for equality. Order of occurrence doesn't
+	 * matter for this implementation.
 	 *
 	 * @param targetData the expected data
 	 * @param transformedData the transformed data to test

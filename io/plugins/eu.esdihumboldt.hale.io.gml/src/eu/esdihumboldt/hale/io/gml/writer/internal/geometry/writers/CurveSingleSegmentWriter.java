@@ -50,13 +50,13 @@ public class CurveSingleSegmentWriter extends AbstractGeometryWriter<LineString>
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, LineString geometry, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		writeCoordinates(writer, geometry.getCoordinates(), elementType, gmlNs, decimalFormatter);
 	}
 

@@ -160,17 +160,16 @@ public abstract class AbstractJsonInstanceProcessor<T>
 		}
 
 		/*
-		 * Note: It would be nice to use the streaming API to process the
-		 * complete JSON, but in that case we would rely for some things on
-		 * information being provided in a certain order, which we can't rely
-		 * on.
+		 * Note: It would be nice to use the streaming API to process the complete JSON,
+		 * but in that case we would rely for some things on information being provided
+		 * in a certain order, which we can't rely on.
 		 * 
 		 * Example cases where order does matter:
 		 * 
 		 * - detecting if GeoJson is used
 		 * 
-		 * - determining a schema type automatically (based on @type field or
-		 * event structure) [not done yet]
+		 * - determining a schema type automatically (based on @type field or event
+		 * structure) [not done yet]
 		 */
 		Map<String, JsonNode> fields = readFieldsAsTree(parser);
 
@@ -183,8 +182,8 @@ public abstract class AbstractJsonInstanceProcessor<T>
 	/**
 	 * Process an instance given its root object fields.
 	 * 
-	 * The default implementation determines whether the fields represent a
-	 * GeoJson object and continue processing based on that.
+	 * The default implementation determines whether the fields represent a GeoJson
+	 * object and continue processing based on that.
 	 * 
 	 * @param fields the object's root fields
 	 * @return the processing result

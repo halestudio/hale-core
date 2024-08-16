@@ -84,13 +84,13 @@ public class GroovyScript implements Script {
 	 * 
 	 * FIXME why is here an additional implementation of this as already used in
 	 * GroovyTransformation? Could the implementation in GroovyTransformation be
-	 * used instead? FIXME It could (should?) only be the other way around
-	 * (because of dependencies); or it should be at another "common"-place
+	 * used instead? FIXME It could (should?) only be the other way around (because
+	 * of dependencies); or it should be at another "common"-place
 	 * 
 	 * @param variables the variables
 	 * @param useNullForMissingBindings if the binding should provide
-	 *            <code>null</code> values for variables that are not provided
-	 *            in the given variable list
+	 *            <code>null</code> values for variables that are not provided in
+	 *            the given variable list
 	 * @return the binding for use with {@link GroovyShell}
 	 */
 	private Binding createGroovyBinding(Iterable<PropertyValue> variables,
@@ -153,18 +153,17 @@ public class GroovyScript implements Script {
 	 */
 	@Override
 	public String getVariableName(PropertyEntityDefinition entityDefinition) {
-		return Joiner.on('_').join(
-				Lists.transform(entityDefinition.getPropertyPath(),
-						new Function<ChildContext, String>() {
+		return Joiner.on('_').join(Lists.transform(entityDefinition.getPropertyPath(),
+				new Function<ChildContext, String>() {
 
-							/**
-							 * @see com.google.common.base.Function#apply(java.lang.Object)
-							 */
-							@Override
-							public String apply(ChildContext input) {
-								return input.getChild().getName().getLocalPart();
-							}
-						}));
+					/**
+					 * @see com.google.common.base.Function#apply(java.lang.Object)
+					 */
+					@Override
+					public String apply(ChildContext input) {
+						return input.getChild().getName().getLocalPart();
+					}
+				}));
 	}
 
 	/**

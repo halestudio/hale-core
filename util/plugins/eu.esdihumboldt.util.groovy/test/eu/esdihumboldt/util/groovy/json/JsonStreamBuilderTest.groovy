@@ -16,6 +16,7 @@
 package eu.esdihumboldt.util.groovy.json
 
 import groovy.transform.CompileStatic
+
 import org.junit.Test
 
 /**

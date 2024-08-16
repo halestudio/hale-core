@@ -134,9 +134,9 @@ public class JoinContext {
 		}
 
 		/*
-		 * Conditions: (1) add conditions from matches and (2) add conditions
-		 * from original cell translated to new schema (via property mapping),
-		 * if they are not duplicates
+		 * Conditions: (1) add conditions from matches and (2) add conditions from
+		 * original cell translated to new schema (via property mapping), if they are
+		 * not duplicates
 		 */
 		Set<Pair<PropertyEntityDefinition, PropertyEntityDefinition>> cons = new LinkedHashSet<>();
 

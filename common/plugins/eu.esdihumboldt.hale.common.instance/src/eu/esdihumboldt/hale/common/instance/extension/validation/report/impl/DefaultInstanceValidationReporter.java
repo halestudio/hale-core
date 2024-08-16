@@ -31,8 +31,8 @@ public class DefaultInstanceValidationReporter extends DefaultReporter<InstanceV
 		implements InstanceValidationReport, InstanceValidationReporter {
 
 	/**
-	 * Create an empty report. You should always call
-	 * {@link #setSuccess(boolean)} at least once on a report.
+	 * Create an empty report. You should always call {@link #setSuccess(boolean)}
+	 * at least once on a report.
 	 * 
 	 * @param doLog if added messages shall also be logged using {@link ALogger}
 	 */

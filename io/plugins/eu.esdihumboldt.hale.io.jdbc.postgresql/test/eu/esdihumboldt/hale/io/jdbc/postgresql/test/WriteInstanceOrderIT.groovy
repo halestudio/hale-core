@@ -15,11 +15,9 @@
 
 package eu.esdihumboldt.hale.io.jdbc.postgresql.test;
 
+import groovy.sql.Sql
+
 import org.junit.Test
-
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
-
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryFactory
@@ -31,7 +29,8 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import groovy.sql.Sql
+import ru.yandex.qatools.allure.annotations.Features
+import ru.yandex.qatools.allure.annotations.Stories
 
 /**
  * test the order of the instances to be written to the database, as unorder
@@ -98,7 +97,8 @@ public class WriteInstanceOrderIT extends AbstractDBTest {
 					name "test $i"
 					geom  new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), gf.createLineString([
 						new Coordinate(0, 0),
-						new Coordinate(i, i)] as Coordinate[]))
+						new Coordinate(i, i)
+					] as Coordinate[]))
 				}
 				testtable{
 					test_id i

@@ -29,8 +29,8 @@ public interface ValidatorBase {
 	 * 
 	 * @param context the validation context
 	 * @param reporter the instance validation reporter
-	 * @throws ValidationException if the instances are invalid and the reporter
-	 *             is not used to report the problems
+	 * @throws ValidationException if the instances are invalid and the reporter is
+	 *             not used to report the problems
 	 */
 	@SuppressWarnings("unused")
 	default void validateContext(InstanceValidationContext context,

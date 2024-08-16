@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import net.jcip.annotations.Immutable;
-
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ListMultimap;
@@ -43,6 +41,7 @@ import eu.esdihumboldt.hale.common.align.model.transformation.tree.Transformatio
 import eu.esdihumboldt.hale.common.align.model.transformation.tree.TransformationTree;
 import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
+import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TargetNode} implementation
@@ -131,9 +130,9 @@ public class TargetNodeImpl extends AbstractGroupNode implements TargetNode {
 	}
 
 	/**
-	 * Add an assignment to the target node. May only be called if the target
-	 * node was created using the
-	 * {@link #TargetNodeImpl(EntityDefinition, GroupNode)} constructor.
+	 * Add an assignment to the target node. May only be called if the target node
+	 * was created using the {@link #TargetNodeImpl(EntityDefinition, GroupNode)}
+	 * constructor.
 	 * 
 	 * @param names the entity names associated to the assignment
 	 * @param cell the cell node representing the assignment

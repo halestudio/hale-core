@@ -17,6 +17,9 @@ package eu.esdihumboldt.hale.common.align.merge.test.impl
 
 import static org.junit.Assert.*
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import org.junit.Test
 
 import com.google.common.collect.ListMultimap
@@ -31,8 +34,6 @@ import eu.esdihumboldt.hale.common.align.model.Entity
 import eu.esdihumboldt.hale.common.align.model.MutableCell
 import eu.esdihumboldt.hale.common.align.model.functions.JoinFunction
 import eu.esdihumboldt.hale.common.align.model.functions.RenameFunction
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 /**
  * Tests for default merge cell migrator.

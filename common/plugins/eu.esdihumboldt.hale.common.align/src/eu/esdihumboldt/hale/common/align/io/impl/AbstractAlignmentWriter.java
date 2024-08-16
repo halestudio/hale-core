@@ -31,8 +31,8 @@ import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
  * 
  * @author Simon Templer
  */
-public abstract class AbstractAlignmentWriter extends AbstractExportProvider implements
-		AlignmentWriter, ProjectInfoAware {
+public abstract class AbstractAlignmentWriter extends AbstractExportProvider
+		implements AlignmentWriter, ProjectInfoAware {
 
 	private Alignment alignment;
 	private SchemaSpace sourceSchema;

@@ -40,8 +40,8 @@ public class IOConfiguration implements Serializable, Cloneable {
 	private String providerId;
 
 	/**
-	 * Value that optionally stores cached information or the cached resource
-	 * and may be updated when the {@link IOConfiguration} is executed.
+	 * Value that optionally stores cached information or the cached resource and
+	 * may be updated when the {@link IOConfiguration} is executed.
 	 * 
 	 * @see CachingImportProvider
 	 */
@@ -105,9 +105,8 @@ public class IOConfiguration implements Serializable, Cloneable {
 	/**
 	 * Get the I/O provider configuration.
 	 * 
-	 * @return the provider configuration, values are either strings, DOM
-	 *         elements or complex value types defined in the
-	 *         {@link ComplexValueExtension}
+	 * @return the provider configuration, values are either strings, DOM elements
+	 *         or complex value types defined in the {@link ComplexValueExtension}
 	 */
 	public Map<String, Value> getProviderConfiguration() {
 		return providerConfiguration;

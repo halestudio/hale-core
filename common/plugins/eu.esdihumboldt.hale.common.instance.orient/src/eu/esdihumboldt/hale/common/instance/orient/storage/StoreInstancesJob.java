@@ -127,8 +127,7 @@ public abstract class StoreInstancesJob extends Job {
 	 *            processing is disabled
 	 * @param reportHandler the report handler, <code>null</code> if no report
 	 *            should be generated
-	 * @param doProcessing if instance processing should be done on stored
-	 *            instances
+	 * @param doProcessing if instance processing should be done on stored instances
 	 */
 	public StoreInstancesJob(String name, LocalOrientDB database, InstanceCollection instances,
 			final ServiceProvider serviceProvider, final ReportHandler reportHandler,
@@ -274,7 +273,8 @@ public abstract class StoreInstancesJob extends Job {
 							monitor.subTask(MessageFormat.format("{0}{1} instances processed",
 									String.valueOf(count.get()),
 									size != InstanceCollection.UNKNOWN_SIZE
-											? "/" + String.valueOf(size) : ""));
+											? "/" + String.valueOf(size)
+											: ""));
 							lastUpdate = now;
 						}
 					}
@@ -300,11 +300,10 @@ public abstract class StoreInstancesJob extends Job {
 			trans.end();
 
 			/*
-			 * Reset instances to prevent memory leak. It seems Eclipse
-			 * internally holds a reference to the job (in JobInfo and/or
-			 * ProgressMonitorFocusJobDialog) and this results in the instance
-			 * collection not being garbage collected. This is especially bad,
-			 * if an in-memory instance collection is used, e.g. a
+			 * Reset instances to prevent memory leak. It seems Eclipse internally holds a
+			 * reference to the job (in JobInfo and/or ProgressMonitorFocusJobDialog) and
+			 * this results in the instance collection not being garbage collected. This is
+			 * especially bad, if an in-memory instance collection is used, e.g. a
 			 * DefaultInstanceCollection that is used when loading a Shapefile.
 			 */
 			instances = null;
@@ -376,8 +375,8 @@ public abstract class StoreInstancesJob extends Job {
 	}
 
 	/**
-	 * Update an instance before it is converted and saved, e.g. adding
-	 * metadata. The default implementation does nothing and may be overridden.
+	 * Update an instance before it is converted and saved, e.g. adding metadata.
+	 * The default implementation does nothing and may be overridden.
 	 * 
 	 * @param instance the instance
 	 */

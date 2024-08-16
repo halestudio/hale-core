@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
@@ -51,6 +50,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace;
 import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.hale.io.csv.InstanceTableIOConstants;
 import eu.esdihumboldt.hale.io.xls.writer.XLSInstanceWriter;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test class for {@link XLSInstanceWriter}
@@ -75,9 +75,9 @@ public class XLSInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - write simple data, without nested properties and useSchema=true -
-	 * test if order/number of column persisted from original schema when in the
-	 * instance an attribute has no values
+	 * Test - write simple data, without nested properties and useSchema=true - test
+	 * if order/number of column persisted from original schema when in the instance
+	 * an attribute has no values
 	 *
 	 * @throws Exception , if an error occurs
 	 */
@@ -181,9 +181,8 @@ public class XLSInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - write data of complex schema and analyze result The
-	 * implementation, this test based on, does not work correctly at the
-	 * moment.
+	 * Test - write data of complex schema and analyze result The implementation,
+	 * this test based on, does not work correctly at the moment.
 	 *
 	 * @throws Exception , if an error occurs
 	 */
@@ -341,9 +340,9 @@ public class XLSInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * test - if a complex schema with data is present and this schema contains
-	 * more than one type, the exporter should export all types (one sheet per
-	 * type) or the selected one XXX not supported under current circumstances
+	 * test - if a complex schema with data is present and this schema contains more
+	 * than one type, the exporter should export all types (one sheet per type) or
+	 * the selected one XXX not supported under current circumstances
 	 */
 	public void testExportChoosenType() {
 		// TODO
@@ -351,8 +350,8 @@ public class XLSInstanceWriterTest extends AbstractPlatformTest {
 
 	/**
 	 * test - if a complex schema has a type containing an object attribute with
-	 * maxOccures > 1, one type can contain more than one instance of that
-	 * object. If this is the case than... TODO Export special case.
+	 * maxOccures > 1, one type can contain more than one instance of that object.
+	 * If this is the case than... TODO Export special case.
 	 */
 	public void testMultipleInstances() {
 		// TransformationExample example =

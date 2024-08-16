@@ -28,8 +28,8 @@ import eu.esdihumboldt.hale.common.core.report.impl.AbstractMessageDefinition;
  * 
  * @author Simon Templer
  */
-public class TransformationMessageImplDefinition extends
-		AbstractMessageDefinition<TransformationMessage> {
+public class TransformationMessageImplDefinition
+		extends AbstractMessageDefinition<TransformationMessage> {
 
 	private static final ALogger _log = ALoggerFactory.getLogger(TransformationMessage.class);
 

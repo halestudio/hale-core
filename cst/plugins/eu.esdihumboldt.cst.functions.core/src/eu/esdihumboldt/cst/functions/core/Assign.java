@@ -49,9 +49,9 @@ public class Assign extends AbstractSingleTargetScriptedPropertyTransformation<T
 		// check anchor
 
 		/*
-		 * Source node that are not defined will not result in a variable being
-		 * set (if the variable is optional), thus the only way we can check if
-		 * there should be an anchor, is checking the cell.
+		 * Source node that are not defined will not result in a variable being set (if
+		 * the variable is optional), thus the only way we can check if there should be
+		 * an anchor, is checking the cell.
 		 */
 		boolean hasAnchor = false;
 		ListMultimap<String, ? extends Entity> source = getCell().getSource();

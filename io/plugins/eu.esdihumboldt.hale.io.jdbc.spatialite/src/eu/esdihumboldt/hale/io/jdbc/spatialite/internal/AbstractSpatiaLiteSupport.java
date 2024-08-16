@@ -20,9 +20,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.sqlite.SQLiteConnection;
-
 import org.locationtech.jts.geom.Geometry;
+import org.sqlite.SQLiteConnection;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -84,7 +83,8 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 
 		try {
 			// String sqlMeta =
-			// "SELECT auth_srid, auth_name, srs_wkt AS srtext FROM spatial_ref_sys WHERE srid = ?";
+			// "SELECT auth_srid, auth_name, srs_wkt AS srtext FROM spatial_ref_sys WHERE
+			// srid = ?";
 			String sqlMeta = getSrsMetadataSQL();
 			stmt = conn.prepareStatement(sqlMeta);
 			stmt.setInt(1, srid);
@@ -160,10 +160,9 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
 	 * 
-	 * @param coordDimension the value of the <code>coord_dimension</code>
-	 *            column
-	 * @return the dimensionality of the geometry coordinates (either 2, 3, 4 or
-	 *         -1 in case of error)
+	 * @param coordDimension the value of the <code>coord_dimension</code> column
+	 * @return the dimensionality of the geometry coordinates (either 2, 3, 4 or -1
+	 *         in case of error)
 	 */
 	protected abstract int getCoordDimensionAsInt(Object coordDimension);
 
@@ -181,8 +180,8 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 
 	/**
 	 * Return a SpatiaLite version dependent SQL query selecting at least three
-	 * columns: <code>auth_srid</code> (integer), <code>auth_name</code>
-	 * (string) and <code>srtext</code> (string).
+	 * columns: <code>auth_srid</code> (integer), <code>auth_name</code> (string)
+	 * and <code>srtext</code> (string).
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
@@ -194,8 +193,8 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 
 	/**
 	 * Return a SpatiaLite version dependent SQL query selecting at least three
-	 * columns: <code>auth_srid</code> (integer), <code>auth_name</code>
-	 * (string), <code>srtext</code> (string) and <code>srid</code> (integer).
+	 * columns: <code>auth_srid</code> (integer), <code>auth_name</code> (string),
+	 * <code>srtext</code> (string) and <code>srid</code> (integer).
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
@@ -206,8 +205,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	protected abstract String getSrsMetadataFromAuthSQL();
 
 	/**
-	 * Utility method to close a {@link ResultSet} and a {@link Statement}
-	 * instance.
+	 * Utility method to close a {@link ResultSet} and a {@link Statement} instance.
 	 * 
 	 * @param stmt the {@link Statement} to close
 	 * @param rs the {@link ResultSet} to close

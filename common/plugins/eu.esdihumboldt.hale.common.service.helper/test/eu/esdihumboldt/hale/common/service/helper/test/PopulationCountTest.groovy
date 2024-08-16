@@ -1,5 +1,9 @@
 package eu.esdihumboldt.hale.common.service.helper.test
 
+import static org.junit.Assert.*
+
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition
 import eu.esdihumboldt.hale.common.align.model.impl.TypeEntityDefinition
@@ -15,9 +19,6 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.service.helper.test.dummy.Population
 import eu.esdihumboldt.hale.common.service.helper.test.dummy.PopulationContainer
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import org.junit.Test
-
-import static org.junit.Assert.*
 
 /**
  * Test for Entity Population Count
@@ -315,4 +316,3 @@ class PopulationCountTest extends AbstractPlatformTest {
 		assertEquals parentCount, pop.getParentsCount();
 	}
 }
-

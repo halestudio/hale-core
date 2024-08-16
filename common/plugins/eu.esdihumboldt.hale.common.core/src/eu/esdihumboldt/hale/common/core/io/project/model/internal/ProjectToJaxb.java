@@ -139,8 +139,8 @@ public class ProjectToJaxb {
 				result.getAbstractSetting().add(of.createSetting((PropertyType) property));
 			}
 			else if (property instanceof ComplexPropertyType) {
-				result.getAbstractSetting().add(
-						of.createComplexSetting((ComplexPropertyType) property));
+				result.getAbstractSetting()
+						.add(of.createComplexSetting((ComplexPropertyType) property));
 			}
 		}
 

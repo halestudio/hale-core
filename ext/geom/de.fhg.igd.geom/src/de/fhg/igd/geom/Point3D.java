@@ -79,8 +79,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 	}
 
 	/**
-	 * Constructs a new Point with the x, y and z coordinates of another 3D
-	 * point
+	 * Constructs a new Point with the x, y and z coordinates of another 3D point
 	 * 
 	 * @param p3d the other 3D point
 	 */
@@ -136,8 +135,8 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 	}
 
 	/**
-	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y)
-	 * == true
+	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
+	 * true
 	 * 
 	 * @see java.lang.Object#hashCode()
 	 */

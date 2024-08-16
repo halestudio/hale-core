@@ -17,6 +17,9 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl;
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import javax.xml.namespace.QName
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
@@ -26,8 +29,6 @@ import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
 import eu.esdihumboldt.hale.common.core.io.HaleIO
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 /**
  * XML serialization for {@link QName}.

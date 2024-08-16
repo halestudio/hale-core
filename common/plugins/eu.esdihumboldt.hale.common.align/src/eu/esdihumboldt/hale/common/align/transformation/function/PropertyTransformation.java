@@ -34,20 +34,20 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
  * 
  * @author Simon Templer
  */
-public interface PropertyTransformation<E extends TransformationEngine> extends
-		TransformationFunction<E> {
+public interface PropertyTransformation<E extends TransformationEngine>
+		extends TransformationFunction<E> {
 
 	/**
 	 * Set the property values serving as variables for the function.
 	 * 
-	 * @param variables the property values, variable names are mapped to
-	 *            property values
+	 * @param variables the property values, variable names are mapped to property
+	 *            values
 	 */
 	public void setVariables(ListMultimap<String, PropertyValue> variables);
 
 	/**
-	 * Set the target type of the created instance that is to be populated with
-	 * the function result.
+	 * Set the target type of the created instance that is to be populated with the
+	 * function result.
 	 * 
 	 * @param targetType the type of the target instance
 	 */
@@ -72,9 +72,9 @@ public interface PropertyTransformation<E extends TransformationEngine> extends
 	public ListMultimap<String, Object> getResults();
 
 	/**
-	 * Specifies if the automatic conversion of the execution results according
-	 * to the corresponding property definitions is allowed and therefore should
-	 * be performed by the {@link PropertyTransformer}.
+	 * Specifies if the automatic conversion of the execution results according to
+	 * the corresponding property definitions is allowed and therefore should be
+	 * performed by the {@link PropertyTransformer}.
 	 * 
 	 * @return if automated conversion of the result values is allowed
 	 */

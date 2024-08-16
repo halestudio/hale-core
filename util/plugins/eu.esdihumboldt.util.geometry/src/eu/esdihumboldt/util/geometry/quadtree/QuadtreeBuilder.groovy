@@ -15,11 +15,11 @@
 
 package eu.esdihumboldt.util.geometry.quadtree
 
+import groovy.transform.CompileStatic
+
 import org.locationtech.jts.geom.Envelope
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryFactory
-
-import groovy.transform.CompileStatic
 
 /**
  * Helper class to build Quadtrees

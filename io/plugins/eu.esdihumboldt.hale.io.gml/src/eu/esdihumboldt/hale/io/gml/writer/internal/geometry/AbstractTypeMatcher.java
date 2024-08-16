@@ -53,8 +53,8 @@ public abstract class AbstractTypeMatcher<T> {
 		 * 
 		 * @param type the associated type
 		 * @param path the definition path
-		 * @param checkedTypes the type definitions that have already been
-		 *            checked (to prevent cycles)
+		 * @param checkedTypes the type definitions that have already been checked (to
+		 *            prevent cycles)
 		 */
 		public PathCandidate(TypeDefinition type, DefinitionPath path,
 				HashSet<TypeDefinition> checkedTypes) {
@@ -115,8 +115,9 @@ public abstract class AbstractTypeMatcher<T> {
 	public List<DefinitionPath> findCandidates(TypeDefinition elementType, QName elementName,
 			boolean unique, T matchParam, int maxDepth) {
 		Queue<PathCandidate> candidates = new LinkedList<PathCandidate>();
-		PathCandidate base = new PathCandidate(elementType, new DefinitionPath(elementType,
-				elementName, unique), new HashSet<TypeDefinition>());
+		PathCandidate base = new PathCandidate(elementType,
+				new DefinitionPath(elementType, elementName, unique),
+				new HashSet<TypeDefinition>());
 		candidates.add(base);
 
 		List<DefinitionPath> results = new ArrayList<>();
@@ -174,7 +175,7 @@ public abstract class AbstractTypeMatcher<T> {
 				@SuppressWarnings("unchecked")
 				Iterable<ChildDefinition<?>> children = (Iterable<ChildDefinition<?>>) ((basePath
 						.isEmpty() || basePath.getLastElement().isProperty()) ? (type.getChildren())
-						: (type.getDeclaredChildren()));
+								: (type.getDeclaredChildren()));
 				Iterable<DefinitionPath> childPaths = GmlWriterUtil.collectPropertyPaths(children,
 						basePath, true);
 				for (DefinitionPath childPath : childPaths) {
@@ -197,8 +198,8 @@ public abstract class AbstractTypeMatcher<T> {
 			// step down sub-types - elements may be downcast using xsi:type
 			if (!type.getConstraint(AbstractFlag.class).isEnabled()) {
 				/*
-				 * don't do it for abstract types as they have no element that
-				 * may be used XXX is this true?
+				 * don't do it for abstract types as they have no element that may be used XXX
+				 * is this true?
 				 */
 
 				for (@SuppressWarnings("unused")

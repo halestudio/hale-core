@@ -29,8 +29,8 @@ public interface OutputSupplier<T> {
 	/**
 	 * Returns an object that encapsulates a writable resource.
 	 * 
-	 * This method may be called repeatedly to get independent channels to the
-	 * same underlying resource.
+	 * This method may be called repeatedly to get independent channels to the same
+	 * underlying resource.
 	 * 
 	 * @return a new output sink, the caller is responsible for cleanup
 	 * @throws IOException if a new output sink cannot be opened

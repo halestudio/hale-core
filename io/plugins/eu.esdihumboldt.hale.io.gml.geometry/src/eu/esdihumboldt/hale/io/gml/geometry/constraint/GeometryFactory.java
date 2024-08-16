@@ -67,9 +67,9 @@ public class GeometryFactory implements TypeConstraint {
 	 * @param instance the instance
 	 * @param srsDimension the dimension of the instance
 	 * @param reader the I/O Provider to get value
-	 * @return the geometry value derived from the instance, the return type
-	 *         should match the {@link Binding}, may be <code>null</code> if no
-	 *         geometry could be created or if no geometry handler is associated
+	 * @return the geometry value derived from the instance, the return type should
+	 *         match the {@link Binding}, may be <code>null</code> if no geometry
+	 *         could be created or if no geometry handler is associated
 	 */
 	public Object createGeometry(Instance instance, int srsDimension, IOProvider reader) {
 		if (handler == null) {

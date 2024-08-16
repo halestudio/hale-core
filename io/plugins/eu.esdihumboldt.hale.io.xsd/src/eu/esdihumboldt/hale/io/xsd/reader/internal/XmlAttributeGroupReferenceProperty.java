@@ -59,8 +59,8 @@ public class XmlAttributeGroupReferenceProperty extends LazyGroupPropertyDefinit
 		XmlAttributeGroup group = resolveAttributeGroup();
 
 		if (group == null) {
-			throw new IllegalStateException("Referenced attribute group could not be found: "
-					+ groupName.toString());
+			throw new IllegalStateException(
+					"Referenced attribute group could not be found: " + groupName.toString());
 		}
 
 		// redeclare children

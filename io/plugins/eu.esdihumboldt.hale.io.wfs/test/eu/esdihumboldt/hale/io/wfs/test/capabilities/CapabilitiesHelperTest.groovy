@@ -1,8 +1,8 @@
 package eu.esdihumboldt.hale.io.wfs.test.capabilities
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
 import static org.junit.Assert.*
+
+import groovy.transform.CompileStatic
 
 import javax.xml.namespace.QName
 
@@ -11,7 +11,7 @@ import org.junit.Test
 import eu.esdihumboldt.hale.io.wfs.WFSVersion
 import eu.esdihumboldt.hale.io.wfs.capabilities.CapabilitiesHelper
 import eu.esdihumboldt.hale.io.wfs.capabilities.WFSCapabilities
-import groovy.transform.CompileStatic
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 @CompileStatic
 class CapabilitiesHelperTest extends AbstractPlatformTest {

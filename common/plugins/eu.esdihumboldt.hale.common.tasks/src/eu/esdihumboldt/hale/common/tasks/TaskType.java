@@ -31,14 +31,15 @@ public interface TaskType<C> {
 	 * Task severity level
 	 */
 	public enum TaskSeverity {
+
 		/**
 		 * A logical error in the alignment that makes it impossible to apply.
 		 */
 		ERROR,
 
 		/**
-		 * A warning indicates a possible error in the alignment, as indicated
-		 * by instance analysis
+		 * A warning indicates a possible error in the alignment, as indicated by
+		 * instance analysis
 		 */
 		WARNING,
 
@@ -89,14 +90,14 @@ public interface TaskType<C> {
 	public TaskFactory<C> getTaskFactory();
 
 	/**
-	 * Get the severity level of the given task. The {@link TaskSeverity}
-	 * identifies whether the task is required to clear up a logical error in
-	 * the mapping or schema, whether it is a logical warning that indicates a
-	 * possible mismatch or erroneous modeling, and a normal task indicates a
-	 * simple open point that will improve the quality of the schema or mapping.
-	 * As an example for a warning, take the case that two classes are declared
-	 * equal via an equality relation, but an algorithm finds they share no
-	 * substructures like attribute names and types.
+	 * Get the severity level of the given task. The {@link TaskSeverity} identifies
+	 * whether the task is required to clear up a logical error in the mapping or
+	 * schema, whether it is a logical warning that indicates a possible mismatch or
+	 * erroneous modeling, and a normal task indicates a simple open point that will
+	 * improve the quality of the schema or mapping. As an example for a warning,
+	 * take the case that two classes are declared equal via an equality relation,
+	 * but an algorithm finds they share no substructures like attribute names and
+	 * types.
 	 * 
 	 * @param task the task which severity level shall be identified. The task's
 	 *            type name must match that of the task type
@@ -108,8 +109,8 @@ public interface TaskType<C> {
 	/**
 	 * Get the creation reason for the given task
 	 * 
-	 * @param task the task which reason shall be determined. The task's type
-	 *            name must match that of the task type
+	 * @param task the task which reason shall be determined. The task's type name
+	 *            must match that of the task type
 	 * 
 	 * @return the task's creation reason
 	 */
@@ -118,8 +119,8 @@ public interface TaskType<C> {
 	/**
 	 * Get the title of the given task
 	 * 
-	 * @param task the task which title shall be determined. The task's type
-	 *            name must match that of the task type
+	 * @param task the task which title shall be determined. The task's type name
+	 *            must match that of the task type
 	 * 
 	 * @return the task title
 	 */

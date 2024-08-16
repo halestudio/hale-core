@@ -41,17 +41,19 @@ public class LocationUpdater extends PathUpdate {
 
 	/**
 	 * Default constructor.<br>
-	 * If either project, the save configuration of project or newLocation is
-	 * null all calls on this object will have no effect.
+	 * If either project, the save configuration of project or newLocation is null
+	 * all calls on this object will have no effect.
 	 * 
 	 * @param project the project to update
 	 * @param newLocation the new location of the project file
 	 */
 	public LocationUpdater(Project project, URI newLocation) {
 		// sorry about that...
-		super(project == null ? null : ((project.getSaveConfiguration() == null) ? null : URI
-				.create(project.getSaveConfiguration().getProviderConfiguration()
-						.get(ExportProvider.PARAM_TARGET).toString())), newLocation);
+		super(project == null ? null
+				: ((project.getSaveConfiguration() == null) ? null
+						: URI.create(project.getSaveConfiguration().getProviderConfiguration()
+								.get(ExportProvider.PARAM_TARGET).toString())),
+				newLocation);
 
 		this.project = project;
 	}
@@ -59,8 +61,8 @@ public class LocationUpdater extends PathUpdate {
 	/**
 	 * Update locations in the given project.
 	 * 
-	 * @param keepRelative whether to keep working relative URIs as is or make
-	 *            them absolute
+	 * @param keepRelative whether to keep working relative URIs as is or make them
+	 *            absolute
 	 */
 	public void updateProject(boolean keepRelative) {
 		if (project == null || getOldLocation() == null || getNewLocation() == null)
@@ -92,9 +94,9 @@ public class LocationUpdater extends PathUpdate {
 				/*
 				 * Project files should always be next to the project file.
 				 * 
-				 * Fallback wouldn't have an effect here because as it is used
-				 * currently in the project service, project files are already
-				 * loaded in the DefaultProjectReader.
+				 * Fallback wouldn't have an effect here because as it is used currently in the
+				 * project service, project files are already loaded in the
+				 * DefaultProjectReader.
 				 */
 				URI resolved = findLocation(location, false, false, keepRelative);
 				if (resolved != null)

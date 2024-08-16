@@ -64,7 +64,8 @@ public class DefaultEntityResolver implements EntityResolver {
 	}
 
 	@Override
-	public Property resolveProperty(PropertyType entity, TypeIndex schema, SchemaSpaceID schemaSpace) {
+	public Property resolveProperty(PropertyType entity, TypeIndex schema,
+			SchemaSpaceID schemaSpace) {
 		return new DefaultProperty(JaxbToEntityDefinition.convert(entity, schema, schemaSpace));
 	}
 

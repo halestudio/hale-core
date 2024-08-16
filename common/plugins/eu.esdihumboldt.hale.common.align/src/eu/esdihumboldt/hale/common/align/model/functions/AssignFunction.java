@@ -40,8 +40,7 @@ public interface AssignFunction {
 	public static final String PARAMETER_VALUE = "value";
 
 	/**
-	 * Name of the anchor source entity, that may be associated with the
-	 * assignment.
+	 * Name of the anchor source entity, that may be associated with the assignment.
 	 */
 	public static final String ENTITY_ANCHOR = "anchor";
 

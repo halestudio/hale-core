@@ -34,8 +34,8 @@ import eu.esdihumboldt.hale.common.cache.Request;
 public class XMLPathUpdaterTest {
 
 	/**
-	 * Test for retrieving and updating this schema was added because this lead
-	 * to a deadlock due to HTTP connections that were not released.
+	 * Test for retrieving and updating this schema was added because this lead to a
+	 * deadlock due to HTTP connections that were not released.
 	 * 
 	 * @throws Exception if any error occurs during the test
 	 */

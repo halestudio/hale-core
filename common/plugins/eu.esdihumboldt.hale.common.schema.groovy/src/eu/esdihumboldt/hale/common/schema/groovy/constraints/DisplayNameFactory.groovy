@@ -15,9 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.schema.model.Definition
 import eu.esdihumboldt.hale.common.schema.model.constraint.DisplayName
-import groovy.transform.CompileStatic
 
 
 /**

@@ -15,12 +15,13 @@
 
 package eu.esdihumboldt.hale.io.geopackage
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
 import static org.junit.Assert.assertTrue
+
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 
 import java.util.function.Consumer
 
@@ -37,8 +38,7 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
+import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
  * Tests loading GeoPackage instances.
@@ -264,5 +264,4 @@ class GeopackageInstanceReaderTest extends AbstractPlatformTest {
 							.isNotNull()
 				} as Consumer)
 	}
-
 }

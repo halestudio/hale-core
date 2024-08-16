@@ -15,11 +15,11 @@
 
 package eu.esdihumboldt.hale.io.jdbc.test;
 
-import eu.esdihumboldt.hale.common.test.docker.config.DockerConfigInstance;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import eu.esdihumboldt.hale.common.test.docker.config.DockerConfigInstance;
 
 /**
  * A configuration instance which provides the functionality to get the
@@ -49,8 +49,8 @@ public class DBConfigInstance extends DockerConfigInstance implements DBImagePar
 
 	@Override
 	public String getJDBCURL(int port, String hostName) {
-		return new StringBuilder().append(getStartURI()).append(hostName).append(COLON)
-				.append(port).append(FORW_SLASH).append(getDatabase()).toString();
+		return new StringBuilder().append(getStartURI()).append(hostName).append(COLON).append(port)
+				.append(FORW_SLASH).append(getDatabase()).toString();
 	}
 
 	/**

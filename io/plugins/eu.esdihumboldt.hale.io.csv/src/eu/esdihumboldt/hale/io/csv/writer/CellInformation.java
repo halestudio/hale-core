@@ -46,8 +46,8 @@ public class CellInformation {
 	}
 
 	/**
-	 * The position list belongs to the text list. Each entry in the position
-	 * list is corresponding to the entry in the text list at the same position.
+	 * The position list belongs to the text list. Each entry in the position list
+	 * is corresponding to the entry in the text list at the same position.
 	 * 
 	 * @return the hierarchy levels
 	 */

@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.common.core.io.impl
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import org.w3c.dom.Element
 
 import eu.esdihumboldt.hale.common.core.io.ComplexValueType
@@ -26,8 +29,6 @@ import eu.esdihumboldt.hale.common.core.io.ValueMap
 import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 
 /**

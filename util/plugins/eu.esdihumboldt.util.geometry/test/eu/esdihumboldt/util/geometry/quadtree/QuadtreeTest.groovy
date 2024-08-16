@@ -17,14 +17,14 @@ package eu.esdihumboldt.util.geometry.quadtree
 
 import static org.junit.Assert.*
 
+import groovy.transform.CompileStatic
+
 import org.junit.Test
 import org.locationtech.jts.geom.Coordinate
 import org.locationtech.jts.geom.Envelope
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.geom.GeometryFactory
 import org.locationtech.jts.geom.Point
-
-import groovy.transform.CompileStatic
 
 /**
  * Tests for quadtree implementations

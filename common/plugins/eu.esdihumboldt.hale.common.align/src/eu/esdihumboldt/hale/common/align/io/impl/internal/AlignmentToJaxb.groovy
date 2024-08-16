@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.common.align.io.impl.internal
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import java.util.Map.Entry
 
 import com.google.common.collect.ListMultimap
@@ -48,8 +51,6 @@ import eu.esdihumboldt.hale.common.align.model.Type
 import eu.esdihumboldt.hale.common.core.io.HaleIO
 import eu.esdihumboldt.hale.common.core.io.PathUpdate
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 import jakarta.xml.bind.JAXBElement
 
 

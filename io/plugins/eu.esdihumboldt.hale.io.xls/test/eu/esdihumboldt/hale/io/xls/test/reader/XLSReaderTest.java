@@ -31,7 +31,6 @@ import java.util.function.Consumer;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -56,6 +55,7 @@ import eu.esdihumboldt.hale.io.xls.reader.ReaderSettings;
 import eu.esdihumboldt.hale.io.xls.reader.SheetSettings;
 import eu.esdihumboldt.hale.io.xls.reader.XLSInstanceReader;
 import eu.esdihumboldt.hale.io.xls.reader.XLSSchemaReader;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test class for {@link XLSSchemaReader} and {@link XLSInstanceReader}
@@ -78,8 +78,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - read a sample xls schema and data from same file and sheet (simple
-	 * io test). Check the type, check the properties, check the values of the
+	 * Test - read a sample xls schema and data from same file and sheet (simple io
+	 * test). Check the type, check the properties, check the values of the
 	 * properties, check the datatype of the properties
 	 *
 	 * @throws Exception , if an error occurs
@@ -139,8 +139,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 
 	/**
 	 * Test - read a sample xls schema and data where skip is a boolean. It
-	 * simulates the previous version where the first line was either skipped
-	 * (true) or not (false)
+	 * simulates the previous version where the first line was either skipped (true)
+	 * or not (false)
 	 *
 	 * @throws Exception , if an error occurs
 	 */
@@ -206,8 +206,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - read a sample xls schema and data from same file and different
-	 * sheets. Check skip first
+	 * Test - read a sample xls schema and data from same file and different sheets.
+	 * Check skip first
 	 *
 	 * @throws Exception , if an error occurs
 	 */
@@ -287,8 +287,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - read xls file and data. Check multiple values of one instance.
-	 * Check formula cells
+	 * Test - read xls file and data. Check multiple values of one instance. Check
+	 * formula cells
 	 *
 	 * @throws Exception , if an error occurs
 	 */
@@ -355,8 +355,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read an Excel file with multiple sheets detecting the associated types
-	 * based on the sheet name.
+	 * Read an Excel file with multiple sheets detecting the associated types based
+	 * on the sheet name.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -399,8 +399,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read an Excel file with multiple sheets specifying types explicitly via
-	 * sheet settings identified by sheet name.
+	 * Read an Excel file with multiple sheets specifying types explicitly via sheet
+	 * settings identified by sheet name.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -434,9 +434,9 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read an Excel file with multiple sheets specifying types explicitly via
-	 * sheet settings identified by sheet name. How many lines are to be skipped
-	 * is configured individually per sheet.
+	 * Read an Excel file with multiple sheets specifying types explicitly via sheet
+	 * settings identified by sheet name. How many lines are to be skipped is
+	 * configured individually per sheet.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -470,8 +470,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read an Excel file with multiple sheets specifying types explicitly via
-	 * sheet settings identified by sheet index.
+	 * Read an Excel file with multiple sheets specifying types explicitly via sheet
+	 * settings identified by sheet index.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -505,8 +505,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Read an Excel file with multiple sheets specifying types explicitly via
-	 * sheet settings identified by sheet index.
+	 * Read an Excel file with multiple sheets specifying types explicitly via sheet
+	 * settings identified by sheet index.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -622,8 +622,8 @@ public class XLSReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - read a sample xls schema and data from same file and sheet (simple
-	 * io test). Check the type, check the properties, check the values of the
+	 * Test - read a sample xls schema and data from same file and sheet (simple io
+	 * test). Check the type, check the properties, check the values of the
 	 * properties, check the datatype of the properties
 	 *
 	 * @throws Exception , if an error occurs

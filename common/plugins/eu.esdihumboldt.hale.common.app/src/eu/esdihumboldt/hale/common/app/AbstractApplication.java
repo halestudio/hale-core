@@ -39,8 +39,8 @@ public abstract class AbstractApplication<C> implements IApplication {
 	 * @param args the application arguments
 	 * @param appContext the application context
 	 * @return the return value of the application
-	 * @throws Exception if an unrecoverable error occurs processing the
-	 *             arguments or running the application
+	 * @throws Exception if an unrecoverable error occurs processing the arguments
+	 *             or running the application
 	 * 
 	 * @see IApplication#start(IApplicationContext)
 	 */
@@ -118,8 +118,7 @@ public abstract class AbstractApplication<C> implements IApplication {
 	 * @param param the parameter name
 	 * @param value the parameter value
 	 * @param executionContext the execution context to configure
-	 * @throws Exception if an unrecoverable error occurs processing the
-	 *             parameter
+	 * @throws Exception if an unrecoverable error occurs processing the parameter
 	 */
 	protected void processParameter(String param, String value, C executionContext)
 			throws Exception {

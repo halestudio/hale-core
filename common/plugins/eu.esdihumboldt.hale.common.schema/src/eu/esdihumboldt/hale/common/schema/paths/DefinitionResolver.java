@@ -39,21 +39,21 @@ import eu.esdihumboldt.util.groovy.paths.PathImpl;
 public class DefinitionResolver {
 
 	/**
-	 * Find all possible property paths for the given property name, also
-	 * descending into sub-groups. The results will be cached in a special
-	 * definition constraint.
+	 * Find all possible property paths for the given property name, also descending
+	 * into sub-groups. The results will be cached in a special definition
+	 * constraint.
 	 * 
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
-	 * @param namespace the property namespace or <code>null</code> if the
-	 *            namespace should be ignored
+	 * @param namespace the property namespace or <code>null</code> if the namespace
+	 *            should be ignored
 	 * @return the list of found definition paths
 	 */
 	public static List<Path<Definition<?>>> findPropertyCached(DefinitionGroup parent, String name,
 			String namespace) {
 		if (parent instanceof TypeDefinition) {
-			return ((TypeDefinition) parent).getConstraint(CachedResolver.class).getResolvedPaths(
-					name, namespace);
+			return ((TypeDefinition) parent).getConstraint(CachedResolver.class)
+					.getResolvedPaths(name, namespace);
 		}
 		else if (parent instanceof GroupPropertyDefinition) {
 			return ((GroupPropertyDefinition) parent).getConstraint(CachedResolver.class)
@@ -65,16 +65,16 @@ public class DefinitionResolver {
 	}
 
 	/**
-	 * Find all possible property paths for the given property name, also
-	 * descending into sub-groups. Does a complete calculation based on the
-	 * definition structure.
+	 * Find all possible property paths for the given property name, also descending
+	 * into sub-groups. Does a complete calculation based on the definition
+	 * structure.
 	 * 
 	 * @see #findPropertyCached(DefinitionGroup, String, String)
 	 * 
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
-	 * @param namespace the property namespace or <code>null</code> if the
-	 *            namespace should be ignored
+	 * @param namespace the property namespace or <code>null</code> if the namespace
+	 *            should be ignored
 	 * @return the list of found definition paths
 	 */
 	public static List<Path<Definition<?>>> findProperty(DefinitionGroup parent, String name,
@@ -83,21 +83,20 @@ public class DefinitionResolver {
 	}
 
 	/**
-	 * Find all possible property paths for the given property name, also
-	 * descending into sub-groups.
+	 * Find all possible property paths for the given property name, also descending
+	 * into sub-groups.
 	 * 
 	 * Used for the internal computation. In most cases
 	 * {@link #findProperty(DefinitionGroup, String, String)} or
-	 * {@link #findPropertyCached(DefinitionGroup, String, String)} should be
-	 * called instead.
+	 * {@link #findPropertyCached(DefinitionGroup, String, String)} should be called
+	 * instead.
 	 * 
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
-	 * @param namespace the property namespace or <code>null</code> if the
-	 *            namespace should be ignored
+	 * @param namespace the property namespace or <code>null</code> if the namespace
+	 *            should be ignored
 	 * @param basePath the definition base path
-	 * @param useCachedResolver if for sub-groups a cached resolver should be
-	 *            used
+	 * @param useCachedResolver if for sub-groups a cached resolver should be used
 	 * @return the list of found definition paths
 	 */
 	public static List<Path<Definition<?>>> findProperty(DefinitionGroup parent, String name,
@@ -116,8 +115,7 @@ public class DefinitionResolver {
 				Path<Definition<?>> groupPath = basePath.subPath(group);
 
 				/*
-				 * If the name is a match, we take the reference to the group as
-				 * result as well.
+				 * If the name is a match, we take the reference to the group as result as well.
 				 */
 				if (accept(group.getName(), name, namespace)) {
 					results.add(groupPath);
@@ -147,8 +145,8 @@ public class DefinitionResolver {
 	 * 
 	 * @param name the qualified name
 	 * @param localName the local name
-	 * @param namespace the namespace, may be <code>null</code> if any namespace
-	 *            is acceptable
+	 * @param namespace the namespace, may be <code>null</code> if any namespace is
+	 *            acceptable
 	 * @return if the name is accepted
 	 */
 	private static boolean accept(QName name, String localName, String namespace) {

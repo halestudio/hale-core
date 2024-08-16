@@ -232,11 +232,11 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	 * 
 	 * @param writer the XML stream writer
 	 * @param type the type definition
-	 * @param parent the parent object, may be <code>null</code>. If it is set
-	 *            the value for the ID will be tried to be retrieved from the
-	 *            parent object, otherwise a random ID will be generated
-	 * @param onlyIfNotSet if the ID shall only be written if no value is set in
-	 *            the parent object
+	 * @param parent the parent object, may be <code>null</code>. If it is set the
+	 *            value for the ID will be tried to be retrieved from the parent
+	 *            object, otherwise a random ID will be generated
+	 * @param onlyIfNotSet if the ID shall only be written if no value is set in the
+	 *            parent object
 	 * @throws XMLStreamException if an error occurs writing the ID
 	 */
 	public static void writeRequiredID(XMLStreamWriter writer, DefinitionGroup type, Group parent,
@@ -250,11 +250,11 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	 * 
 	 * @param writer the XML stream writer
 	 * @param type the type definition
-	 * @param parent the parent object, may be <code>null</code>. If it is set
-	 *            the value for the ID will be tried to be retrieved from the
-	 *            parent object, otherwise a random ID will be generated
-	 * @param onlyIfNotSet if the ID shall only be written if no value is set in
-	 *            the parent object
+	 * @param parent the parent object, may be <code>null</code>. If it is set the
+	 *            value for the ID will be tried to be retrieved from the parent
+	 *            object, otherwise a random ID will be generated
+	 * @param onlyIfNotSet if the ID shall only be written if no value is set in the
+	 *            parent object
 	 * @param desiredId a desired identifier or <code>null</code>
 	 * @throws XMLStreamException if an error occurs writing the ID
 	 */
@@ -304,8 +304,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	}
 
 	/**
-	 * Write the opening element of a {@link PathElement} to the given stream
-	 * writer
+	 * Write the opening element of a {@link PathElement} to the given stream writer
 	 * 
 	 * @param writer the stream writer
 	 * @param step the path element
@@ -331,8 +330,8 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	}
 
 	/**
-	 * Collect all property definitions defined by the given child definitions,
-	 * i.e. returns a flattened version of the children.
+	 * Collect all property definitions defined by the given child definitions, i.e.
+	 * returns a flattened version of the children.
 	 * 
 	 * @param children the child definitions
 	 * @return the property definitions
@@ -357,8 +356,8 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	 * 
 	 * @param children the children
 	 * @param basePath the base path
-	 * @param elementsOnly if only properties representing an XML element should
-	 *            be considered
+	 * @param elementsOnly if only properties representing an XML element should be
+	 *            considered
 	 * @return the child paths, each ending with a property element
 	 */
 	public static Collection<DefinitionPath> collectPropertyPaths(

@@ -27,8 +27,7 @@ public class DelegateServiceProvider implements ServiceProvider {
 	private final ServiceProvider serviceProvider;
 
 	/**
-	 * Constructs a new DelegateServiceProvider with the specified
-	 * ServiceProvider.
+	 * Constructs a new DelegateServiceProvider with the specified ServiceProvider.
 	 * 
 	 * @param serviceProvider the underlying ServiceProvider to delegate to
 	 */

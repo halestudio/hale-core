@@ -43,8 +43,8 @@ public interface ValueConstraintFactory<T> {
 	 * 
 	 * @param value the {@link Value} to recreate the constraint from
 	 * @param definition the definition the constraint will be associated to
-	 * @param typeResolver the type index that allows resolving references to
-	 *            type definitions
+	 * @param typeResolver the type index that allows resolving references to type
+	 *            definitions
 	 * @param classResolver the resolver for reconstructing classes
 	 * @return the restored constraint
 	 * @throws Exception if the creation of the constraint fails

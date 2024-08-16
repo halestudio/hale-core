@@ -16,11 +16,10 @@
 
 package eu.esdihumboldt.hale.common.convert.wkt.internal;
 
-import org.springframework.core.convert.converter.Converter;
-
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.io.ParseException;
 import org.locationtech.jts.io.WKTReader;
+import org.springframework.core.convert.converter.Converter;
 
 /**
  * Converts strings to geometries
@@ -28,7 +27,8 @@ import org.locationtech.jts.io.WKTReader;
  * @author Kevin Mais
  * @param <T> Geometry Type to convert to
  */
-public abstract class AbstractGeometryConverter<T extends Geometry> implements Converter<String, T> {
+public abstract class AbstractGeometryConverter<T extends Geometry>
+		implements Converter<String, T> {
 
 	private static WKTReader reader;
 

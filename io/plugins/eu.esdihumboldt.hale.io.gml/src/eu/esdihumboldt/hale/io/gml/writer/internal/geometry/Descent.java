@@ -81,12 +81,12 @@ public class Descent {
 	 * 
 	 * @param writer the XML stream writer
 	 * @param descendPath the path to descend
-	 * @param previousDescent the previous descent, that will be closed or
-	 *            partially closed as needed, may be <code>null</code>
-	 * @param generateRequiredIDs if required IDs shall be generated for the
-	 *            path elements
-	 * @return the descent that was opened, it must be closed to close the
-	 *         opened elements
+	 * @param previousDescent the previous descent, that will be closed or partially
+	 *            closed as needed, may be <code>null</code>
+	 * @param generateRequiredIDs if required IDs shall be generated for the path
+	 *            elements
+	 * @return the descent that was opened, it must be closed to close the opened
+	 *         elements
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
 	public static Descent descend(XMLStreamWriter writer, DefinitionPath descendPath,
@@ -99,14 +99,14 @@ public class Descent {
 	 * 
 	 * @param writer the XML stream writer
 	 * @param descendPath the path to descend
-	 * @param previousDescent the previous descent, that will be closed or
-	 *            partially closed as needed, may be <code>null</code>
-	 * @param generateRequiredIDs if required IDs shall be generated for the
-	 *            path elements
-	 * @param allowFullClose if it is allowed to fully close the previous
-	 *            descent regardless of element uniqueness
-	 * @return the descent that was opened, it must be closed to close the
-	 *         opened elements
+	 * @param previousDescent the previous descent, that will be closed or partially
+	 *            closed as needed, may be <code>null</code>
+	 * @param generateRequiredIDs if required IDs shall be generated for the path
+	 *            elements
+	 * @param allowFullClose if it is allowed to fully close the previous descent
+	 *            regardless of element uniqueness
+	 * @return the descent that was opened, it must be closed to close the opened
+	 *         elements
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
 	public static Descent descend(XMLStreamWriter writer, DefinitionPath descendPath,
@@ -172,11 +172,9 @@ public class Descent {
 				}
 
 				if (!endedSomething) {
-					throw new IllegalStateException(
-							MessageFormat
-									.format("Previous path ''{0}'' has only unique common elements with path ''{1}'', therefore a sequence of both is not possible",
-											previousDescent.getPath().toString(),
-											descendPath.toString()));
+					throw new IllegalStateException(MessageFormat.format(
+							"Previous path ''{0}'' has only unique common elements with path ''{1}'', therefore a sequence of both is not possible",
+							previousDescent.getPath().toString(), descendPath.toString()));
 				}
 			}
 			else {

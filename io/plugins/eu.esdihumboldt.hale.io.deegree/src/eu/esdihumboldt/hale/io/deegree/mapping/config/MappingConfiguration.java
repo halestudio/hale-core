@@ -35,8 +35,8 @@ public interface MappingConfiguration {
 	MappingMode getMode();
 
 	/**
-	 * Get the mode for generating ID prefixes that should be used (for
-	 * relational mapping).
+	 * Get the mode for generating ID prefixes that should be used (for relational
+	 * mapping).
 	 * 
 	 * @return the mode for generating ID prefixes
 	 */

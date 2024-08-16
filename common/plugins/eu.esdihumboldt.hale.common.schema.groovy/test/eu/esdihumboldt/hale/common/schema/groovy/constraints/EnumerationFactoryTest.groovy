@@ -15,11 +15,13 @@
 
 package eu.esdihumboldt.hale.common.schema.groovy.constraints
 
-import eu.esdihumboldt.hale.common.schema.model.constraint.type.Enumeration
+import static org.junit.Assert.*
+
 import groovy.transform.CompileStatic
+
 import org.junit.Test
 
-import static org.junit.Assert.*
+import eu.esdihumboldt.hale.common.schema.model.constraint.type.Enumeration
 
 /**
  * Tests creation of {@link Enumeration} constraints w/ {@link EnumerationFactory}.

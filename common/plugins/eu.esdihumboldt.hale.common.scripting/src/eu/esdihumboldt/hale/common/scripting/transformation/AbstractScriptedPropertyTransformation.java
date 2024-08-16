@@ -54,7 +54,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 			ListMultimap<String, PropertyValue> variables,
 			ListMultimap<String, PropertyEntityDefinition> resultNames,
 			Map<String, String> executionParameters, TransformationLog log)
-					throws TransformationException {
+			throws TransformationException {
 		ListMultimap<String, ParameterValue> originalParameters = getParameters();
 		ListMultimap<String, Value> transformedParameters = ArrayListMultimap.create();
 
@@ -108,8 +108,8 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	}
 
 	/**
-	 * Execute the evaluation function as configured. The transformed parameters
-	 * are available in here.
+	 * Execute the evaluation function as configured. The transformed parameters are
+	 * available in here.
 	 * 
 	 * @param transformationIdentifier the transformation function identifier
 	 * @param engine the transformation engine that may be used for the function
@@ -117,8 +117,8 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	 * @param variables the input variables
 	 * @param resultNames the expected results (names associated with the
 	 *            corresponding entity definitions)
-	 * @param executionParameters additional parameters for the execution, may
-	 *            be <code>null</code>
+	 * @param executionParameters additional parameters for the execution, may be
+	 *            <code>null</code>
 	 * @param log the transformation log to report any information about the
 	 *            execution of the transformation to
 	 * @return the evaluation result
@@ -129,7 +129,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 			E engine, ListMultimap<String, PropertyValue> variables,
 			ListMultimap<String, PropertyEntityDefinition> resultNames,
 			Map<String, String> executionParameters, TransformationLog log)
-					throws TransformationException;
+			throws TransformationException;
 
 	/**
 	 * Returns the transformed parameters.
@@ -142,13 +142,12 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 
 	/**
 	 * Get the first evaluated parameter defined with the given parameter name.
-	 * Throws a {@link TransformationException} if such a parameter doesn't
-	 * exist.
+	 * Throws a {@link TransformationException} if such a parameter doesn't exist.
 	 * 
 	 * @param parameterName the parameter name
 	 * @return the parameter value
-	 * @throws TransformationException if a parameter with the given name
-	 *             doesn't exist
+	 * @throws TransformationException if a parameter with the given name doesn't
+	 *             exist
 	 */
 	protected Value getTransformedParameterChecked(String parameterName)
 			throws TransformationException {
@@ -162,8 +161,8 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	}
 
 	/**
-	 * Get the first evaluated parameter defined with the given parameter name.
-	 * If no such parameter exists, the given default value is returned.
+	 * Get the first evaluated parameter defined with the given parameter name. If
+	 * no such parameter exists, the given default value is returned.
 	 * 
 	 * @param parameterName the parameter name
 	 * @param defaultValue the default value for the parameter

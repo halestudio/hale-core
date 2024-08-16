@@ -256,8 +256,8 @@ public abstract class OSerializationHelper {
 		}
 		// date
 		/*
-		 * XXX OrientDB strips time information from dates. To avoid information
-		 * loss, we serialize dates and derivatives manually instead
+		 * XXX OrientDB strips time information from dates. To avoid information loss,
+		 * we serialize dates and derivatives manually instead
 		 */
 //		else if (Date.class.isAssignableFrom(type)) {
 //			return true;
@@ -265,8 +265,8 @@ public abstract class OSerializationHelper {
 		// collections
 		else if (Collection.class.isAssignableFrom(type)) {
 			/*
-			 * XXX OrientDB can't deal with nested collections/lists!(?) as a
-			 * work-around we also serialize collections
+			 * XXX OrientDB can't deal with nested collections/lists!(?) as a work-around we
+			 * also serialize collections
 			 */
 //			return true;
 		}
@@ -275,8 +275,8 @@ public abstract class OSerializationHelper {
 	}
 
 	/**
-	 * Prepare a value not supported as field in OrientDB so it can be stored in
-	 * the database.
+	 * Prepare a value not supported as field in OrientDB so it can be stored in the
+	 * database.
 	 * 
 	 * @param value the value to convert
 	 * @param log the log
@@ -306,8 +306,8 @@ public abstract class OSerializationHelper {
 	}
 
 	/**
-	 * Serialize and/or wrap a value not supported as field in OrientDB so it
-	 * can be stored in the database.
+	 * Serialize and/or wrap a value not supported as field in OrientDB so it can be
+	 * stored in the database.
 	 * 
 	 * @param value the value to serialize
 	 * @param log the log
@@ -315,8 +315,8 @@ public abstract class OSerializationHelper {
 	 */
 	public static ODocument serialize(Object value, SimpleLog log) {
 		/*
-		 * As collections of ORecordBytes are not supported (or rather of
-		 * records that are no documents, see embeddedCollectionToStream in
+		 * As collections of ORecordBytes are not supported (or rather of records that
+		 * are no documents, see embeddedCollectionToStream in
 		 * ORecordSerializerCSVAbstract ~578) they are wrapped in a document.
 		 */
 		ODocument doc = new ODocument();
@@ -422,8 +422,8 @@ public abstract class OSerializationHelper {
 		}
 
 		/*
-		 * XXX Class name is set in OGroup.configureDocument, as the class name
-		 * may only bet set after the database was set.
+		 * XXX Class name is set in OGroup.configureDocument, as the class name may only
+		 * bet set after the database was set.
 		 */
 //		doc.setClassName(BINARY_WRAPPER_CLASSNAME);
 		doc.field(BINARY_WRAPPER_FIELD, record);

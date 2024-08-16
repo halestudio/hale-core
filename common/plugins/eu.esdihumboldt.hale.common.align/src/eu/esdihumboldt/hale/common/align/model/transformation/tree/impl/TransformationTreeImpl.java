@@ -22,8 +22,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.jcip.annotations.Immutable;
-
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
@@ -43,6 +41,7 @@ import eu.esdihumboldt.hale.common.align.model.transformation.tree.Transformatio
 import eu.esdihumboldt.hale.common.align.model.transformation.tree.TransformationNodeVisitor;
 import eu.esdihumboldt.hale.common.align.model.transformation.tree.TransformationTree;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
+import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TransformationTree} implementation
@@ -105,15 +104,16 @@ public class TransformationTreeImpl extends AbstractGroupNode implements Transfo
 	}
 
 	/**
-	 * Get the property cells relevant for the transformation tree from the
-	 * given alignment. The default implementation returns all property cells
-	 * related to the type cell.
+	 * Get the property cells relevant for the transformation tree from the given
+	 * alignment. The default implementation returns all property cells related to
+	 * the type cell.
 	 * 
 	 * @param alignment the alignment
 	 * @param typeCell the type cell type
 	 * @return the property cells
 	 */
-	protected Collection<? extends Cell> getRelevantPropertyCells(Alignment alignment, Cell typeCell) {
+	protected Collection<? extends Cell> getRelevantPropertyCells(Alignment alignment,
+			Cell typeCell) {
 		return alignment.getPropertyCells(typeCell);
 	}
 

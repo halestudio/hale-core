@@ -74,26 +74,24 @@ public class XMLPathUpdater {
 	/**
 	 * Updates the specified resource file.<br>
 	 * <br>
-	 * The specified file <code>xmlResource</code>, which was originally placed
-	 * at <code>oldFile</code> gets updated. All node values found by the XPath
+	 * The specified file <code>xmlResource</code>, which was originally placed at
+	 * <code>oldFile</code> gets updated. All node values found by the XPath
 	 * expression <code>locationXPath</code> get copied (and the node values are
 	 * updated accordingly) to a new relative path (except for web resources if
-	 * <code>includeWebResources</code> is false). The copied files are then
-	 * checked the same way.<br>
-	 * Resources (identified by their absolute URI) will be copied only once.
-	 * Note however, that this is only true for a single call of this method. So
-	 * if this method is called multiple times for the same file and some
-	 * referenced resources are present in both calls, they are copied multiple
-	 * times. You should select your XPath expression accordingly. <br>
+	 * <code>includeWebResources</code> is false). The copied files are then checked
+	 * the same way.<br>
+	 * Resources (identified by their absolute URI) will be copied only once. Note
+	 * however, that this is only true for a single call of this method. So if this
+	 * method is called multiple times for the same file and some referenced
+	 * resources are present in both calls, they are copied multiple times. You
+	 * should select your XPath expression accordingly. <br>
 	 * Example:<br>
-	 * resource file is 'C:/Local/Temp/1348138164029-0/watercourse/wfs_va.xsd'
-	 * <br>
+	 * resource file is 'C:/Local/Temp/1348138164029-0/watercourse/wfs_va.xsd' <br>
 	 * oldFile is 'C:/igd/hale/watercourse/wfs_va.xsd'.<br>
 	 * wfs_va.xsd has one schema import with location
 	 * 'C:/igd/hale/watercourse/schemas/feature.xsd'<br>
-	 * So feature.xsd is copied into
-	 * 'C:/Local/Temp/1348138164029-0/watercourse/' (or a sub-directory) and the
-	 * import location in wfs_va.xsd will be adapted.
+	 * So feature.xsd is copied into 'C:/Local/Temp/1348138164029-0/watercourse/'
+	 * (or a sub-directory) and the import location in wfs_va.xsd will be adapted.
 	 * 
 	 * @param xmlResource the XML resource file that gets updated
 	 * @param oldPath its original location, may be <code>null</code> in case it
@@ -102,8 +100,8 @@ public class XMLPathUpdater {
 	 *            processed
 	 * @param includeWebResources whether web resources should be copied and
 	 *            updates, too
-	 * @param reporter the reporter of the current IO process where errors
-	 *            should be reported to
+	 * @param reporter the reporter of the current IO process where errors should be
+	 *            reported to
 	 * @throws IOException if an IO exception occurs
 	 */
 	public static void update(File xmlResource, URI oldPath, String locationXPath,
@@ -121,11 +119,10 @@ public class XMLPathUpdater {
 	 *            processed
 	 * @param includeWebResources whether web resources should be copied and
 	 *            updates, too
-	 * @param reporter the reporter of the current IO process where errors
-	 *            should be reported to
-	 * @param updates a map of already copied files which is used and gets
-	 *            filled by this method. Needed for multiple updates on the same
-	 *            file.
+	 * @param reporter the reporter of the current IO process where errors should be
+	 *            reported to
+	 * @param updates a map of already copied files which is used and gets filled by
+	 *            this method. Needed for multiple updates on the same file.
 	 * @throws IOException if an IO exception occurs
 	 */
 	private static void update(File xmlResource, URI oldPath, String locationXPath,

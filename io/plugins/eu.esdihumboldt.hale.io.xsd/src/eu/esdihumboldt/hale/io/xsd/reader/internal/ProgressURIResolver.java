@@ -79,11 +79,13 @@ public class ProgressURIResolver implements CollectionURIResolver {
 	 * @see URIResolver#resolveEntity(String, String, String)
 	 */
 	@Override
-	public InputSource resolveEntity(String targetNamespace, String schemaLocation, String baseUri) {
+	public InputSource resolveEntity(String targetNamespace, String schemaLocation,
+			String baseUri) {
 		InputSource is = decoratee.resolveEntity(targetNamespace, schemaLocation, baseUri);
 
 		String url = is.getSystemId();
-		progress.setCurrentTask(Messages.getString("ProgressURIResolver.0") + ((url == null) ? (schemaLocation) : (url))); //$NON-NLS-1$
+		progress.setCurrentTask(Messages.getString("ProgressURIResolver.0") //$NON-NLS-1$
+				+ ((url == null) ? (schemaLocation) : (url)));
 
 		return is;
 	}

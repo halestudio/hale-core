@@ -26,7 +26,6 @@ import java.util.Iterator;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -46,6 +45,7 @@ import eu.esdihumboldt.hale.io.csv.reader.CSVConstants;
 import eu.esdihumboldt.hale.io.csv.reader.CommonSchemaConstants;
 import eu.esdihumboldt.hale.io.csv.reader.internal.CSVInstanceReader;
 import eu.esdihumboldt.hale.io.csv.reader.internal.CSVSchemaReader;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test class for {@link CSVInstanceReader}
@@ -122,8 +122,8 @@ public class CSVInstanceReaderTest extends AbstractPlatformTest {
 
 	/**
 	 * Test - read a sample csv schema and data where skip is a boolean. It
-	 * simulates the previous version where the first line was either skipped
-	 * (true) or not (false)
+	 * simulates the previous version where the first line was either skipped (true)
+	 * or not (false)
 	 *
 	 * @throws Exception , if an error occurs
 	 */

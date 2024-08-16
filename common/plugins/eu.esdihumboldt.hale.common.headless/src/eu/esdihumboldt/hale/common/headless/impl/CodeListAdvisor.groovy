@@ -15,12 +15,13 @@
 
 package eu.esdihumboldt.hale.common.headless.impl;
 
-import eu.esdihumboldt.hale.common.codelist.CodeList;
-import eu.esdihumboldt.hale.common.codelist.config.CodeListReference;
-import eu.esdihumboldt.hale.common.codelist.io.CodeListReader;
-import eu.esdihumboldt.hale.common.codelist.service.CodeListRegistry;
-import eu.esdihumboldt.hale.common.core.io.impl.AbstractIOAdvisor;
 import groovy.transform.CompileStatic
+
+import eu.esdihumboldt.hale.common.codelist.CodeList
+import eu.esdihumboldt.hale.common.codelist.config.CodeListReference
+import eu.esdihumboldt.hale.common.codelist.io.CodeListReader
+import eu.esdihumboldt.hale.common.codelist.service.CodeListRegistry
+import eu.esdihumboldt.hale.common.core.io.impl.AbstractIOAdvisor
 
 /**
  * Advisor for loading code lists in headless mode.

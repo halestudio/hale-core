@@ -31,8 +31,7 @@ import org.junit.Test;
 public class RequestTest {
 
 	/**
-	 * Test retrieving online resources using {@link Request} with cache
-	 * enabled.
+	 * Test retrieving online resources using {@link Request} with cache enabled.
 	 */
 	@Test
 	public void testRequestCache() {
@@ -40,8 +39,7 @@ public class RequestTest {
 	}
 
 	/**
-	 * Test retrieving online resources using {@link Request} with cache
-	 * disabled.
+	 * Test retrieving online resources using {@link Request} with cache disabled.
 	 */
 	@Test
 	public void testRequestNoCache() {

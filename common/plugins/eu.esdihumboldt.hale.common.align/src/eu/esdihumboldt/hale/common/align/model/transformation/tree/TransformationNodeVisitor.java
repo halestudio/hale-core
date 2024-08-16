@@ -27,8 +27,7 @@ public interface TransformationNodeVisitor {
 	 * Visit a transformation tree root.
 	 * 
 	 * @param root the transformation tree root
-	 * @return if the visitor is to be applied to any further nodes down the
-	 *         path
+	 * @return if the visitor is to be applied to any further nodes down the path
 	 */
 	public boolean visit(TransformationTree root);
 
@@ -43,8 +42,7 @@ public interface TransformationNodeVisitor {
 	 * Visit a target node.
 	 * 
 	 * @param target the target node
-	 * @return if the visitor is to be applied to any further nodes down the
-	 *         path
+	 * @return if the visitor is to be applied to any further nodes down the path
 	 */
 	public boolean visit(TargetNode target);
 
@@ -59,8 +57,7 @@ public interface TransformationNodeVisitor {
 	 * Visit a cell node.
 	 * 
 	 * @param cell the cell node
-	 * @return if the visitor is to be applied to any further nodes down the
-	 *         path
+	 * @return if the visitor is to be applied to any further nodes down the path
 	 */
 	public boolean visit(CellNode cell);
 
@@ -75,8 +72,7 @@ public interface TransformationNodeVisitor {
 	 * Visit a source node.
 	 * 
 	 * @param source the source node
-	 * @return if the visitor is to be applied to any further nodes down the
-	 *         path
+	 * @return if the visitor is to be applied to any further nodes down the path
 	 */
 	public boolean visit(SourceNode source);
 

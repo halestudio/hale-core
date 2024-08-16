@@ -93,11 +93,9 @@ public class AssignFromCollector
 					"Error retrieving collector \"{0}\"", collectorName.getValue().toString()));
 		}
 		else if (collector.values().isEmpty()) {
-			log.warn(new TransformationMessageImpl(getCell(),
-					MessageFormat.format(
-							"Collector \"{0}\" contains no values. If this is unexpected, check the spelling of the collector name and the priority of the transformation function.",
-							collectorName.getStringRepresentation()),
-					null));
+			log.warn(new TransformationMessageImpl(getCell(), MessageFormat.format(
+					"Collector \"{0}\" contains no values. If this is unexpected, check the spelling of the collector name and the priority of the transformation function.",
+					collectorName.getStringRepresentation()), null));
 		}
 
 		// Determine where to assign the collected values
@@ -141,8 +139,7 @@ public class AssignFromCollector
 
 	/**
 	 * Find first child property of the given {@link TypeDefinition} where
-	 * <code>child.getConstraint(Reference.class).isReference()</code> returns
-	 * true.
+	 * <code>child.getConstraint(Reference.class).isReference()</code> returns true.
 	 * 
 	 * @param propertyType The <code>TypeDefinition</code> to search
 	 * 

@@ -52,8 +52,8 @@ public class DefaultGroup implements MutableGroup {
 	}
 
 	/**
-	 * Copy constructor. Creates a group based on the properties and values of
-	 * the given group.
+	 * Copy constructor. Creates a group based on the properties and values of the
+	 * given group.
 	 * 
 	 * @param org the instance to copy
 	 */
@@ -112,8 +112,8 @@ public class DefaultGroup implements MutableGroup {
 					@Override
 					public Object apply(Object input) {
 						/*
-						 * If the input is a Group/Instance. This is to prevent
-						 * OInstances/OGroups to live on in a copy.
+						 * If the input is a Group/Instance. This is to prevent OInstances/OGroups
+						 * to live on in a copy.
 						 */
 						if (input instanceof Instance) {
 							return new DefaultInstance((Instance) input);

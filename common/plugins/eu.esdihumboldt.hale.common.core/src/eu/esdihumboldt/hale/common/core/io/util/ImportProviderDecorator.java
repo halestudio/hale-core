@@ -26,8 +26,8 @@ import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
  * @param <T> the provider type
  * @author Stefano Costa, GeoSolutions
  */
-public abstract class ImportProviderDecorator<T extends ImportProvider> extends
-		IOProviderDecorator<T> implements ImportProvider {
+public abstract class ImportProviderDecorator<T extends ImportProvider>
+		extends IOProviderDecorator<T> implements ImportProvider {
 
 	/**
 	 * @see IOProviderDecorator#IOProviderDecorator(eu.esdihumboldt.hale.common.core.io.IOProvider)

@@ -59,11 +59,10 @@ public class SpatialJoinParameter {
 	/**
 	 * Checks whether this join parameter is valid.<br>
 	 * <br>
-	 * Valid means, that there has to be at least two types, with each type
-	 * after the first having at least one join condition on previous types.
+	 * Valid means, that there has to be at least two types, with each type after
+	 * the first having at least one join condition on previous types.
 	 * 
-	 * @return a error description or <code>null</code> if the parameter is
-	 *         valid.
+	 * @return a error description or <code>null</code> if the parameter is valid.
 	 */
 	public String validate() {
 		// enough types?
@@ -160,9 +159,8 @@ public class SpatialJoinParameter {
 		public final String relation;
 
 		/**
-		 * Constructs a join condition to join the type of
-		 * <code>joinProperty</code> if the condition
-		 * <code>joinProperty = baseProperty</code> matches.
+		 * Constructs a join condition to join the type of <code>joinProperty</code> if
+		 * the condition <code>joinProperty = baseProperty</code> matches.
 		 * 
 		 * @param baseProperty the property of a base type
 		 * @param joinProperty the property of the type to join

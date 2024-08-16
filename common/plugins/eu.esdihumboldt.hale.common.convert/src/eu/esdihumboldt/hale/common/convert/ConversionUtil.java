@@ -65,8 +65,8 @@ public abstract class ConversionUtil {
 	 * @param targetType the target element type
 	 * @param flatten if the collection shall be flattened, i.e. if it in turn
 	 *            contains a collection instead the converted values are added
-	 * @return the collection of converted values, an empty list if the value
-	 *         was <code>null</code> or an empty collection
+	 * @return the collection of converted values, an empty list if the value was
+	 *         <code>null</code> or an empty collection
 	 * @throws ConversionException if the conversion fails
 	 */
 	public static <T> List<T> getAsList(Object value, Class<T> targetType, boolean flatten)

@@ -59,8 +59,8 @@ public class XmlAttributeReferenceProperty extends LazyPropertyDefinition {
 		XmlAttribute attribute = resolveAttribute();
 
 		if (attribute == null) {
-			throw new IllegalStateException("Referenced attribute could not be found: "
-					+ attributeName.toString());
+			throw new IllegalStateException(
+					"Referenced attribute could not be found: " + attributeName.toString());
 		}
 
 		return attribute.getType();

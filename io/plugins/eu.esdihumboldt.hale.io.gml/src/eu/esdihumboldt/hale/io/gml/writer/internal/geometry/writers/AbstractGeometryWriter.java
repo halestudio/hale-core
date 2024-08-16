@@ -87,8 +87,8 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	}
 
 	/**
-	 * Add a compatible type. A {@link Pattern#GML_NAMESPACE_PLACEHOLDER}
-	 * namespace references the GML namespace.
+	 * Add a compatible type. A {@link Pattern#GML_NAMESPACE_PLACEHOLDER} namespace
+	 * references the GML namespace.
 	 * 
 	 * @param typeName the type name
 	 */
@@ -106,12 +106,12 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Verify the verification end point. After reaching the end-point of a
-	 * verification pattern this method is called with the
-	 * {@link TypeDefinition} of the end-point to assure the needed structure is
-	 * present (e.g. a DirectPositionListType element). If no verification
-	 * pattern is present the end-point of the matched base pattern will be
-	 * verified. The default implementation checks for properties with any of
-	 * the types supported for writing coordinates.
+	 * verification pattern this method is called with the {@link TypeDefinition} of
+	 * the end-point to assure the needed structure is present (e.g. a
+	 * DirectPositionListType element). If no verification pattern is present the
+	 * end-point of the matched base pattern will be verified. The default
+	 * implementation checks for properties with any of the types supported for
+	 * writing coordinates.
 	 * 
 	 * @see #SUPPORTED_COORDINATES_TYPES
 	 * 
@@ -143,8 +143,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * @param elementName the encompassing element name
 	 * @param gmlNs the GML namespace
 	 * @param unique if the path's start element cannot be repeated
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
 	protected static void descendAndWriteCoordinates(XMLStreamWriter writer, Pattern descendPattern,
@@ -166,8 +165,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * @param coordinates the coordinates to write
 	 * @param elementType the type of the encompassing element
 	 * @param gmlNs the GML namespace
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
 	protected static void writeCoordinates(XMLStreamWriter writer, Coordinate[] coordinates,
@@ -202,9 +200,8 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * @param gmlNs the GML namespace
 	 * @param posName the name of the desired DirectPositionType property, or
 	 *            <code>null</code> if any
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates or <code>null</code> to use
-	 *            <code>Double.toString()</code>
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates or
+	 *            <code>null</code> to use <code>Double.toString()</code>
 	 * @return if writing the coordinates was successful
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */
@@ -263,8 +260,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * @param coordinates the coordinates to write
 	 * @param elementType the type of the encompassing element
 	 * @param gmlNs the GML namespace
-	 * @param decimalFormatter a decimal formatter to format geometry
-	 *            coordinates
+	 * @param decimalFormatter a decimal formatter to format geometry coordinates
 	 * @return if writing the coordinates was successful
 	 * @throws XMLStreamException if an error occurs writing the coordinates
 	 */

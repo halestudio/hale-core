@@ -58,8 +58,8 @@ public class InstanceMetadata {
 	 * gets the SourceID of an instance from its metadata
 	 * 
 	 * @param instance the instance to get the SourceID from
-	 * @return he first SourceID of the instance, my be <code> null <code> 
-	 * if the instance doesn't contain an id in its meta data
+	 * @return he first SourceID of the instance, my be <code> null <code> if the
+	 *         instance doesn't contain an id in its meta data
 	 */
 	public static String getSourceID(Instance instance) {
 		List<Object> data = instance.getMetaData(METADATA_SOURCEID);
@@ -77,8 +77,8 @@ public class InstanceMetadata {
 	 * gets the ID of an instance from its metadata
 	 * 
 	 * @param instance the instance with the certain id
-	 * @return the first id of the instance, my be <code> null <code> 
-	 * if the instance doesn't contain an id in its meta data
+	 * @return the first id of the instance, my be <code> null <code> if the
+	 *         instance doesn't contain an id in its meta data
 	 */
 	public static String getID(Instance instance) {
 		List<Object> data = instance.getMetaData(METADATA_ID);

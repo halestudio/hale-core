@@ -35,9 +35,9 @@ import eu.esdihumboldt.util.Pair;
 public class LeftoversImpl implements Leftovers {
 
 	/**
-	 * Pairs source nodes for left over values with the cells it has been
-	 * consumed for. If the cell set is <code>null</code> this means a leftover
-	 * has been consumed completely.
+	 * Pairs source nodes for left over values with the cells it has been consumed
+	 * for. If the cell set is <code>null</code> this means a leftover has been
+	 * consumed completely.
 	 */
 	private final List<Pair<SourceNode, Set<Cell>>> values = new ArrayList<Pair<SourceNode, Set<Cell>>>();
 
@@ -97,8 +97,8 @@ public class LeftoversImpl implements Leftovers {
 	}
 
 	private Pair<SourceNode, Set<Cell>> unmodifiablePair(Pair<SourceNode, Set<Cell>> pair) {
-		return new Pair<SourceNode, Set<Cell>>(pair.getFirst(), Collections.unmodifiableSet(pair
-				.getSecond()));
+		return new Pair<SourceNode, Set<Cell>>(pair.getFirst(),
+				Collections.unmodifiableSet(pair.getSecond()));
 	}
 
 	/**

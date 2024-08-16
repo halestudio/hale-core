@@ -96,8 +96,8 @@ public class TopoJsonInstanceWriter extends AbstractInstanceWriter {
 	private static final String DEFAULT_TOPOLOGY_NAME = "Topology";
 
 	/**
-	 * TopoJSON, as a descendant of GeoJSON, requires geometries to be
-	 * represented in WGS-84 (EPSG:4326)
+	 * TopoJSON, as a descendant of GeoJSON, requires geometries to be represented
+	 * in WGS-84 (EPSG:4326)
 	 */
 	private static final String TARGET_CRS_CODE = "EPSG:4326";
 

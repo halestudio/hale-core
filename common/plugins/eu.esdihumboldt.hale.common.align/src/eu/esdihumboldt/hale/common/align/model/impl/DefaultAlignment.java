@@ -118,8 +118,8 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 		// Since the cells came out of another alignment just pass addCell
 		for (Cell cell : alignment.getCells()) {
 			/*
-			 * But copy the cell as it is not immutable (things like
-			 * transformation mode and priority may change)
+			 * But copy the cell as it is not immutable (things like transformation mode and
+			 * priority may change)
 			 */
 			internalAdd(new DefaultCell(cell)); // XXX is this working properly
 												// for BaseAlignmentCells?
@@ -193,8 +193,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	}
 
 	/**
-	 * Add a cell to the internal indexes, based on the given associated
-	 * entities.
+	 * Add a cell to the internal indexes, based on the given associated entities.
 	 * 
 	 * @param entities the cell entities (usually either source or target)
 	 * @param cell the cell to add
@@ -349,14 +348,13 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	}
 
 	/**
-	 * Determines if the given type entity definition of the test cell is
-	 * associated to at least one of the given type entity definitions of a type
-	 * cell.
+	 * Determines if the given type entity definition of the test cell is associated
+	 * to at least one of the given type entity definitions of a type cell.
 	 * 
 	 * @param testCellType type entity definition of the test cell
 	 * @param typeCellTypes type entity definitions of a type cell
-	 * @return whether the entity definition is associated to at least one of
-	 *         the others
+	 * @return whether the entity definition is associated to at least one of the
+	 *         others
 	 */
 	private boolean matchesSources(TypeEntityDefinition testCellType,
 			Iterable<TypeEntityDefinition> typeCellTypes) {
@@ -371,8 +369,8 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	}
 
 	/**
-	 * Determines if all of the given entities are associated to at least one of
-	 * the given type entity definitions.
+	 * Determines if all of the given entities are associated to at least one of the
+	 * given type entity definitions.
 	 * 
 	 * @param testCellSources the entities
 	 * @param typeCellTypes the type entity definitions
@@ -422,14 +420,12 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 
 				if (sources.size() == 1) {
 					/*
-					 * Special case handling when there is exactly one type,
-					 * that in this case also allows to find a Join that only
-					 * uses one of the types.
+					 * Special case handling when there is exactly one type, that in this case also
+					 * allows to find a Join that only uses one of the types.
 					 * 
-					 * Unclear if this is intended, but the else case does not
-					 * yield any results in such cases, which could be due to
-					 * the implementation of `matchesSources` in that case being
-					 * focused on property relations.
+					 * Unclear if this is intended, but the else case does not yield any results in
+					 * such cases, which could be due to the implementation of `matchesSources` in
+					 * that case being focused on property relations.
 					 */
 					TypeEntityDefinition type = sources.iterator().next();
 					if (sources.isEmpty() || matchesSources(type,

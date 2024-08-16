@@ -20,10 +20,9 @@ import java.util.Collection;
 
 import org.geotools.geometry.jts.JTS;
 import org.geotools.referencing.CRS;
+import org.locationtech.jts.geom.Geometry;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
-
-import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
@@ -84,8 +83,8 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Get default Winding Order. Function is to give functionality to the
-	 * subType to change the default Winding order.
+	 * Get default Winding Order. Function is to give functionality to the subType
+	 * to change the default Winding order.
 	 * 
 	 * @return EnumWindingOrderTypes default Winding order
 	 */
@@ -94,15 +93,14 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Convert the given geometry to the target CRS, if possible (and a target
-	 * CRS is set).
+	 * Convert the given geometry to the target CRS, if possible (and a target CRS
+	 * is set).
 	 * 
 	 * @param geom the geometry to convert
 	 * @param sourceCrs the source CRS
 	 * @param report the reporter
-	 * @return a pair of geometry and CRS definition, either the converted
-	 *         geometry and the target CRS or the given geometry and the source
-	 *         CRS
+	 * @return a pair of geometry and CRS definition, either the converted geometry
+	 *         and the target CRS or the given geometry and the source CRS
 	 */
 	protected Pair<Geometry, CRSDefinition> convertGeometry(Geometry geom, CRSDefinition sourceCrs,
 			IOReporter report) {
@@ -141,13 +139,13 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Returns a pair of geometry and associated CRS definition for the given
-	 * value. The value has to be a Geometry or a GeometryProperty, otherwise
+	 * Returns a pair of geometry and associated CRS definition for the given value.
+	 * The value has to be a Geometry or a GeometryProperty, otherwise
 	 * <code>null</code> is returned.
 	 * 
 	 * @param value the value to extract the information from
-	 * @param allowConvert if conversion to the target CRS should be performed
-	 *            if applicable
+	 * @param allowConvert if conversion to the target CRS should be performed if
+	 *            applicable
 	 * @param report the reporter
 	 * @return a pair of geometry and CRS definition (latter may be
 	 *         <code>null</code>), or <code>null</code> if the argument doesn't
@@ -164,13 +162,13 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Returns a pair of geometry and associated CRS definition for the given
-	 * value. The value has to be a Geometry or a GeometryProperty, otherwise
+	 * Returns a pair of geometry and associated CRS definition for the given value.
+	 * The value has to be a Geometry or a GeometryProperty, otherwise
 	 * <code>null</code> is returned.
 	 * 
 	 * @param value the value to extract the information from
-	 * @param allowConvert if conversion to the target CRS should be performed
-	 *            if applicable
+	 * @param allowConvert if conversion to the target CRS should be performed if
+	 *            applicable
 	 * @param report the reporter
 	 * @return a pair of geometry and CRS definition (latter may be
 	 *         <code>null</code>), or <code>null</code> if the argument doesn't
@@ -205,8 +203,8 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	 * Returns a pair of unified geometry of given geometry and associated CRS
 	 * definition based on Winding order supplied.
 	 * 
-	 * @param pair A pair of Geometry and CRSDefinition, on which winding
-	 *            process will get done.
+	 * @param pair A pair of Geometry and CRSDefinition, on which winding process
+	 *            will get done.
 	 * @param report the reporter
 	 * @return Unified Pair .
 	 */
@@ -232,8 +230,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Returns a unified geometry of given geometry based on Winding order
-	 * supplied.
+	 * Returns a unified geometry of given geometry based on Winding order supplied.
 	 * 
 	 * @param geom The Geometry object, on which winding process will get done.
 	 * @param report the reporter

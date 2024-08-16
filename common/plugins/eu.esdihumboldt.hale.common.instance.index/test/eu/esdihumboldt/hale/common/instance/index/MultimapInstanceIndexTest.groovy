@@ -29,7 +29,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 
 /**
  * Tests for {@link MultimapInstanceIndex}
- * 
+ *
  * @author Florian Esser
  */
 class MultimapInstanceIndexTest {

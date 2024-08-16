@@ -50,7 +50,8 @@ public class ReportErrorHandler implements ErrorHandler {
 
 	@Override
 	public void warning(SAXParseException e) throws SAXException {
-		log.warn(MessageFormat.format("Line {0} - {1}", e.getLineNumber(), e.getLocalizedMessage()));
+		log.warn(
+				MessageFormat.format("Line {0} - {1}", e.getLineNumber(), e.getLocalizedMessage()));
 		report.addWarning(e);
 	}
 
@@ -61,7 +62,8 @@ public class ReportErrorHandler implements ErrorHandler {
 
 	@Override
 	public void error(SAXParseException e) throws SAXException {
-		log.error(MessageFormat.format("Line {0} - {1}", e.getLineNumber(), e.getLocalizedMessage()));
+		log.error(
+				MessageFormat.format("Line {0} - {1}", e.getLineNumber(), e.getLocalizedMessage()));
 		report.addError(e);
 	}
 

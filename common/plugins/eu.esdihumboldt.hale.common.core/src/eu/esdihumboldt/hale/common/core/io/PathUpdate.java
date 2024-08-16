@@ -48,18 +48,18 @@ public class PathUpdate {
 	 * Create a path updater based on a pair of known old and new locations.
 	 * 
 	 * @param oldLocation the old location of a file, may be null
-	 * @param newLocation the new location of the same file (though the file
-	 *            name may be different), may be null
+	 * @param newLocation the new location of the same file (though the file name
+	 *            may be different), may be null
 	 */
 	public PathUpdate(URI oldLocation, URI newLocation) {
 		super();
 		this.oldLocation = oldLocation;
 		this.newLocation = newLocation;
 		/*
-		 * analyze paths (w/o file name) of both URIs to find out which of the
-		 * later parts are equal, to determine which part of the old location
-		 * has to be replaced by which part of the new location for other files
-		 * that have been moved in a similar way to the analyzed file.
+		 * analyze paths (w/o file name) of both URIs to find out which of the later
+		 * parts are equal, to determine which part of the old location has to be
+		 * replaced by which part of the new location for other files that have been
+		 * moved in a similar way to the analyzed file.
 		 */
 		if (oldLocation != null && newLocation != null && !oldLocation.equals(newLocation))
 			analysePaths(oldLocation, newLocation);
@@ -76,19 +76,19 @@ public class PathUpdate {
 	 * </li>
 	 * <li>if the URI is absolute:
 	 * <ul>
-	 * <li>if an old and a new location is available it is transformed in the
-	 * same way</li>
+	 * <li>if an old and a new location is available it is transformed in the same
+	 * way</li>
 	 * <li>the URI is used as is</li>
 	 * </ul>
 	 * </li>
 	 * </ul>
 	 * If none of the applicable cases results in a valid, existing URI and
-	 * tryFallback is true {@link #updatePathFallback(URI)} is returned,
-	 * otherwise <code>null</code> is returned.
+	 * tryFallback is true {@link #updatePathFallback(URI)} is returned, otherwise
+	 * <code>null</code> is returned.
 	 * 
 	 * @param uri the URI in question
-	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the
-	 *            end or not
+	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the end
+	 *            or not
 	 * @param allowResource whether to allow resolving through {@link Resources}
 	 * @return a valid, existing URI or <code>null</code>
 	 */
@@ -107,25 +107,25 @@ public class PathUpdate {
 	 * </li>
 	 * <li>if the URI is absolute:
 	 * <ul>
-	 * <li>if an old and a new location is available it is transformed in the
-	 * same way</li>
+	 * <li>if an old and a new location is available it is transformed in the same
+	 * way</li>
 	 * <li>the URI is used as is</li>
 	 * </ul>
 	 * </li>
 	 * </ul>
 	 * If none of the applicable cases results in a valid, existing URI and
-	 * tryFallback is true {@link #updatePathFallback(URI)} is returned,
-	 * otherwise <code>null</code> is returned.
+	 * tryFallback is true {@link #updatePathFallback(URI)} is returned, otherwise
+	 * <code>null</code> is returned.
 	 * 
 	 * @param uri the URI in question
-	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the
-	 *            end or not
+	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the end
+	 *            or not
 	 * @param allowResource whether to allow resolving through {@link Resources}
 	 * @param keepRelative If the URI is relative to the new location and
 	 *            keepRelative is set, the URI is returned as is.<br>
 	 *            Also, if the URI is relative to the old location and it is
-	 *            possible to construct a relative path to the new location,
-	 *            that is returned
+	 *            possible to construct a relative path to the new location, that is
+	 *            returned
 	 * @return a valid, existing URI or <code>null</code>
 	 */
 	public URI findLocation(URI uri, boolean tryFallback, boolean allowResource,
@@ -197,9 +197,9 @@ public class PathUpdate {
 	}
 
 	/**
-	 * Create an alternative path for the given location if it matches changes
-	 * from old to new location. If either old or new location is null, or the
-	 * given URI wasn't changed in the same way, this method has no effect.
+	 * Create an alternative path for the given location if it matches changes from
+	 * old to new location. If either old or new location is null, or the given URI
+	 * wasn't changed in the same way, this method has no effect.
 	 * 
 	 * @param oldSource path where the file was saved to
 	 * @return the new URI

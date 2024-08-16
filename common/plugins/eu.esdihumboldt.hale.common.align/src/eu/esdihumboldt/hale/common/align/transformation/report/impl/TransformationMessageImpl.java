@@ -16,10 +16,10 @@
 
 package eu.esdihumboldt.hale.common.align.transformation.report.impl;
 
-import net.jcip.annotations.Immutable;
 import eu.esdihumboldt.hale.common.align.model.Cell;
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationMessage;
 import eu.esdihumboldt.hale.common.core.report.impl.MessageImpl;
+import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TransformationMessage} implementation

@@ -118,8 +118,7 @@ public abstract class AbstractInstanceReader extends GZipEnabledImport implement
 	}
 
 	/**
-	 * Get the CRS provider. It also respects if a default SRS is set on the
-	 * input.
+	 * Get the CRS provider. It also respects if a default SRS is set on the input.
 	 * 
 	 * @return the CRS provider
 	 */

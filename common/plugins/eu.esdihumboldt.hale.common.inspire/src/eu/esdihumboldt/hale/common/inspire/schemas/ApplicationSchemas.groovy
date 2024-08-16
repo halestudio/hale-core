@@ -15,6 +15,9 @@
 
 package eu.esdihumboldt.hale.common.inspire.schemas
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import java.lang.ref.SoftReference
 
 import com.google.common.collect.ArrayListMultimap
@@ -23,8 +26,6 @@ import com.google.common.collect.Multimap
 import de.fhg.igd.slf4jplus.ALogger
 import de.fhg.igd.slf4jplus.ALoggerFactory
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 
 /**

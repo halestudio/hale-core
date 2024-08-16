@@ -15,14 +15,16 @@
 
 package eu.esdihumboldt.hale.app.transform.test;
 
+import groovy.json.JsonSlurper
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
+import org.junit.Test
+
 import eu.esdihumboldt.hale.app.transform.ExecApplication
 import eu.esdihumboldt.hale.common.app.ApplicationUtil
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import groovy.json.JsonSlurper
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
-import org.junit.Test
 
 
 /**

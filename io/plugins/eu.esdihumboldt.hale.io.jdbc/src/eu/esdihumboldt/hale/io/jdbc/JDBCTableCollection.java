@@ -65,11 +65,10 @@ public class JDBCTableCollection implements InstanceCollection, LogAware {
 //		private final int currentOffset = 0;
 
 		/**
-		 * States if the row at the current cursor position was already
-		 * consumed.
+		 * States if the row at the current cursor position was already consumed.
 		 * 
-		 * Initially the result set points to the row before the first row,
-		 * which by definition is consumed.
+		 * Initially the result set points to the row before the first row, which by
+		 * definition is consumed.
 		 */
 		private boolean consumed = true;
 

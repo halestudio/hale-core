@@ -67,15 +67,15 @@ public class HaleConnectException extends Exception {
 	/**
 	 * Creates a HaleConnectException
 	 * 
-	 * @param message the detail message (which is saved for later retrieval by
-	 *            the {@link #getMessage()} method).
+	 * @param message the detail message (which is saved for later retrieval by the
+	 *            {@link #getMessage()} method).
 	 * @param cause the cause (which is saved for later retrieval by the
 	 *            {@link #getCause()} method). (A <code>null</code> value is
 	 *            permitted, and indicates that the cause is nonexistent or
 	 *            unknown.)
 	 * @param statusCode The status code returned by the hale connect service
-	 * @param responseHeaders The response headers of the service response (may
-	 *            be <code>null</code>)
+	 * @param responseHeaders The response headers of the service response (may be
+	 *            <code>null</code>)
 	 */
 	public HaleConnectException(String message, Throwable cause, int statusCode,
 			Map<String, List<String>> responseHeaders) {

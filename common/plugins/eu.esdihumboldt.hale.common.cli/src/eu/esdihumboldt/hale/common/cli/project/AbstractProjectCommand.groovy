@@ -15,6 +15,11 @@
 
 package eu.esdihumboldt.hale.common.cli.project
 
+import groovy.cli.picocli.CliBuilder
+import groovy.cli.picocli.OptionAccessor
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -24,10 +29,6 @@ import eu.esdihumboldt.util.cli.CLIUtil
 import eu.esdihumboldt.util.cli.Command
 import eu.esdihumboldt.util.cli.CommandContext
 import eu.esdihumboldt.util.cli.bash.BashCompletion
-import groovy.cli.picocli.CliBuilder
-import groovy.cli.picocli.OptionAccessor
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 /**
  * Base class for commands working on projects.
  * 

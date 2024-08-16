@@ -152,8 +152,8 @@ public class MappingWriter {
 	 * 
 	 * Note that deegree seems to only support properties to be named here, that
 	 * have an XLink attribute group. Also, it is not possible to specify the
-	 * relation to a feature type, or the nesting within a type, which means
-	 * they apply for any feature type and at any level.
+	 * relation to a feature type, or the nesting within a type, which means they
+	 * apply for any feature type and at any level.
 	 * 
 	 * @return the list of qualified names of properties
 	 */
@@ -396,8 +396,8 @@ public class MappingWriter {
 	}
 
 	/**
-	 * Determine if a hale type definition and a deegree feature type represent
-	 * the same type.
+	 * Determine if a hale type definition and a deegree feature type represent the
+	 * same type.
 	 * 
 	 * @param t1 the hale type definition
 	 * @param t2 the deegree feature type

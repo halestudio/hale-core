@@ -71,8 +71,8 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 	public static final String PARAM_DEFAULT_TYPE = "defaultType";
 
 	/**
-	 * Name of the parameter that specifies if the default type should be used
-	 * for all instances (i.e. use no other mechanisms to detect the type).
+	 * Name of the parameter that specifies if the default type should be used for
+	 * all instances (i.e. use no other mechanisms to detect the type).
 	 */
 	public static final String PARAM_FORCE_DEFAULT_TYPE = "forceDefaultType";
 
@@ -156,8 +156,8 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 	}
 
 	/**
-	 * Set the default type to use for read instances. Other mechanisms to
-	 * determine the type may take precedence.
+	 * Set the default type to use for read instances. Other mechanisms to determine
+	 * the type may take precedence.
 	 * 
 	 * @param defaultType the name of the default type to use
 	 */
@@ -184,11 +184,11 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 
 	/**
 	 * Set if the default type specified should be forced to be used for all
-	 * instances. This disables any other mechanisms to determine the type of
-	 * the instance.
+	 * instances. This disables any other mechanisms to determine the type of the
+	 * instance.
 	 * 
-	 * @param force <code>true</code> if the configured default type should
-	 *            always be used, <code>false</code> otherwise
+	 * @param force <code>true</code> if the configured default type should always
+	 *            be used, <code>false</code> otherwise
 	 */
 	public void setForceDefaultType(boolean force) {
 		setParameter(PARAM_FORCE_DEFAULT_TYPE, Value.of(force));

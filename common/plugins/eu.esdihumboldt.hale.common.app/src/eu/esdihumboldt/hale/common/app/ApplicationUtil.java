@@ -48,8 +48,8 @@ public class ApplicationUtil {
 	 */
 	public static Object launchSyncApplication(IApplication application, final List<String> argList)
 			throws Exception {
-		String[] args = argList.size() == 0 ? null : (String[]) argList.toArray(new String[argList
-				.size()]);
+		String[] args = argList.size() == 0 ? null
+				: (String[]) argList.toArray(new String[argList.size()]);
 		final Map<String, Object> launchArgs = new HashMap<>(1);
 		if (args != null) {
 			launchArgs.put(IApplicationContext.APPLICATION_ARGS, args);
@@ -116,8 +116,8 @@ public class ApplicationUtil {
 	 * @param argList the arguments
 	 * @return the application return value
 	 * @throws ApplicationException if the application cannot be launched
-	 * @throws InterruptedException if the thread was interrupted while waiting
-	 *             for the application termination
+	 * @throws InterruptedException if the thread was interrupted while waiting for
+	 *             the application termination
 	 */
 	public static Object launchApplication(String appId, List<String> argList)
 			throws ApplicationException, InterruptedException {
@@ -133,8 +133,8 @@ public class ApplicationUtil {
 				throw new IllegalStateException("\"" + appId + "\" does not exist or is ambigous."); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			else {
-				String[] args = argList.size() == 0 ? null : (String[]) argList
-						.toArray(new String[argList.size()]);
+				String[] args = argList.size() == 0 ? null
+						: (String[]) argList.toArray(new String[argList.size()]);
 				try {
 					Map<String, Object> launchArgs = new HashMap<>(1);
 					if (args != null) {

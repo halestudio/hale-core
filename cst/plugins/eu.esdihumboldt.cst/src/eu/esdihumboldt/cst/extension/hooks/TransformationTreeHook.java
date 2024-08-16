@@ -47,9 +47,8 @@ public interface TransformationTreeHook {
 	}
 
 	/**
-	 * Process the given transformation tree, called before property
-	 * transformation of an instance. Hooks should either be stateless or thread
-	 * safe.
+	 * Process the given transformation tree, called before property transformation
+	 * of an instance. Hooks should either be stateless or thread safe.
 	 * 
 	 * @param tree the transformation tree
 	 * @param state the tree state

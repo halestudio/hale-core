@@ -34,8 +34,8 @@ public class LocalizableInstanceReference extends InstanceReferenceDecorator
 	private final BoundingBox box;
 
 	/**
-	 * Constructs a decorator for the given {@link InstanceReference} and
-	 * associates it the given {@link BoundingBox}.
+	 * Constructs a decorator for the given {@link InstanceReference} and associates
+	 * it the given {@link BoundingBox}.
 	 *
 	 * @param reference decoratee
 	 * @param boundingBox bounding box

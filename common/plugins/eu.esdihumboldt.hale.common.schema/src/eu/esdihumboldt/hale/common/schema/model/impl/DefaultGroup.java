@@ -105,8 +105,8 @@ public class DefaultGroup implements DefinitionGroup {
 		if (flatten) {
 			synchronized (this) {
 				if (flattenedChildren == null) {
-					Collection<? extends ChildDefinition<?>> flat = flattenIfPossible(declaredChildren
-							.values());
+					Collection<? extends ChildDefinition<?>> flat = flattenIfPossible(
+							declaredChildren.values());
 					flattenedChildren = new LinkedHashMap<QName, ChildDefinition<?>>();
 					for (ChildDefinition<?> child : flat) {
 						flattenedChildren.put(child.getName(), child);
@@ -139,8 +139,8 @@ public class DefaultGroup implements DefinitionGroup {
 
 					// replace group with children
 					for (ChildDefinition<?> groupChild : child.asGroup().getDeclaredChildren()) {
-						result.add(DefinitionUtil.redeclareChild(groupChild, child.asGroup()
-								.getDeclaringGroup()));
+						result.add(DefinitionUtil.redeclareChild(groupChild,
+								child.asGroup().getDeclaringGroup()));
 					}
 				}
 				else if (child.asGroup().getDeclaredChildren().size() == 1) { // special
@@ -151,8 +151,8 @@ public class DefaultGroup implements DefinitionGroup {
 																				// one
 																				// child
 					// check the cardinality of the group child
-					ChildDefinition<?> groupChild = child.asGroup().getDeclaredChildren()
-							.iterator().next();
+					ChildDefinition<?> groupChild = child.asGroup().getDeclaredChildren().iterator()
+							.next();
 					Cardinality gcc = null;
 					if (groupChild.asProperty() != null) {
 						gcc = groupChild.asProperty().getConstraint(Cardinality.class);
@@ -167,12 +167,12 @@ public class DefaultGroup implements DefinitionGroup {
 						// group
 
 						// get group cardinality
-						Cardinality groupCardinality = child.asGroup().getConstraint(
-								Cardinality.class);
+						Cardinality groupCardinality = child.asGroup()
+								.getConstraint(Cardinality.class);
 
 						// redeclare group child
-						ChildDefinition<?> redeclaredChild = DefinitionUtil.redeclareChild(
-								groupChild, child.asGroup().getDeclaringGroup());
+						ChildDefinition<?> redeclaredChild = DefinitionUtil
+								.redeclareChild(groupChild, child.asGroup().getDeclaringGroup());
 
 						// set group cardinality on child
 						if (redeclaredChild.asGroup() != null) {

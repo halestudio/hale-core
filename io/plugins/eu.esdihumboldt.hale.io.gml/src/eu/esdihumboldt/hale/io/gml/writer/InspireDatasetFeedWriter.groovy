@@ -14,6 +14,11 @@
  */
 
 package eu.esdihumboldt.hale.io.gml.writer;
+import groovy.json.JsonException
+import groovy.json.JsonSlurper
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.parsers.ParserConfigurationException
 import javax.xml.transform.Transformer
@@ -39,10 +44,6 @@ import eu.esdihumboldt.hale.common.instance.geometry.CRSDefinitionUtil
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements
-import groovy.json.JsonException
-import groovy.json.JsonSlurper
-import groovy.transform.CompileStatic
-import groovy.transform.TypeCheckingMode
 
 /**
  * Writer for INSPIRE data set feeds as used by INSPIRE download services.
@@ -315,7 +316,6 @@ public class InspireDatasetFeedWriter extends AbstractExportProvider {
 					// XXX target may be another scheme, if the dataset is not in an
 					// interoperable format
 				}
-
 			}
 		} catch(IOException | JsonException e) {
 			reporter.warn(new IOMessageImpl("Could not access INSPIRE Feature Concept Dictionary.", e));

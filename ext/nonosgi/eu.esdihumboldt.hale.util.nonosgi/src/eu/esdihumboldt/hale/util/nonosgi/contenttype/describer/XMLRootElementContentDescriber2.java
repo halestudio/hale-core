@@ -25,50 +25,47 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * A content describer for detecting the name of the top-level element, 
- * its namespace and the DTD system identifier in an XML file.
+ * A content describer for detecting the name of the top-level element, its
+ * namespace and the DTD system identifier in an XML file.
  * <p>
- * This executable extension supports "element" parameter, that 
- * can be specified more than once. If the
- * <code>":-"</code> method is used, then the value is treated as
- * "element" (always just one)
+ * This executable extension supports "element" parameter, that can be specified
+ * more than once. If the <code>":-"</code> method is used, then the value is
+ * treated as "element" (always just one)
  * </p>
  * <p>
  * The value of "element" is specified using such a format
- * <code>{namespace}name/dtd</code>. The namespace or dtd part  
- * can be omitted and accepted are values like <code>name/dtd</code>,
- * <code>{ns}name</code> and <code>name</code>.
+ * <code>{namespace}name/dtd</code>. The namespace or dtd part can be omitted
+ * and accepted are values like <code>name/dtd</code>, <code>{ns}name</code> and
+ * <code>name</code>.
  * </p>
  * <p>
  * The describer will detect a document, if it matches at least one "element"
- * what means, that dtd, namespace (if specified) and name in "element"
- * match those in the document.
+ * what means, that dtd, namespace (if specified) and name in "element" match
+ * those in the document.
  * </p>
  * <p>
- * If the "element" name part is "*", e.g. <code>{namespace}*</code>, 
- * it denotes a wildcard match. If the "element" namespace part is empty, 
- * e.g. <code>{}name</code>, only these documents with the root element 
- * that belong to the unnamed namespace <code><elem xmlns=""></code> 
- * will be detected.
+ * If the "element" name part is "*", e.g. <code>{namespace}*</code>, it denotes
+ * a wildcard match. If the "element" namespace part is empty, e.g.
+ * <code>{}name</code>, only these documents with the root element that belong
+ * to the unnamed namespace <code><elem xmlns=""></code> will be detected.
  * </p>
  * <p>
  * This class should be used instead of {@link XMLRootElementContentDescriber}
- * which doesn't detect namespaces and doesn't allow to specify 
- * more than one set of dtds, root element names and namespaces which 
- * should be detected.
+ * which doesn't detect namespaces and doesn't allow to specify more than one
+ * set of dtds, root element names and namespaces which should be detected.
  * </p>
  * <p>
- * This class is not intended to be subclassed or instantiated by clients, 
- * only to be referenced by the "describer" configuration element in
- * extensions to the <code>org.eclipse.core.runtime.contentTypes</code>
- * extension point.
+ * This class is not intended to be subclassed or instantiated by clients, only
+ * to be referenced by the "describer" configuration element in extensions to
+ * the <code>org.eclipse.core.runtime.contentTypes</code> extension point.
  * </p>
  * 
  * @since org.eclipse.core.contenttype 3.3
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
-@SuppressWarnings({"restriction", "rawtypes"})
-public final class XMLRootElementContentDescriber2 extends XMLContentDescriber implements IExecutableExtension {
+@SuppressWarnings({ "restriction", "rawtypes" })
+public final class XMLRootElementContentDescriber2 extends XMLContentDescriber
+		implements IExecutableExtension {
 
 	static final String DTD = "org.eclipse.core.runtime.content.XMLRootElementContentDescriber2.dtd"; //$NON-NLS-1$
 	static final String NAMESPACE = "org.eclipse.core.runtime.content.XMLRootElementContentDescriber2.namespace"; //$NON-NLS-1$
@@ -77,18 +74,21 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 
 	private static final String ELEMENT_TO_FIND = "element"; //$NON-NLS-1$
 
-	/* (Intentionally not included in javadoc)
-	 * The top-level elements we are looking for. This value will be initialized
-	 * by the <code>setInitializationData</code> method. If no value is
-	 * provided, then this means that we don't care what the top-level element
-	 * will be. The list is a collection of <code>QualifiedElement</code>. 
+	/*
+	 * (Intentionally not included in javadoc) The top-level elements we are looking
+	 * for. This value will be initialized by the <code>setInitializationData</code>
+	 * method. If no value is provided, then this means that we don't care what the
+	 * top-level element will be. The list is a collection of
+	 * <code>QualifiedElement</code>.
 	 */
 	private QualifiedElement[] elementsToFind = null;
 
-	/* (Intentionally not included in javadoc)
-	 * Simple value holder for root element name, its namespace and dtd.
+	/*
+	 * (Intentionally not included in javadoc) Simple value holder for root element
+	 * name, its namespace and dtd.
 	 */
 	private class QualifiedElement {
+
 		private String namespace;
 		private String element;
 		private String dtd;
@@ -119,15 +119,15 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 		}
 	}
 
-	/* (Intentionally not included in javadoc)
-	 * Determines the validation status for the given contents.
+	/*
+	 * (Intentionally not included in javadoc) Determines the validation status for
+	 * the given contents.
 	 * 
 	 * @param contents the contents to be evaluated
-	 * @return one of the following:<ul>
-	 * <li><code>VALID</code></li>,
-	 * <li><code>INVALID</code></li>,
-	 * <li><code>INDETERMINATE</code></li>
-	 * </ul>
+	 * 
+	 * @return one of the following:<ul> <li><code>VALID</code></li>,
+	 * <li><code>INVALID</code></li>, <li><code>INDETERMINATE</code></li> </ul>
+	 * 
 	 * @throws IOException
 	 */
 	private int checkCriteria(InputSource contents, Map properties) throws IOException {
@@ -152,11 +152,13 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 			if (!foundOne)
 				return INDETERMINATE;
 		}
-		// We must be okay then.		
+		// We must be okay then.
 		return VALID;
 	}
 
-	/* (Intentionally not included in javadoc)
+	/*
+	 * (Intentionally not included in javadoc)
+	 * 
 	 * @see IContentDescriber#describe(InputStream, IContentDescription)
 	 */
 	public int describe(InputStream contents, IContentDescription description) throws IOException {
@@ -166,17 +168,20 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 	/**
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
-	public int describe(InputStream contents, IContentDescription description, Map properties) throws IOException {
+	public int describe(InputStream contents, IContentDescription description, Map properties)
+			throws IOException {
 		// call the basic XML describer to do basic recognition
 		if (super.describe2(contents, description, properties) == INVALID)
 			return INVALID;
-		// super.describe will have consumed some chars, need to rewind		
+		// super.describe will have consumed some chars, need to rewind
 		contents.reset();
-		// Check to see if we matched our criteria.		
+		// Check to see if we matched our criteria.
 		return checkCriteria(new InputSource(contents), properties);
 	}
 
-	/* (Intentionally not included in javadoc)
+	/*
+	 * (Intentionally not included in javadoc)
+	 * 
 	 * @see IContentDescriber#describe(Reader, IContentDescription)
 	 */
 	public int describe(Reader contents, IContentDescription description) throws IOException {
@@ -186,7 +191,8 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 	/**
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
-	public int describe(Reader contents, IContentDescription description, Map properties) throws IOException {
+	public int describe(Reader contents, IContentDescription description, Map properties)
+			throws IOException {
 		// call the basic XML describer to do basic recognition
 		if (super.describe2(contents, description, properties) == INVALID)
 			return INVALID;
@@ -234,17 +240,21 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 		properties.put(RESULT, new Boolean(true));
 	}
 
-	/* (Intentionally not included in javadoc)
+	/*
+	 * (Intentionally not included in javadoc)
+	 * 
 	 * @see IExecutableExtension#setInitializationData
 	 */
 	@SuppressWarnings("unchecked")
-	public void setInitializationData(final IConfigurationElement config, final String propertyName, final Object data) throws CoreException {
+	public void setInitializationData(final IConfigurationElement config, final String propertyName,
+			final Object data) throws CoreException {
 		if (data instanceof String)
-			elementsToFind = new QualifiedElement[] {new QualifiedElement((String) data)};
+			elementsToFind = new QualifiedElement[] { new QualifiedElement((String) data) };
 		else if (data instanceof Hashtable) {
 			List elements = null;
 
-			// the describer parameters have to be read again, because "element" parameter can be specified multiple times 
+			// the describer parameters have to be read again, because "element" parameter
+			// can be specified multiple times
 			// and the given hashtable carries only one of them
 			IConfigurationElement describerElement = config.getChildren("describer")[0]; //$NON-NLS-1$
 			IConfigurationElement[] params = describerElement.getChildren("parameter"); //$NON-NLS-1$
@@ -266,12 +276,15 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber i
 					qualifiedElements.add(it.next());
 				}
 			}
-			elementsToFind = (QualifiedElement[]) qualifiedElements.toArray(new QualifiedElement[qualifiedElements.size()]);
+			elementsToFind = (QualifiedElement[]) qualifiedElements
+					.toArray(new QualifiedElement[qualifiedElements.size()]);
 		}
 
 		if (elementsToFind.length == 0) {
-			String message = NLS.bind(ContentMessages.content_badInitializationData, XMLRootElementContentDescriber2.class.getName());
-			throw new CoreException(new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, null));
+			String message = NLS.bind(ContentMessages.content_badInitializationData,
+					XMLRootElementContentDescriber2.class.getName());
+			throw new CoreException(
+					new Status(IStatus.ERROR, ContentMessages.OWNER_NAME, 0, message, null));
 		}
 	}
 }

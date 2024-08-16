@@ -54,8 +54,8 @@ public interface ResourceScavenger<R> {
 	public File reserveResourceId(String resourceId) throws ScavengerException;
 
 	/**
-	 * Reserve a resource identifier, if the desired identifier is already
-	 * taken, an identifier will be generated.
+	 * Reserve a resource identifier, if the desired identifier is already taken, an
+	 * identifier will be generated.
 	 * 
 	 * @param desiredId the desired identifier, may be <code>null</code>
 	 * @return a pair of identifier and resource directory
@@ -64,8 +64,8 @@ public interface ResourceScavenger<R> {
 	public Pair<String, File> reserveResource(String desiredId) throws ScavengerException;
 
 	/**
-	 * Release a previously reserved resource identifier. Also removes the
-	 * resource folder.
+	 * Release a previously reserved resource identifier. Also removes the resource
+	 * folder.
 	 * 
 	 * @param resourceId the resource identifier
 	 */

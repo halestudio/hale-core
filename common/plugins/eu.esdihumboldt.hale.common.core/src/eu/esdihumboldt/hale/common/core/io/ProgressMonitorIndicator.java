@@ -44,7 +44,8 @@ public class ProgressMonitorIndicator implements ProgressIndicator {
 	@Override
 	public void begin(String taskName, int totalWork) {
 		monitor.beginTask(taskName,
-				(totalWork == ProgressIndicator.UNKNOWN) ? (IProgressMonitor.UNKNOWN) : (totalWork));
+				(totalWork == ProgressIndicator.UNKNOWN) ? (IProgressMonitor.UNKNOWN)
+						: (totalWork));
 	}
 
 	/**
@@ -72,11 +73,11 @@ public class ProgressMonitorIndicator implements ProgressIndicator {
 			monitor.subTask(taskName);
 		} catch (Error e) {
 			/*
-			 * Catch SWTErrors that may occur because an update on the monitor
-			 * is not triggered from the same thread as it was created in. This
-			 * may happen in conjunction with ThreadProgressMonitor, where a
-			 * progress dialog may be shared between different tasks. In that
-			 * case the offending call is in Dialog.shortenText (JFace).
+			 * Catch SWTErrors that may occur because an update on the monitor is not
+			 * triggered from the same thread as it was created in. This may happen in
+			 * conjunction with ThreadProgressMonitor, where a progress dialog may be shared
+			 * between different tasks. In that case the offending call is in
+			 * Dialog.shortenText (JFace).
 			 */
 			if (!"org.eclipse.swt.SWTError".equals(e.getClass().getName())) {
 				throw e;

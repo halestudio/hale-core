@@ -50,7 +50,8 @@ public class ExecutionContextImpl implements ExecutionContext {
 	 * @param cell the cell this context is for
 	 */
 	public ExecutionContextImpl(ServiceProvider serviceProvider, Alignment alignment,
-			FunctionContexts functionContexts, Map<Object, Object> transformationContext, Cell cell) {
+			FunctionContexts functionContexts, Map<Object, Object> transformationContext,
+			Cell cell) {
 		this.serviceProvider = serviceProvider;
 		this.alignment = alignment;
 		this.functionContexts = functionContexts;

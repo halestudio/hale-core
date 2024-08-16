@@ -17,6 +17,9 @@ package eu.esdihumboldt.hale.app.cli.commands.alignment;
 
 import static eu.esdihumboldt.hale.io.csv.writer.MappingTableConstants.*
 
+import groovy.cli.picocli.OptionAccessor
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.hale.common.cli.project.AbstractProjectEnvironmentCommand
 import eu.esdihumboldt.hale.common.core.HalePlatform
 import eu.esdihumboldt.hale.common.core.io.Value
@@ -26,8 +29,6 @@ import eu.esdihumboldt.hale.common.core.report.ReportHandler
 import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironment
 import eu.esdihumboldt.hale.io.xls.writer.XLSAlignmentMappingWriter
 import eu.esdihumboldt.util.cli.CommandContext
-import groovy.cli.picocli.OptionAccessor
-import groovy.transform.CompileStatic
 
 /**
  * Command that exports a mapping table from an alignment.

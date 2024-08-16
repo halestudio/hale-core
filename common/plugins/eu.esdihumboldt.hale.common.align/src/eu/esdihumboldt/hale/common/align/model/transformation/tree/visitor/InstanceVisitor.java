@@ -94,10 +94,9 @@ public class InstanceVisitor extends AbstractSourceToTargetVisitor {
 					// instance does not match filter, don't descend further
 					return false;
 					/*
-					 * XXX What about merged instances? Will this be OK for
-					 * those? A type filter should only apply to the original
-					 * instance if it is merged - but most filters should
-					 * evaluate the same
+					 * XXX What about merged instances? Will this be OK for those? A type filter
+					 * should only apply to the original instance if it is merged - but most filters
+					 * should evaluate the same
 					 */
 				}
 				else {
@@ -109,12 +108,10 @@ public class InstanceVisitor extends AbstractSourceToTargetVisitor {
 
 						if (candidateNodes.isEmpty()) {
 							/*
-							 * No node found - but this may be because no
-							 * property of the type is mapped, but there still
-							 * might be child instances (in a Join) that have
-							 * types with associated relations. To prevent those
-							 * being skipped we add an artificial node
-							 * representing the instance.
+							 * No node found - but this may be because no property of the type is
+							 * mapped, but there still might be child instances (in a Join) that
+							 * have types with associated relations. To prevent those being skipped
+							 * we add an artificial node representing the instance.
 							 */
 							candidateNodes = new ArrayList<>();
 							EntityDefinition entityDef = new TypeEntityDefinition(
@@ -148,15 +145,12 @@ public class InstanceVisitor extends AbstractSourceToTargetVisitor {
 									}
 									else {
 										/*
-										 * Not sure what this really means if we
-										 * get here.
+										 * Not sure what this really means if we get here.
 										 * 
-										 * Best guess: Probably that we weren't
-										 * able to determine how the duplication
-										 * of this source can be propagted to
-										 * the target. Thus the duplicated node
-										 * will probably not have any
-										 * connection.
+										 * Best guess: Probably that we weren't able to determine
+										 * how the duplication of this source can be propagted to
+										 * the target. Thus the duplicated node will probably not
+										 * have any connection.
 										 */
 										log.warn(log.createMessage(
 												"No transformation context for duplicated node of source "

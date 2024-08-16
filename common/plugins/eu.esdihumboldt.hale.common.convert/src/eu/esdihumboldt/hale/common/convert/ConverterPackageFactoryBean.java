@@ -37,8 +37,8 @@ import eu.esdihumboldt.util.reflection.ReflectionHelper;
  * 
  * @author Simon Templer
  */
-public class ConverterPackageFactoryBean implements FactoryBean<Object>, BeanClassLoaderAware,
-		InitializingBean {
+public class ConverterPackageFactoryBean
+		implements FactoryBean<Object>, BeanClassLoaderAware, InitializingBean {
 
 	private static final ALogger log = ALoggerFactory.getLogger(ConverterPackageFactoryBean.class);
 
@@ -91,8 +91,8 @@ public class ConverterPackageFactoryBean implements FactoryBean<Object>, BeanCla
 	}
 
 	/**
-	 * Register all converters and converter factories in a given package with
-	 * the given registry.
+	 * Register all converters and converter factories in a given package with the
+	 * given registry.
 	 * 
 	 * @param registry the converter registry
 	 * @param classLoader the class loader

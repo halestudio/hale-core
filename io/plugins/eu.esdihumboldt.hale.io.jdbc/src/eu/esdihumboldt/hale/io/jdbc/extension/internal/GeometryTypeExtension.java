@@ -24,14 +24,16 @@ import de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension;
 
 /**
  * Extension for identifying geometry types.
+ * 
  * @author Simon Templer
  */
 public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInfo> {
-	
+
 	private static GeometryTypeExtension instance;
-	
+
 	/**
 	 * Get the extension instance.
+	 * 
 	 * @return the extension instance
 	 */
 	public static GeometryTypeExtension getInstance() {
@@ -40,7 +42,7 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -57,11 +59,11 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 	}
 
 	/**
-	 * @see de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension#create(java.lang.String, org.eclipse.core.runtime.IConfigurationElement)
+	 * @see de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension#create(java.lang.String,
+	 *      org.eclipse.core.runtime.IConfigurationElement)
 	 */
 	@Override
-	protected GeometryTypeInfo create(String elementId,
-			IConfigurationElement element) {
+	protected GeometryTypeInfo create(String elementId, IConfigurationElement element) {
 		if (element.getName().equals("geometrytype")) {
 			return new GeometryTypeInfo(elementId, element);
 		}
@@ -69,12 +71,13 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 	}
 
 	/**
-	 * Get the geometry type info associated to a type name and connection type,
-	 * if any.
+	 * Get the geometry type info associated to a type name and connection type, if
+	 * any.
+	 * 
 	 * @param name the (column) type name
 	 * @param connection the database connection
 	 * @return the geometry type info or <code>null</code> if there is none
-	 *   associated
+	 *         associated
 	 */
 	public GeometryTypeInfo getTypeInfo(String name, Connection connection) {
 		for (GeometryTypeInfo info : getElements()) {
@@ -82,8 +85,8 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 				return info;
 			}
 		}
-		
+
 		return null;
 	}
-	
+
 }

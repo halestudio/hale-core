@@ -31,16 +31,16 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 public interface MergeCellMigrator {
 
 	/**
-	 * Update a cell as part of an alignment merge. The target of the cell stays
-	 * the same while source and parameters are update.
+	 * Update a cell as part of an alignment merge. The target of the cell stays the
+	 * same while source and parameters are update.
 	 * 
 	 * @param originalCell the original cell
 	 * @param mergeIndex the merge index
-	 * @param migration the alignment migration (may be useful for cases where
-	 *            only entity replacement needs to be done)
-	 * @param getCellMigrator functions that yields a cell migrator for a
-	 *            function (may be useful for cases where only entity
-	 *            replacement needs to be done)
+	 * @param migration the alignment migration (may be useful for cases where only
+	 *            entity replacement needs to be done)
+	 * @param getCellMigrator functions that yields a cell migrator for a function
+	 *            (may be useful for cases where only entity replacement needs to be
+	 *            done)
 	 * @param log the migration process log
 	 * @return the updated cell or cells
 	 */

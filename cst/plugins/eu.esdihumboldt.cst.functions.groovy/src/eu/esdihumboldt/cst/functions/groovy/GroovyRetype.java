@@ -49,7 +49,7 @@ public class GroovyRetype extends AbstractTypeTransformation<TransformationEngin
 	@Override
 	public void execute(String transformationIdentifier, TransformationEngine engine,
 			Map<String, String> executionParameters, TransformationLog log, Cell cell)
-					throws TransformationException {
+			throws TransformationException {
 		// for each source instance create a target instance
 		TypeDefinition targetType = getTarget().values().iterator().next().getDefinition()
 				.getDefinition();

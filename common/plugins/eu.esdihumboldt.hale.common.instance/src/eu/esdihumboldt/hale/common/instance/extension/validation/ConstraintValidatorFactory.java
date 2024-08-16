@@ -29,8 +29,8 @@ import de.fhg.igd.eclipse.util.extension.ExtensionUtil;
 public class ConstraintValidatorFactory extends AbstractConfigurationFactory<ConstraintValidator> {
 
 	/**
-	 * Create a {@link ConstraintValidator} factory based on the given
-	 * configuration element.
+	 * Create a {@link ConstraintValidator} factory based on the given configuration
+	 * element.
 	 * 
 	 * @param conf the configuration element
 	 */
@@ -65,8 +65,7 @@ public class ConstraintValidatorFactory extends AbstractConfigurationFactory<Con
 	/**
 	 * Checks whether this factory belongs to a type constraint.
 	 * 
-	 * @return true, if this factory belongs to a type constraint, false
-	 *         otherwise
+	 * @return true, if this factory belongs to a type constraint, false otherwise
 	 */
 	public boolean isTypeConstraintValidator() {
 		return conf.getName().equals("typeConstraintValidator");
@@ -85,8 +84,8 @@ public class ConstraintValidatorFactory extends AbstractConfigurationFactory<Con
 	/**
 	 * Checks whether this factory belongs to a group property constraint.
 	 * 
-	 * @return true, if this factory belongs to a group property constraint,
-	 *         false otherwise
+	 * @return true, if this factory belongs to a group property constraint, false
+	 *         otherwise
 	 */
 	public boolean isGroupPropertyConstraintValidator() {
 		return conf.getName().equals("groupPropertyConstraintValidator");

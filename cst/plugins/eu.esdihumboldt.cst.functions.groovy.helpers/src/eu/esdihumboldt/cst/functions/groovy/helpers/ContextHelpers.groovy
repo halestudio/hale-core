@@ -35,8 +35,10 @@ class ContextHelpers {
 	 */
 	public static final eu.esdihumboldt.cst.functions.groovy.helper.spec.Specification _collector_spec = SpecBuilder.newSpec( //
 	description: 'Get the Collector associated to a context map.', //
-	result: 'The Collector instance. Use it to collect values within a transformation') { //
-		context('The context map, if omitted uses the overall transformation context.') }
+	result: 'The Collector instance. Use it to collect values within a transformation') {
+		//
+		context('The context map, if omitted uses the overall transformation context.')
+	}
 
 	@Nullable
 	static Collector _collector(def context, HelperContext hc) {
@@ -58,5 +60,4 @@ class ContextHelpers {
 
 		throw new IllegalArgumentException('You need to provide a context map as argument')
 	}
-
 }

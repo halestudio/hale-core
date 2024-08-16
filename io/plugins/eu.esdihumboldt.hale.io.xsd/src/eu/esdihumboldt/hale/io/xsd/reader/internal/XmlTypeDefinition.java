@@ -70,18 +70,16 @@ public class XmlTypeDefinition extends DefaultTypeDefinition {
 				while (it.hasNext()) {
 					Entry<QName, ChildDefinition<?>> entry = it.next();
 
-					boolean isAttribute = entry.getValue().asProperty() != null
-							&& entry.getValue().asProperty().getConstraint(XmlAttributeFlag.class)
-									.isEnabled();
+					boolean isAttribute = entry.getValue().asProperty() != null && entry.getValue()
+							.asProperty().getConstraint(XmlAttributeFlag.class).isEnabled();
 
 					if (!isAttribute) {
 						/*
-						 * XXX For restrictions (on complex types) assume that
-						 * all elements are redefined if needed.
+						 * XXX For restrictions (on complex types) assume that all elements are
+						 * redefined if needed.
 						 * 
-						 * For attributes though, it seems that they don't have
-						 * to be redefined. (Or is this only for mandatory
-						 * attributes?)
+						 * For attributes though, it seems that they don't have to be redefined. (Or
+						 * is this only for mandatory attributes?)
 						 */
 						// remove element
 						it.remove();

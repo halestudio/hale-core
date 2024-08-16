@@ -57,8 +57,8 @@ public class TransformationReports implements ReportHandler {
 	}
 
 	/**
-	 * Create a report handler that collects the reports and in addition
-	 * delegates to another report handler.
+	 * Create a report handler that collects the reports and in addition delegates
+	 * to another report handler.
 	 * 
 	 * @param delegate the delegate report handler
 	 */

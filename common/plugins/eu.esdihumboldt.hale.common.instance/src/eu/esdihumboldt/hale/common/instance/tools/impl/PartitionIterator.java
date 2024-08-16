@@ -38,8 +38,8 @@ public class PartitionIterator implements ResourceIterator<InstanceCollection> {
 		/**
 		 * Create an iterator for a part.
 		 * 
-		 * @param cap the index of the instance up to which (exclusive) the
-		 *            iterator will serve instances
+		 * @param cap the index of the instance up to which (exclusive) the iterator
+		 *            will serve instances
 		 */
 		public PartIterator(int cap) {
 			this.cap = cap;
@@ -163,8 +163,8 @@ public class PartitionIterator implements ResourceIterator<InstanceCollection> {
 	private PartCollection current;
 
 	/**
-	 * Create a new iterator that creates partial instance collection from a
-	 * given instance collection.
+	 * Create a new iterator that creates partial instance collection from a given
+	 * instance collection.
 	 * 
 	 * The parts must be consumed in succession to assure a consistent behavior.
 	 * 

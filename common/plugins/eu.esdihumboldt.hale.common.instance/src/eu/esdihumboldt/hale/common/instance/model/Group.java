@@ -37,9 +37,8 @@ public interface Group {
 	public Object[] getProperty(QName propertyName);
 
 	/**
-	 * Get the property names for which any values exist. Especially helpful
-	 * when there is (for whatever reason) no type definition associated to the
-	 * instance.
+	 * Get the property names for which any values exist. Especially helpful when
+	 * there is (for whatever reason) no type definition associated to the instance.
 	 * 
 	 * @return the list of property names with associated values
 	 */

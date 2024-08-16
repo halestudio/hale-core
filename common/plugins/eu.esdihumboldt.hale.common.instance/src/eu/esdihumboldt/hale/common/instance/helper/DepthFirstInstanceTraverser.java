@@ -41,10 +41,9 @@ public class DepthFirstInstanceTraverser implements InstanceTraverser {
 	/**
 	 * Creates a depth first instance traverser.
 	 * 
-	 * @param cancelChildTraversalOnly if when the callback cancels the
-	 *            traversal, only the traversal of the children should be
-	 *            canceled (meaning traversal is continued but not down from the
-	 *            current object)
+	 * @param cancelChildTraversalOnly if when the callback cancels the traversal,
+	 *            only the traversal of the children should be canceled (meaning
+	 *            traversal is continued but not down from the current object)
 	 */
 	public DepthFirstInstanceTraverser(boolean cancelChildTraversalOnly) {
 		super();

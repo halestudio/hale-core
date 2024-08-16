@@ -25,7 +25,6 @@ import java.util.Set;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -47,6 +46,7 @@ import eu.esdihumboldt.hale.common.instance.model.Filter;
 import eu.esdihumboldt.hale.common.schema.SchemaSpaceID;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import groovy.text.Template;
 
 /**
@@ -58,8 +58,7 @@ import groovy.text.Template;
 public class MarkdownCellExplanationTest extends AbstractPlatformTest {
 
 	/**
-	 * Test if different templates for different languages are retrieved
-	 * properly.
+	 * Test if different templates for different languages are retrieved properly.
 	 */
 	@Test
 	public void testTemplate() {

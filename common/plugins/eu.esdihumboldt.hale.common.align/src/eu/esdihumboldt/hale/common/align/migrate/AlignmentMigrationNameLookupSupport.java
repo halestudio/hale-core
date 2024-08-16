@@ -28,8 +28,8 @@ import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
 public interface AlignmentMigrationNameLookupSupport extends AlignmentMigration {
 
 	/**
-	 * Yields a replacement for an entity of which only the name is known, e.g.
-	 * a function parameter referencing a property
+	 * Yields a replacement for an entity of which only the name is known, e.g. a
+	 * function parameter referencing a property
 	 * 
 	 * @param name entity name
 	 * @return the replacement entity, if the entity should be replaced

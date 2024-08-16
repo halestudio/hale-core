@@ -15,9 +15,10 @@
 
 package eu.esdihumboldt.hale.common.schema.model.constraint.factory.property
 
+import org.junit.Test
+
 import eu.esdihumboldt.hale.common.schema.model.constraint.factory.AbstractPropertiesCompareConstraintFactoryTest
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Unique
-import org.junit.Test
 
 
 /**

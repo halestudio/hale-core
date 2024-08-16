@@ -101,8 +101,8 @@ public class JaxbToEntityDefinition {
 						"Could not resolve property entity definition: child not present");
 			}
 
-			Pair<ChildDefinition<?>, List<ChildDefinition<?>>> childs = PropertyBean.findChild(
-					parent, asName(childContext));
+			Pair<ChildDefinition<?>, List<ChildDefinition<?>>> childs = PropertyBean
+					.findChild(parent, asName(childContext));
 
 			// if the child is still null throw an exception
 			if (childs == null || childs.getFirst() == null) {
@@ -114,10 +114,9 @@ public class JaxbToEntityDefinition {
 				else {
 					parentName = parent.getIdentifier();
 				}
-				throw new IllegalStateException(
-						MessageFormat
-								.format("Could not resolve property entity definition: child {0} not found in parent {1}",
-										childName, parentName));
+				throw new IllegalStateException(MessageFormat.format(
+						"Could not resolve property entity definition: child {0} not found in parent {1}",
+						childName, parentName));
 			}
 
 			ChildDefinition<?> child = childs.getFirst();
@@ -125,14 +124,14 @@ public class JaxbToEntityDefinition {
 			if (childs.getSecond() != null) {
 				for (ChildDefinition<?> pathElems : childs.getSecond()) {
 					path.add(new ChildContext(contextName(childContext.getContext()),
-							contextIndex(childContext.getIndex()), createCondition(childContext
-									.getCondition()), pathElems));
+							contextIndex(childContext.getIndex()),
+							createCondition(childContext.getCondition()), pathElems));
 				}
 			}
 
 			path.add(new ChildContext(contextName(childContext.getContext()),
-					contextIndex(childContext.getIndex()), createCondition(childContext
-							.getCondition()), child));
+					contextIndex(childContext.getIndex()),
+					createCondition(childContext.getCondition()), child));
 
 			if (child instanceof DefinitionGroup) {
 				parent = (DefinitionGroup) child;

@@ -62,7 +62,7 @@ public class EnvelopeWriter extends AbstractGeometryWriter<Geometry> {
 	@Override
 	public void write(XMLStreamWriter writer, Geometry geom, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		// write envelope
 		Envelope envelope = geom.getEnvelopeInternal();
 		if (!envelope.isNull()) {

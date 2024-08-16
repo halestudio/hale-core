@@ -79,8 +79,8 @@ public class GroovyUtil implements GroovyConstants {
 	}
 
 	/*
-	 * Simple thread-local cache that associates the hash of the script String
-	 * with the compiled script.
+	 * Simple thread-local cache that associates the hash of the script String with
+	 * the compiled script.
 	 */
 	private static final ThreadLocal<Map<String, Script>> PARSED_SCRIPTS = new ThreadLocal<>();
 
@@ -129,8 +129,8 @@ public class GroovyUtil implements GroovyConstants {
 	 * @param function the transformation function the script is associated to
 	 * @param binding the binding to set on the script
 	 * @param service the Groovy service
-	 * @param functionCached if the script should be cached per function instead
-	 *            of per cell
+	 * @param functionCached if the script should be cached per function instead of
+	 *            per cell
 	 * @return the script
 	 * @throws TransformationException if getting the script parameter from the
 	 *             function fails
@@ -139,8 +139,8 @@ public class GroovyUtil implements GroovyConstants {
 	public static Script getScript(AbstractTransformationFunction<?> function, Binding binding,
 			GroovyService service, boolean functionCached) throws TransformationException {
 		/*
-		 * The compiled script is stored in a ThreadLocal cache, so it needs to
-		 * be compiled only once per transformation thread.
+		 * The compiled script is stored in a ThreadLocal cache, so it needs to be
+		 * compiled only once per transformation thread.
 		 */
 
 		String script = getScriptString(function);
@@ -170,8 +170,8 @@ public class GroovyUtil implements GroovyConstants {
 	 * @param log the log
 	 * @return the created instance
 	 * @throws TransformationException if the target binding does not contain
-	 *             exactly one result after script evaluation or an internal
-	 *             error occurs
+	 *             exactly one result after script evaluation or an internal error
+	 *             occurs
 	 * @throws NoResultException if the script implies that no result should be
 	 *             created
 	 */
@@ -252,8 +252,7 @@ public class GroovyUtil implements GroovyConstants {
 	 * 
 	 * @param builder the instance builder, may be <code>null</code>
 	 * @param cell the cell of the function
-	 * @param typeCell the type cell the function works on, may be
-	 *            <code>null</code>
+	 * @param typeCell the type cell the function works on, may be <code>null</code>
 	 * @param log the transformation log
 	 * @param executionContext the execution context
 	 * @param targetInstanceType the type of the target instance to create

@@ -49,32 +49,31 @@ public interface Cell {
 	public static final String PROPERTY_DISABLE_FOR = "disabled_for";
 
 	/**
-	 * Property name for enabling a disabled cell again. Trying to enable a
-	 * cell, which was disabled in a base alignment will fail and result in an
-	 * exception.
+	 * Property name for enabling a disabled cell again. Trying to enable a cell,
+	 * which was disabled in a base alignment will fail and result in an exception.
 	 */
 	public static final String PROPERTY_ENABLE_FOR = "enable_for";
 
 	/**
-	 * Get the source entities. For each the name is mapped to the entity.
-	 * Multiple entities may share the same name. The map may not be modified.
+	 * Get the source entities. For each the name is mapped to the entity. Multiple
+	 * entities may share the same name. The map may not be modified.
 	 * 
 	 * @return the source entities, may be <code>null</code>
 	 */
 	public ListMultimap<String, ? extends Entity> getSource();
 
 	/**
-	 * Get the target entities. For each the name is mapped to the entity.
-	 * Multiple entities may share the same name. The map may not be modified.
+	 * Get the target entities. For each the name is mapped to the entity. Multiple
+	 * entities may share the same name. The map may not be modified.
 	 * 
 	 * @return the target entities
 	 */
 	public ListMultimap<String, ? extends Entity> getTarget();
 
 	/**
-	 * Get the transformation parameters that shall be applied to the
-	 * transformation specified by {@link #getTransformationIdentifier()}. The
-	 * map may not be modified.
+	 * Get the transformation parameters that shall be applied to the transformation
+	 * specified by {@link #getTransformationIdentifier()}. The map may not be
+	 * modified.
 	 * 
 	 * @return the transformation parameters, parameter names are mapped to
 	 *         parameter values, may be <code>null</code>
@@ -84,8 +83,8 @@ public interface Cell {
 	/**
 	 * Get the annotations of the given type.
 	 * 
-	 * @param type the annotation type identifier as registered in the
-	 *            corresponding extension point
+	 * @param type the annotation type identifier as registered in the corresponding
+	 *            extension point
 	 * @return the list of annotation objects or an empty list
 	 */
 	public List<?> getAnnotations(String type);
@@ -102,8 +101,8 @@ public interface Cell {
 	 * associated with the {@link AnnotationDescriptor} registered for the given
 	 * type identifier.
 	 * 
-	 * @param type the annotation type identifier as registered in the
-	 *            corresponding extension point
+	 * @param type the annotation type identifier as registered in the corresponding
+	 *            extension point
 	 * @return a new annotation object as created by
 	 *         {@link AnnotationDescriptor#create()} or <code>null</code> if no
 	 *         annotation definition with that type identifier exists
@@ -113,8 +112,8 @@ public interface Cell {
 	/**
 	 * Add an existing annotation object.
 	 * 
-	 * @param type the annotation type identifier as registered in the
-	 *            corresponding extension point
+	 * @param type the annotation type identifier as registered in the corresponding
+	 *            extension point
 	 * @param annotation annotation object to add
 	 */
 	void addAnnotation(String type, Object annotation);
@@ -122,19 +121,19 @@ public interface Cell {
 	/**
 	 * Remove the given annotation object.
 	 * 
-	 * @param type the annotation type identifier as registered in the
-	 *            corresponding extension point
+	 * @param type the annotation type identifier as registered in the corresponding
+	 *            extension point
 	 * @param annotation the annotation object associated to the annotation type
 	 *            that should be removed
 	 */
 	public void removeAnnotation(String type, Object annotation);
 
 	/**
-	 * Get the cell documentation. This essentially are key-value pairs similar
-	 * to cell annotations but represented only by a string value.
+	 * Get the cell documentation. This essentially are key-value pairs similar to
+	 * cell annotations but represented only by a string value.
 	 * 
-	 * @return documentation types mapped to string values, changes are
-	 *         reflected in the cell (not thread safe)
+	 * @return documentation types mapped to string values, changes are reflected in
+	 *         the cell (not thread safe)
 	 */
 	public ListMultimap<String, String> getDocumentation();
 

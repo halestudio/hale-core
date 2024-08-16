@@ -30,8 +30,8 @@ public class DefaultValueProcessor implements ValueProcessor {
 	 * 
 	 * @param value the value
 	 * @param property the entity definition the value is associated to
-	 * @return the processed value, possibly wrapped or replaced through a
-	 *         different representation
+	 * @return the processed value, possibly wrapped or replaced through a different
+	 *         representation
 	 */
 	@Override
 	public Object processValue(Object value, PropertyEntityDefinition property) {

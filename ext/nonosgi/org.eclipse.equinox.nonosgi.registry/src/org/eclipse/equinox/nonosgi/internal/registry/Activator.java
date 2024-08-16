@@ -47,13 +47,12 @@ public class Activator implements BundleActivator {
 	public Activator() {
 		Activator.activator = this;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
-	 * )
+	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		this.bundleContext = bundleContext;
@@ -96,8 +95,7 @@ public class Activator implements BundleActivator {
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static boolean getBooleanDebugOption(String option,
-			boolean defaultValue) {
+	public static boolean getBooleanDebugOption(String option, boolean defaultValue) {
 		// 1) search param from JVM
 		String s = System.getProperty(DEBUG_PROPERTY);
 		if (!Utils.isEmpty(s)) {
@@ -123,14 +121,12 @@ public class Activator implements BundleActivator {
 
 		// Search the DebugOptions OSGi service
 		if (getDefault().debugTracker == null) {
-			getDefault().debugTracker = new ServiceTracker(
-					getDefault().bundleContext, DebugOptions.class.getName(),
-					null);
+			getDefault().debugTracker = new ServiceTracker(getDefault().bundleContext,
+					DebugOptions.class.getName(), null);
 			getDefault().debugTracker.open();
 		}
 
-		DebugOptions options = (DebugOptions) getDefault().debugTracker
-				.getService();
+		DebugOptions options = (DebugOptions) getDefault().debugTracker.getService();
 		if (options != null) {
 			// get the value of the option by using OSGi service DebugOptions
 			return Utils.isTrue(options.getOption(option), defaultValue);

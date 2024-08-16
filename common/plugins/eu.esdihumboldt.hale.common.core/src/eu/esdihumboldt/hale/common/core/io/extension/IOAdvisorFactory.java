@@ -42,8 +42,8 @@ public interface IOAdvisorFactory extends ExtensionObjectFactory<IOAdvisor<?>> {
 	 * Create an I/O advisor with the given service provider.
 	 * 
 	 * @param actionId the action identifier
-	 * @param serviceProvider the service provider the advisor will use to
-	 *            access services
+	 * @param serviceProvider the service provider the advisor will use to access
+	 *            services
 	 * @return the I/O advisor
 	 * @throws Exception if instantiating the I/O advisor fails
 	 */

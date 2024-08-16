@@ -33,8 +33,7 @@ public class MapTypeReferenceBuilder implements TypeReferenceBuilder {
 	/**
 	 * Create a new type reference builder based on the given map.
 	 * 
-	 * @param map the map with references mapped to the respective type
-	 *            definitions
+	 * @param map the map with references mapped to the respective type definitions
 	 */
 	public MapTypeReferenceBuilder(Map<TypeDefinition, Value> map) {
 		super();

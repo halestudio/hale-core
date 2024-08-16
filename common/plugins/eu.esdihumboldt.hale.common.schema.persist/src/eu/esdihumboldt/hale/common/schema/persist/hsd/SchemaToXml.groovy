@@ -15,6 +15,8 @@
 
 package eu.esdihumboldt.hale.common.schema.persist.hsd
 
+import groovy.transform.CompileStatic
+
 import javax.xml.namespace.QName
 
 import org.w3c.dom.Element
@@ -33,7 +35,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.factory.TypeReference
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappingRelevantFlag
 import eu.esdihumboldt.util.Pair
 import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
-import groovy.transform.CompileStatic
 
 
 /**

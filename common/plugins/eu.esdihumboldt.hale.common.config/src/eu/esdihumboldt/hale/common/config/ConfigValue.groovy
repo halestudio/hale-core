@@ -90,5 +90,4 @@ class ConfigValue {
 		// XXX use different kind of representation?
 		value.as(String)
 	}
-
 }

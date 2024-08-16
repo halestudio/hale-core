@@ -15,12 +15,13 @@
 
 package eu.esdihumboldt.cst.functions.collector.helpers
 
+import groovy.transform.CompileStatic
+
 import eu.esdihumboldt.cst.functions.groovy.helpers.util.Collector
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
 import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
-import groovy.transform.CompileStatic
 
 /**
  * Helper methods for Collector-related functions

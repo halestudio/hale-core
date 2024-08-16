@@ -31,8 +31,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 public interface PathElement {
 
 	/**
-	 * Get the path element name. This is either a property, group or sub-type
-	 * name.
+	 * Get the path element name. This is either a property, group or sub-type name.
 	 * 
 	 * @return the element name
 	 */
@@ -41,8 +40,8 @@ public interface PathElement {
 	/**
 	 * Get the path element type definition.
 	 * 
-	 * @return the path element type definition, , may be <code>null</code> if
-	 *         the element is transient
+	 * @return the path element type definition, , may be <code>null</code> if the
+	 *         element is transient
 	 */
 	public abstract TypeDefinition getType();
 
@@ -55,8 +54,8 @@ public interface PathElement {
 	public abstract boolean isProperty();
 
 	/**
-	 * Determines if the the path element is transient and thus doesn't
-	 * represent an element.
+	 * Determines if the the path element is transient and thus doesn't represent an
+	 * element.
 	 * 
 	 * @return if the element is transient
 	 */
@@ -71,16 +70,14 @@ public interface PathElement {
 	public boolean isDowncast();
 
 	/**
-	 * Determines if this path element represents an element that can't be
-	 * repeated.
+	 * Determines if this path element represents an element that can't be repeated.
 	 * 
 	 * @return if this path element represents an element that can't be repeated
 	 */
 	public boolean isUnique();
 
 	/**
-	 * Write additional attributes/elements after the path element has been
-	 * started.
+	 * Write additional attributes/elements after the path element has been started.
 	 * 
 	 * @param writer the XML stream writer
 	 * @throws XMLStreamException if an error occurs writing XML to the stream

@@ -106,8 +106,8 @@ public class AdvCrsUrnAuthorityFactory extends AuthorityFactoryAdapter
 		}
 
 		/**
-		 * @return the concatenation of the authority and the {@linkplain #code}
-		 *         , separated by ':'
+		 * @return the concatenation of the authority and the {@linkplain #code} ,
+		 *         separated by ':'
 		 */
 		public String getAuthorityCode() {
 			return "ADV:" + code;
@@ -138,9 +138,9 @@ public class AdvCrsUrnAuthorityFactory extends AuthorityFactoryAdapter
 	}
 
 	/**
-	 * Returns an object factory for the specified code. This method invokes one
-	 * of the <code>get</code><var>Type</var><code>AuthorityFactory</code>
-	 * methods where <var>Type</var> is inferred from the code.
+	 * Returns an object factory for the specified code. This method invokes one of
+	 * the <code>get</code><var>Type</var><code>AuthorityFactory</code> methods
+	 * where <var>Type</var> is inferred from the code.
 	 *
 	 * @param code The authority code given to this class.
 	 * @return A factory for the specified authority code (never {@code null}).

@@ -148,8 +148,7 @@ public class MathHelper {
 	}
 
 	/**
-	 * The so-called 'euclidean' modulo, a modulo which won't yield negative
-	 * results
+	 * The so-called 'euclidean' modulo, a modulo which won't yield negative results
 	 * 
 	 * @param x the number to divide
 	 * @param mod the divisor
@@ -178,8 +177,8 @@ public class MathHelper {
 	}
 
 	/**
-	 * given two angels in radians, returns a difference in radians closest to
-	 * zero such that a + angleDiff(a, b) represents b.
+	 * given two angels in radians, returns a difference in radians closest to zero
+	 * such that a + angleDiff(a, b) represents b.
 	 * 
 	 * @param a angle a
 	 * @param b angle b
@@ -190,8 +189,8 @@ public class MathHelper {
 	}
 
 	/**
-	 * given two angels in radians, returns a difference in radians closest to
-	 * zero such that a + angleDiff(a, b) represents b.
+	 * given two angels in radians, returns a difference in radians closest to zero
+	 * such that a + angleDiff(a, b) represents b.
 	 * 
 	 * @param a angle a
 	 * @param b angle b
@@ -209,8 +208,8 @@ public class MathHelper {
 	}
 
 	/**
-	 * given two angels in radians, returns a difference in radians closest to
-	 * zero and >= zero.
+	 * given two angels in radians, returns a difference in radians closest to zero
+	 * and >= zero.
 	 * 
 	 * @param a angle a
 	 * @param b angle b
@@ -221,11 +220,10 @@ public class MathHelper {
 	}
 
 	/**
-	 * given two angels in radians, returns a difference in radians closest to
-	 * zero and >= zero, depending on the scale. For example, while two angles
-	 * pi/2 and -pi/2 may differ on a full circle (scale 1), they are considered
-	 * equal at scale 2. At scale 3, also orthogonal angles would match, and so
-	 * on.
+	 * given two angels in radians, returns a difference in radians closest to zero
+	 * and >= zero, depending on the scale. For example, while two angles pi/2 and
+	 * -pi/2 may differ on a full circle (scale 1), they are considered equal at
+	 * scale 2. At scale 3, also orthogonal angles would match, and so on.
 	 * 
 	 * @param a angle a
 	 * @param b angle b
@@ -277,9 +275,9 @@ public class MathHelper {
 	}
 
 	/**
-	 * Calls {@link #nextPowerOfTwo(int)} and {@link #previousPowerOfTwo(int)}
-	 * and finds the nearest value to the given number. Prefers the higher
-	 * number if the distance is equal.
+	 * Calls {@link #nextPowerOfTwo(int)} and {@link #previousPowerOfTwo(int)} and
+	 * finds the nearest value to the given number. Prefers the higher number if the
+	 * distance is equal.
 	 * 
 	 * @param i the number (must be positive)
 	 * @return the nearest power of two

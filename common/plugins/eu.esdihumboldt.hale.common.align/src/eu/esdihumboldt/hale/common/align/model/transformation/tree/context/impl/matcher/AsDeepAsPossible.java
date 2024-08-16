@@ -85,8 +85,8 @@ public class AsDeepAsPossible implements ContextMatcher {
 		}
 
 		/**
-		 * Determines if a target node is a candidate for a context match. For
-		 * this the cardinality of the corresponding definition is checked.
+		 * Determines if a target node is a candidate for a context match. For this the
+		 * cardinality of the corresponding definition is checked.
 		 * 
 		 * @param target the target node to check
 		 * @return if the target node is a candidate for a context match

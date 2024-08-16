@@ -45,8 +45,8 @@ public class UnmigratedCell extends MutableCellDecorator {
 	 * 
 	 * @param unmigratedCell Original cell that is to be migrated later
 	 * @param migrator The migrator to apply
-	 * @param mappings The original {@link EntityDefinition}s mapped to the
-	 *            resolved ones
+	 * @param mappings The original {@link EntityDefinition}s mapped to the resolved
+	 *            ones
 	 */
 	public UnmigratedCell(MutableCell unmigratedCell, CellMigrator migrator,
 			Map<EntityDefinition, EntityDefinition> mappings) {
@@ -63,8 +63,8 @@ public class UnmigratedCell extends MutableCellDecorator {
 	}
 
 	/**
-	 * Perform the migration of the original cell and return the migrated cell.
-	 * The <code>UnmigratedCell</code> instance is not changed.
+	 * Perform the migration of the original cell and return the migrated cell. The
+	 * <code>UnmigratedCell</code> instance is not changed.
 	 * 
 	 * @param additionalMappings Additional mappings of original
 	 *            {@link EntityDefinition}s to the resolved ones that should be

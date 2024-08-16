@@ -33,8 +33,7 @@ public class MapTypeResolver implements TypeResolver {
 	/**
 	 * Create a new type resolver based on the given map.
 	 * 
-	 * @param map the map with references mapped to the respective type
-	 *            definitions
+	 * @param map the map with references mapped to the respective type definitions
 	 */
 	public MapTypeResolver(Map<Value, ? extends TypeDefinition> map) {
 		super();

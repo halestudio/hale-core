@@ -120,8 +120,8 @@ public class Reference implements PropertyConstraint, ReferenceLike {
 	}
 
 	/**
-	 * Converts the identifier of a referenced object to the reference value.
-	 * The default implementation just returns the given identifier.
+	 * Converts the identifier of a referenced object to the reference value. The
+	 * default implementation just returns the given identifier.
 	 * 
 	 * @param id the identifier
 	 * @return the reference value

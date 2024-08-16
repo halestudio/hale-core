@@ -30,7 +30,6 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
-import eu.esdihumboldt.util.test.AbstractPlatformTest;
 import org.eclipse.core.runtime.content.IContentType;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -53,6 +52,7 @@ import eu.esdihumboldt.hale.common.test.TestUtil;
 import eu.esdihumboldt.hale.io.csv.InstanceTableIOConstants;
 import eu.esdihumboldt.hale.io.csv.reader.internal.CSVSchemaReader;
 import eu.esdihumboldt.hale.io.csv.writer.internal.CSVInstanceWriter;
+import eu.esdihumboldt.util.test.AbstractPlatformTest;
 
 /**
  * Test class for {@link CSVInstanceWriter}
@@ -173,9 +173,9 @@ public class CSVInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Test - write simple data, without nested properties and useSchema=true -
-	 * test if order/number of column persisted from original schema when in the
-	 * instance an attribute has no values
+	 * Test - write simple data, without nested properties and useSchema=true - test
+	 * if order/number of column persisted from original schema when in the instance
+	 * an attribute has no values
 	 *
 	 * @throws Exception , if an error occurs
 	 */

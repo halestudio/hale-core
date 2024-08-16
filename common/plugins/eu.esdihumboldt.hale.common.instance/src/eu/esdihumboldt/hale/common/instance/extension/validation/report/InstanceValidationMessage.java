@@ -31,8 +31,8 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
 public interface InstanceValidationMessage extends Message {
 
 	/**
-	 * Returns the reference to the instance this message is about. The
-	 * reference is only valid as long as the data set didn't change.
+	 * Returns the reference to the instance this message is about. The reference is
+	 * only valid as long as the data set didn't change.
 	 * 
 	 * @return the reference to the instance this message is about, may be null
 	 */

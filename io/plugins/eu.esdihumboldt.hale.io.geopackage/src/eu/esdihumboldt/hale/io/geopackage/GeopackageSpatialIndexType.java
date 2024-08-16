@@ -28,15 +28,13 @@ package eu.esdihumboldt.hale.io.geopackage;
 public enum GeopackageSpatialIndexType {
 
 	/**
-	 * RTree spatial index, see
-	 * http://www.geopackage.org/spec121/#extension_rtree
+	 * RTree spatial index, see http://www.geopackage.org/spec121/#extension_rtree
 	 */
 	RTREE("RTree Spatial Index", "rtree"),
 
 	/**
 	 * NGA Geometry Index, see
-	 * http://ngageoint.github.io/GeoPackage/docs/extensions/geometry-index.
-	 * html
+	 * http://ngageoint.github.io/GeoPackage/docs/extensions/geometry-index. html
 	 */
 	NGA("NGA Geometry Index", "nga"),
 

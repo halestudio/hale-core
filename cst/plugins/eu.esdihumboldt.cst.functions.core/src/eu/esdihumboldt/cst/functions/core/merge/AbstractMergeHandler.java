@@ -116,7 +116,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 			String transformationIdentifier, TransformationEngine engine,
 			ListMultimap<String, ParameterValue> transformationParameters,
 			Map<String, String> executionParameters, TransformationLog log)
-					throws TransformationException {
+			throws TransformationException {
 		T mergeConfig = createMergeConfiguration(transformationIdentifier, transformationParameters,
 				executionParameters, log);
 
@@ -157,13 +157,12 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 	 * @param executionParameters the execution parameters
 	 * @param log the transformation log
 	 * @return the merge configuration
-	 * @throws TransformationException if the merge configuration cannot be
-	 *             created
+	 * @throws TransformationException if the merge configuration cannot be created
 	 */
 	protected abstract T createMergeConfiguration(String transformationIdentifier,
 			ListMultimap<String, ParameterValue> transformationParameters,
 			Map<String, String> executionParameters, TransformationLog log)
-					throws TransformationException;
+			throws TransformationException;
 
 	/**
 	 * Get the merge key for a given instance. Instances with an equal merge key

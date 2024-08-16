@@ -15,13 +15,14 @@
 
 package eu.esdihumboldt.hale.common.core.io
 
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+
 import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueDefinition
 import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueExtension
 import eu.esdihumboldt.hale.common.core.io.impl.ComplexValue
 import eu.esdihumboldt.hale.common.core.io.impl.SimpleValue
 import eu.esdihumboldt.hale.common.core.io.impl.ValuePropertiesType
-import groovy.json.JsonBuilder
-import groovy.json.JsonSlurper
 
 
 /**
@@ -155,5 +156,4 @@ class JsonValueUtil {
 			new JsonSlurper().parseText('{"v":' + json + '}').v
 		}
 	}
-
 }

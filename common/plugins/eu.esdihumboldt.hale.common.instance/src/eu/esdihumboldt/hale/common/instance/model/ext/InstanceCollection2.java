@@ -35,11 +35,10 @@ public interface InstanceCollection2 extends InstanceCollection {
 	public boolean supportsFanout();
 
 	/**
-	 * Fan-out the instance collection per occurring type. Should only be called
-	 * if {@link #supportsFanout()} yields <code>true</code>.
+	 * Fan-out the instance collection per occurring type. Should only be called if
+	 * {@link #supportsFanout()} yields <code>true</code>.
 	 * 
-	 * @return the fanned out instance collections per type, or
-	 *         <code>null</code>
+	 * @return the fanned out instance collections per type, or <code>null</code>
 	 */
 	public Map<TypeDefinition, InstanceCollection> fanout();
 

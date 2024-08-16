@@ -56,13 +56,13 @@ public class CurveWriter extends AbstractGeometryWriter<MultiLineString> {
 	}
 
 	/**
-	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition,
-	 *      QName, String, DecimalFormat)
+	 * @see GeometryWriter#write(XMLStreamWriter, Geometry, TypeDefinition, QName,
+	 *      String, DecimalFormat)
 	 */
 	@Override
 	public void write(XMLStreamWriter writer, MultiLineString geometry, TypeDefinition elementType,
 			QName elementName, String gmlNs, DecimalFormat decimalFormatter)
-					throws XMLStreamException {
+			throws XMLStreamException {
 		// reorder segments
 		geometry = CurveHelper.combineCurve(geometry, geometry.getFactory(), false);
 
