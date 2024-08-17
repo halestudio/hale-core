@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.schema.persist.hsd.json;
 
 import groovy.json.JsonSlurper
@@ -41,7 +38,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 
 /**
  * Reads HALE Schema Definitions back to the HALE schema model.
- * 
+ *
  * @author Simon Templer
  */
 public class JsonToSchema {
@@ -56,9 +53,9 @@ public class JsonToSchema {
 
 	/**
 	 * Create a new Json schema reader.
-	 * 
+	 *
 	 * @param typeProvider the type provider, <code>null</code> to use the default provider if possible
-	 * @param classResolver 
+	 * @param classResolver
 	 * @param reporter the reporter, may be <code>null</code> if not available
 	 */
 	public JsonToSchema(TypeProvider typeProvider, ClassResolver classResolver, IOReporter reporter) {
@@ -88,7 +85,7 @@ public class JsonToSchema {
 
 	/**
 	 * Read schemas from the given reader.
-	 * 
+	 *
 	 * @param reader the reader, it's the callers responsibility to close it
 	 * @return the schemas
 	 * @throws Exception if an error occurs
@@ -107,7 +104,7 @@ public class JsonToSchema {
 
 	/**
 	 * Parse a schema from a HSD Json schema element.
-	 * 
+	 *
 	 * @param schema the schema element
 	 * @return the created schema
 	 */
@@ -147,7 +144,7 @@ public class JsonToSchema {
 
 	/**
 	 * Parse the given type element and populate the given type definition.
-	 * 
+	 *
 	 * @param typeElem the element defining the type
 	 * @param typeDef the type definition to populate or <code>null</code>
 	 * @param typeIndex the type index mapping index identifiers to type

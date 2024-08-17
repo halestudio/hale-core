@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.io.IOException;
@@ -50,7 +46,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Alignment bean serving as model for alignment I/O
- * 
+ *
  * @author Simon Templer
  */
 public class AlignmentBean
@@ -69,7 +65,7 @@ public class AlignmentBean
 
 	/**
 	 * Create a bean for the given alignment
-	 * 
+	 *
 	 * @param alignment the alignment
 	 * @param pathUpdate to update relative paths in case of a path change
 	 */
@@ -97,12 +93,12 @@ public class AlignmentBean
 
 	/**
 	 * Load an AlignmentBean from an input stream. The stream is closed at the end.
-	 * 
+	 *
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
 	 * @return the AlignmentBean
-	 * 
+	 *
 	 * @throws MappingException if the mapping could not be loaded
 	 * @throws MarshalException if the alignment could not be read
 	 * @throws ValidationException if the input stream did not provide valid XML
@@ -130,7 +126,7 @@ public class AlignmentBean
 
 	/**
 	 * Adds the given base alignment to the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to add a base alignment to
 	 * @param newBase URI of the new base alignment
 	 * @param projectLocation the project location or <code>null</code>
@@ -151,7 +147,7 @@ public class AlignmentBean
 
 	/**
 	 * Generates and adds a modifier for the given cell if necessary.
-	 * 
+	 *
 	 * @param cell the cell to generate a modifier for
 	 */
 	private void generateModifier(Cell cell) {
@@ -169,7 +165,7 @@ public class AlignmentBean
 
 	/**
 	 * Create an alignment from the information in the bean.
-	 * 
+	 *
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
 	 * @param sourceTypes the source types to use for resolving definition
@@ -187,7 +183,7 @@ public class AlignmentBean
 
 	/**
 	 * Get the defined cells
-	 * 
+	 *
 	 * @return the cells
 	 */
 	public Collection<CellBean> getCells() {
@@ -196,7 +192,7 @@ public class AlignmentBean
 
 	/**
 	 * Set the defined cells
-	 * 
+	 *
 	 * @param cells the cells to set
 	 */
 	public void setCells(Collection<CellBean> cells) {
@@ -205,7 +201,7 @@ public class AlignmentBean
 
 	/**
 	 * Get the alignment modifiers
-	 * 
+	 *
 	 * @return the modifiers
 	 */
 	public Collection<ModifierBean> getModifiers() {
@@ -214,7 +210,7 @@ public class AlignmentBean
 
 	/**
 	 * Set the alignment modifiers
-	 * 
+	 *
 	 * @param modifiers the modifiers to set
 	 */
 	public void setModifiers(Collection<ModifierBean> modifiers) {

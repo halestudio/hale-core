@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient;
 
 import java.util.ArrayList;
@@ -51,7 +47,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 
 /**
  * Group implementation based on {@link ODocument}s
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -91,7 +87,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Creates an empty group with an associated definition group.
-	 * 
+	 *
 	 * @param definition the associated group
 	 */
 	public OGroup(DefinitionGroup definition) {
@@ -101,7 +97,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Configure the internal document with the given database and return it
-	 * 
+	 *
 	 * @param db the database
 	 * @return the internal document configured with the database
 	 */
@@ -113,7 +109,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Get the internal document.
-	 * 
+	 *
 	 * @return the internal document
 	 */
 	public ODocument getDocument() {
@@ -207,7 +203,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Determine the name to use for a definition group as class name to encode.
-	 * 
+	 *
 	 * @param definition the definition group
 	 * @return the name to encode as class name
 	 */
@@ -220,7 +216,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Creates a group based on the given document
-	 * 
+	 *
 	 * @param document the document
 	 * @param definition the definition of the associated group
 	 * @param db the database
@@ -234,7 +230,7 @@ public class OGroup implements MutableGroup {
 	/**
 	 * Copy constructor. Creates a group based on the properties and values of the
 	 * given group.
-	 * 
+	 *
 	 * @param org the instance to copy
 	 */
 	public OGroup(Group org) {
@@ -255,7 +251,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Adds a property value to a given {@link ODocument}
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @param value the property value
 	 * @param document the {link ODocument} where the value is to add
@@ -305,7 +301,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Get the OrientDB collection type for the given property name
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @return the collection type, either {@link OType#EMBEDDEDLIST} or
 	 *         {@link OType#LINKLIST}
@@ -335,7 +331,7 @@ public class OGroup implements MutableGroup {
 	/**
 	 * Converts {@link Group}s and {@link Instance}s to {@link ODocument} but leaves
 	 * other objects untouched.
-	 * 
+	 *
 	 * @param value the object to convert
 	 * @return the converted object
 	 */
@@ -347,7 +343,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Determines if a property can have multiple values
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @return if the property can have multiple values
 	 */
@@ -364,7 +360,7 @@ public class OGroup implements MutableGroup {
 //			// default to true
 //			return true;
 //		}
-//		
+//
 //		return max == Cardinality.UNBOUNDED || max > 1;
 		// XXX treat everything as a collection property, as we may deal with
 		// merged instances
@@ -381,7 +377,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Sets values for a property in a certain ODocument
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @param values the values for the property
 	 * @param document the document which should contain the data
@@ -416,7 +412,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Encode a qualified property name to a string
-	 * 
+	 *
 	 * @param propertyName the qualified property name
 	 * @return the name encoded as a single string
 	 */
@@ -427,7 +423,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Decode an encoded property name to a qualified name
-	 * 
+	 *
 	 * @param encodedProperty the encoded property name
 	 * @return the qualified property name
 	 */
@@ -450,7 +446,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Gets a property value from a given {@link ODocument}
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @param document the {link ODocument} which contains the property
 	 * @return an Array of Objects containing the needed property
@@ -489,7 +485,7 @@ public class OGroup implements MutableGroup {
 	/**
 	 * Converts {@link ODocument}s to {@link Instance}s but leaves other objects
 	 * untouched.
-	 * 
+	 *
 	 * @param value the object to convert
 	 * @param propertyName the name of the property the value is associated with
 	 * @return the converted object
@@ -508,7 +504,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Returns the index keys of a certain ODocument
-	 * 
+	 *
 	 * @param document the keys are retrieved from
 	 * @return an Iterable with the keys as QNames
 	 */
@@ -530,7 +526,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Get the special field names, e.g. for metadata.
-	 * 
+	 *
 	 * @return the collection of special field names.
 	 */
 	protected Collection<String> getSpecialFieldNames() {
@@ -547,7 +543,7 @@ public class OGroup implements MutableGroup {
 
 	/**
 	 * Get the associated database.
-	 * 
+	 *
 	 * @return the associated database record
 	 */
 	public ODatabaseRecord getDb() {

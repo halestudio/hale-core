@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.svg.test;
 
 import java.awt.Dimension;
@@ -22,7 +19,7 @@ import org.locationtech.jts.geom.Envelope;
 
 /**
  * Settings for SVG painting.
- * 
+ *
  * @author Simon Templer
  */
 public class PaintSettings {
@@ -39,7 +36,7 @@ public class PaintSettings {
 
 	/**
 	 * Create a new settings object based on the given values.
-	 * 
+	 *
 	 * @param scaleFactor the scale factor
 	 * @param minX the offset on the X axis (which is subtracted from X ordinates)
 	 * @param maxY the offset on the Y axis (which Y ordinates are substracted from)
@@ -58,7 +55,7 @@ public class PaintSettings {
 
 	/**
 	 * Create a new settings object based on an evelope.
-	 * 
+	 *
 	 * @param envelope the envelope
 	 * @param maxSize the maximum size of the draw area
 	 * @param pointSize the size of individual drawn points
@@ -121,7 +118,7 @@ public class PaintSettings {
 
 	/**
 	 * Convert an x ordinate according to the paint settings (scaling etc.).
-	 * 
+	 *
 	 * @param x the x ordinate
 	 * @return the converted x ordinate
 	 */
@@ -131,7 +128,7 @@ public class PaintSettings {
 
 	/**
 	 * Convert an y ordinate according to the paint settings (scaling etc.).
-	 * 
+	 *
 	 * @param y the y ordinate
 	 * @return the converted y ordinate
 	 */
@@ -141,7 +138,7 @@ public class PaintSettings {
 
 	/**
 	 * Convert a coordinate according to the paint settings (scaling etc.).
-	 * 
+	 *
 	 * @param coord the coordinate to convert
 	 * @return the converted coordinate
 	 */

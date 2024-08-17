@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.core.io.util;
 
 import java.util.regex.Matcher;
@@ -26,7 +23,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 /**
  * Default base class for variable replaces where variables are placed in double
  * curly braces and may have a scope.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractScopedVariableReplacer implements VariableReplacer {
@@ -106,7 +103,7 @@ public abstract class AbstractScopedVariableReplacer implements VariableReplacer
 
 	/**
 	 * Get the string value of a variable or <code>null</code>.
-	 * 
+	 *
 	 * @param scope the scope name or <code>null</code>
 	 * @param varName the name of the variable
 	 * @return the variable value or <code>null</code>

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy;
 
 import java.util.Map;
@@ -35,7 +32,7 @@ import groovy.lang.Script;
 
 /**
  * 1:1 retype based on a Groovy script.
- * 
+ *
  * @author Simon Templer
  */
 public class GroovyRetype extends AbstractTypeTransformation<TransformationEngine>
@@ -81,7 +78,7 @@ public class GroovyRetype extends AbstractTypeTransformation<TransformationEngin
 
 	/**
 	 * Create the binding for the Groovy Retype script function.
-	 * 
+	 *
 	 * @param source the source instance
 	 * @param typeCell the type cell
 	 * @param builder the instance builder

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.util.ArrayList;
@@ -35,7 +31,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Bean representing a {@link Cell}
- * 
+ *
  * @author Simon Templer
  */
 public class CellBean {
@@ -59,7 +55,7 @@ public class CellBean {
 
 	/**
 	 * Create a cell bean based on the given cell
-	 * 
+	 *
 	 * @param cell the cell
 	 */
 	public CellBean(Cell cell) {
@@ -89,7 +85,7 @@ public class CellBean {
 	/**
 	 * Create a cell based on the information in the cell bean if possible.
 	 * Otherwise a corresponding error message should be added to the report.
-	 * 
+	 *
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
 	 * @param sourceTypes the source types to use for resolving definition
@@ -143,7 +139,7 @@ public class CellBean {
 
 	/**
 	 * Get the source entities
-	 * 
+	 *
 	 * @return the source entities
 	 */
 	public List<NamedEntityBean> getSource() {
@@ -152,7 +148,7 @@ public class CellBean {
 
 	/**
 	 * Set the source entities
-	 * 
+	 *
 	 * @param source the source entities to set
 	 */
 	public void setSource(List<NamedEntityBean> source) {
@@ -161,7 +157,7 @@ public class CellBean {
 
 	/**
 	 * Get the target entities
-	 * 
+	 *
 	 * @return the target
 	 */
 	public List<NamedEntityBean> getTarget() {
@@ -170,7 +166,7 @@ public class CellBean {
 
 	/**
 	 * Set the target entities
-	 * 
+	 *
 	 * @param target the target entities to set
 	 */
 	public void setTarget(List<NamedEntityBean> target) {
@@ -179,7 +175,7 @@ public class CellBean {
 
 	/**
 	 * Get the transformation parameters
-	 * 
+	 *
 	 * @return the transformation parameters
 	 */
 	public List<ParameterValueBean> getTransformationParameters() {
@@ -188,7 +184,7 @@ public class CellBean {
 
 	/**
 	 * Set the transformation parameters
-	 * 
+	 *
 	 * @param transformationParameters the transformation parameters to set
 	 */
 	public void setTransformationParameters(List<ParameterValueBean> transformationParameters) {
@@ -197,7 +193,7 @@ public class CellBean {
 
 	/**
 	 * Get the transformation identifier
-	 * 
+	 *
 	 * @return the transformation identifier
 	 */
 	public String getTransformationIdentifier() {
@@ -206,7 +202,7 @@ public class CellBean {
 
 	/**
 	 * Set the transformation identifier
-	 * 
+	 *
 	 * @param transformationIdentifier the transformation identifier to set
 	 */
 	public void setTransformationIdentifier(String transformationIdentifier) {
@@ -215,7 +211,7 @@ public class CellBean {
 
 	/**
 	 * Set the id
-	 * 
+	 *
 	 * @param id the id
 	 */
 	public void setId(String id) {
@@ -224,7 +220,7 @@ public class CellBean {
 
 	/**
 	 * Get the id
-	 * 
+	 *
 	 * @return the id
 	 */
 	public String getId() {

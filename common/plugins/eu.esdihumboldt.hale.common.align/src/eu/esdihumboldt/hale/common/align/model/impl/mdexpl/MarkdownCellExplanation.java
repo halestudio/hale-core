@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.impl.mdexpl;
 
 import java.io.IOException;
@@ -54,7 +51,7 @@ import groovy.text.TemplateEngine;
 
 /**
  * Markdown based cell explanation.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
@@ -76,7 +73,7 @@ public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
 
 	/**
 	 * Get the explanation template for a given locale.
-	 * 
+	 *
 	 * @param clazz the class to retrieve the template for
 	 * @param locale the locale
 	 * @return the loaded template as string, if available
@@ -106,7 +103,7 @@ public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
 	/**
 	 * Load an explanation template. The default implementation locates localized
 	 * Markdown files located next to the class.
-	 * 
+	 *
 	 * @param clazz the explanation class
 	 * @param locale the locale
 	 * @return the loaded template, if available
@@ -193,7 +190,7 @@ public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
 
 	/**
 	 * Load the function definition associated to the cell to be explained.
-	 * 
+	 *
 	 * @param functionId the function identifier
 	 * @param provider the service provider, if available
 	 * @return the function definition or <code>null</code>
@@ -206,7 +203,7 @@ public abstract class MarkdownCellExplanation extends AbstractCellExplanation {
 
 	/**
 	 * Customize the binding provided to the template.
-	 * 
+	 *
 	 * @param binding the binding
 	 * @param cell the mapping cell for which the explanation is created
 	 * @param html if HTML content should be produced

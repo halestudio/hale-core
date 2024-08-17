@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.model.annotations.messages;
 
 import java.util.Optional;
@@ -24,7 +21,7 @@ import eu.esdihumboldt.hale.common.core.io.ValueProperties;
 
 /**
  * Represents a comment to a message.
- * 
+ *
  * @author Simon Templer
  */
 public class Comment {
@@ -39,7 +36,7 @@ public class Comment {
 
 	/**
 	 * Create a new comment.
-	 * 
+	 *
 	 * @param text the comment text
 	 */
 	public Comment(String text) {
@@ -97,7 +94,7 @@ public class Comment {
 
 	/**
 	 * Convert to a {@link Value}.
-	 * 
+	 *
 	 * @return the value representation of the comment
 	 */
 	public Value toValue() {
@@ -116,7 +113,7 @@ public class Comment {
 
 	/**
 	 * Convert from a {@link Value}.
-	 * 
+	 *
 	 * @param value the value to interpret as {@link Comment}
 	 * @return the comment if a valid comment could be created
 	 */

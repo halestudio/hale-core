@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.model;
 
 import java.io.Serializable;
@@ -28,7 +24,7 @@ import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueExtension;
 /**
  * Object holding all information necessary to reproduce an {@link IOProvider}
  * execution, e.g. when loading a project.
- * 
+ *
  * @author Simon Templer
  */
 public class IOConfiguration implements Serializable, Cloneable {
@@ -42,7 +38,7 @@ public class IOConfiguration implements Serializable, Cloneable {
 	/**
 	 * Value that optionally stores cached information or the cached resource and
 	 * may be updated when the {@link IOConfiguration} is executed.
-	 * 
+	 *
 	 * @see CachingImportProvider
 	 */
 	private Value cache;
@@ -58,7 +54,7 @@ public class IOConfiguration implements Serializable, Cloneable {
 
 	/**
 	 * Creates an independent copy of the {@link IOConfiguration}.
-	 * 
+	 *
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
@@ -104,7 +100,7 @@ public class IOConfiguration implements Serializable, Cloneable {
 
 	/**
 	 * Get the I/O provider configuration.
-	 * 
+	 *
 	 * @return the provider configuration, values are either strings, DOM elements
 	 *         or complex value types defined in the {@link ComplexValueExtension}
 	 */
@@ -124,7 +120,7 @@ public class IOConfiguration implements Serializable, Cloneable {
 
 	/**
 	 * Sets the cached value.
-	 * 
+	 *
 	 * @param cache the cached value
 	 */
 	public void setCache(Value cache) {

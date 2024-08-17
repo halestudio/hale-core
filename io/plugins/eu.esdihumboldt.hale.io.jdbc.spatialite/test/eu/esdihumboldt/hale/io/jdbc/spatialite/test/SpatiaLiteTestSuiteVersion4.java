@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.spatialite.test;
 
 import org.locationtech.jts.geom.Geometry;
@@ -21,7 +18,7 @@ import org.locationtech.jts.io.WKTReader;
 
 /**
  * Points to test data stored in a database built with SpatiaLite version 4.
- * 
+ *
  * @author Stefano Costa, GeoSolutions
  */
 public class SpatiaLiteTestSuiteVersion4 extends SpatiaLiteTestSuite {
@@ -43,7 +40,7 @@ public class SpatiaLiteTestSuiteVersion4 extends SpatiaLiteTestSuite {
 			+ "146.232727 -42.157501))";
 
 	/**
-	 * 
+	 *
 	 */
 	public SpatiaLiteTestSuiteVersion4() {
 		Geometry geometry = null;

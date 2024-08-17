@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.deegree.mapping.config;
 
 import java.util.Optional;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.util.config.Config;
 
 /**
  * Mapping configuration based on a generic configuration object.
- * 
+ *
  * @author Simon Templer
  */
 @SuppressWarnings("javadoc")
@@ -84,7 +81,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Change the backing configuration object.
-	 * 
+	 *
 	 * @param config the internal configuration object to set
 	 */
 	public void setInternalConfig(Config config) {
@@ -127,7 +124,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the mapping mode.
-	 * 
+	 *
 	 * @param mode the mapping mode
 	 */
 	public void setMappingMode(MappingMode mode) {
@@ -143,7 +140,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the mode for generating ID prefixes.
-	 * 
+	 *
 	 * @param mode the prefix ID generation mode
 	 */
 	public void setIDPrefixMode(IDPrefixMode mode) {
@@ -159,7 +156,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the mode for determining primitive links.
-	 * 
+	 *
 	 * @param mode the primitive link mode
 	 */
 	public void setPrimitiveLinkMode(PrimitiveLinkMode mode) {
@@ -202,8 +199,8 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the database type and version.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param type the database type
 	 * @param version the database version
 	 */
@@ -219,7 +216,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the maximum name length for the database tables and columns.
-	 * 
+	 *
 	 * @param maxLength the maximum name length, if any
 	 */
 	public void setMaxNameLength(Optional<Integer> maxLength) {
@@ -233,7 +230,7 @@ public class GenericMappingConfiguration implements MappingConfiguration {
 
 	/**
 	 * Set the JDBC connection ID.
-	 * 
+	 *
 	 * @param id the connection ID
 	 */
 	public void setJDBCConnectionId(String id) {

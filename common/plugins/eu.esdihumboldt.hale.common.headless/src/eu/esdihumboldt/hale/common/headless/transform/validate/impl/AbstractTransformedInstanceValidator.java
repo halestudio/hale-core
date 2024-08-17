@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform.validate.impl;
 
 import de.fhg.igd.slf4jplus.ALogger;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
 
 /**
  * Abstract base class for transformed instance validators.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractTransformedInstanceValidator implements TransformedInstanceValidator {
@@ -38,7 +35,7 @@ public abstract class AbstractTransformedInstanceValidator implements Transforme
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param reportHandler the report handler used to communicate validation
 	 *            results.
 	 */
@@ -68,7 +65,7 @@ public abstract class AbstractTransformedInstanceValidator implements Transforme
 
 	/**
 	 * Validate an instance.
-	 * 
+	 *
 	 * @param instance the instance to validate
 	 * @param reporter the validation reporter
 	 */
@@ -77,7 +74,7 @@ public abstract class AbstractTransformedInstanceValidator implements Transforme
 
 	/**
 	 * Perform validation of state collected during instance validation.
-	 * 
+	 *
 	 * @param reporter the validation reporter
 	 */
 	protected abstract void validateCompleted(InstanceValidationReporter reporter);

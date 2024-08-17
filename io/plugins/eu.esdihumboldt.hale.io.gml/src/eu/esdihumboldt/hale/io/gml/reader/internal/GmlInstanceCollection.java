@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal;
 
 import java.io.BufferedInputStream;
@@ -69,7 +65,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 
 /**
  * Instance collection based on an XML/GML input stream
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -104,7 +100,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		/**
 		 * Variable for tracking current type to be able to determine types based on
 		 * internal nested elements.
-		 * 
+		 *
 		 * Uses a linked list to allow null items.
 		 */
 		private final Deque<TypeDefinition> typeStack = new LinkedList<>();
@@ -230,7 +226,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		/**
 		 * Determine if the given type is a type allowed to be used for parsing
 		 * instances.
-		 * 
+		 *
 		 * @param def the type definition
 		 * @return if the type is allowed for parsing instances
 		 */
@@ -263,7 +259,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * Find the type for a given name.
-		 * 
+		 *
 		 * @param name the type or element name
 		 * @return the found type or <code>null</code>
 		 */
@@ -290,7 +286,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * Find type by its type name.
-		 * 
+		 *
 		 * @param name the type name
 		 * @return the type definition or <code>null</code>
 		 */
@@ -368,7 +364,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		/**
 		 * Process an eventual exception / error report document. This method is called
 		 * at the START_ELEMENT event of the root element.
-		 * 
+		 *
 		 * @throws XMLStreamException if an error occurs parsing the document
 		 */
 		private void processExceptionReport() throws XMLStreamException {
@@ -580,7 +576,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 		/**
 		 * Get the type of the next instance. Must be called after {@link #hasNext()}
 		 * but before {@link #next()} or {@link #skip()}
-		 * 
+		 *
 		 * @return the type of the next instance
 		 */
 		public synchronized TypeDefinition nextType() {
@@ -674,7 +670,7 @@ public class GmlInstanceCollection implements InstanceCollection, LogAware {
 
 	/**
 	 * Create an XMl/GML instance collection based on the given source.
-	 * 
+	 *
 	 * @param source the source
 	 * @param sourceSchema the source schema
 	 * @param restrictToFeatures if only instances that are GML features shall be

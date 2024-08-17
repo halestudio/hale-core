@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.helper.spec.impl;
 
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.cst.functions.groovy.helper.spec.Specification;
 
 /**
  * It denotes the specification details for helper functions.
- * 
+ *
  * @author sameer sheikh
  */
 public class HelperFunctionSpecification implements Specification {
@@ -36,7 +33,7 @@ public class HelperFunctionSpecification implements Specification {
 
 	/**
 	 * parameterized constructor
-	 * 
+	 *
 	 * @param resultDescription description about the return of the function
 	 * @param description Description about a function
 	 * @param arguments arguments that can be passed into the function
@@ -73,7 +70,7 @@ public class HelperFunctionSpecification implements Specification {
 
 	/**
 	 * Add an additional argument to the function.
-	 * 
+	 *
 	 * @param argument the argument to add
 	 */
 	public void addArgument(Argument argument) {
@@ -82,7 +79,7 @@ public class HelperFunctionSpecification implements Specification {
 
 	/**
 	 * gets description about what a given function can do
-	 * 
+	 *
 	 * @return the description of a function
 	 */
 	@Override
@@ -92,7 +89,7 @@ public class HelperFunctionSpecification implements Specification {
 
 	/**
 	 * get the list of arguments that a given function takes.
-	 * 
+	 *
 	 * @return arguments argument list of a function
 	 */
 	@Override
@@ -102,7 +99,7 @@ public class HelperFunctionSpecification implements Specification {
 
 	/**
 	 * get the description about the result of a function call.
-	 * 
+	 *
 	 * @return result description of a function
 	 */
 	@Override

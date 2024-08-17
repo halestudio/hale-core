@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl;
 
 import java.io.IOException;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Base alignment reader.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class JaxbBaseAlignmentReader extends AbstractImportProvider implements BaseAlignmentReader {
@@ -89,7 +86,7 @@ public class JaxbBaseAlignmentReader extends AbstractImportProvider implements B
 
 	/**
 	 * Get the source schema
-	 * 
+	 *
 	 * @return the source schema
 	 */
 	public TypeIndex getSourceSchema() {
@@ -106,7 +103,7 @@ public class JaxbBaseAlignmentReader extends AbstractImportProvider implements B
 
 	/**
 	 * Get the target schema
-	 * 
+	 *
 	 * @return the target schema
 	 */
 	public TypeIndex getTargetSchema() {
@@ -115,7 +112,7 @@ public class JaxbBaseAlignmentReader extends AbstractImportProvider implements B
 
 	/**
 	 * Get the alignment
-	 * 
+	 *
 	 * @return the alignment
 	 */
 	public MutableAlignment getAlignment() {

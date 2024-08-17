@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient;
 
 import java.util.BitSet;
@@ -26,7 +22,7 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 /**
  * Utilities for name encoding and decoding
- * 
+ *
  * @author Simon Templer
  */
 public class ONameUtil {
@@ -55,7 +51,7 @@ public class ONameUtil {
 
 	/**
 	 * Encode text to a string that is a valid name for {@link ODocument} fields.
-	 * 
+	 *
 	 * @param text the text to encode
 	 * @return the encoded name
 	 */
@@ -71,7 +67,7 @@ public class ONameUtil {
 	/**
 	 * Decode a name for {@link ODocument} fields to its original string
 	 * representation.
-	 * 
+	 *
 	 * @param name the name to decode
 	 * @return the decoded text
 	 * @throws DecoderException if decoding the string fails

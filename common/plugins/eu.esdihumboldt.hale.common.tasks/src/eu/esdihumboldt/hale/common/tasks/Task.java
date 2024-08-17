@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.common.tasks;
 
@@ -20,9 +17,9 @@ import java.util.List;
 /**
  * A Task is any type of action to be done within the HALE application to
  * describe that action's context and goal.
- * 
+ *
  * @param <C> Type of the context object
- * 
+ *
  * @author Thorsten Reitz, Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -30,14 +27,14 @@ public interface Task<C> extends Comparable<Task<C>> {
 
 	/**
 	 * Get the name of the task's type
-	 * 
+	 *
 	 * @return the task type name
 	 */
 	TaskType<C> getTaskType();
 
 	/**
 	 * Get the main context element
-	 * 
+	 *
 	 * @return the main context element
 	 */
 	C getMainContext();
@@ -56,7 +53,7 @@ public interface Task<C> extends Comparable<Task<C>> {
 
 	/**
 	 * Compare this task's main context object to the given one
-	 * 
+	 *
 	 * @param context the context object to compare
 	 * @return true if the context objects are equal or are both <code>null</code>
 	 */

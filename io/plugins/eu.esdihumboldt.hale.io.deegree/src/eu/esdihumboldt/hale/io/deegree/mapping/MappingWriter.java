@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.deegree.mapping;
 
 import static eu.esdihumboldt.hale.io.deegree.mapping.MappingHelper.mapApplicationSchema;
@@ -71,7 +68,7 @@ import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 
 /**
  * Writer for deegree feature mappings based on hale schema and alignment.
- * 
+ *
  * @author Simon Templer
  */
 public class MappingWriter {
@@ -96,7 +93,7 @@ public class MappingWriter {
 
 	/**
 	 * Create a new mapping writer.
-	 * 
+	 *
 	 * @param targetSchema the target schema
 	 * @param alignment the alignment, may be <code>null</code>
 	 * @param projectInfo the project information, may be <code>null</code>
@@ -115,7 +112,7 @@ public class MappingWriter {
 
 	/**
 	 * Save the SQLFeatureStore configuration.
-	 * 
+	 *
 	 * @param out the output stream to save the configuration to
 	 * @throws Exception if an error occurs saving the configuration
 	 */
@@ -149,12 +146,12 @@ public class MappingWriter {
 
 	/**
 	 * Get the properties where a primitive mapping should be used for XLinks.
-	 * 
+	 *
 	 * Note that deegree seems to only support properties to be named here, that
 	 * have an XLink attribute group. Also, it is not possible to specify the
 	 * relation to a feature type, or the nesting within a type, which means they
 	 * apply for any feature type and at any level.
-	 * 
+	 *
 	 * @return the list of qualified names of properties
 	 */
 	protected Set<QName> getPropertiesWithPrimitiveHref() {
@@ -269,7 +266,7 @@ public class MappingWriter {
 
 	/**
 	 * Save the DDL.
-	 * 
+	 *
 	 * @param out the output stream to save the DDL to
 	 * @throws Exception if an error occurs saving the DDL
 	 */
@@ -285,7 +282,7 @@ public class MappingWriter {
 
 	/**
 	 * Get the mapped application schema.
-	 * 
+	 *
 	 * @return the mapped application schema
 	 * @throws Exception if an error occurs configuring the mapped schema
 	 */
@@ -304,7 +301,7 @@ public class MappingWriter {
 
 	/**
 	 * Adapt the given mapping based on the mapping configuration.
-	 * 
+	 *
 	 * @param mapping the original mapping
 	 * @param config the mapping configuration
 	 * @return the adapted mapping
@@ -333,7 +330,7 @@ public class MappingWriter {
 
 	/**
 	 * Adapt the given schema based on the alignment.
-	 * 
+	 *
 	 * @param appSchema the application schema to adapt
 	 * @return the adapted schema
 	 */
@@ -364,7 +361,7 @@ public class MappingWriter {
 
 	/**
 	 * Get the target feature types.
-	 * 
+	 *
 	 * @return the set of types
 	 */
 	protected Set<TypeDefinition> getTargetTypes() {
@@ -398,7 +395,7 @@ public class MappingWriter {
 	/**
 	 * Determine if a hale type definition and a deegree feature type represent the
 	 * same type.
-	 * 
+	 *
 	 * @param t1 the hale type definition
 	 * @param t2 the deegree feature type
 	 * @return <code>true</code> if the definitions refer to the same type,

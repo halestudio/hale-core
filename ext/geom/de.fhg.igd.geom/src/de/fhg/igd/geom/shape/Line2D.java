@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -26,7 +26,7 @@ import de.fhg.igd.geom.Point2D;
 
 /**
  * This class describes open 2D polylines.
- * 
+ *
  * @author Thorsten Reitz
  */
 public class Line2D extends Shape {
@@ -38,7 +38,7 @@ public class Line2D extends Shape {
 
 	/**
 	 * This constructor builds a 2D Line from an array of Point2D.
-	 * 
+	 *
 	 * @param points Point2D[]
 	 */
 	public Line2D(Point2D[] points) {
@@ -56,7 +56,7 @@ public class Line2D extends Shape {
 
 	/**
 	 * This method will return this Line as a Java Topology Suite LineString.
-	 * 
+	 *
 	 * @param geometryFactory the factory for JTS geometries
 	 * @return the converted LineString
 	 */
@@ -123,7 +123,7 @@ public class Line2D extends Shape {
 	/**
 	 * Returns a BoundingBox for this object that takes into account possible
 	 * transforms. TODO actually take transforms into Account :-).
-	 * 
+	 *
 	 * @return de.fhg.igd.CityServer3D.dbLayer.helperGeometry.BoundingBox
 	 */
 	@Override
@@ -136,7 +136,7 @@ public class Line2D extends Shape {
 
 	/**
 	 * Standard toString method. super.toString() is included.
-	 * 
+	 *
 	 * @return a string representation of this Line
 	 */
 	@Override

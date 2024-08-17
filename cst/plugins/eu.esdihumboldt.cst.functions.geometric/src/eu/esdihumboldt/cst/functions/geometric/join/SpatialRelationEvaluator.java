@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.geometric.join;
 
 import java.util.function.BiFunction;
@@ -21,14 +18,14 @@ import org.locationtech.jts.geom.Geometry;
 
 /**
  * Interface for functions evaluating a spatial relation between two geometries.
- * 
+ *
  * @author Florian Esser
  */
 public interface SpatialRelationEvaluator {
 
 	/**
 	 * Evaluators for typical spatial relations
-	 * 
+	 *
 	 * @author Florian Esser
 	 */
 	public static enum StandardRelation {
@@ -111,7 +108,7 @@ public interface SpatialRelationEvaluator {
 
 		/**
 		 * Returns the {@link StandardRelation} that has the given title.
-		 * 
+		 *
 		 * @param relation Title of the relation to return
 		 * @return the {@link StandardRelation} with the given title or null if none
 		 *         exists
@@ -127,7 +124,7 @@ public interface SpatialRelationEvaluator {
 
 	/**
 	 * Evaluate the spatial relation for the given geometries
-	 * 
+	 *
 	 * @param first The f geometry
 	 * @param second The second geometry
 	 * @return true if the spatial relation exists between the given geometries
@@ -141,7 +138,7 @@ public interface SpatialRelationEvaluator {
 
 	/**
 	 * Builds a {@link SpatialRelationEvaluator} for a specific evaluation function.
-	 * 
+	 *
 	 * @param description Description of the spatial relation evaluation, e.g.
 	 *            "covers"
 	 * @param evaluatorFunc Evaluation function

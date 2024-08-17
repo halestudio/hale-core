@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect.internal;
 
 import groovy.transform.CompileStatic
@@ -33,7 +30,7 @@ import eu.esdihumboldt.hale.io.haleconnect.OwnerType
 
 /**
  * Helper class for the user service API
- * 
+ *
  * @author Florian Esser
  */
 @CompileStatic
@@ -42,7 +39,7 @@ public class UserServiceHelper {
 	/**
 	 * Build a {@link Credentials} object. Any null values passed in will be
 	 * converted to an empty string.
-	 * 
+	 *
 	 * @param username the user name
 	 * @param password the password
 	 * @return a Credentials object with the given credentials
@@ -98,7 +95,7 @@ public class UserServiceHelper {
 	 * Helper method to create an {@link Owner} if an API call returns both a
 	 * user ID and an organisation ID, and the owner type is determined by which
 	 * of the values is non-empty.
-	 * 
+	 *
 	 * @param userId user id value
 	 * @param orgId organisation id value
 	 * @return Owner object

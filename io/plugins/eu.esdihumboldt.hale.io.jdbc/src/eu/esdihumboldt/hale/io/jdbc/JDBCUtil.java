@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import java.net.URI;
@@ -31,7 +28,7 @@ import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
 
 /**
  * JDBC utility methods.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -39,7 +36,7 @@ public class JDBCUtil {
 
 	/**
 	 * Removes one pair of leading/trailing quotes ("x" or 'x' or `x` becomes x).
-	 * 
+	 *
 	 * @param s the string to remove quotes from
 	 * @return the string with one pair of quotes less if possible
 	 */
@@ -58,7 +55,7 @@ public class JDBCUtil {
 
 	/**
 	 * Adds a pair of quotes ("x") if no quotes (" or ') are present.
-	 * 
+	 *
 	 * @param s the string to quote
 	 * @return the quoted string
 	 */
@@ -77,7 +74,7 @@ public class JDBCUtil {
 
 	/**
 	 * Determine the identifier quote string for a given JDBC connection.
-	 * 
+	 *
 	 * @param connection the JDBC connection
 	 * @return the quote string
 	 */
@@ -96,7 +93,7 @@ public class JDBCUtil {
 
 	/**
 	 * Determine the namespace for a JDBC source-
-	 * 
+	 *
 	 * @param jdbcURI the JDBC connection URI
 	 * @param advisor the schema reader advisor, if applicable
 	 * @return the namespace
@@ -146,7 +143,7 @@ public class JDBCUtil {
 
 	/**
 	 * Replace variables in an SQL query.
-	 * 
+	 *
 	 * @param query the query
 	 * @param services the service provider
 	 * @return the query with variables replaced
@@ -162,7 +159,7 @@ public class JDBCUtil {
 
 	/**
 	 * Create a statement for a default read-only iteration query.
-	 * 
+	 *
 	 * @param connection the JDBC connection
 	 * @param fetchSize the batch fetch size, should be greater than zero
 	 * @return the statement

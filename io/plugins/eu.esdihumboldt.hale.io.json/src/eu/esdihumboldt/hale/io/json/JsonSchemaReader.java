@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json;
 
 import java.io.BufferedReader;
@@ -38,7 +35,7 @@ import eu.esdihumboldt.hale.io.json.internal.schema.JsonToSchema;
 
 /**
  * Reader for a schema from a Json/GeoJson data file.
- * 
+ *
  * @author Simon Templer
  */
 public class JsonSchemaReader extends AbstractSchemaReader {
@@ -122,7 +119,7 @@ public class JsonSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set the read mode to use.
-	 * 
+	 *
 	 * @param mode the mode for reading Json
 	 */
 	public void setReadMode(JsonReadMode mode) {

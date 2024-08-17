@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl;
 
 import java.io.IOException;
@@ -46,7 +42,7 @@ import jakarta.xml.bind.Marshaller;
 
 /**
  * Save or load an alignment
- * 
+ *
  * @author Simon Templer
  */
 public class JaxbAlignmentIO {
@@ -58,7 +54,7 @@ public class JaxbAlignmentIO {
 
 	/**
 	 * Load a default alignment from an input stream.
-	 * 
+	 *
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -85,7 +81,7 @@ public class JaxbAlignmentIO {
 
 	/**
 	 * Adds the given base alignment to the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to add a base alignment to
 	 * @param newBase URI of the new base alignment
 	 * @param projectLocation the project location or <code>null</code>
@@ -106,7 +102,7 @@ public class JaxbAlignmentIO {
 
 	/**
 	 * Save a default alignment to an output stream.
-	 * 
+	 *
 	 * @param alignment the alignment to save
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -127,7 +123,7 @@ public class JaxbAlignmentIO {
 
 	/**
 	 * Convert an alignment to its JAXB representation.
-	 * 
+	 *
 	 * @param alignment the alignment to save
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -142,7 +138,7 @@ public class JaxbAlignmentIO {
 
 	/**
 	 * Save a default alignment to an output stream.
-	 * 
+	 *
 	 * @param alignment the alignment to save
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -176,7 +172,7 @@ public class JaxbAlignmentIO {
 	 * Print a cell to a {@link PrintStream} (intended for tests/debugging). The
 	 * stream is prevented from being closed, which is intended to prevent for
 	 * instance System.out from being closed.
-	 * 
+	 *
 	 * @param cell the cell to print
 	 * @param out the output stream
 	 * @throws Exception if an error occurs trying to print the cell
@@ -188,7 +184,7 @@ public class JaxbAlignmentIO {
 	/**
 	 * Print a cell to an output stream (intended for tests/debugging). The stream
 	 * is closed when the cell was written.
-	 * 
+	 *
 	 * @param cell the cell to print
 	 * @param out the output stream
 	 * @throws Exception if an error occurs trying to print the cell

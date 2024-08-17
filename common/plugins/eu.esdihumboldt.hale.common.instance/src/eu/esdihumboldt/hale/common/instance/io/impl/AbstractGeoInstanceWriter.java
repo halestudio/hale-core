@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.io.impl;
 
 import java.util.Collection;
@@ -39,7 +35,7 @@ import eu.esdihumboldt.util.geometry.WindingOrder;
 
 /**
  * Abstract {@link GeoInstanceWriter} base implementation
- * 
+ *
  * @author Simon Templer
  * @since 2.9
  */
@@ -85,7 +81,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Get default Winding Order. Function is to give functionality to the subType
 	 * to change the default Winding order.
-	 * 
+	 *
 	 * @return EnumWindingOrderTypes default Winding order
 	 */
 	protected EnumWindingOrderTypes getDefaultWindingOrder() {
@@ -95,7 +91,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Convert the given geometry to the target CRS, if possible (and a target CRS
 	 * is set).
-	 * 
+	 *
 	 * @param geom the geometry to convert
 	 * @param sourceCrs the source CRS
 	 * @param report the reporter
@@ -142,7 +138,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	 * Returns a pair of geometry and associated CRS definition for the given value.
 	 * The value has to be a Geometry or a GeometryProperty, otherwise
 	 * <code>null</code> is returned.
-	 * 
+	 *
 	 * @param value the value to extract the information from
 	 * @param allowConvert if conversion to the target CRS should be performed if
 	 *            applicable
@@ -165,7 +161,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	 * Returns a pair of geometry and associated CRS definition for the given value.
 	 * The value has to be a Geometry or a GeometryProperty, otherwise
 	 * <code>null</code> is returned.
-	 * 
+	 *
 	 * @param value the value to extract the information from
 	 * @param allowConvert if conversion to the target CRS should be performed if
 	 *            applicable
@@ -202,7 +198,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Returns a pair of unified geometry of given geometry and associated CRS
 	 * definition based on Winding order supplied.
-	 * 
+	 *
 	 * @param pair A pair of Geometry and CRSDefinition, on which winding process
 	 *            will get done.
 	 * @param report the reporter
@@ -231,7 +227,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Returns a unified geometry of given geometry based on Winding order supplied.
-	 * 
+	 *
 	 * @param geom The Geometry object, on which winding process will get done.
 	 * @param report the reporter
 	 * @param crs Coordinate Reference System
@@ -276,7 +272,7 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Extract a CRS code from the given CRS definition.
-	 * 
+	 *
 	 * @param crsDef the CRS definition
 	 * @return the CRS code, may be <code>null</code>
 	 */

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
 /**
  * Base class for transformation sinks handling validation of incoming
  * instances.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractTransformationSink implements TransformationSink {
@@ -49,7 +46,7 @@ public abstract class AbstractTransformationSink implements TransformationSink {
 
 	/**
 	 * Adds an instance to the sink
-	 * 
+	 *
 	 * @param instance the instance to add
 	 */
 	protected abstract void internalAddInstance(Instance instance);
@@ -72,7 +69,7 @@ public abstract class AbstractTransformationSink implements TransformationSink {
 	/**
 	 * Called if the transformation is done or cancelled. Subsequent calls to
 	 * {@link #addInstance(Instance)} result in undetermined behavior.
-	 * 
+	 *
 	 * @param cancel whether the operation was cancelled or simply finished
 	 */
 	protected abstract void internalDone(boolean cancel);

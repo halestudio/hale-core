@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.svg.test;
 
 import java.awt.BasicStroke;
@@ -38,7 +35,7 @@ import org.w3c.dom.Document;
 
 /**
  * Helper for painting (geometries) to an SVG image.
- * 
+ *
  * @author Simon Templer
  */
 public class SVGPainter {
@@ -48,7 +45,7 @@ public class SVGPainter {
 
 	/**
 	 * Create a new painter.
-	 * 
+	 *
 	 * @param settings the paint settings
 	 */
 	public SVGPainter(PaintSettings settings) {
@@ -62,7 +59,7 @@ public class SVGPainter {
 
 	/**
 	 * Set the canvas size for the SVG image.
-	 * 
+	 *
 	 * @param width the width
 	 * @param height the height
 	 */
@@ -84,7 +81,7 @@ public class SVGPainter {
 
 	/**
 	 * Write the graphics to a SVG file.
-	 * 
+	 *
 	 * @param file the file to write to
 	 * @throws IOException if an error occurs writing the file
 	 */
@@ -99,7 +96,7 @@ public class SVGPainter {
 
 	/**
 	 * Write the SVG to a string.
-	 * 
+	 *
 	 * @return the SVG as string
 	 * @throws IOException if creating the string representation fails
 	 */
@@ -112,7 +109,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a geometry.
-	 * 
+	 *
 	 * @param geometry the geometry to draw
 	 */
 	public void drawGeometry(Geometry geometry) {
@@ -143,7 +140,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a line string.
-	 * 
+	 *
 	 * @param geometry the line string geometry
 	 */
 	public void drawLineString(LineString geometry) {
@@ -161,7 +158,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a line between two points.
-	 * 
+	 *
 	 * @param p1 the first point
 	 * @param p2 the second point
 	 */
@@ -175,7 +172,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a polygon.
-	 * 
+	 *
 	 * @param geometry the polygon geometry
 	 */
 	public void drawPolygon(Polygon geometry) {
@@ -216,7 +213,7 @@ public class SVGPainter {
 
 	/**
 	 * Get the internal graphics object for direct interaction.
-	 * 
+	 *
 	 * @return the internal graphics object
 	 */
 	public Graphics2D getGraphics2D() {
@@ -225,7 +222,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a point.
-	 * 
+	 *
 	 * @param point the point geometry
 	 */
 	public void drawPoint(Point point) {
@@ -234,7 +231,7 @@ public class SVGPainter {
 
 	/**
 	 * Draw a point.
-	 * 
+	 *
 	 * @param coord the point coordinates
 	 */
 	public void drawPoint(Coordinate coord) {
@@ -247,7 +244,7 @@ public class SVGPainter {
 	/**
 	 * Set the drawing color. Convenience method that delegates the call to the
 	 * internal graphics object.
-	 * 
+	 *
 	 * @param color the color to set
 	 */
 	public void setColor(Color color) {
@@ -256,7 +253,7 @@ public class SVGPainter {
 
 	/**
 	 * Set the stroke width.
-	 * 
+	 *
 	 * @param width the stroke width to set
 	 */
 	public void setStroke(float width) {

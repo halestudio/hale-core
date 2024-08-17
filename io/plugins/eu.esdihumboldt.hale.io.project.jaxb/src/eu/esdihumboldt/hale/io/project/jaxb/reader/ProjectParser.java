@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.project.jaxb.reader;
 
 import java.io.File;
@@ -66,7 +62,7 @@ import jakarta.xml.bind.helpers.DefaultValidationEventHandler;
 /**
  * The project parser reads a given project XML file and populates a
  * {@link Project} instance accordingly.
- * 
+ *
  * @author Thorsten Reitz
  * @author Simon Templer
  */
@@ -457,7 +453,7 @@ public class ProjectParser extends AbstractImportProvider implements ProjectRead
 
 	/**
 	 * Load tasks from the given project.
-	 * 
+	 *
 	 * @param haleProject the project
 	 * @param basePath the base path
 	 */
@@ -509,10 +505,10 @@ public class ProjectParser extends AbstractImportProvider implements ProjectRead
 
 	/**
 	 * Get the location
-	 * 
+	 *
 	 * @param file the file path/URI
 	 * @param basePath the possible base path
-	 * 
+	 *
 	 * @return the file location
 	 */
 	private URI getLocation(String file, String basePath) {
@@ -535,10 +531,10 @@ public class ProjectParser extends AbstractImportProvider implements ProjectRead
 
 	/**
 	 * Get the file location
-	 * 
+	 *
 	 * @param file the file path (absolute or relative)
 	 * @param basePath the possible base path
-	 * 
+	 *
 	 * @return the file location
 	 */
 	private URI getFileLocation(String file, String basePath) {

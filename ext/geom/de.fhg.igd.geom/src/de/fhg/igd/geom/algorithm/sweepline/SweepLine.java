@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -19,7 +19,7 @@ import de.fhg.igd.geom.shape.Line2D;
 
 /**
  * Contains a set of sweep-line segments.
- * 
+ *
  * @author Michel Kraemer
  */
 public class SweepLine {
@@ -54,7 +54,7 @@ public class SweepLine {
 
 	/**
 	 * Converts a Point2DEvent to a SweepLineSegment
-	 * 
+	 *
 	 * @param event the event to convert
 	 * @return the sweep line segment
 	 */
@@ -76,7 +76,7 @@ public class SweepLine {
 
 	/**
 	 * Adds a Point2DEvent to the sweep-line
-	 * 
+	 *
 	 * @param event the Point2DEvent
 	 * @return a sweep-line segment created to hold the Point2DEvent
 	 */
@@ -98,7 +98,7 @@ public class SweepLine {
 
 	/**
 	 * Gets the SweepLineSegment that represents the given Point2DEvent
-	 * 
+	 *
 	 * @param event the Point2DEvent
 	 * @return the SweepLineSegment
 	 */
@@ -113,7 +113,7 @@ public class SweepLine {
 
 	/**
 	 * Removes a SweepLineSegment from the SweepLine
-	 * 
+	 *
 	 * @param s the segment to remove
 	 * @return true if the segment was removed, false otherwise
 	 */
@@ -123,7 +123,7 @@ public class SweepLine {
 
 	/**
 	 * Gets the segment which is below the given one.
-	 * 
+	 *
 	 * @param s the given segment
 	 * @return the segment below s or null if there is no such segment
 	 */
@@ -137,7 +137,7 @@ public class SweepLine {
 
 	/**
 	 * Gets the segment which is above the given one.
-	 * 
+	 *
 	 * @param s the given segment
 	 * @return the segment above s or null if there is no such segment
 	 */

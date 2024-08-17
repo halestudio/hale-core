@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.visitor;
 
 import java.util.Deque;
@@ -38,7 +34,7 @@ import eu.esdihumboldt.util.CustomIdentifiers;
 /**
  * {@link TransformationTree} Visitor for generating parameters to create a
  * dot-graph from a tree
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class TreeToGraphVisitor extends AbstractTargetToSourceVisitor {
@@ -66,7 +62,7 @@ public class TreeToGraphVisitor extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * standard constructor
-	 * 
+	 *
 	 * @param functionService the service to resolve functions, may be
 	 *            <code>null</code>
 	 */
@@ -199,7 +195,7 @@ public class TreeToGraphVisitor extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * returns all collected node-connections from the tree
-	 * 
+	 *
 	 * @return a multi map with all connections
 	 */
 	public SetMultimap<String, String> getAllConnections() {
@@ -208,7 +204,7 @@ public class TreeToGraphVisitor extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * returns the identifiers of all collected nodes from the tree
-	 * 
+	 *
 	 * @return a set of identifiers
 	 */
 	public Set<String> getAllIds() {
@@ -217,7 +213,7 @@ public class TreeToGraphVisitor extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * returns a certain node through his identifier
-	 * 
+	 *
 	 * @param key the identifer
 	 * @return the transformation node
 	 */

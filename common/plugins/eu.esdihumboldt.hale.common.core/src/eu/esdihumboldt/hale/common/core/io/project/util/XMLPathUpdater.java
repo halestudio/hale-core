@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.util;
 
 import java.io.BufferedOutputStream;
@@ -63,7 +59,7 @@ import eu.esdihumboldt.util.io.IOUtils;
  * the referenced resources, copies them next to the given XML file (or a
  * sub-directory) and adapts the location value in the XML file. This process is
  * done recursively.
- * 
+ *
  * @author Patrick Lieb
  * @author Kai Schwierczek
  */
@@ -92,7 +88,7 @@ public class XMLPathUpdater {
 	 * 'C:/igd/hale/watercourse/schemas/feature.xsd'<br>
 	 * So feature.xsd is copied into 'C:/Local/Temp/1348138164029-0/watercourse/'
 	 * (or a sub-directory) and the import location in wfs_va.xsd will be adapted.
-	 * 
+	 *
 	 * @param xmlResource the XML resource file that gets updated
 	 * @param oldPath its original location, may be <code>null</code> in case it
 	 *            didn't exist before
@@ -112,7 +108,7 @@ public class XMLPathUpdater {
 
 	/**
 	 * Actual implementation of the update method.
-	 * 
+	 *
 	 * @param xmlResource the XML resource file that gets updated
 	 * @param oldPath its original location
 	 * @param locationXPath a XPath expression to find nodes that should be

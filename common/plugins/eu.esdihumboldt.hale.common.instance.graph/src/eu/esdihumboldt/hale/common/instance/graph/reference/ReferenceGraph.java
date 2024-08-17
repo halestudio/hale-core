@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.graph.reference;
 
 import java.util.ArrayList;
@@ -48,7 +45,7 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 
 /**
  * Graph with associations between instances.
- * 
+ *
  * @author Simon Templer
  * @param <T> the identifier type, must have a sensible equals implementation
  */
@@ -57,7 +54,7 @@ public class ReferenceGraph<T> {
 	/**
 	 * Custom tinker graph that allows fast access to a random contained vertex and
 	 * to the information if the graph has any vertices.
-	 * 
+	 *
 	 * This class was created because the call to {@link TinkerGraph#getVertices()}
 	 * is very expensive for large graphs.
 	 */
@@ -301,7 +298,7 @@ public class ReferenceGraph<T> {
 
 	/**
 	 * Create a new reference graph from the given instance collection.
-	 * 
+	 *
 	 * @param inspector the instance inspector to use
 	 * @param instances the
 	 * @param handleFirst the ID of the first instance to handle, optional and can
@@ -330,7 +327,7 @@ public class ReferenceGraph<T> {
 
 	/**
 	 * Populate the graph with the instances from the given collection.
-	 * 
+	 *
 	 * @param instances an instance collection
 	 */
 	protected void populate(InstanceCollection instances) {
@@ -344,7 +341,7 @@ public class ReferenceGraph<T> {
 
 	/**
 	 * Add an instance to the reference graph.
-	 * 
+	 *
 	 * @param instance the instance to add
 	 * @param ref the reference that can be used to retrieve the instance
 	 */
@@ -367,7 +364,7 @@ public class ReferenceGraph<T> {
 	/**
 	 * Partition the collected instances in parts that respectively contain all
 	 * referenced instances.
-	 * 
+	 *
 	 * @param maxObjects the guiding value for the maximum number of objects in a
 	 *            part
 	 * @param log the operation log
@@ -386,7 +383,7 @@ public class ReferenceGraph<T> {
 	/**
 	 * Partition the collected instances in parts that respectively contain all
 	 * referenced instances.
-	 * 
+	 *
 	 * @param maxObjects the guiding value for the maximum number of objects in a
 	 *            part
 	 * @return an iterator of instance collections, each instance collection

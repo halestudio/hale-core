@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.util;
 
 import java.io.File;
@@ -27,7 +24,7 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
  * Resolves the included base alignments, copies them next to the given
  * alignment (or a subdirectory) and adapts the include location in the
  * alignment.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class XMLAlignmentUpdater {
@@ -44,7 +41,7 @@ public class XMLAlignmentUpdater {
 	 * dependencies in it. The oldFile is the path of the alignment before it was
 	 * copied to its new directory (eg. temporary directory). The oldFile is left
 	 * untouched. Resource has to be a copy of oldFile.
-	 * 
+	 *
 	 * @see XMLSchemaUpdater#update(File, URI, boolean, IOReporter)
 	 * @see XMLPathUpdater#update(File, URI, String, boolean, IOReporter)
 	 * @param resource the file of the new resource (will be adapted)

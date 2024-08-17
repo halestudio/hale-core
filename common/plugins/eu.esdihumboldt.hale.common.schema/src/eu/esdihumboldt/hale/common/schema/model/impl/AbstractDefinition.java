@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.impl;
 
 import java.net.URI;
@@ -32,9 +28,9 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.DisplayName;
 
 /**
  * Basic definition implementation to be subclassed
- * 
+ *
  * @param <C> the supported constraint type
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractDefinition<C> implements Definition<C> {
@@ -62,7 +58,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	/**
 	 * Creates a new definition with the given name. Description and location are
 	 * not set.
-	 * 
+	 *
 	 * @param name the qualified definition name
 	 */
 	public AbstractDefinition(QName name) {
@@ -102,7 +98,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	 * <br>
 	 * This implementation returns <code>null</code>, as inheritance is not
 	 * supported generally for definitions.
-	 * 
+	 *
 	 * @param constraintType the constraint type
 	 * @return the inherited constraint or <code>null</code> if there is none or
 	 *         inheritance is not allowed
@@ -114,7 +110,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	/**
 	 * Determines if the constraint with the given type is set explicitly for the
 	 * definition.
-	 * 
+	 *
 	 * @param constraintType the constraint type
 	 * @return if the constraint is set explicitly
 	 */
@@ -126,7 +122,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 
 	/**
 	 * Set a constraint on the definition
-	 * 
+	 *
 	 * @param constraint the constraint to set
 	 */
 	@SuppressWarnings("unchecked")
@@ -140,7 +136,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 
 	/**
 	 * Set a constraint on the definition if none of the same type has been set yet.
-	 * 
+	 *
 	 * @param constraint the constraint to set
 	 */
 	@SuppressWarnings("unchecked")
@@ -158,7 +154,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 
 	/**
 	 * Set the definition description
-	 * 
+	 *
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -167,7 +163,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 
 	/**
 	 * Set the definition location
-	 * 
+	 *
 	 * @param location the location to set
 	 */
 	public void setLocation(URI location) {
@@ -185,7 +181,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 	/**
 	 * Returns the local part of the qualified name. Override to change this
 	 * behavior.
-	 * 
+	 *
 	 * @see Definition#getDisplayName()
 	 */
 	@Override
@@ -237,7 +233,7 @@ public abstract class AbstractDefinition<C> implements Definition<C> {
 
 	/**
 	 * Two definitions are equal if their name is equal (namespace and local part)
-	 * 
+	 *
 	 * @see Object#equals(Object)
 	 */
 	@Override

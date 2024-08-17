@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.paths.internal;
 
 import java.util.HashMap;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.util.groovy.paths.PathImpl;
 
 /**
  * Constraint that caches paths found by the {@link DefinitionResolver}.
- * 
+ *
  * @author Simon Templer
  */
 @Constraint(mutable = true)
@@ -48,7 +45,7 @@ public class CachedResolver implements TypeConstraint, GroupPropertyConstraint {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param def the definition the constraint is associated to
 	 */
 	public CachedResolver(Definition<?> def) {
@@ -62,7 +59,7 @@ public class CachedResolver implements TypeConstraint, GroupPropertyConstraint {
 
 	/**
 	 * Get the resolved paths for the given property name and namespace.
-	 * 
+	 *
 	 * @param name the property name
 	 * @param namespace the property namespace or <code>null</code> if the namespace
 	 *            should be ignored

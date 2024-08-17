@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect;
 
 import java.io.File;
@@ -27,7 +24,7 @@ import eu.esdihumboldt.hale.io.haleconnect.project.SharingOptions;
 
 /**
  * Facade for the hale connect microservices
- * 
+ *
  * @author Florian Esser
  */
 public interface HaleConnectService {
@@ -64,14 +61,14 @@ public interface HaleConnectService {
 
 	/**
 	 * Adds a listener
-	 * 
+	 *
 	 * @param listener the listener to add
 	 */
 	void addListener(HaleConnectServiceListener listener);
 
 	/**
 	 * Removes a listener
-	 * 
+	 *
 	 * @param listener the listener to remove
 	 */
 	void removeListener(HaleConnectServiceListener listener);
@@ -82,7 +79,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Login to hale connect
-	 * 
+	 *
 	 * @param username user name
 	 * @param password password
 	 * @return true, if the login attempt was successful, false otherwise
@@ -93,7 +90,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Verify that the given credentials are valid
-	 * 
+	 *
 	 * @param username user name
 	 * @param password password
 	 * @return true, if the credentials were accepted, false otherwise
@@ -124,7 +121,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Get the profile of a user.
-	 * 
+	 *
 	 * @param userId ID of the user
 	 * @return user profile
 	 * @throws HaleConnectException thrown on any API exception
@@ -133,7 +130,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Get information about an organisation
-	 * 
+	 *
 	 * @param orgId ID of the organisation
 	 * @return org profile
 	 * @throws HaleConnectException thrown on any API exception
@@ -142,7 +139,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Test if the currently logged on user has the specified permission
-	 * 
+	 *
 	 * @param resourceType The resource type to test, usually one of the
 	 *            <code>RESOURCE_</code> constants defined in
 	 *            {@link HaleConnectService}.
@@ -165,7 +162,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Get information on a project.
-	 * 
+	 *
 	 * @param owner Owner of the project
 	 * @param projectId ID of the project
 	 * @return Information on the specified project or null if the project does not
@@ -176,7 +173,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Get a list of available hale connect transformation projects
-	 * 
+	 *
 	 * @param contextOrganisation If provided, projects owned by the given
 	 *            organisation will be returned if the currently logged in user has
 	 *            sufficient permissions. If <code>null</code> is passed, projects
@@ -202,7 +199,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Load a transformation from hale connect
-	 * 
+	 *
 	 * @param owner Project owner
 	 * @param projectId Project ID
 	 * @return A LocatableInputSupplier with an InputStream of the project data
@@ -213,7 +210,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Create a new transformation project
-	 * 
+	 *
 	 * @param name Project name
 	 * @param author Project author
 	 * @param owner Project owner
@@ -226,7 +223,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Upload a project file
-	 * 
+	 *
 	 * @param projectId Transformation project ID
 	 * @param owner Project owner
 	 * @param file the file to upload
@@ -239,7 +236,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Upload a project asynchronously
-	 * 
+	 *
 	 * @param projectId Transformation project ID
 	 * @param owner Project owner
 	 * @param file the file to upload
@@ -253,7 +250,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Set the sharing options for a transformation project
-	 * 
+	 *
 	 * @param projectId Transformation project ID
 	 * @param owner Project owner
 	 * @param options the options to set
@@ -265,7 +262,7 @@ public interface HaleConnectService {
 
 	/**
 	 * Set the project name
-	 * 
+	 *
 	 * @param projectId Transformation project ID
 	 * @param owner Project owner
 	 * @param name Project name to set
@@ -277,7 +274,7 @@ public interface HaleConnectService {
 	/**
 	 * Test if the currently logged on user has the specified permission on a
 	 * transformation project
-	 * 
+	 *
 	 * @param permission the permission to test, usually one of the
 	 *            <code>PERMISSION_</code> constants defined in
 	 *            {@link HaleConnectService}.

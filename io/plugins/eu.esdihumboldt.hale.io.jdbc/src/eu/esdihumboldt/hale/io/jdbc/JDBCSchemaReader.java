@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import static eu.esdihumboldt.hale.io.jdbc.JDBCUtil.quote;
@@ -90,7 +86,7 @@ import schemacrawler.utility.SchemaCrawlerUtility;
 
 /**
  * Reads a database schema through JDBC.
- * 
+ *
  * @author Simon Templer
  */
 public class JDBCSchemaReader extends AbstractCachedSchemaReader
@@ -127,7 +123,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * To set useQuote parameter
-	 * 
+	 *
 	 * @param useQuote true or false value
 	 */
 	public void setUseQuotes(boolean useQuote) {
@@ -136,7 +132,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * To get Connection. Override this to load the customized connection
-	 * 
+	 *
 	 * @return Connection object after loading driver.
 	 * @throws SQLException if connection could not be made.
 	 */
@@ -341,7 +337,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * Get quoted value by deciding on isSchemaNameQuoted parameter.
-	 * 
+	 *
 	 * @param value String
 	 * @return quoted unqoted string
 	 */
@@ -355,7 +351,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 	/**
 	 * Gets or creates a property definition for the given column. Its type
 	 * definition is created, too, if necessary.
-	 * 
+	 *
 	 * @param schema the schema the table belongs to
 	 * @param tableType the type definition of the parent table this column belongs
 	 *            too
@@ -457,7 +453,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * Get or create the type definition for the given column.
-	 * 
+	 *
 	 * @param column the column
 	 * @param overallNamespace the database namespace
 	 * @param types the type index
@@ -545,11 +541,11 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 					/*
 					 * Special handling for arrays.
-					 * 
+					 *
 					 * Challenges:
-					 * 
+					 *
 					 * - find the type of contained items
-					 * 
+					 *
 					 * - determine dimensions and size
 					 */
 					Class<?> elementBinding;
@@ -583,7 +579,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 					/*
 					 * Postgres:
-					 * 
+					 *
 					 * Dimensions and size are not part of the schema, they can only be determined
 					 * for a value.
 					 */
@@ -646,7 +642,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * Get or create the type definition for the given table.
-	 * 
+	 *
 	 * @param schema the schema in which the table exists
 	 * @param table the table
 	 * @param overallNamespace the database namespace
@@ -732,7 +728,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * Get namespace of the referenced table
-	 * 
+	 *
 	 * @param referencedTable a {@link Table}
 	 * @param overallNamespace the database namespace
 	 * @return Namespace of referenced table

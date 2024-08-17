@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.xsd.reader.internal.constraint.validator;
 
 import eu.esdihumboldt.hale.common.instance.extension.validation.InstanceValidationContext;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.hale.io.xsd.reader.internal.constraint.XLinkReference;
 /**
  * Validator for {@link XLinkReference}. Checks if local references are
  * resolvable.
- * 
+ *
  * @author Simon Templer
  */
 public class XLinkReferenceValidator implements PropertyConstraintValidator {

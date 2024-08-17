@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.test.docker.config;
 
 import java.util.List;
@@ -21,7 +18,7 @@ import com.typesafe.config.Config;
 
 /**
  * Parameters related to docker
- * 
+ *
  * @author Sameer Sheikh
  */
 public interface ContainerParameters {
@@ -89,7 +86,7 @@ public interface ContainerParameters {
 
 	/**
 	 * This tells whether to start a container in privileged mode or not.
-	 * 
+	 *
 	 * @return is_Privileged flag value configured in the configuration file
 	 */
 	boolean isPrivileged();
@@ -97,7 +94,7 @@ public interface ContainerParameters {
 	/**
 	 * gets a string value from a config map which maps the config key with the
 	 * config value.
-	 * 
+	 *
 	 * @param key a configuration key
 	 * @return string value associated with the given key
 	 */
@@ -106,7 +103,7 @@ public interface ContainerParameters {
 	/**
 	 * gets a list values from a config map which maps the config key with the
 	 * config value.
-	 * 
+	 *
 	 * @param key a config key
 	 * @return list value associated with the given key
 	 */
@@ -115,7 +112,7 @@ public interface ContainerParameters {
 	/**
 	 * gets a boolean value from a config map which maps the config key with the
 	 * config value.
-	 * 
+	 *
 	 * @param key a config key
 	 * @param defaultValue a default value when no configuration is configured
 	 * @return boolean value associated with the given key
@@ -125,7 +122,7 @@ public interface ContainerParameters {
 	/**
 	 * gets a int value from a config map which maps the config key with the config
 	 * value.
-	 * 
+	 *
 	 * @param key a config key
 	 * @param defaultValue a default value when no configuration is configured
 	 * @return int value associated with the given key
@@ -134,7 +131,7 @@ public interface ContainerParameters {
 
 	/**
 	 * returns a config which maps configuration key path to a configuration value.
-	 * 
+	 *
 	 * @return a config
 	 */
 	public Config getConfig();

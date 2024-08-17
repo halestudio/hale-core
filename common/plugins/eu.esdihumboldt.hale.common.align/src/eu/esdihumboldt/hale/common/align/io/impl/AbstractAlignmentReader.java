@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl;
 
 import java.io.IOException;
@@ -38,7 +34,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Abstract alignment reader implementation
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractAlignmentReader extends AbstractImportProvider
@@ -59,7 +55,7 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider
 
 	/**
 	 * Get the source schema
-	 * 
+	 *
 	 * @return the source schema
 	 */
 	public TypeIndex getSourceSchema() {
@@ -76,7 +72,7 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider
 
 	/**
 	 * Get the target schema
-	 * 
+	 *
 	 * @return the target schema
 	 */
 	public TypeIndex getTargetSchema() {
@@ -91,7 +87,7 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider
 	/**
 	 * Load the alignment. Success or failure should be reported via the given
 	 * reporter.
-	 * 
+	 *
 	 * @param progress the progress indicator
 	 * @param reporter the reporter
 	 * @return the alignment or <code>null</code>
@@ -126,7 +122,7 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider
 
 	/**
 	 * Post process the alignment after loading.
-	 * 
+	 *
 	 * @param alignment the alignment to process
 	 * @return the processed alignment
 	 */
@@ -165,7 +161,7 @@ public abstract class AbstractAlignmentReader extends AbstractImportProvider
 
 	/**
 	 * Get the location updater
-	 * 
+	 *
 	 * @return the location updater
 	 */
 	public PathUpdate getPathUpdater() {

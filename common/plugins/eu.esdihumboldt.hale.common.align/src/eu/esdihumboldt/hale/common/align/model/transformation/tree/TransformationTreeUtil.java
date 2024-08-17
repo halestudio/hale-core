@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree;
 
 import java.util.Collection;
@@ -31,14 +27,14 @@ import eu.esdihumboldt.util.IdentityWrapper;
 
 /**
  * Transformation tree utilities.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class TransformationTreeUtil {
 
 	/**
 	 * Extract the definition or cell contained in a transformation node.
-	 * 
+	 *
 	 * @param node the node or other kind of object
 	 * @return the contained definition, cell or the node/object itself
 	 */
@@ -66,7 +62,7 @@ public abstract class TransformationTreeUtil {
 	/**
 	 * Determines if a cell is connected to a source node with eager source
 	 * parameters.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param source the source node
 	 * @param log the transformation log, may be <code>null</code>
@@ -90,7 +86,7 @@ public abstract class TransformationTreeUtil {
 	/**
 	 * Determines if a cell is connected to a source node with eager source
 	 * parameters.
-	 * 
+	 *
 	 * @param cell the cell node
 	 * @param source the source node
 	 * @param log the transformation log, may be <code>null</code>

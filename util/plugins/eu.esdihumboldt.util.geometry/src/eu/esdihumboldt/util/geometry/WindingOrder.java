@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.geometry;
 
 import org.locationtech.jts.algorithm.CGAlgorithms;
@@ -28,7 +25,7 @@ import org.opengis.referencing.cs.AxisDirection;
 
 /**
  * Winding order changer for Geometry objects.
- * 
+ *
  * @author Arun
  */
 public class WindingOrder {
@@ -37,7 +34,7 @@ public class WindingOrder {
 
 	/**
 	 * To determine axis of given CRS is flip or not
-	 * 
+	 *
 	 * @param crs the CRS
 	 * @return true, if CRS is flip, else false
 	 */
@@ -75,7 +72,7 @@ public class WindingOrder {
 
 	/**
 	 * Identifying order of Geometry object CounterClockwise or not?
-	 * 
+	 *
 	 * @param geometry Geometry object to identify order.
 	 * @return boolean value, true, if order is counterclockwise, else false if
 	 *         order is clockwise.
@@ -101,7 +98,7 @@ public class WindingOrder {
 	/**
 	 * Unify Winding order of Geometry object( including Polygon, Multipolygon,
 	 * LinearRing) as CounterClockwise or Clockwise.
-	 * 
+	 *
 	 * @param geometry Geometry object for unifying.
 	 * @param counterClockWise true, if unify geometry counterClockwise else false.
 	 * @param crs Coordinate Reference System
@@ -141,7 +138,7 @@ public class WindingOrder {
 
 	/**
 	 * Unify order for LinearRing as CounterClockwise or Clockwise.
-	 * 
+	 *
 	 * @param linearRing LinearRing object for unifying
 	 * @param counterClockWise boolean value. true, if want geometry as counter
 	 *            clock wise, else false.
@@ -160,7 +157,7 @@ public class WindingOrder {
 	/**
 	 * Unify order of the polygon as counterClockwise or not including all its
 	 * holes.
-	 * 
+	 *
 	 * @param poly Polygon object for unifying
 	 * @param counterClockWise boolean value. true, if want shell of Polygon as
 	 *            counter clock wise and holes as clockwise, else false.
@@ -194,7 +191,7 @@ public class WindingOrder {
 
 	/**
 	 * Unify order of the Multipolygon including all polygons and holes in it.
-	 * 
+	 *
 	 * @param multiPoly Multipolygon object for unifying it.
 	 * @param counterClockWise boolean value. true, if want shell of multipolygon as
 	 *            counter clock wise and holes as clockwise, else false.
@@ -218,7 +215,7 @@ public class WindingOrder {
 
 	/**
 	 * Unify order of the GeometryCollection including all Geometries in it.
-	 * 
+	 *
 	 * @param geoCollection GeometryCollection object for unifying.
 	 * @param counterClockWise boolean value. true, if want all geometry object * as
 	 *            counter clock wise, else false.

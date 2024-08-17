@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.schematron.validator;
 
 import java.io.IOException;
@@ -24,9 +36,9 @@ import eu.esdihumboldt.hale.io.validation.ConfigurableInstanceValidator;
 import eu.esdihumboldt.hale.io.validation.ValidatorConfiguration;
 
 /***
- * 
+ *
  * Validator for ISO Schematron
- * 
+ *
  * @author Florian Esser
  */
 public class SchematronInstanceValidator extends AbstractInstanceValidator
@@ -44,7 +56,7 @@ public class SchematronInstanceValidator extends AbstractInstanceValidator
 
 	/**
 	 * Set the location of the schematron rules definition to use for validation.
-	 * 
+	 *
 	 * @param location the schematron location
 	 */
 	public void setSchematronLocation(URI location) {
@@ -142,7 +154,7 @@ public class SchematronInstanceValidator extends AbstractInstanceValidator
 	/**
 	 * Checks if the validator is properly configured. This method does not call
 	 * <code>validate()</code> from {@link AbstractInstanceValidator}.
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.common.instance.io.impl.AbstractInstanceValidator#validate()
 	 */
 	@Override

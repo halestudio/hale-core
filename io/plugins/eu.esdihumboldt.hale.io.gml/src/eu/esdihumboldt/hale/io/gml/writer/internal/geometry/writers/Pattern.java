@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry.writers;
 
 import java.util.ArrayList;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.geometry.DefinitionPath;
 
 /**
  * Represents a pattern for matching an abstract path
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -78,7 +74,7 @@ public class Pattern {
 
 		/**
 		 * Constructor
-		 * 
+		 *
 		 * @param type the element type
 		 * @param name the element name
 		 */
@@ -121,9 +117,9 @@ public class Pattern {
 	 * element name. An XML element name may also include a namespace, the namespace
 	 * must be wrapped by quotes (<code>"</code>). If no namespace is specified the
 	 * GML namespace is assumed.
-	 * 
+	 *
 	 * @param pattern the pattern string
-	 * 
+	 *
 	 * @return the parsed pattern
 	 */
 	public static Pattern parse(String pattern) {
@@ -193,9 +189,9 @@ public class Pattern {
 	/**
 	 * Create a pattern that combines multiple patterns with a logical OR. When
 	 * matching, the path of the first pattern that matches is returned.
-	 * 
+	 *
 	 * @param patterns the sub-patterns
-	 * 
+	 *
 	 * @return the OR pattern
 	 */
 	public static Pattern or(Pattern... patterns) {
@@ -206,9 +202,9 @@ public class Pattern {
 	 * Create a pattern that combines multiple patterns with a logical AND. When
 	 * matching, all patterns must match and the path of the first pattern is
 	 * returned.
-	 * 
+	 *
 	 * @param patterns the sub-patterns
-	 * 
+	 *
 	 * @return the AND pattern
 	 */
 	public static Pattern and(Pattern... patterns) {
@@ -225,7 +221,7 @@ public class Pattern {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param type the pattern type
 	 * @param patternString the pattern string
 	 * @param elements the pattern elements
@@ -243,11 +239,11 @@ public class Pattern {
 
 	/**
 	 * Matches the type against the encoding pattern.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param path the definition path
 	 * @param gmlNs the GML namespace
-	 * 
+	 *
 	 * @return the new path if there is a match, <code>null</code> otherwise
 	 */
 	public DefinitionPath match(TypeDefinition type, DefinitionPath path, String gmlNs) {
@@ -286,14 +282,14 @@ public class Pattern {
 
 	/**
 	 * Matches the type against the encoding pattern.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param path the definition path
 	 * @param gmlNs the GML namespace
 	 * @param checkedTypes the type definitions that have already been checked (to
 	 *            prevent cycles)
 	 * @param remainingElements the remaining elements to match
-	 * 
+	 *
 	 * @return the new path if there is a match, <code>null</code> otherwise
 	 */
 	private static DefinitionPath match(TypeDefinition type, DefinitionPath path, String gmlNs,
@@ -393,12 +389,12 @@ public class Pattern {
 			// XXX sub-type must work through parent choice
 //			for (SchemaElement element : type.getSubstitutions(path.getLastName())) {
 //				DefinitionPath candidate = match(
-//						element.getType(), 
-//						new DefinitionPath(path).addSubstitution(element), 
-//						gmlNs, 
-//						new HashSet<TypeDefinition>(checkedTypes), 
+//						element.getType(),
+//						new DefinitionPath(path).addSubstitution(element),
+//						gmlNs,
+//						new HashSet<TypeDefinition>(checkedTypes),
 //						new ArrayList<PatternElement>(remainingElements));
-//				
+//
 //				if (candidate != null) {
 //					return candidate;
 //				}
@@ -433,7 +429,7 @@ public class Pattern {
 
 	/**
 	 * Determines if the pattern is valid.
-	 * 
+	 *
 	 * @return if the pattern is valid
 	 */
 	public boolean isValid() {
@@ -442,7 +438,7 @@ public class Pattern {
 //				return true;
 //			}
 //		}
-//		
+//
 //		return false;
 		// XXX for now assume any pattern is valid
 		return true;

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.tasks;
 
 import java.util.List;
@@ -25,7 +21,7 @@ import eu.esdihumboldt.hale.common.tasks.TaskUserData.TaskStatus;
 /**
  * Task decorator that provides convenience methods for accessing the task type
  * information
- * 
+ *
  * @param <C> The type of the context object
  *
  * @author Simon Templer
@@ -40,7 +36,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Create a resolved task
-	 * 
+	 *
 	 * @param task the task
 	 * @param userData the task user data, may be <code>null</code>
 	 */
@@ -55,11 +51,11 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Resolve a task
-	 * 
+	 *
 	 * @param registry the task type registry
 	 * @param task the task to be resolved
 	 * @param userData the task user data, may be <code>null</code>
-	 * 
+	 *
 	 * @return the resolved task or <code>null</code> if the task type could not be
 	 *         resolved
 	 */
@@ -102,7 +98,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the task status
-	 * 
+	 *
 	 * @return the task status
 	 */
 	public TaskStatus getTaskStatus() {
@@ -116,7 +112,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the user comment
-	 * 
+	 *
 	 * @return the user comment or <code>null</code>
 	 */
 	public String getUserComment() {
@@ -135,7 +131,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * The task factory that provides tasks of this type
-	 * 
+	 *
 	 * @return the task factory
 	 */
 	public TaskFactory<C> getTaskFactory() {
@@ -144,9 +140,9 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the severity level
-	 * 
+	 *
 	 * @see TaskType#getSeverityLevel(Task)
-	 * 
+	 *
 	 * @return the severity level of the task
 	 */
 	public TaskSeverity getSeverityLevel() {
@@ -155,9 +151,9 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the creation reason
-	 * 
+	 *
 	 * @see TaskType#getReason(Task)
-	 * 
+	 *
 	 * @return the task's creation reason
 	 */
 	public String getReason() {
@@ -166,9 +162,9 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the task title
-	 * 
+	 *
 	 * @see TaskType#getTitle(Task)
-	 * 
+	 *
 	 * @return the task title
 	 */
 	public String getTitle() {
@@ -177,7 +173,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Get the task type
-	 * 
+	 *
 	 * @return the task type
 	 */
 	public TaskType<C> getType() {
@@ -208,7 +204,7 @@ public class ResolvedTask<C> implements Task<C> {
 
 	/**
 	 * Determines if this is an open task
-	 * 
+	 *
 	 * @return if this is an open task
 	 */
 	public boolean isOpen() {

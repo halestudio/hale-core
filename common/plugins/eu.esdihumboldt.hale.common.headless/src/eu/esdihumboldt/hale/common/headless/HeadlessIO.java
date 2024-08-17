@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless;
 
 import java.io.IOException;
@@ -43,7 +40,7 @@ import eu.esdihumboldt.hale.common.headless.impl.ProjectTransformationEnvironmen
 
 /**
  * Utilities for headless execution of I/O configurations and providers.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class HeadlessIO {
@@ -54,7 +51,7 @@ public abstract class HeadlessIO {
 	/**
 	 * Execute a set of I/O configurations. Configurations for which no advisor is
 	 * provided are ignored.
-	 * 
+	 *
 	 * @param configurations the I/O configurations
 	 * @param advisors map of advisors, action ID mapped to responsible advisor
 	 * @param reportHandler the report handler, may be <code>null</code>
@@ -89,7 +86,7 @@ public abstract class HeadlessIO {
 	 * Execute a single I/O configuration. If no matching advisor is given for the
 	 * configuration, first the extension point is queried for an advisor, if not
 	 * found it is ignored.
-	 * 
+	 *
 	 * @param conf the I/O configuration
 	 * @param advisors map of advisors, action ID mapped to responsible advisor
 	 * @param reportHandler the report handler, may be <code>null</code>
@@ -161,7 +158,7 @@ public abstract class HeadlessIO {
 
 	/**
 	 * Load and configure the I/O provider specified by the given I/O configuration.
-	 * 
+	 *
 	 * @param conf the I/O configuration
 	 * @return the provider or <code>null</code> if it was not found or could not be
 	 *         created
@@ -189,7 +186,7 @@ public abstract class HeadlessIO {
 
 	/**
 	 * Execute the given I/O provider with the given I/O advisor.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 * @param advisor the I/O advisor
 	 * @param progress the progress indicator, may be <code>null</code>

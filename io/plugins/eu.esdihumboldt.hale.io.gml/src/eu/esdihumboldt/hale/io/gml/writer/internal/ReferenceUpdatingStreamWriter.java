@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import javax.xml.namespace.QName;
@@ -25,7 +22,7 @@ import org.springframework.util.StringUtils;
  * Prefix-aware stream writer that updates local links in a specified attribute.
  * If the attribute is not explicitly named, all attributes with the local part
  * <code>"href"</code> will be updated.
- * 
+ *
  * @author Florian Esser
  */
 public class ReferenceUpdatingStreamWriter extends PrefixAwareStreamWriterDecorator {
@@ -35,7 +32,7 @@ public class ReferenceUpdatingStreamWriter extends PrefixAwareStreamWriterDecora
 
 	/**
 	 * Create the writer.
-	 * 
+	 *
 	 * @param decoratee Writer to decorate
 	 * @param updater Reference updater to use
 	 */
@@ -49,7 +46,7 @@ public class ReferenceUpdatingStreamWriter extends PrefixAwareStreamWriterDecora
 	 * Create the writer that updates the specified attribute. If the attribute to
 	 * update contains only a local part (i.e. no prefix and namespace are
 	 * specified), all attributes with that local part will be updated.
-	 * 
+	 *
 	 * @param decoratee Writer to decorate
 	 * @param updater Reference updater to use
 	 * @param attributeToUpdate The attribute to update.

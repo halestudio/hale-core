@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
  *
@@ -8,9 +9,6 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- *
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
 package eu.esdihumboldt.hale.io.json.internal
 
@@ -43,7 +41,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag
 
 /**
  * Instance builder for Json/GeoJson.
- * 
+ *
  * @author Simon Templer
  */
 class JsonInstanceBuilder {
@@ -58,7 +56,7 @@ class JsonInstanceBuilder {
 
 	/**
 	 * Default constructor.
-	 * @param namespaces 
+	 * @param namespaces
 	 */
 	public JsonInstanceBuilder(SimpleLog log, NamespaceManager namespaces, CRSDefinition defaultCrs) {
 		super();

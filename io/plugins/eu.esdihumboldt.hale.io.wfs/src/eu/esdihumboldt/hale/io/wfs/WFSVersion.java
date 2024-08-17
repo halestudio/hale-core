@@ -1,25 +1,22 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.wfs;
 
 import java.net.URI;
 
 /**
  * Enumeration of (supported) WFS versions.
- * 
+ *
  * @author Simon Templer
  */
 public enum WFSVersion {
@@ -60,7 +57,7 @@ public enum WFSVersion {
 
 	/**
 	 * Derive a WFS version from a version string.
-	 * 
+	 *
 	 * @param version the version string
 	 * @param defVersion the default version to return if it cannot be determined
 	 *            from the given string

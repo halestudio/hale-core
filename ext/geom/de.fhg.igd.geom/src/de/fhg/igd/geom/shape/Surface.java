@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -25,7 +25,7 @@ import de.fhg.igd.geom.util.BlochHashCode;
  * This class is equal to the OGC simple feature spec's Surface class, that is,
  * it describes a 2D feature that has one exterior ring and n interior rings
  * (holes). Each ring is a Polygon.
- * 
+ *
  * @author Thorsten Reitz
  */
 public class Surface extends Shape {
@@ -55,7 +55,7 @@ public class Surface extends Shape {
 
 	/**
 	 * Constructs a surface that has only a exterior boundary
-	 * 
+	 *
 	 * @param exterior_boundary the exterior boundary of the new surface
 	 */
 	public Surface(Polygon exterior_boundary) {
@@ -65,7 +65,7 @@ public class Surface extends Shape {
 
 	/**
 	 * Full constructor. You are encouraged to use this one.
-	 * 
+	 *
 	 * @param exterior_boundary the exterior boundary polygon
 	 * @param interior_boundaries the interior polygons (holes)
 	 */
@@ -80,7 +80,7 @@ public class Surface extends Shape {
 	/**
 	 * This method will return this Surface as an array of java.AWT.Polygons, so
 	 * that they can be printed on images.
-	 * 
+	 *
 	 * @param scale_x the scale factor in x direction
 	 * @param scale_y the scale factor in y direction
 	 * @param offset the offset to add to the points
@@ -139,7 +139,7 @@ public class Surface extends Shape {
 	 * <li>if IDs have been set, ID equivalence</li>
 	 * <li>if no IDs have been set, check if all Polygons are equal.</li>
 	 * </ol>
-	 * 
+	 *
 	 * @param o the object to check
 	 * @return true if the tests pass, false otherwise
 	 */

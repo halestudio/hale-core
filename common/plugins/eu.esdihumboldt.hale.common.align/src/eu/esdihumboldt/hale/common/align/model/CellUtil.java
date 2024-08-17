@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model;
 
 import java.util.Collection;
@@ -32,7 +28,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Cell related utility methods.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class CellUtil {
@@ -40,7 +36,7 @@ public abstract class CellUtil {
 	/**
 	 * Get the first entity from the given entities map (as contained e.g. as source
 	 * or target in a cell).
-	 * 
+	 *
 	 * @param entities the entities map
 	 * @return first entity or <code>null</code> if there is none
 	 */
@@ -53,7 +49,7 @@ public abstract class CellUtil {
 
 	/**
 	 * Get the first parameter with the given name in the given cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param parameterName the parameter name
 	 * @return the parameter value or a parameter value representing
@@ -77,7 +73,7 @@ public abstract class CellUtil {
 
 	/**
 	 * Get the first parameter with the given name in the given cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param parameterName the parameter name
 	 * @param defaultValue the default value to return if the parameter is not
@@ -100,7 +96,7 @@ public abstract class CellUtil {
 
 	/**
 	 * Get a short description of a cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param serviceProvider the service provider for retrieving the function
 	 *            service, may be <code>null</code>
@@ -145,7 +141,7 @@ public abstract class CellUtil {
 
 	/**
 	 * Get the default documentation entry of a cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @return the cell notes or <code>null</code>
 	 */
@@ -161,7 +157,7 @@ public abstract class CellUtil {
 
 	/**
 	 * Set the default documentation entry of a cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param notes the cell notes
 	 */

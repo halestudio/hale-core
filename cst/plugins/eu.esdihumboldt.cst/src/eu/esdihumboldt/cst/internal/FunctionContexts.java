@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.internal;
 
 import java.util.Collections;
@@ -24,7 +21,7 @@ import eu.esdihumboldt.hale.common.align.model.Cell;
 /**
  * Function contexts used by {@link TransformationContext} and
  * {@link ExecutionContextImpl}.
- * 
+ *
  * @author Kai
  */
 public class FunctionContexts {
@@ -35,10 +32,10 @@ public class FunctionContexts {
 	 * Returns a function context for the function of the specified cell.
 	 * Convenience method for
 	 * <code>getFunctionContext(cell.getTransformationIdentifier())</code>.
-	 * 
+	 *
 	 * When invoking multiple operations on the context map, make sure to use
 	 * synchronization if appropriate.
-	 * 
+	 *
 	 * @param cell the cell for which to acquire a function context
 	 * @return the function context associated with the given cell
 	 */
@@ -48,10 +45,10 @@ public class FunctionContexts {
 
 	/**
 	 * Returns a function context for the specified function id.
-	 * 
+	 *
 	 * When invoking multiple operations on the context map, make sure to use
 	 * synchronization if appropriate.
-	 * 
+	 *
 	 * @param functionId the function id for which to acquire a function context
 	 * @return the function context associated with the id
 	 */

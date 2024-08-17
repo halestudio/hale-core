@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io;
 
 import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
@@ -22,23 +18,23 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
  * Advises in the configuration of an {@link IOProvider} in a certain context
  * (e.g. the UI services) and integrates the execution results into this
  * context.
- * 
+ *
  * @param <T> the I/O provider type supported
- * 
+ *
  * @author Simon Templer
  */
 public interface IOAdvisor<T extends IOProvider> {
 
 	/**
 	 * Get the identifier of the corresponding action.
-	 * 
+	 *
 	 * @return the action ID
 	 */
 	public String getActionId();
 
 	/**
 	 * Set the identifier of the action the advisor is associated to.
-	 * 
+	 *
 	 * @param actionId the action identifier
 	 */
 	public void setActionId(String actionId);
@@ -49,7 +45,7 @@ public interface IOAdvisor<T extends IOProvider> {
 	 * {@link #prepareProvider(IOProvider)},
 	 * {@link #updateConfiguration(IOProvider)} or
 	 * {@link #handleResults(IOProvider)} is called
-	 * 
+	 *
 	 * @param serviceProvider the service provider
 	 */
 	public void setServiceProvider(ServiceProvider serviceProvider);
@@ -60,21 +56,21 @@ public interface IOAdvisor<T extends IOProvider> {
 	 * <br>
 	 * This for instance allows configuration pages on IOWizards to base on this
 	 * preparation.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 */
 	public void prepareProvider(T provider);
 
 	/**
 	 * Update the provider configuration directly before the execution.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 */
 	public void updateConfiguration(T provider);
 
 	/**
 	 * Process the results after the execution.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 */
 	public void handleResults(T provider);

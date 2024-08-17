@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry;
 
 import java.util.ArrayList;
@@ -31,9 +27,9 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.GmlWriterUtil;
 
 /**
  * Abstract type matcher. Finds candidates matching a custom parameter.
- * 
+ *
  * @param <T> the match parameter type
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -50,7 +46,7 @@ public abstract class AbstractTypeMatcher<T> {
 
 		/**
 		 * Constructor
-		 * 
+		 *
 		 * @param type the associated type
 		 * @param path the definition path
 		 * @param checkedTypes the type definitions that have already been checked (to
@@ -88,12 +84,12 @@ public abstract class AbstractTypeMatcher<T> {
 
 	/**
 	 * Find candidates for a possible path
-	 * 
+	 *
 	 * @param elementType the start element type
 	 * @param elementName the start element name
 	 * @param unique if the start element cannot be repeated
 	 * @param matchParam the match parameter
-	 * 
+	 *
 	 * @return the path candidates
 	 */
 	public List<DefinitionPath> findCandidates(TypeDefinition elementType, QName elementName,
@@ -103,13 +99,13 @@ public abstract class AbstractTypeMatcher<T> {
 
 	/**
 	 * Find candidates for a possible path
-	 * 
+	 *
 	 * @param elementType the start element type
 	 * @param elementName the start element name
 	 * @param unique if the start element cannot be repeated
 	 * @param matchParam the match parameter
 	 * @param maxDepth the maximum depth that is allowed for paths
-	 * 
+	 *
 	 * @return the path candidates
 	 */
 	public List<DefinitionPath> findCandidates(TypeDefinition elementType, QName elementName,
@@ -221,11 +217,11 @@ public abstract class AbstractTypeMatcher<T> {
 
 	/**
 	 * Determines if a type definition is compatible with the match parameter
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param matchParam the match parameter
 	 * @param path the current definition path
-	 * 
+	 *
 	 * @return the (eventually updated) definition path if a match is found,
 	 *         otherwise <code>null</code>
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.scripting;
 
 import javax.script.ScriptException;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Interface for the scripting extension.
- * 
+ *
  * @author Kai Schwierczek
  */
 public interface Script {
@@ -33,7 +29,7 @@ public interface Script {
 
 	/**
 	 * Evaluates the given script with the given variables.
-	 * 
+	 *
 	 * @param script the script to use
 	 * @param variables the variables to use
 	 * @param provider the service provider
@@ -45,7 +41,7 @@ public interface Script {
 
 	/**
 	 * Validates the given script against the given variables
-	 * 
+	 *
 	 * @param script the script to validate
 	 * @param variables the variables to use
 	 * @param provider the service provider
@@ -57,7 +53,7 @@ public interface Script {
 	/**
 	 * Returns the string representation of the given entity definition this script
 	 * is using.
-	 * 
+	 *
 	 * @param entityDefinition the entity definition
 	 * @return the string representation of the entity definition
 	 */
@@ -65,7 +61,7 @@ public interface Script {
 
 	/**
 	 * Returns the script id.
-	 * 
+	 *
 	 * @return the script id
 	 */
 	public String getId();
@@ -73,7 +69,7 @@ public interface Script {
 	/**
 	 * States if transformation variables should be replaced in the script string,
 	 * before it is passed to evaluation.
-	 * 
+	 *
 	 * @return <code>true</code> if the script expects transformation variables to
 	 *         be already replaced when evaluating it, <code>false</code> if
 	 *         transformation variables are handled by the script or not supported

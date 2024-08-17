@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.impl;
 
 import eu.esdihumboldt.hale.common.core.io.CachingImportProvider;
@@ -23,9 +19,9 @@ import eu.esdihumboldt.hale.common.core.io.project.model.IOConfiguration;
 /**
  * I/O advisor based on configuration in an existing {@link IOConfiguration}.
  * Subclasses should at least override {@link #handleResults(IOProvider)}.
- * 
+ *
  * @param <T> the I/O provider type
- * 
+ *
  * @author Simon Templer
  */
 public class ConfigurationIOAdvisor<T extends IOProvider> extends AbstractIOAdvisor<T> {
@@ -42,7 +38,7 @@ public class ConfigurationIOAdvisor<T extends IOProvider> extends AbstractIOAdvi
 
 	/**
 	 * Create an I/O advisor based on the given I/O configuration.
-	 * 
+	 *
 	 * @param conf the I/O configuration
 	 */
 	public ConfigurationIOAdvisor(IOConfiguration conf) {
@@ -52,7 +48,7 @@ public class ConfigurationIOAdvisor<T extends IOProvider> extends AbstractIOAdvi
 
 	/**
 	 * Set the I/O configuration to use for provider configuration.
-	 * 
+	 *
 	 * @param conf the I/O configuration
 	 */
 	public void setConfiguration(IOConfiguration conf) {

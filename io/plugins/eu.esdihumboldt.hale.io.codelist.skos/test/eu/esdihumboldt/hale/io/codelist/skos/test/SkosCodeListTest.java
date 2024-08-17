@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.codelist.skos.test;
 
 import static org.junit.Assert.assertEquals;
@@ -22,9 +34,9 @@ import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
 import eu.esdihumboldt.hale.io.codelist.skos.reader.SkosCodeListReader;
 
 /**
- * 
+ *
  * SKOS Code list reader test
- * 
+ *
  * @author Arun
  *
  */
@@ -32,7 +44,7 @@ public class SkosCodeListTest {
 
 	/**
 	 * test rdf file consisting only concepts
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -55,7 +67,7 @@ public class SkosCodeListTest {
 
 	/**
 	 * test rdf file consisting concept scheme and concepts
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -82,9 +94,9 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test url saved as xml consisting concepts (case: fallback).
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -111,9 +123,9 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language.
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -139,9 +151,9 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language.
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -169,10 +181,10 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language, as "de" not available, it
 	 * will load "en" by default
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -200,9 +212,9 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language (fallback).
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -226,9 +238,9 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language (fallback).
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test
@@ -254,10 +266,10 @@ public class SkosCodeListTest {
 	}
 
 	/**
-	 * 
+	 *
 	 * test read SKOS properties in preferred language (fallback). As "de" not
 	 * available, it will load "en" by default
-	 * 
+	 *
 	 * @throws Exception throws exception if something wrong occurs
 	 */
 	@Test

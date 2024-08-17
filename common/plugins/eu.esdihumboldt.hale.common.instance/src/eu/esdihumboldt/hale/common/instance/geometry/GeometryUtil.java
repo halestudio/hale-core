@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.geometry;
 
 import java.util.ArrayList;
@@ -33,14 +29,14 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 
 /**
  * TODO Type description
- * 
+ *
  * @author Simon Templer
  */
 public class GeometryUtil {
 
 	/**
 	 * Get all geometries of an instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @return the geometries or an empty collection if there are none
 	 */
@@ -50,7 +46,7 @@ public class GeometryUtil {
 
 	/**
 	 * Get the default geometry of an instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @param path the property path to start the search at, a <code>null</code>
 	 *            will yield no geometries
@@ -144,7 +140,7 @@ public class GeometryUtil {
 
 	/**
 	 * Try to get/create geometry properties from a property value.
-	 * 
+	 *
 	 * @param value the property value, e.g. a {@link Geometry},
 	 *            {@link GeometryProperty}, a {@link Collection} or {@link Instance}
 	 * @return the geometry properties or an empty list if none could be created

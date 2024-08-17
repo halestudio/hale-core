@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.impl;
 
 import java.util.ArrayList;
@@ -30,9 +26,9 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 
 /**
  * Former default report implementation
- * 
+ *
  * @param <T> the message type
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.5
@@ -68,7 +64,7 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	 * Create an empty report. It is set to not successful by default. But you
 	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
 	 * after the task has finished.
-	 * 
+	 *
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
 	 * @param messageType the message type
@@ -86,7 +82,7 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	 * Create an empty report. It is set to not successful by default. But you
 	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
 	 * after the task has finished.
-	 * 
+	 *
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
 	 * @param messageType the message type
@@ -101,7 +97,7 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	/**
 	 * Adds a warning to the report. If configured accordingly a log message will
 	 * also be created.
-	 * 
+	 *
 	 * @param message the warning message
 	 */
 	@Override
@@ -116,7 +112,7 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	/**
 	 * Adds an error to the report. If configured accordingly a log message will
 	 * also be created.
-	 * 
+	 *
 	 * @param message the error message
 	 */
 	@Override
@@ -167,7 +163,7 @@ public class AllInMemoryReporter<T extends Message> extends AbstractReporter<T> 
 	/**
 	 * Add all messages of the given report to this report. This method will never
 	 * log the messages (because the original report may have logged them already.
-	 * 
+	 *
 	 * @see ReportLog#importMessages(Report)
 	 */
 	@Override

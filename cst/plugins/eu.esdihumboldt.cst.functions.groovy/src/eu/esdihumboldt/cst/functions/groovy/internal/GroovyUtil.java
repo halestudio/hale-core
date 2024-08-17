@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.internal;
 
 import java.security.MessageDigest;
@@ -60,7 +57,7 @@ import jakarta.xml.bind.DatatypeConverter;
 
 /**
  * Groovy function utilities.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -86,7 +83,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Get the script string.
-	 * 
+	 *
 	 * @param function the transformation function the script is associated to
 	 * @return the script string
 	 * @throws TransformationException if getting the script parameter from the
@@ -110,7 +107,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Get the compiled script.
-	 * 
+	 *
 	 * @param function the transformation function the script is associated to
 	 * @param binding the binding to set on the script
 	 * @param service the Groovy service
@@ -125,7 +122,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Get the compiled script.
-	 * 
+	 *
 	 * @param function the transformation function the script is associated to
 	 * @param binding the binding to set on the script
 	 * @param service the Groovy service
@@ -162,7 +159,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Evaluate a Groovy type script.
-	 * 
+	 *
 	 * @param script the script
 	 * @param builder the instance builder
 	 * @param type the type of the instance to create
@@ -198,7 +195,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Evaluate a Groovy type script.
-	 * 
+	 *
 	 * @param script the script
 	 * @param builder the instance builder
 	 * @param type the type of the instance to create
@@ -249,7 +246,7 @@ public class GroovyUtil implements GroovyConstants {
 
 	/**
 	 * Creates a basic binding used by all Groovy functions.
-	 * 
+	 *
 	 * @param builder the instance builder, may be <code>null</code>
 	 * @param cell the cell of the function
 	 * @param typeCell the type cell the function works on, may be <code>null</code>

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.context.impl;
 
 import java.util.Collection;
@@ -29,10 +26,10 @@ import com.google.common.collect.Multiset;
 /**
  * Experimental implementation of a multimap where values are stored in an
  * identity based set/map.
- * 
+ *
  * This implementation is not complete and may not adhere to all clauses of the
  * {@link Multimap} contract.
- * 
+ *
  * @author Simon Templer
  * @param <K> the key type
  * @param <V> the value type

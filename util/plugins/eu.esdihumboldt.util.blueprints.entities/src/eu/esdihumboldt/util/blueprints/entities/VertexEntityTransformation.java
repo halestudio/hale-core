@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.util.blueprints.entities;
 
 import java.lang.reflect.Modifier;
@@ -63,7 +60,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 
 /**
  * Groovy AST transformation that converts POGOs to vertex entities.
- * 
+ *
  * @author Simon Templer
  */
 @GroovyASTTransformation(phase = CompilePhase.SEMANTIC_ANALYSIS)
@@ -98,7 +95,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Process a class and make it a vertex entity class.
-	 * 
+	 *
 	 * @param clazz the class node
 	 */
 	private void processClass(ClassNode clazz) {
@@ -225,7 +222,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 	/**
 	 * Create a static method that initializes a graph. For an {@link OrientGraph}
 	 * it registers the entity class as a schema type.
-	 * 
+	 *
 	 * @param entityName the entity name
 	 * @param superEntityName the super entity name, may be <code>null</code>
 	 * @return the method
@@ -251,7 +248,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a call to initGraph(Graph).
-	 * 
+	 *
 	 * @param clazz the entity class
 	 * @param graph the graph to initialize
 	 * @return the method call statement
@@ -263,7 +260,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a method the removes the entity from the graph.
-	 * 
+	 *
 	 * @param vertexField the vertex field
 	 * @param graphField the graph field
 	 * @return the delete method
@@ -288,7 +285,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 	/**
 	 * Create a static method that allows creating a new vertex and adding it to a
 	 * graph.
-	 * 
+	 *
 	 * @param clazz the entity class
 	 * @param entityName the entity name
 	 * @param initialExpressions the initial expressions per property
@@ -345,7 +342,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a static method to retrieve all objects in a graph.
-	 * 
+	 *
 	 * @param clazz the entity class node
 	 * @param entityName the entity name
 	 * @param typeProperty the name of the property holding the entity name in a
@@ -394,7 +391,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a static method to retrieve objects by property value.
-	 * 
+	 *
 	 * @param clazz the entity class node
 	 * @param entityName the entity name
 	 * @param typeProperty the name of the property holding the entity name in a
@@ -452,7 +449,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a static method to get an entity by its ID.
-	 * 
+	 *
 	 * @param clazz the entity class node
 	 * @return the method
 	 */
@@ -490,7 +487,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Create a static method to retrieve an object by property value.
-	 * 
+	 *
 	 * @param clazz the entity class node
 	 * @param entityName the entity name
 	 * @param typeProperty the name of the property holding the entity name in a
@@ -547,7 +544,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 	/**
 	 * Create a constructor taking a Vertex and a Graph as an argument, assigning
 	 * them to the vertex and graph fields.
-	 * 
+	 *
 	 * @param vertexField the vertex field
 	 * @param graphField the graph field
 	 * @param superClass the vertex entity super class or <code>null</code>
@@ -595,7 +592,7 @@ public class VertexEntityTransformation implements ASTTransformation {
 
 	/**
 	 * Add the given property and clean up the old with the same name.
-	 * 
+	 *
 	 * @param clazz the class node to add the property to
 	 * @param property the property node
 	 */

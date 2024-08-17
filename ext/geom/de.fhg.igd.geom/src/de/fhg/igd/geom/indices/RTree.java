@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -29,14 +29,14 @@ import de.fhg.igd.geom.Verifier;
 
 /**
  * Implements an R-Tree
- * 
+ *
  * @author Michel Kraemer
  * @param <T> the type of the objects stored in the tree
  */
 public class RTree<T extends Localizable> implements SpatialIndex<T> {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final double DEFAULT_NON_DIMEMSION_SIZE = 0.0001;
 
@@ -63,7 +63,7 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param pageSize the page size (number of children that can be attached to
 	 *            this node before it gets splitted). Must be even and greater than
 	 *            or equal to 4.
@@ -74,7 +74,7 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param pageSize the page size (number of children that can be attached to
 	 *            this node before it gets splitted). Must be even and greater than
 	 *            or equal to 4.
@@ -97,7 +97,7 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 
 	/**
 	 * Sets the new root node. Package visible, because only Node shall access it.
-	 * 
+	 *
 	 * @param root the new root node
 	 */
 	void setRoot(Node<T> root) {
@@ -176,7 +176,7 @@ public class RTree<T extends Localizable> implements SpatialIndex<T> {
 	/**
 	 * Traverses through the given list of candidates and finds those that match the
 	 * given verifier
-	 * 
+	 *
 	 * @param <L> the type of localizables to search
 	 * @param loc the localizable to match against
 	 * @param verifier the verifier

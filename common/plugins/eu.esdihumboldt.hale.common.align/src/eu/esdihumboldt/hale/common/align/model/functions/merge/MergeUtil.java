@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.model.functions.merge;
 
 import java.util.ArrayList;
@@ -41,18 +38,18 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Common utilities for getting and setting merge function parameters.
- * 
+ *
  * This is meant to be a single place where functionality is defined that is
  * used for the transformation (PropertiesMergeHandler), configuration in the UI
  * (MergeParameterPage) and cell migration.
- * 
+ *
  * @author Simon Templer
  */
 public class MergeUtil {
 
 	/**
 	 * Get the properties defined in a Merge function property parameter.
-	 * 
+	 *
 	 * @param parameters the parameters multimap
 	 * @param parameterName the parameter name
 	 * @return the list of properties identified by their property paths
@@ -71,7 +68,7 @@ public class MergeUtil {
 	/**
 	 * Get the property path for a value representing a property configured as Merge
 	 * function parameter.
-	 * 
+	 *
 	 * @param value the value representation of the parameter
 	 * @return the property identified by its property path
 	 */
@@ -86,7 +83,7 @@ public class MergeUtil {
 	/**
 	 * Get the property path for a value representing a property configured as Merge
 	 * function parameter and resolve it to an entity definition.
-	 * 
+	 *
 	 * @param value the value representation of the parameter
 	 * @param parentType the parent type of the property (the type that is merged)
 	 * @return the entity definition resolved from the property path
@@ -121,7 +118,7 @@ public class MergeUtil {
 
 	/**
 	 * Convert a property path to a value to be used for a parameter.
-	 * 
+	 *
 	 * @param path the property path
 	 * @return the representation a parameter value
 	 */
@@ -147,7 +144,7 @@ public class MergeUtil {
 	 * <br>
 	 * <b>Subproperties are not yet supported to be part of a merge key. Therefore,
 	 * the inner lists will contain only a single property for the time being.</b>
-	 * 
+	 *
 	 * @param cell Mapping cell of the merge
 	 * @return <code>PropertyEntityDefinition</code> paths for all key properties of
 	 *         the merge

@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
  *
@@ -8,11 +9,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- *
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.cli
 
 import groovy.transform.CompileStatic
@@ -23,7 +20,7 @@ import eu.esdihumboldt.util.cli.impl.ContextImpl
 
 /**
  * Command line runner.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic

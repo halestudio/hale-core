@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -22,7 +22,7 @@ import de.fhg.igd.geom.util.BlochHashCode;
 
 /**
  * Wraps around a Point2D and marks it as left-end point or right-end point.
- * 
+ *
  * @author Michel Kraemer
  */
 public class Point2DEvent extends Point2D {
@@ -49,7 +49,7 @@ public class Point2DEvent extends Point2D {
 
 	/**
 	 * Constructs a new EndPoint
-	 * 
+	 *
 	 * @param p the point to wrap around
 	 * @param line the _line segment p is assigned to
 	 * @param isLeft true if it is a left-end point, false if it is a right-end

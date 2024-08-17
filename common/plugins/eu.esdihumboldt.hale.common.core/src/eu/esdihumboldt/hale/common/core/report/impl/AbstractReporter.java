@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.impl;
 
 import java.util.Date;
@@ -25,9 +21,9 @@ import eu.esdihumboldt.util.groovy.collector.StatsCollector;
 
 /**
  * Abstract report implementation
- * 
+ *
  * @param <T> the message type
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.6
@@ -54,7 +50,7 @@ public abstract class AbstractReporter<T extends Message> implements Reporter<T>
 	 * Create an empty report. It is set to not successful by default. But you
 	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
 	 * after the task has finished.
-	 * 
+	 *
 	 * @param taskName the name of the task the report is related to
 	 * @param taskType the identifier of the task type
 	 * @param messageType the message type
@@ -75,7 +71,7 @@ public abstract class AbstractReporter<T extends Message> implements Reporter<T>
 
 	/**
 	 * Set the summary message of the report.
-	 * 
+	 *
 	 * @param summary the summary to set, if <code>null</code> the report will
 	 *            revert to the default summary.
 	 */
@@ -119,7 +115,7 @@ public abstract class AbstractReporter<T extends Message> implements Reporter<T>
 
 	/**
 	 * Get the default report summary if it was not successful.
-	 * 
+	 *
 	 * @return the report summary
 	 */
 	protected String getFailSummary() {
@@ -128,7 +124,7 @@ public abstract class AbstractReporter<T extends Message> implements Reporter<T>
 
 	/**
 	 * Get the default report summary if it was successful.
-	 * 
+	 *
 	 * @return the report summary
 	 */
 	protected String getSuccessSummary() {

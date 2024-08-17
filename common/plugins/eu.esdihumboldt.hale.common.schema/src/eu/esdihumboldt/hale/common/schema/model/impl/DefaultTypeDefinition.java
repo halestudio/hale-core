@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.impl;
 
 import java.util.ArrayList;
@@ -42,7 +38,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Default {@link TypeDefinition} implementation.
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
@@ -90,7 +86,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Create a type definition with the given name
-	 * 
+	 *
 	 * @param name the type name
 	 */
 	public DefaultTypeDefinition(QName name) {
@@ -99,7 +95,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Create a type definition with the given name
-	 * 
+	 *
 	 * @param name the type name
 	 * @param flattenAllowed if flattening of declared groups is allowed
 	 */
@@ -141,7 +137,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Get the unmodifiable map of inherited children.
-	 * 
+	 *
 	 * @return the inherited children, names mapped to definitions
 	 */
 	protected Map<QName, ChildDefinition<?>> getInheritedChildren() {
@@ -167,7 +163,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 	/**
 	 * {@inheritDoc}<br>
 	 * May not be called while creating the model.
-	 * 
+	 *
 	 * @see TypeDefinition#getChildren()
 	 */
 	@Override
@@ -258,7 +254,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 	/**
 	 * Set the type's super type. This will add this type to the super type's
 	 * sub-type list and remove it from the previous super type (if any).
-	 * 
+	 *
 	 * @param superType the super-type to set
 	 */
 	public void setSuperType(DefaultTypeDefinition superType) {
@@ -273,7 +269,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Remove a sub-type
-	 * 
+	 *
 	 * @param subtype the sub-type to remove
 	 * @see #setSuperType(DefaultTypeDefinition)
 	 */
@@ -285,7 +281,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Add a sub-type
-	 * 
+	 *
 	 * @param subtype the sub-type to add
 	 * @see #setSuperType(DefaultTypeDefinition)
 	 */
@@ -313,7 +309,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 	/**
 	 * {@inheritDoc}<br>
 	 * May not be called while creating the model.
-	 * 
+	 *
 	 * @see TypeDefinition#getChild(QName)
 	 */
 	@Override
@@ -347,7 +343,7 @@ public class DefaultTypeDefinition extends AbstractDefinition<TypeConstraint>
 
 	/**
 	 * Override the child with the same name.
-	 * 
+	 *
 	 * @param child the child to replace the original child
 	 */
 	public void overrideChild(ChildDefinition<?> child) {

@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.cst.functions.geometric;
 
 import java.util.List;
@@ -33,7 +45,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Reproject geometry function.
- * 
+ *
  * @author Sandro Salari
  * @author Stefano Costa, GeoSolutions
  */
@@ -100,7 +112,7 @@ public class ReprojectGeometry
 	/**
 	 * Construct a {@link CoordinateReferenceSystem} instance by parsing the input
 	 * string via a {@link CRSDefinitionManager} instance.
-	 * 
+	 *
 	 * @param crs string representation of the CRS
 	 * @return the {@link CoordinateReferenceSystem} instance
 	 */
@@ -129,7 +141,7 @@ public class ReprojectGeometry
 	 * one and stores it in the context, to allow its reuse by following reproject
 	 * transformations.
 	 * </p>
-	 * 
+	 *
 	 * @param sourceCRS The source CRS.
 	 * @param targetCRS The target CRS.
 	 * @param context The context.
@@ -157,7 +169,7 @@ public class ReprojectGeometry
 	/**
 	 * Attempt to find a math transform between the specified Coordinate Reference
 	 * Systems.
-	 * 
+	 *
 	 * @param sourceCRS The source CRS.
 	 * @param targetCRS The target CRS.
 	 * @return The math transform from {@code sourceCRS} to {@code targetCRS}.

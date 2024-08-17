@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.tasks;
 
 import java.util.List;
@@ -24,7 +21,7 @@ import eu.esdihumboldt.hale.common.tasks.TaskUserData.TaskStatus;
 
 /**
  * Task for {@link Message} annotations of a {@link Cell}.
- * 
+ *
  * @author Florian Esser
  */
 public class CellMessageTask extends AbstractTask<Cell> implements TaskUserDataAware {
@@ -33,7 +30,7 @@ public class CellMessageTask extends AbstractTask<Cell> implements TaskUserDataA
 
 	/**
 	 * Create the cell message task
-	 * 
+	 *
 	 * @param taskType the task type
 	 * @param context the Cell this task was generated from
 	 * @param message the message annotation

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.internal;
 
 import java.util.HashMap;
@@ -44,14 +40,14 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 
 /**
  * Tests for the CST's alignment processor implementation
- * 
+ *
  * @author Simon Templer
  */
 public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test for the groovy transformation function.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -61,7 +57,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test for the groovy transformation function.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -71,7 +67,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test for the groovy transformation function.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -82,7 +78,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test for using the Groovy transformation function to return multiple results
 	 * that should result in multiple properties.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -93,7 +89,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test for using the Groovy transformation function to return multiple results
 	 * that should result in multiple complex properties.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -128,7 +124,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test where multiple properties from the source type are mapped to a sub
 	 * property of a single property of the target type.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -150,7 +146,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test where multiple properties from a simple source type are mapped to a
 	 * complex property structure in the target type.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -172,7 +168,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test where a complex property structure from a source type is mapped to
 	 * multiple properties in a simple target type.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -196,7 +192,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	 * complex property structure in the target type. In this case there are no
 	 * facts that the decision which way to group the source properties to an
 	 * address can be based on.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -220,7 +216,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	 * complex property structure including a repeatable group in the target type.
 	 * In this case there are no facts that the decision which way to group the
 	 * source properties to an address can be based on.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -242,7 +238,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test where properties from a simple source type are mapped to to a complex
 	 * property with simple content and attributes.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -263,7 +259,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a merge.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -273,7 +269,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a merge w/ a multi-property key
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -283,7 +279,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a merge w/ a multi-property key and a complex attribute
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -293,7 +289,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a merge w/ a complex key
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -303,7 +299,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a merge with an additional merge property
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -314,7 +310,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test based on {@link #testMergeAdditionalProp()} but without the additional
 	 * merge property
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -325,7 +321,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test based on a join and some renames with join on properties of non-matching
 	 * types
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -335,7 +331,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test based on a join w/ a comparison between an integer and a float
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -346,7 +342,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test a Join that has the innerJoin flag enabled.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -357,7 +353,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test a Join that has the innerJoin flag enabled.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -368,7 +364,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test a Join that has the innerJoin flag enabled. Multiple types are joined to
 	 * the join focus, not joins at second level.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -380,7 +376,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	/**
 	 * Test a Join that has the innerJoin flag enabled. Conditions are bound to some
 	 * of the joined types.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -391,7 +387,7 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 
 	/**
 	 * Test a Join that does not have the innerJoin flag enabled.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test

@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
  *
@@ -8,11 +9,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- *
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.merge.impl;
 
 import java.util.Collections;
@@ -38,7 +35,7 @@ public class TargetIndex implements MergeIndex {
 
 	/**
 	 * Create a new index based on an alignment.
-	 * 
+	 *
 	 * @param alignment the alignment
 	 */
 	public TargetIndex(Alignment alignment) {

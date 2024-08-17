@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.writer;
 
 import java.io.BufferedOutputStream;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.common.core.report.ReportFactory;
 
 /**
  * Writes reports to a file.
- * 
+ *
  * @author Andreas Burchert
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.5
@@ -52,14 +48,14 @@ public class ReportWriter {
 
 	/**
 	 * Writes all {@link Report}s to a {@link File}.
-	 * 
+	 *
 	 * @param file target file
 	 * @param reports reports to be saved
 	 * @param append if the reports should be appended to the file instead of
 	 *            overwriting it
-	 * 
+	 *
 	 * @return true on success
-	 * 
+	 *
 	 * @throws IOException if IO fails
 	 */
 	public static boolean write(File file, boolean append, Report<?>... reports)
@@ -69,14 +65,14 @@ public class ReportWriter {
 
 	/**
 	 * Writes all {@link Report}s to a {@link File}.
-	 * 
+	 *
 	 * @param file target file
 	 * @param reports reports to be saved
 	 * @param append if the reports should be appended to the file instead of
 	 *            overwriting it
-	 * 
+	 *
 	 * @return true on success
-	 * 
+	 *
 	 * @throws IOException if IO fails
 	 */
 	public static boolean write(File file, Collection<Report<?>> reports, boolean append)

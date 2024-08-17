@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.storage;
 
 import java.io.Closeable;
@@ -30,7 +26,7 @@ import eu.esdihumboldt.hale.common.instance.orient.OInstance;
 
 /**
  * Instance sink based on a {@link LocalOrientDB}
- * 
+ *
  * @author Simon Templer
  */
 public class OrientInstanceSink implements InstanceSink, Closeable {
@@ -40,7 +36,7 @@ public class OrientInstanceSink implements InstanceSink, Closeable {
 
 	/**
 	 * Create an instance sink based on a {@link LocalOrientDB}
-	 * 
+	 *
 	 * @param database the sink database
 	 * @param lockNow if the database should be locked now
 	 */
@@ -64,7 +60,7 @@ public class OrientInstanceSink implements InstanceSink, Closeable {
 
 	/**
 	 * Add an instance to the database and return a reference to it.
-	 * 
+	 *
 	 * @param instance the instance to add
 	 * @return the instance reference
 	 */
@@ -97,7 +93,7 @@ public class OrientInstanceSink implements InstanceSink, Closeable {
 	/**
 	 * Process an instance before it is converted and saved. The default
 	 * implementation does nothing and may be overridden.
-	 * 
+	 *
 	 * @param instance the instance
 	 */
 	protected void processInstance(Instance instance) {

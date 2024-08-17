@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.internal;
 
 import java.io.ByteArrayInputStream;
@@ -60,7 +56,7 @@ import eu.esdihumboldt.util.Identifiers;
 /**
  * Serialization helper for storing values not support by OrientDB. Serializes
  * geometries as WKB and holds a runtime cache for CRSs.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class OSerializationHelper {
@@ -75,7 +71,7 @@ public abstract class OSerializationHelper {
 
 		/**
 		 * Create a convert proxy
-		 * 
+		 *
 		 * @param cs the conversion service to use
 		 * @param original the original type
 		 */
@@ -86,7 +82,7 @@ public abstract class OSerializationHelper {
 
 		/**
 		 * Convert the string to its original form.
-		 * 
+		 *
 		 * @param value the string value
 		 * @return the converted value
 		 */
@@ -234,7 +230,7 @@ public abstract class OSerializationHelper {
 
 	/**
 	 * Determines if the given field type is supported directly by the database
-	 * 
+	 *
 	 * @param type the field type
 	 * @return if the field type is supported
 	 */
@@ -277,7 +273,7 @@ public abstract class OSerializationHelper {
 	/**
 	 * Prepare a value not supported as field in OrientDB so it can be stored in the
 	 * database.
-	 * 
+	 *
 	 * @param value the value to convert
 	 * @param log the log
 	 * @return the converted value that may be used as a property value
@@ -308,7 +304,7 @@ public abstract class OSerializationHelper {
 	/**
 	 * Serialize and/or wrap a value not supported as field in OrientDB so it can be
 	 * stored in the database.
-	 * 
+	 *
 	 * @param value the value to serialize
 	 * @param log the log
 	 * @return the document wrapping the value
@@ -434,7 +430,7 @@ public abstract class OSerializationHelper {
 	/**
 	 * Convert a value received from the database, e.g. {@link ODocument}s to
 	 * {@link Instance}s, {@link Group}s or unwraps contained values.
-	 * 
+	 *
 	 * @param value the value
 	 * @param parent the parent group
 	 * @param childName the name of the child the value is associated to
@@ -505,7 +501,7 @@ public abstract class OSerializationHelper {
 
 	/**
 	 * Deserialize a serialized value wrapped in the given document.
-	 * 
+	 *
 	 * @param doc the document
 	 * @param parent the parent group
 	 * @param childName the name of the child the value is associated to

@@ -32,7 +32,7 @@ public final class DebugHelper {
 
 	/**
 	 * Log message.
-	 * 
+	 *
 	 * @param message
 	 */
 	public static void log(String message) {
@@ -41,7 +41,7 @@ public final class DebugHelper {
 
 	/**
 	 * Log message with indent.
-	 * 
+	 *
 	 * @param message
 	 * @param indent
 	 */
@@ -51,7 +51,7 @@ public final class DebugHelper {
 
 	/**
 	 * Log error.
-	 * 
+	 *
 	 * @param error
 	 */
 	public static void logError(String message) {
@@ -60,7 +60,7 @@ public final class DebugHelper {
 
 	/**
 	 * Log error with indent.
-	 * 
+	 *
 	 * @param message
 	 * @param indent
 	 */
@@ -70,7 +70,7 @@ public final class DebugHelper {
 
 	/**
 	 * Log error exception.
-	 * 
+	 *
 	 * @param e
 	 */
 	public static void logError(Throwable e) {
@@ -80,7 +80,7 @@ public final class DebugHelper {
 
 	/**
 	 * Create message.
-	 * 
+	 *
 	 * @param message
 	 * @param indent
 	 * @return

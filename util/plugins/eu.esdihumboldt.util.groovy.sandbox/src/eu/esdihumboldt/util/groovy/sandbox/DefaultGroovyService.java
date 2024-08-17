@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.util.groovy.sandbox;
 
 import java.util.ArrayList;
@@ -25,7 +37,7 @@ import groovy.lang.Script;
 
 /**
  * Default implementation of the {@link GroovyService} interface.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class DefaultGroovyService implements GroovyService {
@@ -99,10 +111,10 @@ public class DefaultGroovyService implements GroovyService {
 
 		/*
 		 * Disable handling Groovy Grape annotations.
-		 * 
+		 *
 		 * This mainly serves the purpose to allow external Groovy snippets to use
 		 * Grapes, but have them disabled when imported into hale.
-		 * 
+		 *
 		 * If at some point we support Grapes within hale studio, we will want to change
 		 * this behavior. Then we will need to think about how we can deal with
 		 * conflicts on the classpath.
@@ -126,7 +138,7 @@ public class DefaultGroovyService implements GroovyService {
 
 	/**
 	 * Add imports defined as extensions.
-	 * 
+	 *
 	 * @param importCustomizer the import customizer
 	 */
 	private static void configureImportsFromExtensions(ImportCustomizer importCustomizer) {
@@ -224,7 +236,7 @@ public class DefaultGroovyService implements GroovyService {
 
 	/**
 	 * Call when restriction active changes.
-	 * 
+	 *
 	 * @param restrictionActive the new value
 	 */
 	protected void notifyRestrictionChanged(boolean restrictionActive) {

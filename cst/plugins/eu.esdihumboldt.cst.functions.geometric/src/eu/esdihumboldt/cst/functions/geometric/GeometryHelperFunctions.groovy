@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.geometric;
 
 import groovy.transform.CompileStatic
@@ -59,7 +56,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 
 /**
  * Geometry helper functions for Groovy scripts.
- * 
+ *
  * @author Simon Templer
  */
 class GeometryHelperFunctions {
@@ -82,7 +79,7 @@ class GeometryHelperFunctions {
 
 	/**
 	 * Calculate the centroid of a given geometry.
-	 * 
+	 *
 	 * @param geometryHolder the {@link Geometry}, {@link GeometryProperty} or
 	 *            {@link Instance} holding a geometry
 	 * @return the centroid of the geometry or <code>null</code>
@@ -251,7 +248,7 @@ class GeometryHelperFunctions {
 		final List<Geometry> geometries = new ArrayList<>();
 		/*
 		 * TODO handle spatial reference system in relation to reference
-		 * system of spatial index 
+		 * system of spatial index
 		 */
 		for (GeometryProperty<?> property : _findAll(geometryArg)) {
 			Geometry g = property.getGeometry();

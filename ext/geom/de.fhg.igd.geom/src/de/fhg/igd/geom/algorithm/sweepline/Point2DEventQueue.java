@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -23,7 +23,7 @@ import de.fhg.igd.geom.shape.Polygon;
 
 /**
  * Represents a queue of events during a sweep-line search
- * 
+ *
  * @author Michel Kraemer
  */
 public class Point2DEventQueue {
@@ -55,7 +55,7 @@ public class Point2DEventQueue {
 
 	/**
 	 * Removes an event from the head of this queue
-	 * 
+	 *
 	 * @return the event or null if the queue is empty
 	 */
 	public Point2DEvent remove() {
@@ -81,7 +81,7 @@ public class Point2DEventQueue {
 
 	/**
 	 * Adds a 2D line with exactly two Points to the queue.
-	 * 
+	 *
 	 * @param p the line to add
 	 * @param poly the Polygon the given line belongs to
 	 * @return true if the line has been added, false otherwise

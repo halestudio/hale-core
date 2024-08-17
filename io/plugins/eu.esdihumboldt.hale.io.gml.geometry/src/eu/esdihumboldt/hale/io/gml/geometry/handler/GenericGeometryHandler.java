@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry.handler;
 
 import java.util.ArrayList;
@@ -53,7 +49,7 @@ import eu.esdihumboldt.hale.io.gml.geometry.constraint.GeometryFactory;
 
 /**
  * Generic geometry handler for AbstractGeometryType.
- * 
+ *
  * @author Simon Templer
  */
 public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
@@ -67,7 +63,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 		/**
 		 * Create a CRS wrapper
-		 * 
+		 *
 		 * @param crsDefinition the CRS definition
 		 */
 		public CRSWrapper(CRSDefinition crsDefinition) {
@@ -76,7 +72,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 		/**
 		 * Get the contained CRS definition.
-		 * 
+		 *
 		 * @return the CRS definition
 		 */
 		public CRSDefinition getCrsDef() {
@@ -176,7 +172,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 	/**
 	 * Create a geometry value from a given instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @param childGeometries the child geometries found in the instance
 	 * @param defaultCrs the definition of the default CRS for this instance
@@ -301,7 +297,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 	/**
 	 * Combine points to a geometry.
-	 * 
+	 *
 	 * @param points the points to combine
 	 * @param reader the reader of the related XML file
 	 * @return the combined geometry
@@ -312,7 +308,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 	/**
 	 * Combine lines to a geometry.
-	 * 
+	 *
 	 * @param lines the lines to combine
 	 * @param reader the reader of the related XML file
 	 * @return the combined geometry
@@ -323,7 +319,7 @@ public class GenericGeometryHandler extends FixedConstraintsGeometryHandler {
 
 	/**
 	 * Combine polygons to a geometry.
-	 * 
+	 *
 	 * @param polygons the polygons to combine
 	 * @param reader the reader of the related XML file
 	 * @return the combined geometry

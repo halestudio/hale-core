@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -26,7 +26,7 @@ import de.fhg.igd.geom.util.BlochHashCode;
  * More or less what <code>geom.feature.Geometry_2d</code> was in the older
  * versions. Shapes are pure 2D objects to begin with, but can be used freely in
  * 3D space using the <code>Transform</code> objects.
- * 
+ *
  * @author Thorsten Reitz
  */
 public abstract class Shape implements Localizable, Serializable {
@@ -54,7 +54,7 @@ public abstract class Shape implements Localizable, Serializable {
 
 	/**
 	 * This method checks if two given shapes are equal in its points
-	 * 
+	 *
 	 * @see Object#equals(Object)
 	 */
 	@Override

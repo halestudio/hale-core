@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.helper;
 
 import java.util.ArrayList;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.hale.common.schema.model.DefinitionGroup;
 /**
  * Helper for finding entities matching certain conditions in the entity
  * hierarchy.
- * 
+ *
  * @author Simon Templer
  */
 public class EntityFinder {
@@ -46,7 +43,7 @@ public class EntityFinder {
 
 	/**
 	 * Create a new entity finder using the given condition.
-	 * 
+	 *
 	 * @param condition the condition that entities should match
 	 * @param maxLevel the maxium number of levels to descend
 	 */
@@ -59,7 +56,7 @@ public class EntityFinder {
 	/**
 	 * Find entities matching the condition in (and including) the given parent
 	 * entities.
-	 * 
+	 *
 	 * @param parents the entities to search
 	 * @return the entities found matching the condition
 	 */
@@ -75,7 +72,7 @@ public class EntityFinder {
 
 	/**
 	 * Find entities matching the condition in (and including) the given parent.
-	 * 
+	 *
 	 * @param parent the entity to search
 	 * @return the entities found matching the condition
 	 */
@@ -89,7 +86,7 @@ public class EntityFinder {
 
 	/**
 	 * Find entities matching the condition in (and including) the given parent.
-	 * 
+	 *
 	 * @param parent the entity to search
 	 * @param checked the set of already checked type definitions (to avoid endless
 	 *            recursion)

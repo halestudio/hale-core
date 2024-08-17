@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.core.join;
 
 import java.util.HashMap;
@@ -30,14 +27,14 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Utility methods for Join operations
- * 
+ *
  * @author Florian Esser
  */
 public class JoinUtil {
 
 	/**
 	 * Helper class to bundle together the join table and the joined properties
-	 * 
+	 *
 	 * @author Florian Esser
 	 */
 	public static class JoinDefinition {
@@ -72,7 +69,7 @@ public class JoinUtil {
 	/**
 	 * Build the join table and joined properties maps based on the given join
 	 * parameter
-	 * 
+	 *
 	 * @param joinParameter The join parameter
 	 * @return A {@link JoinDefinition} containing the join table and joined
 	 *         properties maps

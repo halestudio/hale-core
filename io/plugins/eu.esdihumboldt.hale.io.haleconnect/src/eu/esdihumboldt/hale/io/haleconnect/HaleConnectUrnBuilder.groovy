@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect;
 
 import groovy.transform.CompileStatic
@@ -23,7 +20,7 @@ import org.apache.commons.lang.StringUtils
 
 /**
  * Helper for building and decomposing hale-connect project URNs.
- * 
+ *
  * @author Florian Esser
  */
 @CompileStatic
@@ -36,7 +33,7 @@ public class HaleConnectUrnBuilder {
 
 	/**
 	 * Build a project URN from owner and project ID
-	 * 
+	 *
 	 * @param owner the project owner
 	 * @param projectId the project ID
 	 * @return the hale-connect project URN
@@ -48,7 +45,7 @@ public class HaleConnectUrnBuilder {
 
 	/**
 	 * Extract the owner from a hale-connect project URN.
-	 * 
+	 *
 	 * @param hcUrn the project URN to parse
 	 * @return the owner information extracted from the URN
 	 */
@@ -60,7 +57,7 @@ public class HaleConnectUrnBuilder {
 
 	/**
 	 * Extract the project ID from a hale-connect project URN.
-	 * 
+	 *
 	 * @param hcUrn the project URN to parse
 	 * @return the project ID extracted from the URN
 	 */
@@ -98,7 +95,7 @@ public class HaleConnectUrnBuilder {
 
 	/**
 	 * Tests if a given URI is a valid hale-connect project URN.
-	 * 
+	 *
 	 * @param urn the URI to test
 	 * @return <code>true</code> if the URI is a valid project URN,
 	 *         <code>false</code> otherwise
@@ -115,7 +112,7 @@ public class HaleConnectUrnBuilder {
 
 	/**
 	 * Build a URL for accessing a hale-connect project in the remote API.
-	 * 
+	 *
 	 * @param basePath the base URL of the project service
 	 * @param owner the project owner
 	 * @param projectId the project ID

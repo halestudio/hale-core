@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.spatialite.internal;
 
 import java.sql.PreparedStatement;
@@ -31,7 +28,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Helper for SpatiaLite.
- * 
+ *
  * @author Simon Templer
  */
 public class SpatiaLiteHelper {
@@ -40,7 +37,7 @@ public class SpatiaLiteHelper {
 
 	/**
 	 * Determine if the SpatiaLite module is loaded.
-	 * 
+	 *
 	 * @param connection the database connection
 	 * @return <code>true</code> if the SpatiaLite module is loaded,
 	 *         <code>false</code> if it is not or the status cannot be determined
@@ -82,7 +79,7 @@ public class SpatiaLiteHelper {
 	 * Determine if SpatiaLite is loaded for the given connection. If not, reports
 	 * to the user about the misconfiguration. A report is done only once per unique
 	 * connection.
-	 * 
+	 *
 	 * @param connection the database connection
 	 * @param error if the report should be an error, otherwise it is a warning
 	 * @return <code>true</code> if the SpatiaLite module is loaded,

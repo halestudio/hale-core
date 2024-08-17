@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.context.impl.matcher;
 
 import java.util.Stack;
@@ -33,7 +29,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality;
 
 /**
  * Simple context matching strategy that looks for connected
- * 
+ *
  * @author Simon Templer
  */
 public class AsDeepAsPossible implements ContextMatcher {
@@ -87,7 +83,7 @@ public class AsDeepAsPossible implements ContextMatcher {
 		/**
 		 * Determines if a target node is a candidate for a context match. For this the
 		 * cardinality of the corresponding definition is checked.
-		 * 
+		 *
 		 * @param target the target node to check
 		 * @return if the target node is a candidate for a context match
 		 */

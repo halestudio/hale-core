@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.common.test.docker.config;
 
 import java.io.File;
@@ -29,9 +41,9 @@ import com.typesafe.config.ConfigFactory;
  * (default: commands used in the image will be used)</><li>isPrivileged
  * (default: false)</>
  * </ul>
- * 
+ *
  * The docker configuration example is as below:
- * 
+ *
  * <pre>
  * dockertest{
  *     dockerHost="http://192.168.59.103:2375"
@@ -40,10 +52,10 @@ import com.typesafe.config.ConfigFactory;
  *     exposedPorts=["5432/tcp"]
  *     command=["/start-postgis.sh"]
  *     isPrivileged=false
- *    
+ *
  * }
  * </pre>
- * 
+ *
  * <p>
  * <h2>Preference order</h2> Hale looks for the docker configuration in the
  * following files in the following order:
@@ -53,7 +65,7 @@ import com.typesafe.config.ConfigFactory;
  * <li>WORKDIR/hale-docker.conf</li>
  * <li>CLASSPATH/hale-docker.conf</li>
  * </ul>
- * 
+ *
  * Configuration in home directory takes precedence over configuration in
  * working directory. That means, user can override the configuration with the
  * updated one without changing project setup.
@@ -71,11 +83,11 @@ import com.typesafe.config.ConfigFactory;
  * postgis{</br>
  * dockerHost="http://127.0.0.1:2375"</br>
  * }
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Sameer Sheikh
- * 
+ *
  */
 public class DockerConfig {
 
@@ -95,7 +107,7 @@ public class DockerConfig {
 
 	/**
 	 * Looks for the configuration file in the home directory
-	 * 
+	 *
 	 * @return the absolute path of the configuration file in the home directory
 	 */
 	private static String getHomeDirConf() {
@@ -107,7 +119,7 @@ public class DockerConfig {
 
 	/**
 	 * Looks for the configuration file in the working directory
-	 * 
+	 *
 	 * @return the absolute path of the configuration file in the working directory
 	 */
 	private static String getWorkDirConf() {
@@ -118,9 +130,9 @@ public class DockerConfig {
 	/**
 	 * Checks for the configuration file in the system properties, home directory,
 	 * working directory and then class path.
-	 * 
+	 *
 	 * @param cl a class loader to fetch the configuration from class path
-	 * 
+	 *
 	 * @return A config object which maps configuration keys to configuration
 	 *         values.
 	 */
@@ -135,9 +147,9 @@ public class DockerConfig {
 
 	/**
 	 * gets the configuration file from the class path.
-	 * 
+	 *
 	 * @param cl a class loader to fetch the configuration from class path
-	 * 
+	 *
 	 * @return config object which maps config key to config value
 	 */
 
@@ -153,7 +165,7 @@ public class DockerConfig {
 
 	/**
 	 * loads the config from the given path
-	 * 
+	 *
 	 * @param path config path
 	 * @return config which maps config key to config value
 	 */

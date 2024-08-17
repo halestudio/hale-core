@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation.model.impl;
 
 import static eu.esdihumboldt.util.geometry.interpolation.InterpolationUtil.round;
@@ -27,7 +24,7 @@ import eu.esdihumboldt.util.geometry.interpolation.model.ArcByPoints;
 
 /**
  * An arc represented by three points.
- * 
+ *
  * @author Simon Templer
  */
 public class ArcByPointsImpl implements ArcByPoints {
@@ -40,7 +37,7 @@ public class ArcByPointsImpl implements ArcByPoints {
 
 	/**
 	 * Create an Arc represented by three points.
-	 * 
+	 *
 	 * @param startPoint the arc start point
 	 * @param middlePoint the arc middle point (on the arc)
 	 * @param endPoint the arc end point
@@ -79,7 +76,7 @@ public class ArcByPointsImpl implements ArcByPoints {
 
 	/**
 	 * Determine if the arc is clockwise.
-	 * 
+	 *
 	 * @author Arun Verma
 	 * @param centerPoint the arc center point
 	 * @return <code>true</code> if the arc is clockwise, false otherwise
@@ -178,7 +175,7 @@ public class ArcByPointsImpl implements ArcByPoints {
 
 	/**
 	 * Calculate the center point.
-	 * 
+	 *
 	 * @author Arun Verma
 	 * @return the center point
 	 */

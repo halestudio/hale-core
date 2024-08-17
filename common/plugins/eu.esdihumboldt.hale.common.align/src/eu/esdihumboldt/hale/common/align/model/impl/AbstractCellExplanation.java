@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.impl;
 
 import java.io.IOException;
@@ -47,7 +43,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Abstract cell explanation implementation.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractCellExplanation implements CellExplanation {
@@ -66,7 +62,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Get the explanation string in the specified format.
-	 * 
+	 *
 	 * @param cell the cell to create an explanation for
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param provider the service provider, if available
@@ -79,7 +75,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Format an entity for inclusion in an explanation.
-	 * 
+	 *
 	 * @param entity the entity, may be <code>null</code>
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param indexInFront whether index conditions should be in front of the
@@ -99,7 +95,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Format an entity for inclusion in an explanation.
-	 * 
+	 *
 	 * @param entityDef the entity definition, may be <code>null</code>
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @param indexInFront whether index conditions should be in front of the
@@ -145,7 +141,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Returns an entity name without condition strings (e.g. "part1.part2").
-	 * 
+	 *
 	 * @param entity the entity
 	 * @return the entity name
 	 */
@@ -165,7 +161,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Checks whether the given entity has an index condition.
-	 * 
+	 *
 	 * @param entity the entity to check
 	 * @return true, if the entity has an index condition
 	 */
@@ -176,7 +172,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Quote or otherwise format (in case of HTML) the given text.
-	 * 
+	 *
 	 * @param text the text, may be <code>null</code>
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
@@ -193,7 +189,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Quote or otherwise format (in case of HTML) the given value.
-	 * 
+	 *
 	 * @param value the value to quote, may be <code>null</code>
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
@@ -211,7 +207,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	/**
 	 * Quote or otherwise format (in case of HTML) the given name (e.g. an entity or
 	 * parameter name).
-	 * 
+	 *
 	 * @param name the name to quote, may be <code>null</code>
 	 * @param html if the format should be HMTL, otherwise the format is just text
 	 * @return the quoted text or <code>null</code> in case of <code>null</code>
@@ -247,7 +243,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Get a message for a specific locale.
-	 * 
+	 *
 	 * @param key the message key
 	 * @param locale the locale
 	 * @return the message string
@@ -258,7 +254,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Get a message for a specific locale.
-	 * 
+	 *
 	 * @param key the message key
 	 * @param locale the locale
 	 * @param messageClass the class the messages to retrieve are associated to
@@ -275,7 +271,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	/**
 	 * Get the class used to retrieve messages via
 	 * {@link #getMessage(String, Locale)}
-	 * 
+	 *
 	 * @return the default message class
 	 */
 	protected Class<?> getDefaultMessageClass() {
@@ -285,7 +281,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 	/**
 	 * Get a message for a specific locale that is stored with the
 	 * {@link AbstractCellExplanation} explanation base class.
-	 * 
+	 *
 	 * @param key the message key
 	 * @param locale the locale
 	 * @return the message string
@@ -312,7 +308,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Get the default locale assumed for resources with an unspecified locale.
-	 * 
+	 *
 	 * @return the default locale assumed for messages
 	 */
 	protected Locale getDefaultLocale() {
@@ -321,7 +317,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Determine the locales a resource is available for.
-	 * 
+	 *
 	 * @param clazz the clazz the resource resides next to
 	 * @param baseName the base name of the resource
 	 * @param suffix the suffix of the resource file, e.g. <code>properties</code>
@@ -392,7 +388,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Create a string enumerating the given items.
-	 * 
+	 *
 	 * @param items the collection of items
 	 * @param locale the locale
 	 * @return the joined string
@@ -416,7 +412,7 @@ public abstract class AbstractCellExplanation implements CellExplanation {
 
 	/**
 	 * Build a replacement table (HTML only).
-	 * 
+	 *
 	 * @param varToProperty variable expressions mapped to the entities that replace
 	 *            them
 	 * @param locale the locale

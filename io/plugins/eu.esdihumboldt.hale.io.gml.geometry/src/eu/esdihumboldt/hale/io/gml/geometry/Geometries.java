@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry;
 
 import java.io.IOException;
@@ -37,7 +33,7 @@ import eu.esdihumboldt.util.reflection.ReflectionHelper;
 
 /**
  * Manages geometry handlers.
- * 
+ *
  * @author Simon Templer
  */
 public class Geometries implements GeometryHandler {
@@ -48,7 +44,7 @@ public class Geometries implements GeometryHandler {
 
 	/**
 	 * Get the geometries instance.
-	 * 
+	 *
 	 * @return the geometry handler manager
 	 */
 	public static synchronized Geometries getInstance() {
@@ -92,7 +88,7 @@ public class Geometries implements GeometryHandler {
 
 	/**
 	 * Register a geometry handler.
-	 * 
+	 *
 	 * @param handler the geometry handler
 	 */
 	public void register(GeometryHandler handler) {

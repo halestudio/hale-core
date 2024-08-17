@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -57,7 +57,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Constructs a new Point with the x and y coordinate of a 2D point
-	 * 
+	 *
 	 * @param p2d the 2D point
 	 */
 	public Point3D(Point2D p2d) {
@@ -68,7 +68,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Constructs a new Point with the x and y coordinate of a 2D point.
-	 * 
+	 *
 	 * @param p2d the 2D point
 	 * @param z the missing z coordinate
 	 */
@@ -80,7 +80,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Constructs a new Point with the x, y and z coordinates of another 3D point
-	 * 
+	 *
 	 * @param p3d the other 3D point
 	 */
 	public Point3D(Point3D p3d) {
@@ -91,7 +91,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Constructs a Point with the given ordinates
-	 * 
+	 *
 	 * @param x the x ordinate
 	 * @param y the y ordinate
 	 * @param z the z ordinate
@@ -137,7 +137,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 	/**
 	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
 	 * true
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -201,7 +201,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Sets the new x ordinate
-	 * 
+	 *
 	 * @param x the new ordinate
 	 */
 	public void setX(double x) {
@@ -210,7 +210,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Sets the new y ordinate
-	 * 
+	 *
 	 * @param y the new ordinate
 	 */
 	public void setY(double y) {
@@ -219,7 +219,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Sets the new z ordinate
-	 * 
+	 *
 	 * @param z the new ordinate
 	 */
 	public void setZ(double z) {
@@ -236,7 +236,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Calculates the normal of a given vertex p2.
-	 * 
+	 *
 	 * @param p1 the point prior to p2
 	 * @param p2 the point to calculate the normal for
 	 * @param p3 the point next to p2
@@ -249,7 +249,7 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 
 	/**
 	 * Calculates the normal of a given vertex p2.
-	 * 
+	 *
 	 * @param p1x the x ordinate of the point prior to p2
 	 * @param p1y the y ordinate of the point prior to p2
 	 * @param p1z the z ordinate of the point prior to p2
@@ -297,9 +297,9 @@ public class Point3D implements Localizable, Serializable, Cloneable {
 	 * Calculates the average normal of a face by calculating the normals of all
 	 * vertices. There must be at least 3 vertices in this face, otherwise this
 	 * method returns null.
-	 * 
+	 *
 	 * @param vs the list of points representing a face
-	 * 
+	 *
 	 * @return the normal of the face
 	 */
 	public static Point3D calcNormal(List<Point3D> vs) {

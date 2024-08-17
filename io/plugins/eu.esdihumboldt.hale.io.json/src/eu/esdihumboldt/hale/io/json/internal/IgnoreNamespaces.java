@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal;
 
 import java.util.Map;
@@ -21,16 +18,16 @@ import java.util.Optional;
 /**
  * Class to ignore the Namespace prefixes in the JSON or GeoJSON exported file
  * formats.
- * 
+ *
  * @author Kapil Agnihotri
  */
 public class IgnoreNamespaces implements NamespaceManager {
 
 	/**
-	 * 
+	 *
 	 * This method will not set any prefix to the namespace and will simply do
 	 * nothing when called
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#setPrefix(java.lang.String,
 	 *      java.lang.String)
 	 */
@@ -42,7 +39,7 @@ public class IgnoreNamespaces implements NamespaceManager {
 	/**
 	 * This is the overridden method and will always return an empty string for the
 	 * prefix
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#getPrefix(java.lang.String)
 	 */
 	@Override
@@ -54,7 +51,7 @@ public class IgnoreNamespaces implements NamespaceManager {
 	/**
 	 * This method will not add any desired prefix to the namespace and will ignore
 	 * the call
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#addNamespace(java.lang.String,
 	 *      java.util.Optional)
 	 */
@@ -69,7 +66,7 @@ public class IgnoreNamespaces implements NamespaceManager {
 	 * This method will not add any prefix to the namespace and will ignore the call
 	 *
 	 * @param prefixes a map of namespaces to prefixes
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#addPrefixes(java.util.Map)
 	 */
 	@Override
@@ -80,7 +77,7 @@ public class IgnoreNamespaces implements NamespaceManager {
 	/**
 	 * Return null as we don't want to add any namespace. The caller should handle
 	 * null checks.
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#getNamespaces()
 	 */
 	@Override
@@ -91,7 +88,7 @@ public class IgnoreNamespaces implements NamespaceManager {
 	/**
 	 * Return null as we don't want to add any namespace. The caller should handle
 	 * null checks.
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.io.json.internal.NamespaceManager#getNamespace(java.lang.String)
 	 */
 	@Override

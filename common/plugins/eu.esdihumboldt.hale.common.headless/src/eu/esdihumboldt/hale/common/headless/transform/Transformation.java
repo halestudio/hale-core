@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import java.io.File;
@@ -78,7 +75,7 @@ import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
 /**
  * Utility class for handling batch transformation. Uses {@link ExportJob} and
  * {@link ValidationJob}.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -89,7 +86,7 @@ public class Transformation {
 	/**
 	 * Transform the instances provided through the given instance readers and
 	 * supply the result to the given instance writer.
-	 * 
+	 *
 	 * @param sources the instance readers
 	 * @param target the target instance writer
 	 * @param environment the transformation environment
@@ -115,7 +112,7 @@ public class Transformation {
 	/**
 	 * Transform the instances provided through the given instance readers and
 	 * supply the result to the given instance writer.
-	 * 
+	 *
 	 * @param sources the instance readers
 	 * @param target the target instance writer
 	 * @param environment the transformation environment
@@ -137,7 +134,7 @@ public class Transformation {
 	/**
 	 * Transform the instances provided through the given instance readers and
 	 * supply the result to the given instance writer.
-	 * 
+	 *
 	 * @param sources the instance readers
 	 * @param target the target instance writer
 	 * @param environment the transformation environment
@@ -168,7 +165,7 @@ public class Transformation {
 	/**
 	 * Transform the instances provided by the given instance collection and supply
 	 * the result to the given instance writer.
-	 * 
+	 *
 	 * @param sources the source instance collction
 	 * @param target the target instance writer
 	 * @param environment the transformation environment
@@ -238,7 +235,7 @@ public class Transformation {
 
 	/**
 	 * Load the given sources into a combined instance collection.
-	 * 
+	 *
 	 * @param sources the source readers
 	 * @param environment the transformation environment
 	 * @param reportHandler the report handler
@@ -296,7 +293,7 @@ public class Transformation {
 
 	/**
 	 * Transform the given instances, according to the given alignment.
-	 * 
+	 *
 	 * @param sources the collection of source instances
 	 * @param targetSink the target sink
 	 * @param exportJob the export job
@@ -578,7 +575,7 @@ public class Transformation {
 	/**
 	 * Determine if a function is streaming capable (and does not need an index to
 	 * be built).
-	 * 
+	 *
 	 * @param transformationIdentifier the function ID
 	 * @return <code>true</code> if the function is streaming capable,
 	 *         <code>false</code> otherwise

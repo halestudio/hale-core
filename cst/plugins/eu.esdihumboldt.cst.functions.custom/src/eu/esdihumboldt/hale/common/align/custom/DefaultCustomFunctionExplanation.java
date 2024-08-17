@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.custom;
 
 import java.util.Collections;
@@ -39,7 +36,7 @@ import groovy.text.Template;
 
 /**
  * Explanation for custom functions based on Markdown templates.
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
@@ -54,7 +51,7 @@ public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
 
 	/**
 	 * Create an explanation with the given templates.
-	 * 
+	 *
 	 * @param templates map of localized templates
 	 * @param functionResolver the custom resolver for the associated function
 	 *            definition, to be used instead of the usual mechanism to resolve
@@ -69,7 +66,7 @@ public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
 
 	/**
 	 * Create an explanation with the given templates.
-	 * 
+	 *
 	 * @param templates map of localized templates
 	 */
 	public DefaultCustomFunctionExplanation(Map<Locale, Value> templates) {
@@ -83,7 +80,7 @@ public class DefaultCustomFunctionExplanation extends MarkdownCellExplanation
 
 	/**
 	 * Copy constructor.
-	 * 
+	 *
 	 * @param other the explanation to copy
 	 */
 	public DefaultCustomFunctionExplanation(DefaultCustomFunctionExplanation other) {

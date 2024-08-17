@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.scripting.transformation;
 
 import java.text.MessageFormat;
@@ -40,7 +37,7 @@ import eu.esdihumboldt.hale.common.scripting.ScriptFactory;
 /**
  * Base class for {@link PropertyTransformation} that supports evaluating
  * scripted parameters.
- * 
+ *
  * @param <E> the transformation engine type
  * @author Kai Schwierczek
  */
@@ -110,7 +107,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	/**
 	 * Execute the evaluation function as configured. The transformed parameters are
 	 * available in here.
-	 * 
+	 *
 	 * @param transformationIdentifier the transformation function identifier
 	 * @param engine the transformation engine that may be used for the function
 	 *            execution
@@ -133,7 +130,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 
 	/**
 	 * Returns the transformed parameters.
-	 * 
+	 *
 	 * @return the transformed parameters
 	 */
 	protected ListMultimap<String, Value> getTransformedParameters() {
@@ -143,7 +140,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	/**
 	 * Get the first evaluated parameter defined with the given parameter name.
 	 * Throws a {@link TransformationException} if such a parameter doesn't exist.
-	 * 
+	 *
 	 * @param parameterName the parameter name
 	 * @return the parameter value
 	 * @throws TransformationException if a parameter with the given name doesn't
@@ -163,7 +160,7 @@ public abstract class AbstractScriptedPropertyTransformation<E extends Transform
 	/**
 	 * Get the first evaluated parameter defined with the given parameter name. If
 	 * no such parameter exists, the given default value is returned.
-	 * 
+	 *
 	 * @param parameterName the parameter name
 	 * @param defaultValue the default value for the parameter
 	 * @return the parameter value, or the default if none is specified

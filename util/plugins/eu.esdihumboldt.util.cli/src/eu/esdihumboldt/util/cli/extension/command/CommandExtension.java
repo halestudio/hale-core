@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.cli.extension.command;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -22,7 +19,7 @@ import eu.esdihumboldt.util.cli.Command;
 
 /**
  * Extension for CLI commands.
- * 
+ *
  * @author Simon Templer
  */
 public class CommandExtension extends AbstractExtension<Command, CommandFactory> {
@@ -31,7 +28,7 @@ public class CommandExtension extends AbstractExtension<Command, CommandFactory>
 
 	/**
 	 * Get the extension instance.
-	 * 
+	 *
 	 * @return the command extension
 	 */
 	public static CommandExtension getInstance() {

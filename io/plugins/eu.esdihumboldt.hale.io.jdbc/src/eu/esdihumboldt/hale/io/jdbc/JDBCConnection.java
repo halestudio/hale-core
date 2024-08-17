@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import java.net.URI;
@@ -37,7 +33,7 @@ import eu.esdihumboldt.hale.io.jdbc.extension.internal.ConnectionConfigurerExten
 /**
  * Helper class that should be used to create JDBC connections, as it includes
  * database specific configuration provided through extensions.
- * 
+ *
  * @author Simon Templer, Arun
  */
 public abstract class JDBCConnection implements JDBCConstants {
@@ -46,7 +42,7 @@ public abstract class JDBCConnection implements JDBCConstants {
 
 	/**
 	 * Get a connection to a database.
-	 * 
+	 *
 	 * @param jdbcUri the JDBC URI to access the database
 	 * @param user the user name
 	 * @param password the password
@@ -82,7 +78,7 @@ public abstract class JDBCConnection implements JDBCConstants {
 
 	/**
 	 * Get a connection to a database, as configured in the given import provider.
-	 * 
+	 *
 	 * @param jdbcImportProvider the import provider
 	 * @return the database connection
 	 * @throws SQLException if establishing the connection fails
@@ -93,7 +89,7 @@ public abstract class JDBCConnection implements JDBCConstants {
 
 	/**
 	 * Get a connection to a database, as configured in the given export provider.
-	 * 
+	 *
 	 * @param jdbcExportProvider the export provider
 	 * @return the database connection
 	 * @throws SQLException if establishing the connection fails

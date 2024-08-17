@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import java.io.File;
@@ -135,7 +131,7 @@ import eu.esdihumboldt.util.geometry.quadtree.QuadtreeNodeVisitor;
 
 /**
  * Writes GML/XML using a {@link XMLStreamWriter}
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -301,7 +297,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Create a GML writer
-	 * 
+	 *
 	 * @param useFeatureCollection if a GML feature collection shall be used to
 	 *            store the instances (if possible)
 	 */
@@ -346,7 +342,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * or in
 	 * {@link #write(InstanceCollection, OutputStream, ProgressIndicator, IOReporter)}
 	 * prior to writing the schema locations, but after {@link #init()}
-	 * 
+	 *
 	 * @param namespace the schema namespace
 	 * @param schema the schema location
 	 * @param prefix the desired namespace prefix, may be <code>null</code>
@@ -602,7 +598,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Get the instance collection partitioner based on the provider configuration
 	 * of the partitioning mode.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 * @param log the log
 	 * @return the partitioner to use
@@ -629,7 +625,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * configured target as a base file name.<br>
 	 * <br>
 	 * Parts can only be written if the configured target is a URI to a local file.
-	 * 
+	 *
 	 * @param instanceCollections the parts to write
 	 * @param handler Handler that provides the parts' file names and an XML writer
 	 * @param progress Progress indicator
@@ -712,7 +708,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Partition instances in parts that respectively contain all referenced
 	 * instances.
-	 * 
+	 *
 	 * @param partitioner the partitioner
 	 * @param instances instances to partition
 	 * @param threshold the guiding value for the maximum number of objects in a
@@ -810,7 +806,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * States if the instance writer in all cases requires that the default
 	 * container is being found.
-	 * 
+	 *
 	 * @return if the default container must be present in the target schema
 	 */
 	protected boolean requiresDefaultContainer() {
@@ -819,7 +815,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Get the XML type index.
-	 * 
+	 *
 	 * @return the target type index
 	 */
 	protected XmlIndex getXMLIndex() {
@@ -831,7 +827,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Get the XML index from the given schema space
-	 * 
+	 *
 	 * @param schemas the schema space
 	 * @return the XML index or <code>null</code>
 	 */
@@ -850,7 +846,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Create and configure an <code>XMLStreamWriter</code> that writes to the given
 	 * <code>OutputStream</code>
-	 * 
+	 *
 	 * @param outStream <code>OutputStream</code> to write to
 	 * @param reporter the reporter
 	 * @return the configured <code>XMLStreamWriter</code>
@@ -979,7 +975,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Set if the output should be pretty printed.
-	 * 
+	 *
 	 * @param prettyPrint <code>true</code> if the output should be indented,
 	 *            <code>false</code> otherwise
 	 */
@@ -1013,7 +1009,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Set the output format of geometry coordinates
-	 * 
+	 *
 	 * @param format pattern in which geometry coordinates would be formatted
 	 */
 	public void setGeometryWriteFormat(String format) {
@@ -1022,7 +1018,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Set the output format of {@link Double} values
-	 * 
+	 *
 	 * @param format pattern in which geometry coordinates would be formatted
 	 */
 	public void setDecimalWriteFormat(String format) {
@@ -1047,7 +1043,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write the given instances to an {@link OutputStream}.
-	 * 
+	 *
 	 * @param instances the instance collection
 	 * @param out The <code>OutputStream</code> to write to
 	 * @param reporter the reporter
@@ -1075,7 +1071,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * <br>
 	 * Use {@link #createWriter(OutputStream, IOReporter)} to create a properly
 	 * configured writer for this method.
-	 * 
+	 *
 	 * @param instances the instance collection
 	 * @param writer the writer to write the instances to
 	 * @param reporter the reporter
@@ -1126,7 +1122,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 			/*
 			 * Add schema for container to validation schemas, if the namespace differs from
 			 * the main namespace or additional schemas.
-			 * 
+			 *
 			 * Needed for validation based on schemaLocation attribute.
 			 */
 			if (container != null
@@ -1283,7 +1279,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Strip the fragment from a location (as it usually represents line and column
 	 * numbers)
-	 * 
+	 *
 	 * @param location the location
 	 * @return the location w/o fragment
 	 * @throws URISyntaxException if the URI cannot be recreated properly
@@ -1304,7 +1300,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * This method is called after the container element is started and filled with
 	 * needed attributes. The default implementation ensures that a mandatory
 	 * boundedBy of GML 2 FeatureCollection is written.
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param containerDefinition the container type definition
 	 * @param reporter the reporter
@@ -1330,7 +1326,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * Get the for an I/O provider configured target container element, assuming the
 	 * I/O provider uses the {@link #PARAM_ROOT_ELEMENT_NAMESPACE} and
 	 * {@value #PARAM_ROOT_ELEMENT_NAME} parameters for this.
-	 * 
+	 *
 	 * @param provider the I/O provider
 	 * @param targetIndex the target XML index
 	 * @return the container element or <code>null</code> if it was not found
@@ -1358,7 +1354,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Find the default container element.
-	 * 
+	 *
 	 * @param targetIndex the target type index
 	 * @param reporter the reporter, may be <code>null</code>
 	 * @return the container XML element or <code>null</code>
@@ -1441,11 +1437,11 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Find a matching attribute for the given member type in the given container
 	 * type
-	 * 
+	 *
 	 * @param container the container type
 	 * @param containerName the container element name
 	 * @param memberType the member type
-	 * 
+	 *
 	 * @return the attribute definition or <code>null</code>
 	 */
 	protected DefinitionPath findMemberAttribute(TypeDefinition container, QName containerName,
@@ -1453,11 +1449,11 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 		// XXX not working if property is no substitution of the property type -
 		// use matching instead
 //		for (PropertyDefinition property : GmlWriterUtil.collectProperties(container.getChildren())) {
-//			// direct match - 
+//			// direct match -
 //			if (property.getPropertyType().equals(memberType)) {
 //				long max = property.getConstraint(Cardinality.class).getMaxOccurs();
 //				return new DefinitionPath(
-//						property.getPropertyType(), 
+//						property.getPropertyType(),
 //						property.getName(),
 //						max != Cardinality.UNBOUNDED && max <= 1);
 //			}
@@ -1512,7 +1508,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Method to determine if an element represents a feature collection in the
 	 * context of the current writer.
-	 * 
+	 *
 	 * @param el Element to check
 	 * @return true if the element is a feature collection
 	 */
@@ -1526,7 +1522,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Check if a type has a child with the given local name.
-	 * 
+	 *
 	 * @param type Type to search
 	 * @param localName Local name to search for
 	 * @return true if such a child exists
@@ -1542,7 +1538,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write a given instance
-	 * 
+	 *
 	 * @param instance the instance to writer
 	 * @param type the feature type definition
 	 * @param report the reporter
@@ -1558,7 +1554,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write the given feature's properties
-	 * 
+	 *
 	 * @param group the feature
 	 * @param definition the feature type
 	 * @param allowElements if element properties may be written
@@ -1593,7 +1589,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write attribute or element properties.
-	 * 
+	 *
 	 * @param parent the parent group
 	 * @param children the child definitions
 	 * @param attributes <code>true</code> if attribute properties shall be written,
@@ -1732,7 +1728,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write a property element.
-	 * 
+	 *
 	 * @param value the element value
 	 * @param propDef the property definition
 	 * @param report the reporter
@@ -1835,7 +1831,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Determines if a group has as its only property the nilReason attribute.
-	 * 
+	 *
 	 * @param group the group to test
 	 * @return <code>true</code> if the group has the nilReason attribute and no
 	 *         other children, or no children at all, <code>false</code> otherwise
@@ -1873,7 +1869,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write an element value, either as element content or as <code>nil</code>.
-	 * 
+	 *
 	 * @param value the element value
 	 * @param propDef the property definition the value is associated to
 	 * @throws XMLStreamException if an error occurs writing the value
@@ -1933,7 +1929,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write a geometry
-	 * 
+	 *
 	 * @param geometry the geometry
 	 * @param property the geometry property
 	 * @param srsName the common SRS name, may be <code>null</code>
@@ -1950,7 +1946,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Get the geometry writer
-	 * 
+	 *
 	 * @return the geometry writer instance to use
 	 */
 	protected StreamGeometryWriter getGeometryWriter() {
@@ -1967,7 +1963,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 	/**
 	 * Write a property attribute
-	 * 
+	 *
 	 * @param value the attribute value, may be <code>null</code>
 	 * @param propDef the associated property definition
 	 * @throws XMLStreamException if writing the attribute fails

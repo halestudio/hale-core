@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.writer;
 
 import java.io.BufferedReader;
@@ -35,7 +31,7 @@ import eu.esdihumboldt.hale.common.core.report.ReportSession;
 /**
  * This is the ReportReader which extracts {@link Report}s and their
  * {@link Message}s from a previous saved file.
- * 
+ *
  * @author Andreas Burchert
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -52,9 +48,9 @@ public class ReportReader {
 
 	/**
 	 * Extracts all {@link ReportSession}s from a given directory.
-	 * 
+	 *
 	 * @param dir directory containing all log files
-	 * 
+	 *
 	 * @return array of old {@link ReportSession}s
 	 */
 	public List<ReportSession> readDirectory(File dir) {
@@ -110,9 +106,9 @@ public class ReportReader {
 
 	/**
 	 * Creates a {@link ReportSession} from a report log file.
-	 * 
+	 *
 	 * @param file the file to parse
-	 * 
+	 *
 	 * @return {@link ReportSession} from the file
 	 */
 	public ReportSession readFile(File file) {
@@ -131,10 +127,10 @@ public class ReportReader {
 
 	/**
 	 * Parse a file and creates a {@link ReportSession}.
-	 * 
+	 *
 	 * @param file file to parse
 	 * @param id identifier for {@link ReportSession}
-	 * 
+	 *
 	 * @return the {@link ReportSession}
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -227,9 +223,9 @@ public class ReportReader {
 
 	/**
 	 * Extract the identifier from the filename.
-	 * 
+	 *
 	 * @param file the file
-	 * 
+	 *
 	 * @return the id
 	 */
 	private long getIdentifier(File file) {

@@ -16,12 +16,12 @@ import org.eclipse.core.runtime.spi.RegistryContributor;
 /**
  * The contributor factory creates new registry contributors for use in NONE
  * OSGi-based registries.
- * 
+ *
  * <p>
  * This class emulate the org.eclipse.core.runtime.ContributorFactoryOSGi which
  * use Bundle information to create {@link IContributor}.
  * </p>
- * 
+ *
  */
 public class ContributorFactoryNonOSGI {
 
@@ -31,7 +31,7 @@ public class ContributorFactoryNonOSGI {
 	/**
 	 * Creates registry contributor object based on a "Bundle-SymbolicName". The
 	 * symbolicName must not be <code>null</code>.
-	 * 
+	 *
 	 * @param symbolicName "Bundle-SymbolicName" metadata from Bundle MANIFEST.MF
 	 *            associated with the contribution
 	 * @return new registry contributor based on the "Bundle-SymbolicName" metadata.

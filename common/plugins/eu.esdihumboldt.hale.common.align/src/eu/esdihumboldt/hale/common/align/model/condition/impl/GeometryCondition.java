@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.condition.impl;
 
 import java.util.Collection;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 /**
  * Type condition that checks if it's geometry and optionally for certain
  * geometry types.
- * 
+ *
  * @author Simon Templer
  */
 public class GeometryCondition implements TypeCondition {
@@ -52,7 +48,7 @@ public class GeometryCondition implements TypeCondition {
 
 	/**
 	 * Create a geometry condition that checks for certain geometry types.
-	 * 
+	 *
 	 * @param bindings the allowed geometry bindings, <code>null</code> for any
 	 * @param allowConversion if conversion is allowed regarding the geometry
 	 *            binding check (only applicable if bindings is not
@@ -126,7 +122,7 @@ public class GeometryCondition implements TypeCondition {
 
 	/**
 	 * Determine if the given binding is compatible to the compatible class.
-	 * 
+	 *
 	 * @param binding the geometry binding
 	 * @param to <code>true</code> if the binding is the target, <code>false</code>
 	 *            if it is the source

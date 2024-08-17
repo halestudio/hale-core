@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.xsd.reader.internal;
 
 import java.math.BigDecimal;
@@ -87,14 +83,14 @@ import eu.esdihumboldt.util.validator.Validator;
 
 /**
  * Utility methods regarding type resolving
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
 public abstract class XmlTypeUtil {
 
 //	private static final ALogger log = ALoggerFactory.getLogger(TypeUtil.class);
-//	
+//
 //	private static final AGroup TYPE_RESOLVE = AGroupFactory.getGroup(Messages.getString("TypeUtil.0")); //$NON-NLS-1$
 
 	/**
@@ -121,7 +117,7 @@ public abstract class XmlTypeUtil {
 	/**
 	 * Set of XML schema types that should get a String binding but don't get one
 	 * through the Geotools bindings
-	 * 
+	 *
 	 * @see "http://www.w3schools.com/Schema/schema_dtypes_string.asp"
 	 */
 	private static final Set<String> XS_STRING_TYPES = new HashSet<String>();
@@ -148,9 +144,9 @@ public abstract class XmlTypeUtil {
 
 //	/**
 //	 * Get the attribute type for an GML type
-//	 * 
+//	 *
 //	 * @param typeName the type name
-//	 * 
+//	 *
 //	 * @return the attribute type or <code>null</code>
 //	 */
 //	public static AttributeType getGMLAttributeType(Name typeName) {
@@ -162,27 +158,27 @@ public abstract class XmlTypeUtil {
 //		}
 //		return gmlType;
 //	}
-//	
+//
 //	/**
 //	 * Get the predefined attribute type (GML or XS) with the given type name
-//	 * 
+//	 *
 //	 * @param typeName the type name
-//	 * 
+//	 *
 //	 * @return the attribute type or <code>null</code>
 //	 */
 //	public static AttributeType getPredefinedAttributeType(Name typeName) {
 //		AttributeType result = xsSchema.get(typeName);
-//		
+//
 //		if (result == null) {
 //			result = getGMLAttributeType(typeName);
 //		}
-//		
+//
 //		return result;
 //	}
 
 	/**
 	 * Configure a type with defaults if possible, e.g. for simple types
-	 * 
+	 *
 	 * @param type the type to configure
 	 */
 	public static void configureType(XmlTypeDefinition type) {
@@ -197,7 +193,7 @@ public abstract class XmlTypeUtil {
 
 	/**
 	 * Configure the given type as XML schema simple type if possible
-	 * 
+	 *
 	 * @param type the type to configure
 	 * @return if the type could be configured as XSD simple type
 	 */
@@ -249,7 +245,7 @@ public abstract class XmlTypeUtil {
 	/**
 	 * Configure a type definition for a simple type based on the
 	 * {@link XmlSchemaSimpleType}.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param simpleType the schema simple type
 	 * @param index the XML index for resolving type definitions
@@ -285,7 +281,7 @@ public abstract class XmlTypeUtil {
 	/**
 	 * Configure a type definition for a simple type based on a simple type
 	 * restriction.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param restriction the simple type restriction
 	 * @param index the XML index for resolving type definitions
@@ -444,7 +440,7 @@ public abstract class XmlTypeUtil {
 
 	/**
 	 * Checks whether the given string can be converted to a decimal.
-	 * 
+	 *
 	 * @param s the string to check
 	 * @return true, iff the sting can be converted to a decimal
 	 */
@@ -459,7 +455,7 @@ public abstract class XmlTypeUtil {
 
 	/**
 	 * Configure a type definition for a simple type based on a simple type list.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param list the simple type list
 	 * @param index the XML index for resolving type definitions
@@ -506,7 +502,7 @@ public abstract class XmlTypeUtil {
 
 	/**
 	 * Configure a type definition for a simple type based on a simple type union.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param union the simple type union
 	 * @param index the XML index for resolving type definitions
@@ -560,7 +556,7 @@ public abstract class XmlTypeUtil {
 	/**
 	 * Determine if there is a special binding available for a type (apart from
 	 * explicit definition in the schema)
-	 * 
+	 *
 	 * @param type the type definition
 	 * @return the special binding or <code>null</code>
 	 */
@@ -595,10 +591,10 @@ public abstract class XmlTypeUtil {
 //			//FIXME concept of binding constraint and geometry property must be adapted to include built-in support for multiple geometries (with possible different CRS)
 //			type.setConstraint(Binding.get(GeometryProperty.class));
 //			//TODO set geometry type?
-////			type.setConstraint(...); 
-//			
+////			type.setConstraint(...);
+//
 //			// enable augmented value, as the derived geometry will be stored as the value
-//			type.setConstraint(AugmentedValueFlag.ENABLED); 
+//			type.setConstraint(AugmentedValueFlag.ENABLED);
 //			return true;
 //		}
 

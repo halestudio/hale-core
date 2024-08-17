@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.geometry;
 
 import java.util.ArrayList;
@@ -34,14 +31,14 @@ import eu.esdihumboldt.util.DependencyOrderedList;
 
 /**
  * Helper methods for curves.
- * 
+ *
  * @author Simon Templer
  */
 public class CurveHelper {
 
 	/**
 	 * Convert the given {@link MultiLineString} to a curve.
-	 * 
+	 *
 	 * @param lineStrings the source multi line stirng
 	 * @param fact a geometry factory
 	 * @param strict if it should be checked if the geometry fulfills the strict
@@ -61,7 +58,7 @@ public class CurveHelper {
 
 	/**
 	 * Combine the given {@link LineString}s to a curve / {@link MultiLineString}.
-	 * 
+	 *
 	 * @param lineStrings the line strings
 	 * @param fact a geometry factory
 	 * @param strict if it should be checked if the geometry fulfills the strict
@@ -79,7 +76,7 @@ public class CurveHelper {
 
 	/**
 	 * Combine the given {@link LineString}s using the given builder.
-	 * 
+	 *
 	 * @param lineStrings the line strings
 	 * @param strict if it should be checked if the geometry fulfills the strict
 	 *            requirements of a curve
@@ -137,7 +134,7 @@ public class CurveHelper {
 	/**
 	 * Combine the given {@link MultiLineString} to a single {@link LineString} if
 	 * possible.
-	 * 
+	 *
 	 * @param lineStrings the multi line string
 	 * @param fact a geometry factory
 	 * @return the combined {@link LineString} or <code>null</code> if the geometry
@@ -155,7 +152,7 @@ public class CurveHelper {
 	/**
 	 * Combine the given {@link LineString}s to a single {@link LineString} if
 	 * possible.
-	 * 
+	 *
 	 * @param lineStrings the line strings
 	 * @param fact a geometry factory
 	 * @return the combined {@link LineString} or <code>null</code> if the geometry

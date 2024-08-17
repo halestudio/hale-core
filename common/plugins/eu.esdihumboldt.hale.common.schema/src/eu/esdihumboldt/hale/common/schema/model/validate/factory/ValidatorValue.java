@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.validate.factory;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
@@ -23,7 +20,7 @@ import eu.esdihumboldt.util.validator.Validator;
 /**
  * Combines a {@link Value} representation of a {@link Validator} with a type
  * identifier.
- * 
+ *
  * @author Simon Templer
  */
 public class ValidatorValue {
@@ -40,7 +37,7 @@ public class ValidatorValue {
 
 	/**
 	 * Create a validator representation and type combination.
-	 * 
+	 *
 	 * @param type the validator type identifier
 	 * @param value the validator representation as value
 	 */
@@ -53,7 +50,7 @@ public class ValidatorValue {
 	/**
 	 * Create a validator representation and type combination from the given
 	 * validator.
-	 * 
+	 *
 	 * @param validator the validator to represent as value and type
 	 * @throws Exception if creating the representation fails or there is no
 	 *             associated type identifier
@@ -71,7 +68,7 @@ public class ValidatorValue {
 
 	/**
 	 * Create a validator from the internal validator representation and type.
-	 * 
+	 *
 	 * @return the validator created from validator representation and type
 	 * @throws Exception if creating the validator fails
 	 */

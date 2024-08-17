@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import javax.xml.namespace.QName;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.instance.extension.filter.FilterDefinitionMan
 /**
  * Bean representing a {@link ChildContext}. Instead of the child definition it
  * contains its name.
- * 
+ *
  * @author Simon Templer
  */
 public class ChildContextBean {
@@ -46,7 +42,7 @@ public class ChildContextBean {
 
 	/**
 	 * Create a child context bean from the given child context
-	 * 
+	 *
 	 * @param context the child context
 	 */
 	public ChildContextBean(ChildContext context) {
@@ -59,7 +55,7 @@ public class ChildContextBean {
 
 	/**
 	 * Create a child context bean with the given content
-	 * 
+	 *
 	 * @param contextName the instance context name
 	 * @param contextIndex the context index
 	 * @param conditionFilter the condition filter

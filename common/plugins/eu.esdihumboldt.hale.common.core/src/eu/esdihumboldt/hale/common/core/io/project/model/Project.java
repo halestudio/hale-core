@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.model;
 
 import java.io.InputStream;
@@ -34,17 +30,17 @@ import eu.esdihumboldt.hale.common.core.io.project.model.internal.JaxbProjectIO;
 
 /**
  * Represents a project.
- * 
+ *
  * @author Simon Templer
  */
 public class Project implements ProjectInfo, Cloneable {
 
 	/**
 	 * Load a project from an input stream.
-	 * 
+	 *
 	 * @param in the input stream
 	 * @return the project
-	 * 
+	 *
 	 * @throws Exception if the project could not be loaded
 	 */
 	public static Project load(InputStream in) throws Exception {
@@ -53,7 +49,7 @@ public class Project implements ProjectInfo, Cloneable {
 
 	/**
 	 * Save a project to an output stream.
-	 * 
+	 *
 	 * @param project the project to save
 	 * @param out the output stream
 	 * @throws Exception if saving the project fails
@@ -126,7 +122,7 @@ public class Project implements ProjectInfo, Cloneable {
 
 	/**
 	 * Copy constructor.
-	 * 
+	 *
 	 * @param project the project to copy
 	 */
 	public Project(Project project) {

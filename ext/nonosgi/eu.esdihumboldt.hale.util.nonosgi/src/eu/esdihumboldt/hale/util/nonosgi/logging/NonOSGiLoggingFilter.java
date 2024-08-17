@@ -25,7 +25,7 @@ import ch.qos.logback.core.spi.FilterReply;
 /**
  * Logging filter that suppresses messages that appear in context of an
  * environment w/o OSGi but can be ignored (in context of hale).
- * 
+ *
  * @author Simon Templer
  */
 public class NonOSGiLoggingFilter extends TurboFilter {

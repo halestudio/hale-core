@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
@@ -44,7 +41,7 @@ import ru.yandex.qatools.allure.annotations.Stories
 
 /**
  * SQL type and binding test for PostgreSQL/PostGIS database.
- * 
+ *
  * @author Sameer Sheikh
  * @author Simon Templer
  */
@@ -54,11 +51,11 @@ public class PostDataTypesIT extends AbstractDBTest {
 
 	public static final String query = ''' CREATE TABLE employees
 
-    ( employee_id    INTEGER 
+    ( employee_id    INTEGER
     , first_name    VARCHAR
 	, handicaped     bool
     , decimal_test   DECIMAL
-    , dec_test       NUMERIC   
+    , dec_test       NUMERIC
 	, b_array		 BYTEA
 	, salary		 MONEY
     , geometry_test  geometry(LineString, 4326)

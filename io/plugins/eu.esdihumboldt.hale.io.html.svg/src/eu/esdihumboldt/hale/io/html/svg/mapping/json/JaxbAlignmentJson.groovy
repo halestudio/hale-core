@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.html.svg.mapping.json
 
 import groovy.transform.CompileStatic
@@ -30,12 +27,12 @@ import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
  * The JAXB model types are used as a basis because they may be used
  * independent of if a loaded schema is present (it is linked to
  * schema definitions only via name references).
- * 
+ *
  * Therefore must be updated/adapted to changes to the HALE Alignment schema.
- * 
+ *
  * Implemented to be as close as possible to the format for cells in the
  * mapping documentation and the schema JSON representation.
- * 
+ *
  * Previous attempts to use the JAXB bindings with Jackson or serializing to
  * JSON using EclipseLink MOXy did not prove to the usable in this case.
  * (No support for JAXBElement in one case, duplicate property names in the

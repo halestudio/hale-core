@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry;
 
 import java.util.Collections;
@@ -25,7 +21,7 @@ import org.locationtech.jts.geom.GeometryFactory;
 
 /**
  * Base class for geometry handlers.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractGeometryHandler implements GeometryHandler, GMLConstants {
@@ -47,14 +43,14 @@ public abstract class AbstractGeometryHandler implements GeometryHandler, GMLCon
 
 	/**
 	 * Create the set of supported types.
-	 * 
+	 *
 	 * @return the set of supported type names
 	 */
 	protected abstract Set<? extends QName> initSupportedTypes();
 
 	/**
 	 * Get a geometry factory instance.
-	 * 
+	 *
 	 * @return the geometry factory
 	 */
 	protected GeometryFactory getGeometryFactory() {

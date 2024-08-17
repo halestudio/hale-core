@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.extension.validation.report.impl;
 
 import java.text.MessageFormat;
@@ -28,7 +24,7 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
 
 /**
  * Default implementation of {@link InstanceValidationMessage}.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class DefaultInstanceValidationMessage extends MessageImpl
@@ -41,7 +37,7 @@ public class DefaultInstanceValidationMessage extends MessageImpl
 
 	/**
 	 * Create a new instance validation message.
-	 * 
+	 *
 	 * @param instanceReference the instance reference this message is associated
 	 *            to, may be null
 	 * @param type the type's name
@@ -60,7 +56,7 @@ public class DefaultInstanceValidationMessage extends MessageImpl
 
 	/**
 	 * Create a new instance validation message.
-	 * 
+	 *
 	 * @param location the validation location
 	 * @param category the message's category
 	 * @param message the message string

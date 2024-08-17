@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal;
 
 import java.util.Collection;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Class to read instances from JSON.
- * 
+ *
  * @author Simon Templer
  */
 public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
@@ -56,7 +53,7 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	private final boolean forceDefault;
 
 	/**
-	 * 
+	 *
 	 * @param expectGeoJson if the input is expected to be GeoJson
 	 * @param defaultType the feature type to use for all features or
 	 *            <code>null</code>
@@ -71,7 +68,7 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	}
 
 	/**
-	 * 
+	 *
 	 * @param mode the mode for reading the Json, supporting different kinds of
 	 *            document structures
 	 * @param expectGeoJson if the input is expected to be GeoJson
@@ -126,7 +123,7 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 
 	/**
 	 * Determine default type if none is specified.
-	 * 
+	 *
 	 * Note: This functionality should be removed once any kind of auto-detection
 	 * based on the actual content is implemented.
 	 */
@@ -222,7 +219,7 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	/**
 	 * Extract a qualified name from a text representation with an optional
 	 * namespace prefix.
-	 * 
+	 *
 	 * @param text the text representation of the name
 	 * @return the qualified name
 	 */
@@ -233,7 +230,7 @@ public class JsonToInstance extends AbstractJsonInstanceProcessor<Instance>
 	/**
 	 * Extract a qualified name from a text representation with an optional
 	 * namespace prefix.
-	 * 
+	 *
 	 * @param text the text representation of the name
 	 * @param namespaces the namespace manager
 	 * @return the qualified name

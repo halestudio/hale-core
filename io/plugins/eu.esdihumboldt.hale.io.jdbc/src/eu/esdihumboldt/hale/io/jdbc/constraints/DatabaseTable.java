@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.constraints;
 
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
@@ -21,7 +18,7 @@ import eu.esdihumboldt.hale.io.jdbc.JDBCUtil;
 
 /**
  * Constraint specifying schema and table name for a database table.
- * 
+ *
  * @author Simon Templer
  */
 @Constraint(mutable = false)
@@ -39,7 +36,7 @@ public class DatabaseTable implements TypeConstraint {
 
 	/**
 	 * Create a default constraint.
-	 * 
+	 *
 	 */
 	public DatabaseTable() {
 		super();
@@ -51,7 +48,7 @@ public class DatabaseTable implements TypeConstraint {
 
 	/**
 	 * Create a constraint with the given schema and table names
-	 * 
+	 *
 	 * @param schemaName the schema name, may be <code>null</code>
 	 * @param tableName the table name
 	 */
@@ -62,7 +59,7 @@ public class DatabaseTable implements TypeConstraint {
 	/**
 	 * Create a constraint with the given schema and table names and quotation usage
 	 * decision as boolean value
-	 * 
+	 *
 	 * @param schemaName the schema name, may be <code>null</code>
 	 * @param tableName the table name
 	 * @param useQuote true if quotation needed in {@link #getFullTableName}, else
@@ -93,7 +90,7 @@ public class DatabaseTable implements TypeConstraint {
 
 	/**
 	 * Get the full table name to use in queries.
-	 * 
+	 *
 	 * @return the full table name
 	 */
 	public String getFullTableName() {
@@ -109,7 +106,7 @@ public class DatabaseTable implements TypeConstraint {
 
 	/**
 	 * Get quoted value by deciding on {@link #useQuote} parameter.
-	 * 
+	 *
 	 * @param value String
 	 * @return quoted or unquoted string
 	 */

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.codelist.inspire.reader;
 
 import java.net.URI;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.hale.common.codelist.CodeList;
 
 /**
  * Representation of a INSPIRE code list.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class INSPIRECodeList implements CodeList {
@@ -40,7 +37,7 @@ public class INSPIRECodeList implements CodeList {
 
 	/**
 	 * Creates a codelist with the specified information.
-	 * 
+	 *
 	 * @param namespace the codelist's namespace
 	 * @param identifier the codelist's identifier
 	 * @param description the codelist's description
@@ -55,7 +52,7 @@ public class INSPIRECodeList implements CodeList {
 
 	/**
 	 * Add the given entry to this codelist, no checks are performed here.
-	 * 
+	 *
 	 * @param entry the entry to add
 	 */
 	public void addEntry(CodeEntry entry) {

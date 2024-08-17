@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -111,7 +111,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(int val) {
@@ -120,7 +120,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(char val) {
@@ -129,7 +129,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(float val) {
@@ -138,7 +138,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(short val) {
@@ -147,7 +147,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(double val) {
@@ -156,7 +156,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(boolean val) {
@@ -165,7 +165,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a value
-	 * 
+	 *
 	 * @param val the value to add
 	 */
 	public void add(long val) {
@@ -174,7 +174,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds an object
-	 * 
+	 *
 	 * @param object the object to add
 	 */
 	public void add(Object object) {
@@ -190,7 +190,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Adds a hash value to the current hash
-	 * 
+	 *
 	 * @param hashToAdd the hash code that shall be added
 	 */
 	public void addHash(int hashToAdd) {
@@ -286,7 +286,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a new hash to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param hashToAdd the hash code that shall be added to the current hash
 	 * @return the new hash
@@ -297,7 +297,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -309,7 +309,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -321,7 +321,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -333,7 +333,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -345,7 +345,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -357,7 +357,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -369,7 +369,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -381,7 +381,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash
@@ -393,7 +393,7 @@ public class BlochHashCode implements Serializable {
 
 	/**
 	 * Convenience method for adding a field to a given hash code.
-	 * 
+	 *
 	 * @param currentHash the current hash code
 	 * @param fieldToAdd the field whose hash code shall be added to the current
 	 *            hash

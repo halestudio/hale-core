@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.persist.hsd;
 
 import groovy.xml.DOMBuilder
@@ -44,7 +41,7 @@ import eu.esdihumboldt.util.groovy.xml.NSDOMCategory
 
 /**
  * Reads HALE Schema Definitions back to the HALE schema model.
- * 
+ *
  * @author Simon Templer
  */
 public class XmlToSchema implements HaleSchemaConstants {
@@ -53,7 +50,7 @@ public class XmlToSchema implements HaleSchemaConstants {
 
 	/**
 	 * Read a schema from the given reader.
-	 * 
+	 *
 	 * @param reader the reader, it's the callers responsibility to close it
 	 * @return the schema
 	 * @throws Exception if an error occurs
@@ -89,7 +86,7 @@ public class XmlToSchema implements HaleSchemaConstants {
 
 	/**
 	 * Parse a schema from a HSD schema element.
-	 * 
+	 *
 	 * @param schema the schema element
 	 * @return the created schema
 	 */
@@ -135,7 +132,7 @@ public class XmlToSchema implements HaleSchemaConstants {
 
 	/**
 	 * Parse the given type element and populate the given type definition.
-	 * 
+	 *
 	 * @param typeElem the element defining the type
 	 * @param typeDef the type definition to populate
 	 * @param typeIndex the type index mapping index identifiers to type

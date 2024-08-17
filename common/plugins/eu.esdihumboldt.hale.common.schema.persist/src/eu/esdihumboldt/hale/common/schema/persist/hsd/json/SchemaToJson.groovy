@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.schema.persist.hsd.json
 
 import groovy.transform.CompileStatic
@@ -39,7 +36,7 @@ import eu.esdihumboldt.util.groovy.json.JsonStreamBuilder
 
 /**
  * Creates a JSON representation from the HALE Schema Model.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -47,7 +44,7 @@ class SchemaToJson extends SchemaEncoderBase {
 
 	/**
 	 * Create a JSON representation of the given set of schemas.
-	 * 
+	 *
 	 * @param b the JSON builder
 	 * @param schemas the schemas to serialize
 	 * @param refBuilder the type reference builder
@@ -273,7 +270,7 @@ class SchemaToJson extends SchemaEncoderBase {
 
 	/**
 	 * Create a JSON representation of a qualified name as content for an object.
-	 * 
+	 *
 	 * @param b the JSON builder
 	 * @param name the qualified name
 	 * @return the builder return value for the name element

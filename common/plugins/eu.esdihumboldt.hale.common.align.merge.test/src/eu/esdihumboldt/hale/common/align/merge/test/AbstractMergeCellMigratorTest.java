@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.merge.test;
 
 import static org.junit.Assert.assertEquals;
@@ -57,14 +54,14 @@ import eu.esdihumboldt.hale.common.headless.test.AbstractProjectTest;
 
 /**
  * Base class for {@link MergeCellMigrator} tests.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest {
 
 	/**
 	 * Perform merging using a specific merge migrator.
-	 * 
+	 *
 	 * @param migrator the migrator to test, <code>null</code> if the migrator
 	 *            configured in the system should be used
 	 * @param cellToMigrate the cell to migrate
@@ -127,7 +124,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Perform merging using a specific merge migrator.
-	 * 
+	 *
 	 * @param migrator the migrator to test, <code>null</code> if the migrator
 	 *            configured in the system should be used
 	 * @param cellId the ID of the cell to migrate
@@ -155,7 +152,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Perform merging using the configured cell migrator.
-	 * 
+	 *
 	 * @param cellId the ID of the cell to migrate
 	 * @param projectToMigrate the location of the project containing the cell
 	 *            (Mapping from B to C)
@@ -171,7 +168,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Retrieve the default cell migrator for a given transformation.
-	 * 
+	 *
 	 * @param transformationIdentifier the identifier of the transformation function
 	 * @return the cell migrator
 	 */
@@ -184,7 +181,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Check if the given cell's target matches the expected target.
-	 * 
+	 *
 	 * @param cell the cell to check
 	 * @param targetDef the expected target entity (simple definition as name list)
 	 */
@@ -198,7 +195,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	/**
 	 * Check if the given cell's sources match the expected sources (order does not
 	 * matter).
-	 * 
+	 *
 	 * @param cell the cell to check
 	 * @param expected the expected source entities (simple definition as name list)
 	 */
@@ -220,7 +217,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 	/**
 	 * Covnert an entity definition to a representation as simple name list
 	 * definition.
-	 * 
+	 *
 	 * @param def the entity definition
 	 * @return the simple definition representation
 	 */
@@ -235,7 +232,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Check if an entity equals the given simple definition
-	 * 
+	 *
 	 * @param expected the expected entity (simple definition as name list)
 	 * @param def the entity definition to check
 	 */
@@ -247,7 +244,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Check if an entity equals the given simple definition
-	 * 
+	 *
 	 * @param expected the list of expected entities (each a simple definition as
 	 *            name list)
 	 * @param def the entity definition to check
@@ -269,7 +266,7 @@ public abstract class AbstractMergeCellMigratorTest extends AbstractProjectTest 
 
 	/**
 	 * Get the list of migration messages from the cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @return the list of migration messages
 	 */

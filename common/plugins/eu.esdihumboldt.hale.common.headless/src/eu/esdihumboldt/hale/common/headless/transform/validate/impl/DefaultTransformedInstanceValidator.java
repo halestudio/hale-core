@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform.validate.impl;
 
 import java.util.ArrayList;
@@ -29,7 +26,7 @@ import eu.esdihumboldt.hale.common.instancevalidator.InstanceValidator;
 
 /**
  * Validator for transformed instances based on {@link InstanceValidator}.
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultTransformedInstanceValidator extends AbstractTransformedInstanceValidator {
@@ -43,7 +40,7 @@ public class DefaultTransformedInstanceValidator extends AbstractTransformedInst
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param reportHandler the handler for the validation report
 	 * @param services the service provider, if available
 	 * @see AbstractTransformedInstanceValidator#AbstractTransformedInstanceValidator(ReportHandler)

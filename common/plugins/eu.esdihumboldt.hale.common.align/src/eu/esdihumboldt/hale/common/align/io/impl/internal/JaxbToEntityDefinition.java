@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.math.BigInteger;
@@ -44,7 +41,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Static methods for conversion from JAXB to {@link EntityDefinition}s.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class JaxbToEntityDefinition {
@@ -54,7 +51,7 @@ public class JaxbToEntityDefinition {
 
 	/**
 	 * Converts the given class to a type entity definition.
-	 * 
+	 *
 	 * @param classType the class to convert
 	 * @param types the type index to use
 	 * @param schemaSpace the schema space to assign
@@ -80,7 +77,7 @@ public class JaxbToEntityDefinition {
 
 	/**
 	 * Converts the given property to a property entity definition.
-	 * 
+	 *
 	 * @param property the property to convert
 	 * @param types the type index to use
 	 * @param schemaSpace the schema space to assign
@@ -149,7 +146,7 @@ public class JaxbToEntityDefinition {
 
 	/**
 	 * Create a condition.
-	 * 
+	 *
 	 * @param conditionFilter the condition filter
 	 * @return the condition or <code>null</code>
 	 */

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.geometry;
 
 import java.util.ArrayList;
@@ -38,7 +35,7 @@ import eu.esdihumboldt.util.geometry.interpolation.split.SplitInterpolation;
 
 /**
  * Helper for handling interpolation for instance readers.
- * 
+ *
  * @author Simon Templer
  */
 public class InterpolationHelper {
@@ -67,7 +64,7 @@ public class InterpolationHelper {
 
 	/**
 	 * Get the interpolation algorithm for a given instance reader.
-	 * 
+	 *
 	 * @param instanceReader the instance reader
 	 * @param factory the geometry factory
 	 * @return the interpolation algorithm
@@ -116,7 +113,7 @@ public class InterpolationHelper {
 
 	/**
 	 * Get the maximum positional error for geometry interpolation.
-	 * 
+	 *
 	 * @param instanceReader the instanced reader configured with interpolation
 	 *            settings
 	 * @return the maximum positional error
@@ -131,7 +128,7 @@ public class InterpolationHelper {
 	/**
 	 * Determine if the interpolation algorithm requires all geometries being moved
 	 * to a grid.
-	 * 
+	 *
 	 * @param instanceReader the instance reader w/ the interpolation configuration
 	 * @return if geometries should be moved to a grid
 	 */
@@ -151,7 +148,7 @@ public class InterpolationHelper {
 
 	/**
 	 * Move the given coordinates to a grid if required.
-	 * 
+	 *
 	 * @param instanceReader the instance reader with the interpolation
 	 *            configuration
 	 * @param coordinates the coordinates to process
@@ -179,7 +176,7 @@ public class InterpolationHelper {
 
 	/**
 	 * Move the given coordinate to a grid if required.
-	 * 
+	 *
 	 * @param instanceReader the instance reader with the interpolation
 	 *            configuration
 	 * @param coordinate the coordinate to process

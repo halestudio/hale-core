@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.extension.metadata;
 
 import java.util.Collection;
@@ -30,7 +26,7 @@ import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
  * class will first generate all Data-Generators and save them for use as long
  * as instantiated. Every generator will then get the given instance and
  * generate the data from it, then the data is put into the instance
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class MetadataWorker {
@@ -64,7 +60,7 @@ public class MetadataWorker {
 
 	/**
 	 * generates the data and puts it into the instance
-	 * 
+	 *
 	 * @param instance the given instance
 	 */
 	public void generate(MutableInstance instance) {
@@ -76,7 +72,7 @@ public class MetadataWorker {
 
 	/**
 	 * generates the data and puts it into a collection of instances
-	 * 
+	 *
 	 * @param instances the given instances
 	 */
 	public void generate(Collection<MutableInstance> instances) {

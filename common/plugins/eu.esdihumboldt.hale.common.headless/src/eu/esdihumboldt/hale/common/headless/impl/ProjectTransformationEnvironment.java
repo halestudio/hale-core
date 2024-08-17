@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.impl;
 
 import java.io.IOException;
@@ -63,7 +60,7 @@ import eu.esdihumboldt.hale.io.haleconnect.project.SimpleProjectReader;
 
 /**
  * Transformation environment based on a {@link Project}.
- * 
+ *
  * @author Simon Templer
  */
 public class ProjectTransformationEnvironment implements TransformationEnvironment {
@@ -122,7 +119,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Create a transformation environment based on a project file.
-	 * 
+	 *
 	 * @param id the identifier for the transformation environment
 	 * @param input the project file input
 	 * @param reportHandler the report handler for the reports during project
@@ -137,7 +134,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Create a transformation environment based on a project file.
-	 * 
+	 *
 	 * @param id the identifier for the transformation environment
 	 * @param input the project file input
 	 * @param reportHandler the report handler for the reports during project
@@ -154,7 +151,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Create a transformation environment based on a project file.
-	 * 
+	 *
 	 * @param id the identifier for the transformation environment
 	 * @param input the project file input
 	 * @param reportHandler the report handler for the reports during project
@@ -242,7 +239,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Copy constructor.
-	 * 
+	 *
 	 * @param project the project
 	 * @param id the identifier
 	 * @param sourceSchema the source schema
@@ -273,7 +270,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 	/**
 	 * Create a copy of the transformation environment with the alignment replaced
 	 * by the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to use for the copy
 	 * @return the transformation environment
 	 */
@@ -284,7 +281,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Create a copy of the transformation environment.
-	 * 
+	 *
 	 * @return the transformation environment
 	 */
 	public ProjectTransformationEnvironment copy() {
@@ -294,7 +291,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Add a custom service to the transformation environment.
-	 * 
+	 *
 	 * @param serviceInterface the service interface
 	 * @param service the service
 	 */
@@ -304,7 +301,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Initialize the environment based on the loaded project.
-	 * 
+	 *
 	 * @param project the project
 	 */
 	protected void init(Project project) {
@@ -377,7 +374,7 @@ public class ProjectTransformationEnvironment implements TransformationEnvironme
 
 	/**
 	 * Get the associated project.
-	 * 
+	 *
 	 * @return the project, must not be changed
 	 */
 	public Project getProject() {

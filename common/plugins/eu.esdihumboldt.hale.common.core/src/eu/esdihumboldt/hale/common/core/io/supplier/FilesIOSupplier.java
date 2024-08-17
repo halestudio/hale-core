@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2021 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.core.io.supplier;
 
 import java.io.BufferedInputStream;
@@ -34,7 +31,7 @@ import eu.esdihumboldt.util.io.OutputSupplier;
 /**
  * I/O supplier based on a {@link File} and used when importing multiple schemas
  * or instances.
- * 
+ *
  * @author Kapil Agnihotri
  */
 public class FilesIOSupplier
@@ -47,7 +44,7 @@ public class FilesIOSupplier
 
 	/**
 	 * Create a file I/O supplier.
-	 * 
+	 *
 	 * @param file the file
 	 */
 	public FilesIOSupplier(File file) {
@@ -57,11 +54,11 @@ public class FilesIOSupplier
 	/**
 	 * Create a file I/O supplier, which may return a relative URI on
 	 * {@link #getLocation()}.
-	 * 
+	 *
 	 * @param absoluteFile the file
-	 * 
+	 *
 	 * @param usedURI the (relative) URI to use
-	 * 
+	 *
 	 */
 	public FilesIOSupplier(File absoluteFile, URI usedURI) {
 		this(Arrays.asList(absoluteFile), Arrays.asList(usedURI));
@@ -70,10 +67,10 @@ public class FilesIOSupplier
 	/**
 	 * Create a file I/O supplier, which may return a relative URI on
 	 * {@link #getLocation()}.
-	 * 
+	 *
 	 * @param files list of files
 	 * @param uris list of the (relative) URI to use
-	 * 
+	 *
 	 */
 	public FilesIOSupplier(List<File> files, List<URI> uris) {
 		super();
@@ -146,7 +143,7 @@ public class FilesIOSupplier
 
 	/**
 	 * Getter
-	 * 
+	 *
 	 * @return the list of files
 	 */
 	public List<File> getFiles() {
@@ -156,7 +153,7 @@ public class FilesIOSupplier
 	/**
 	 * Method to get a list of all the locations selected by the user during
 	 * multiple import.
-	 * 
+	 *
 	 * @return list of URIs.
 	 */
 	public List<URI> getUsedLocations() {
@@ -165,7 +162,7 @@ public class FilesIOSupplier
 
 	/**
 	 * Get the locations
-	 * 
+	 *
 	 * @return the list of locations, may be <code>null</code>
 	 */
 	public List<URI> getLocations() {

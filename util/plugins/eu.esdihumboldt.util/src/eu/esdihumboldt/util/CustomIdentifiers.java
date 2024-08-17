@@ -1,24 +1,21 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util;
 
 /**
  * Identifiers that allows custom identifiers to be used through
  * {@link #getId(Object, String)}.
- * 
+ *
  * @author Simon Templer
  * @param <T> the type of objects that shall be identified
  */
@@ -49,7 +46,7 @@ public class CustomIdentifiers<T> extends Identifiers<T> {
 	 * Get the identifier for the given object. If not already present, a new
 	 * identifier will be assigned, if possible the given desired identifier is
 	 * used.
-	 * 
+	 *
 	 * @param object the object to identify
 	 * @param desiredId the desired identifier
 	 * @return the object identifier, if the identifier was newly assigned this is
@@ -73,7 +70,7 @@ public class CustomIdentifiers<T> extends Identifiers<T> {
 
 	/**
 	 * Determines if a given ID is reserved and may not be used.
-	 * 
+	 *
 	 * @param id the ID to test
 	 * @return if the ID is reserved and may not be used for a new object
 	 */

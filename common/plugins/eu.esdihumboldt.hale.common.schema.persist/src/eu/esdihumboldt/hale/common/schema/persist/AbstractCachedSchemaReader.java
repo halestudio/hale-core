@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.persist;
 
 import org.w3c.dom.Element;
@@ -31,14 +28,14 @@ import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder;
 
 /**
  * Base class for schema readers caching their result as HALE Schema Definition.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractCachedSchemaReader extends AbstractCachedSchemaReaderBase {
 
 	/**
 	 * Stores the schema as HSD DOM.
-	 * 
+	 *
 	 * @see AbstractCachedSchemaReaderBase#storeInCache(Schema)
 	 */
 	@Override

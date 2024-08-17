@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -38,7 +35,7 @@ import jakarta.xml.bind.helpers.DefaultValidationEventHandler;
 /**
  * Helper class for converting {@link IOConfiguration} to DOM (and back) using
  * the JAXB project model.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -52,7 +49,7 @@ public class DOMProjectHelper {
 	/**
 	 * Converts the given element to a type entity definition. If any exception
 	 * occurs <code>null</code> is returned.
-	 * 
+	 *
 	 * @param fragment the fragment to convert
 	 * @return the I/O configuration or <code>null</code>
 	 */
@@ -77,7 +74,7 @@ public class DOMProjectHelper {
 
 	/**
 	 * Converts the given I/O configuration to an element.
-	 * 
+	 *
 	 * @param config the I/O configuration
 	 * @return the created element or <code>null</code> in case of an exception
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient;
 
 import java.util.Arrays;
@@ -38,7 +34,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Instance implementation based on {@link ODocument}s
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -76,7 +72,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 
 	/**
 	 * Creates an empty instance associated with the given type.
-	 * 
+	 *
 	 * @param typeDef the definition of the instance's type
 	 * @param dataSet the data set the instance is associated to
 	 */
@@ -88,7 +84,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 
 	/**
 	 * Creates an instance based on the given document.
-	 * 
+	 *
 	 * @param document the document
 	 * @param typeDef the definition of the instance's type
 	 * @param db the database
@@ -104,7 +100,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 	/**
 	 * Copy constructor. Creates an instance based on the properties and values of
 	 * the given instance.
-	 * 
+	 *
 	 * @param org the instance to copy
 	 */
 	public OInstance(Instance org) {
@@ -138,7 +134,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 
 	/**
 	 * Set if the instance is inserted directly.
-	 * 
+	 *
 	 * @param inserted if the instance is inserted directly.
 	 */
 	public void setInserted(boolean inserted) {
@@ -147,7 +143,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 
 	/**
 	 * States if the instance was inserted directly.
-	 * 
+	 *
 	 * @return if the instance was inserted directly
 	 */
 	public boolean isInserted() {
@@ -219,7 +215,7 @@ public class OInstance extends OGroup implements MutableInstance, Identifiable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * The parameter "Object obj" may not be an ODocument
 	 */
 	@Override

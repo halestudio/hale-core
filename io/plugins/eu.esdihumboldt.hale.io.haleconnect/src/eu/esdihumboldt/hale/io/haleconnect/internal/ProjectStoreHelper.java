@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect.internal;
 
 import java.util.HashMap;
@@ -37,7 +34,7 @@ import eu.esdihumboldt.hale.io.haleconnect.HaleConnectServices;
 
 /**
  * Helper class for the project store API
- * 
+ *
  * @author Florian Esser
  */
 public class ProjectStoreHelper {
@@ -131,7 +128,7 @@ public class ProjectStoreHelper {
 	/**
 	 * Execute a REST call with the content type <code>text/plain; charset=utf-8
 	 * </code>
-	 * 
+	 *
 	 * @param method HTTP method (POST, PUT)
 	 * @param path REST path (without base path)
 	 * @param body The plain text bdoy

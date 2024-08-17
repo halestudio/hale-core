@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2020 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.geopackage;
 
 import java.net.URI;
@@ -62,7 +59,7 @@ import mil.nga.geopackage.user.UserTable;
 
 /**
  * Class that derives a hale schema from a {@link GeoPackage}.
- * 
+ *
  * @author Simon Templer
  */
 public class GeopackageSchemaBuilder {
@@ -83,7 +80,7 @@ public class GeopackageSchemaBuilder {
 
 	/**
 	 * Create a new schema builder.
-	 * 
+	 *
 	 * @param defaultNamespace the default namespace for schema and types
 	 */
 	protected GeopackageSchemaBuilder(String defaultNamespace) {
@@ -93,7 +90,7 @@ public class GeopackageSchemaBuilder {
 
 	/**
 	 * Build a schema.
-	 * 
+	 *
 	 * @param gpkg the geopackage
 	 * @param location the schema location or <code>null</code>
 	 * @return the hale schema

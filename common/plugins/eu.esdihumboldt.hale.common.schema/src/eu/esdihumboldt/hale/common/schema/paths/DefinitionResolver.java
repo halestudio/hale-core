@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.paths;
 
 import java.util.ArrayList;
@@ -33,7 +30,7 @@ import eu.esdihumboldt.util.groovy.paths.PathImpl;
 
 /**
  * Resolves property names on {@link DefinitionGroup}s.
- * 
+ *
  * @author Simon Templer
  */
 public class DefinitionResolver {
@@ -42,7 +39,7 @@ public class DefinitionResolver {
 	 * Find all possible property paths for the given property name, also descending
 	 * into sub-groups. The results will be cached in a special definition
 	 * constraint.
-	 * 
+	 *
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
 	 * @param namespace the property namespace or <code>null</code> if the namespace
@@ -68,9 +65,9 @@ public class DefinitionResolver {
 	 * Find all possible property paths for the given property name, also descending
 	 * into sub-groups. Does a complete calculation based on the definition
 	 * structure.
-	 * 
+	 *
 	 * @see #findPropertyCached(DefinitionGroup, String, String)
-	 * 
+	 *
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
 	 * @param namespace the property namespace or <code>null</code> if the namespace
@@ -85,12 +82,12 @@ public class DefinitionResolver {
 	/**
 	 * Find all possible property paths for the given property name, also descending
 	 * into sub-groups.
-	 * 
+	 *
 	 * Used for the internal computation. In most cases
 	 * {@link #findProperty(DefinitionGroup, String, String)} or
 	 * {@link #findPropertyCached(DefinitionGroup, String, String)} should be called
 	 * instead.
-	 * 
+	 *
 	 * @param parent the type or group in which to look for the property
 	 * @param name the property local name
 	 * @param namespace the property namespace or <code>null</code> if the namespace
@@ -142,7 +139,7 @@ public class DefinitionResolver {
 	/**
 	 * Determines if the given qualified name is accepted as match for the given
 	 * local name and namespace.
-	 * 
+	 *
 	 * @param name the qualified name
 	 * @param localName the local name
 	 * @param namespace the namespace, may be <code>null</code> if any namespace is

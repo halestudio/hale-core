@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.tools.impl;
 
 import java.util.NoSuchElementException;
@@ -37,7 +34,7 @@ public class PartitionIterator implements ResourceIterator<InstanceCollection> {
 
 		/**
 		 * Create an iterator for a part.
-		 * 
+		 *
 		 * @param cap the index of the instance up to which (exclusive) the iterator
 		 *            will serve instances
 		 */
@@ -86,7 +83,7 @@ public class PartitionIterator implements ResourceIterator<InstanceCollection> {
 
 		/**
 		 * Create a new part collection.
-		 * 
+		 *
 		 * @param numCollection number of the collection (zero-based)
 		 */
 		public PartCollection(int numCollection) {
@@ -165,9 +162,9 @@ public class PartitionIterator implements ResourceIterator<InstanceCollection> {
 	/**
 	 * Create a new iterator that creates partial instance collection from a given
 	 * instance collection.
-	 * 
+	 *
 	 * The parts must be consumed in succession to assure a consistent behavior.
-	 * 
+	 *
 	 * @param instances the instances to partition
 	 * @param maxObjects the maximum number of objects per part
 	 */

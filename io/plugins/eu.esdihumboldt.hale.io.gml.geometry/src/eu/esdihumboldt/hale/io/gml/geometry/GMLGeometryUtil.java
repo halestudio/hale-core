@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry;
 
 import java.text.DecimalFormat;
@@ -46,7 +42,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 
 /**
  * Utility methods for reading GML geometries from an {@link Instance} model.
- * 
+ *
  * @author Simon Templer
  */
 @SuppressWarnings("deprecation")
@@ -67,7 +63,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Parse coordinates from a GML CoordinatesType instance.
-	 * 
+	 *
 	 * @param coordinates the coordinates instance
 	 * @return the coordinates or <code>null</code> if the instances contains no
 	 *         coordinates
@@ -121,7 +117,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Parse a tuple in a GML CoordinatesType string.
-	 * 
+	 *
 	 * @param tuple the tuple
 	 * @param coordinateSplitter the coordinate splitter
 	 * @param format the number format
@@ -214,7 +210,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Parse a coordinate from a GML DirectPositionType instance.
-	 * 
+	 *
 	 * @param directPosition the direct position instance
 	 * @return the coordinate or <code>null</code> if the instance contains not
 	 *         direct position
@@ -251,7 +247,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Parse a coordinate from a GML PosList instance.
-	 * 
+	 *
 	 * @param posList the PosList instance
 	 * @param srsDimension the Dimension of the instance
 	 * @return the array of the coordinates or <code>null</code> if the instance
@@ -274,7 +270,7 @@ public abstract class GMLGeometryUtil {
 				/*
 				 * Filter null values that may have been created because of whitespace, e.g. at
 				 * the end or beginning of the list.
-				 * 
+				 *
 				 * XXX An alternative would be trimming the list string before splitting it (in
 				 * SimpleTypeUtil.convertFromXml), though I am not sure what the behavior
 				 * actually should be according to XML Schema (is whitespace at the
@@ -329,7 +325,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Parse a coordinate from a GML CoordType instance.
-	 * 
+	 *
 	 * @param instance the coord instance
 	 * @return the coordinate
 	 * @throws GeometryNotSupportedException if a valid coordinate can't be created
@@ -362,7 +358,7 @@ public abstract class GMLGeometryUtil {
 	/**
 	 * Find the CRS definition to be associated with the geometry contained in the
 	 * given instance.
-	 * 
+	 *
 	 * @param instance the given instance
 	 * @return the CRS definition or <code>null</code> if none could be identified
 	 */
@@ -377,7 +373,7 @@ public abstract class GMLGeometryUtil {
 
 	/**
 	 * Determines if the given geometries are all 2D.
-	 * 
+	 *
 	 * @param geometries the geometries
 	 * @return if the geometries are 2D
 	 */
@@ -406,7 +402,7 @@ public abstract class GMLGeometryUtil {
 	/**
 	 * Determine if combining composite (2D) geometries is enabled for a given
 	 * reader.
-	 * 
+	 *
 	 * @param reader the reader
 	 * @return if combining composite geometries is enabled
 	 */

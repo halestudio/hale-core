@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.geometric.test;
 
 import static org.junit.Assert.assertNotNull;
@@ -37,10 +34,10 @@ import eu.esdihumboldt.util.svg.test.SVGPainter;
 
 /**
  * Tests checking if a calculated point is inside the original area.
- * 
+ *
  * Test polygons created using {@link "http://codepen.io/stempler/full/PPrjMW/"}
  * .
- * 
+ *
  * @author Simon Templer
  */
 public class InteriorPointTest {
@@ -55,7 +52,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Do the interior point calculation for a polygon.
-	 * 
+	 *
 	 * @param geometry the geometry
 	 * @return the interior point
 	 * @throws Exception if an error occurs
@@ -124,7 +121,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a simple triangular polygon.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -138,7 +135,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a triangular polygon with a hole in the middle.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -155,7 +152,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a polygon describing a curve.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -174,7 +171,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing a curve.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -206,7 +203,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing a rough building footprint.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -234,7 +231,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing a rough building footprint.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -253,7 +250,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing a rough building footprint.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -276,7 +273,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing a rough building footprint.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -296,7 +293,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing streets and a square.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -324,7 +321,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a complex polygon describing streets and a roundabout.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -360,7 +357,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a polygon describing a rough half moon.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -379,7 +376,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a polygon describing a rough half moon.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -398,7 +395,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a multi-polygon.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test
@@ -420,7 +417,7 @@ public class InteriorPointTest {
 
 	/**
 	 * Test with a problem case from real data.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	@Test

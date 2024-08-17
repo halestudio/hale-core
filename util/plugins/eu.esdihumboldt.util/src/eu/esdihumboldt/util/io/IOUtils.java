@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.io;
 
 import java.io.BufferedOutputStream;
@@ -43,7 +39,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Helper class for IO
- * 
+ *
  * @author Kai Schwierczek
  */
 public final class IOUtils {
@@ -58,7 +54,7 @@ public final class IOUtils {
 
 	/**
 	 * Extract a ZIP archive.
-	 * 
+	 *
 	 * @param baseDir the base directory to extract to
 	 * @param in the input stream of the ZIP archive, which is closed after
 	 *            extraction
@@ -97,7 +93,7 @@ public final class IOUtils {
 
 	/**
 	 * ZIP a directory with sub-folders and write it to the given output stream.
-	 * 
+	 *
 	 * @param zipDir the directory to ZIP
 	 * @param zos the ZIP output stream
 	 * @throws IOException if reading the directory or writing the ZIP stream fails
@@ -139,9 +135,9 @@ public final class IOUtils {
 
 	/**
 	 * Returns a relative path between basePath and targetPath if possible.
-	 * 
+	 *
 	 * Source: http://stackoverflow.com/a/1288584
-	 * 
+	 *
 	 * @param targetURI the target path
 	 * @param baseURI the base path
 	 * @return a relative path from basePath to targetPath or the targetPath if a
@@ -219,10 +215,10 @@ public final class IOUtils {
 
 	/**
 	 * Returns a URI for the given file.
-	 * 
+	 *
 	 * In contrast to {@link File#toURI()} it does not resolve a relative file, but
 	 * instead returns a relative URI.
-	 * 
+	 *
 	 * @param file the file to transform
 	 * @return a (relative) URI for the given file
 	 */
@@ -239,9 +235,9 @@ public final class IOUtils {
 
 	/**
 	 * Get the human readable notation of a size in bytes.
-	 * 
+	 *
 	 * {@link "http://stackoverflow.com/questions/3758606/how-to-convert-byte-size-into-human-readable-format-in-java"}
-	 * 
+	 *
 	 * @param bytes the number of bytes
 	 * @param si if the SI or binary unit should be used
 	 * @return the human readable string representation of the number of bytes

@@ -19,13 +19,13 @@ import org.eclipse.core.runtime.spi.RegistryStrategy;
 
 /**
  * Provider for {@link IExtensionRegistry} into No OSGi-env.
- * 
+ *
  * <p>
  * This class emulate the
  * org.eclipse.core.internal.registry.osgi.RegistryProviderOSGI which use OSGi
  * services to retrieve an instance of {@link IExtensionRegistry}.
  * </p>
- * 
+ *
  */
 public class RegistryProviderNonOSGI implements IRegistryProvider {
 
@@ -37,7 +37,7 @@ public class RegistryProviderNonOSGI implements IRegistryProvider {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.spi.IRegistryProvider#getRegistry()
 	 */
 	public IExtensionRegistry getRegistry() {

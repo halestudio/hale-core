@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project;
 
 import java.io.File;
@@ -40,7 +36,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Common utilities and constants regarding project I/O
- * 
+ *
  * @author Simon Templer
  */
 public abstract class ProjectIO {
@@ -55,7 +51,7 @@ public abstract class ProjectIO {
 
 		/**
 		 * Create a configuration service based on the given project.
-		 * 
+		 *
 		 * @param project the project
 		 */
 		public ProjectConfigServiceWrapper(Project project) {
@@ -123,7 +119,7 @@ public abstract class ProjectIO {
 	/**
 	 * Create a set of default project files for use with {@link ProjectReader} and
 	 * {@link ProjectWriter}
-	 * 
+	 *
 	 * @param serviceProvider the service provider to use for eventual I/O advisors
 	 *            created
 	 * @return the default project files
@@ -143,7 +139,7 @@ public abstract class ProjectIO {
 
 	/**
 	 * Create an {@link IConfigurationService} from a given project.
-	 * 
+	 *
 	 * @param project the project
 	 * @return the configuration service to access the project's properties
 	 */
@@ -154,7 +150,7 @@ public abstract class ProjectIO {
 	/**
 	 * Find the HALE project file in a directory. If there are multiple it will only
 	 * find one.
-	 * 
+	 *
 	 * @param projectDir the project directory
 	 * @return the name of the project file candidate in that directory,
 	 *         <code>null</code> if none was found
@@ -166,7 +162,7 @@ public abstract class ProjectIO {
 	/**
 	 * Find the HALE project file in a directory. If there are multiple it will only
 	 * find one.
-	 * 
+	 *
 	 * @param projectDir the project directory
 	 * @param supportedExtensions the set of supported extensions, each with a
 	 *            leading dot, or <code>null</code> if the supported extensions
@@ -240,7 +236,7 @@ public abstract class ProjectIO {
 
 	/**
 	 * Get the supported file extensions for projects.
-	 * 
+	 *
 	 * @return the set of file extensions (with leading dot)
 	 */
 	private static Set<String> getSupportedExtensions() {

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.extension;
 
 import java.net.URI;
@@ -31,7 +27,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * JDBC driver configuration.
- * 
+ *
  * @author Simon Templer
  */
 public class DriverConfiguration implements Identifiable {
@@ -56,7 +52,7 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * Create a connection configuration from a corresponding configuration element.
-	 * 
+	 *
 	 * @param elementId the identifier
 	 * @param element the configuration element
 	 */
@@ -88,7 +84,7 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * Determines if the configuration matches the given driver.
-	 * 
+	 *
 	 * @param driver the JDBC driver to test
 	 * @return if the driver matches the configuration
 	 */
@@ -103,7 +99,7 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * Get the URI builder associated with the driver configuration.
-	 * 
+	 *
 	 * @return the URI builder
 	 */
 	public URIBuilder getURIBuilder() {
@@ -126,7 +122,7 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * match if configuration's any prefix match URI.
-	 * 
+	 *
 	 * @param jdbcUri JDBCuri
 	 * @return true if matches any of the prefix, otherwise false
 	 */
@@ -140,9 +136,9 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * Loading a driver
-	 * 
+	 *
 	 * @return Driver the {@link Driver} implements instance or <code>null</code>
-	 * 
+	 *
 	 * @throws ClassNotFoundException throws a Class not found exception
 	 */
 	public Driver loadDriver() throws ClassNotFoundException {
@@ -187,7 +183,7 @@ public class DriverConfiguration implements Identifiable {
 
 	/**
 	 * Get the Connection Helper associated with the driver configuration.
-	 * 
+	 *
 	 * @return the Connection Helper
 	 */
 	public ConnectionHelper getConnectionHelper() {

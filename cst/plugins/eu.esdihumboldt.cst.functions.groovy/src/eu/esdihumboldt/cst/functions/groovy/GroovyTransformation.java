@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy;
 
 import java.util.ArrayList;
@@ -55,7 +51,7 @@ import groovy.lang.Script;
 
 /**
  * Property transformation based on a Groovy script.
- * 
+ *
  * @author Simon Templer
  */
 public class GroovyTransformation
@@ -111,7 +107,7 @@ public class GroovyTransformation
 
 	/**
 	 * Evaluate a Groovy script.
-	 * 
+	 *
 	 * @param groovyScript the script
 	 * @param builder the instance builder, may be <code>null</code>
 	 * @param targetType the type definition of the target property
@@ -191,7 +187,7 @@ public class GroovyTransformation
 
 	/**
 	 * Creates an instance builder for the given result property if applicable.
-	 * 
+	 *
 	 * @param resultProperty the result property the instance builder should be
 	 *            created for
 	 * @return an instance builder or <code>null</code> if for the property no
@@ -208,7 +204,7 @@ public class GroovyTransformation
 
 	/**
 	 * Create a Groovy binding from the list of variables.
-	 * 
+	 *
 	 * @param vars the variable values
 	 * @param varDefs definition of the assigned variables, in case some variable
 	 *            values are not set, may be <code>null</code>
@@ -266,7 +262,7 @@ public class GroovyTransformation
 
 	/**
 	 * Returns the full variable name used for the given entity definition.
-	 * 
+	 *
 	 * @param entityDefinition the entity definition
 	 * @return the full variable name used
 	 */
@@ -280,7 +276,7 @@ public class GroovyTransformation
 
 	/**
 	 * Adds the variable to the binding.
-	 * 
+	 *
 	 * @param binding the binding to add to
 	 * @param prop the property of the variable
 	 * @param value the value of the variable
@@ -303,7 +299,7 @@ public class GroovyTransformation
 
 	/**
 	 * Extracts the value to be used in the binding from the present value.
-	 * 
+	 *
 	 * @param value the original unmodified value
 	 * @param useInstanceVariables if instances should be used as variables for the
 	 *            binding instead of extracting the instance values

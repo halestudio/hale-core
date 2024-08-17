@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.supplier;
 
 import java.io.BufferedInputStream;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.util.io.OutputSupplier;
 
 /**
  * I/O supplier based on a {@link File}
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.2
@@ -44,7 +40,7 @@ public class FileIOSupplier
 
 	/**
 	 * Create a file I/O supplier.
-	 * 
+	 *
 	 * @param file the file
 	 */
 	public FileIOSupplier(File file) {
@@ -54,7 +50,7 @@ public class FileIOSupplier
 	/**
 	 * Create a file I/O supplier, which may return a relative URI on
 	 * {@link #getLocation()}.
-	 * 
+	 *
 	 * @param absoluteFile the file
 	 * @param usedURI the (relative) URI to use
 	 */

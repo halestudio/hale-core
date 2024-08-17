@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.io.IOException;
@@ -52,7 +49,7 @@ import eu.esdihumboldt.util.io.IOUtils;
 
 /**
  * Base class for converting alignment representations to alignments.
- * 
+ *
  * @author Kai Schwierczek
  * @param <A> the alignment representation type
  * @param <C> the cell representation type
@@ -63,7 +60,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Load a alignment representation from the given stream. This method must close
 	 * the stream after it is done.
-	 * 
+	 *
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -76,7 +73,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Returns a map of prefix, URI pairs of base alignments for the given
 	 * alignment. The returned map must be modifiable.
-	 * 
+	 *
 	 * @param alignment the alignment representation in question
 	 * @return a map of prefix, URI pairs of base alignments
 	 */
@@ -85,7 +82,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Returns a collection of cell representations of the given alignment
 	 * representation.
-	 * 
+	 *
 	 * @param alignment the alignment representation in question
 	 * @return cell representations
 	 */
@@ -94,7 +91,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Returns a collection of property function definitions of the given alignment
 	 * representation.
-	 * 
+	 *
 	 * @param alignment the alignment representation in question
 	 * @param sourceTypes the source types to use for resolving definition
 	 *            references
@@ -107,7 +104,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Returns the cell id of the given cell.
-	 * 
+	 *
 	 * @param cell the cell in question
 	 * @return the cell id of the given cell
 	 */
@@ -116,7 +113,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Create a cell from the given cell representation. Implementations can return
 	 * {@link UnmigratedCell}s which will be migrated by this alignment loader.
-	 * 
+	 *
 	 * @param cell the cell representation
 	 * @param sourceTypes the source types to use for resolving definition
 	 *            references
@@ -132,7 +129,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Returns a collection of modifier representations of the given alignment
 	 * representation.
-	 * 
+	 *
 	 * @param alignment the alignment representation in question
 	 * @return modifier representations
 	 */
@@ -140,7 +137,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Returns the raw cell id that is modified by the given modifier.
-	 * 
+	 *
 	 * @param modifier the modifier representation in question
 	 * @return the cell id that is modified
 	 */
@@ -148,7 +145,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Returns the disabled for list of the given modifier representation.
-	 * 
+	 *
 	 * @param modifier the modifier representation in question
 	 * @return the disabled for list
 	 */
@@ -156,7 +153,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Get the transformation mode specified in a modifier.
-	 * 
+	 *
 	 * @param modifier the modifier
 	 * @return the transformation mode or <code>null</code> if none is specified
 	 */
@@ -178,7 +175,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Private class for a pair of URIs. The used URI and the absolute URI.
-	 * 
+	 *
 	 * {@link #equals(Object)} and {@link #hashCode()} only use the absolute URI.
 	 */
 	private class URIPair {
@@ -212,7 +209,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Adds the given base alignment to the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to add a base alignment to
 	 * @param newBase URI of the new base alignment
 	 * @param projectLocation the project location or <code>null</code>
@@ -239,7 +236,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Creates and adds cells and modifiers of the base alignments to the main
 	 * alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to add base alignments to
 	 * @param sourceTypes the source types to use for resolving definition
 	 *            references
@@ -314,7 +311,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Function to fill the prefixMapping and alignmentToInfo maps.
-	 * 
+	 *
 	 * @param addBase the URI of the new base alignment to add
 	 * @param projectLocation the project location or <code>null</code>
 	 * @param existingBases the map of existing bases
@@ -428,7 +425,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Creates an alignment from the given alignment representation.
-	 * 
+	 *
 	 * @param start the main alignment representation
 	 * @param sourceTypes the source types to use for resolving definition
 	 *            references
@@ -500,7 +497,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Load custom functions and add them to the alignment.
-	 * 
+	 *
 	 * @param source the alignment source
 	 * @param alignment the alignment
 	 * @param sourceTypes the source types
@@ -517,7 +514,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Function to fill the prefixMapping and alignmentToInfo maps.
-	 * 
+	 *
 	 * @param start the main alignment representation
 	 * @param prefixMapping gets filled with a mapping from local to global prefixes
 	 * @param alignmentToInfo gets filled with a mapping from base alignment
@@ -626,7 +623,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Apply modifiers on the alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to work on
 	 * @param modifiers the modifiers to apply
 	 * @param prefixMapping the mapping of prefixes (see
@@ -689,7 +686,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 	/**
 	 * Returns the cell in question or null, if it could not be found in which case
 	 * a suitable warning was generated.
-	 * 
+	 *
 	 * @param alignment the alignment which contains the cell
 	 * @param cellId the cell id
 	 * @param defaultPrefix the prefix to use if the cell id does not contain a
@@ -726,7 +723,7 @@ public abstract class AbstractBaseAlignmentLoader<A, C, M> {
 
 	/**
 	 * Generates a new prefix.
-	 * 
+	 *
 	 * @param prefixes the existing prefixes
 	 * @return a new prefix
 	 */

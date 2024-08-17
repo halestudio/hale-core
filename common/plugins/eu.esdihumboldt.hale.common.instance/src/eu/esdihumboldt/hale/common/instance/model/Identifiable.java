@@ -1,24 +1,21 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.model;
 
 /**
  * Interface for instance or instance reference classes that provide a way to
  * uniquely identify individual instances.
- * 
+ *
  * @author Florian Esser
  */
 public interface Identifiable {
@@ -37,7 +34,7 @@ public interface Identifiable {
 
 	/**
 	 * Test if an object is identifiable
-	 * 
+	 *
 	 * @param o Test subject
 	 * @return true if <code>o</code> implements {@link Identifiable} and actually
 	 *         has an ID
@@ -48,7 +45,7 @@ public interface Identifiable {
 
 	/**
 	 * Return the ID of the given object
-	 * 
+	 *
 	 * @param o Object to retrieve ID from
 	 * @return The object's ID or <code>null</code> if <code>o</code> is either not
 	 *         {@link Identifiable} or doesn't have an ID

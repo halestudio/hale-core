@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model;
 
 import org.w3c.dom.Element;
@@ -22,7 +19,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Class to represent the value of a transformation parameter.
- * 
+ *
  * @author Kai Schwierczek
  */
 @Immutable
@@ -46,7 +43,7 @@ public class ParameterValue extends Value {
 
 	/**
 	 * Constructor specifying the type and the value.
-	 * 
+	 *
 	 * @param type the type of the value
 	 * @param value the value
 	 */
@@ -61,7 +58,7 @@ public class ParameterValue extends Value {
 
 	/**
 	 * Constructor specifying the value only. Type will be the default.
-	 * 
+	 *
 	 * @param value the value
 	 */
 	public ParameterValue(Value value) {
@@ -70,7 +67,7 @@ public class ParameterValue extends Value {
 
 	/**
 	 * Create a simple string value. Type will be the default.
-	 * 
+	 *
 	 * @param value the value
 	 */
 	public ParameterValue(String value) {
@@ -80,7 +77,7 @@ public class ParameterValue extends Value {
 	/**
 	 * Determines if the parameter needs further processing to be used, i.e. the
 	 * parameter type is neither {@link #DEFAULT_TYPE} nor <code>null</code>.
-	 * 
+	 *
 	 * @return if the parameter needs processing
 	 */
 	public boolean needsProcessing() {
@@ -90,7 +87,7 @@ public class ParameterValue extends Value {
 	/**
 	 * Returns the type of the value. Either {@value #DEFAULT_TYPE},
 	 * <code>null</code> or a script id.
-	 * 
+	 *
 	 * @return the associated parameter type
 	 */
 	public String getType() {
@@ -99,7 +96,7 @@ public class ParameterValue extends Value {
 
 	/**
 	 * Returns the value.
-	 * 
+	 *
 	 * @return the value
 	 */
 	@Override
@@ -139,7 +136,7 @@ public class ParameterValue extends Value {
 
 	/**
 	 * Get the internal value.
-	 * 
+	 *
 	 * @return the internal value
 	 */
 	public Value intern() {

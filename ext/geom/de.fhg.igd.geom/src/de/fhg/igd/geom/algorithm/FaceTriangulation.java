@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -24,7 +24,7 @@ import de.fhg.igd.geom.Point3D;
 /**
  * Triangulates FaceSets using a 3D version of the ear cutting algorithm. This
  * class is also able to triangulate faces which are not flat.
- * 
+ *
  * @author Michel Kraemer
  */
 public class FaceTriangulation {
@@ -48,7 +48,7 @@ public class FaceTriangulation {
 	/**
 	 * Checks if the vertex p2 is convex by calculating the determinant of p1,p2,p3
 	 * which is negative if p2 convex and positive if it is not.
-	 * 
+	 *
 	 * @param p1 the point prior to p2
 	 * @param p2 the point to check
 	 * @param p3 the point next to p2
@@ -76,7 +76,7 @@ public class FaceTriangulation {
 
 	/**
 	 * Checks if vertex p2 is an ear
-	 * 
+	 *
 	 * @param p1 the point prior to p2
 	 * @param p2 the point to check
 	 * @param p3 the point next to p2
@@ -123,7 +123,7 @@ public class FaceTriangulation {
 	/**
 	 * Cuts an ear from a face. The ear will be removed from the given list of
 	 * points and the indices of the real vertices will also be truncated.
-	 * 
+	 *
 	 * @param points all vertices of the face
 	 * @param indices an array containing indices for the real vertices
 	 * @return the indices of the ear
@@ -201,7 +201,7 @@ public class FaceTriangulation {
 	/**
 	 * This method calculates the signed 2D area of a Polygon. If the result is <
 	 * 0.0 the Polygon is oriented clockwise, otherwise it's counterclockwise.
-	 * 
+	 *
 	 * @param points the Polygon, whereas the first point MUST NOT equal the last
 	 *            one
 	 * @return true if the Polygon is clockwise, false otherwise
@@ -219,7 +219,7 @@ public class FaceTriangulation {
 
 	/**
 	 * Reverses a list of points
-	 * 
+	 *
 	 * @param a the list
 	 * @param indices the index array that connects the points with the vertices in
 	 *            the corresponding face
@@ -240,7 +240,7 @@ public class FaceTriangulation {
 
 	/**
 	 * Normalizes a vector
-	 * 
+	 *
 	 * @param normal the vector to normalize
 	 */
 	private static void normalize(Point3D normal) {
@@ -257,7 +257,7 @@ public class FaceTriangulation {
 	/**
 	 * Projects a Face onto a 2D plane. Also compacts it (removes consecutive
 	 * duplicate points).
-	 * 
+	 *
 	 * @param f the Face
 	 * @param points a valid list that will receive the new projected points
 	 * @return the index array that connects the new projected points with the
@@ -273,7 +273,7 @@ public class FaceTriangulation {
 	/**
 	 * Projects a Face onto a 2D plane using a given normal. Also compacts the face
 	 * (removes consecutive duplicate points).
-	 * 
+	 *
 	 * @param f the Face
 	 * @param k the normal
 	 * @param points a valid list that will receive the new projected points
@@ -361,7 +361,7 @@ public class FaceTriangulation {
 
 	/**
 	 * Triangulates a face and returns a list of triangles
-	 * 
+	 *
 	 * @param f the face to triangulate
 	 * @return a list of triangulated faces containing the original vertices
 	 */

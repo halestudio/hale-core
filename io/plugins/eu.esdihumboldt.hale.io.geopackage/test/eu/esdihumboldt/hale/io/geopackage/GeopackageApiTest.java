@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2020 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.geopackage;
 
 import static org.junit.Assert.assertEquals;
@@ -34,14 +31,14 @@ import mil.nga.geopackage.manager.GeoPackageManager;
 /**
  * Tests using the Geopackage API. These are mostly intended to verify that the
  * geopackage library is properly integrated into the target platform.
- * 
+ *
  * @author Simon Templer
  */
 public class GeopackageApiTest {
 
 	/**
 	 * Run a handler on the wastewater geopackage test file.
-	 * 
+	 *
 	 * @param handler the file handler
 	 */
 	public static void withWastewaterTestFile(Consumer<File> handler) {
@@ -50,7 +47,7 @@ public class GeopackageApiTest {
 
 	/**
 	 * Run a handler on a test file from the classpath.
-	 * 
+	 *
 	 * @param name the name in the classpath
 	 * @param handler the file handler
 	 */

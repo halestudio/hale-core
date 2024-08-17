@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.common.instancevalidator;
 
@@ -73,7 +70,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
 
 /**
  * Validator for instances using constraints.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class InstanceValidator {
@@ -82,7 +79,7 @@ public class InstanceValidator {
 
 	/**
 	 * Create a default validator instance.
-	 * 
+	 *
 	 * @param services the service provider, if available
 	 * @return the validator instance
 	 */
@@ -118,7 +115,7 @@ public class InstanceValidator {
 
 	/**
 	 * Create a new instance validator.
-	 * 
+	 *
 	 * @param validators any validators to be used in addition to constraint
 	 *            validators
 	 */
@@ -131,7 +128,7 @@ public class InstanceValidator {
 
 	/**
 	 * Validates the given instances using all constraints that are validatable.
-	 * 
+	 *
 	 * @param instances the instances to validate
 	 * @param monitor the progress monitor
 	 * @return a report of the validation
@@ -168,7 +165,7 @@ public class InstanceValidator {
 	/**
 	 * Validate the information collected in the instance validation context. Should
 	 * be performed after all instances haven been validated.
-	 * 
+	 *
 	 * @param context the validation context
 	 * @param reporter the validation reporter
 	 */
@@ -208,7 +205,7 @@ public class InstanceValidator {
 	/**
 	 * Validates the given object. The created reports messages do not have an
 	 * {@link InstanceReference} set.
-	 * 
+	 *
 	 * @param object the object to validate (i. e. an instance, group or basic
 	 *            value)
 	 * @param childDef the child definition of the given object
@@ -249,7 +246,7 @@ public class InstanceValidator {
 	/**
 	 * Validates the given {@link Instance}. The created reports messages do not
 	 * have an {@link InstanceReference} set.
-	 * 
+	 *
 	 * @param instance the instance to validate
 	 * @return a report of the validation
 	 */
@@ -268,7 +265,7 @@ public class InstanceValidator {
 	 * {@link TypeConstraintValidator}s and calls
 	 * {@link #validateGroupChildren(Group, InstanceValidationReporter, QName, List, boolean, InstanceReference, InstanceValidationContext, ChildDefinition, EntityDefinition)}
 	 * .
-	 * 
+	 *
 	 * @param instance the instance to validate
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
@@ -325,7 +322,7 @@ public class InstanceValidator {
 	/**
 	 * Determines if validation should be skipped for a certain property type and
 	 * value.
-	 * 
+	 *
 	 * @param typeDef the property type
 	 * @param value the property value
 	 * @return if validation should be skipped for the property and its children
@@ -338,7 +335,7 @@ public class InstanceValidator {
 	/**
 	 * Validates the given {@link Group}'s children against the {@link Group}'s
 	 * definition.
-	 * 
+	 *
 	 * @param group the group to validate
 	 * @param reporter the reporter to report to
 	 * @param type the top level type
@@ -393,7 +390,7 @@ public class InstanceValidator {
 	/**
 	 * Validates the given {@link Group}'s children against the {@link Group}'s
 	 * definition.
-	 * 
+	 *
 	 * @param group the group to validate
 	 * @param childDefs the pre-determined children to validate (can be all children
 	 *            or a subset)
@@ -442,7 +439,7 @@ public class InstanceValidator {
 	 * Then calls
 	 * {@link #validateChildren(Object[], ChildDefinition, InstanceValidationReporter, QName, List, boolean, InstanceReference, InstanceValidationContext, EntityDefinition)}
 	 * .
-	 * 
+	 *
 	 * @param properties the array of existing properties, may be null
 	 * @param propertyDef their definition
 	 * @param reporter the reporter to report to
@@ -512,7 +509,7 @@ public class InstanceValidator {
 	 * Then calls
 	 * {@link #validateChildren(Object[], ChildDefinition, InstanceValidationReporter, QName, List, boolean, InstanceReference, InstanceValidationContext, EntityDefinition)}
 	 * .
-	 * 
+	 *
 	 * @param properties the array of existing properties, may be null
 	 * @param groupDef their definition
 	 * @param reporter the reporter to report to
@@ -571,7 +568,7 @@ public class InstanceValidator {
 	/**
 	 * Validates the given property values (their values - as instances - and/or
 	 * group children).
-	 * 
+	 *
 	 * @param properties the array of existing properties, may be null
 	 * @param childDef their definition
 	 * @param reporter the reporter to report to
@@ -626,7 +623,7 @@ public class InstanceValidator {
 			 * Special case: No property value, but a combination of minimum cardinality
 			 * greater than zero and NillableFlag is set. Then there can be sub-properties
 			 * that are required.
-			 * 
+			 *
 			 * Applicable for XML (simple) types with mandatory attributes.
 			 */
 			if (childDef.asProperty() != null

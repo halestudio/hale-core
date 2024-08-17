@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import java.io.File;
@@ -50,7 +47,7 @@ import eu.esdihumboldt.hale.common.instance.io.InstanceWriter;
 /**
  * A transformation workspace based on {@link WorkspaceService} and
  * {@link EnvironmentService}.
- * 
+ *
  * @author Simon Templer
  */
 public class TransformationWorkspace {
@@ -92,7 +89,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Create a new transformation workspace with a lease duration of one day.
-	 * 
+	 *
 	 * @throws IllegalStateException if the {@link WorkspaceService} is not
 	 *             available
 	 */
@@ -102,7 +99,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Create a new transformation workspace with a custom lease duration.
-	 * 
+	 *
 	 * @param leaseDuration the lease duration of the workspace
 	 * @throws IllegalStateException if the {@link WorkspaceService} is not
 	 *             available
@@ -113,7 +110,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Create a representation of an existing transformation workspace.
-	 * 
+	 *
 	 * @param workspaceId the workspace identifier
 	 * @throws IllegalStateException if the {@link WorkspaceService} is not
 	 *             available or the workspace with the given identifier does not
@@ -125,7 +122,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Create a new workspace or use an existing one.
-	 * 
+	 *
 	 * @param workspaceId the workspace identifier if this object should represent
 	 *            an existing workspace, may be <code>null</code> if leaseDuration
 	 *            is set.
@@ -168,7 +165,7 @@ public class TransformationWorkspace {
 	/**
 	 * Transform the instances provided through the given instance readers and store
 	 * the result in the {@link #getTargetFolder()}.
-	 * 
+	 *
 	 * @param envId the environment ID
 	 * @param sources the instance readers
 	 * @param target the configuration of the target instance writer
@@ -196,7 +193,7 @@ public class TransformationWorkspace {
 	/**
 	 * Transform the instances provided through the given instance readers and by
 	 * default stores the result in the {@link #getTargetFolder()}.
-	 * 
+	 *
 	 * @param env the transformation environment
 	 * @param sources the instance readers
 	 * @param target the configuration of the target instance writer
@@ -256,7 +253,7 @@ public class TransformationWorkspace {
 	 * Determines if a previously with
 	 * {@link #transform(String, List, IOConfiguration)} started transformation
 	 * process is finished. Regardless of the success or failure.
-	 * 
+	 *
 	 * @return <code>true</code> if the transformation is finished,
 	 *         <code>false</code> if the transformation is still running, no
 	 *         transformation was started or the workspace no longer exists
@@ -280,10 +277,10 @@ public class TransformationWorkspace {
 	 * <br>
 	 * This method may only be called of the transformation is finished, otherwise
 	 * an {@link IllegalStateException} will be thrown.
-	 * 
+	 *
 	 * @return if the transformation was completed successfully
 	 * @throws IllegalStateException if the transformation is not finished
-	 * 
+	 *
 	 * @see #isTransformationFinished()
 	 */
 	public boolean isTransformationSuccessful() throws IllegalStateException {
@@ -303,7 +300,7 @@ public class TransformationWorkspace {
 	/**
 	 * Set if the transformation was successfully completed. Must be called when the
 	 * transformation is finished. Also deletes the source folder in the workspace.
-	 * 
+	 *
 	 * @param success if the transformation was completed successfully
 	 * @throws FileNotFoundException if the workspace does not exist
 	 * @throws IOException if the workspace configuration file cannot be read or
@@ -318,12 +315,12 @@ public class TransformationWorkspace {
 
 	/**
 	 * Get the workspace settings.
-	 * 
+	 *
 	 * @return the current workspace settings, changes to the map will not be
 	 *         reflected in the settings
 	 * @throws FileNotFoundException if the workspace does not exist
 	 * @throws IOException if the workspace configuration file cannot be read
-	 * 
+	 *
 	 * @see #set(String, String)
 	 */
 	public Map<String, String> getSettings() throws FileNotFoundException, IOException {
@@ -332,13 +329,13 @@ public class TransformationWorkspace {
 
 	/**
 	 * Change a workspace setting.
-	 * 
+	 *
 	 * @param setting the name of the setting
 	 * @param value the value, <code>null</code> to remove the setting
 	 * @throws FileNotFoundException if the workspace does not exist
 	 * @throws IOException if the workspace configuration file cannot be read or
 	 *             written
-	 * 
+	 *
 	 * @see #getSettings()
 	 */
 	public void set(String setting, String value) throws FileNotFoundException, IOException {
@@ -347,7 +344,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Guess the file extension for a given I/O configuration.
-	 * 
+	 *
 	 * @param config the I/O provider configuration
 	 * @return the file extensions or a default, w/o leading dot
 	 */
@@ -363,7 +360,7 @@ public class TransformationWorkspace {
 
 	/**
 	 * Get the default file extension for the given content type.
-	 * 
+	 *
 	 * @param contentType the content type, may be <code>null</code>
 	 * @return the file extension w/o leading dot
 	 */
@@ -397,9 +394,9 @@ public class TransformationWorkspace {
 	/**
 	 * Get the target folder. This folder holds the transformation results after the
 	 * transformation is finished and successful.
-	 * 
+	 *
 	 * @return the target folder
-	 * 
+	 *
 	 * @see #isTransformationFinished()
 	 * @see #isTransformationSuccessful()
 	 */
@@ -410,7 +407,7 @@ public class TransformationWorkspace {
 	/**
 	 * Get the source folder. Files placed in this folder will be deleted after the
 	 * transformation has finished.
-	 * 
+	 *
 	 * @return the source folder
 	 */
 	public File getSourceFolder() {
@@ -419,9 +416,9 @@ public class TransformationWorkspace {
 
 	/**
 	 * Get the report file. It holds information about the finished transformation.
-	 * 
+	 *
 	 * @return the report file
-	 * 
+	 *
 	 * @see #isTransformationFinished()
 	 */
 	public File getReportFile() {

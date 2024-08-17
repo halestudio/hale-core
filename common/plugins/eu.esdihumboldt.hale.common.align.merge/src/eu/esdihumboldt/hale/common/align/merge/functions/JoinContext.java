@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.merge.functions;
 
 import java.util.ArrayList;
@@ -53,7 +50,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Context for merge of a Join cell.
- * 
+ *
  * @author Simon Templer
  */
 public class JoinContext {
@@ -89,7 +86,7 @@ public class JoinContext {
 
 	/**
 	 * Create new context for merging the given cell.
-	 * 
+	 *
 	 * @param originalCell the cell to migrate
 	 */
 	public JoinContext(Cell originalCell) {
@@ -100,7 +97,7 @@ public class JoinContext {
 
 	/**
 	 * Apply information collected in the context to the cell.
-	 * 
+	 *
 	 * @param newCell the merged cell
 	 * @param log the cell log
 	 * @param migration the alignment migration
@@ -232,7 +229,7 @@ public class JoinContext {
 
 	/**
 	 * Process a property that is part of the original join conditions.
-	 * 
+	 *
 	 * @param property the property to process
 	 * @param migration the alignment migration
 	 * @param log the log
@@ -284,7 +281,7 @@ public class JoinContext {
 
 	/**
 	 * Specify types that should replace a given type in the join order.
-	 * 
+	 *
 	 * @param source the type to replace
 	 * @param matches the types to replace it with
 	 */
@@ -294,7 +291,7 @@ public class JoinContext {
 
 	/**
 	 * Add a matched Join cell (for collecting match conditions).
-	 * 
+	 *
 	 * @param match the match
 	 */
 	public void addJoinMatch(Cell match) {
@@ -303,7 +300,7 @@ public class JoinContext {
 
 	/**
 	 * Add a Groovy script from the original cell or a match.
-	 * 
+	 *
 	 * @param cell the associated cell
 	 * @param script the Groovy script
 	 */
@@ -313,7 +310,7 @@ public class JoinContext {
 
 	/**
 	 * Add a filter associated to a type used in the join.
-	 * 
+	 *
 	 * @param type the type
 	 * @param filter the filter associated to the type
 	 */
@@ -324,7 +321,7 @@ public class JoinContext {
 	/**
 	 * Add an original source that was replaced where filter/contexts were not
 	 * retained.
-	 * 
+	 *
 	 * @param source the source to add
 	 */
 	public void addStrippedSource(EntityDefinition source) {

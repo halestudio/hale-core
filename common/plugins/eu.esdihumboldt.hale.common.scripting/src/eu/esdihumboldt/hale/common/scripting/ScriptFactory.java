@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.scripting;
 
 import java.util.ArrayList;
@@ -25,14 +22,14 @@ import de.fhg.igd.eclipse.util.extension.ExtensionUtil;
 
 /**
  * Factory for {@link Script}s.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class ScriptFactory extends AbstractConfigurationFactory<Script> {
 
 	/**
 	 * Create a {@link Script} factory based on the given configuration element.
-	 * 
+	 *
 	 * @param conf the configuration element
 	 */
 	protected ScriptFactory(IConfigurationElement conf) {
@@ -65,7 +62,7 @@ public class ScriptFactory extends AbstractConfigurationFactory<Script> {
 
 	/**
 	 * Returns all allowed argument types.
-	 * 
+	 *
 	 * @return all allowed argument types
 	 */
 	public Iterable<Class<?>> getArgumentBindings() {
@@ -83,7 +80,7 @@ public class ScriptFactory extends AbstractConfigurationFactory<Script> {
 
 	/**
 	 * Returns all possible return types.
-	 * 
+	 *
 	 * @return all possible return types
 	 */
 	public Iterable<Class<?>> getResultBindings() {

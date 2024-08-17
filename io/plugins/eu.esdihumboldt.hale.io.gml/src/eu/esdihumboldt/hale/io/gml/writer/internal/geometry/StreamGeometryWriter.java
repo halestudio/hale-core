@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry;
 
 import java.text.DecimalFormat;
@@ -65,7 +61,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
 
 /**
  * Write geometries for a GML document.
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -75,7 +71,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Get a geometry writer instance with a default configuration.
-	 * 
+	 *
 	 * @param gmlNs the GML namespace
 	 * @param simplifyGeometry if geometries should be simplified before writing
 	 *            them if possible (e.g. a MultiGeometry with only one geometry is
@@ -123,7 +119,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param gmlNs the GML namespace
 	 * @param simplifyGeometry if geometries should be simplified before writing
 	 *            them if possible (e.g. a MultiGeometry with only one geometry is
@@ -138,7 +134,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Register a geometry writer
-	 * 
+	 *
 	 * @param writer the geometry writer
 	 */
 	public void registerGeometryWriter(GeometryWriter<?> writer) {
@@ -154,7 +150,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Write a geometry to a stream for a GML document
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param geometry the geometry
 	 * @param property the geometry property
@@ -275,7 +271,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Select the first valid path that is applicable for the given geometry.
-	 * 
+	 *
 	 * @param preferredPaths the path candidates in order
 	 * @param geometry the geometry to write
 	 * @return the selected path
@@ -294,7 +290,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Sort the given candidates by preference.
-	 * 
+	 *
 	 * @param candidates the path candidates
 	 * @param geomType the geometry type
 	 * @return the sorted list of candidates
@@ -321,12 +317,12 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 				if (path != null && path.getGeometryCompatibleType() != null) {
 					/*
 					 * Policies:
-					 * 
+					 *
 					 * General - prefer simple types over composite types
-					 * 
+					 *
 					 * MultiPolygons - prefer MultiSurface over CompositeSurface, because it is more
 					 * flexible
-					 * 
+					 *
 					 * MultiLineString - rely on validity check
 					 */
 					switch (path.getGeometryCompatibleType().getName().getLocalPart()) {
@@ -355,10 +351,10 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Find candidates for a possible path to use for writing the geometry
-	 * 
+	 *
 	 * @param property the start property
 	 * @param geomType the geometry type
-	 * 
+	 *
 	 * @return the path candidates
 	 */
 	public List<DefinitionPath> findCandidates(PropertyDefinition property,
@@ -376,7 +372,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Write the geometry using the given path
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param geometry the geometry
 	 * @param path the definition path to use
@@ -428,7 +424,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Write the SRS name if a corresponding attribute is present
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param type the element type definition
 	 * @param geometry the geometry
@@ -465,7 +461,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Write the SRS dimension if a corresponding attribute is present
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param type the element type definition
 	 * @param geometry the geometry
@@ -516,7 +512,7 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Store the candidate for later use
-	 * 
+	 *
 	 * @param type the attribute type definition
 	 * @param geomType the geometry type
 	 * @param path the definition path
@@ -533,10 +529,10 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Restore the candidate matching the given types
-	 * 
+	 *
 	 * @param type the attribute type definition
 	 * @param geomType the geometry type
-	 * 
+	 *
 	 * @return a previously found path or <code>null</code>
 	 */
 	private List<DefinitionPath> restoreCandidate(TypeDefinition type,
@@ -550,11 +546,11 @@ public class StreamGeometryWriter extends AbstractTypeMatcher<Class<? extends Ge
 
 	/**
 	 * Determines if a type definition is compatible to a geometry type
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param geomType the geometry type
 	 * @param path the current definition path
-	 * 
+	 *
 	 * @return the (eventually updated) definition path if a match is found,
 	 *         otherwise <code>null</code>
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import static eu.esdihumboldt.hale.io.jdbc.JDBCUtil.determineNamespace;
@@ -60,7 +56,7 @@ import schemacrawler.utility.SchemaCrawlerUtility;
 
 /**
  * Reads the schema of an SQL query via JDBC.
- * 
+ *
  * @author Simon Templer
  */
 public class SQLSchemaReader extends AbstractCachedSchemaReader
@@ -106,7 +102,7 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * To get Connection. Override this to load the customized connection
-	 * 
+	 *
 	 * @return Connection object after loading driver.
 	 * @throws SQLException if connection could not be made.
 	 */
@@ -249,7 +245,7 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 	/**
 	 * Gets or creates a property definition for the given column. Its type
 	 * definition is created, too, if necessary.
-	 * 
+	 *
 	 * @param tableType the type definition of the parent table this column belongs
 	 *            too
 	 * @param column the column to get or create a property definition for
@@ -307,14 +303,14 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 
 	/**
 	 * Create the type definition for a query.
-	 * 
+	 *
 	 * @param query the SQL query
 	 * @param namespace the namespace for the type
 	 * @param types the schema to add the type to
 	 * @param connection the database connection
 	 * @param reporter the reporter
 	 * @param typename the name to use for the type
-	 * 
+	 *
 	 * @return the type definition for the given table
 	 */
 	private TypeDefinition addTableType(String query, String namespace, DefaultSchema types,

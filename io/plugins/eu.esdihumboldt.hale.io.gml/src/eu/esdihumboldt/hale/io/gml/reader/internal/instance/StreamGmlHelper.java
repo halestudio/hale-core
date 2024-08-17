@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal.instance;
 
 import static com.google.common.base.Preconditions.checkState;
@@ -65,7 +61,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlMixedFlag;
 
 /**
  * Utility methods for instances from {@link XMLStreamReader}s
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -75,7 +71,7 @@ public abstract class StreamGmlHelper {
 
 	/**
 	 * Parses an instance with the given type from the given XML stream reader.
-	 * 
+	 *
 	 * @param reader the XML stream reader, the current event must be the start
 	 *            element of the instance
 	 * @param type the definition of the instance type
@@ -111,7 +107,7 @@ public abstract class StreamGmlHelper {
 
 	/**
 	 * Parses an instance with the given type from the given XML stream reader.
-	 * 
+	 *
 	 * @param reader the XML stream reader, the current event must be the start
 	 *            element of the instance
 	 * @param type the definition of the instance type
@@ -283,7 +279,7 @@ public abstract class StreamGmlHelper {
 				 * Catch IllegalArgumentException that e.g. occurs if a linear ring has to few
 				 * points. NullPointerExceptions may occur because an internal geometry could
 				 * not be created.
-				 * 
+				 *
 				 * XXX a problem is that these messages will not appear in the report
 				 */
 				log.error("Error creating geometry", e);
@@ -341,9 +337,9 @@ public abstract class StreamGmlHelper {
 	 * Read the text value of the current element from the stream. The stream is
 	 * expected to be at {@link XMLStreamConstants#START_ELEMENT}. For mixed content
 	 * elements the text content is concatenated and the elements ignored.
-	 * 
+	 *
 	 * FIXME different handling for mixed types?
-	 * 
+	 *
 	 * @param reader the XML stream reader
 	 * @return the element text
 	 * @throws XMLStreamException if an error occurs reading from the stream or the
@@ -391,7 +387,7 @@ public abstract class StreamGmlHelper {
 	/**
 	 * Populates an instance or group with its properties based on the given XML
 	 * stream reader.
-	 * 
+	 *
 	 * @param reader the XML stream reader
 	 * @param group the group to populate with properties
 	 * @param strict if associating elements with properties should be done strictly
@@ -523,7 +519,7 @@ public abstract class StreamGmlHelper {
 	/**
 	 * Determines if the given type has properties that are represented as XML
 	 * elements.
-	 * 
+	 *
 	 * @param group the type definition
 	 * @return if the type is a complex type
 	 */
@@ -569,7 +565,7 @@ public abstract class StreamGmlHelper {
 	/**
 	 * Determines if the given type has properties that are represented as XML
 	 * attributes.
-	 * 
+	 *
 	 * @param group the type definition
 	 * @return if the type has at least one XML attribute property
 	 */
@@ -580,7 +576,7 @@ public abstract class StreamGmlHelper {
 	/**
 	 * Adds a property value to the given instance. The property value will be
 	 * converted appropriately.
-	 * 
+	 *
 	 * @param group the instance
 	 * @param property the property
 	 * @param value the property value as specified in the XML
@@ -594,7 +590,7 @@ public abstract class StreamGmlHelper {
 	/**
 	 * Convert a string value from a XML simple type to the binding defined by the
 	 * given type.
-	 * 
+	 *
 	 * @param type the type associated with the value
 	 * @param value the value
 	 * @return the converted object

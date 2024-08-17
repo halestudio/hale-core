@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.storage;
 
 import java.lang.ref.Reference;
@@ -37,7 +33,7 @@ import eu.esdihumboldt.hale.common.instance.model.impl.IdentifiableInstanceDecor
 /**
  * Database handle that manages objects referencing the database object. It will
  * release the connection when all those objects have been garbage collected.
- * 
+ *
  * @author Simon Templer
  */
 public class DatabaseHandle {
@@ -87,7 +83,7 @@ public class DatabaseHandle {
 
 	/**
 	 * Create a database handle
-	 * 
+	 *
 	 * @param database the database connection
 	 */
 	public DatabaseHandle(final ODatabaseDocumentTx database) {
@@ -114,10 +110,10 @@ public class DatabaseHandle {
 
 	/**
 	 * Add an object that references the database connection.
-	 * 
+	 *
 	 * It is preferred to use {@link #addInstance(Instance)} or
 	 * {@link #addGroup(Group)} instead.
-	 * 
+	 *
 	 * @param object the object referencing the database
 	 */
 	public synchronized void addReference(Object object) {
@@ -137,7 +133,7 @@ public class DatabaseHandle {
 	/**
 	 * Augment an instance and add a reference for the database connection. Makes
 	 * sure child instances or groups also reference the database connection.
-	 * 
+	 *
 	 * @param instance the instance to augment
 	 * @return the augmented instance
 	 */
@@ -154,7 +150,7 @@ public class DatabaseHandle {
 	/**
 	 * Augment a group and add a reference for the database connection. Makes sure
 	 * child instances or groups also reference the database connection.
-	 * 
+	 *
 	 * @param group the group to augment
 	 * @return the augmented group
 	 */
@@ -170,7 +166,7 @@ public class DatabaseHandle {
 
 	/**
 	 * Augment an array of values.
-	 * 
+	 *
 	 * @param values the values to augment
 	 * @return the augmented objects
 	 */

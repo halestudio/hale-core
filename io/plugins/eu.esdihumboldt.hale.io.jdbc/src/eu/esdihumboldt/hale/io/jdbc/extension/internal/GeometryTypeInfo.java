@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.extension.internal;
 
 import java.sql.Connection;
@@ -27,7 +23,7 @@ import eu.esdihumboldt.hale.io.jdbc.constraints.internal.GeometryAdvisorConstrai
 
 /**
  * Holds information about a geometry type.
- * 
+ *
  * @author Simon Templer
  */
 public class GeometryTypeInfo implements Identifiable {
@@ -42,7 +38,7 @@ public class GeometryTypeInfo implements Identifiable {
 
 	/**
 	 * Create a connection configuration from a corresponding configuration element.
-	 * 
+	 *
 	 * @param elementId the identifier
 	 * @param element the configuration element
 	 */
@@ -71,7 +67,7 @@ public class GeometryTypeInfo implements Identifiable {
 	/**
 	 * Determines if the geometry type applies to a database with the given
 	 * connection.
-	 * 
+	 *
 	 * @param connection the database connection
 	 * @return if the geometry type is valid for the database
 	 */

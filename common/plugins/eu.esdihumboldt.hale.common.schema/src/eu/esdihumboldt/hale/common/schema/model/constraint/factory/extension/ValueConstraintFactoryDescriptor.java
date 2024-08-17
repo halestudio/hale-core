@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.factory.extension;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -24,7 +21,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.factory.ValueConstrai
 
 /**
  * Descriptor for a {@link ValueConstraintFactory}.
- * 
+ *
  * @author Simon Templer
  */
 public class ValueConstraintFactoryDescriptor implements Identifiable {
@@ -36,7 +33,7 @@ public class ValueConstraintFactoryDescriptor implements Identifiable {
 	/**
 	 * Create a new {@link ValueConstraintFactory} descriptor based on the
 	 * definition in the extension point.
-	 * 
+	 *
 	 * @param id the descriptor identifier
 	 * @param conf the configuration element defining the descriptor
 	 * @throws Exception if an error occurs loading the classes or creating the

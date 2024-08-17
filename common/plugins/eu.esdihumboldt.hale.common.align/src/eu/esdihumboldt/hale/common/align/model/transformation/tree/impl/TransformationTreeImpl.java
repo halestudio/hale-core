@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.impl;
 
 import java.util.ArrayList;
@@ -45,7 +41,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TransformationTree} implementation
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -60,7 +56,7 @@ public class TransformationTreeImpl extends AbstractGroupNode implements Transfo
 
 	/**
 	 * Create a transformation tree based on a type cell.
-	 * 
+	 *
 	 * @param alignment the alignment holding the cells
 	 * @param typeCell the type cell this tree is representing
 	 */
@@ -107,7 +103,7 @@ public class TransformationTreeImpl extends AbstractGroupNode implements Transfo
 	 * Get the property cells relevant for the transformation tree from the given
 	 * alignment. The default implementation returns all property cells related to
 	 * the type cell.
-	 * 
+	 *
 	 * @param alignment the alignment
 	 * @param typeCell the type cell type
 	 * @return the property cells

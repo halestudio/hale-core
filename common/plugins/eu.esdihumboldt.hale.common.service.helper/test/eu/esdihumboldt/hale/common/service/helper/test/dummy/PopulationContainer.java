@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.service.helper.test.dummy;
 
 import java.util.ArrayList;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.hale.common.service.helper.population.IPopulationUpdater;
 
 /**
  * Contains the populations of {@link EntityDefinition}s
- * 
+ *
  * @author Arun
  */
 public class PopulationContainer implements IPopulationUpdater {
@@ -106,7 +103,7 @@ public class PopulationContainer implements IPopulationUpdater {
 
 	/**
 	 * Add to Population
-	 * 
+	 *
 	 * @param instance an {@link Instance}
 	 * @param entityDef an {@link EntityDefinition}
 	 */
@@ -162,7 +159,7 @@ public class PopulationContainer implements IPopulationUpdater {
 
 	/**
 	 * Get Population counts
-	 * 
+	 *
 	 * @param entityDef An {@link EntityDefinition}
 	 * @return {@link Population}
 	 */

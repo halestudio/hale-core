@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import javax.xml.namespace.NamespaceContext;
@@ -21,7 +18,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 /**
  * A abstract decorator for {@link XMLStreamWriter}.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class AbstractXMLStreamWriterDecorator implements XMLStreamWriter {
@@ -33,7 +30,7 @@ public class AbstractXMLStreamWriterDecorator implements XMLStreamWriter {
 
 	/**
 	 * Constructor with the writer to decorate.
-	 * 
+	 *
 	 * @param writer the writer to decorate
 	 */
 	protected AbstractXMLStreamWriterDecorator(XMLStreamWriter writer) {

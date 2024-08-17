@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.core;
 
 import java.util.Collection;
@@ -55,7 +51,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Property rename function.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -109,7 +105,7 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	/**
 	 * Performs a structural rename on the given source object to the given target
 	 * definition.
-	 * 
+	 *
 	 * @param source the source value (or group/instance)
 	 * @param targetDefinition the target definition
 	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces may
@@ -128,7 +124,7 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	/**
 	 * Performs a structural rename on the given source object to the given target
 	 * definition.
-	 * 
+	 *
 	 * @param source the source value (or group/instance)
 	 * @param targetDefinition the target definition
 	 * @param allowIgnoreNamespaces if for the structure comparison, namespaces may
@@ -235,7 +231,7 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 
 	/**
 	 * Determines if the given value is a geometry object.
-	 * 
+	 *
 	 * @param value the value
 	 * @return <code>true</code> if the value is a geometry object or collection,
 	 *         false otherwise
@@ -271,7 +267,7 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	/**
 	 * Tries to match any direct child of source group to the given
 	 * targetDefinition. Matches are added to the given target group.
-	 * 
+	 *
 	 * @param source the source group
 	 * @param target the target group
 	 * @param targetDefinition the target definition
@@ -323,7 +319,7 @@ public class Rename extends AbstractSingleTargetPropertyTransformation<Transform
 	/**
 	 * Tries to convert the value to be compatible with targetType, returns the
 	 * value itself if the conversion failed.
-	 * 
+	 *
 	 * @param value the value to convert
 	 * @param targetType the target type
 	 * @return the converted value if successful, the original value otherwise

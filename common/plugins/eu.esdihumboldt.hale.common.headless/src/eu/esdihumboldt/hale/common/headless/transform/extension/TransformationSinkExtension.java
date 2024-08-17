@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform.extension;
 
 import java.util.List;
@@ -27,7 +24,7 @@ import eu.esdihumboldt.hale.common.headless.transform.TransformationSink;
 
 /**
  * Extension point for transformation sinks.
- * 
+ *
  * @author Simon Templer
  */
 public class TransformationSinkExtension
@@ -39,7 +36,7 @@ public class TransformationSinkExtension
 
 		/**
 		 * Creates a new descriptor.
-		 * 
+		 *
 		 * @param conf the configuration element
 		 */
 		protected ConfigurationDescriptor(IConfigurationElement conf) {
@@ -112,7 +109,7 @@ public class TransformationSinkExtension
 
 	/**
 	 * Create a new transformation sink.
-	 * 
+	 *
 	 * @param reiterable if the transformation sink should be reiterable
 	 * @return the transformation sink
 	 * @throws Exception if no applicable transformation sink can be created

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.postgresql.test;
 
 import groovy.sql.Sql
@@ -35,7 +32,7 @@ import ru.yandex.qatools.allure.annotations.Stories
 /**
  * test the order of the instances to be written to the database, as unorder
  * writing may throw integrity constraint exception
- * 
+ *
  * @author Sameer Sheikh
  */
 @Features("Databases")
@@ -54,7 +51,7 @@ public class WriteInstanceOrderIT extends AbstractDBTest {
 
 	)'''
 	private static final THIRD_TABLE_LINES = '''CREATE TABLE indicators (
-	
+
 	SU_ID VARCHAR(10) REFERENCES statisticalunits (ID),
 	test_id varchar(10) references testtable (test_id),
 	year INTEGER,

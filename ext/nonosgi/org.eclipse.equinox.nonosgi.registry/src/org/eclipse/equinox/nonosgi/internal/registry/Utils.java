@@ -20,7 +20,7 @@ import java.util.Properties;
 
 /**
  * Utilities.
- * 
+ *
  */
 public class Utils {
 
@@ -35,7 +35,7 @@ public class Utils {
 	/**
 	 * Return a map of the whole MANIFEST.MF founded into the ClassPath. The key map
 	 * is the baseDir of the URI of the MANIFEST.MF file.
-	 * 
+	 *
 	 * @param cl
 	 * @return
 	 */
@@ -58,7 +58,7 @@ public class Utils {
 
 	/**
 	 * Returns baseDir of the URL.
-	 * 
+	 *
 	 * @param url
 	 * @param resourcePath
 	 * @return
@@ -70,7 +70,7 @@ public class Utils {
 
 	/**
 	 * Returns the MANIFEST.MF founded from the ClassLoader.
-	 * 
+	 *
 	 * @param cl
 	 * @return
 	 */
@@ -80,7 +80,7 @@ public class Utils {
 
 	/**
 	 * Returns the plugin.xml founded from the ClassLoader.
-	 * 
+	 *
 	 * @param cl
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public class Utils {
 
 	/**
 	 * Returns a resources founded from the ClassLoader.
-	 * 
+	 *
 	 * @param cl
 	 * @param resourcePath
 	 * @return
@@ -109,7 +109,7 @@ public class Utils {
 	 * <p>
 	 * Checks if a String is empty ("") or null.
 	 * </p>
-	 * 
+	 *
 	 * @param value the String to check, may be null
 	 * @return <code>true</code> if the String is empty or null
 	 */
@@ -120,7 +120,7 @@ public class Utils {
 	/**
 	 * Return true if value is not null and equals to "true", otherwise returns
 	 * defaultValue.
-	 * 
+	 *
 	 * @param value
 	 * @param defaultValue
 	 * @return
@@ -133,7 +133,7 @@ public class Utils {
 
 	/**
 	 * Load springclrfactory.properties from OSGi fragments linked to this bundle..
-	 * 
+	 *
 	 * @param cl
 	 * @return
 	 */

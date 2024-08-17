@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util;
 
 import java.util.ArrayList;
@@ -29,7 +25,7 @@ import com.google.common.collect.Iterables;
 /**
  * StructuredEquals provides methods for equals and hashCode implementations for
  * complex structures.
- * 
+ *
  * @author Simon Templer
  */
 public class StructuredEquals {
@@ -38,7 +34,7 @@ public class StructuredEquals {
 	 * Determines if the given objects are equal, in turn descending into
 	 * {@link Iterable}s and arrays and checking if the elements are equal (in
 	 * order).
-	 * 
+	 *
 	 * @param o1 the first object
 	 * @param o2 the second object
 	 * @return if both objects are equal
@@ -79,7 +75,7 @@ public class StructuredEquals {
 	/**
 	 * Get the hash code for all contained objects, descending into
 	 * {@link Iterable}s and arrays.
-	 * 
+	 *
 	 * @param object the object to determine the hash code from
 	 * @return the hash code
 	 * @see #deepIterableEquals(Object, Object)
@@ -91,7 +87,7 @@ public class StructuredEquals {
 	/**
 	 * Collect all objects contained in an {@link Iterable} or array and in their
 	 * elements.
-	 * 
+	 *
 	 * @param object the object to collect objects on
 	 * @return the collected objects
 	 */
@@ -112,7 +108,7 @@ public class StructuredEquals {
 	/**
 	 * Returns an iterable for the given objects contents, or null if it does not
 	 * contain anything that needs to be compared.
-	 * 
+	 *
 	 * @param object the object in question
 	 * @return an iterable for the given object
 	 */

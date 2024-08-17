@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -30,7 +30,7 @@ import de.fhg.igd.geom.algorithm.sweepline.SweepLineSegment;
  * This class describes closed 2D polylines with straight segments. The
  * underlying Point2D sequence may be explicitly closed or not. This shouldn't
  * make a difference for spatial computations, but may affect some operations.
- * 
+ *
  * @author Thorsten Reitz
  */
 public class Polygon extends Shape {
@@ -54,7 +54,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Constructor with zero ID and a given Point2D[].
-	 * 
+	 *
 	 * @param points An Array of Point2D objects.
 	 */
 	public Polygon(Point2D[] points) {
@@ -151,7 +151,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Checks if the extent lies within the polygon
-	 * 
+	 *
 	 * @param e the extent
 	 * @return true if e lies within the polygon
 	 */
@@ -163,7 +163,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Adds a Polygon to a Point2DEventQueue queue.
-	 * 
+	 *
 	 * @param p the Polygon to add
 	 * @param q the queue to add to
 	 * @return a list of line2d objects which are vertical and which could not be
@@ -196,7 +196,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * Tests if this Polygon intersects another one
-	 * 
+	 *
 	 * @param p the other Polygon
 	 * @return true if this Polygon intersects the other one, false otherwise
 	 */
@@ -294,7 +294,7 @@ public class Polygon extends Shape {
 	 * intersection (because the two Polygons must not intersect). Then it checks if
 	 * this Polygon contains at least one point (actually the first one) of the
 	 * other Polygon.
-	 * 
+	 *
 	 * @param p the other Polygon
 	 * @return true if this Polygon completely contains p, false otherwise
 	 */
@@ -324,7 +324,7 @@ public class Polygon extends Shape {
 	 * on the first line but not on the second one. If you want to make sure the
 	 * intersection point lies on both lines, always call this method as follows:
 	 * </p>
-	 * 
+	 *
 	 * <pre>
 	 * Double lambda1 = findIntersectionParameter(a1x, a1y, a2x, a2y, b1x, b1y, b2x, b2y);
 	 * if (lambda1 == null || lambda1 < 0.0 || lambda1 > 1.0) {
@@ -339,7 +339,7 @@ public class Polygon extends Shape {
 	 * double dy = a2y - a1y;
 	 * Point2D intersectionPoint = new Point2D(a1x + lambda * dx, a1y + lambda * dy);
 	 * </pre>
-	 * 
+	 *
 	 * @param a1x the x ordinate of the first point of the first line
 	 * @param a1y the y ordinate of the first point of the first line
 	 * @param a2x the x ordinate of the second point of the first line
@@ -380,7 +380,7 @@ public class Polygon extends Shape {
 	 * {@link #findIntersectionParameter(double, double, double, double, double, double, double, double)}
 	 * this method makes sure the intersection point lies on the given lines.
 	 * </p>
-	 * 
+	 *
 	 * @param a1 the first point of the first line
 	 * @param a2 the second point of the first line
 	 * @param b1 the first point of the second line
@@ -414,7 +414,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * This method tests if a given point falls within this Polygon's Extent.
-	 * 
+	 *
 	 * @param x the x ordinate of the point
 	 * @param y the y ordinate
 	 * @return true if the point falls within this Polygon's Extent
@@ -431,7 +431,7 @@ public class Polygon extends Shape {
 	/**
 	 * Converts this Polygon to an AWT Polygon. Only suitable for output, is not
 	 * null-safe!
-	 * 
+	 *
 	 * @param scale_x the scale factor in x direction
 	 * @param scale_y the scale factor in y direction
 	 * @param offset the offset to be added to the converted Polygon
@@ -503,7 +503,7 @@ public class Polygon extends Shape {
 
 	/**
 	 * standard toString() method. Contains call to super.toString().
-	 * 
+	 *
 	 * @see Object#toString()
 	 */
 	@Override

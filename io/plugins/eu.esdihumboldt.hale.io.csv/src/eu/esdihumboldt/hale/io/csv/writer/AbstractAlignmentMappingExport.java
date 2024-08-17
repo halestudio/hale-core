@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.csv.writer;
 
 import java.io.IOException;
@@ -41,7 +38,7 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 /**
  * Wrapper for all information of the alignment (mapping) saved in a list of
  * maps <br>
- * 
+ *
  * @author Patrick Lieb
  */
 public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWriter
@@ -92,7 +89,7 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 
 	/**
 	 * Header for all columns in the Mapping file
-	 * 
+	 *
 	 * @return list with strings of header for all columns
 	 */
 	public List<String> getMappingHeader() {
@@ -105,7 +102,7 @@ public abstract class AbstractAlignmentMappingExport extends AbstractAlignmentWr
 
 	/**
 	 * Get all mappings. Each list entry represents one mapping.
-	 * 
+	 *
 	 * @return list of all mappings
 	 */
 	public List<Map<CellType, CellInformation>> getMappingList() {

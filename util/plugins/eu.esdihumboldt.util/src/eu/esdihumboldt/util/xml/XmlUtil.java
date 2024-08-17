@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.xml;
 
 import java.io.StringWriter;
@@ -32,14 +29,14 @@ import org.w3c.dom.Node;
 
 /**
  * Utilities dealing with XML and DOM.
- * 
+ *
  * @author Simon Templer
  */
 public class XmlUtil {
 
 	/**
 	 * Append an foreign DOM element as child to an existing DOM element.
-	 * 
+	 *
 	 * @param parent the parent DOM element
 	 * @param child the child element to append to the parent
 	 */
@@ -53,7 +50,7 @@ public class XmlUtil {
 
 	/**
 	 * Serialize a node to a String.
-	 * 
+	 *
 	 * @param node the DOM node
 	 * @param indent <code>true</code> if the output should be pretty-printed
 	 * @return the XML string
@@ -65,7 +62,7 @@ public class XmlUtil {
 
 	/**
 	 * Serialize a XML source to a String.
-	 * 
+	 *
 	 * @param source the XML source
 	 * @param indent <code>true</code> if the output should be pretty-printed
 	 * @return the XML string
@@ -79,7 +76,7 @@ public class XmlUtil {
 
 	/**
 	 * Serialize a XML source to a {@link StreamResult}.
-	 * 
+	 *
 	 * @param source the XML source
 	 * @param target the stream result to write to
 	 * @param indent <code>true</code> if the output should be pretty-printed
@@ -110,7 +107,7 @@ public class XmlUtil {
 
 	/**
 	 * Transform a Source (XML) to pretty formatted Result.
-	 * 
+	 *
 	 * @param source the source, e.g. {@link DOMSource}
 	 * @param target the target, e.g. {@link StreamResult}
 	 * @throws TransformerException if the XSLT transformation for pretty printing

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.validator;
 
 import java.math.BigDecimal;
@@ -24,7 +20,7 @@ import org.springframework.core.convert.ConversionException;
  * Validator for digit counts. As in
  * (http://www.w3.org/TR/xmlschema-2/#rf-totalDigits and
  * http://www.w3.org/TR/xmlschema-2/#rf-fractionDigits)
- * 
+ *
  * @author Kai Schwierczek
  */
 public class DigitCountValidator extends AbstractValidator {
@@ -35,7 +31,7 @@ public class DigitCountValidator extends AbstractValidator {
 	/**
 	 * Construct a validator that checks the digit count of the input to match the
 	 * given type and value.
-	 * 
+	 *
 	 * @param type the digits to check for
 	 * @param length the length to check for
 	 */

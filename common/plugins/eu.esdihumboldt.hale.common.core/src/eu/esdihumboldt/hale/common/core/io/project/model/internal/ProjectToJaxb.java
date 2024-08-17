@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.model.internal;
 
 import java.util.Date;
@@ -38,7 +35,7 @@ import eu.esdihumboldt.hale.common.core.io.project.model.internal.generated.Valu
 
 /**
  * Convert a {@link Project} to a JAXB {@link ProjectType}.
- * 
+ *
  * @author Simon Templer
  */
 public class ProjectToJaxb {
@@ -57,7 +54,7 @@ public class ProjectToJaxb {
 
 	/**
 	 * Convert the given project to the corresponding JAXB type.
-	 * 
+	 *
 	 * @param project the project to convert
 	 * @return the converted project
 	 */
@@ -119,7 +116,7 @@ public class ProjectToJaxb {
 
 	/**
 	 * Converts an I/O configuration to its JAXB representation.
-	 * 
+	 *
 	 * @param config the I/O configuration
 	 * @return the JAXB representation
 	 */

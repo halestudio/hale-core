@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.extension.internal;
 
 import java.sql.Connection;
@@ -24,7 +20,7 @@ import de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension;
 
 /**
  * Extension for identifying geometry types.
- * 
+ *
  * @author Simon Templer
  */
 public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInfo> {
@@ -33,7 +29,7 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 
 	/**
 	 * Get the extension instance.
-	 * 
+	 *
 	 * @return the extension instance
 	 */
 	public static GeometryTypeExtension getInstance() {
@@ -73,7 +69,7 @@ public class GeometryTypeExtension extends IdentifiableExtension<GeometryTypeInf
 	/**
 	 * Get the geometry type info associated to a type name and connection type, if
 	 * any.
-	 * 
+	 *
 	 * @param name the (column) type name
 	 * @param connection the database connection
 	 * @return the geometry type info or <code>null</code> if there is none

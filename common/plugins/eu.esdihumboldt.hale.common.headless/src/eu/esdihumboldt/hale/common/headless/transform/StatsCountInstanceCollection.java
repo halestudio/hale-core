@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import javax.xml.namespace.QName;
@@ -31,7 +28,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Instance collection that collects stats on the read instances.
- * 
+ *
  * @author Simon Templer
  */
 public class StatsCountInstanceCollection extends InstanceCollectionDecorator {
@@ -47,7 +44,7 @@ public class StatsCountInstanceCollection extends InstanceCollectionDecorator {
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param decoratee the decorated iterator
 		 */
 		public StatsCountIterator(ResourceIterator<Instance> decoratee) {
@@ -102,7 +99,7 @@ public class StatsCountInstanceCollection extends InstanceCollectionDecorator {
 
 	/**
 	 * Create an instance collection that reports retrieved instances.
-	 * 
+	 *
 	 * @param sources the instance collection to decorate
 	 * @param reportHandler the report handler
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.scripting;
 
 import java.util.ArrayList;
@@ -25,7 +21,7 @@ import de.fhg.igd.eclipse.util.extension.AbstractExtension;
 
 /**
  * Extension for {@link Script}s.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class ScriptExtension extends AbstractExtension<Script, ScriptFactory> {
@@ -39,7 +35,7 @@ public class ScriptExtension extends AbstractExtension<Script, ScriptFactory> {
 
 	/**
 	 * Get the configuration page extension instance
-	 * 
+	 *
 	 * @return the extension instance
 	 */
 	public static ScriptExtension getInstance() {
@@ -66,7 +62,7 @@ public class ScriptExtension extends AbstractExtension<Script, ScriptFactory> {
 
 	/**
 	 * Returns all script factories supporting the given return binding.
-	 * 
+	 *
 	 * @param supportedReturnBinding the return binding that should be supported
 	 * @return all script factories that match the given binding
 	 */

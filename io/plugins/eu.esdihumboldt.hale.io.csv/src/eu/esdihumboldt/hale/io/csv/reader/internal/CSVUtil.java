@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.csv.reader.internal;
 
 import java.io.BufferedReader;
@@ -29,14 +25,14 @@ import eu.esdihumboldt.hale.io.csv.reader.CSVConstants;
 
 /**
  * Utils for the CSVSchemaReader and CSVInstanceReader
- * 
+ *
  * @author Kevin Mais
  */
 public class CSVUtil implements CSVConstants {
 
 	/**
 	 * Reads only the first line of a given CSV file
-	 * 
+	 *
 	 * @param provider to get the parameters from
 	 * @return a reader containing the first line of the CSV file
 	 * @throws IOException if an I/O operation fails
@@ -50,7 +46,7 @@ public class CSVUtil implements CSVConstants {
 	/**
 	 * This method reads/retrieves just one line, either the first after the header
 	 * or the first line after skipping "skipLines".
-	 * 
+	 *
 	 * @param provider to get the parameters from
 	 * @param skipLines how many lines have to be skipped
 	 * @return a reader containing the first line after (no. of lines - skipLines)
@@ -70,7 +66,7 @@ public class CSVUtil implements CSVConstants {
 
 	/**
 	 * Getter for the separating sign
-	 * 
+	 *
 	 * @param provider the provider given to the method
 	 * @return the separator char
 	 */
@@ -84,7 +80,7 @@ public class CSVUtil implements CSVConstants {
 
 	/**
 	 * Getter for the quote sign
-	 * 
+	 *
 	 * @param provider the provider given to the method
 	 * @return the quote char
 	 */
@@ -97,7 +93,7 @@ public class CSVUtil implements CSVConstants {
 
 	/**
 	 * Getter for the escape sign
-	 * 
+	 *
 	 * @param provider the provider given to the method
 	 * @return the escape char
 	 */
@@ -110,7 +106,7 @@ public class CSVUtil implements CSVConstants {
 
 	/**
 	 * Getter for the decimal divisor
-	 * 
+	 *
 	 * @param provider the provider given to the method
 	 * @return the decimal char
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.core.merge;
 
 import java.util.Collection;
@@ -43,7 +39,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 /**
  * Abstract merge handler implementation based on a merge index of instance
  * references.
- * 
+ *
  * @param <T> the merge configuration type
  * @param <K> the merge key type
  * @author Simon Templer
@@ -61,7 +57,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 
 		/**
 		 * Create a collection of merged instances.
-		 * 
+		 *
 		 * @param index the merge index
 		 * @param instances the original instance collection
 		 * @param mergeConfig the merge configuration
@@ -139,7 +135,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 
 	/**
 	 * Get the instance factory
-	 * 
+	 *
 	 * @return the instance factory
 	 */
 	protected InstanceFactory getInstanceFactory() {
@@ -151,7 +147,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 	 * merge configuration may be then used in
 	 * {@link #getMergeKey(Instance, Object)} and
 	 * {@link #merge(InstanceCollection, TypeDefinition, Object, Object)}
-	 * 
+	 *
 	 * @param transformationIdentifier the transformation identifier
 	 * @param transformationParameters the transformation parameters
 	 * @param executionParameters the execution parameters
@@ -167,7 +163,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 	/**
 	 * Get the merge key for a given instance. Instances with an equal merge key
 	 * will be merged.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @param mergeConfig the merge configuration
 	 * @return the instance merge key
@@ -177,7 +173,7 @@ public abstract class AbstractMergeHandler<T, K> implements InstanceHandler<Tran
 
 	/**
 	 * Merge multiple instance into one.
-	 * 
+	 *
 	 * @param instances the instances to merge
 	 * @param type the type definition of the instances to merge
 	 * @param mergeKey the merge key associated to the instances

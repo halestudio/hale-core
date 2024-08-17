@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.io.IOException;
@@ -86,7 +83,7 @@ import jakarta.xml.bind.helpers.DefaultValidationEventHandler;
 /**
  * Converts an {@link AlignmentType} loaded with JAXB to a
  * {@link MutableAlignment}.
- * 
+ *
  * @author Simon Templer
  */
 public class JaxbToAlignment
@@ -144,7 +141,7 @@ public class JaxbToAlignment
 	/**
 	 * Load a {@link AlignmentType} from an input stream. The stream is closed at
 	 * the end.
-	 * 
+	 *
 	 * @param in the input stream
 	 * @param reporter the I/O reporter to report any errors to, may be
 	 *            <code>null</code>
@@ -176,7 +173,7 @@ public class JaxbToAlignment
 
 	/**
 	 * Adds the given base alignment to the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to add a base alignment to
 	 * @param newBase URI of the new base alignment
 	 * @param projectLocation the project location or <code>null</code>
@@ -197,7 +194,7 @@ public class JaxbToAlignment
 
 	/**
 	 * Create the converted alignment.
-	 * 
+	 *
 	 * @return the resolved alignment
 	 * @throws IOException if a base alignment couldn't be loaded
 	 */
@@ -349,7 +346,7 @@ public class JaxbToAlignment
 		for (NamedEntityType namedEntity : namedEntities) {
 			/**
 			 * Resolve entity.
-			 * 
+			 *
 			 * Possible results:
 			 * <ul>
 			 * <li>non-null entity - entity could be resolved</li>

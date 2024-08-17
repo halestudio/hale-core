@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.scripting.scripts.groovy;
 
 import javax.script.ScriptException;
@@ -37,7 +34,7 @@ import groovy.lang.MissingPropertyException;
 
 /**
  * Groovy script implementation.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class GroovyScript implements Script {
@@ -81,12 +78,12 @@ public class GroovyScript implements Script {
 
 	/**
 	 * Create a Groovy binding from the list of variables.
-	 * 
+	 *
 	 * FIXME why is here an additional implementation of this as already used in
 	 * GroovyTransformation? Could the implementation in GroovyTransformation be
 	 * used instead? FIXME It could (should?) only be the other way around (because
 	 * of dependencies); or it should be at another "common"-place
-	 * 
+	 *
 	 * @param variables the variables
 	 * @param useNullForMissingBindings if the binding should provide
 	 *            <code>null</code> values for variables that are not provided in

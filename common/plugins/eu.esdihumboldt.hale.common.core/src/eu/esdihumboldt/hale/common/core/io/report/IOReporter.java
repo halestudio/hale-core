@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.report;
 
 import javax.annotation.Nullable;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 
 /**
  * Reporter for I/O providers
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.2
@@ -37,7 +33,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an error.
-	 * 
+	 *
 	 * @param message the error message
 	 * @param throwable a throwable describing the error
 	 * @param lineNumber the line number, <code>-1</code> for none
@@ -49,7 +45,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an error.
-	 * 
+	 *
 	 * @param message the error message
 	 * @param throwable a throwable describing the error
 	 */
@@ -60,7 +56,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an error.
-	 * 
+	 *
 	 * @param message the error message
 	 */
 	@Override
@@ -72,7 +68,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log a warning.
-	 * 
+	 *
 	 * @param message the warning message
 	 * @param throwable a throwable describing the warning
 	 * @param lineNumber the line number, <code>-1</code> for none
@@ -84,7 +80,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log a warning.
-	 * 
+	 *
 	 * @param message the warning message
 	 * @param throwable a throwable describing the warning
 	 */
@@ -95,7 +91,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log a warning.
-	 * 
+	 *
 	 * @param message the warning message
 	 */
 	@Override
@@ -107,7 +103,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an info message.
-	 * 
+	 *
 	 * @param message the info message
 	 * @param throwable a throwable
 	 * @param lineNumber the line number, <code>-1</code> for none
@@ -119,7 +115,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an info message.
-	 * 
+	 *
 	 * @param message the info message
 	 * @param throwable a throwable
 	 */
@@ -130,7 +126,7 @@ public interface IOReporter extends Reporter<IOMessage>, IOReport, SimpleLog {
 
 	/**
 	 * Log an info message.
-	 * 
+	 *
 	 * @param message the info message
 	 */
 	@Override

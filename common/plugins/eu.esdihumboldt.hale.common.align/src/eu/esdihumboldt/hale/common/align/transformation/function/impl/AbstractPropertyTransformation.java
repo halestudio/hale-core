@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.transformation.function.impl;
 
 import java.util.Map;
@@ -33,9 +29,9 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Base class for implementing {@link PropertyTransformation}s
- * 
+ *
  * @param <E> the transformation engine type
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractPropertyTransformation<E extends TransformationEngine>
@@ -59,7 +55,7 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 	/**
 	 * Get the target type of the instance that is to be populated with the function
 	 * result.
-	 * 
+	 *
 	 * @return the target instance type
 	 */
 	protected TypeDefinition getTargetType() {
@@ -105,7 +101,7 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 
 	/**
 	 * Get the cell used to configure this function evaluation.
-	 * 
+	 *
 	 * @return the cell
 	 */
 	protected Cell getCell() {
@@ -114,7 +110,7 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 
 	/**
 	 * Execute the evaluation function as configured.
-	 * 
+	 *
 	 * @param transformationIdentifier the transformation function identifier
 	 * @param engine the transformation engine that may be used for the function
 	 *            execution
@@ -138,7 +134,7 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 	/**
 	 * Automatic result conversion allowed by default. Override to change this
 	 * behavior.
-	 * 
+	 *
 	 * @see PropertyTransformation#allowAutomatedResultConversion()
 	 */
 	@Override
@@ -156,7 +152,7 @@ public abstract class AbstractPropertyTransformation<E extends TransformationEng
 
 	/**
 	 * Get the type cell this property transformation belongs to.
-	 * 
+	 *
 	 * @return the cell
 	 */
 	protected Cell getTypeCell() {

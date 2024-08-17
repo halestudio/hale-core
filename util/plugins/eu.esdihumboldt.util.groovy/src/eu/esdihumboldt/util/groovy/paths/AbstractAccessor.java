@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.util.groovy.paths;
 
 import java.util.Collections;
@@ -28,9 +25,9 @@ import groovy.lang.MissingPropertyException;
 
 /**
  * Base class for path accessors.
- * 
+ *
  * It mutates, so an instance is only usable once.
- * 
+ *
  * @param <C> the path element type
  * @author Simon Templer
  */
@@ -43,7 +40,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Creates a new accessor.
-	 * 
+	 *
 	 * @param parentPath the root path, usually containing only one path with the
 	 *            parent element
 	 */
@@ -53,7 +50,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Creates a new accessor.
-	 * 
+	 *
 	 * @param initialPaths the initial paths, usually containing only one path with
 	 *            the parent element
 	 */
@@ -83,7 +80,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Find children with the given name.
-	 * 
+	 *
 	 * @param name the property name
 	 * @return this accessor
 	 */
@@ -93,7 +90,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Find children with the given name.
-	 * 
+	 *
 	 * @param name the property name
 	 * @param args the list of additional arguments apart from the name
 	 * @return this accessor
@@ -105,7 +102,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Find child paths for the given name.
-	 * 
+	 *
 	 * @param parentPaths the parent paths
 	 * @param name the property name
 	 * @param args the list of additional arguments apart from the name
@@ -116,7 +113,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Get all found paths.
-	 * 
+	 *
 	 * @return the list of paths
 	 */
 	public List<? extends Path<C>> all() {
@@ -125,7 +122,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Get a unique found child path.
-	 * 
+	 *
 	 * @return a child path or <code>null</code> if none was found
 	 * @throws IllegalStateException if there are multiple paths
 	 */
@@ -135,7 +132,7 @@ public abstract class AbstractAccessor<C> extends GroovyObjectSupport {
 
 	/**
 	 * Get a single found child path.
-	 * 
+	 *
 	 * @param unique if the path must be unique
 	 * @return a child path or <code>null</code> if none was found
 	 * @throws IllegalStateException if there are multiple paths but a unique path

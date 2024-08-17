@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import java.io.IOException;
@@ -39,7 +36,7 @@ import eu.esdihumboldt.hale.io.jdbc.constraints.SQLQuery;
 
 /**
  * Reads instances from a JDBC database.
- * 
+ *
  * @author Simon Templer
  */
 public class JDBCInstanceReader extends AbstractInstanceReader
@@ -70,7 +67,7 @@ public class JDBCInstanceReader extends AbstractInstanceReader
 
 	/**
 	 * To get Connection. Override this to load the customized connection
-	 * 
+	 *
 	 * @return Connection object after loading driver.
 	 * @throws SQLException if connection could not be made.
 	 */
@@ -81,7 +78,7 @@ public class JDBCInstanceReader extends AbstractInstanceReader
 
 	/**
 	 * To test Connection. Override this to load the customized connection testing
-	 * 
+	 *
 	 * @return true if connection succeeded or <code>null</code>
 	 * @throws SQLException if connection could not be made.
 	 */

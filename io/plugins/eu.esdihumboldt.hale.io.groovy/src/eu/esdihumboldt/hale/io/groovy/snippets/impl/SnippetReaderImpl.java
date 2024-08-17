@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.groovy.snippets.impl;
 
 import java.io.File;
@@ -36,7 +33,7 @@ import groovy.lang.Script;
 
 /**
  * Default snippet reader.
- * 
+ *
  * @author Simon Templer
  */
 public class SnippetReaderImpl extends AbstractSnippetReader {
@@ -91,7 +88,7 @@ public class SnippetReaderImpl extends AbstractSnippetReader {
 
 	/**
 	 * Load a snippet script.
-	 * 
+	 *
 	 * @param source the source of the script
 	 * @param serviceProvider the service provider
 	 * @param encoding the encoding

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.persist.hsd
 
 import groovy.transform.CompileStatic
@@ -39,7 +36,7 @@ import eu.esdihumboldt.util.groovy.xml.NSDOMBuilder
 
 /**
  * Creates an XML representation from the HALE Schema Model.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -48,7 +45,7 @@ class SchemaToXml extends SchemaEncoderBase implements HaleSchemaConstants {
 	/**
 	 * Create a default DOM builder to use with the *toXml methods for creating
 	 * XML from the HALE schema model.
-	 * 
+	 *
 	 * @return a new NSDOMBuilder instance with preconfigured namespace prefixes
 	 */
 	static NSDOMBuilder createBuilder() {
@@ -57,7 +54,7 @@ class SchemaToXml extends SchemaEncoderBase implements HaleSchemaConstants {
 
 	/**
 	 * Create an XML representation of the given set of schemas.
-	 * 
+	 *
 	 * @param builder the XML builder
 	 * @param schemas the schemas to serialize
 	 * @return the builder return value for the schemas element
@@ -265,7 +262,7 @@ class SchemaToXml extends SchemaEncoderBase implements HaleSchemaConstants {
 
 	/**
 	 * Create an XML representation of a qualified name.
-	 * 
+	 *
 	 * @param b the XML builder
 	 * @param name the qualified name
 	 * @return the builder return value for the name element

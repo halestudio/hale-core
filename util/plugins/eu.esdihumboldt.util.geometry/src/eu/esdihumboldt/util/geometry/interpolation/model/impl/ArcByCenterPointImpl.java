@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation.model.impl;
 
 import java.text.MessageFormat;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.util.geometry.interpolation.model.ArcByPoints;
 
 /**
  * An arc represented by center point and radius.
- * 
+ *
  * @author Simon Templer
  */
 public class ArcByCenterPointImpl implements ArcByCenterPoint {
@@ -40,7 +37,7 @@ public class ArcByCenterPointImpl implements ArcByCenterPoint {
 
 	/**
 	 * Create an Arc represented by center point and radius.
-	 * 
+	 *
 	 * @param centerPoint the center point
 	 * @param radius the radius
 	 * @param startAngle the start angle
@@ -67,7 +64,7 @@ public class ArcByCenterPointImpl implements ArcByCenterPoint {
 
 	/**
 	 * Determine the point at the given angle.
-	 * 
+	 *
 	 * @param angle the angle
 	 * @return the point at the given angle that lies on the arc's circle
 	 */
@@ -79,7 +76,7 @@ public class ArcByCenterPointImpl implements ArcByCenterPoint {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @author Arun Verma
 	 */
 	@Override

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.util;
 
 import java.io.IOException;
@@ -31,7 +28,7 @@ import org.eclipse.core.runtime.content.IContentType;
 /**
  * Detects if a stream is compressed with GZip. Optionally uses an internal
  * content describer to verify the uncompressed content of a stream.
- * 
+ *
  * @author Simon Templer
  */
 public class GZipContentDescriber implements IContentDescriber, IExecutableExtension {
@@ -52,7 +49,7 @@ public class GZipContentDescriber implements IContentDescriber, IExecutableExten
 
 	/**
 	 * Constructor using an internal content describer for the uncompressed content.
-	 * 
+	 *
 	 * @param internalContentDescriber the content describer for the uncompressed
 	 *            content
 	 */
@@ -103,7 +100,7 @@ public class GZipContentDescriber implements IContentDescriber, IExecutableExten
 
 	/**
 	 * Determines if the given content type is a GZip content type.
-	 * 
+	 *
 	 * @param contentType the content type
 	 * @return <code>true</code> if the content type is the GZip content type or it
 	 *         extends the GZip content type

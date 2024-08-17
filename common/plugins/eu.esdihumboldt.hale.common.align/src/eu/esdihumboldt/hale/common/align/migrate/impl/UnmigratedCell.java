@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.migrate.impl;
 
 import java.util.HashMap;
@@ -32,7 +29,7 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 
 /**
  * Decorator for a {@link MutableCell} that allows to do lazy migration.
- * 
+ *
  * @author Florian Esser
  */
 public class UnmigratedCell extends MutableCellDecorator {
@@ -42,7 +39,7 @@ public class UnmigratedCell extends MutableCellDecorator {
 
 	/**
 	 * Create an unmigrated cell
-	 * 
+	 *
 	 * @param unmigratedCell Original cell that is to be migrated later
 	 * @param migrator The migrator to apply
 	 * @param mappings The original {@link EntityDefinition}s mapped to the resolved
@@ -65,7 +62,7 @@ public class UnmigratedCell extends MutableCellDecorator {
 	/**
 	 * Perform the migration of the original cell and return the migrated cell. The
 	 * <code>UnmigratedCell</code> instance is not changed.
-	 * 
+	 *
 	 * @param additionalMappings Additional mappings of original
 	 *            {@link EntityDefinition}s to the resolved ones that should be
 	 *            considered in the migration

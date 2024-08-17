@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.hale.common.schema.groovy
 
 import groovy.transform.CompileStatic
@@ -54,7 +51,7 @@ import eu.esdihumboldt.util.groovy.builder.BuilderBase
 
 /**
  * Builder to easily create schemas.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -94,7 +91,7 @@ class SchemaBuilder extends BuilderBase {
 
 		/*
 		 * NOTE: In Eclipse in the editor there might be errors shown here,
-		 * even if the code actually compiles. 
+		 * even if the code actually compiles.
 		 */
 
 		constraints.cardinality = CardinalityFactory.instance
@@ -120,7 +117,7 @@ class SchemaBuilder extends BuilderBase {
 
 	/**
 	 * Build a schema, then reset the builder.
-	 * 
+	 *
 	 * @param namespace the schema namespace and default namespace of added
 	 *   types and properties
 	 * @param location the schema location or <code>null</code>
@@ -141,7 +138,7 @@ class SchemaBuilder extends BuilderBase {
 
 	/**
 	 * Build a type index, then reset the builder.
-	 * 
+	 *
 	 * @return the created type index
 	 */
 	TypeIndex types(Closure closure) {
@@ -158,7 +155,7 @@ class SchemaBuilder extends BuilderBase {
 
 	/**
 	 * Create a new node.
-	 * 
+	 *
 	 * @param name the node name
 	 * @param attributes the named parameters, may be <code>null</code>
 	 * @param params other parameters, may be <code>null</code>
@@ -308,8 +305,8 @@ class SchemaBuilder extends BuilderBase {
 
 	/**
 	 * Add constraints based on the given attributes and parameters.
-	 * 
-	 * @param definition the definition to add constraints to 
+	 *
+	 * @param definition the definition to add constraints to
 	 * @param attributes the map that will be checked for keys matching entries
 	 *   of the {@link #constraints} map to create constraints with the
 	 *   associated factories
@@ -357,7 +354,7 @@ class SchemaBuilder extends BuilderBase {
 	/**
 	 * Get the existing or create a new default property type for the given
 	 * class.
-	 * 	
+	 *
 	 * @param type the binding for the default property type
 	 * @return the default property type definition
 	 */
@@ -415,7 +412,7 @@ class SchemaBuilder extends BuilderBase {
 
 	/**
 	 * Determine an unused local name for a default property type.
-	 * 
+	 *
 	 * @param preferred the preferred name
 	 * @return the local name to use
 	 */

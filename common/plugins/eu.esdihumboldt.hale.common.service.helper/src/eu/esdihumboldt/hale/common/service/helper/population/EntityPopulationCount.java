@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.common.service.helper.population;
 
 import java.util.ArrayList;
@@ -11,7 +23,7 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
 
 /**
  * Helper class for Population Service
- * 
+ *
  * @author Arun
  */
 public class EntityPopulationCount {
@@ -20,7 +32,7 @@ public class EntityPopulationCount {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param notifier {@link IPopulationUpdater}
 	 */
 	public EntityPopulationCount(IPopulationUpdater notifier) {
@@ -29,7 +41,7 @@ public class EntityPopulationCount {
 
 	/**
 	 * Count the population for the properties of the given group.
-	 * 
+	 *
 	 * @param group the group
 	 * @param groupDef the group entity definition
 	 */
@@ -47,7 +59,7 @@ public class EntityPopulationCount {
 
 	/**
 	 * Count population of {@link EntityDefinition}
-	 * 
+	 *
 	 * @param entityDef a entity definition
 	 * @param instance an instance
 	 */
@@ -66,7 +78,7 @@ public class EntityPopulationCount {
 
 	/**
 	 * count the population for the given entity with all contexts
-	 * 
+	 *
 	 * @param group A {@link Group}
 	 * @param groupDef An {@link EntityDefinition}
 	 */

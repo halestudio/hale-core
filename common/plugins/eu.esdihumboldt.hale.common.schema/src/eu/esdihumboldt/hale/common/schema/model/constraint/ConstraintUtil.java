@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint;
 
 import java.lang.reflect.Constructor;
@@ -31,10 +27,10 @@ import eu.esdihumboldt.hale.common.schema.model.Definition;
  * Helper for creating default constraints and dealing with the
  * {@link Constraint} annotation. Caches immutable default constraints that have
  * a default constructor.
- * 
+ *
  * @see Constraint
  * @see Definition#getConstraint(Class)
- * 
+ *
  * @author Simon Templer
  */
 public abstract class ConstraintUtil {
@@ -45,9 +41,9 @@ public abstract class ConstraintUtil {
 
 	/**
 	 * Get the default constraint for the given constraint type.
-	 * 
+	 *
 	 * @param <T> the constraint type
-	 * 
+	 *
 	 * @param constraintType the concrete constraint type, i.e. a type annotated
 	 *            with {@link Constraint} and defining a default constructor and/or
 	 *            a constructor taking a {@link Definition} as an argument
@@ -55,7 +51,7 @@ public abstract class ConstraintUtil {
 	 * @return the default constraint of the given type
 	 * @throws IllegalArgumentException if the given type is no constraint type or
 	 *             creating the default constraint fails
-	 * 
+	 *
 	 * @see Constraint
 	 * @see Definition#getConstraint(Class)
 	 */
@@ -127,7 +123,7 @@ public abstract class ConstraintUtil {
 	/**
 	 * Determine the constraint type in the hierarchy of the given type, i.e. the
 	 * type that is marked with {@link Constraint}
-	 * 
+	 *
 	 * @param type the type to determine the constraint type for
 	 * @return the constraint type
 	 * @throws IllegalArgumentException if no constraint type exists in the type
@@ -149,7 +145,7 @@ public abstract class ConstraintUtil {
 	/**
 	 * Determine if the constraint type in the hierarchy of the given type is
 	 * mutable.
-	 * 
+	 *
 	 * @param type the type to determine the constraint type for
 	 * @return if the constraint is mutable
 	 * @throws IllegalArgumentException if no constraint type exists in the type

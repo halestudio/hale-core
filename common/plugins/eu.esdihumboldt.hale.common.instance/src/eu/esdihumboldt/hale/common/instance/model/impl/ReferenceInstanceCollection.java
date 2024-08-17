@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.model.impl;
 
 import java.util.Collection;
@@ -27,14 +24,14 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 
 /**
  * Instance collection based on references.
- * 
+ *
  * @author Simon Templer
  */
 public class ReferenceInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Instance iterator based on instance references.
-	 * 
+	 *
 	 * @param <X> the instance reference type
 	 */
 	private class ReferenceIterator<X extends InstanceReference>
@@ -42,7 +39,7 @@ public class ReferenceInstanceCollection implements InstanceCollection {
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param iterator iterator on instances references
 		 */
 		public ReferenceIterator(Iterator<X> iterator) {
@@ -61,7 +58,7 @@ public class ReferenceInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Create an instance collection based on the given references.
-	 * 
+	 *
 	 * @param references the instance references
 	 * @param instanceResolver the instance resolver
 	 */

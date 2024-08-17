@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.core.merge;
 
 import java.text.MessageFormat;
@@ -57,7 +54,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Merge using an instance index
- * 
+ *
  * @author Florian Esser
  */
 public class IndexMergeHandler
@@ -244,7 +241,7 @@ public class IndexMergeHandler
 						/*
 						 * Property is merge key -> only use first occurrence (as all entries need
 						 * to be the same)
-						 * 
+						 *
 						 * TODO adapt if multiple keys are possible per instance
 						 */
 						addFirstOccurrence(result, instance, name);
@@ -252,9 +249,9 @@ public class IndexMergeHandler
 					else if (nonKeyRootNames.contains(name)) {
 						/*
 						 * Property is additional merge property.
-						 * 
+						 *
 						 * Traditional behavior: Only keep unique values.
-						 * 
+						 *
 						 * XXX should this be configurable?
 						 */
 						addUnique(result, instance, name);
@@ -262,9 +259,9 @@ public class IndexMergeHandler
 					else if (mergeConfig.autoDetect) {
 						/*
 						 * Auto-detection is enabled.
-						 * 
+						 *
 						 * Only keep unique values.
-						 * 
+						 *
 						 * XXX This differs from the traditional behavior in that there only the
 						 * first value would be used, but only if all values were equal. That cannot
 						 * be easily checked in an iterative approach.
@@ -274,9 +271,9 @@ public class IndexMergeHandler
 					else {
 						/*
 						 * Property is not to be merged.
-						 * 
+						 *
 						 * XXX but we could do some kind of aggregation
-						 * 
+						 *
 						 * XXX for now just add all values
 						 */
 						addValues(result, instance, name);
@@ -307,7 +304,7 @@ public class IndexMergeHandler
 	/**
 	 * Apply instance property values to the merged result instance. Use the "first
 	 * occurrence" strategy that only keeps the values from the first instance.
-	 * 
+	 *
 	 * @param result the result instance
 	 * @param instance the instance to merge with the result
 	 * @param property the name of the property that should be handled
@@ -324,7 +321,7 @@ public class IndexMergeHandler
 	/**
 	 * Apply instance property values to the merged result instance. Use the
 	 * "unique" strategy that only keeps unique values.
-	 * 
+	 *
 	 * @param result the result instance
 	 * @param instance the instance to merge with the result
 	 * @param property the name of the property that should be handled
@@ -356,7 +353,7 @@ public class IndexMergeHandler
 	/**
 	 * Apply instance property values to the merged result instance. Use the "add
 	 * values" strategy that keeps all values.
-	 * 
+	 *
 	 * @param result the result instance
 	 * @param instance the instance to merge with the result
 	 * @param property the name of the property that should be handled
@@ -385,7 +382,7 @@ public class IndexMergeHandler
 
 	/**
 	 * Get the instance factory
-	 * 
+	 *
 	 * @return the instance factory
 	 */
 	protected InstanceFactory getInstanceFactory() {

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.http;
 
 import java.net.Proxy;
@@ -28,7 +24,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Proxy utility methods
- * 
+ *
  * @author Simon Templer
  */
 public class ProxyUtil {
@@ -41,7 +37,7 @@ public class ProxyUtil {
 
 	/**
 	 * Tries to find the system's proxy configuration for a given URI
-	 * 
+	 *
 	 * @param uri the URI
 	 * @return the proxy configuration (host and port)
 	 */
@@ -75,22 +71,22 @@ public class ProxyUtil {
 		 * = System.getProperty("http.nonProxyHosts"); String[] nonProxyHosts; if
 		 * (strNonProxyHosts != null) { nonProxyHosts = strNonProxyHosts.split("\\|"); }
 		 * else { nonProxyHosts = new String[0]; }
-		 * 
+		 *
 		 * if (strProxyHost != null && strProxyPort != null) { boolean noProxy = false;
 		 * for (int i = 0; i < nonProxyHosts.length; ++i) { if
 		 * (nonProxyHosts[i].equalsIgnoreCase(uri.getHost())) { noProxy = true; break; }
 		 * }
-		 * 
+		 *
 		 * if (!noProxy) { int proxyPort = Integer.parseInt(strProxyPort); return new
 		 * InetSocketAddress(strProxyHost, proxyPort); } }
-		 * 
+		 *
 		 * return null;
 		 */
 	}
 
 	/**
 	 * Add a proxy initializer. It will be called before the first proxy usage
-	 * 
+	 *
 	 * @param initializer the initializer
 	 */
 	public static void addInitializer(Runnable initializer) {

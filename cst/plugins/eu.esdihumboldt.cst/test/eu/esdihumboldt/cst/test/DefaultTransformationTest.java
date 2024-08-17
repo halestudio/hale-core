@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.test;
 
 import static org.junit.Assert.assertTrue;
@@ -31,14 +27,14 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
 
 /**
  * Tests for the CST's alignment processor implementation
- * 
+ *
  * @author Simon Templer
  */
 public abstract class DefaultTransformationTest extends AbstractTransformationTest {
 
 	/**
 	 * Test based on a very simple mapping with a retype and renames.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -49,7 +45,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test based on a very simple mapping where on the target side there is a
 	 * simple type property with attributes.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -59,7 +55,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test based on a very simple mapping with a retype, renames and an assignment.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -70,7 +66,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test based on a simple mapping with a retype and renames, where high
 	 * cardinalities are allowed.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -81,7 +77,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test based on a simple mapping with a retype, rename and assign, duplicated
 	 * targets should also get the assigned values.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -91,7 +87,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test based on a join and some renames.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -101,7 +97,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test with a join that links two types w/ multiple conditions.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -113,7 +109,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	 * Test based on a retype and a formatted string with several inputs where one
 	 * input exists several times, whereas the others only exist once. So those
 	 * should be used all the times.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -124,11 +120,11 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test based on a retype and a formatted string with several inputs where each
 	 * input exists several times, so they should be combined accordingly.
-	 * 
+	 *
 	 * If some inputs exist more often than others there is no way to decide which
 	 * of the others to use, so none should be used, so formatted string will not
 	 * produce a value.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -140,11 +136,11 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test based on a retype and a formatted string with several inputs where each
 	 * input exists several times, so they should be combined accordingly.
-	 * 
+	 *
 	 * If some inputs exist more often than others there is no way to decide which
 	 * of the others to use, so none should be used, so formatted string will not
 	 * produce a value.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -156,7 +152,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test where multiple properties from a simple source type are mapped to a
 	 * complex property structure including a choice in the target type.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore
@@ -175,7 +171,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test where a type with complex properties is mapped to itself, switching
 	 * certain attributes.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -187,7 +183,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	 * Test where elements with a high cardinality are mapped to an element which
 	 * may only occur once within an element that allows a high cardinality. The
 	 * elements should be grouped together to fill the target element.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -197,7 +193,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Simple structural rename transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -208,7 +204,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Structural rename with cyclic references transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -219,7 +215,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Structural rename with choices transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -230,7 +226,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Simple structural retype transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -241,7 +237,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * A simple Math Expression transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -251,7 +247,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * A Regex String Analysis transformation test.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -261,7 +257,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * A transformation test to consider function priority.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -271,7 +267,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * A transformation test to where null values occur as result.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -282,7 +278,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Test for the generateduid. Since the uid is always different, just test for
 	 * them being unique.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -309,7 +305,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test for the classification.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -319,7 +315,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test for the classification with non matching values and use source.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -329,7 +325,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test for the classification with non matching values and use a fixed value.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -339,7 +335,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test with simple property conditions.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -349,7 +345,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test with simple property conditions.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -359,7 +355,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test with simple type filter.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -369,7 +365,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test with simple property filters.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -381,7 +377,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	 * Test where properties from a simple source type are mapped to to complex
 	 * properties in that target type, with some of the needed information being
 	 * given only implicit through the corresponding source property.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -391,7 +387,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 
 	/**
 	 * Test for the formatstring function
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -402,7 +398,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_MULTI_1}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -413,7 +409,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_MULTI_2}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -424,7 +420,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_MULTI_3}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -435,7 +431,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_MULTI_4}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -446,7 +442,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_NESTED_1}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -457,7 +453,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_1}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -468,7 +464,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_2}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -479,7 +475,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_3}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -490,7 +486,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_4}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -501,7 +497,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_5}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Test
@@ -512,7 +508,7 @@ public abstract class DefaultTransformationTest extends AbstractTransformationTe
 	/**
 	 * Transformation test for the context matching example
 	 * {@link TransformationExamples#CM_UNION_6}.
-	 * 
+	 *
 	 * @throws Exception if an error occurs executing the test
 	 */
 	@Ignore

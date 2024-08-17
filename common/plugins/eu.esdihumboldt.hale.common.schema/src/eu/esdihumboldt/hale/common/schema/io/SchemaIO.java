@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.io;
 
 import java.util.ArrayList;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappingRelevantF
 
 /**
  * Schema I/O utilities
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.5
@@ -67,7 +63,7 @@ public abstract class SchemaIO {
 
 	/**
 	 * Creates a schema reader instance
-	 * 
+	 *
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
 	 * @param providerId the id of the provider to use, may be <code>null</code> if
@@ -81,7 +77,7 @@ public abstract class SchemaIO {
 
 	/**
 	 * Load the configuration of mapping relevant types.
-	 * 
+	 *
 	 * @param types the types
 	 * @param spaceID the schema space identifier
 	 * @param configurationService the configuration service
@@ -111,7 +107,7 @@ public abstract class SchemaIO {
 
 	/**
 	 * Get the name of the project settings parameter specifying the mappable types.
-	 * 
+	 *
 	 * @param spaceID the schemas space
 	 * @return the parameter name
 	 */
@@ -121,7 +117,7 @@ public abstract class SchemaIO {
 
 	/**
 	 * Load the configuration of mapping relevant types.
-	 * 
+	 *
 	 * @param types the types
 	 * @param spaceID the schema space identifier
 	 * @param project the project holding the configuration information

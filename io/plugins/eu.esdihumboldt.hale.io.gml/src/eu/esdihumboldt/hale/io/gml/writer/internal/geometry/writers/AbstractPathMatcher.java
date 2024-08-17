@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry.writers;
 
 import java.util.HashSet;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.geometry.Descent;
 
 /**
  * Abstract pattern based path matcher
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -46,7 +42,7 @@ public abstract class AbstractPathMatcher {
 	/**
 	 * Add a base pattern. When matching the path the pattern path is appended to
 	 * the base path.
-	 * 
+	 *
 	 * @param pattern the pattern string
 	 * @see Pattern#parse(String)
 	 */
@@ -65,9 +61,9 @@ public abstract class AbstractPathMatcher {
 	 * verification patterns will be used to verify the structure. For a path to be
 	 * accepted, all verification patterns must match and the resulting end-points
 	 * of the verification patterns must be valid.
-	 * 
+	 *
 	 * @see #verifyEndPoint(TypeDefinition)
-	 * 
+	 *
 	 * @param pattern the pattern string
 	 * @see Pattern#parse(String)
 	 */
@@ -86,9 +82,9 @@ public abstract class AbstractPathMatcher {
 	 * verification patterns will be used to verify the structure. For a path to be
 	 * accepted, all verification patterns must match and the resulting end-points
 	 * of the verification patterns must be valid.
-	 * 
+	 *
 	 * @see #verifyEndPoint(TypeDefinition)
-	 * 
+	 *
 	 * @param pattern the pattern
 	 * @see Pattern#parse(String)
 	 */
@@ -103,11 +99,11 @@ public abstract class AbstractPathMatcher {
 
 	/**
 	 * Matches the type against the encoding patterns.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param basePath the definition path
 	 * @param defaultNs the default namespace for the patterns
-	 * 
+	 *
 	 * @return the new path if there is a match, <code>null</code> otherwise
 	 */
 	public DefinitionPath match(TypeDefinition type, DefinitionPath basePath, String defaultNs) {
@@ -156,7 +152,7 @@ public abstract class AbstractPathMatcher {
 
 	/**
 	 * Descend the given pattern
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param descendPattern the pattern to descend
 	 * @param elementType the type of the encompassing element
@@ -182,9 +178,9 @@ public abstract class AbstractPathMatcher {
 	 * the end-point to assure the needed structure is present (e.g. a
 	 * DirectPositionListType element). If no verification pattern is present the
 	 * end-point of the matched base pattern will be verified.
-	 * 
+	 *
 	 * @param endPoint the end-point type definition
-	 * 
+	 *
 	 * @return if the end-point is valid
 	 */
 	protected abstract boolean verifyEndPoint(TypeDefinition endPoint);

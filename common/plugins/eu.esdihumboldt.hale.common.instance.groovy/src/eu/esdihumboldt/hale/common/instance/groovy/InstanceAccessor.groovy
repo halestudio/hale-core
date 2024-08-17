@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.hale.common.instance.groovy;
 
 import groovy.transform.CompileStatic
@@ -34,9 +31,9 @@ import eu.esdihumboldt.util.groovy.paths.PathWithNulls
 
 /**
  * Property accessor for {@link Instance}s.
- * 
+ *
  * It mutates, so it is only usable once.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -46,9 +43,9 @@ class InstanceAccessor extends AbstractAccessor<Object> {
 
 	/**
 	 * Create an accessor for a given instance/value.
-	 * 
+	 *
 	 * @param object the object to access
-	 * @param accessNulls if it should be possible to access <code>null</code> values 
+	 * @param accessNulls if it should be possible to access <code>null</code> values
 	 */
 	public InstanceAccessor(def object, boolean accessNulls = false) {
 		super(ImmutableList.of((object == null || accessNulls)
@@ -58,7 +55,7 @@ class InstanceAccessor extends AbstractAccessor<Object> {
 
 	/**
 	 * Creates an accessor for the given instances/values.
-	 * 
+	 *
 	 * @param objects the initial objects
 	 */
 	public InstanceAccessor(List<?> objects, boolean accessNulls = false) {
@@ -204,9 +201,9 @@ class InstanceAccessor extends AbstractAccessor<Object> {
 
 	/**
 	 * Iterator over the path last values.
-	 * 
+	 *
 	 * @param instance <code>true</code> if instances should be preserved,
-	 *   <code>false</code> if the instance values should be supplied instead		
+	 *   <code>false</code> if the instance values should be supplied instead
 	 * @param closure the closure to execute for each value
 	 */
 	public void each(boolean instance = true, Closure closure) {
@@ -215,7 +212,7 @@ class InstanceAccessor extends AbstractAccessor<Object> {
 
 	/**
 	 * Get the first value.
-	 * 
+	 *
 	 * @param instance <code>true</code> if an instance should be preserved,
 	 *   <code>false</code> if the instance value should be returned instead
 	 * @return the first value

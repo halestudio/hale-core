@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.impl;
 
 import java.io.IOException;
@@ -29,7 +25,7 @@ import eu.esdihumboldt.util.definition.ObjectDefinition;
 
 /**
  * Abstract message definition
- * 
+ *
  * @param <T> the message type
  * @author Simon Templer
  */
@@ -53,7 +49,7 @@ public abstract class AbstractMessageDefinition<T extends Message> implements Me
 
 	/**
 	 * Create message definition
-	 * 
+	 *
 	 * @param messageClass the message class
 	 * @param id the identifier for the definition (without prefix)
 	 */
@@ -101,7 +97,7 @@ public abstract class AbstractMessageDefinition<T extends Message> implements Me
 
 	/**
 	 * Create a message from a set of properties
-	 * 
+	 *
 	 * @param props the properties
 	 * @return the message
 	 */
@@ -134,7 +130,7 @@ public abstract class AbstractMessageDefinition<T extends Message> implements Me
 	/**
 	 * Get a {@link Properties} representation of the given message that can be used
 	 * to create a new message instance using {@link #createMessage(Properties)}.
-	 * 
+	 *
 	 * @param message the message
 	 * @return the properties representing the message
 	 */

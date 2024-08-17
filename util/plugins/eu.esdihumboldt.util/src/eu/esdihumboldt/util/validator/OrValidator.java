@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.validator;
 
 import java.util.Collection;
@@ -24,7 +20,7 @@ import java.util.List;
 /**
  * Validator that only checks whether one of its known validators validate the
  * given input.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class OrValidator implements CombinedValidator {
@@ -33,7 +29,7 @@ public class OrValidator implements CombinedValidator {
 
 	/**
 	 * Constructs an OrValidator with the given validators.
-	 * 
+	 *
 	 * @param validators the validators.
 	 */
 	public OrValidator(Collection<Validator> validators) {
@@ -52,7 +48,7 @@ public class OrValidator implements CombinedValidator {
 	/**
 	 * Adds the given Validator to this Validator.<br>
 	 * OrValidators get flattened.
-	 * 
+	 *
 	 * @param validator the validator to add
 	 */
 	public void addValidator(Validator validator) {

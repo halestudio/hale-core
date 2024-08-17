@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
 import java.util.Collection;
@@ -24,9 +20,9 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Constraint that holds allowed values for a type
- * 
+ *
  * @param <T> the value type
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -49,7 +45,7 @@ public class Enumeration<T> implements TypeConstraint {
 
 	/**
 	 * Create a constraint that holds allowed values for a type
-	 * 
+	 *
 	 * @param values the collection of allowed values, ownership of the collection
 	 *            is transferred to the constraint
 	 * @param allowOthers if other values are allowed

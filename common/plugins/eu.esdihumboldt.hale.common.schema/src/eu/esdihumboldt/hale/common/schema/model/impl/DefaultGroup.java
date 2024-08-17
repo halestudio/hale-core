@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.impl;
 
 import java.util.ArrayList;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.internal.ConstraintOverride
  * Default {@link DefinitionGroup} implementation used internally in
  * {@link DefaultTypeDefinition} and {@link DefaultGroupPropertyDefinition}. It
  * has a random UUID as identifier.
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultGroup implements DefinitionGroup {
@@ -53,7 +49,7 @@ public class DefaultGroup implements DefinitionGroup {
 
 	/**
 	 * Create a group
-	 * 
+	 *
 	 * @param identifier the reproducable unique identifier of the group
 	 * @param flatten if contained group properties may be replaced by their
 	 *            children if possible
@@ -122,7 +118,7 @@ public class DefaultGroup implements DefinitionGroup {
 
 	/**
 	 * Replace groups with their children where possible
-	 * 
+	 *
 	 * @param children the children
 	 * @return the flattened children
 	 */

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.extension;
 
 import java.text.MessageFormat;
@@ -35,7 +31,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Extension for {@link IOAdvisor}s
- * 
+ *
  * @author Simon Templer
  */
 public class IOAdvisorExtension extends AbstractExtension<IOAdvisor<?>, IOAdvisorFactory>
@@ -49,7 +45,7 @@ public class IOAdvisorExtension extends AbstractExtension<IOAdvisor<?>, IOAdviso
 
 		/**
 		 * Create an {@link IOAdvisor} factory basd on the given configuration
-		 * 
+		 *
 		 * @param conf the configuration element
 		 */
 		protected ConfigurationFactory(IConfigurationElement conf) {
@@ -116,7 +112,7 @@ public class IOAdvisorExtension extends AbstractExtension<IOAdvisor<?>, IOAdviso
 
 	/**
 	 * Get the I/O advisor extension instance
-	 * 
+	 *
 	 * @return the extension instance
 	 */
 	public static IOAdvisorExtension getInstance() {
@@ -146,7 +142,7 @@ public class IOAdvisorExtension extends AbstractExtension<IOAdvisor<?>, IOAdviso
 
 	/**
 	 * Find the advisor for an action
-	 * 
+	 *
 	 * @param actionId the action identifier
 	 * @param serviceProvider the service provider the new advisor shall be
 	 *            configured with

@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.util;
 
@@ -25,9 +22,9 @@ import java.util.Set;
 /**
  * A list where the entries are sorted by dependencies, the dependencies to an
  * entry are before the entry
- * 
+ *
  * @param <T> the entry type
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -37,10 +34,10 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Create a new list
-	 * 
+	 *
 	 * <b>Attention:</b> Due to the use of recursion a huge dependency set may
 	 * result in a StackOverflowError.
-	 * 
+	 *
 	 * @param dependencies the dependency map
 	 */
 	public DependencyOrderedList(Map<T, Set<T>> dependencies) {
@@ -57,7 +54,7 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Insert an object into the list
-	 * 
+	 *
 	 * @param object the object to insert
 	 * @param dependencies the map with all dependencies
 	 * @param alreadyInserted the objects that were already inserted
@@ -101,7 +98,7 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Find an object in the list
-	 * 
+	 *
 	 * @param object the object to find
 	 * @return the object's index or <code>-1</code> if there is no such object in
 	 *         the list
@@ -112,7 +109,7 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Add an object where it is sure that none of the others depends on it
-	 * 
+	 *
 	 * @param object the object to append
 	 */
 	public void append(T object) {
@@ -121,7 +118,7 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Get an {@link Iterable} over the list's items
-	 * 
+	 *
 	 * @return the list's items
 	 */
 	public Iterable<T> getItems() {
@@ -130,7 +127,7 @@ public class DependencyOrderedList<T> {
 
 	/**
 	 * Get the internal list, there shouldn't be made any changes to this list.
-	 * 
+	 *
 	 * @return the internal list
 	 */
 	public List<T> getInternalList() {

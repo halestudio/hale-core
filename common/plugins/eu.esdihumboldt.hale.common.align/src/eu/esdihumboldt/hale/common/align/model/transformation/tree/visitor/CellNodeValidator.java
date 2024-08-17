@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.visitor;
 
 import java.util.Map.Entry;
@@ -40,7 +36,7 @@ import eu.esdihumboldt.util.Pair;
 /**
  * Visitor that validates cell nodes. The tree should have already been
  * annotated with the source instance values when applying this visitor.
- * 
+ *
  * @author Simon Templer
  */
 public class CellNodeValidator extends AbstractTargetToSourceVisitor {
@@ -55,7 +51,7 @@ public class CellNodeValidator extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param reporter the transformation reporter
 	 * @param serviceProvider the service provider
 	 */
@@ -118,7 +114,7 @@ public class CellNodeValidator extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * Validate a cell node.
-	 * 
+	 *
 	 * @param node the cell node
 	 * @param sources the named source entities and nodes
 	 * @param targets the named target entities and nodes
@@ -153,7 +149,7 @@ public class CellNodeValidator extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * Process a valid cell node.
-	 * 
+	 *
 	 * @param cell the associated cell
 	 * @param sources the named source entities and nodes
 	 * @param targets the named target entities and nodes
@@ -165,7 +161,7 @@ public class CellNodeValidator extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * Find the matching target node for the given entity in a cell node.
-	 * 
+	 *
 	 * @param node the cell node the source node must be associated to
 	 * @param entity the entity
 	 * @return the target node or <code>null</code>
@@ -182,7 +178,7 @@ public class CellNodeValidator extends AbstractTargetToSourceVisitor {
 
 	/**
 	 * Find the matching source node for the given entity in a cell node.
-	 * 
+	 *
 	 * @param node the cell node the source node must be associated to
 	 * @param entity the entity
 	 * @return the source node or <code>null</code>

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry.constraint;
 
 import eu.esdihumboldt.hale.common.core.io.IOProvider;
@@ -27,7 +23,7 @@ import eu.esdihumboldt.hale.io.gml.geometry.GeometryNotSupportedException;
 /**
  * Constraint associating a geometry handler with a type. By default no geometry
  * handler is associated.
- * 
+ *
  * @author Simon Templer
  */
 @Constraint(mutable = false)
@@ -44,7 +40,7 @@ public class GeometryFactory implements TypeConstraint {
 
 	/**
 	 * Create a geometry factory constraint based on the given geometry handler.
-	 * 
+	 *
 	 * @param handler the geometry handler
 	 */
 	public GeometryFactory(GeometryHandler handler) {
@@ -63,7 +59,7 @@ public class GeometryFactory implements TypeConstraint {
 
 	/**
 	 * Create a geometry value from a given instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @param srsDimension the dimension of the instance
 	 * @param reader the I/O Provider to get value
