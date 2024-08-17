@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.model;
 
 import java.util.Collection;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Filter that accepts instances based on their instance metadata entries.
- * 
+ *
  * @author Simon Templer
  */
 public class MetaFilter implements Filter {
@@ -46,7 +43,7 @@ public class MetaFilter implements Filter {
 
 	/**
 	 * Create a new metadata filter.
-	 * 
+	 *
 	 * @param type the type of instances to accept, may be <code>null</code>
 	 * @param metadataKey the name of the metadata key to check
 	 * @param values the values that should be accepted for the given metadata key

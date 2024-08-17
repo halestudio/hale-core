@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry.handler;
 
 import java.util.ArrayList;
@@ -45,7 +41,7 @@ import eu.esdihumboldt.hale.io.gml.geometry.constraint.GeometryFactory;
 
 /**
  * Handler for ring geometries (parsed to {@link LinearRing}s).
- * 
+ *
  * @author Simon Templer
  */
 public class RingHandler extends FixedConstraintsGeometryHandler {
@@ -67,7 +63,7 @@ public class RingHandler extends FixedConstraintsGeometryHandler {
 
 	/**
 	 * Create a {@link LinearRing} geometry from the given instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @param srsDimension the SRS dimension
 	 * @param allowTryOtherDimension if trying another dimension is allowed on
@@ -133,7 +129,7 @@ public class RingHandler extends FixedConstraintsGeometryHandler {
 	/**
 	 * Filter duplicate appearing directly after each other in a sequence of
 	 * coordinates.
-	 * 
+	 *
 	 * @param coordinates the sequence of coordinates
 	 * @return the filtered sequence
 	 */

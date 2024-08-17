@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.model.impl;
 
 import eu.esdihumboldt.hale.common.instance.model.Filter;
@@ -24,7 +21,7 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 /**
  * Instance collection that uses a poll mechanism to create instances on the
  * fly.
- * 
+ *
  * @param <C> the type of the context held for an iterator
  * @author Simon Templer
  */
@@ -74,14 +71,14 @@ public abstract class AbstractPollingInstanceCollection<C> implements InstanceCo
 
 	/**
 	 * Create a new context for a new iterator.
-	 * 
+	 *
 	 * @return the iterator context
 	 */
 	protected abstract C createContext();
 
 	/**
 	 * Determines if for an iterator there is an additional instance.
-	 * 
+	 *
 	 * @param context the iterator context
 	 * @return if there is an additional instance to retrieve using
 	 *         {@link #next(Object)}
@@ -90,7 +87,7 @@ public abstract class AbstractPollingInstanceCollection<C> implements InstanceCo
 
 	/**
 	 * Get the next instance for the iterator.
-	 * 
+	 *
 	 * @param context the iterator context
 	 * @return the next instance
 	 */
@@ -98,7 +95,7 @@ public abstract class AbstractPollingInstanceCollection<C> implements InstanceCo
 
 	/**
 	 * Dispose the context after the iterator has been closed.
-	 * 
+	 *
 	 * @param context the iterator context
 	 */
 	protected abstract void dispose(C context);

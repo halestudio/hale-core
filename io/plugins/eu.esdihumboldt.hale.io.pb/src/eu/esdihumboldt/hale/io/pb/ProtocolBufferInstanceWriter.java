@@ -1,4 +1,15 @@
 
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.pb;
 
 import java.io.File;
@@ -23,7 +34,7 @@ import eu.esdihumboldt.util.io.OutputSupplier;
 
 /**
  * Class to generate instances to Protocol Buffer.
- * 
+ *
  * @author Flaminia Catalli
  */
 
@@ -89,7 +100,7 @@ public class ProtocolBufferInstanceWriter extends AbstractInstanceWriter {
 
 	/**
 	 * Convert JSON to Protocol Buffer.
-	 * 
+	 *
 	 * @param jsonSource reader of the JSON to convert
 	 * @param target supplier for the target output stream
 	 * @throws IOException if an error occurs reading, converting or writing data

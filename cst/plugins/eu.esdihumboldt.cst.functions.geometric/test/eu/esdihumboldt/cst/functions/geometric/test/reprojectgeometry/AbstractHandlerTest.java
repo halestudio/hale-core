@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.geometric.test.reprojectgeometry;
 
 import static org.junit.Assert.assertTrue;
@@ -39,7 +35,7 @@ import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 
 /**
  * Base class for handler tests.
- * 
+ *
  * @author Simon Templer
  */
 @SuppressWarnings("restriction")
@@ -75,7 +71,7 @@ public abstract class AbstractHandlerTest {
 
 	/**
 	 * Load an instance collection from a GML file.
-	 * 
+	 *
 	 * @param schemaLocation the GML application schema location
 	 * @param xmlLocation the GML file location
 	 * @return the instance collection

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.impl;
 
 import java.net.URI;
@@ -53,7 +49,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Default alignment implementation.
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultAlignment implements Alignment, MutableAlignment {
@@ -111,7 +107,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 
 	/**
 	 * Copy constructor. Adds all cells of the given alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to copy
 	 */
 	public DefaultAlignment(Alignment alignment) {
@@ -175,7 +171,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 
 	/**
 	 * Add a cell to the various internal containers.
-	 * 
+	 *
 	 * @param cell the cell to add
 	 */
 	private void internalAdd(Cell cell) {
@@ -194,7 +190,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 
 	/**
 	 * Add a cell to the internal indexes, based on the given associated entities.
-	 * 
+	 *
 	 * @param entities the cell entities (usually either source or target)
 	 * @param cell the cell to add
 	 */
@@ -350,7 +346,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	/**
 	 * Determines if the given type entity definition of the test cell is associated
 	 * to at least one of the given type entity definitions of a type cell.
-	 * 
+	 *
 	 * @param testCellType type entity definition of the test cell
 	 * @param typeCellTypes type entity definitions of a type cell
 	 * @return whether the entity definition is associated to at least one of the
@@ -371,7 +367,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	/**
 	 * Determines if all of the given entities are associated to at least one of the
 	 * given type entity definitions.
-	 * 
+	 *
 	 * @param testCellSources the entities
 	 * @param typeCellTypes the type entity definitions
 	 * @return whether all entities are associated to at least one of the types
@@ -422,7 +418,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 					/*
 					 * Special case handling when there is exactly one type, that in this case also
 					 * allows to find a Join that only uses one of the types.
-					 * 
+					 *
 					 * Unclear if this is intended, but the else case does not yield any results in
 					 * such cases, which could be due to the implementation of `matchesSources` in
 					 * that case being focused on property relations.
@@ -478,7 +474,7 @@ public class DefaultAlignment implements Alignment, MutableAlignment {
 	/**
 	 * Removes a cell from the internal indexes, based on the given associated
 	 * entities.
-	 * 
+	 *
 	 * @param entities the cell entities (usually either source or target)
 	 * @param cell the cell to remove
 	 */

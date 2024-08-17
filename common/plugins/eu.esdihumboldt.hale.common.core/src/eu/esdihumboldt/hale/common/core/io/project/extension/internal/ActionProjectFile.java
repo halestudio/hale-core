@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.extension.internal;
 
 import static com.google.common.base.Preconditions.checkState;
@@ -54,7 +50,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Project file based on an I/O action
- * 
+ *
  * @author Simon Templer
  */
 public class ActionProjectFile implements AdvisorProjectFile {
@@ -76,7 +72,7 @@ public class ActionProjectFile implements AdvisorProjectFile {
 
 	/**
 	 * Create a project file based on an I/O action
-	 * 
+	 *
 	 * @param loadActionId the action identifier for loading the file
 	 * @param loadProviderId the provider identifier to use for loading the file,
 	 *            may be <code>null</code> to use auto-detection
@@ -201,7 +197,7 @@ public class ActionProjectFile implements AdvisorProjectFile {
 	/**
 	 * Get the advisor for loading the file. The default implementation uses the
 	 * {@link IOAdvisorExtension} to look for a matching advisor.
-	 * 
+	 *
 	 * @param loadActionId the action ID for loading the project file
 	 * @param serviceProvider the service provider for the advisor
 	 * @return the advisor

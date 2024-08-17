@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.metrics.impl;
 
 import java.util.function.Supplier;
@@ -23,7 +20,7 @@ import io.prometheus.client.CollectorRegistry;
 
 /**
  * Default implementation of {@link CollectorRegistryService}.
- * 
+ *
  * @author Simon Templer
  */
 public class HaleCollectorRegistryService implements CollectorRegistryService {
@@ -32,7 +29,7 @@ public class HaleCollectorRegistryService implements CollectorRegistryService {
 
 	/**
 	 * Create a service instance using the given registry.
-	 * 
+	 *
 	 * @param registry the collector registry
 	 */
 	public HaleCollectorRegistryService(CollectorRegistry registry) {

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.service.internal;
 
 import java.util.HashSet;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Definition of a service factory from the extension point.
- * 
+ *
  * @author Simon Templer
  */
 public class ServiceFactoryDefinition implements Identifiable, ServiceFactory {
@@ -43,7 +40,7 @@ public class ServiceFactoryDefinition implements Identifiable, ServiceFactory {
 
 	/**
 	 * Create a service factory definition from the given configuration element.
-	 * 
+	 *
 	 * @param id the service factory identifier
 	 * @param conf the configuration element
 	 * @throws CoreException if instantiating the service factory fails
@@ -73,7 +70,7 @@ public class ServiceFactoryDefinition implements Identifiable, ServiceFactory {
 
 	/**
 	 * Get the service factory service scope.
-	 * 
+	 *
 	 * @return the scope the service scope
 	 */
 	public String getScope() {
@@ -82,7 +79,7 @@ public class ServiceFactoryDefinition implements Identifiable, ServiceFactory {
 
 	/**
 	 * Get the supported service interfaces of the factory.
-	 * 
+	 *
 	 * @return the supported service interfaces
 	 */
 	public Set<Class<?>> getServiceInterfaces() {

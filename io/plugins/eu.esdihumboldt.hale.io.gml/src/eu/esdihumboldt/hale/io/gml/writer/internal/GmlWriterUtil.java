@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import java.util.ArrayList;
@@ -47,7 +43,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 
 /**
  * Utility methods used for the GML writer
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -57,7 +53,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Get the element name from a type definition
-	 * 
+	 *
 	 * @param type the type definition
 	 * @return the element name
 	 */
@@ -82,7 +78,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Add a namespace to the given XML stream writer
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param namespace the namespace to add
 	 * @param preferredPrefix the preferred prefix
@@ -112,7 +108,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Determines if the given type represents a XML ID
-	 * 
+	 *
 	 * @param type the type definition
 	 * @return if the type represents an ID
 	 */
@@ -131,7 +127,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Determines if the given type is an INSPIRE type
-	 * 
+	 *
 	 * @param type the type definition
 	 * @return if the type is an INSPIRE type
 	 */
@@ -152,7 +148,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Determines if the given parent is a gml:identifier
-	 * 
+	 *
 	 * @param qname the QName
 	 * @param gmlNs the gml name space
 	 * @return true if the parent is a gml:identifier
@@ -168,7 +164,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Determine if a given type is a feature type.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @return if the type represents a feature type
 	 */
@@ -187,7 +183,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Write a property attribute
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param value the attribute value, may be <code>null</code>
 	 * @param propDef the attribute definition
@@ -229,7 +225,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Write any required ID attribute, generating a random ID if needed.
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param type the type definition
 	 * @param parent the parent object, may be <code>null</code>. If it is set the
@@ -247,7 +243,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	/**
 	 * Write any required ID attribute, generating a random ID if needed. If a
 	 * desired ID is given, write it even if the attribute is not required.
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param type the type definition
 	 * @param parent the parent object, may be <code>null</code>. If it is set the
@@ -305,7 +301,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Write the opening element of a {@link PathElement} to the given stream writer
-	 * 
+	 *
 	 * @param writer the stream writer
 	 * @param step the path element
 	 * @param generateRequiredID if required IDs shall be generated for the path
@@ -332,7 +328,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	/**
 	 * Collect all property definitions defined by the given child definitions, i.e.
 	 * returns a flattened version of the children.
-	 * 
+	 *
 	 * @param children the child definitions
 	 * @return the property definitions
 	 */
@@ -353,7 +349,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	/**
 	 * Collect all the paths to all child properties, even those contained in
 	 * groups.
-	 * 
+	 *
 	 * @param children the children
 	 * @param basePath the base path
 	 * @param elementsOnly if only properties representing an XML element should be
@@ -385,7 +381,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Write a start element.
-	 * 
+	 *
 	 * @param writer the writer
 	 * @param name the element name
 	 * @throws XMLStreamException if an error occurs writing the start element
@@ -403,7 +399,7 @@ public abstract class GmlWriterUtil implements GMLConstants {
 
 	/**
 	 * Write an empty element.
-	 * 
+	 *
 	 * @param writer the writer
 	 * @param name the element name
 	 * @throws XMLStreamException if an error occurs writing the empty element

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util;
 
 import java.util.HashMap;
@@ -23,7 +19,7 @@ import java.util.Set;
 
 /**
  * A base class for identifier handling
- * 
+ *
  * @param <T> the type of objects that shall be identified
  * @author Simon Thum
  */
@@ -54,7 +50,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * puts a object-identifier pair into the maps, no checks or what.
-	 * 
+	 *
 	 * @param object the object
 	 * @param id the identifier
 	 */
@@ -65,7 +61,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * Get the id of the given object. May generate an Id.
-	 * 
+	 *
 	 * @param object the object
 	 * @return the id of the object
 	 */
@@ -75,7 +71,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * Get the id of the given object if it has an Id.
-	 * 
+	 *
 	 * @param object the object
 	 * @return the id of the object
 	 */
@@ -85,7 +81,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * Get the object with the given id
-	 * 
+	 *
 	 * @param id the id
 	 * @return the object or null if the id has no associated object
 	 */
@@ -95,7 +91,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * Get the set of objects
-	 * 
+	 *
 	 * @return the set of all objects with an associated identifier
 	 */
 	public final Set<T> getObjects() {
@@ -104,7 +100,7 @@ public abstract class IdentifiersBase<T> {
 
 	/**
 	 * Get the ids of all objects
-	 * 
+	 *
 	 * @return the set of all ids
 	 */
 	public final Set<String> getIds() {

@@ -1,20 +1,15 @@
 
-
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.groovy.xml
 
 import groovy.transform.CompileStatic
@@ -36,8 +31,8 @@ import com.google.common.collect.ImmutableMap
  * DOMBuilder that accepts a map of prefixes and namespaces and creates
  * elements with a namespace according to the prefix specified in the
  * prefix map. The given prefixes don't have any influence on the prefixes
- * used in a corresponding document. 
- *  
+ * used in a corresponding document.
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -47,7 +42,7 @@ class NSDOMBuilder extends DOMBuilder {
 	 * Create a new DOM builder where element namespaces can be specified via
 	 * certain prefixes. The given map is used to look up namespace for the
 	 * prefixes.
-	 * 
+	 *
 	 * @param prefixes prefixes mapped to namespace
 	 * @return a new DOM builder
 	 */
@@ -163,7 +158,7 @@ class NSDOMBuilder extends DOMBuilder {
 
 	/**
 	 * Convenience method for building DOM in a type safe way.
-	 * 
+	 *
 	 * @param name the name of the element to create
 	 * @param attributes the attributes to attach to the element
 	 * @param closure the closure where potential child elements may be created

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.context.impl;
 
 import java.util.ArrayDeque;
@@ -59,7 +55,7 @@ import eu.esdihumboldt.util.Pair;
 /**
  * Transformation context that duplicates subgraphs leading to certain target
  * nodes.
- * 
+ *
  * @author Simon Templer
  */
 public class TargetContext implements TransformationContext {
@@ -82,7 +78,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Create a duplication context
-		 * 
+		 *
 		 * @param ignoreCells the cells to be ignored
 		 */
 		public DuplicationContext(Set<Cell> ignoreCells) {
@@ -97,7 +93,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Get the cell node associated to the given cell.
-		 * 
+		 *
 		 * @param cell the cell
 		 * @return the cell node or <code>null</code> if none has yet been associated to
 		 *         the cell
@@ -108,7 +104,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Add a node to the duplication context.
-		 * 
+		 *
 		 * @param cellNode the cell node to add to the duplication context
 		 * @param originalCell the original cell node where the cell node was duplicated
 		 *            from
@@ -120,7 +116,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Get the target node associated to the given entity.
-		 * 
+		 *
 		 * @param entity the entity
 		 * @return the target node or <code>null</code> if none has yet been associated
 		 *         to the entity
@@ -131,7 +127,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Add a node to the duplication context.
-		 * 
+		 *
 		 * @param targetNode the target node to add to the duplication context
 		 * @param originalTarget the original target node where the target node was
 		 *            duplicated from
@@ -143,7 +139,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Get the cells to be ignored during duplication.
-		 * 
+		 *
 		 * @return the cells to be ignored
 		 */
 		public Set<Cell> getIgnoreCells() {
@@ -152,7 +148,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Get cell nodes that have incomplete sources compared to the original.
-		 * 
+		 *
 		 * @return the incomplete cell node paired with the original cell node it was
 		 *         duplicated from
 		 */
@@ -173,7 +169,7 @@ public class TargetContext implements TransformationContext {
 		/**
 		 * Get target nodes that have incomplete children or assignments compared to the
 		 * original.
-		 * 
+		 *
 		 * @return the incomplete target node paired with the original target node it
 		 *         was duplicated from
 		 */
@@ -220,7 +216,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Create a duplication information.
-		 * 
+		 *
 		 * @param duplicatedNode the duplicated node this is all about
 		 * @param ignoreCells the cells to be ignored
 		 * @param contextTargets the target nodes that can be used as subgraph
@@ -243,7 +239,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Returns the node that this duplication is all about.
-		 * 
+		 *
 		 * @return the duplicated node
 		 */
 		public SourceNode getDuplicatedNode() {
@@ -252,7 +248,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Checks whether the given cell is in the ignored cells.
-		 * 
+		 *
 		 * @param cell the cell to check
 		 * @return true, if the given cell is in the ignored cells, false otherwise
 		 */
@@ -262,7 +258,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Adds the given target node to the map of existing nodes.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @param target the target node
 		 */
@@ -272,7 +268,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Adds the given source node to the map of existing nodes.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @param source the source node
 		 */
@@ -282,7 +278,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Adds the given cell node to the map of existing nodes.
-		 * 
+		 *
 		 * @param cell the cell
 		 * @param cellNode the cell node
 		 */
@@ -292,7 +288,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Adds the given target node to the map of newly created nodes.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @param target the target node
 		 */
@@ -302,7 +298,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Adds the given cell node to the map of newly created nodes.
-		 * 
+		 *
 		 * @param cell the cell
 		 * @param cellNode the cell node
 		 */
@@ -312,7 +308,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Returns a collection of existing cell nodes with the given cell.
-		 * 
+		 *
 		 * @param cell the cell
 		 * @return a collection of existing cell nodes, the collection uses the objects
 		 *         identity instead of equals
@@ -323,7 +319,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Returns a newly created cell node with the given cell.
-		 * 
+		 *
 		 * @param cell the cell
 		 * @return a newly created cell node or null
 		 */
@@ -334,7 +330,7 @@ public class TargetContext implements TransformationContext {
 		/**
 		 * Returns a collection of existing source nodes with the given entity
 		 * definition.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @return a collection of existing source nodes, the collection uses the
 		 *         objects identity instead of equals
@@ -346,7 +342,7 @@ public class TargetContext implements TransformationContext {
 		/**
 		 * Returns all target nodes of the given definition. First newly created, then
 		 * existing ones.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @return existing target nodes
 		 */
@@ -370,7 +366,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Returns existing target nodes of the given definition.
-		 * 
+		 *
 		 * @param entityDef the entity definition
 		 * @return existing target nodes, the collection uses the objects identity
 		 *         instead of equals
@@ -381,7 +377,7 @@ public class TargetContext implements TransformationContext {
 
 		/**
 		 * Returns the target nodes that can be used as subgraph end-points.
-		 * 
+		 *
 		 * @return the target nodes that can be used as subgraph end-points
 		 */
 		public Set<TargetNode> getContextTargets() {
@@ -395,7 +391,7 @@ public class TargetContext implements TransformationContext {
 	/**
 	 * Create a transformation context that duplicates subgraphs leading to given
 	 * target nodes.
-	 * 
+	 *
 	 * @param serviceProvider the service provider
 	 */
 	public TargetContext(ServiceProvider serviceProvider) {
@@ -406,7 +402,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Adds the given target nodes as duplication targets.
-	 * 
+	 *
 	 * @param targets the target nodes to use as subgraph end-points
 	 */
 	public void addContextTargets(Collection<TargetNode> targets) {
@@ -420,15 +416,15 @@ public class TargetContext implements TransformationContext {
 //	public void duplicateContext(SourceNode contextSource, Object value) {
 //		// create a new duplication context
 //		DuplicationContext duplicationContext = new DuplicationContext();
-//		
+//
 //		// duplicate context source
-//		SourceNode source = duplicateSource(contextSource, 
+//		SourceNode source = duplicateSource(contextSource,
 //				contextSource.getParent(), false, duplicationContext);
-//		
+//
 //		if (source != null) {
 //			// add duplicated source as annotation to context source parent
 //			contextSource.getParent().addAnnotatedChild(source);
-//			
+//
 //			// apply value to source
 //			if (value instanceof Group) {
 //				// value is a group, duplication may again be necessary for its properties
@@ -485,25 +481,25 @@ public class TargetContext implements TransformationContext {
 		// Code matching the old stuff at bottom!
 //		// create a new duplication context
 //		DuplicationContext duplicationContext = new DuplicationContext(ignoreCells);
-//		
+//
 //		// configure duplicate, but don't add to parent (as it is already added as annotated child)
 //		// at this point duplicate may have a parent, even if the original source hasn't
-//		configureSourceDuplicate(originalSource, duplicate, 
+//		configureSourceDuplicate(originalSource, duplicate,
 //				duplicate.getParent(), duplicationContext, false);
-//		
+//
 //		// track back to sources from cells where sources are missing
 //		for (Pair<CellNodeImpl, CellNode> cellPair : duplicationContext.getIncompleteCellNodes()) {
 //			CellNodeImpl cellNode = cellPair.getFirst();
 //			CellNode originalCell = cellPair.getSecond();
-//			
+//
 //			cellTrackback(cellNode, originalCell);
 //		}
-//		
+//
 //		// track back from targets where augmentations are missing
 //		for (Pair<TargetNodeImpl, TargetNode> targetPair : duplicationContext.getIncompleteTargetNodes()) {
 ////			TargetNodeImpl targetNode = targetPair.getFirst();
 //			TargetNode originalTarget = targetPair.getSecond();
-//			
+//
 //			augmentationTrackback(originalTarget, duplicationContext);
 //		}
 	}
@@ -511,7 +507,7 @@ public class TargetContext implements TransformationContext {
 	/**
 	 * Duplicates the transformation tree for the given source node to the given
 	 * duplicate source node.
-	 * 
+	 *
 	 * @param source the original source node
 	 * @param duplicate the duplication target
 	 * @param info the duplication info object
@@ -582,7 +578,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Adds existing sources to the duplicated cell.
-	 * 
+	 *
 	 * @param cell the original cell
 	 * @param duplicatedCell the duplicated cell
 	 * @param info the duplication info object
@@ -627,7 +623,7 @@ public class TargetContext implements TransformationContext {
 	/**
 	 * Duplicates the transformation tree for the given cell node to the given
 	 * duplicate cell node.
-	 * 
+	 *
 	 * @param cell the original cell node
 	 * @param duplicateCell the duplication target
 	 * @param info the duplication info object
@@ -648,7 +644,7 @@ public class TargetContext implements TransformationContext {
 	/**
 	 * Duplicates the transformation tree for the given target node to the given
 	 * duplicate target node.
-	 * 
+	 *
 	 * @param target the original target node
 	 * @param info the duplication info object
 	 * @param log the transformation log
@@ -728,7 +724,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Track back target nodes and duplicate any augmentation cells.
-	 * 
+	 *
 	 * @param tree the tree to work on
 	 */
 	public static void augmentationTrackback(TransformationTree tree) {
@@ -863,7 +859,7 @@ public class TargetContext implements TransformationContext {
 	/**
 	 * Collects all TargetNodes associated with the given SourceNode excluding
 	 * SourceNodes with the given EntityDefinition.
-	 * 
+	 *
 	 * @param source the source to start from
 	 * @param contextPath source nodes with a definition in this map are only
 	 *            followed if they are exactly the node in this map
@@ -963,24 +959,24 @@ public class TargetContext implements TransformationContext {
 //	 * @param originalTarget the original target node
 //	 * @param duplicationContext the duplication context
 //	 */
-//	private void augmentationTrackback(TargetNode originalTarget, 
+//	private void augmentationTrackback(TargetNode originalTarget,
 //			DuplicationContext duplicationContext) {
 //		// track back child augmentations
 //		for (TargetNode child : originalTarget.getChildren(false)) { //XXX should annotated children be included?
 //			augmentationTrackback(child, duplicationContext);
 //		}
-//		
+//
 //		// track back augmentations
 //		for (CellNode originalAssignment : originalTarget.getAssignments()) {
 //			/*
 //			 * Duplicated target does not contain an assignment representing
-//			 * the same cell as originalAssignment. 
+//			 * the same cell as originalAssignment.
 //			 */
 //			if (originalAssignment.getSources().isEmpty()) {
 //				// the cell is an augmentation, thus we duplicate it
 //				duplicateCell(originalAssignment, null, duplicationContext);
 //				/*
-//				 * it is automatically added to the target nodes (which are 
+//				 * it is automatically added to the target nodes (which are
 //				 * retrieved from the duplication context or created as
 //				 * necessary)
 //				 */
@@ -1002,17 +998,17 @@ public class TargetContext implements TransformationContext {
 //				 * same entity as originalSource.
 //				 */
 //				SourceNode newSource = null;
-//				
+//
 //				// now there are several possible cases
 //				// a) the original source has leftovers and we grab one
 //				Leftovers leftovers = originalSource.getLeftovers();
 //				if (leftovers != null) {
 //					newSource = leftovers.consumeValue(originalCell.getCell());
-//					
+//
 //					if (newSource != null) {
 //						// interconnect both
 //						newSource.addRelation(cellNode);
-//						cellNode.addSource(originalCell.getSourceNames(originalSource), 
+//						cellNode.addSource(originalCell.getSourceNames(originalSource),
 //								newSource);
 //						//XXX hard connections are OK here, as a leftover source is a duplicate
 //					}
@@ -1020,20 +1016,20 @@ public class TargetContext implements TransformationContext {
 //						//TODO add an undefined source node in this case?
 //					}
 //				}
-//				
+//
 //				// b) the original source has a parent (ot it has a parent etc.)
 //				//    that has leftovers
 //				if (newSource == null) {
 //					//TODO
 //				}
-//				
+//
 //				// c) we use the original source node
 //				if (newSource == null) {
 //					newSource = originalSource;
-//					
+//
 //					// interconnect both
 //					newSource.addAnnotatedRelation(cellNode); //FIXME should be an augmentated relation!!!!
-//					cellNode.addSource(originalCell.getSourceNames(originalSource), 
+//					cellNode.addSource(originalCell.getSourceNames(originalSource),
 //							newSource);
 //				}
 //			}
@@ -1042,7 +1038,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Duplicate a source node.
-	 * 
+	 *
 	 * @param source the source node to duplicate
 	 * @param parent the parent of the new source node
 	 * @param addToParent if the new source node should be added as child to the
@@ -1063,7 +1059,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Configure a duplicated source node.
-	 * 
+	 *
 	 * @param originalSource the original source node
 	 * @param duplicate the duplicated source node
 	 * @param parent the parent for the duplicated source node
@@ -1133,7 +1129,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Get the duplicated cell node.
-	 * 
+	 *
 	 * @param relation the original cell node
 	 * @param duplicateSource the duplicated source node to be associated with the
 	 *            duplicated cell node, may be <code>null</code> if the cell is an
@@ -1193,7 +1189,7 @@ public class TargetContext implements TransformationContext {
 
 	/**
 	 * Duplicate a target node.
-	 * 
+	 *
 	 * @param target the original target node
 	 * @param relation the relation to associated to the target node
 	 * @param duplicationContext the duplication context

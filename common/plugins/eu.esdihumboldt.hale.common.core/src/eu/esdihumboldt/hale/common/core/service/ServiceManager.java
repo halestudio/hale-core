@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.service;
 
 import java.util.Collection;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.hale.common.core.service.internal.ServiceFactoryExtension
 
 /**
  * Manages HALE service instances.
- * 
+ *
  * @author Simon Templer
  */
 public class ServiceManager implements ServiceProvider, ServiceConstants {
@@ -51,7 +48,7 @@ public class ServiceManager implements ServiceProvider, ServiceConstants {
 
 	/**
 	 * Create a service manager for the given scope.
-	 * 
+	 *
 	 * @param serviceScope the service scope, <code>null</code> for all service
 	 *            scopes
 	 */
@@ -83,7 +80,7 @@ public class ServiceManager implements ServiceProvider, ServiceConstants {
 
 	/**
 	 * Get service instances providing the given interface.
-	 * 
+	 *
 	 * @param serviceInterface the service interface
 	 * @return the service instances available
 	 */
@@ -130,7 +127,7 @@ public class ServiceManager implements ServiceProvider, ServiceConstants {
 
 	/**
 	 * Get the scope of services provided by the manager.
-	 * 
+	 *
 	 * @return the service scope name or <code>null</code> representing all scopes
 	 */
 	public String getServiceScope() {

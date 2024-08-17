@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.csv.reader;
 
 import java.io.BufferedReader;
@@ -29,7 +26,7 @@ import eu.esdihumboldt.hale.common.core.io.Value;
 
 /**
  * Default lookup table reader for csv files
- * 
+ *
  * @author Patrick Lieb
  */
 public class DefaultCSVLookupReader {
@@ -37,7 +34,7 @@ public class DefaultCSVLookupReader {
 	/**
 	 * Reads a csv lookup table file. The selected columns specified by parameters
 	 * keyColumn and valueColumn are mapped together.
-	 * 
+	 *
 	 * @param input the inputstream of the csv file
 	 * @param charset specific charset of the csv file
 	 * @param separator used separator char in csv file

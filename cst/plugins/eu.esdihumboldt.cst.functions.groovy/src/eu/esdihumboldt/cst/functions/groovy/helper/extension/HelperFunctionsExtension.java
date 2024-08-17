@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.helper.extension;
 
 import java.lang.reflect.Field;
@@ -49,7 +46,7 @@ import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 
 /**
  * Groovy script helper functions extension point.
- * 
+ *
  * @author Simon Templer
  */
 public class HelperFunctionsExtension implements HelperFunctionsService {
@@ -90,7 +87,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Create a helper function extension instance.
-	 * 
+	 *
 	 * @param serviceProvider the service provider if available
 	 */
 	public HelperFunctionsExtension(@Nullable ServiceProvider serviceProvider) {
@@ -133,7 +130,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Add the given functions to the given category.
-	 * 
+	 *
 	 * @param category the category path
 	 * @param functions the functions to add to the category
 	 */
@@ -172,7 +169,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Load helper functions from a class that defines them.
-	 * 
+	 *
 	 * @param helperClass the helper class, either a {@link HelperFunction} or a
 	 *            class that defines helper functions by convention
 	 * @param customName the custom name for a helper function, only applicable for
@@ -220,7 +217,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Load helper function via reflection from a method.
-	 * 
+	 *
 	 * @param callMethod the method (probably) defining a helper function
 	 * @param helperClass the class defining the method
 	 * @return the loaded helper function or <code>null</code>
@@ -369,7 +366,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Inject the helper context if applicable.
-	 * 
+	 *
 	 * @param helperFunctionOrCategory the helper function or category
 	 * @param context the helper context to inject
 	 * @return the adapted helper function or the unchanged category
@@ -388,7 +385,7 @@ public class HelperFunctionsExtension implements HelperFunctionsService {
 
 	/**
 	 * Extend the given helper context w/ additional information if possible.
-	 * 
+	 *
 	 * @param context the context to extend
 	 * @return the extended context information
 	 */

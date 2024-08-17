@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.core;
 
 import java.util.ArrayList;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.common.instance.index.InstanceIndexContribution;
 /**
  * Type transformation that joins multiple instances of different source types
  * into one target instance, based on matching properties.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class Join extends Retype implements JoinFunction, InstanceIndexContribution {
@@ -57,7 +53,7 @@ public class Join extends Retype implements JoinFunction, InstanceIndexContribut
 
 	/**
 	 * Calculates the instance index contribution for the given cell
-	 * 
+	 *
 	 * @param cell Cell
 	 * @return The properties to index
 	 */

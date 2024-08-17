@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.migrate.util;
 
 import java.util.HashMap;
@@ -29,7 +26,7 @@ import eu.esdihumboldt.hale.common.align.model.functions.RetypeFunction;
 
 /**
  * Migration utility methods.
- * 
+ *
  * @author Simon Templer
  */
 public class MigrationUtil {
@@ -38,7 +35,7 @@ public class MigrationUtil {
 	 * Remove base alignment cells from the mapping by removing the base alignments.
 	 * Custom functions will be retained as functions defined directly in the
 	 * alignment.
-	 * 
+	 *
 	 * @param alignment the alignment to adapt
 	 */
 	public static void removeBaseCells(MutableAlignment alignment) {
@@ -57,7 +54,7 @@ public class MigrationUtil {
 
 	/**
 	 * Update a cell to remove ID prefixes originating from base alignment IDs.
-	 * 
+	 *
 	 * @param cell the cell to update
 	 * @param updateId if the cell's own ID should be updated
 	 * @param updateDisabledFor if the IDs of the cells the cell is disabled for
@@ -98,7 +95,7 @@ public class MigrationUtil {
 
 	/**
 	 * Determines if the given cell is a direct match.
-	 * 
+	 *
 	 * @param match the cell to test
 	 * @return <code>true</code> if the cell represents a direct match,
 	 *         <code>false</code> otherwise

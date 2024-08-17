@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.orient.embedded;
 
 import static org.junit.Assert.assertEquals;
@@ -36,7 +32,7 @@ import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 
 /**
  * Basic tests on the document based DB
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -44,7 +40,7 @@ public abstract class AbstractDocumentTest {
 
 	/**
 	 * Get the database
-	 * 
+	 *
 	 * @return the database
 	 */
 	protected abstract ODatabaseDocumentTx getDb();
@@ -75,7 +71,7 @@ public abstract class AbstractDocumentTest {
 
 	/**
 	 * Create a Person named Luke in the given DB
-	 * 
+	 *
 	 * @param db the database
 	 */
 	protected static void createLuke(ODatabaseDocumentTx db) {
@@ -127,7 +123,7 @@ public abstract class AbstractDocumentTest {
 
 	/**
 	 * Create a Person named Peter in the given DB that lives in two cities
-	 * 
+	 *
 	 * @param db the database
 	 */
 	protected static void createPeter(ODatabaseDocumentTx db) {

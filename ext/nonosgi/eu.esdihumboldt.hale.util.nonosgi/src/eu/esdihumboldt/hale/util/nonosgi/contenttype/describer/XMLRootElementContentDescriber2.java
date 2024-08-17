@@ -59,7 +59,7 @@ import org.xml.sax.SAXException;
  * to be referenced by the "describer" configuration element in extensions to
  * the <code>org.eclipse.core.runtime.contentTypes</code> extension point.
  * </p>
- * 
+ *
  * @since org.eclipse.core.contenttype 3.3
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
@@ -122,12 +122,12 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber
 	/*
 	 * (Intentionally not included in javadoc) Determines the validation status for
 	 * the given contents.
-	 * 
+	 *
 	 * @param contents the contents to be evaluated
-	 * 
+	 *
 	 * @return one of the following:<ul> <li><code>VALID</code></li>,
 	 * <li><code>INVALID</code></li>, <li><code>INDETERMINATE</code></li> </ul>
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	private int checkCriteria(InputSource contents, Map properties) throws IOException {
@@ -158,7 +158,7 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber
 
 	/*
 	 * (Intentionally not included in javadoc)
-	 * 
+	 *
 	 * @see IContentDescriber#describe(InputStream, IContentDescription)
 	 */
 	public int describe(InputStream contents, IContentDescription description) throws IOException {
@@ -181,7 +181,7 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber
 
 	/*
 	 * (Intentionally not included in javadoc)
-	 * 
+	 *
 	 * @see IContentDescriber#describe(Reader, IContentDescription)
 	 */
 	public int describe(Reader contents, IContentDescription description) throws IOException {
@@ -242,7 +242,7 @@ public final class XMLRootElementContentDescriber2 extends XMLContentDescriber
 
 	/*
 	 * (Intentionally not included in javadoc)
-	 * 
+	 *
 	 * @see IExecutableExtension#setInitializationData
 	 */
 	@SuppressWarnings("unchecked")

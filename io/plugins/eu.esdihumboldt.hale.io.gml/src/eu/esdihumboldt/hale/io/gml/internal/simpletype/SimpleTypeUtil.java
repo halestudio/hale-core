@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.internal.simpletype;
 
 import java.util.ArrayList;
@@ -47,7 +43,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.ElementType;
 
 /**
  * Utility methods used for simple type conversion
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @version $Id$
@@ -81,7 +77,7 @@ public class SimpleTypeUtil {
 
 	/**
 	 * Convert a simple type value to a string
-	 * 
+	 *
 	 * @param <T> the type of the value
 	 * @param value the value
 	 * @param type the type definition of the simple type
@@ -153,7 +149,7 @@ public class SimpleTypeUtil {
 	/**
 	 * Convert a string belonging to a XML simple type to the binding specified by
 	 * the given type definition.
-	 * 
+	 *
 	 * @param value the string value
 	 * @param type the type definition
 	 * @return <code>null</code> if the string was <code>null</code>, the converted
@@ -230,9 +226,9 @@ public class SimpleTypeUtil {
 
 	/**
 	 * Get the XmlBeans simple type class for the given type definition
-	 * 
+	 *
 	 * @param type the type definition
-	 * 
+	 *
 	 * @return the XmlBeans simple type class
 	 */
 	private static Class<? extends XmlAnySimpleType> getSimpleType(TypeDefinition type) {

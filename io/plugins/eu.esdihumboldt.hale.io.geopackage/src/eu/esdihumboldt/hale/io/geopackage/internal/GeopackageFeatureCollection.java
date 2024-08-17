@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2020 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.geopackage.internal;
 
 import org.slf4j.Logger;
@@ -35,7 +32,7 @@ import mil.nga.geopackage.user.UserResultSet;
 
 /**
  * Instance collection based on a GeoPackage feature table.
- * 
+ *
  * @author Simon Templer
  */
 public class GeopackageFeatureCollection implements InstanceCollection {
@@ -50,7 +47,7 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 
 		/**
 		 * States if the row at the current cursor position was already consumed.
-		 * 
+		 *
 		 * Initially the result set points to the row before the first row, which by
 		 * definition is consumed.
 		 */
@@ -72,7 +69,7 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 
 		/**
 		 * Create filtered iterator
-		 * 
+		 *
 		 * @param where WHERE clause to filter table data
 		 */
 		public FeaturesIterator(String where) {
@@ -195,7 +192,7 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 
 	/**
 	 * Create a new instance collection for features in a GeoPackage feature table.
-	 * 
+	 *
 	 * @param features the feature DAO
 	 * @param geometryColumns the geometry columns to derive CRS information from
 	 * @param type the type associated to the feature table
@@ -208,7 +205,7 @@ public class GeopackageFeatureCollection implements InstanceCollection {
 	/**
 	 * Create a new filtered instance collection for features in a GeoPackage
 	 * feature table.
-	 * 
+	 *
 	 * @param features the feature DAO
 	 * @param geometryColumns the geometry columns to derive CRS information from
 	 * @param type the type associated to the feature table

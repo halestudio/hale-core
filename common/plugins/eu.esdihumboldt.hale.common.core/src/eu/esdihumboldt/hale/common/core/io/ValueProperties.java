@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io;
 
 import java.util.HashMap;
@@ -21,7 +18,7 @@ import java.util.Map;
 /**
  * A map of {@link Value} properties with a string key that can itself be
  * represented as complex value.
- * 
+ *
  * @author Simon Templer
  */
 public class ValueProperties extends HashMap<String, Value> {
@@ -58,7 +55,7 @@ public class ValueProperties extends HashMap<String, Value> {
 
 	/**
 	 * Creates a {@link Value} wrapping the properties.
-	 * 
+	 *
 	 * @return the {@link Value} representation of the properties
 	 */
 	public Value toValue() {
@@ -67,7 +64,7 @@ public class ValueProperties extends HashMap<String, Value> {
 
 	/**
 	 * Get the value for the given property.
-	 * 
+	 *
 	 * @param property the property name
 	 * @return the value or the NULL value, never <code>null</code>
 	 */

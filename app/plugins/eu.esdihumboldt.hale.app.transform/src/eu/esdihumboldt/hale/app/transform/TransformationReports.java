@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.app.transform;
 
 import java.io.File;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.util.groovy.collector.StatsCollector;
 
 /**
  * Transformation report handler.
- * 
+ *
  * @author Simon Templer
  */
 public class TransformationReports implements ReportHandler {
@@ -44,7 +41,7 @@ public class TransformationReports implements ReportHandler {
 	/**
 	 * Create a report handler. By default also prints report summaries to the
 	 * console.
-	 * 
+	 *
 	 * @param reportFile the optional report file to write reports to
 	 */
 	public TransformationReports(@Nullable File reportFile) {
@@ -59,7 +56,7 @@ public class TransformationReports implements ReportHandler {
 	/**
 	 * Create a report handler that collects the reports and in addition delegates
 	 * to another report handler.
-	 * 
+	 *
 	 * @param delegate the delegate report handler
 	 */
 	public TransformationReports(@Nullable ReportHandler delegate) {
@@ -90,7 +87,7 @@ public class TransformationReports implements ReportHandler {
 
 	/**
 	 * Get the transformation statistics.
-	 * 
+	 *
 	 * @return the transformation statistics
 	 */
 	public StatsCollector getStatistics() {

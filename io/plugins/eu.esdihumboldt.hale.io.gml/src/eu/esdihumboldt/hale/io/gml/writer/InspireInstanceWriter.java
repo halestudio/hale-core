@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer;
 
 import java.io.BufferedInputStream;
@@ -69,7 +65,7 @@ import eu.esdihumboldt.util.groovy.paths.Path;
 
 /**
  * Instance writer for Inspire schemas, using SpatialDataSet as container.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -160,7 +156,7 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 	/**
 	 * Transforms the given GML file target to a target URI for the dataset feed
 	 * creation.
-	 * 
+	 *
 	 * @param gmlTarget the original GML target
 	 * @return the dataset feed target
 	 */
@@ -295,7 +291,7 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 
 	/**
 	 * Loads the given file and tries to find a MD_Metadata element.
-	 * 
+	 *
 	 * @param input the metadata source
 	 * @param reporter the reporter
 	 * @return the metadata element or <code>null</code> if it couldn't be found
@@ -333,7 +329,7 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 
 	/**
 	 * Writes a DOM element to a stream writer without starting a new document.
-	 * 
+	 *
 	 * @param element the element to write
 	 * @param writer the writer to write to
 	 * @throws TransformerException if an unrecoverable error occurs during the
@@ -347,7 +343,7 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 
 	/**
 	 * Stream writer for elements. Ignores startDocument and endDocument calls.
-	 * 
+	 *
 	 * @author Kai Schwierczek
 	 */
 	private class InternalXMLStreamWriter extends AbstractXMLStreamWriterDecorator {

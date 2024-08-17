@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -67,7 +67,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * Full constructor with all parameters.
-	 * 
+	 *
 	 * @param minX lower left corner, x value.
 	 * @param minY lower left corner, y value.
 	 * @param maxX upper right corner, x value.
@@ -82,7 +82,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * Creates an extent such that it spans both points.
-	 * 
+	 *
 	 * @param a the lower left corner
 	 * @param b the upper right corner
 	 */
@@ -96,7 +96,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * Copy constructor
-	 * 
+	 *
 	 * @param e The source extent
 	 */
 	public Extent(Extent e) {
@@ -115,7 +115,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * Test if a point, specified by two coordinates, touches this extent.
-	 * 
+	 *
 	 * @param x x coordinate of point to test
 	 * @param y x coordinate of point to test
 	 * @return true if the specified Point2D touches this Extent.
@@ -182,7 +182,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	 * intersectsOrCovers(Extent). It will also return true if the extents have a
 	 * cross-shaped intersections, that is, if no points lie in the other extent but
 	 * when the lines of the extent actually cut each other.
-	 * 
+	 *
 	 * @param ex the extent that may be intersected by this extent
 	 * @return true if this Extent intersects the given one
 	 */
@@ -198,7 +198,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * This checks if this Extent covers the parameter extent.
-	 * 
+	 *
 	 * @param ex the Extent that may be covered by this Extent
 	 * @return true if this Extent covers the given one
 	 */
@@ -209,7 +209,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * This checks if this Extent completely contains the parameter extent.
-	 * 
+	 *
 	 * @param ex the Extent that may be contained by this Extent
 	 * @return true if this Extent contains the given one
 	 */
@@ -237,7 +237,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	/**
 	 * Two extents are defined as being equal when their LL and UR coordinates are
 	 * equal.
-	 * 
+	 *
 	 * @param o the extent to compare to
 	 * @return true if both extents are equal
 	 */
@@ -274,7 +274,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 	/**
 	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
 	 * true
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -396,7 +396,7 @@ public final class Extent implements Serializable, Localizable, Comparable<Exten
 
 	/**
 	 * Compares the area of this extent to another one
-	 * 
+	 *
 	 * @param e the other extent to compare to
 	 * @return -1, 0, 1 if the area of this extent is greater than, equal to or less
 	 *         than the other one.

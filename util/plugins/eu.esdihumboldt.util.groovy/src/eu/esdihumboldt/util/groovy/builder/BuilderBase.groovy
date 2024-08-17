@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.util.groovy.builder
 
 import groovy.transform.CompileStatic
@@ -25,7 +22,7 @@ import org.codehaus.groovy.runtime.InvokerHelper
 
 /**
  * Builder base class that supports creating nodes dependent on the parent node.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -51,7 +48,7 @@ abstract class BuilderBase {
 
 	/**
 	 * Called on for any missing method.
-	 * 
+	 *
 	 * @param name the method name
 	 * @param args the arguments
 	 * @return something
@@ -114,7 +111,7 @@ abstract class BuilderBase {
 
 	/**
 	 * Create a new node.
-	 * 
+	 *
 	 * @param name the node name
 	 * @param attributes the named parameters, may be <code>null</code>
 	 * @param params other parameters, may be <code>null</code>
@@ -128,7 +125,7 @@ abstract class BuilderBase {
 	 * Method that is called for a node created with
 	 * {@link #internalCreateNode(String, Map, List, Object, boolean)} after all
 	 * sub-closures have been handled.
-	 * 
+	 *
 	 * @param node the created node
 	 */
 	protected void internalNodeWrapup(def node) {
@@ -138,7 +135,7 @@ abstract class BuilderBase {
 	/**
 	 * Method that is called after (or if it does not exist: instead) a node's
 	 * sub-closure. Thus builder calls to extend the node can be performed here.
-	 * 
+	 *
 	 * @param node the created node to extend
 	 */
 	protected void internalExtendNode(def node) {
@@ -150,7 +147,7 @@ abstract class BuilderBase {
 	 * extract a value to return from a node. This return value is only relevant
 	 * for use inside the builder closure. The default implementation just
 	 * returns the node itself unchanged.
-	 * 
+	 *
 	 * @param node the node to extract a return value from
 	 * @return the return value for the given node
 	 */

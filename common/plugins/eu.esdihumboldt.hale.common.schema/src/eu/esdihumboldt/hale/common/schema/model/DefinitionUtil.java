@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model;
 
 import java.util.ArrayList;
@@ -29,14 +25,14 @@ import eu.esdihumboldt.hale.common.schema.model.impl.internal.ReparentProperty;
 
 /**
  * Definition utility methods
- * 
+ *
  * @author Simon Templer
  */
 public abstract class DefinitionUtil {
 
 	/**
 	 * Create a proxy for the given child with another parent
-	 * 
+	 *
 	 * @param child the child
 	 * @param newParent the new parent type
 	 * @return the reparented child definition
@@ -56,7 +52,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Create a proxy for the given child with another declaring group
-	 * 
+	 *
 	 * @param child the child
 	 * @param newParent the new declaring group
 	 * @return the redeclared child definition
@@ -77,7 +73,7 @@ public abstract class DefinitionUtil {
 	/**
 	 * Get all children of a definition group. For {@link TypeDefinition} also the
 	 * inherited children will be returned.
-	 * 
+	 *
 	 * @param group the definition group
 	 * @return the children
 	 */
@@ -94,7 +90,7 @@ public abstract class DefinitionUtil {
 	 * Get all properties of a definition group. For {@link TypeDefinition} also the
 	 * inherited children will be returned. If there are children that are groups,
 	 * their properties are also added.
-	 * 
+	 *
 	 * @param group the definition group
 	 * @return the children
 	 */
@@ -113,7 +109,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Get the cardinality of a child definition.
-	 * 
+	 *
 	 * @param child the child definition
 	 * @return the cardinality
 	 */
@@ -130,7 +126,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Returns the child definition of definition with the given name.
-	 * 
+	 *
 	 * @param definition the definition
 	 * @param name the name of the child
 	 * @return the child with the given name of the given definition, or
@@ -151,7 +147,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Returns the child definition of definition with the given name.
-	 * 
+	 *
 	 * @param definition the definition
 	 * @param name the name of the child
 	 * @return the child with the given name of the given definition, or
@@ -170,7 +166,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Returns the child definition of definition with the given name.
-	 * 
+	 *
 	 * @param definition the definition
 	 * @param name the name of the child
 	 * @param allowIgnoreNamespace specifies if when the child with the exact name
@@ -211,7 +207,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Determine a rating on namespace equality.
-	 * 
+	 *
 	 * @param ns1 the first namespace to compare
 	 * @param ns2 the second namespace to compare
 	 * @return the equality rating, the higher the more equal/compatible are the
@@ -229,7 +225,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Get the represented definition group of a definition.
-	 * 
+	 *
 	 * @param def the definition
 	 * @return for a property definition its property type, for a type definition or
 	 *         a group property definition the definition itself
@@ -250,7 +246,7 @@ public abstract class DefinitionUtil {
 
 	/**
 	 * Determines if the given definition may have children.
-	 * 
+	 *
 	 * @param def the definition
 	 * @return if the definition may have children
 	 */
@@ -261,7 +257,7 @@ public abstract class DefinitionUtil {
 	/**
 	 * Checks whether <code>superType</code> is a super type of <code>subType</code>
 	 * or if they are the same.
-	 * 
+	 *
 	 * @param subType the type in question
 	 * @param superType the super type
 	 * @return whether superType is a super type of subType or they are the same
@@ -288,7 +284,7 @@ public abstract class DefinitionUtil {
 	 * same class.
 	 * <li>{@code false} in all other situations.
 	 * </ul>
-	 * 
+	 *
 	 * @param a the first definition
 	 * @param b the second definition
 	 * @return whether the definitions equal each other

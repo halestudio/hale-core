@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.condition.impl;
 
 import org.springframework.core.convert.ConversionService;
@@ -32,7 +28,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Type condition that checks its binding and element type
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -44,7 +40,7 @@ public class BindingCondition implements TypeCondition {
 
 	/**
 	 * Create a binding condition
-	 * 
+	 *
 	 * @param compatibleClass the class the binding should be compatible to
 	 * @param allowConversion specifies if a binding is classified as compatible if
 	 *            conversion to the compatible class is possible
@@ -101,7 +97,7 @@ public class BindingCondition implements TypeCondition {
 
 	/**
 	 * Check if the given binding is compatible to the configured compatible class
-	 * 
+	 *
 	 * @param binding the binding
 	 * @param to if a value of {@link #compatibleClass} shall be assigned to the
 	 *            binding or vice versa
@@ -113,7 +109,7 @@ public class BindingCondition implements TypeCondition {
 
 	/**
 	 * Check if the given binding is compatible to the given compatible class
-	 * 
+	 *
 	 * @param binding the binding
 	 * @param to if a value of the compatible class shall be assigned to the binding
 	 *            or vice versa

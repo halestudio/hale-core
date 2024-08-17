@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal;
 
 import java.io.IOException;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.io.gml.reader.internal.wfs.WfsBackedGmlInstanceColle
 
 /**
  * Reads XML/GML from a stream
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -89,7 +85,7 @@ public class StreamGmlReader extends AbstractInstanceReader {
 	/**
 	 * The name of the parameter specifying if the selection of mapping relevant
 	 * types for instances that are processed should be ignored.
-	 * 
+	 *
 	 * Essentially if this is enabled the behavior is like if any type in the schema
 	 * is classified as mapping relevant.
 	 */
@@ -107,7 +103,7 @@ public class StreamGmlReader extends AbstractInstanceReader {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param restrictToFeatures if only instances that are GML features shall be
 	 *            loaded
 	 */

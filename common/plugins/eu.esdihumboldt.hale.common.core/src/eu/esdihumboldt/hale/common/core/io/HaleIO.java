@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io;
 
 import java.io.File;
@@ -51,7 +47,7 @@ import eu.esdihumboldt.util.resource.Resources;
 
 /**
  * Hale I/O utilities
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.5
@@ -69,7 +65,7 @@ public abstract class HaleIO {
 	 * Tests whether a InputStream to the given URI can be opened. <br>
 	 * In case of a file it instead tests File.isFile and File.canRead() because it
 	 * is a lot faster.
-	 * 
+	 *
 	 * @param uri the URI to test
 	 * @param allowResource allow resolving through {@link Resources}
 	 * @return true, if a InputStream to the URI could be opened.
@@ -99,7 +95,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Filter I/O provider factories by content type
-	 * 
+	 *
 	 * @param factories the I/O provider factories
 	 * @param contentType the content type factories must support
 	 * @return provider factories that support the given content type
@@ -125,7 +121,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Filter I/O provider factories by configuration content type
-	 * 
+	 *
 	 * @param factories the I/O provider factories
 	 * @param configurationContentType the configuration content type the factories
 	 *            must support
@@ -152,7 +148,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Find all content types that are of the same kind as the given content type.
-	 * 
+	 *
 	 * @param candidates Content types to search
 	 * @param kind Parent content type
 	 * @return List of matches, including at least <code>kind</code>
@@ -165,7 +161,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Find all content types that are of the same kind as the given content type.
-	 * 
+	 *
 	 * @param candidates Content types to search
 	 * @param kind Parent content type
 	 * @return List of matches, including at least <code>kind</code>
@@ -188,10 +184,10 @@ public abstract class HaleIO {
 
 	/**
 	 * Find the content types that match the given file name and/or input.
-	 * 
+	 *
 	 * NOTE: The implementation should try to restrict the result to one content
 	 * type and only use the input supplier if absolutely needed.
-	 * 
+	 *
 	 * @param types the types to match
 	 * @param in the input supplier to use for testing, may be <code>null</code> if
 	 *            the file name is not <code>null</code>
@@ -261,7 +257,7 @@ public abstract class HaleIO {
 				 * types that match in any way, but ordered by relevance - so if all but the
 				 * allowed types are removed, the remaining types may be very irrelevant and not
 				 * a match that actually was determined based on the input stream.
-				 * 
+				 *
 				 * Thus findContentTypesFor should not be used or only relied upon the single
 				 * best match that is returned. It is now only used as fall-back if there is no
 				 * result for findContentTypeFor.
@@ -310,7 +306,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Get the I/O provider factories of a certain type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @return the factories currently registered in the system
 	 */
@@ -335,9 +331,9 @@ public abstract class HaleIO {
 
 	/**
 	 * Find an I/O provider factory
-	 * 
+	 *
 	 * @param <P> the provider interface type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
@@ -377,9 +373,9 @@ public abstract class HaleIO {
 
 	/**
 	 * Creates an I/O provider instance
-	 * 
+	 *
 	 * @param <P> the provider interface type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @param contentType the content type the provider must match, may be
 	 *            <code>null</code> if providerId is set
@@ -408,9 +404,9 @@ public abstract class HaleIO {
 
 	/**
 	 * Find the content type for the given input
-	 * 
+	 *
 	 * @param <P> the provider interface type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @param in the input supplier to use for testing, may be <code>null</code> if
 	 *            the file name is not <code>null</code>
@@ -442,9 +438,9 @@ public abstract class HaleIO {
 
 	/**
 	 * Find an I/O provider instance for the given input
-	 * 
+	 *
 	 * @param <P> the provider interface type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @param in the input supplier to use for testing, may be <code>null</code> if
 	 *            the file name is not <code>null</code>
@@ -465,9 +461,9 @@ public abstract class HaleIO {
 
 	/**
 	 * Find an I/O provider instance for the given input
-	 * 
+	 *
 	 * @param <T> the provider interface type
-	 * 
+	 *
 	 * @param providerType the provider type, usually an interface
 	 * @param in the input supplier to use for testing, may be <code>null</code> if
 	 *            the file name is not <code>null</code>
@@ -502,7 +498,7 @@ public abstract class HaleIO {
 	/**
 	 * Automatically find an import provider to load a resource that is available
 	 * through an input stream that can only be read once.
-	 * 
+	 *
 	 * @param type the import provider type
 	 * @param in the input stream
 	 * @return the import provider or <code>null</code> if none was found
@@ -520,7 +516,7 @@ public abstract class HaleIO {
 	/**
 	 * Test if the given value content type is compatible with the given parent
 	 * content type
-	 * 
+	 *
 	 * @param parentType the parent content type
 	 * @param valueType the value content type
 	 * @return if the value content type is compatible with the parent content type
@@ -531,7 +527,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Get the value of a complex property represented as a DOM element.
-	 * 
+	 *
 	 * @param element the DOM element
 	 * @param context the context object, may be <code>null</code>
 	 * @return the complex value converted through the
@@ -557,7 +553,7 @@ public abstract class HaleIO {
 
 	/**
 	 * Get the value of a complex property represented as a DOM element.
-	 * 
+	 *
 	 * @param element the DOM element
 	 * @param expectedType the expected parameter type, this must be either
 	 *            {@link String}, DOM {@link Element} or a complex value type
@@ -610,7 +606,7 @@ public abstract class HaleIO {
 	/**
 	 * Get the representation of a complex value as a DOM element. Uses the
 	 * {@link ComplexValueExtension}.
-	 * 
+	 *
 	 * @param value the complex value
 	 * @return the DOM representation
 	 * @throws IllegalStateException if the value is neither a DOM element nor can
@@ -633,7 +629,7 @@ public abstract class HaleIO {
 
 //	/**
 //	 * Get the file extensions for the given content type
-//	 * 
+//	 *
 //	 * @param contentType the content type
 //	 * @param prefix the prefix to add before the extensions, e.g. "." or "*.",
 //	 *   may be <code>null</code>
@@ -642,7 +638,7 @@ public abstract class HaleIO {
 //	public static String[] getFileExtensions(ContentType contentType,
 //			String prefix) {
 //		SortedSet<String> exts = new TreeSet<String>();
-//		
+//
 //		ContentTypeService cts = HalePlatform.getService(ContentTypeService.class);
 //		String[] typeExts = cts.getFileExtensions(contentType);
 //		if (typeExts != null) {
@@ -655,7 +651,7 @@ public abstract class HaleIO {
 //				}
 //			}
 //		}
-//		
+//
 //		if (exts.isEmpty()) {
 //			return null;
 //		}
@@ -666,7 +662,7 @@ public abstract class HaleIO {
 
 //	/**
 //	 * Get all file extensions for the given content types
-//	 * 
+//	 *
 //	 * @param contentTypes the content types
 //	 * @param prefix the prefix to add before the extensions, e.g. "." or "*.",
 //	 *   may be <code>null</code>
@@ -675,7 +671,7 @@ public abstract class HaleIO {
 //	public static String[] getFileExtensions(Iterable<ContentType> contentTypes,
 //			String prefix) {
 //		SortedSet<String> exts = new TreeSet<String>();
-//		
+//
 //		ContentTypeService cts = HalePlatform.getService(ContentTypeService.class);
 //		for (ContentType contentType : contentTypes) {
 //			String[] typeExts = cts.getFileExtensions(contentType);
@@ -690,7 +686,7 @@ public abstract class HaleIO {
 //				}
 //			}
 //		}
-//		
+//
 //		if (exts.isEmpty()) {
 //			return null;
 //		}

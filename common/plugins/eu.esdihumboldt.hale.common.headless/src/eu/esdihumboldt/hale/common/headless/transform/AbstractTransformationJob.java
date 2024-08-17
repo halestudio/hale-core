@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import java.io.Serializable;
@@ -26,7 +23,7 @@ import org.eclipse.core.runtime.jobs.Job;
 /**
  * Abstract transformation job. It allows setting a process ID to combine
  * multiple transformation jobs to a job family.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractTransformationJob extends Job {
@@ -44,7 +41,7 @@ public abstract class AbstractTransformationJob extends Job {
 
 		/**
 		 * Create a family token based on the given identifier.
-		 * 
+		 *
 		 * @param identifier the identifier
 		 */
 		public Token(Object identifier) {
@@ -96,7 +93,7 @@ public abstract class AbstractTransformationJob extends Job {
 
 	/**
 	 * Set the process identifier to set the job family.
-	 * 
+	 *
 	 * @param processId the process identifier
 	 */
 	public void setProcessId(Object processId) {
@@ -105,7 +102,7 @@ public abstract class AbstractTransformationJob extends Job {
 
 	/**
 	 * Create a family token based on the given process identifier.
-	 * 
+	 *
 	 * @param processId the process identifier
 	 * @return the job family
 	 */

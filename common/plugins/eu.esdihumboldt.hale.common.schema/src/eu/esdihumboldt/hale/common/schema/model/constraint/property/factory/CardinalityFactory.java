@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.property.factory;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality;
  * constraint is represented as a simple string, with the minimum value
  * delimited from the maximum value by two dots, e.g. <code>0..1</code>. The
  * character <code>n</code> represents an unbounded maximum value.
- * 
+ *
  * @author Simon Templer
  */
 public class CardinalityFactory implements ValueConstraintFactory<Cardinality> {

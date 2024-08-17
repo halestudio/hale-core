@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.csv.writer;
 
 import java.util.HashMap;
@@ -38,7 +35,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Default instance export provider for table files (xls and csv)
- * 
+ *
  * @author Patrick Lieb
  */
 public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter {
@@ -54,7 +51,7 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Iterates over properties of the instance and creates a map of the given
 	 * properties
-	 * 
+	 *
 	 * @param instance the Instance to check
 	 * @param headerRow the current header row of the table
 	 * @param solveNestedProperties <code>true</code> if nested properties should be
@@ -155,7 +152,7 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Iterates over properties of the type definition and creates a map of the
 	 * given properties
-	 * 
+	 *
 	 * @param definition given type to check
 	 * @param headerRow the current header row of the table
 	 * @return a map of properties with string of localpart of the QName of the
@@ -181,7 +178,7 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * 
+	 *
 	 * @param instance the actual instance
 	 * @param qNameOfTheInstance the qname of the instance
 	 * @param headerRow property names
@@ -263,7 +260,7 @@ public abstract class AbstractTableInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Call this to get an instance collection based on the selected Type
-	 * 
+	 *
 	 * @param typeName the QName of the typeDefinition
 	 * @return The instance collection for the given type, can be empty collection
 	 */

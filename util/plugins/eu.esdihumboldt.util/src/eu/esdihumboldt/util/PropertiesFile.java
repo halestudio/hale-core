@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util;
 
 import java.io.BufferedInputStream;
@@ -30,7 +27,7 @@ import java.util.Properties;
  * character encoding; that is each byte is one Latin1 character. Characters not
  * in Latin1, and certain special characters, are represented in keys and
  * elements using Unicode escapes.
- * 
+ *
  * @author Simon Templer
  */
 public class PropertiesFile extends Properties {
@@ -44,9 +41,9 @@ public class PropertiesFile extends Properties {
 
 	/**
 	 * Create or load the given properties file.
-	 * 
+	 *
 	 * @param file the properties file
-	 * 
+	 *
 	 * @throws IOException if creating or loading the file fails
 	 */
 	public PropertiesFile(File file) throws IOException {
@@ -55,10 +52,10 @@ public class PropertiesFile extends Properties {
 
 	/**
 	 * Create or load the given properties file.
-	 * 
+	 *
 	 * @param file the properties file
 	 * @param defaults the default properties
-	 * 
+	 *
 	 * @throws IOException if creating or loading the file fails
 	 */
 	public PropertiesFile(File file, Properties defaults) throws IOException {
@@ -76,7 +73,7 @@ public class PropertiesFile extends Properties {
 
 	/**
 	 * Reload the properties from the file.
-	 * 
+	 *
 	 * @throws IOException if loading the file fails
 	 */
 	public void reload() throws IOException {
@@ -96,7 +93,7 @@ public class PropertiesFile extends Properties {
 
 	/**
 	 * Save the properties to the file, overwriting it.
-	 * 
+	 *
 	 * @throws IOException if saving the file fails
 	 */
 	public void save() throws IOException {
@@ -111,7 +108,7 @@ public class PropertiesFile extends Properties {
 	/**
 	 * Sync the properties with the file. For duplicate properties you can either
 	 * prefer the runtime property values or the file property values.
-	 * 
+	 *
 	 * @param preferRuntime if the runtime properties should be preferred
 	 * @throws IOException if loading or saving the file fails
 	 */

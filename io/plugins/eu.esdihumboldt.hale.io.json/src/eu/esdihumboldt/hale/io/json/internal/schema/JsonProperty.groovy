@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal.schema
 
 import groovy.transform.Canonical
@@ -45,7 +42,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 
 /**
  * Information collected on a Json property across different instances.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -60,7 +57,7 @@ class JsonProperty {
 	 */
 	final Map<String, JsonProperty> children = new LinkedHashMap<>()
 	/**
-	 * Primitive value types encountered 
+	 * Primitive value types encountered
 	 */
 	final Multiset<JsonValueType> types = HashMultiset.create();
 	/**

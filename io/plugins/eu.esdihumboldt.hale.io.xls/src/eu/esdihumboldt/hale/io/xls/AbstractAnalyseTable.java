@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Fraunhofer IGD
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Fraunhofer IGD
  */
-
 package eu.esdihumboldt.hale.io.xls;
 
 import java.io.BufferedInputStream;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.LocatableInputSupplier;
 
 /**
  * Do analysis on simple Excel tables.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractAnalyseTable {
@@ -45,7 +42,7 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Load table to analyse from an Excel file (first sheet).
-	 * 
+	 *
 	 * @param source the source to load the file from
 	 * @param xlsx
 	 * @throws Exception if an error occurs loading the file
@@ -57,7 +54,7 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Load table to analyse from an Excel file.
-	 * 
+	 *
 	 * @param source the source to load the file from
 	 * @param isXlsx if the file should be loaded as XLSX file
 	 * @param sheetNum number of the sheet that should be loaded (0-based)
@@ -92,7 +89,7 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Load a workbook from a stream.
-	 * 
+	 *
 	 * @param input the input stream to load
 	 * @param location an optional location that can be used to determine the file
 	 *            type
@@ -117,7 +114,7 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Analyzes the table header.
-	 * 
+	 *
 	 * @param sheet the table sheet
 	 * @param dateTimeFormatter date formatter
 	 */
@@ -149,7 +146,7 @@ public abstract class AbstractAnalyseTable {
 	 * Analyse the table content if skipNlines <=0 that don't analyse first row,
 	 * which has already been analyse into the header else analyse starting with the
 	 * skip line
-	 * 
+	 *
 	 * @param sheet the table sheet
 	 * @param skipNlines skip N lines
 	 * @param dateTimeFormatter date formatter
@@ -163,7 +160,7 @@ public abstract class AbstractAnalyseTable {
 
 	/**
 	 * Analyse a content row.
-	 * 
+	 *
 	 * @param num the row number (starting from one as the header row is handled
 	 *            separately)
 	 * @param row the table row
@@ -176,7 +173,7 @@ public abstract class AbstractAnalyseTable {
 	/**
 	 * Extract the text from a given cell. Formulas are evaluated, for blank or
 	 * error cells <code>null</code> is returned
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param sheet to extract text
 	 * @param dateTimeFormatter to convert the date into

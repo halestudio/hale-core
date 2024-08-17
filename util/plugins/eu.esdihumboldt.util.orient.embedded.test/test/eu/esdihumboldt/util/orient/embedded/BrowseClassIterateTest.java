@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.orient.embedded;
 
 import static org.junit.Assert.assertEquals;
@@ -36,7 +32,7 @@ import com.orientechnologies.orient.core.record.impl.ODocument;
 
 /**
  * Test the iterator provided through browseClass.
- * 
+ *
  * @author Simon Templer
  */
 public class BrowseClassIterateTest {
@@ -144,7 +140,7 @@ public class BrowseClassIterateTest {
 
 	/**
 	 * Get the database
-	 * 
+	 *
 	 * @return the database
 	 */
 	protected ODatabaseDocumentTx getDb() {
@@ -153,7 +149,7 @@ public class BrowseClassIterateTest {
 
 	/**
 	 * Initialize the server
-	 * 
+	 *
 	 * @throws Exception if creating the DB server fails
 	 */
 	@BeforeClass
@@ -181,7 +177,7 @@ public class BrowseClassIterateTest {
 //		   //+ "<entry name=\"orientdb.config.file\" value=\"C:/work/dev/orientechnologies/orientdb/releases/1.0rc1-SNAPSHOT/config/orientdb-server-config.xml\"/>"
 //		   + "<entry name=\"server.cache.staticResources\" value=\"false\"/>"
 //		   + "<entry name=\"log.console.level\" value=\"info\"/>" + "<entry name=\"log.file.level\" value=\"info\"/>"
-//		   + "</properties>" 
+//		   + "</properties>"
 //		   + "</orient-server>");
 	}
 

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal;
 
 import java.io.IOException;
@@ -27,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Interface for classes processing individual instances coming from Json.
- * 
+ *
  * @author Simon Templer
  * @param <T> the result type per instance
  */
@@ -35,14 +32,14 @@ public interface JsonInstanceProcessor<T> {
 
 	/**
 	 * Process Json instances.
-	 * 
+	 *
 	 * @param <T> the processing result type per instance
 	 * @param json the Json reader
 	 * @param processor the instance processor
 	 * @param handler a handler for individual instance processing results, may be
 	 *            <code>null</code>
 	 * @param limit the maximum limit of instances to process, negative for no limit
-	 * 
+	 *
 	 * @throws JsonParseException if the Json cannot be parsed
 	 * @throws IOException if an error occurs processing the Json
 	 */
@@ -71,7 +68,7 @@ public interface JsonInstanceProcessor<T> {
 	/**
 	 * Initialize the parser to point at the right position to start reading
 	 * instances.
-	 * 
+	 *
 	 * @param parser the JSON parser
 	 */
 	void init(JsonParser parser) throws JsonParseException, IOException;
@@ -79,7 +76,7 @@ public interface JsonInstanceProcessor<T> {
 	/**
 	 * Read a single instance from the given parser. It is expected that the current
 	 * position of the parser is at the start of an object.
-	 * 
+	 *
 	 * @param parser the JSON parser
 	 * @return the parsed instance
 	 * @throws IOException if parsing the JSON fails
@@ -88,7 +85,7 @@ public interface JsonInstanceProcessor<T> {
 
 	/**
 	 * Skip a field value in the JSON parser.
-	 * 
+	 *
 	 * @param parser the JSON parser
 	 * @throws IOException if parsing the JSON fails
 	 */

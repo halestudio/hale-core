@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect;
 
 import java.io.BufferedInputStream;
@@ -33,7 +30,7 @@ import eu.esdihumboldt.hale.io.haleconnect.internal.ProjectStoreHelper;
 
 /**
  * I/O supplier for projects imported from hale connect
- * 
+ *
  * @author Florian Esser
  */
 public class HaleConnectInputSupplier extends DefaultInputSupplier {
@@ -44,7 +41,7 @@ public class HaleConnectInputSupplier extends DefaultInputSupplier {
 
 	/**
 	 * Create the hale connect input supplier
-	 * 
+	 *
 	 * @param location the location URI
 	 * @param apiKey API key to access the hale connect
 	 * @param resolver {@link BasePathResolver} for building hale connect URLs

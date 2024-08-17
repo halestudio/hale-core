@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.cache;
 
 import java.io.ByteArrayInputStream;
@@ -61,7 +57,7 @@ import net.sf.ehcache.store.MemoryStoreEvictionPolicy;
 
 /**
  * This class manages requests and caching for remote files.
- * 
+ *
  * @author Andreas Burchert
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -163,7 +159,7 @@ public class Request {
 
 	/**
 	 * Returns the instance of this class
-	 * 
+	 *
 	 * @return instance
 	 */
 	public synchronized static Request getInstance() {
@@ -175,12 +171,12 @@ public class Request {
 
 	/**
 	 * @param uri to load from
-	 * 
+	 *
 	 * @return {@link InputStream}
-	 * 
+	 *
 	 * @throws URISyntaxException if the URI is malformed
 	 * @throws Exception may contain IOException
-	 * 
+	 *
 	 * @see Request#get(URI)
 	 */
 	public InputStream get(String uri) throws URISyntaxException, Exception {
@@ -189,11 +185,11 @@ public class Request {
 
 	/**
 	 * This function handles all Request and does the caching.
-	 * 
+	 *
 	 * @param uri to file
-	 * 
+	 *
 	 * @return an {@link InputStream} to uri
-	 * 
+	 *
 	 * @throws Exception if something goes wrong
 	 */
 	public InputStream get(URI uri) throws Exception {
@@ -244,7 +240,7 @@ public class Request {
 
 	/**
 	 * Open a stream for the given URI.
-	 * 
+	 *
 	 * @param uri the URI
 	 * @return the opened input stream, the caller is responsible to close it
 	 * @throws IOException if opening the input stream fails
@@ -294,7 +290,7 @@ public class Request {
 
 	/**
 	 * Get the HTTP client for a given proxy
-	 * 
+	 *
 	 * @param proxy the proxy
 	 * @return the client configured for the proxy
 	 */
@@ -391,11 +387,11 @@ public class Request {
 
 	/**
 	 * This function is used if the url is a local file.
-	 * 
+	 *
 	 * @param file path to file
-	 * 
+	 *
 	 * @return {@link InputStream}
-	 * 
+	 *
 	 * @throws IOException if the file could not be read
 	 */
 	private InputStream getLocal(URL file) throws IOException {
@@ -426,7 +422,7 @@ public class Request {
 
 	/**
 	 * Is true if caching is enabled.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isCacheEnabled() {
@@ -434,7 +430,7 @@ public class Request {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param enabled enabled
 	 */
 	public void setCacheEnabled(boolean enabled) {

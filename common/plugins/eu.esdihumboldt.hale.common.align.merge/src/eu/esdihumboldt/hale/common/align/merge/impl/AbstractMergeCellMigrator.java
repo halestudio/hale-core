@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.merge.impl;
 
 import static eu.esdihumboldt.hale.common.align.migrate.util.MigrationUtil.isDirectMatch;
@@ -64,7 +61,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType;
 
 /**
  * Cell merger base class.
- * 
+ *
  * @author Simon Templer
  * @param <C> the context class
  */
@@ -90,16 +87,16 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 
 	/**
 	 * Create a new context object.
-	 * 
+	 *
 	 * @param originalCell the original cell
-	 * 
+	 *
 	 * @return the new context object
 	 */
 	protected abstract C newContext(Cell originalCell);
 
 	/**
 	 * Update the cell sources.
-	 * 
+	 *
 	 * @param sources the old sources
 	 * @param mergeIndex the merge index
 	 * @param originalCell the original cell
@@ -332,7 +329,7 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 	/**
 	 * Apply contexts/conditions from the original source to the source of the new
 	 * mapping cell that replaces it.
-	 * 
+	 *
 	 * @param newCell the cell to adapt
 	 * @param originalSource the original source
 	 * @param migration the alignment migration
@@ -388,7 +385,7 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 	/**
 	 * Handle special case of applying source contexts to the entity that is the
 	 * Join focus.
-	 * 
+	 *
 	 * @param newCell the new cell to update the sources
 	 * @param originalSource the original source
 	 * @param migration the alignment migration
@@ -498,7 +495,7 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 
 	/**
 	 * Finalize a created cell based on the context.
-	 * 
+	 *
 	 * @param newCell the new merged cell
 	 * @param migration the alignment migration
 	 * @param context the cell merge context
@@ -511,7 +508,7 @@ public abstract class AbstractMergeCellMigrator<C> extends DefaultCellMigrator
 
 	/**
 	 * Merge a source according to a matching cell.
-	 * 
+	 *
 	 * @param cell the target cell to merge the source to (contains only already
 	 *            merged sources)
 	 * @param sourceName the name of the source

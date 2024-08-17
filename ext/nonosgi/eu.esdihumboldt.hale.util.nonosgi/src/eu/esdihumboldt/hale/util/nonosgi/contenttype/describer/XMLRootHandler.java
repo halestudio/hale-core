@@ -27,7 +27,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * the <code>IExecutableExtension</code> mechanism. If the <code>":-"</code>
  * method is used, then the value is treated as the
  * <code>ELEMENT_TO_FIND</code>.
- * 
+ *
  * @since 3.0
  */
 @SuppressWarnings("restriction")
@@ -36,7 +36,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 	/**
 	 * An exception indicating that the parsing should stop. This is usually
 	 * triggered when the top-level element has been found.
-	 * 
+	 *
 	 * @since 3.0
 	 */
 	private class StopParsingException extends SAXException {
@@ -85,7 +85,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#comment(char[], int, int)
 	 */
 	public final void comment(final char[] ch, final int start, final int length) {
@@ -94,9 +94,9 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/**
 	 * Creates a new SAX parser for use within this instance.
-	 * 
+	 *
 	 * @return The newly created parser.
-	 * 
+	 *
 	 * @throws ParserConfigurationException If a parser of the given configuration
 	 *             cannot be created.
 	 * @throws SAXException If something in general goes wrong when creating the
@@ -129,7 +129,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#endCDATA()
 	 */
 	public final void endCDATA() {
@@ -138,7 +138,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#endDTD()
 	 */
 	public final void endDTD() {
@@ -147,7 +147,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#endEntity(java.lang.String)
 	 */
 	public final void endEntity(final String name) {
@@ -195,7 +195,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 	 * Resolve external entity definitions to an empty string. This is to speed up
 	 * processing of files with external DTDs. Not resolving the contents of the DTD
 	 * is ok, as only the System ID of the DTD declaration is used.
-	 * 
+	 *
 	 * @see org.xml.sax.helpers.DefaultHandler#resolveEntity(java.lang.String,
 	 * java.lang.String)
 	 */
@@ -205,7 +205,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#startCDATA()
 	 */
 	public final void startCDATA() {
@@ -214,7 +214,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#startDTD(java.lang.String,
 	 * java.lang.String, java.lang.String)
 	 */
@@ -228,7 +228,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
 	 * java.lang.String, java.lang.String, org.xml.sax.Attributes)
 	 */
@@ -241,7 +241,7 @@ public final class XMLRootHandler extends DefaultHandler implements LexicalHandl
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.xml.sax.ext.LexicalHandler#startEntity(java.lang.String)
 	 */
 	public final void startEntity(final String name) {

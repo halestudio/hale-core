@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.transformation.report.impl;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.hale.common.core.report.impl.AbstractReporter;
 
 /**
  * Reporter for transformation messages
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultTransformationReporter extends AbstractReporter<TransformationMessage>
@@ -50,7 +46,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 	/**
 	 * Determine message cap from system property or environment variable, otherwise
 	 * return a default value.
-	 * 
+	 *
 	 * @return the message cap
 	 */
 	private static int getMessageCap() {
@@ -88,7 +84,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 		/**
 		 * Create a transformation message key.
-		 * 
+		 *
 		 * @param message the original message
 		 */
 		public TMessageKey(TransformationMessage message) {
@@ -163,7 +159,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 		/**
 		 * Add a message.
-		 * 
+		 *
 		 * @param message the message to add
 		 */
 		public void add(TransformationMessage message) {
@@ -186,7 +182,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 		/**
 		 * Get the collected messages, if applicable extended with the message count.
-		 * 
+		 *
 		 * @return the messages
 		 */
 		public Collection<TransformationMessage> getMessages() {
@@ -216,7 +212,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 		/**
 		 * Add more messages that are only represented with the count.
-		 * 
+		 *
 		 * @param more the number of messages to add
 		 */
 		public void addMore(int more) {
@@ -239,7 +235,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 
 		/**
 		 * Determines if there are any messages contained.
-		 * 
+		 *
 		 * @return if there are any messages present
 		 */
 		public boolean hasMessages() {
@@ -259,7 +255,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 	 * Create an empty report. It is set to not successful by default. But you
 	 * should call {@link #setSuccess(boolean)} nonetheless to update the timestamp
 	 * after the task has finished.
-	 * 
+	 *
 	 * @param taskName the name of the task the report is related to
 	 * @param doLog if added messages shall also be logged using {@link ALogger}
 	 */
@@ -362,7 +358,7 @@ public class DefaultTransformationReporter extends AbstractReporter<Transformati
 	/**
 	 * Add all messages of the given report to this report. They may the logged
 	 * (again) with a call to {@link #setSuccess(boolean)}.
-	 * 
+	 *
 	 * @see ReportLog#importMessages(Report)
 	 */
 	@Override

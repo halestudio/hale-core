@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.util.groovy.sandbox;
 
 import javax.annotation.Nullable;
@@ -8,14 +20,14 @@ import groovy.lang.Script;
 
 /**
  * Groovy sandbox service interface.
- * 
+ *
  * @author Kai Schwierczek
  */
 public interface GroovyService {
 
 	/**
 	 * Processes a script result.
-	 * 
+	 *
 	 * @param <T> the type of the processed result
 	 */
 	public interface ResultProcessor<T> {
@@ -23,7 +35,7 @@ public interface GroovyService {
 		/**
 		 * Process the script result. It is important that any closures created in the
 		 * script are executed within the processor.
-		 * 
+		 *
 		 * @param script the script
 		 * @param returnValue the script return value
 		 * @return the processed result
@@ -34,7 +46,7 @@ public interface GroovyService {
 
 	/**
 	 * Create a customized {@link GroovyShell}.
-	 * 
+	 *
 	 * @param binding the binding, may be <code>null</code>
 	 * @return a customized {@link GroovyShell}
 	 */
@@ -42,7 +54,7 @@ public interface GroovyService {
 
 	/**
 	 * Parse a script using a customized shell.
-	 * 
+	 *
 	 * @param script the script string
 	 * @param binding binding the binding, may be <code>null</code>
 	 * @return the parsed script
@@ -51,7 +63,7 @@ public interface GroovyService {
 
 	/**
 	 * Evaluate a Groovy script.
-	 * 
+	 *
 	 * @param script the script
 	 * @param processor the script result processor, may be <code>null</code>
 	 * @return the script's processed return value or <code>null</code> if no
@@ -63,28 +75,28 @@ public interface GroovyService {
 
 	/**
 	 * Returns whether the Groovy execution restriction is currently active.
-	 * 
+	 *
 	 * @return whether the Groovy execution restriction is currently active
 	 */
 	public boolean isRestrictionActive();
 
 	/**
 	 * Activates/Deactivates the Groovy execution restriction.
-	 * 
+	 *
 	 * @param active whether the restriction should be active or not
 	 */
 	public void setRestrictionActive(boolean active);
 
 	/**
 	 * Adds a Groovy service listener
-	 * 
+	 *
 	 * @param listener the listener to add
 	 */
 	public void addListener(GroovyServiceListener listener);
 
 	/**
 	 * Removes a Groovy service listener
-	 * 
+	 *
 	 * @param listener the listener to remove
 	 */
 	public void removeListener(GroovyServiceListener listener);

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -40,7 +37,7 @@ import jakarta.xml.bind.Unmarshaller;
 /**
  * Helper class for converting EntityDefinitions to DOM (and back) using the
  * JAXB alignment model.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class DOMEntityDefinitionHelper {
@@ -53,7 +50,7 @@ public class DOMEntityDefinitionHelper {
 	/**
 	 * Converts the given element to a type entity definition. If any exception
 	 * occurs <code>null</code> is returned.
-	 * 
+	 *
 	 * @param fragment the fragment to convert
 	 * @param types the type index to use for unmarshalling
 	 * @param ssid the schema space to use for unmarshalling
@@ -80,7 +77,7 @@ public class DOMEntityDefinitionHelper {
 	/**
 	 * Converts the given element to a property entity definition. If any exception
 	 * occurs <code>null</code> is returned.
-	 * 
+	 *
 	 * @param fragment the fragment to convert
 	 * @param types the type index to use for unmarshalling
 	 * @param ssid the schema space to use for unmarshalling
@@ -106,7 +103,7 @@ public class DOMEntityDefinitionHelper {
 
 	/**
 	 * Converts the given type entity definition to an element.
-	 * 
+	 *
 	 * @param type the type entity definition to convert
 	 * @return the created element or <code>null</code> in case of an exception
 	 */
@@ -116,7 +113,7 @@ public class DOMEntityDefinitionHelper {
 
 	/**
 	 * Converts the given type entity definition to an element.
-	 * 
+	 *
 	 * @param type the type entity definition to convert
 	 * @return the created element or <code>null</code> in case of an exception
 	 */
@@ -127,7 +124,7 @@ public class DOMEntityDefinitionHelper {
 
 	/**
 	 * Converts the given property entity definition to an element.
-	 * 
+	 *
 	 * @param property the property entity definition to convert
 	 * @return the created element or <code>null</code> in case of an exception
 	 */

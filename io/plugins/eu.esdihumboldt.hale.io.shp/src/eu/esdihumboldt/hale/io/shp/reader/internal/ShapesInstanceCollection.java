@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.shp.reader.internal;
 
 import java.io.IOException;
@@ -71,7 +67,7 @@ import eu.esdihumboldt.hale.io.shp.ShapefileConstants;
 
 /**
  * Instance collection backed by a Shapefile data store.
- * 
+ *
  * @author Simon Templer
  */
 public class ShapesInstanceCollection implements InstanceCollection2 {
@@ -93,7 +89,7 @@ public class ShapesInstanceCollection implements InstanceCollection2 {
 
 		/**
 		 * Create a new iterator on the data store.
-		 * 
+		 *
 		 * @throws IOException if reading the data store fails
 		 */
 		public ShapesIterator() throws IOException {
@@ -124,7 +120,7 @@ public class ShapesInstanceCollection implements InstanceCollection2 {
 
 		/**
 		 * Create an instance from a given feature
-		 * 
+		 *
 		 * @param type the type definition associated to the feature/instance
 		 * @param feature the feature
 		 * @return the instance or <code>null</code> if it couldn't be created
@@ -297,7 +293,7 @@ public class ShapesInstanceCollection implements InstanceCollection2 {
 
 		/**
 		 * Find the geometry property of the given type.
-		 * 
+		 *
 		 * @param type the type to check
 		 * @param preferredName the preferred name for the property
 		 * @return the identified property or null
@@ -357,7 +353,7 @@ public class ShapesInstanceCollection implements InstanceCollection2 {
 
 	/**
 	 * Data store for accessing simple features (from a Shapefile).
-	 * 
+	 *
 	 * @param features the feature source
 	 * @param type the type to use for instances
 	 * @param crsProvider CRS provider in case no CRS is specified, may be

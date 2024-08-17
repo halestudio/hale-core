@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import java.io.File;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Handler for writing instances split by spatial extent.
- * 
+ *
  * @author Florian Esser
  */
 public class ExtentPartsHandler implements MultipartHandler {
@@ -40,7 +37,7 @@ public class ExtentPartsHandler implements MultipartHandler {
 
 	/**
 	 * Decorator for {@link InstanceCollection}s that adds a quadtree key
-	 * 
+	 *
 	 * @author Florian Esser
 	 */
 	public static class TreeKeyDecorator extends InstanceCollectionDecorator {
@@ -49,7 +46,7 @@ public class ExtentPartsHandler implements MultipartHandler {
 
 		/**
 		 * Create a TreeKeyDecorator
-		 * 
+		 *
 		 * @param decoratee InstanceCollection to decroate
 		 * @param treeKey The tree key of the tile represented by this
 		 *            InstanceCollection
@@ -73,7 +70,7 @@ public class ExtentPartsHandler implements MultipartHandler {
 
 	/**
 	 * Create the handler
-	 * 
+	 *
 	 * @param keyToTargetMapping Mapping between tree key and target file
 	 * @param idToKeyMapping Mapping between the GML IDs and the associated tree key
 	 */
@@ -95,7 +92,7 @@ public class ExtentPartsHandler implements MultipartHandler {
 
 	/**
 	 * Build the target file name for a tree key
-	 * 
+	 *
 	 * @param treeKey Tree key
 	 * @param location Original target location
 	 * @return The modified file name

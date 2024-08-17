@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.storage;
 
 import java.text.MessageFormat;
@@ -63,7 +59,7 @@ import gnu.trove.TObjectIntProcedure;
 
 /**
  * Store instances in a database
- * 
+ *
  * @author Simon Templer
  */
 public abstract class StoreInstancesJob extends Job {
@@ -105,7 +101,7 @@ public abstract class StoreInstancesJob extends Job {
 
 	/**
 	 * Create a job that stores instances in a database.
-	 * 
+	 *
 	 * @param name the (human readable) job name
 	 * @param instances the instances to store in the database
 	 * @param database the database
@@ -119,7 +115,7 @@ public abstract class StoreInstancesJob extends Job {
 
 	/**
 	 * Create a job that stores instances in a database
-	 * 
+	 *
 	 * @param name the (human readable) job name
 	 * @param instances the instances to store in the database
 	 * @param database the database
@@ -377,7 +373,7 @@ public abstract class StoreInstancesJob extends Job {
 	/**
 	 * Update an instance before it is converted and saved, e.g. adding metadata.
 	 * The default implementation does nothing and may be overridden.
-	 * 
+	 *
 	 * @param instance the instance
 	 */
 	protected void updateInstance(MutableInstance instance) {
@@ -387,7 +383,7 @@ public abstract class StoreInstancesJob extends Job {
 	/**
 	 * Process an instance before it is saved. The default implementation does
 	 * nothing and may be overridden.
-	 * 
+	 *
 	 * @param instance the instance, may not be changed in any way
 	 */
 	protected void processInstance(Instance instance) {

@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.common.propertyaccessor;
 
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 
 /**
  * Factory for property accessor using {@link PropertyResolver}.
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class InstancePropertyAccessorFactory implements PropertyAccessorFactory {
@@ -69,7 +66,7 @@ public class InstancePropertyAccessorFactory implements PropertyAccessorFactory 
 				/*
 				 * Extract geometry from GeometryProperty, as a Geometry is usually expected in
 				 * Geotools filters related to geometries.
-				 * 
+				 *
 				 * XXX A better alternative might be adding a Geotools converter factory that
 				 * supports this conversions (also see Geotools Converters class).
 				 */

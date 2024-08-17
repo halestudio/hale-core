@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.core.join;
 
 import java.util.Collection;
@@ -40,7 +37,7 @@ import eu.esdihumboldt.hale.common.instance.model.impl.FilterResourceIteratorAda
 
 /**
  * Iterator used by {@link IndexJoinHandler}
- * 
+ *
  * @author Florian Esser
  */
 class IndexJoinIterator
@@ -76,7 +73,7 @@ class IndexJoinIterator
 
 	/**
 	 * Joins all direct children of the given type to currentInstances.
-	 * 
+	 *
 	 * @return if the instance should be skipped
 	 */
 	@SuppressWarnings("javadoc")

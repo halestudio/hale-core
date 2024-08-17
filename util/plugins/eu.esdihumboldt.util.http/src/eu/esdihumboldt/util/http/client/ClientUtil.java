@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.http.client;
 
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -25,16 +21,16 @@ import eu.esdihumboldt.util.metrics.CollectorRegistryService;
 
 /**
  * HTTP client utilities
- * 
+ *
  * @author Simon Templer, Michel Krämer
  */
 public class ClientUtil {
 
 	/**
 	 * Create a thread safe HTTP client
-	 * 
+	 *
 	 * @param clientName the client name the metrics should be labeled with
-	 * 
+	 *
 	 * @return the created HTTP client
 	 */
 	public static CloseableHttpClient createThreadSafeHttpClient(String clientName) {
@@ -44,9 +40,9 @@ public class ClientUtil {
 
 	/**
 	 * Create a thread safe HTTP client
-	 * 
+	 *
 	 * @param clientName the client name the metrics should be labeled with
-	 * 
+	 *
 	 * @return the created HTTP client
 	 */
 	public static HttpClientBuilder threadSafeHttpClientBuilder(String clientName) {
@@ -55,7 +51,7 @@ public class ClientUtil {
 
 	/**
 	 * Create a thread safe HTTP client
-	 * 
+	 *
 	 * @param clientName the client name the metrics should be labeled with
 	 * @param maxConnections the maximum number of total connections or
 	 *            <code>null</code> to use the default (20)
@@ -64,7 +60,7 @@ public class ClientUtil {
 	 * @param enablePerHostMetrics if metrics that include information on routes per
 	 *            individual host should be collected (if metric collection is
 	 *            enabled)
-	 * 
+	 *
 	 * @return the created HTTP client
 	 */
 	public static HttpClientBuilder threadSafeHttpClientBuilder(String clientName,

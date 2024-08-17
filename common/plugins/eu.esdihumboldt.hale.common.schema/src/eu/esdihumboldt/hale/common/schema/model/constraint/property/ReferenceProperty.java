@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.property;
 
 import java.util.Collection;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 /**
  * Specifies that a property represents a reference, where the actual reference
  * value is stored in a child.
- * 
+ *
  * @author Simon Templer
  */
 @Constraint(mutable = true)
@@ -58,7 +55,7 @@ public class ReferenceProperty implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Create a reference constraint.
-	 * 
+	 *
 	 * @param reference <code>true</code>, if the property should be marked as
 	 *            reference, w/o specifying specific target types,
 	 *            <code>false</code> if it should not be marked as reference
@@ -70,7 +67,7 @@ public class ReferenceProperty implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Create a constraint representing a reference.
-	 * 
+	 *
 	 * @param valuePath the path to the property that holds the actual reference
 	 *            value
 	 */
@@ -81,7 +78,7 @@ public class ReferenceProperty implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Creates a reference to the specified type.
-	 * 
+	 *
 	 * @param valuePath the path to the property that holds the actual reference
 	 *            value
 	 * @param targetType the type that gets referenced
@@ -119,7 +116,7 @@ public class ReferenceProperty implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Get the path to the property that holds the reference value.
-	 * 
+	 *
 	 * @return the path to the property or <code>null</code>
 	 */
 	public List<QName> getValueProperty() {

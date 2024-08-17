@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.index;
 
 import java.util.Collection;
@@ -30,14 +27,14 @@ import eu.esdihumboldt.hale.common.instance.model.ResolvableInstanceReference;
 
 /**
  * Service for maintaining an instance index.
- * 
+ *
  * @author Florian Esser
  */
 public interface InstanceIndexService {
 
 	/**
 	 * Add an {@link Instance} to the index
-	 * 
+	 *
 	 * @param instance Instance to add
 	 * @param reference Resolvable reference to the instance
 	 */
@@ -45,7 +42,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Add an instance to the index
-	 * 
+	 *
 	 * @param instance Instance to add
 	 * @param instances Source collection containing the instance
 	 */
@@ -53,7 +50,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Add an instance to the index
-	 * 
+	 *
 	 * @param reference Reference to the instance
 	 * @param instances Source collection containing the instance
 	 */
@@ -62,14 +59,14 @@ public interface InstanceIndexService {
 	/**
 	 * Add properties whose values will be indexed in a combined key (may be single
 	 * property)
-	 * 
+	 *
 	 * @param properties Properties to index
 	 */
 	void addPropertyMapping(List<PropertyEntityDefinition> properties);
 
 	/**
 	 * Add all property mappings for the given collection of cells
-	 * 
+	 *
 	 * @param cells Cells to add property mappings for
 	 * @param serviceProvider the service provider
 	 * @return true if the property mappings were changed
@@ -78,14 +75,14 @@ public interface InstanceIndexService {
 
 	/**
 	 * Removes properties from the index
-	 * 
+	 *
 	 * @param properties Properties to remove
 	 */
 	void removePropertyMapping(List<PropertyEntityDefinition> properties);
 
 	/**
 	 * Retrieve instance references from the index grouped by the given properties.
-	 * 
+	 *
 	 * @param typeName Type that contains the properties
 	 * @param properties Properties to group by
 	 * @return Grouped instance references
@@ -95,7 +92,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Retrieves instances with the given property values
-	 * 
+	 *
 	 * @param typeName Type of the instances to search
 	 * @param query Collection of property values
 	 * @return Collection of matching instances
@@ -104,7 +101,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Retrieves instances of the given type
-	 * 
+	 *
 	 * @param typeName Type of the instances to search
 	 * @return Collection of matching instances
 	 */
@@ -122,7 +119,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Find instances of the given type that have the specified property values
-	 * 
+	 *
 	 * @param typeName Type of instances to search
 	 * @param propertyPath Property to search
 	 * @param values Values that the instance must have in the property specified by
@@ -134,7 +131,7 @@ public interface InstanceIndexService {
 
 	/**
 	 * Find property values by the specified instance
-	 * 
+	 *
 	 * @param typeName Type of the instance
 	 * @param propertyPath Property whose values should be returned
 	 * @param instanceId The ID of the instance to return property values of

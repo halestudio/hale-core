@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
 import java.util.HashMap;
@@ -29,7 +25,7 @@ import net.jcip.annotations.Immutable;
  * elements of a collection. This is only relevant for a type if its
  * {@link Binding} is a collection or array, default element binding is
  * {@link Object}.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -44,7 +40,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Get the element type constraint with the given Java binding
-	 * 
+	 *
 	 * @param binding the type's Java binding
 	 * @return the element type constraint (which is a singleton)
 	 */
@@ -59,7 +55,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Create an element type constraint with the given element type.
-	 * 
+	 *
 	 * @param elementType the element type definition
 	 * @return the element type constraint
 	 */
@@ -80,7 +76,7 @@ public class ElementType implements TypeConstraint {
 	/**
 	 * Creates a default element binding constraint with {@link Object} binding and
 	 * no type definition.
-	 * 
+	 *
 	 * @see Constraint
 	 */
 	public ElementType() {
@@ -89,7 +85,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Creates a constraint with the given type definition
-	 * 
+	 *
 	 * @param elementType the element type
 	 */
 	private ElementType(TypeDefinition elementType) {
@@ -101,7 +97,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Creates an element type with the given binding.
-	 * 
+	 *
 	 * @param binding the element type binding
 	 */
 	private ElementType(Class<?> binding) {
@@ -113,7 +109,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Get the Java binding for collection elements of the type
-	 * 
+	 *
 	 * @return the element binding
 	 */
 	public Class<?> getBinding() {
@@ -125,7 +121,7 @@ public class ElementType implements TypeConstraint {
 
 	/**
 	 * Get the type definition for collection elements of the type
-	 * 
+	 *
 	 * @return the type definition, may be <code>null</code>
 	 */
 	public TypeDefinition getDefinition() {

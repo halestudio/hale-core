@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.impl;
 
 import java.util.ArrayList;
@@ -38,7 +34,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link CellNode} implementation
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -50,7 +46,7 @@ public class CellNodeImpl extends AbstractTransformationNode implements CellNode
 
 	/**
 	 * Creates a cell node where the sources are populated from the given cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @param sourceNodes the factory for creating source nodes
 	 */
@@ -75,7 +71,7 @@ public class CellNodeImpl extends AbstractTransformationNode implements CellNode
 	/**
 	 * Create a cell node w/o associated sources. Sources can be added later on
 	 * through {@link #addSource(Set, SourceNode)}
-	 * 
+	 *
 	 * @param cell the associated cell
 	 */
 	public CellNodeImpl(Cell cell) {
@@ -86,7 +82,7 @@ public class CellNodeImpl extends AbstractTransformationNode implements CellNode
 	/**
 	 * Add a source to the cell node. May only be called if the cell node was
 	 * created using the {@link #CellNodeImpl(Cell)} constructor.
-	 * 
+	 *
 	 * @param names the entity names associated to the source
 	 * @param source the source node
 	 */

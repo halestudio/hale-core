@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.groovy.collector;
 
 import java.util.ArrayList;
@@ -26,7 +23,7 @@ import groovy.json.JsonSlurper;
 
 /**
  * Collector that supports Groovy property access. Values may be any object.
- * 
+ *
  * @author Simon Templer
  * @param <K> the key type
  * @param <C> the collector type
@@ -46,7 +43,7 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 
 	/**
 	 * Convert a property name to a key.
-	 * 
+	 *
 	 * @param property the property name
 	 * @return the key
 	 */
@@ -65,7 +62,7 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	/**
 	 * Increments the collector's value if it is a number (to an integer). If no
 	 * value is set it will be set to one. Otherwise an exception is thrown.
-	 * 
+	 *
 	 * @return the collector
 	 */
 	@SuppressWarnings("unchecked")
@@ -89,7 +86,7 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 
 	/**
 	 * Get a sub collector with the given name.
-	 * 
+	 *
 	 * @param property the sub collector name
 	 * @return the sub collector
 	 */
@@ -102,9 +99,9 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	/**
 	 * Get the collector as map/list structure. This method is not thread safe and
 	 * should not be used while the collector is modified.
-	 * 
+	 *
 	 * @param compact if a compact representation should be used
-	 * 
+	 *
 	 * @return the map/list representation of the collector or <code>null</code>
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -162,9 +159,9 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	/**
 	 * Get the collector as Json string. This method is not thread safe and should
 	 * not be used while the collector is modified.
-	 * 
+	 *
 	 * @param compact if a compact representation should be used
-	 * 
+	 *
 	 * @return the Json representation of the collector
 	 */
 	public String saveToJson(boolean compact) {
@@ -174,7 +171,7 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	/**
 	 * Load the collector from a map/list structure. This method is not thread safe
 	 * and should not be used while the collector is modified.
-	 * 
+	 *
 	 * @param from the list or map to load the collector from
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -222,7 +219,7 @@ public abstract class PropertyCollector<K, C extends PropertyCollector<K, ?>>
 	/**
 	 * Load the collector from a Json string. This method is not thread safe and
 	 * should not be used while the collector is modified.
-	 * 
+	 *
 	 * @param json the collector Json representation
 	 */
 	public void loadFromJson(String json) {

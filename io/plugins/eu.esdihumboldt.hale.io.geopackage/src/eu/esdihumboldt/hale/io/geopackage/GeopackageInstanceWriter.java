@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2020 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.geopackage;
 
 import java.io.File;
@@ -97,7 +94,7 @@ import mil.nga.sf.wkb.GeometryReader;
 
 /**
  * Writes features to a GeoPackage file.
- * 
+ *
  * @author Simon Templer
  */
 public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
@@ -132,7 +129,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 
 	/**
 	 * Set the type of spatial index to create for new tables
-	 * 
+	 *
 	 * @param spatialIndexType Spatial index type to use
 	 */
 	public void setSpatialIndexType(String spatialIndexType) {
@@ -142,7 +139,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 	/**
 	 * Set if tables should be created for all mapping-relevant types, even if
 	 * they're empty.
-	 * 
+	 *
 	 * @param createEmptyTables True to create empty tables
 	 */
 	public void setCreateEmptyTables(boolean createEmptyTables) {
@@ -151,7 +148,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 
 	/**
 	 * Set if the target GeoPackage file should be overwritten if it exists.
-	 * 
+	 *
 	 * @param overwriteTargetFile True to overwrite the target file if it exists
 	 */
 	public void setOverwriteTargetFile(boolean overwriteTargetFile) {
@@ -226,7 +223,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 				/*
 				 * Set<TypeDefinition> sortedSet = getSortedSchemas(
 				 * getTargetSchema().getMappingRelevantTypes());
-				 * 
+				 *
 				 * for (TypeDefinition td : sortedSet) { writeInstances(geoPackage,
 				 * instances.select(new TypeFilter(td)), progress, reporter); }
 				 */
@@ -268,7 +265,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 
 	/**
 	 * Write instances to the GeoPackage.
-	 * 
+	 *
 	 * @param geoPackage the GeoPackage
 	 * @param instances the instances to write
 	 * @param progress the progress indicator

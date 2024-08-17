@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model;
 
 import java.util.ArrayList;
@@ -57,7 +53,7 @@ import eu.esdihumboldt.util.groovy.paths.Path;
 
 /**
  * Alignment model utility methods.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AlignmentUtil {
@@ -66,7 +62,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Determines if the given cell is a type cell.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @return if the cell is a type cell
 	 */
@@ -77,7 +73,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Determines if the given alignment has any type relations.
-	 * 
+	 *
 	 * @param alignment the alignment
 	 * @return if any type cells are present in the alignment
 	 */
@@ -94,7 +90,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Determines if the given alignment contains a relation between the given
 	 * types.
-	 * 
+	 *
 	 * @param alignment the alignment
 	 * @param sourceType the source type, may be <code>null</code> for any source
 	 *            type
@@ -129,7 +125,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Determines if the given cell is an augmentation.
-	 * 
+	 *
 	 * @param cell the cell
 	 * @return if the cell is an augmentation
 	 */
@@ -140,7 +136,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the parent entity definition for the given entity definition.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return the parent entity definition or <code>null</code> if it has no parent
 	 */
@@ -161,7 +157,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the default child of the given entity.
-	 * 
+	 *
 	 * @param entity the parent entity
 	 * @param childName the child name
 	 * @return the child entity or <code>null</code> if no child with the given name
@@ -180,7 +176,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Create an entity wrapper for a given entity definition.
-	 * 
+	 *
 	 * @param def the entity definition
 	 * @return the entity wrapper
 	 */
@@ -197,7 +193,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Create an entity definition from a type and a child path.
-	 * 
+	 *
 	 * @param type the path parent
 	 * @param path the child path
 	 * @param schemaSpace the associated schema space
@@ -223,7 +219,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Create an entity definition from a definition path. Child contexts will all
 	 * be defaults contexts.
-	 * 
+	 *
 	 * @param path the definition path, the topmost element has to represent a
 	 *            {@link TypeDefinition}, all other elements must be
 	 *            {@link ChildDefinition}s
@@ -258,7 +254,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Create an entity definition from a definition path. Child contexts will all
 	 * be defaults contexts.
-	 * 
+	 *
 	 * @param type the path parent
 	 * @param path the child path
 	 * @param schemaSpace the associated schema space
@@ -282,7 +278,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Get the entity definition with the default instance context which is a
 	 * sibling to (or the same as) the given entity definition.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return the entity definition with the default context in the last path
 	 *         element
@@ -315,7 +311,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Get the entity definition based on the given entity definition with the
 	 * default instance context for each path entry and w/o filter.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return the entity definition with the default context in all path elements
 	 *         and w/o type filter, if no contexts and type filter are present the
@@ -328,7 +324,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Get the entity definition based on the given entity definition with the
 	 * default instance context for each path entry and w/o filter.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param stripSchemaSpace if the schema space information should be stripped
 	 *            from the entity
@@ -382,7 +378,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Apply the given schema space to the entity definition. Creates a new entity
 	 * definition if necessary.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param schemaSpace the schema space to apply
 	 * @return the entity definition with the schema space applied
@@ -405,7 +401,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Derive an entity definition from the given one but with a maximum path
 	 * length.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param pathLength the maximum path length
 	 * @return the entity definition derived from the given entity definition but
@@ -435,7 +431,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Determines if a given entity definition is a parent of another entity
 	 * definition or if both are equal.
-	 * 
+	 *
 	 * @param parent the parent
 	 * @param child the potential child
 	 * @return if the first entity definition is a parent of the second or if both
@@ -477,7 +473,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * States if the given entity definition or one of its children is mapped in the
 	 * given alignment.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param alignment the alignment
 	 * @return if the alignment contains a relation where the given entity or one of
@@ -509,7 +505,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Determines if the given entity definition or one of its children is contained
 	 * in the given entity candidates.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param candidates the entity candidates to test
 	 * @return if at least one of the entity candidates is the given entity or a
@@ -529,7 +525,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the type entity definition of the given entity definition.
-	 * 
+	 *
 	 * @param entityDef the entity definition
 	 * @return the entity definition if it is a {@link TypeEntityDefinition},
 	 *         otherwise a new type entity definition is created
@@ -546,7 +542,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the context name of the given entity definition.
-	 * 
+	 *
 	 * @param candidate the entity definition
 	 * @return the context name, <code>null</code> for the default context
 	 */
@@ -564,7 +560,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the context index of the given entity definition.
-	 * 
+	 *
 	 * @param candidate the entity definition
 	 * @return the context name, <code>null</code> for the default context
 	 */
@@ -582,7 +578,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the context condition of the given entity definition.
-	 * 
+	 *
 	 * @param candidate the entity definition
 	 * @return the context name, <code>null</code> for the default context
 	 */
@@ -606,7 +602,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get a text representation for the entity definition context.
-	 * 
+	 *
 	 * @param entityDef the entity definition
 	 * @return the context text or <code>null</code> if it is the default context or
 	 *         the context has no text representation
@@ -632,7 +628,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the text to display for a filter.
-	 * 
+	 *
 	 * @param filter the filter, may be <code>null</code>
 	 * @return the filter text or <code>null</code>
 	 */
@@ -649,7 +645,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Determines if the given entity is a default entity.
-	 * 
+	 *
 	 * @param entity the entity to check
 	 * @return if the entity is a default entity
 	 */
@@ -672,7 +668,7 @@ public abstract class AlignmentUtil {
 	 * Assures that an entity is a {@link TypeEntityDefinition},
 	 * {@link PropertyEntityDefinition} or {@link ChildEntityDefinition} and that
 	 * the inherent classification is correct.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return the entity that is guaranteed to be a {@link TypeEntityDefinition},
 	 *         {@link PropertyEntityDefinition} or {@link ChildEntityDefinition}
@@ -745,7 +741,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Match a property condition against a property value.
-	 * 
+	 *
 	 * @param condition the property condition
 	 * @param value the property value
 	 * @param parent the parent of the property value, may be <code>null</code> if
@@ -771,7 +767,7 @@ public abstract class AlignmentUtil {
 	 * If the types already match they are unchanged. If the types are sub types of
 	 * the types of the type cell they are changed. If no change is necessary the
 	 * cell itself is returned.
-	 * 
+	 *
 	 * @param propertyCell the property cell to update
 	 * @param typeCell the type cell with the target types
 	 * @param strict If false and the target type cell has no sources or target, the
@@ -887,7 +883,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Copies the properties from original to modified, modifying properties to
 	 * their declaring type, if the type has no filter set.
-	 * 
+	 *
 	 * @param original the original Multimap of properties
 	 * @param modified the target Multimap
 	 * @return true, if a property was changed, false otherwise
@@ -922,7 +918,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Checks whether the given entity (or one of its children) is associated with
 	 * the given cell (considering inheritance).
-	 * 
+	 *
 	 * @param entity the entity to check
 	 * @param cell the cell to check the entity against
 	 * @param allowInheritance whether inheritance is allowed
@@ -969,7 +965,7 @@ public abstract class AlignmentUtil {
 	/**
 	 * Returns the values of the given instance which match the given property
 	 * entity definition.
-	 * 
+	 *
 	 * @param instance the instance to collect values from
 	 * @param definition the property
 	 * @param onlyValues whether to only return values, or to return whatever can be
@@ -985,7 +981,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Add the values found on the given path to the given set.
-	 * 
+	 *
 	 * @param group the parent group
 	 * @param path the path on the group
 	 * @param collectedValues the set to add the values to
@@ -1059,7 +1055,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get children of an {@link Entity} without context conditions
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return Collection of entity definitions
 	 */
@@ -1076,7 +1072,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get children of an {@link EntityDefinition} without context conditions
-	 * 
+	 *
 	 * @param entityDef the entity definition
 	 * @return Collection of entity definitions
 	 */
@@ -1134,7 +1130,7 @@ public abstract class AlignmentUtil {
 
 	/**
 	 * Get the definition group represented by the given entity definition.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @return it's definition group
 	 */

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -32,7 +29,7 @@ import eu.esdihumboldt.hale.common.instance.io.InstanceWriter;
 
 /**
  * Job for exporting transformed data supplied in a {@link TransformationSink}.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -48,7 +45,7 @@ public class ExportJob extends AbstractTransformationJob {
 	/**
 	 * Create a job for exporting transformed data supplied in the given target
 	 * sink.
-	 * 
+	 *
 	 * @param targetSink the target sink
 	 * @param writer the instance writer
 	 * @param advisor the advisor, to handle the results
@@ -130,7 +127,7 @@ public class ExportJob extends AbstractTransformationJob {
 
 	/**
 	 * Reset the Job so no references to other objects reside.
-	 * 
+	 *
 	 * Necessary as jobs are referenced by the job manager even after execution.
 	 */
 	private void reset() {

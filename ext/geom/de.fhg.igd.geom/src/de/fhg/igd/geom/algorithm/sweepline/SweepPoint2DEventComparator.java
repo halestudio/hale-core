@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -20,7 +20,7 @@ import java.util.Comparator;
 /**
  * Compares Point2D objects to sort them by their increasing x ordinate and
  * increasing y ordinate.
- * 
+ *
  * @author Michel Kraemer
  */
 public class SweepPoint2DEventComparator implements Comparator<Point2DEvent> {
@@ -32,7 +32,7 @@ public class SweepPoint2DEventComparator implements Comparator<Point2DEvent> {
 
 	/**
 	 * Compares two Point2D objects.
-	 * 
+	 *
 	 * @param p1 the first point
 	 * @param p2 the second point
 	 * @return -1 if the x ordinate of p1 is lower than the one of p2, +1 if it's

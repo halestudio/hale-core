@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.scavenger;
 
 import java.io.File;
@@ -34,7 +31,7 @@ import eu.esdihumboldt.util.PlatformUtil;
 /**
  * Scans for folder resources in a specific location or references a single
  * resource.
- * 
+ *
  * @param <T> the resource reference type
  * @author Simon Templer
  */
@@ -56,7 +53,7 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 	/**
 	 * Create a scavenger instance. Subclass constructors should call
 	 * {@link #triggerScan()} after to initialize the scavenger.
-	 * 
+	 *
 	 * @param scavengeLocation the location to scan, if the location does not exist
 	 *            or is not accessible, a default location inside the platform
 	 *            instance location is used
@@ -176,7 +173,7 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 	/**
 	 * Called when a resource has been added, either when adding the resource on the
 	 * first scan or if it was added afterwards.
-	 * 
+	 *
 	 * @param reference the resource reference
 	 * @param resourceId the resource identifier
 	 */
@@ -184,7 +181,7 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 
 	/**
 	 * Called when a resource has been removed.
-	 * 
+	 *
 	 * @param reference the resource reference
 	 * @param resourceId the resource identifier
 	 */
@@ -192,7 +189,7 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 
 	/**
 	 * Called when an existing resource is visited during a scan.
-	 * 
+	 *
 	 * @param reference the resource reference to update
 	 * @param resourceId the resource identifier
 	 */
@@ -200,7 +197,7 @@ public abstract class AbstractResourceScavenger<T> implements ResourceScavenger<
 
 	/**
 	 * Load a resource reference.
-	 * 
+	 *
 	 * @param resourceFolder the resource folder
 	 * @param resourceFileName the name of the resource file in that folder, may be
 	 *            <code>null</code> if unknown

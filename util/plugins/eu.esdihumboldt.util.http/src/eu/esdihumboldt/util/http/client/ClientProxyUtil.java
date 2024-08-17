@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.http.client;
 
 import java.net.InetSocketAddress;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.util.http.ProxyUtil;
 
 /**
  * Proxy utility methods related to the Apache HTTP client API.
- * 
+ *
  * @author Simon Templer
  */
 public class ClientProxyUtil {
@@ -45,7 +41,7 @@ public class ClientProxyUtil {
 
 	/**
 	 * Set-up the given HTTP client to use the given proxy
-	 * 
+	 *
 	 * @param builder the HTTP client builder
 	 * @param proxy the proxy
 	 * @return the client builder adapted with the proxy settings
@@ -85,7 +81,7 @@ public class ClientProxyUtil {
 
 	/**
 	 * Create a credentials object.
-	 * 
+	 *
 	 * @param user the user name
 	 * @param password the password
 	 * @return the created credentials

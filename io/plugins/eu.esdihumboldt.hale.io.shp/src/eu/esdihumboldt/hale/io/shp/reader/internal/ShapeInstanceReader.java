@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.io.shp.reader.internal;
 
@@ -55,7 +52,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Reads instances from a shapefile.
- * 
+ *
  * @author Thorsten Reitz
  * @author Simon Templer
  */
@@ -224,7 +221,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	/**
 	 * Determine the type out of the the mapping relevant types in the given type
 	 * index, that matches the given data type best.
-	 * 
+	 *
 	 * @param types the type index
 	 * @param dataType the Shapefile data type
 	 * @param preferredName the name of the preferred type
@@ -233,7 +230,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	 * @return the most compatible type found together with is compatibility rating
 	 *         or <code>null</code> if there is no type that at least has one
 	 *         matching property
-	 * 
+	 *
 	 * @see #checkCompatibility(TypeDefinition, TypeDefinition, boolean)
 	 */
 	public static Pair<TypeDefinition, Integer> getMostCompatibleShapeType(TypeIndex types,
@@ -298,7 +295,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	/**
 	 * Determines if the compatibility rating between the two Shapefile type
 	 * definitions.
-	 * 
+	 *
 	 * @param schemaType the type to test for compatibility
 	 * @param dataType the type representing the data to read
 	 * @param allowNonShapefileProperties if properties should be considered that
@@ -344,7 +341,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 
 	/**
 	 * Get child of the given schema type with the given name.
-	 * 
+	 *
 	 * @param schemaType the schema type.
 	 * @param propertyName the property name
 	 * @param allowNonShapefileProperties if properties should be considered even if

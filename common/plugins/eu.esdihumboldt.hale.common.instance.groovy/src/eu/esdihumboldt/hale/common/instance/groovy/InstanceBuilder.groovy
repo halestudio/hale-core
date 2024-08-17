@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.groovy
 
 import groovy.transform.CompileStatic
@@ -49,7 +46,7 @@ import eu.esdihumboldt.util.groovy.paths.Path
 
 /**
  * Instance builder.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -77,7 +74,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * If in schema bound mode the builder should try to automatically convert
-	 * property and instance values. 
+	 * property and instance values.
 	 */
 	boolean autoConvert = true
 
@@ -107,7 +104,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Build an instance collection, then reset the builder.
-	 * 
+	 *
 	 * @param types the underlying type index if the builder should be schema strict
 	 * @return the created instance collection
 	 */
@@ -135,7 +132,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Create an instance. Type safe alternative to generic builder call.
-	 * 
+	 *
 	 * @param typeLocalName the local name of the instance type
 	 * @param namespace the namespace of the instance type
 	 * @return the created instance
@@ -221,7 +218,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Add a property to the given parent group.
-	 * 
+	 *
 	 * @param parent the parent group or instance
 	 * @param name the local name of the property
 	 * @param attributes the supplied named parameters
@@ -293,9 +290,9 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Try to find the unique path to a given property.
-	 * 
+	 *
 	 * @param parentDef the parent definition
-	 * @param propertyName the qualified name of the property 
+	 * @param propertyName the qualified name of the property
 	 * @return the definition path
 	 * @throws IllegalStateException if the path cannot be found or if it is not unique
 	 */
@@ -321,7 +318,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Create a property value.
-	 * 
+	 *
 	 * @param property the property definition or <code>null</code> if schema less
 	 * @param attributes the supplied named parameters
 	 * @param params the supplied unnamed parameters
@@ -423,10 +420,10 @@ class InstanceBuilder extends BuilderBase {
 	}
 
 	/**
-	 * Process a value that is to be used either as an instance value or a 
+	 * Process a value that is to be used either as an instance value or a
 	 * direct property value. If a type definition is given the value may
 	 * be checked and converted accordingly.
-	 * 
+	 *
 	 * @param value the value
 	 * @param type the type of the property/instance, may be <code>null</code>
 	 * @return the value to use
@@ -535,7 +532,7 @@ class InstanceBuilder extends BuilderBase {
 
 	/**
 	 * Create a qualified name from a given name and attribute map.
-	 * 
+	 *
 	 * @param name the local name
 	 * @param attributes the map that may contain a namespace, string keys
 	 *   <code>namespace</code> and <code>ns</code> are supported for providing

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.app;
 
 import java.util.HashMap;
@@ -33,14 +30,14 @@ import eu.esdihumboldt.hale.common.app.internal.Activator;
 
 /**
  * Utilities for launching applications.
- * 
+ *
  * @author Simon Templer
  */
 public class ApplicationUtil {
 
 	/**
 	 * Launch an application.
-	 * 
+	 *
 	 * @param application the application instance
 	 * @param argList the application arguments
 	 * @return the application return code
@@ -108,10 +105,10 @@ public class ApplicationUtil {
 
 	/**
 	 * Launch an application inside the current framework.
-	 * 
+	 *
 	 * Please note that launching an application like this may fail if another
 	 * application is running (that is a global singleton).
-	 * 
+	 *
 	 * @param appId the application identifier
 	 * @param argList the arguments
 	 * @return the application return value

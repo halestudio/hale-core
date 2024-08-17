@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
 import java.util.Collection;
@@ -31,7 +27,7 @@ import net.jcip.annotations.Immutable;
 /**
  * Specifies the geometry type for properties with a {@link GeometryProperty}
  * binding.
- * 
+ *
  * @author Simon Templer
  * @since 2.5
  */
@@ -49,7 +45,7 @@ public class GeometryType implements TypeConstraint {
 
 	/**
 	 * Get the geometry type constraint with the given JTS geometry binding.
-	 * 
+	 *
 	 * @param binding the type's geometry binding
 	 * @return the binding constraint (which is a singleton)
 	 */
@@ -76,7 +72,7 @@ public class GeometryType implements TypeConstraint {
 	/**
 	 * Creates a default geometry constraint classifying the type as being no
 	 * geometry type.
-	 * 
+	 *
 	 * @see Constraint
 	 */
 	public GeometryType() {
@@ -86,7 +82,7 @@ public class GeometryType implements TypeConstraint {
 	/**
 	 * Creates a geometry type constraint that determines the geometry binding from
 	 * the given type definition.
-	 * 
+	 *
 	 * @param type the type definition
 	 */
 	public GeometryType(TypeDefinition type) {
@@ -95,7 +91,7 @@ public class GeometryType implements TypeConstraint {
 
 	/**
 	 * Creates a constraint with the given geometry binding
-	 * 
+	 *
 	 * @param binding the JTS geometry binding
 	 * @param type the definition of the type the constraint is associated to, may
 	 *            be <code>null</code>
@@ -109,9 +105,9 @@ public class GeometryType implements TypeConstraint {
 
 	/**
 	 * Get the geometry binding of the type.
-	 * 
+	 *
 	 * @return the binding, <code>null</code> if it is no geometry
-	 * 
+	 *
 	 * @see #isGeometry()
 	 */
 	@SuppressWarnings("unchecked")
@@ -144,7 +140,7 @@ public class GeometryType implements TypeConstraint {
 	/**
 	 * Specifies if the type the constraint is associated to is a geometry type
 	 * (meaning it has a {@link GeometryProperty} or {@link Geometry} value).
-	 * 
+	 *
 	 * @return if the type is a geometry type
 	 */
 	public boolean isGeometry() {

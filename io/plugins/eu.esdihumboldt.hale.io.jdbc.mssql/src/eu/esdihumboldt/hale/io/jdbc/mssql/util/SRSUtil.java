@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.mssql.util;
 
 import java.sql.ResultSet;
@@ -27,7 +24,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Cache for SRS codes
- * 
+ *
  * @author Arun
  */
 public abstract class SRSUtil {
@@ -38,7 +35,7 @@ public abstract class SRSUtil {
 	/**
 	 * get SRS code. First find in cache, if unsuccessful then get from database and
 	 * also store in cache.
-	 * 
+	 *
 	 * @param srId a spatial reference id attached to object
 	 * @param con A {@link SQLServerConnection} object
 	 * @return String value of SRS code or <code>null</code> if absent in cache and
@@ -55,7 +52,7 @@ public abstract class SRSUtil {
 	/**
 	 * get an authority name. First find in cache, if unsuccessful then get from
 	 * database and also store in cache.
-	 * 
+	 *
 	 * @param srId a spatial reference id attached to object
 	 * @param con A {@link SQLServerConnection} object
 	 * @return String value of authority name or <code>null</code> if absent in
@@ -72,7 +69,7 @@ public abstract class SRSUtil {
 	/**
 	 * get SRS text. First find in cache, if unsuccessful then get from database and
 	 * also store in cache.
-	 * 
+	 *
 	 * @param srId a spatial reference id attached to object
 	 * @param con A {@link SQLServerConnection} object
 	 * @return String value of authority name or <code>null</code> if absent in
@@ -88,7 +85,7 @@ public abstract class SRSUtil {
 
 	/**
 	 * Fetch SRS information from database
-	 * 
+	 *
 	 * @param srId A spatial reference id
 	 * @param con A {@link SQLServerConnection} object
 	 * @return true if successful else false.
@@ -118,7 +115,7 @@ public abstract class SRSUtil {
 
 	/**
 	 * set SRS text in cache for given SRS id.
-	 * 
+	 *
 	 * @param srId a spatial reference id
 	 * @param wkt SRS text
 	 */
@@ -136,7 +133,7 @@ public abstract class SRSUtil {
 
 	/**
 	 * set authority name in cache for given SRS id.
-	 * 
+	 *
 	 * @param srId a spatial reference id
 	 * @param authorityName An authority name
 	 */
@@ -155,7 +152,7 @@ public abstract class SRSUtil {
 
 	/**
 	 * set authorized in cache for given SRS id.
-	 * 
+	 *
 	 * @param srId a spatial reference id
 	 * @param id SRS authorized id
 	 */
@@ -174,7 +171,7 @@ public abstract class SRSUtil {
 
 	/**
 	 * Add SRS information in cache
-	 * 
+	 *
 	 * @param srId key value of cache
 	 * @param authorityName authority name
 	 * @param authorizedId authorized id

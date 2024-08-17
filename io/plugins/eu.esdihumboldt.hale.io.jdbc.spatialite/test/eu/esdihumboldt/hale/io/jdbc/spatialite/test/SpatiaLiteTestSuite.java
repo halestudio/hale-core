@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.jdbc.spatialite.test;
 
 import static org.junit.Assert.assertEquals;
@@ -52,7 +64,7 @@ import eu.esdihumboldt.hale.io.jdbc.spatialite.writer.internal.SpatiaLiteInstanc
  * <code>protected</code> variables) to have the test suite run against a
  * different dataset.
  * </p>
- * 
+ *
  * @author Stefano Costa, GeoSolutions
  */
 public abstract class SpatiaLiteTestSuite {
@@ -108,7 +120,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Copies the source database to a temporary file.
-	 * 
+	 *
 	 * @throws IOException if temp file can't be created
 	 */
 	public void createSourceTempFile() throws IOException {
@@ -122,7 +134,7 @@ public abstract class SpatiaLiteTestSuite {
 	/**
 	 * Copies the target database to a temporary file and deletes all instances in
 	 * it.
-	 * 
+	 *
 	 * @throws IOException if temp file can't be created or instances can't be
 	 *             deleted
 	 */
@@ -173,7 +185,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * Generates a random path (within the system's temporary folder) for the source
 	 * database. The random number used to construct the path is saved in a static
 	 * variable and thus the path will remain constant for the whole run.
-	 * 
+	 *
 	 * @return the absolute path of the source temp file
 	 */
 	public String getSourceTempFilePath() {
@@ -184,7 +196,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * Generates a random path (within the system's temporary folder) for the target
 	 * database. The random number used to construct the path is saved in a static
 	 * variable and thus the path will remain constant for the whole run.
-	 * 
+	 *
 	 * @return the absolute path of the target temp file
 	 */
 	public String getTargetTempFilePath() {
@@ -211,7 +223,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Test - reads a sample SpatiaLite schema
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	public void schemaReaderTest() throws Exception {
@@ -237,7 +249,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Test - reads a sample SpatiaLite schema and data.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	public void instanceReaderTest() throws Exception {
@@ -275,7 +287,7 @@ public abstract class SpatiaLiteTestSuite {
 	/**
 	 * Test - reads data from a source SpatiaLite database, writes them to a target
 	 * SpatiaLite database and checks the results.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	public void instanceWriterTest() throws Exception {
@@ -333,7 +345,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * <p>
 	 * {@code SELECT load_extension('mod_spatialite')}
 	 * </p>
-	 * 
+	 *
 	 * @return true if the SpatiaLite extension could be loaded, false otherwise
 	 */
 	public boolean isSpatiaLiteExtensionAvailable() {
@@ -376,7 +388,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Reads a schema from a SpatiaLite database file.
-	 * 
+	 *
 	 * @param sourceFilePath the path to the source database file
 	 * @return the schema
 	 * @throws Exception any exception thrown by {@link SpatiaLiteSchemaReader}
@@ -396,7 +408,7 @@ public abstract class SpatiaLiteTestSuite {
 	/**
 	 * Reads instances from from a SpatiaLite database file with the provided
 	 * schema.
-	 * 
+	 *
 	 * @param sourceSchema the schema of the source database
 	 * @param sourceFilePath the path to the source database file
 	 * @return the read instances
@@ -419,7 +431,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Writes the provided instances to a SpatiaLite database.
-	 * 
+	 *
 	 * @param schema the target schema
 	 * @param targetFilePath the path to the target database file
 	 * @param instances the instances to write
@@ -445,7 +457,7 @@ public abstract class SpatiaLiteTestSuite {
 	 * Checks the property definitions and values of the provided instances. Values
 	 * will be checked for just one instance (the one with {@link #PROPERTY_ID_NAME}
 	 * = {@link #PROPERTY_ID_VALUE}).
-	 * 
+	 *
 	 * @param instances the instances to check
 	 * @param propertyMap the expected property names / values
 	 */
@@ -487,7 +499,7 @@ public abstract class SpatiaLiteTestSuite {
 
 	/**
 	 * Checks the name and the property definitions of the given type.
-	 * 
+	 *
 	 * @param type the type to check
 	 * @param typeName the expected type name
 	 * @param propertyNames the expected property names

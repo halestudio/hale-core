@@ -19,14 +19,14 @@ import org.eclipse.equinox.nonosgi.internal.registry.RegistryProviderNonOSGI;
 /**
  * Helper class which returns {@link IExtensionRegistry} singleton switch the
  * environment (OSGi-env or none OSGi-env) :
- * 
+ *
  * <ul>
  * <li>into OSGi-env, returns the "standard" OSGi {@link IExtensionRegistry}
  * singleton which use Bundle Activator to load "plugin.xml".</li>
  * <li>into NONE OSGi-env, returns the {@link IExtensionRegistry} singleton
  * which load the whole "plugin.xml" founded from the shared ClassLoader.</li>
  * </ul>
- * 
+ *
  */
 public class RegistryFactoryHelper {
 
@@ -70,7 +70,7 @@ public class RegistryFactoryHelper {
 	/**
 	 * Create No OSG-env {@link IExtensionRegistry}. This method is synchronized to
 	 * avoid loading twice the plugin.xml files with multi Thread context.
-	 * 
+	 *
 	 * @return
 	 * @throws CoreException
 	 */

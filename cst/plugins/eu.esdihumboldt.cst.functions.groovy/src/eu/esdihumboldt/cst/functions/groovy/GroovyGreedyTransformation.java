@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy;
 
 import java.util.Collections;
@@ -50,7 +46,7 @@ import groovy.lang.Script;
 /**
  * Property transformation based on a Groovy script. With greedy variables in
  * contrast to {@link GroovyTransformation}.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class GroovyGreedyTransformation
@@ -108,7 +104,7 @@ public class GroovyGreedyTransformation
 
 	/**
 	 * Create a Groovy binding from the list of variables.
-	 * 
+	 *
 	 * @param vars the variable values
 	 * @param varDefs definition of the assigned variables, in case some variable
 	 *            values are not set, may be <code>null</code>

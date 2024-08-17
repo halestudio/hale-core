@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.internal;
 
 import eu.esdihumboldt.cst.MultiValue;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality;
 
 /**
  * Populates an instance from a transformation tree.
- * 
+ *
  * @author Simon Templer
  */
 public class InstanceBuilder {
@@ -45,7 +41,7 @@ public class InstanceBuilder {
 
 	/**
 	 * Populate the given instance from a transformation tree.
-	 * 
+	 *
 	 * @param target the target instance
 	 * @param tree the transformation tree
 	 * @param typeLog the type transformation log
@@ -57,7 +53,7 @@ public class InstanceBuilder {
 
 	/**
 	 * Get the value for a target node.
-	 * 
+	 *
 	 * @param node the target node
 	 * @param typeLog the type transformation log
 	 * @return the value or {@link NoObject#NONE} representing no value
@@ -139,7 +135,7 @@ public class InstanceBuilder {
 
 	/**
 	 * Populates a group with values from its children.
-	 * 
+	 *
 	 * @param group the group
 	 * @param node the node associated with the group
 	 * @param typeLog the type transformation log

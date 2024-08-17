@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.helper;
 
 import java.util.Arrays;
@@ -28,7 +25,7 @@ import com.google.common.collect.Iterables;
 /**
  * Category for Groovy script helper functions. A category is defined by its
  * path.
- * 
+ *
  * @author Simon Templer
  */
 public class Category implements HelperFunctionOrCategory {
@@ -42,7 +39,7 @@ public class Category implements HelperFunctionOrCategory {
 
 	/**
 	 * Create a category from the given path.
-	 * 
+	 *
 	 * @param path the path defining the category
 	 */
 	public Category(Iterable<String> path) {
@@ -52,7 +49,7 @@ public class Category implements HelperFunctionOrCategory {
 
 	/**
 	 * Create a category from the given path.
-	 * 
+	 *
 	 * @param path the path defining the category
 	 */
 	public Category(String... path) {
@@ -116,7 +113,7 @@ public class Category implements HelperFunctionOrCategory {
 
 	/**
 	 * Get the parent category.
-	 * 
+	 *
 	 * @return the parent category
 	 */
 	@Nullable

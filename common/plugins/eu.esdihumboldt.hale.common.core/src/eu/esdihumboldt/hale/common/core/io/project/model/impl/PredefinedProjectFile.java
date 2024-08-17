@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.model.impl;
 
 import java.io.InputStream;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.util.io.InputSupplier;
  * Project file that takes its content from an existing source. This kind of
  * project file is only usable for writing a project file, e.g. when generating
  * a project.
- * 
+ *
  * @author Simon Templer
  */
 public class PredefinedProjectFile implements ProjectFile {
@@ -38,7 +35,7 @@ public class PredefinedProjectFile implements ProjectFile {
 	/**
 	 * Create a pre-defined project file with the given input supplier specifying
 	 * the file content.
-	 * 
+	 *
 	 * @param source the file content source
 	 */
 	public PredefinedProjectFile(InputSupplier<? extends InputStream> source) {

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.storage;
 
 import java.io.File;
@@ -24,7 +20,7 @@ import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 
 /**
  * Represents a local Orient database
- * 
+ *
  * @author Simon Templer
  */
 public class LocalOrientDB {
@@ -39,7 +35,7 @@ public class LocalOrientDB {
 
 		/**
 		 * Create a new read reference.
-		 * 
+		 *
 		 * @param lock if a lock should be created for the reference
 		 */
 		public ReadReference(boolean lock) {
@@ -145,7 +141,7 @@ public class LocalOrientDB {
 	/**
 	 * Create a local Orient database. It will delete database that exists
 	 * previously at the same location.
-	 * 
+	 *
 	 * @param location the data base location
 	 */
 	public LocalOrientDB(File location) {
@@ -175,7 +171,7 @@ public class LocalOrientDB {
 	 * NOTE: Getting the database reference locks a read lock on the database.
 	 * {@link DatabaseReference#dispose()} must be called when the database
 	 * reference isn't needed any more.
-	 * 
+	 *
 	 * @return the database reference
 	 */
 	public DatabaseReference<ODatabaseDocumentTx> openRead() {
@@ -184,7 +180,7 @@ public class LocalOrientDB {
 
 	/**
 	 * Get a database reference with read access.<br>
-	 * 
+	 *
 	 * @param lock if a read lock should be created,
 	 *            {@link DatabaseReference#dispose()} must be called when the
 	 *            database reference isn't needed any more
@@ -200,7 +196,7 @@ public class LocalOrientDB {
 	 * NOTE: Getting the database reference locks a write lock on the database.
 	 * {@link DatabaseReference#dispose()} must be called when the database
 	 * reference isn't needed any more.
-	 * 
+	 *
 	 * @return the database reference
 	 */
 	public DatabaseReference<ODatabaseDocumentTx> openWrite() {

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.instance.index;
 
 import java.math.BigDecimal;
@@ -26,14 +23,14 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Reference;
 
 /**
  * Utility class for {@link InstanceIndex}es
- * 
+ *
  * @author Florian Esser
  */
 public abstract class InstanceIndexUtil {
 
 	/**
 	 * Test if two collections contain the same elements (independent of ordering)
-	 * 
+	 *
 	 * @param c1 First collection
 	 * @param c2 Second collection
 	 * @return true if the collections contain the same elements
@@ -44,7 +41,7 @@ public abstract class InstanceIndexUtil {
 
 	/**
 	 * Process a value of a property
-	 * 
+	 *
 	 * @param value the value
 	 * @param property the entity definition the value is associated to
 	 * @return the processed value, possibly wrapped or replaced through a different

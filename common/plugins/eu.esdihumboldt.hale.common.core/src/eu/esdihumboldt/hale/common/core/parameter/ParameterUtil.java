@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.parameter;
 
 import java.util.ArrayList;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueExtension;
 
 /**
  * Parameter definition utilities.
- * 
+ *
  * @author Simon Templer
  */
 public class ParameterUtil {
@@ -52,7 +49,7 @@ public class ParameterUtil {
 
 		/**
 		 * Create a new value descriptor.
-		 * 
+		 *
 		 * @param delegatee the value descriptor to delegate to, may be
 		 *            <code>null</code>
 		 * @param conf the configuration element to use as fall-back
@@ -157,7 +154,7 @@ public class ParameterUtil {
 
 	/**
 	 * Determine the binding of a defined parameter.
-	 * 
+	 *
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the binding class or <code>null</code>
 	 */
@@ -196,7 +193,7 @@ public class ParameterUtil {
 
 	/**
 	 * Get the complex value definition of a defined parameter if applicable.
-	 * 
+	 *
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the complex value definition or <code>null</code>
 	 */
@@ -217,7 +214,7 @@ public class ParameterUtil {
 
 	/**
 	 * Get the value descriptor of a defined parameter.
-	 * 
+	 *
 	 * @param parameterConf the configuration element defining the parameter, it can
 	 *            describe a providerParameter or functionParameter.
 	 * @return the value descriptor or <code>null</code>
@@ -250,7 +247,7 @@ public class ParameterUtil {
 
 	/**
 	 * Determine the value enumeration of a defined parameter.
-	 * 
+	 *
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the list of values or <code>null</code>
 	 */
@@ -274,7 +271,7 @@ public class ParameterUtil {
 
 	/**
 	 * Determine the validator for a defined parameter.
-	 * 
+	 *
 	 * @param parameterConf the configuration element defining the parameter
 	 * @return the validator or <code>null</code>
 	 */

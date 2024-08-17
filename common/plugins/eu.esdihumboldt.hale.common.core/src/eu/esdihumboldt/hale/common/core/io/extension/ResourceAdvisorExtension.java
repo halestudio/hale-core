@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.extension;
 
 import java.text.MessageFormat;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.hale.common.core.io.impl.DefaultResourceAdvisor;
 
 /**
  * Extension for {@link ResourceAdvisor}s
- * 
+ *
  * @author Simon Templer
  */
 public class ResourceAdvisorExtension
@@ -50,7 +46,7 @@ public class ResourceAdvisorExtension
 
 		/**
 		 * Create the {@link ResourceAdvisor} factory
-		 * 
+		 *
 		 * @param conf the configuration element
 		 */
 		protected ConfigurationFactory(IConfigurationElement conf) {
@@ -125,7 +121,7 @@ public class ResourceAdvisorExtension
 
 	/**
 	 * Get the I/O provider extension instance
-	 * 
+	 *
 	 * @return the extension instance
 	 */
 	public static ResourceAdvisorExtension getInstance() {
@@ -152,7 +148,7 @@ public class ResourceAdvisorExtension
 
 	/**
 	 * Create an I/O advisor for the given content type.
-	 * 
+	 *
 	 * @param contentType the content type, may be <code>null</code>
 	 * @return the resource advisor for that content type or a default resource
 	 *         advisor

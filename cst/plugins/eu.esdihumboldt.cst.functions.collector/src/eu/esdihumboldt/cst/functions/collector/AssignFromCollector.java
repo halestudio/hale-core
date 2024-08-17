@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.collector;
 
 import java.text.MessageFormat;
@@ -47,10 +44,10 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
  * target property. In case the target property has the {@link Reference}
  * constraint, the values are passed to {@link Reference#idToReference(Object)}
  * before assignment.
- * 
+ *
  * If the target property cannot take the values itself, a child property with
  * the {@link Reference} constraint is looked up to assign the values to.
- * 
+ *
  * @author Florian Esser
  */
 public class AssignFromCollector
@@ -140,9 +137,9 @@ public class AssignFromCollector
 	/**
 	 * Find first child property of the given {@link TypeDefinition} where
 	 * <code>child.getConstraint(Reference.class).isReference()</code> returns true.
-	 * 
+	 *
 	 * @param propertyType The <code>TypeDefinition</code> to search
-	 * 
+	 *
 	 * @return The first child that matches or <code>null</code> if none match
 	 */
 	private PropertyDefinition findReferenceChildProperty(TypeDefinition propertyType) {

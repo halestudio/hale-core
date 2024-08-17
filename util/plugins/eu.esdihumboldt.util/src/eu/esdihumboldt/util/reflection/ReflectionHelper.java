@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.util.reflection;
 
@@ -38,7 +35,7 @@ import java.util.zip.ZipException;
 /**
  * Provides several utility methods which use Java Reflections to access hidden
  * types, fields and methods.
- * 
+ *
  * @author Michel Kraemer
  */
 public class ReflectionHelper {
@@ -50,7 +47,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Sets the package resolver used to retrieve URLs to packages
-	 * 
+	 *
 	 * @see #getFilesFromPackage(String)
 	 * @param res the package resolver
 	 */
@@ -60,7 +57,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns a public setter method for a given property
-	 * 
+	 *
 	 * @param c the class which would contain the setter method
 	 * @param property the property
 	 * @param propertyType the property's type
@@ -89,7 +86,7 @@ public class ReflectionHelper {
 	 * Returns a setter method for a given property, no matter if the method is
 	 * visible or hidden or if it is declared in the given class or in a superclass
 	 * or implemented interface.
-	 * 
+	 *
 	 * @param c the class which would contain the setter method
 	 * @param property the property
 	 * @param propertyType the property's type
@@ -135,7 +132,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns a public getter method for a given property
-	 * 
+	 *
 	 * @param c the class which would contain the getter method
 	 * @param property the property
 	 * @param propertyType the property's type
@@ -163,7 +160,7 @@ public class ReflectionHelper {
 	 * Returns a getter method for a given property, no matter if the method is
 	 * visible or hidden or if it is declared in the given class or in a superclass
 	 * or implemented interface.
-	 * 
+	 *
 	 * @param c the class which would contain the getter method
 	 * @param property the property
 	 * @param propertyType the property's type (can be null if the type does not
@@ -209,7 +206,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns a public field for a given property
-	 * 
+	 *
 	 * @param c the class which would contain the field
 	 * @param property the property
 	 * @param propertyType the property's type
@@ -237,7 +234,7 @@ public class ReflectionHelper {
 	/**
 	 * Returns a field for a given property, no matter if the field is visible or
 	 * hidden or if it is declared in the given class or in a superclass.
-	 * 
+	 *
 	 * @param c the class which would contain the field
 	 * @param property the property
 	 * @param propertyType the property's type
@@ -274,7 +271,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Invokes a setter method on a given bean
-	 * 
+	 *
 	 * @param bean the object to invoke the getter on
 	 * @param setter the setter method
 	 * @param value the value to set
@@ -295,7 +292,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Invokes a public setter for a property
-	 * 
+	 *
 	 * @param bean the object to invoke the public setter on
 	 * @param propertyName the name of the property that shall be updated
 	 * @param value the value passed to the setter
@@ -320,7 +317,7 @@ public class ReflectionHelper {
 	 * Invokes a setter for a property, no matter if the setter is visible or hidden
 	 * or if it is declared in the given class or in a superclass or implemented
 	 * interface.
-	 * 
+	 *
 	 * @param bean the object to invoke the public setter on
 	 * @param propertyName the name of the property that shall be updated
 	 * @param value the value passed to the setter
@@ -343,7 +340,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Invokes a getter method on a given bean
-	 * 
+	 *
 	 * @param <T> the result type
 	 * @param bean the object to invoke the getter on
 	 * @param getter the getter method
@@ -369,7 +366,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Invokes a public getter for a property
-	 * 
+	 *
 	 * @param <T> the result type
 	 * @param bean the object to invoke the public getter on
 	 * @param propertyName the name of the property to retrieve
@@ -395,7 +392,7 @@ public class ReflectionHelper {
 	 * Invokes a getter for a property, no matter if the getter is visible or hidden
 	 * or if it is declared in the given class or in a superclass or implemented
 	 * interface.
-	 * 
+	 *
 	 * @param <T> the result type
 	 * @param bean the object to invoke the getter on
 	 * @param propertyName the name of the property to retrieve
@@ -419,7 +416,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Invokes a getter for a property, or gets the matching field, no matter what.
-	 * 
+	 *
 	 * @param bean the object to invoke the getter on
 	 * @param propertyName the name of the property to retrieve
 	 * @param valueClass the class of the property or field
@@ -482,7 +479,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Returns an array of all files contained by a given package
-	 * 
+	 *
 	 * @param pkg the package (e.g. "de.igd.fhg.CityServer3D")
 	 * @return an array of files
 	 * @throws IOException if the package could not be found
@@ -605,7 +602,7 @@ public class ReflectionHelper {
 	/**
 	 * Gets a list of all classes in the given package and all subpackages
 	 * recursively.
-	 * 
+	 *
 	 * @param pkg the package
 	 * @param classLoader the class loader to use
 	 * @return the list of classes
@@ -618,7 +615,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Gets a list of all classes in the given package
-	 * 
+	 *
 	 * @param pkg the package
 	 * @param classLoader the class loader to use
 	 * @param recursive true if all subpackages shall be traversed too
@@ -634,7 +631,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Gets a list of all subpackages in the given package
-	 * 
+	 *
 	 * @param pkg the package
 	 * @return the list of classes
 	 * @throws IOException if a subpackage or a class could not be loaded
@@ -645,7 +642,7 @@ public class ReflectionHelper {
 
 	/**
 	 * Gets a list of all subpackages in the given package
-	 * 
+	 *
 	 * @param pkg the package
 	 * @param recursive true if all subpackages shall be traversed too
 	 * @return the list of classes
@@ -715,7 +712,7 @@ public class ReflectionHelper {
 	 * <p>
 	 * See The Java Language Specification, sections 5.1.1 and 5.1.4 , for details.
 	 * </p>
-	 * 
+	 *
 	 * @param clazz a class
 	 * @param group a collection of classes to match against
 	 * @param checkAssignability whether to use assignability when no direct match
@@ -754,7 +751,7 @@ public class ReflectionHelper {
 	/**
 	 * Performs a shallow copy of all fields defined by the class of src and all
 	 * superclasses.
-	 * 
+	 *
 	 * @param <T> the type of the source and destination object
 	 * @param src the source object
 	 * @param dst the destination object

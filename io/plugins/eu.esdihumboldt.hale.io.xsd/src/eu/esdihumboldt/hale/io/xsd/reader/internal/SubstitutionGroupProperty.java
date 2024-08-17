@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.xsd.reader.internal;
 
 import java.util.ArrayList;
@@ -46,7 +42,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
  * Group property that resolves all possible substitutions for a property and
  * offers them as a choice. The property must be set using
  * {@link #setProperty(DefaultPropertyDefinition)}-
- * 
+ *
  * @author Simon Templer
  */
 public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
@@ -55,7 +51,7 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 
 	/**
 	 * The
-	 * 
+	 *
 	 * @param name the property name
 	 * @param parentGroup the parent group
 	 */
@@ -69,7 +65,7 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 	 * Set the property represented by the group. The property must have been
 	 * created with this group as parent and the {@link Cardinality} constraint must
 	 * have been already set.
-	 * 
+	 *
 	 * @param property the property to set
 	 */
 	public void setProperty(DefaultPropertyDefinition property) {
@@ -133,7 +129,7 @@ public class SubstitutionGroupProperty extends LazyGroupPropertyDefinition {
 	/**
 	 * Collect all sub-types from the given type that may substitute it on condition
 	 * of the given element name.
-	 * 
+	 *
 	 * @param elementName the element name
 	 * @param type the type to be substituted
 	 * @return the substitution types

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal.wfs;
 
 import java.io.File;
@@ -62,14 +59,14 @@ import eu.esdihumboldt.hale.io.gml.reader.internal.instance.StreamGmlInstance;
  * <br>
  * The number of features to retrieve per request must be provided when creating
  * the instance collection.
- * 
+ *
  * For WFS 2.0.0/2.0.2 a starting offset can be provided by adding a
  * <code>STARTINDEX</code> parameter to the source location. The maximum overall
  * number of features to retrive can be set for by adding a
  * <code>MAXFEATURES</code> (WFS 1.1.0) or <code>COUNT</code> (WFS 2.0.0/2.0.2)
  * parameter to the source location or programmatically via
  * {@link #setMaxNumberOfFeatures(int)}.
- * 
+ *
  * @author Florian Esser
  */
 public class WfsBackedGmlInstanceCollection implements InstanceCollection {
@@ -115,7 +112,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Create a GML instance collection based on the given WFS source.
-	 * 
+	 *
 	 * @param source the source
 	 * @param sourceSchema the source schema
 	 * @param restrictToFeatures if only instances that are GML features shall be
@@ -149,7 +146,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Create a GML instance collection based on the given WFS source.
-	 * 
+	 *
 	 * @param source the source
 	 * @param sourceSchema the source schema
 	 * @param restrictToFeatures if only instances that are GML features shall be
@@ -268,7 +265,7 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Set an absolute limit for the amount of features to be retrieved.
-	 * 
+	 *
 	 * @param maxNumberOfFeatures valid values are -1 for unlimited retrieval or a
 	 *            positive integer (or zero) to impose an absolute feature limit.
 	 */
@@ -399,14 +396,14 @@ public class WfsBackedGmlInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Iterates over {@link Instance}s in the GML stream retrieved from the WFS.
-	 * 
+	 *
 	 * The iterator will not load more features per WFS GetFeature request than
 	 * specified in the {@link WfsBackedGmlInstanceCollection}. If the WFS query
 	 * yields more results, multiple GetFeature request will be issued transparently
 	 * to the WFS until all results have been retrieved or the maximum number of
 	 * features as specified in the {@link WfsBackedGmlInstanceCollection} was
 	 * reached.
-	 * 
+	 *
 	 * @author Florian Esser
 	 */
 	public class WfsBackedGmlInstanceIterator implements InstanceIterator {

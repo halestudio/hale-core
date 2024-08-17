@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * A list that is always sorted.
- * 
+ *
  * @author Michel Kraemer
  * @param <E> the type of the list elements
  */
@@ -49,7 +49,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Copy constructor
-	 * 
+	 *
 	 * @param c the collection to copy
 	 */
 	public SortedCollection(Collection<? extends E> c) {
@@ -58,7 +58,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param comp the comparator used to sort the elements in this list
 	 */
 	public SortedCollection(Comparator<? super E> comp) {
@@ -67,7 +67,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Copy constructor
-	 * 
+	 *
 	 * @param c the collection to copy
 	 * @param comp the comparator used to sort the elements in this list
 	 */
@@ -127,7 +127,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Gets the element at the given position
-	 * 
+	 *
 	 * @param index the position
 	 * @return the element
 	 * @throws IndexOutOfBoundsException if index is out of bounds
@@ -138,7 +138,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Searches for the index of a given element
-	 * 
+	 *
 	 * @param e the element
 	 * @return the index or -1 if the list does not contain this element
 	 */
@@ -174,7 +174,7 @@ public class SortedCollection<E> implements Collection<E> {
 
 	/**
 	 * Removes the element at the given position from the list
-	 * 
+	 *
 	 * @param index the position
 	 * @return the removed element
 	 * @throws IndexOutOfBoundsException if index is out of bounds

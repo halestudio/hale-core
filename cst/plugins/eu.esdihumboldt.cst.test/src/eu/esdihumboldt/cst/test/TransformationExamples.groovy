@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.test;
 
 import eu.esdihumboldt.cst.test.internal.InternalExample
@@ -20,7 +17,7 @@ import eu.esdihumboldt.cst.test.internal.InternalExample
 
 /**
  * Holds a set of common available transformation examples for use in tests.
- * 
+ *
  * @author Simon Templer
  */
 @SuppressWarnings('javadoc')
@@ -268,7 +265,7 @@ abstract class TransformationExamples {
 
 	/**
 	 * Get the transformation example with the given identifier.
-	 * 
+	 *
 	 * @param id the example identifier
 	 * @return the transformation example
 	 * @throws Exception if the example does not exist or loading it failed

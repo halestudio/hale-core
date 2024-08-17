@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.impl;
 
 import java.io.BufferedOutputStream;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.core.io.util.GZipContentDescriber;
 
 /**
  * Export provider that supports GZiped output based on the content type.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class GZipEnabledExport extends AbstractExportProvider {
@@ -42,7 +39,7 @@ public abstract class GZipEnabledExport extends AbstractExportProvider {
 
 		/**
 		 * Create a GZiped output supplier.
-		 * 
+		 *
 		 * @param target the original target
 		 */
 		public GZipOutputSupplier(LocatableOutputSupplier<? extends OutputStream> target) {

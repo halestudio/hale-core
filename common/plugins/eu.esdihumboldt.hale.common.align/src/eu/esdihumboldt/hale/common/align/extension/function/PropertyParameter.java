@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.extension.function;
 
 import java.util.ArrayList;
@@ -43,7 +39,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 /**
  * Represents a source or target property as parameter to a
  * {@link PropertyFunction}
- * 
+ *
  * @author Simon Templer
  */
 public final class PropertyParameter extends AbstractParameter
@@ -91,7 +87,7 @@ public final class PropertyParameter extends AbstractParameter
 
 	/**
 	 * Create a parameter definition.
-	 * 
+	 *
 	 * @param name the parameter name
 	 * @param minOccurrence min occurrences
 	 * @param maxOccurrence max occurrences

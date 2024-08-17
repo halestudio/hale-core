@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.cli.extension;
 
 import java.util.HashMap;
@@ -31,7 +28,7 @@ import eu.esdihumboldt.util.cli.impl.DelegatingCommand;
 
 /**
  * Delegating command based on a registered command group.
- * 
+ *
  * @author Simon Templer
  */
 public class GroupCommand extends DelegatingCommand {
@@ -45,7 +42,7 @@ public class GroupCommand extends DelegatingCommand {
 
 	/**
 	 * Create a group command for the group with the given ID.
-	 * 
+	 *
 	 * @param id the group ID
 	 */
 	public GroupCommand(String id) {

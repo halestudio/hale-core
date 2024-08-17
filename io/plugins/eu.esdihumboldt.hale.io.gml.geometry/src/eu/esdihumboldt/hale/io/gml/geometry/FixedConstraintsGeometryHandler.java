@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry;
 
 import java.util.Collection;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Base class for geometry handlers that provide fixed type constraints.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class FixedConstraintsGeometryHandler extends AbstractGeometryHandler {
@@ -48,7 +44,7 @@ public abstract class FixedConstraintsGeometryHandler extends AbstractGeometryHa
 	/**
 	 * Check if the given type definition is supported by the geometry handler. This
 	 * implementation assumes the type is valid. Override to change this behavior.
-	 * 
+	 *
 	 * @param type the type definition to check
 	 * @throws GeometryNotSupportedException if the check failed
 	 */
@@ -59,7 +55,7 @@ public abstract class FixedConstraintsGeometryHandler extends AbstractGeometryHa
 
 	/**
 	 * Create the associated type constraints.
-	 * 
+	 *
 	 * @return the type constraints to set on an associated geometry type
 	 */
 	protected abstract Collection<? extends TypeConstraint> initConstraints();

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util;
 
 import java.io.File;
@@ -24,7 +21,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Properties file that is in sync with its physical counterpart.
- * 
+ *
  * @author Simon Templer
  */
 public class SyncedPropertiesFile {
@@ -38,7 +35,7 @@ public class SyncedPropertiesFile {
 
 	/**
 	 * Create a synced properties file.
-	 * 
+	 *
 	 * @param propertiesFile the properties file
 	 * @param defaults the default properties, may be <code>null</code>
 	 * @throws IOException if reading the file fails
@@ -51,7 +48,7 @@ public class SyncedPropertiesFile {
 
 	/**
 	 * Manually sync.
-	 * 
+	 *
 	 * @throws IOException if the synchronisation fails
 	 */
 	public void sync() throws IOException {
@@ -60,7 +57,7 @@ public class SyncedPropertiesFile {
 
 	/**
 	 * Get the internal properties.
-	 * 
+	 *
 	 * @return the properties
 	 */
 	public PropertiesFile getProperties() {
@@ -70,7 +67,7 @@ public class SyncedPropertiesFile {
 	/**
 	 * Get the property value for the given key. Before retrieving the property
 	 * value, the properties are synced with the file.
-	 * 
+	 *
 	 * @param key the property key
 	 * @return the property value or <code>null</code> if no default is found
 	 * @throws IOException if syncing with the file fails.
@@ -83,7 +80,7 @@ public class SyncedPropertiesFile {
 	/**
 	 * Get the property value for the given key. Before retrieving the property
 	 * value, the properties are synced with the file, a failure is ignored.
-	 * 
+	 *
 	 * @param key the property key
 	 * @return the property value or <code>null</code> if no default is found
 	 */
@@ -100,7 +97,7 @@ public class SyncedPropertiesFile {
 	/**
 	 * Set the property value for the given key. Before and after setting the
 	 * property value, the properties are synced with the file.
-	 * 
+	 *
 	 * @param key the property key
 	 * @param value the property value
 	 * @throws IOException if syncing with the file fails.
@@ -120,7 +117,7 @@ public class SyncedPropertiesFile {
 	 * Set the property value for the given key. Before and after setting the
 	 * property value, the properties are synced with the file, a failure is
 	 * ignored.
-	 * 
+	 *
 	 * @param key the property key
 	 * @param value the property value
 	 */

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.geometric.extent;
 
 import java.util.Arrays;
@@ -43,7 +40,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 
 /**
  * Computes the extent of all input geometries.
- * 
+ *
  * @author Simon Templer
  */
 public class ExtentTransformation extends
@@ -77,7 +74,7 @@ public class ExtentTransformation extends
 
 	/**
 	 * Calculate the extent of a set of geometries.
-	 * 
+	 *
 	 * @param geometries the geometries or instances containing geometries
 	 * @param type the type of extent to calculate
 	 * @return the calculated extent
@@ -155,7 +152,7 @@ public class ExtentTransformation extends
 	/**
 	 * Function resolves the extent option parameter and computes the specified
 	 * extent type.
-	 * 
+	 *
 	 * @param gc GeometryCollection, the extent function is processed on
 	 * @param type extent option parameter
 	 * @return Geometry representing extent of input geometries

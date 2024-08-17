@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal
 
 import groovy.transform.CompileStatic
@@ -58,7 +55,7 @@ import jakarta.xml.bind.JAXBElement
 
 /**
  * Converts an {@link Alignment} to a {@link AlignmentType} for serialization with JAXB.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -86,7 +83,7 @@ class AlignmentToJaxb {
 
 	/**
 	 * Create a new converter.
-	 * 
+	 *
 	 * @param alignment the alignment to convert
 	 * @param reporter the reporter to use for reporting problems, may be <code>null</code>
 	 * @param pathUpdate to update relative paths in case of a path change
@@ -231,7 +228,7 @@ class AlignmentToJaxb {
 	protected JAXBElement<? extends AbstractParameterType> convert(String name, ParameterValue value) {
 		/*
 		 * XXX are null parameters working like this OK? or should there be no
-		 * parameter created at all? 
+		 * parameter created at all?
 		 */
 		if (!value.representedAsDOM) {
 			// normal value

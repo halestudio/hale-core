@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.groovy.collector;
 
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ import groovy.lang.GroovyObjectSupport;
 
 /**
  * Thread-safe helper for collecting values.
- * 
+ *
  * @author Simon Templer
  * @param <K> the key type
  * @param <V> the value type
@@ -46,7 +43,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Create a new collector instance.
-	 * 
+	 *
 	 * @return the collector
 	 */
 	protected abstract C createCollector();
@@ -54,7 +51,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 	/**
 	 * Set the collector's value. Clears all previous values and sets the given
 	 * value as the single value.
-	 * 
+	 *
 	 * @param value the value to set
 	 */
 	public void set(V value) {
@@ -66,7 +63,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Convert the collector to the given type.
-	 * 
+	 *
 	 * @param clazz the class to convert to
 	 * @return the converted object
 	 */
@@ -85,7 +82,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Add a value to the collector.
-	 * 
+	 *
 	 * @param value the value to add
 	 */
 	public void leftShift(V value) {
@@ -94,7 +91,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Add a value to the collector.
-	 * 
+	 *
 	 * @param value the value to add
 	 */
 	public void add(V value) {
@@ -105,7 +102,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Get the first value of the collector.
-	 * 
+	 *
 	 * @return the first value or <code>null</code>
 	 */
 	public V value() {
@@ -116,7 +113,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Get the list of values of the collector.
-	 * 
+	 *
 	 * @return a copy of the list of values
 	 */
 	public List<V> values() {
@@ -127,7 +124,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Clear the values and return them.
-	 * 
+	 *
 	 * @return the value list
 	 */
 	public List<V> clear() {
@@ -140,7 +137,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Get the collector with the given name.
-	 * 
+	 *
 	 * @param property the collector name
 	 * @return the child collector
 	 */
@@ -159,7 +156,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Set the value for the collector with the given name.
-	 * 
+	 *
 	 * @param property the child collector name
 	 * @param value the value to set on the child collector
 	 */
@@ -170,7 +167,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 	/**
 	 * Iterate over the values (one argument) or over the child collectors and
 	 * values (two arguments).
-	 * 
+	 *
 	 * @param closure the closure called for each value or key/values pair
 	 */
 	public void each(Closure<?> closure) {
@@ -192,7 +189,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 
 	/**
 	 * Iterate over the child collectors.
-	 * 
+	 *
 	 * @param closure the closure called for each collector key and collector (two
 	 *            arguments) or only the collector (one argument)
 	 */
@@ -215,7 +212,7 @@ public abstract class GenericCollector<K, V, C extends GenericCollector<K, V, ?>
 	/**
 	 * Iterate over the values (one argument) or over the child collectors and
 	 * values (two arguments) and resets the respective values.
-	 * 
+	 *
 	 * @param closure the closure called for each value or key/values pair
 	 */
 	public void consume(Closure<?> closure) {

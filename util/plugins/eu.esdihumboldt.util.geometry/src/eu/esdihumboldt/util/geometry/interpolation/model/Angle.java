@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation.model;
 
 import org.locationtech.jts.geom.Coordinate;
@@ -21,7 +18,7 @@ import org.locationtech.jts.geom.Coordinate;
  * Represents an angle. The angle may represent an angle difference or a
  * positional angle. In the later case the zero angle is located at three
  * o'clock (x axis direction).
- * 
+ *
  * @author Simon Templer
  */
 public class Angle {
@@ -33,7 +30,7 @@ public class Angle {
 
 	/**
 	 * Create a new angle.
-	 * 
+	 *
 	 * @param degrees the angle value in degrees
 	 * @return the angle object
 	 */
@@ -43,7 +40,7 @@ public class Angle {
 
 	/**
 	 * Create a new angle.
-	 * 
+	 *
 	 * @param radians the angle value in radians
 	 * @return the angle object
 	 */
@@ -54,7 +51,7 @@ public class Angle {
 	/**
 	 * Returns the angle of the vector from p0 to p1, relative to the positive
 	 * X-axis. The angle is normalized to be in the range [ -Pi, Pi ].
-	 * 
+	 *
 	 * @param p0 the start point of the vector
 	 * @param p1 the end point of the vector
 	 *

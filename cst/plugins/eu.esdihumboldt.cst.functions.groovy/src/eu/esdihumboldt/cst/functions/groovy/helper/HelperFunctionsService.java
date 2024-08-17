@@ -1,32 +1,29 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.helper;
 
 import javax.annotation.Nullable;
 
 /**
  * Interface for service providing Groovy script helper functions.
- * 
+ *
  * @author Simon Templer
  */
 public interface HelperFunctionsService {
 
 	/**
 	 * Retrieves the children of a specific category.
-	 * 
+	 *
 	 * @param cat the category to inspect
 	 * @param context the helper context or <code>null</code>
 	 * @return the child categories and functions
@@ -35,7 +32,7 @@ public interface HelperFunctionsService {
 
 	/**
 	 * Retrieves the children of a specific category.
-	 * 
+	 *
 	 * @param cat the category to inspect
 	 * @return the child categories and functions
 	 */
@@ -45,7 +42,7 @@ public interface HelperFunctionsService {
 
 	/**
 	 * Get a child category or function.
-	 * 
+	 *
 	 * @param cat the parent category
 	 * @param name the child name
 	 * @param context the helper context or <code>null</code>
@@ -56,7 +53,7 @@ public interface HelperFunctionsService {
 
 	/**
 	 * Get a child category or function.
-	 * 
+	 *
 	 * @param cat the parent category
 	 * @param name the child name
 	 * @return a category, helper function or <code>null</code>

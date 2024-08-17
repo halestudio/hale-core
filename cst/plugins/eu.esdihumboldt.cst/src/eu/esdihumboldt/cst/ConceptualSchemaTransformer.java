@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst;
 
 import java.text.MessageFormat;
@@ -71,7 +67,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Transformation service implementation
- * 
+ *
  * @author Simon Templer
  * @since 2.5
  */
@@ -173,7 +169,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 
 	/**
 	 * Sort type cells to define order of execution.
-	 * 
+	 *
 	 * @param typeCells the type cells to sort
 	 * @return the sorted list of cells
 	 */
@@ -204,7 +200,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 
 	/**
 	 * Execute a type transformation based on single type cell
-	 * 
+	 *
 	 * @param transformation the transformation to use
 	 * @param typeCell the type cell
 	 * @param target the target instance sink
@@ -347,7 +343,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 
 	/**
 	 * A filter that matches all instances relevant to a given type cell.
-	 * 
+	 *
 	 * @author Kai Schwierczek
 	 */
 	private static class TypeCellFilter implements Filter {
@@ -356,7 +352,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 
 		/**
 		 * Constructs a filter that matches all instances relevant to the given cell.
-		 * 
+		 *
 		 * @param typeCell the type cell
 		 */
 		private TypeCellFilter(Cell typeCell) {

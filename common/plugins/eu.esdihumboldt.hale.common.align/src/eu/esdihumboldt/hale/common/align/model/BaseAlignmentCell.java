@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model;
 
 import java.net.URI;
@@ -27,7 +24,7 @@ import com.google.common.collect.Sets;
 
 /**
  * Cell wrapper for cells of a base alignment.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class BaseAlignmentCell implements ModifiableCell {
@@ -40,7 +37,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param base the base cell
 	 * @param baseAlignment the URI of the alignment the cell is from
 	 * @param prefix the alignment's prefix
@@ -102,7 +99,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Returns the base alignment.
-	 * 
+	 *
 	 * @return the base alignment
 	 */
 	public URI getBaseAlignment() {
@@ -111,7 +108,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Returns the result of {@link #getDisabledFor()} from the base cell.
-	 * 
+	 *
 	 * @return the result of {@link #getDisabledFor()} from the base cell
 	 */
 	public Set<String> getBaseDisabledFor() {
@@ -120,7 +117,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Returns the additional disabled for entries of the extended cell.
-	 * 
+	 *
 	 * @return the additional disabled for entries of the extended cell
 	 */
 	public Set<String> getAdditionalDisabledFor() {
@@ -129,7 +126,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Disables this cell's base cell for the given cell.
-	 * 
+	 *
 	 * @param cell the cell to disable/enable this cell for
 	 * @param disabled whether the cell should be disabled or not
 	 */
@@ -160,7 +157,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * States if the cell overrides the transformation mode.
-	 * 
+	 *
 	 * @return if the cell overrides the base cell's transformation mode
 	 */
 	public boolean overridesTransformationMode() {
@@ -174,7 +171,7 @@ public class BaseAlignmentCell implements ModifiableCell {
 
 	/**
 	 * Set the transformation mode of the base cell.
-	 * 
+	 *
 	 * @param mode the cell transformation mode
 	 */
 	public void setBaseTransformationMode(TransformationMode mode) {

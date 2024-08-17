@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.align.migrate.util;
 
 import java.util.Collection;
@@ -32,7 +29,7 @@ import eu.esdihumboldt.hale.common.align.model.impl.DefaultCell;
  * effective mappings are defined explicitly, i.e. mappings effective due to
  * inheritance are converted to use the respective sub-types. Also, base
  * alignment cells are converted into normal cells.
- * 
+ *
  * @author Simon Templer.
  */
 public class EffectiveMapping {
@@ -42,7 +39,7 @@ public class EffectiveMapping {
 	 * are defined explicitly, i.e. mappings effective due to inheritance are
 	 * converted to use the respective sub-types. Also, base alignment cells are
 	 * converted into normal cells.
-	 * 
+	 *
 	 * @param alignment the alignment to convert
 	 * @return the expanded copy of the alignment
 	 */

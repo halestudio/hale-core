@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.validate.factory.extension;
 
 import java.util.HashMap;
@@ -30,7 +27,7 @@ import eu.esdihumboldt.util.validator.Validator;
 
 /**
  * Extension point for {@link ValidatorFactory}ies.
- * 
+ *
  * @author Simon Templer
  */
 public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFactoryDescriptor> {
@@ -54,7 +51,7 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 
 	/**
 	 * Create a {@link Validator} from its {@link Value} representation.
-	 * 
+	 *
 	 * @param value the value
 	 * @param validatorId the validator identifier
 	 * @return the validator or <code>null</code>
@@ -70,7 +67,7 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 
 	/**
 	 * Create a {@link Value} representation of a {@link Validator}.
-	 * 
+	 *
 	 * @param validator the validator
 	 * @return a pair of the validator ID and the validator's value representation,
 	 *         or <code>null</code>
@@ -115,7 +112,7 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 
 	/**
 	 * Get the validator descriptor applicable for the given validator object.
-	 * 
+	 *
 	 * @param validator the validator object
 	 * @return the descriptor or <code>null</code> if none is available
 	 */
@@ -146,7 +143,7 @@ public class ValidatorFactoryExtension extends IdentifiableExtension<ValidatorFa
 
 	/**
 	 * Get the validator descriptor directly associated to the given validator type.
-	 * 
+	 *
 	 * @param validatorType the constraint type
 	 * @return the descriptor or <code>null</code> if none is registered for the
 	 *         constraint type

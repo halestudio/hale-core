@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.io.xsd.reader;
 
@@ -144,10 +141,10 @@ import gnu.trove.TObjectIntHashMap;
  * create a schema with {@link TypeDefinition}s. This implementation is based on
  * the Apache XmlSchema library (
  * {@link "http://ws.apache.org/commons/XmlSchema/"}).
- * 
+ *
  * It is necessary use this library instead of the GeoTools XML schema loader,
  * because the GeoTools version cannot handle GML 3.2 based files.
- * 
+ *
  * @author Simon Templer
  * @author Bernd Schneiders
  * @author Thorsten Reitz
@@ -168,7 +165,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 		/**
 		 * Add existing identifiers (to avoid conflicts).
-		 * 
+		 *
 		 * @param objectsAndIdentifiers objects (namespaces) mapped to identifiers
 		 *            (prefixes)
 		 */
@@ -194,7 +191,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	/**
 	 * Name of the parameter specifying which mode to use to determine the default
 	 * mapping relevant types.
-	 * 
+	 *
 	 * Valid values currently are {@value #MAPPING_RELEVANT_MODE_MAIN_SCHEMA} and
 	 * {@value #MAPPING_RELEVANT_MODE_FEATURE_TYPES}.
 	 */
@@ -397,7 +394,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Apply custom type content configuration.
-	 * 
+	 *
 	 * @param index the XML index
 	 */
 	private void applyCustomTypeContent(XmlIndex index) {
@@ -410,7 +407,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Apply the relevant elements setting to the given XML index.
-	 * 
+	 *
 	 * @param index the XML index
 	 */
 	private void applyRelevantElements(XmlIndex index) {
@@ -450,7 +447,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set the element names of mapping relevant types.
-	 * 
+	 *
 	 * @param elementNames the element names
 	 */
 	public void setRelevantElements(Collection<? extends QName> elementNames) {
@@ -480,7 +477,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set the mode to use for determining mapping relevant types.
-	 * 
+	 *
 	 * @param mode the mode name
 	 */
 	public void setMappingRelevantMode(String mode) {
@@ -498,7 +495,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	/**
 	 * Set if only elements should be mappable. Otherwise all types with a global
 	 * type definition are mappable.
-	 * 
+	 *
 	 * @param onlyElements if only elements should be mappable
 	 */
 	public void setOnlyElementsMappable(boolean onlyElements) {
@@ -515,7 +512,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Load the feature types defined by the given schema
-	 * 
+	 *
 	 * @param schemaLocation the schema location
 	 * @param xmlSchema the schema
 	 * @param imports the imports/includes that were already loaded or where loading
@@ -746,7 +743,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Configure the mapping relevant flag for a type.
-	 * 
+	 *
 	 * @param type the type to configure
 	 * @param mainSchema if the type belongs to the main schema
 	 */
@@ -775,7 +772,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Add namespace prefixes from a schema to the XmlIndex.
-	 * 
+	 *
 	 * @param namespaces the namespace prefixes defined in the (single) schema
 	 * @param defaultNamespace the default namespace of the schema
 	 * @param mainSchema specifies if the schema is the main schema
@@ -828,7 +825,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	/**
 	 * Create a type definition from the given schema type and add it to the index
 	 * or enhance an existing type definition if it is already in the index.
-	 * 
+	 *
 	 * @param schemaType the schema type
 	 * @param typeName the type name to use for the type, <code>null</code> if the
 	 *            name of the schema type shall be used
@@ -903,7 +900,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Configure a type definition for a simple type
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param schemaType the schema simple type
 	 * @param schemaLocation the schema location
@@ -941,7 +938,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Extracts attribute definitions from a {@link XmlSchemaParticle}.
-	 * 
+	 *
 	 * @param declaringGroup the definition of the declaring group
 	 * @param particle the particle
 	 * @param schemaLocation the schema location
@@ -1120,7 +1117,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Create a name for a group.
-	 * 
+	 *
 	 * @param declaringGroup the declaring group
 	 * @param groupType the group type
 	 * @return the group name
@@ -1136,7 +1133,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Create a property from an element
-	 * 
+	 *
 	 * @param element the schema element
 	 * @param declaringGroup the definition of the declaring group
 	 * @param schemaLocation the schema location
@@ -1385,7 +1382,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	 * Get a type identifier from the given group. If the group is a type definition
 	 * its identifier will be returned, if it is a child definition the identifier
 	 * of the parent type will be returned.
-	 * 
+	 *
 	 * @param group the group
 	 * @return the type identifier
 	 * @throws IllegalArgumentException if the group is neither a type nor a child
@@ -1404,7 +1401,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set metadata and constraints for a complex type
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param complexType the complex type definition
 	 * @param schemaLocation the schema location
@@ -1452,7 +1449,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set the metadata for a definition
-	 * 
+	 *
 	 * @param definition the definition
 	 * @param annotated the XML annotated object
 	 * @param schemaLocation the schema location
@@ -1464,7 +1461,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set the metadata for a definition
-	 * 
+	 *
 	 * @param definition the definition
 	 * @param annotated the XML annotated object
 	 * @param schemaLocation the schema location
@@ -1497,7 +1494,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Handle reference information in XML Schema AppInfo.
-	 * 
+	 *
 	 * @param appInfos the list of AppInfos
 	 * @param definition the property the infos are associated to
 	 * @param index the XML index
@@ -1551,7 +1548,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set metadata and constraints for a property based on a XML element
-	 * 
+	 *
 	 * @param property the property
 	 * @param element the XML element
 	 * @param schemaLocation the schema location
@@ -1572,7 +1569,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Find a super type name based on a complex type
-	 * 
+	 *
 	 * @param item the complex type defining a super type
 	 * @return the name of the super type or <code>null</code>
 	 */
@@ -1602,9 +1599,9 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Determines if the super type relation of the given item is a restriction
-	 * 
+	 *
 	 * @param item the complex type defining a super type
-	 * 
+	 *
 	 * @return if the super type relation of the given item is a restriction
 	 */
 	private boolean isRestriction(XmlSchemaComplexType item) {
@@ -1622,7 +1619,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Create the properties for the given complex type
-	 * 
+	 *
 	 * @param typeDef the definition of the declaring type
 	 * @param item the complex type item
 	 * @param schemaLocation the schema location
@@ -1844,7 +1841,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Get the named type to use for a specific XML attribute.
-	 * 
+	 *
 	 * @param typeName the name of the referenced type
 	 * @param declaringGroup the declaring group of the attribute
 	 * @param attributeName the attribute name
@@ -1897,7 +1894,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Determine the qualified attribute name for a XML Schema attribute.
-	 * 
+	 *
 	 * @param attribute the XML Schema attribute
 	 * @param schemaNamespace the schema namespace
 	 * @return the qualified name of the attribute
@@ -1918,7 +1915,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Create the type definition for an attribute, if possible
-	 * 
+	 *
 	 * @param attribute the XML attribute
 	 * @param index the name index string
 	 * @param schemaLocation the schema location
@@ -1958,7 +1955,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Set metadata and constraints for a property based on a XML attribute
-	 * 
+	 *
 	 * @param property the property
 	 * @param attribute the XML attribute
 	 * @param schemaLocation the schema location
@@ -1992,9 +1989,9 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 
 	/**
 	 * Get the base URI for the given URI
-	 * 
+	 *
 	 * @param uri the URI
-	 * 
+	 *
 	 * @return the base URI as string
 	 */
 	private String findBaseUri(URI uri) {

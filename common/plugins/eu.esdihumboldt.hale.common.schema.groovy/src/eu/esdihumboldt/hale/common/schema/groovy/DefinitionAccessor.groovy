@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Simon Templer
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Simon Templer - initial version
  */
-
 package eu.esdihumboldt.hale.common.schema.groovy;
 
 import groovy.transform.CompileStatic
@@ -32,9 +29,9 @@ import eu.esdihumboldt.util.groovy.paths.PathImpl
 
 /**
  * Property accessor for {@link Definition}s.
- * 
+ *
  * It mutates, so it is only usable once.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -42,7 +39,7 @@ class DefinitionAccessor extends AbstractAccessor<Definition<?>> {
 
 	/**
 	 * Create an accessor for a given definition.
-	 * 
+	 *
 	 * @param definition the definition
 	 */
 	public DefinitionAccessor(Definition<?> definition) {
@@ -56,7 +53,7 @@ class DefinitionAccessor extends AbstractAccessor<Definition<?>> {
 
 	/**
 	 * Find the children with the given local name and namespace.
-	 * 
+	 *
 	 * @param name the local name
 	 * @param namespace the namespace or <code>null</code> to ignore the namespace
 	 * @return the child accessor

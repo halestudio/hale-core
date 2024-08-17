@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal.schema;
 
 import java.util.HashMap;
@@ -34,7 +31,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 /**
  * Context for building a schema for Json data. Responsible for managing shared
  * types, e.g. for primitive values.
- * 
+ *
  * @author Simon Templer
  */
 public class SchemaBuilderContext {
@@ -45,7 +42,7 @@ public class SchemaBuilderContext {
 	private final Map<QName, TypeDefinition> commonTypes = new HashMap<>();
 
 	/**
-	 * 
+	 *
 	 * @param defaultNamespace the namespace to use for common types
 	 * @param sharedTypes the shared types (e.g. from other loaded schemas) for type
 	 *            reuse
@@ -58,7 +55,7 @@ public class SchemaBuilderContext {
 
 	/**
 	 * Get a type representing a Json primitive type.
-	 * 
+	 *
 	 * @param valueType the desired Json type
 	 * @return the type definition for the Json type
 	 */
@@ -85,7 +82,7 @@ public class SchemaBuilderContext {
 
 	/**
 	 * Get a type representing a GeoJson geometry type.
-	 * 
+	 *
 	 * @param geomType the desired geometry type
 	 * @return the type definition for the geometry type
 	 */
@@ -112,7 +109,7 @@ public class SchemaBuilderContext {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the common types that were created during schema building
 	 */
 	public Iterable<TypeDefinition> getCommonTypes() {

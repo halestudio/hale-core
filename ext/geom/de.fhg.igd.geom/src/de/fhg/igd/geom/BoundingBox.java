@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -80,7 +80,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Construct a BB from two points defined by three double values.
-	 * 
+	 *
 	 * @param x1 - xmin
 	 * @param y1 - ymin
 	 * @param z1 - zmin
@@ -99,7 +99,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Copy constructor
-	 * 
+	 *
 	 * @param boundingBox The source bounding box
 	 */
 	public BoundingBox(BoundingBox boundingBox) {
@@ -133,7 +133,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This method expands this BoundingBox in volume by factor stepsize. If the
 	 * original extent is 0.0, stepsize will be used as absolute value.
-	 * 
+	 *
 	 * @param stepsize the size factor
 	 * @return the extended BoundingBox (this)
 	 * @see Localizable#getBoundingBox()
@@ -180,7 +180,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This method will add the given Bounding Box to this Bounding Box, thus
 	 * possibly enlarging it.
-	 * 
+	 *
 	 * @param bbox the BoundingBox to add
 	 */
 	public void add(BoundingBox bbox) {
@@ -244,7 +244,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This checks if this Bounding Box completely covers the parameter Bounding
 	 * Box.
-	 * 
+	 *
 	 * @param bbox the other BoundingBox
 	 * @return true if this Box covers bbox, false otherwise
 	 */
@@ -257,7 +257,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This checks if this Bounding Box completely contains the parameter Bounding
 	 * Box.
-	 * 
+	 *
 	 * @param bbox the other BoundingBox
 	 * @return true if this Box contains bbox, false otherwise
 	 */
@@ -342,7 +342,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * Test emptiness, i.e. whether at least one axis has zero width and the box is
 	 * regular.
-	 * 
+	 *
 	 * @return whether the bounding box is empty.
 	 */
 	public boolean isEmpty() {
@@ -351,7 +351,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Test regularity, i.e. whether all axes have zero or positive length.
-	 * 
+	 *
 	 * @return whether the bounding box is regular.
 	 * @see #checkIntegrity()
 	 */
@@ -361,7 +361,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * This checks if this Bounding Box intersects with another Bounding Box.
-	 * 
+	 *
 	 * @param bb the other BoundingBox
 	 * @return true if the Boxes intersect, false otherwise
 	 */
@@ -380,7 +380,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Checks if this BoundingBox intersects with or covers the given BoundingBox bb
-	 * 
+	 *
 	 * @param bb the BoundingBox to check against
 	 * @return true if this BoundingBox intersects with or covers bb, false
 	 *         otherwise
@@ -391,7 +391,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * This method is used internally to add a point to a given extent
-	 * 
+	 *
 	 * @param x the x ordinate of the point to add
 	 * @param y the y ordinate
 	 * @param result an array containing the current extent. This array will be
@@ -418,7 +418,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * This method is used internally to add a point to a given bounding box
-	 * 
+	 *
 	 * @param x the x ordinate of the point to add
 	 * @param y the y ordinate
 	 * @param z the z ordinate
@@ -444,7 +444,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given Array of
 	 * Localizables.
-	 * 
+	 *
 	 * @param locs the Localizables to add to the BoundingBox
 	 * @return a BoundingBox that contains all Localizables
 	 */
@@ -455,7 +455,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given collection of
 	 * Point2D objects
-	 * 
+	 *
 	 * @param points a collection with Point3D objects
 	 * @return a BoundingBox containing all points
 	 */
@@ -484,7 +484,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given collection of
 	 * Point3D objects
-	 * 
+	 *
 	 * @param points a collection with Point3D objects
 	 * @return a BoundingBox containing all points
 	 */
@@ -515,7 +515,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given collection of
 	 * Localizable objects
-	 * 
+	 *
 	 * @param locs a collection of Localizable objects
 	 * @return a BoundingBox containing all Localizables
 	 */
@@ -548,7 +548,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given Array of Point3D
 	 * objects.
-	 * 
+	 *
 	 * @param points the array of points
 	 * @return a BoundingBox containing all points
 	 */
@@ -559,7 +559,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given Array of Point2D
 	 * objects.
-	 * 
+	 *
 	 * @param points the array of points
 	 * @return a BoundingBox containing all points
 	 */
@@ -570,7 +570,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This static method will return a BoundingBox for a given Array of
 	 * {@link Coordinate}s objects.
-	 * 
+	 *
 	 * @param points the array of coordinates
 	 * @return a BoundingBox containing all points
 	 */
@@ -640,7 +640,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * This method will return a 2D Extent that uses only the X and Y coordinates of
 	 * this BoundingBox.
-	 * 
+	 *
 	 * @return Extent
 	 */
 	public Extent toExtent() {
@@ -679,7 +679,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * Two BoundingBoxes are defined as being equal when their LLB and URT
 	 * coordinates are equal.
-	 * 
+	 *
 	 * @see Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -701,7 +701,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 	/**
 	 * Provides a hashCode so that x.hashCode() == y.hashCode() when x.equals(y) ==
 	 * true
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -716,7 +716,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Standard issue toString method.
-	 * 
+	 *
 	 * @see Object#toString()
 	 */
 	@Override
@@ -879,7 +879,7 @@ public final class BoundingBox implements Serializable, Localizable, Cloneable {
 
 	/**
 	 * Determine the bounding box for a geometry.
-	 * 
+	 *
 	 * @param geometry the geometry
 	 * @return the bounding box or <code>null</code> if it is either an empty
 	 *         geometry or the bounding box cannot be determined

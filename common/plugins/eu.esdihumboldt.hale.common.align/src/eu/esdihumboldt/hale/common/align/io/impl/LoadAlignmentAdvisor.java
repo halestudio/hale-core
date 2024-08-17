@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl;
 
 import eu.esdihumboldt.hale.common.align.io.AlignmentReader;
@@ -27,7 +23,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Advisor for loading an alignment using an existing {@link IOConfiguration}.
- * 
+ *
  * @author Simon Templer
  */
 public class LoadAlignmentAdvisor extends ConfigurationIOAdvisor<AlignmentReader> {
@@ -44,7 +40,7 @@ public class LoadAlignmentAdvisor extends ConfigurationIOAdvisor<AlignmentReader
 	/**
 	 * Create an advisor for loading an alignment based on the given I/O
 	 * configuration.
-	 * 
+	 *
 	 * @param conf the I/O configuration
 	 * @param sourceSchema the source schema
 	 * @param targetSchema the target schema
@@ -81,7 +77,7 @@ public class LoadAlignmentAdvisor extends ConfigurationIOAdvisor<AlignmentReader
 
 	/**
 	 * Get the loaded alignment.
-	 * 
+	 *
 	 * @return the alignment or <code>null</code> if it was not loaded or loading
 	 *         failed
 	 */

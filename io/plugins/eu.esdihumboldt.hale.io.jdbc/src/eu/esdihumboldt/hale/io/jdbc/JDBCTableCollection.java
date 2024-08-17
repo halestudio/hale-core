@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import java.net.URI;
@@ -42,7 +39,7 @@ import eu.esdihumboldt.hale.io.jdbc.constraints.SQLQuery;
 /**
  * Instance collection for instances belonging to a specific database table or a
  * schema type with an associated SQL query.
- * 
+ *
  * @author Simon Templer
  */
 public class JDBCTableCollection implements InstanceCollection, LogAware {
@@ -66,7 +63,7 @@ public class JDBCTableCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * States if the row at the current cursor position was already consumed.
-		 * 
+		 *
 		 * Initially the result set points to the row before the first row, which by
 		 * definition is consumed.
 		 */
@@ -78,7 +75,7 @@ public class JDBCTableCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param crsProvider the CRS provider
 		 */
 		public JDBCTableIterator(CRSProvider crsProvider) {
@@ -214,7 +211,7 @@ public class JDBCTableCollection implements InstanceCollection, LogAware {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param type the type definition associated to the table
 	 * @param jdbcURI the JDBC URI to access the database
 	 * @param user the database user
@@ -260,7 +257,7 @@ public class JDBCTableCollection implements InstanceCollection, LogAware {
 
 	/**
 	 * Create a connection to the database.
-	 * 
+	 *
 	 * @return the database connection
 	 * @throws SQLException if opening the connection fails
 	 */

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.csv.reader.internal;
 
 import java.io.IOException;
@@ -54,7 +51,7 @@ import eu.esdihumboldt.hale.io.csv.reader.CommonSchemaConstants;
 
 /**
  * Instance collection based on a CSV file/stream.
- * 
+ *
  * @author Simon Templer
  */
 public class CSVInstanceCollection implements InstanceCollection, InstanceCollection2 {
@@ -319,7 +316,7 @@ public class CSVInstanceCollection implements InstanceCollection, InstanceCollec
 	/**
 	 * Create a CSV instance collection based on the given CSV instance reader
 	 * (because we make use of its configuration).
-	 * 
+	 *
 	 * @param csvInstanceReader the CSV instance reader
 	 */
 	public CSVInstanceCollection(CSVInstanceReader csvInstanceReader) {

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.supplier;
 
 import static org.junit.Assert.assertEquals;
@@ -27,7 +24,7 @@ import org.junit.Test;
 
 /**
  * {@link LookupStreamResource} tests.
- * 
+ *
  * @author Simon Templer
  */
 public class LookupStreamResourceTest {
@@ -38,7 +35,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Tests if the lookup stream retrieved is in fact limited.
-	 * 
+	 *
 	 * @throws IOException if reading the stream fails
 	 */
 	@Test
@@ -54,7 +51,7 @@ public class LookupStreamResourceTest {
 	/**
 	 * Tests if the lookup stream retrieved is in fact limited and if the lookup
 	 * stream can be read twice with the same result.
-	 * 
+	 *
 	 * @throws IOException if reading the stream fails
 	 */
 	@Test
@@ -75,7 +72,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Read the input stream including the byte after {@link #previewLimit}.
-	 * 
+	 *
 	 * @param in the limited lookup input stream
 	 * @throws IOException if reading the stream fails
 	 */
@@ -93,7 +90,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Test doing lookup and consume in concession.
-	 * 
+	 *
 	 * @throws IOException if reading the input stream fails
 	 */
 	@Test
@@ -115,7 +112,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Test if mark is correctly not supported by the input streams.
-	 * 
+	 *
 	 * @throws IOException if reading the input stream fails
 	 */
 	@Test
@@ -139,7 +136,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Completely consume the given input stream.
-	 * 
+	 *
 	 * @param in the input stream reading the {@link #data} array
 	 * @throws IOException if reading the stream fails
 	 */
@@ -158,7 +155,7 @@ public class LookupStreamResourceTest {
 	/**
 	 * Test doing lookup and consume in concession on the not limited input
 	 * supplier.
-	 * 
+	 *
 	 * @throws IOException if reading the input stream fails
 	 */
 	@Test
@@ -188,7 +185,7 @@ public class LookupStreamResourceTest {
 
 	/**
 	 * Read the input stream up to the preview limit {@link #previewLimit}.
-	 * 
+	 *
 	 * @param in the input stream where the first {@link #data} bytes can be read
 	 *            from
 	 * @throws IOException if reading the stream fails
@@ -203,7 +200,7 @@ public class LookupStreamResourceTest {
 	/**
 	 * Test doing lookup and consume in concession on the not limited input
 	 * supplier.
-	 * 
+	 *
 	 * @throws IOException if reading the input stream fails
 	 */
 	@Test

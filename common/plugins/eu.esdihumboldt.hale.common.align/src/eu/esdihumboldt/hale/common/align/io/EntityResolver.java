@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io;
 
 import eu.esdihumboldt.hale.common.align.io.impl.internal.generated.AbstractEntityType;
@@ -26,16 +23,16 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Resolves schema entities from JAXB entities.
- * 
+ *
  * XXX this class exposes an interface with internal classes
- * 
+ *
  * @author Simon Templer
  */
 public interface EntityResolver {
 
 	/**
 	 * Resolve a schema entity based on the given JAXB entity.
-	 * 
+	 *
 	 * @param entity the entity
 	 * @param schema the schema
 	 * @param schemaSpace the schema space
@@ -46,7 +43,7 @@ public interface EntityResolver {
 
 	/**
 	 * Resolve a schema property entity based on the given JAXB property.
-	 * 
+	 *
 	 * @param entity the property
 	 * @param schema the schema
 	 * @param schemaSpace the schema space
@@ -58,7 +55,7 @@ public interface EntityResolver {
 
 	/**
 	 * Resolve a schema type entity based on the given JAXB type.
-	 * 
+	 *
 	 * @param entity the type
 	 * @param schema the schema
 	 * @param schemaSpace the schema space

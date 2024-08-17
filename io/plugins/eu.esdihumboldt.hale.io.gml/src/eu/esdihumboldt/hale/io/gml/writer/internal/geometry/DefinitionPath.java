@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry;
 
 import java.util.ArrayList;
@@ -34,7 +30,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.StreamGmlWriter;
 /**
  * Represents a path in a type definition hierarchy (regarding subtypes and
  * properties)
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -53,7 +49,7 @@ public class DefinitionPath {
 
 		/**
 		 * Constructor
-		 * 
+		 *
 		 * @param elementName the name of the element the downcast is applied to
 		 * @param type the definition of the type that is downcast to
 		 * @param unique if the represented element cannot be repeated
@@ -171,12 +167,12 @@ public class DefinitionPath {
 //	private static class SubstitutionElement implements PathElement {
 //
 //		private final SchemaElement element;
-//		
+//
 //		private final boolean unique;
-//		
+//
 //		/**
 //		 * Constructor
-//		 * 
+//		 *
 //		 * @param element the substitution element
 //		 * @param unique if the represented element cannot be repeated
 //		 */
@@ -262,7 +258,7 @@ public class DefinitionPath {
 	/**
 	 * Path element representing a group. XXX a {@link DefinitionPath} that is used
 	 * for writing should never end on a {@link GroupElement}!
-	 * 
+	 *
 	 * @author Simon Templer
 	 */
 	private static class GroupElement implements PathElement {
@@ -271,7 +267,7 @@ public class DefinitionPath {
 
 		/**
 		 * Create a path element representing a group.
-		 * 
+		 *
 		 * @param groupDef the group property definition
 		 */
 		public GroupElement(GroupPropertyDefinition groupDef) {
@@ -377,7 +373,7 @@ public class DefinitionPath {
 
 		/**
 		 * Constructor
-		 * 
+		 *
 		 * @param attdef the attribute definition
 		 */
 		public PropertyElement(PropertyDefinition attdef) {
@@ -486,7 +482,7 @@ public class DefinitionPath {
 
 	/**
 	 * Create a definition path beginning with the given base path
-	 * 
+	 *
 	 * @param basePath the base path
 	 */
 	public DefinitionPath(DefinitionPath basePath) {
@@ -497,7 +493,7 @@ public class DefinitionPath {
 
 	/**
 	 * Create an empty definition path
-	 * 
+	 *
 	 * @param firstType the type starting the path
 	 * @param elementName the corresponding element name
 	 * @param unique if the element starting the path cannot be repeated
@@ -512,7 +508,7 @@ public class DefinitionPath {
 
 	/**
 	 * Create a path with at least one element.
-	 * 
+	 *
 	 * @param elements the path elements
 	 */
 	public DefinitionPath(List<PathElement> elements) {
@@ -525,29 +521,29 @@ public class DefinitionPath {
 
 //	/**
 //	 * Add a substitution
-//	 * 
+//	 *
 //	 * @param element the substitution element
-//	 * 
-//	 * @return this path for chaining 
+//	 *
+//	 * @return this path for chaining
 //	 */
 //	public DefinitionPath addSubstitution(SchemaElement element) {
 //		// 1. sub-type must override previous sub-type
 //		// 2. sub-type must override a previous property XXX check this!!! or only the first?
 //		// XXX -> therefore removing the previous path element
 //		boolean unique = isLastUnique();
-//		
+//
 //		if (steps.size() > 0) {
 //			steps.remove(steps.size() - 1);
 //		}
-//		
+//
 //		addStep(new SubstitutionElement(element, unique));
-//		
+//
 //		return this;
 //	}
 
 	/**
 	 * Add a downcast
-	 * 
+	 *
 	 * @param subtype the definition of the sub-type that is to be cast to
 	 * @return this path for chaining
 	 */
@@ -570,7 +566,7 @@ public class DefinitionPath {
 
 	/**
 	 * Add a group to the path
-	 * 
+	 *
 	 * @param groupDef the group definition
 	 * @return this path for chaining
 	 */
@@ -581,7 +577,7 @@ public class DefinitionPath {
 
 	/**
 	 * Add a child to the path
-	 * 
+	 *
 	 * @param child the child, either a group or property
 	 * @return this path for chaining
 	 */
@@ -604,9 +600,9 @@ public class DefinitionPath {
 
 	/**
 	 * Add a property
-	 * 
+	 *
 	 * @param property the property definition
-	 * 
+	 *
 	 * @return this path for chaining
 	 */
 	public DefinitionPath addProperty(PropertyDefinition property) {
@@ -649,7 +645,7 @@ public class DefinitionPath {
 
 	/**
 	 * Determines if the path is empty
-	 * 
+	 *
 	 * @return if the path is empty
 	 */
 	public boolean isEmpty() {
@@ -659,7 +655,7 @@ public class DefinitionPath {
 	/**
 	 * Get the last type of the path. For empty paths this will be the type
 	 * specified on creation XXX not for groups
-	 * 
+	 *
 	 * @return the last type
 	 */
 	public TypeDefinition getLastType() {
@@ -669,7 +665,7 @@ public class DefinitionPath {
 	/**
 	 * Get the last name of the path. For empty paths this will be the name
 	 * specified on creation XXX not if last is a group
-	 * 
+	 *
 	 * @return the last type
 	 */
 	public QName getLastName() {
@@ -679,7 +675,7 @@ public class DefinitionPath {
 	/**
 	 * Get if the last element in the path is unique, which means that it cannot be
 	 * repeated XXX not if last is a group
-	 * 
+	 *
 	 * @return if the last element in the path is unique, which means that it cannot
 	 *         be repeated
 	 */
@@ -714,7 +710,7 @@ public class DefinitionPath {
 
 	/**
 	 * Get the last path element
-	 * 
+	 *
 	 * @return the last path element or <code>null</code> if it's empty
 	 */
 	public PathElement getLastElement() {

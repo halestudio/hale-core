@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.svg.test;
 
 import java.awt.Desktop;
@@ -22,7 +19,7 @@ import java.nio.file.Path;
 
 /**
  * SVG painter with an associated temporary file.
- * 
+ *
  * @author Simon Templer
  */
 public class SVGTempFilePainter extends SVGPainter {
@@ -32,7 +29,7 @@ public class SVGTempFilePainter extends SVGPainter {
 
 	/**
 	 * Create a new painter.
-	 * 
+	 *
 	 * @param settings the paint settings
 	 */
 	public SVGTempFilePainter(PaintSettings settings) {
@@ -41,7 +38,7 @@ public class SVGTempFilePainter extends SVGPainter {
 
 	/**
 	 * Create a new painter.
-	 * 
+	 *
 	 * @param settings the paint settings
 	 * @param filePrefix the prefix for the temporary file
 	 */
@@ -53,7 +50,7 @@ public class SVGTempFilePainter extends SVGPainter {
 
 	/**
 	 * Write the graphic to a temporary file.
-	 * 
+	 *
 	 * @throws IOException if writing the file fails
 	 */
 	public void writeToFile() throws IOException {
@@ -66,7 +63,7 @@ public class SVGTempFilePainter extends SVGPainter {
 
 	/**
 	 * Write the graphic to a temporary file. Open the file is possible.
-	 * 
+	 *
 	 * @throws IOException if writing the file fails
 	 */
 	public void writeAndOpenFile() throws IOException {
@@ -78,7 +75,7 @@ public class SVGTempFilePainter extends SVGPainter {
 
 	/**
 	 * Remove the created temporary file.
-	 * 
+	 *
 	 * @throws IOException if deleting the file fails
 	 */
 	public void cleanup() throws IOException {

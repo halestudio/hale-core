@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.csv;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -23,14 +19,14 @@ import de.fhg.igd.eclipse.util.extension.AbstractExtension;
 
 /**
  * Class for the property type extension
- * 
+ *
  * @author Kevin Mais
  */
 public class PropertyTypeExtension extends AbstractExtension<PropertyType, PropertyTypeFactory> {
 
 	/**
 	 * Default implementation class
-	 * 
+	 *
 	 * @author Kevin Mais
 	 */
 	private static class DefaultFactory extends AbstractConfigurationFactory<PropertyType>
@@ -38,7 +34,7 @@ public class PropertyTypeExtension extends AbstractExtension<PropertyType, Prope
 
 		/**
 		 * Default constructor
-		 * 
+		 *
 		 * @param conf the configuration element
 		 */
 		protected DefaultFactory(IConfigurationElement conf) {
@@ -75,7 +71,7 @@ public class PropertyTypeExtension extends AbstractExtension<PropertyType, Prope
 
 	/**
 	 * Getter for the PropertyTypeExtension
-	 * 
+	 *
 	 * @return an Object of PropertyTypeExtension
 	 */
 	public static PropertyTypeExtension getInstance() {

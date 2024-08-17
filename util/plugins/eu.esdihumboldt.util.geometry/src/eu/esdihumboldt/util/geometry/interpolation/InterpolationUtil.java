@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation;
 
 import java.math.BigDecimal;
@@ -26,7 +23,7 @@ import eu.esdihumboldt.util.geometry.interpolation.model.ArcByPoints;
 
 /**
  * Utility functions related to interpolation.
- * 
+ *
  * @author Arun Verma
  * @author Simon Templer
  */
@@ -39,7 +36,7 @@ public class InterpolationUtil {
 
 	/**
 	 * Determines if the Arc is very close to a straight line.
-	 * 
+	 *
 	 * @param arc the arc to check
 	 * @return if the arc closely represents a straight line
 	 */
@@ -71,7 +68,7 @@ public class InterpolationUtil {
 
 	/**
 	 * Rounding the given double value in a standardized manner.
-	 * 
+	 *
 	 * @param x a double value to be round off
 	 * @param scale location of decimal points in
 	 * @return rounded double value
@@ -97,7 +94,7 @@ public class InterpolationUtil {
 	/**
 	 * Add a coordinate to a coordinate list only if it is not equal to the last
 	 * coordinate in the list.
-	 * 
+	 *
 	 * @param coords the coordinates list
 	 * @param c the coordinate to add
 	 */

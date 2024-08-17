@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.quadtree
 
 import groovy.transform.CompileStatic
@@ -21,9 +18,9 @@ import org.locationtech.jts.geom.Envelope
 import org.locationtech.jts.geom.Point
 
 /**
- * Quadtree implementation where contained Point geometries all lie within a 
+ * Quadtree implementation where contained Point geometries all lie within a
  * pre-determined envelope.
- * 
+ *
  * @author Florian Esser
  */
 @CompileStatic
@@ -48,7 +45,7 @@ class FixedBoundaryQuadtree<T> implements Quadtree<Point, T> {
 
 	/**
 	 * Create a quadtree with the given envelope
-	 * 
+	 *
 	 * @param envelope Envelope of this quadtree
 	 * @param maxNodes Maximum number of nodes that can be added before it is split up
 	 */
@@ -58,7 +55,7 @@ class FixedBoundaryQuadtree<T> implements Quadtree<Point, T> {
 
 	/**
 	 * Create a quadtree with the given envelope
-	 * 
+	 *
 	 * @param minX Minimum x-coordinate of the envelope
 	 * @param minY Minimum y-coordinate of the envelope
 	 * @param maxX Maximum x-coordinate of the envelope

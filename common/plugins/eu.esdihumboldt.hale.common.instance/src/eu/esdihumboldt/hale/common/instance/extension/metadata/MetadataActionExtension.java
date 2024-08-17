@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.extension.metadata;
 
 import java.net.URL;
@@ -30,7 +26,7 @@ import de.fhg.igd.eclipse.util.extension.FactoryFilter;
 
 /**
  * Extension for {@link MetadataAction}s
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class MetadataActionExtension
@@ -45,7 +41,7 @@ public class MetadataActionExtension
 		/**
 		 * Create a {@link MetadataAction} factory based on the given configuration
 		 * element
-		 * 
+		 *
 		 * @param conf the configuration element
 		 */
 		public ConfigurationFactory(IConfigurationElement conf) {
@@ -70,7 +66,7 @@ public class MetadataActionExtension
 
 		/**
 		 * returns the key of the configuration element (meta data key)
-		 * 
+		 *
 		 * @return the key
 		 */
 		@Override
@@ -88,7 +84,7 @@ public class MetadataActionExtension
 		}
 
 		/**
-		 * 
+		 *
 		 */
 		@Override
 		public URL getIconURL() {
@@ -116,7 +112,7 @@ public class MetadataActionExtension
 
 	/**
 	 * Get the extension instance
-	 * 
+	 *
 	 * @return the extension
 	 */
 	public static MetadataActionExtension getInstance() {
@@ -141,7 +137,7 @@ public class MetadataActionExtension
 	/**
 	 * Creates a list of all {@link MetadataActionFactory}s for a certain key
 	 * defined at the extension point
-	 * 
+	 *
 	 * @param key the meta data key
 	 * @return the list of action factorys
 	 */

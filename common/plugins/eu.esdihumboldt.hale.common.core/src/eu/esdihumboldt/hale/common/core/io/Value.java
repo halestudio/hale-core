@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io;
 
 import java.io.Serializable;
@@ -33,7 +30,7 @@ import eu.esdihumboldt.hale.common.core.io.impl.StringValue;
  * A DOM representation must be linked to a corresponding complex value type
  * registered in the {@link ComplexValueExtension} to be convertible to an
  * object.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class Value implements Serializable {
@@ -90,7 +87,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Create a value from a string.
-	 * 
+	 *
 	 * @param str the string
 	 * @return the value wrapper
 	 */
@@ -103,7 +100,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Create a value from a boolean.
-	 * 
+	 *
 	 * @param bool the boolean value
 	 * @return the value wrapper
 	 */
@@ -121,7 +118,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Create a value from a number.
-	 * 
+	 *
 	 * @param number the number value
 	 * @return the value wrapper
 	 */
@@ -134,7 +131,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Create a simple value with a string representation for serialization.
-	 * 
+	 *
 	 * @param value the value
 	 * @return the value wrapper
 	 */
@@ -147,7 +144,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Create a complex value with a DOM representation for serialization.
-	 * 
+	 *
 	 * @param value the value
 	 * @return the value wrapper
 	 */
@@ -162,7 +159,7 @@ public abstract class Value implements Serializable {
 	 * Create a value from an object. If a complex value representation is found in
 	 * {@link ComplexValueExtension} a complex value is created, otherwise a simple
 	 * value.
-	 * 
+	 *
 	 * @see #complex(Object)
 	 * @see #simple(Object)
 	 * @param object the object to wrap
@@ -186,7 +183,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Get the value as the expected type if possible.
-	 * 
+	 *
 	 * @param expectedType the expected value type, this must be either
 	 *            {@link String}, DOM {@link Element} or a complex value type
 	 *            defined in the {@link ComplexValueExtension}
@@ -197,7 +194,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Get the value as the expected type if possible, a default value otherwise.
-	 * 
+	 *
 	 * @param expectedType the expected value type, this must be either
 	 *            {@link String}, DOM {@link Element} or a complex value type
 	 *            defined in the {@link ComplexValueExtension}
@@ -210,7 +207,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Get the value as the given type.
-	 * 
+	 *
 	 * @param type the type to convert the value to
 	 * @return the value converted to the type or <code>null</code> for a null value
 	 * @throws IllegalArgumentException if the value cannot be converted to the
@@ -239,14 +236,14 @@ public abstract class Value implements Serializable {
 	 * Get the internal value.<br>
 	 * <br>
 	 * In most cases it is more appropriate to use {@link #getValue()} instead.
-	 * 
+	 *
 	 * @return the internal value
 	 */
 	public abstract Object getValue();
 
 	/**
 	 * Determines if the value is empty.
-	 * 
+	 *
 	 * @return <code>true</code> if the value is <code>null</code> or another kind
 	 *         of empty (e.g. empty string) depending on the value type,
 	 *         <code>false</code> otherwise
@@ -256,7 +253,7 @@ public abstract class Value implements Serializable {
 	/**
 	 * Determines if the value is represented as DOM {@link Element} for serializing
 	 * it.
-	 * 
+	 *
 	 * @return if the value can be represented as {@link Element}
 	 * @see #getDOMRepresentation()
 	 * @see #getStringRepresentation()
@@ -265,7 +262,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Convenience method to determine if this value has a simple representation.
-	 * 
+	 *
 	 * @return if this value has a simple representation
 	 */
 	public boolean isSimple() {
@@ -274,7 +271,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Convenience method to determine if this value has a complex representation.
-	 * 
+	 *
 	 * @return if this value has a complex representation
 	 */
 	public boolean isComplex() {
@@ -283,7 +280,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Get the value's DOM representation if applicable.
-	 * 
+	 *
 	 * @return an {@link Element} representing the value or <code>null</code> if
 	 *         {@link #isRepresentedAsDOM()} yields <code>false</code>
 	 * @see #isRepresentedAsDOM()
@@ -292,7 +289,7 @@ public abstract class Value implements Serializable {
 
 	/**
 	 * Get the value's string representation.
-	 * 
+	 *
 	 * @return a string representing the value or <code>null</code> if
 	 *         {@link #isRepresentedAsDOM()} yields <code>true</code>
 	 * @see #isRepresentedAsDOM()

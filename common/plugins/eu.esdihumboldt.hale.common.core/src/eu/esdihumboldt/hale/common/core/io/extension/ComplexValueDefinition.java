@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.extension;
 
 import javax.annotation.Nullable;
@@ -26,7 +23,7 @@ import eu.esdihumboldt.hale.common.core.io.ComplexValueType;
 
 /**
  * Represents a complex value type registered with the extension point.
- * 
+ *
  * @author Simon Templer
  */
 public class ComplexValueDefinition implements Identifiable, ComplexValueType<Object, Object> {
@@ -45,7 +42,7 @@ public class ComplexValueDefinition implements Identifiable, ComplexValueType<Ob
 
 	/**
 	 * Create a complex value definition.
-	 * 
+	 *
 	 * @param id complex value identifier
 	 * @param elementName the qualified name of the XML element representing the
 	 *            complex value
@@ -103,7 +100,7 @@ public class ComplexValueDefinition implements Identifiable, ComplexValueType<Ob
 
 	/**
 	 * Get the name of the element representing the complex value.
-	 * 
+	 *
 	 * @return the qualified element name
 	 */
 	public QName getElementName() {
@@ -112,7 +109,7 @@ public class ComplexValueDefinition implements Identifiable, ComplexValueType<Ob
 
 	/**
 	 * Get the associated complex value type.
-	 * 
+	 *
 	 * @return the complex value type
 	 */
 	public Class<?> getValueType() {

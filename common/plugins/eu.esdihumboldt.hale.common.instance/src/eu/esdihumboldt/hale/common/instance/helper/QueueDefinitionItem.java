@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.helper;
 
 import java.util.ArrayList;
@@ -26,7 +22,7 @@ import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
 /**
  * Objects of these Class are used by the {@link PropertyResolver} in a Queue
  * for traversing the instance-definition-tree.
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class QueueDefinitionItem {
@@ -37,7 +33,7 @@ public class QueueDefinitionItem {
 
 	/**
 	 * Create a definition item.
-	 * 
+	 *
 	 * @param def the child definition
 	 * @param qname the child name
 	 */
@@ -72,7 +68,7 @@ public class QueueDefinitionItem {
 
 	/**
 	 * Adds a single QName to the path
-	 * 
+	 *
 	 * @param qname the QName to be add
 	 */
 	public void addQname(QName qname) {
@@ -81,7 +77,7 @@ public class QueueDefinitionItem {
 
 	/**
 	 * Adds multiple QNames to the path
-	 * 
+	 *
 	 * @param qnames the QName sto be add
 	 */
 	public void addQnames(List<QName> qnames) {
@@ -95,7 +91,7 @@ public class QueueDefinitionItem {
 	/**
 	 * adds known loop paths which appear in the path of the
 	 * instance-definition-tree on the way to the definition of this item
-	 * 
+	 *
 	 * @param loopQNames the loop paths to add
 	 */
 	public void addLoopQNames(List<QName> loopQNames) {
@@ -105,7 +101,7 @@ public class QueueDefinitionItem {
 	/**
 	 * returns the known loop paths wich appear in the path of the
 	 * instance-definition-tree on the way to the definition of this item
-	 * 
+	 *
 	 * @return the known loop-paths
 	 */
 	public List<List<QName>> getLoopQNames() {
@@ -115,7 +111,7 @@ public class QueueDefinitionItem {
 	/**
 	 * returns the path of the definition of this item in the
 	 * instance-definition-tree as a String
-	 * 
+	 *
 	 * @return the string representation of the path
 	 */
 	public String qNamesToString() {

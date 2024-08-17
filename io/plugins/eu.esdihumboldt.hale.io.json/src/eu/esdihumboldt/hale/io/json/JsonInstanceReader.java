@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json;
 
 import java.io.IOException;
@@ -39,7 +36,7 @@ import eu.esdihumboldt.hale.io.json.internal.JsonToInstance;
 
 /**
  * Reader for Json/GeoJson data.
- * 
+ *
  * @author Simon Templer
  */
 public class JsonInstanceReader extends AbstractInstanceReader {
@@ -132,7 +129,7 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 
 	/**
 	 * Set the read mode to use.
-	 * 
+	 *
 	 * @param mode the mode for reading Json
 	 */
 	public void setReadMode(JsonReadMode mode) {
@@ -158,7 +155,7 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 	/**
 	 * Set the default type to use for read instances. Other mechanisms to determine
 	 * the type may take precedence.
-	 * 
+	 *
 	 * @param defaultType the name of the default type to use
 	 */
 	public void setDefaultType(QName defaultType) {
@@ -186,7 +183,7 @@ public class JsonInstanceReader extends AbstractInstanceReader {
 	 * Set if the default type specified should be forced to be used for all
 	 * instances. This disables any other mechanisms to determine the type of the
 	 * instance.
-	 * 
+	 *
 	 * @param force <code>true</code> if the configured default type should always
 	 *            be used, <code>false</code> otherwise
 	 */

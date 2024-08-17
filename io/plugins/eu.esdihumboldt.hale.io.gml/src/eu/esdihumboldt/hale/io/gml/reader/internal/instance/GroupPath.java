@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal.instance;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -37,7 +33,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.ChoiceFlag;
  * Represents a path of groups in two parts, the existing parent
  * {@link MutableGroup}s and the non-existent children represented by a
  * {@link DefinitionGroup}
- * 
+ *
  * @author Simon Templer
  */
 public class GroupPath {
@@ -48,7 +44,7 @@ public class GroupPath {
 
 	/**
 	 * Create a group path
-	 * 
+	 *
 	 * @param parents the list of parent groups, may neither be <code>null</code>
 	 *            nor empty
 	 * @param children the list of child definition groups, may be <code>null</code>
@@ -81,9 +77,9 @@ public class GroupPath {
 	 * Create groups for the children in the path (which are only represented as
 	 * definitions). May only be called if the path is valid. This will also update
 	 * the path to include the groups instead of the definitions.
-	 * 
+	 *
 	 * @return the list of created groups
-	 * 
+	 *
 	 * @see #isValid()
 	 */
 	protected List<MutableGroup> createChildGroups() {
@@ -117,7 +113,7 @@ public class GroupPath {
 	/**
 	 * Determines if the group path in this configuration is valid in respect to the
 	 * creation of new groups based on the contained definition groups.
-	 * 
+	 *
 	 * @return if the path is valid
 	 */
 	public boolean isValid() {
@@ -150,7 +146,7 @@ public class GroupPath {
 	/**
 	 * Determines if the adding a property value for the given property to the last
 	 * element in the path is allowed.
-	 * 
+	 *
 	 * @param propertyName the property name
 	 * @param strict states if additional checks are applied apart from whether the
 	 *            property exists
@@ -193,7 +189,7 @@ public class GroupPath {
 
 	/**
 	 * Get the last definition group in the path
-	 * 
+	 *
 	 * @return the last definition group
 	 */
 	public DefinitionGroup getLastDefinition() {
@@ -209,7 +205,7 @@ public class GroupPath {
 	 * <br>
 	 * Will create the child groups for which only definitions are present and
 	 * update the path accordingly before getting the last group object.
-	 * 
+	 *
 	 * @param strict if the path should be checked for validity
 	 * @return the last group in the path
 	 * @throws IllegalStateException if the path is not valid
@@ -223,7 +219,7 @@ public class GroupPath {
 	 * <br>
 	 * Will create the child groups for which only definitions are present and
 	 * update the path accordingly before returning all group objects.
-	 * 
+	 *
 	 * @param strict if the path should be checked for validity
 	 * @return the all groups in the path
 	 * @throws IllegalStateException if the path is not valid

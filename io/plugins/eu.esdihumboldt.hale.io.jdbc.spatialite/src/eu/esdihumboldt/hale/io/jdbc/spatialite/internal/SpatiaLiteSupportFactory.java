@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.spatialite.internal;
 
 import java.sql.PreparedStatement;
@@ -28,7 +25,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 /**
  * Factory to create {@link SpatiaLiteSupport} instances matching the version of
  * the connected database.
- * 
+ *
  * @author Stefano Costa, GeoSolutions
  */
 public class SpatiaLiteSupportFactory {
@@ -45,7 +42,7 @@ public class SpatiaLiteSupportFactory {
 
 	/**
 	 * Return the singleton factory instance.
-	 * 
+	 *
 	 * @return the factory instance
 	 */
 	public static SpatiaLiteSupportFactory getInstance() {
@@ -65,7 +62,7 @@ public class SpatiaLiteSupportFactory {
 	 * connection objects pointing to the same physical DB, only one instance of
 	 * {@link SpatiaLiteSupport} is created and re-used multiple times.
 	 * </p>
-	 * 
+	 *
 	 * @param connection the DB connection
 	 * @return the proper {@link SpatiaLiteSupport} instance
 	 */
@@ -96,7 +93,7 @@ public class SpatiaLiteSupportFactory {
 	/**
 	 * Determine SpatiaLite version parsing the structure of the
 	 * <code>geometry_columns</code> table.
-	 * 
+	 *
 	 * @param connection the DB connection
 	 * @return the version number
 	 */

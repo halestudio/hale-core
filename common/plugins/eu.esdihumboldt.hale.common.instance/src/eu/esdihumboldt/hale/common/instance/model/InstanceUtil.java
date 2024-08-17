@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.model;
 
 import java.math.BigDecimal;
@@ -41,7 +37,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 
 /**
  * Instance utility functions.
- * 
+ *
  * @author Kai Schwierczek
  */
 public final class InstanceUtil {
@@ -53,7 +49,7 @@ public final class InstanceUtil {
 	/**
 	 * Checks whether the two given instances equal each other disregarding their
 	 * data set.
-	 * 
+	 *
 	 * @param a the first instance
 	 * @param b the second instance
 	 * @param propertyOrderRelevant whether the order of properties of the same name
@@ -77,7 +73,7 @@ public final class InstanceUtil {
 	/**
 	 * Equals implementation comparing two objects, with some improvements and
 	 * adaptations.
-	 * 
+	 *
 	 * @param o1 the first object
 	 * @param o2 the second object
 	 * @return if the two objects are deemed equal
@@ -154,7 +150,7 @@ public final class InstanceUtil {
 	/**
 	 * Check if an instance is present in the given candidates. If found, will
 	 * remove the match from the candidates collection.
-	 * 
+	 *
 	 * @param instance the instance to test
 	 * @param candidates the candidates to compare the instance against
 	 * @return the error message if the check failed, otherwise <code>null</code>
@@ -184,7 +180,7 @@ public final class InstanceUtil {
 
 	/**
 	 * Checks whether the two given groups equal each other.
-	 * 
+	 *
 	 * @param a the first group
 	 * @param b the second group
 	 * @param propertyOrderRelevant whether the order of properties of the same name
@@ -267,7 +263,7 @@ public final class InstanceUtil {
 	// TODO better output for values in case of Collections?
 	/**
 	 * Returns a string representation of the given instance.
-	 * 
+	 *
 	 * @param instance the instance
 	 * @return a string representation of the given instance
 	 */
@@ -283,7 +279,7 @@ public final class InstanceUtil {
 
 	/**
 	 * Returns a string representation of the given group.
-	 * 
+	 *
 	 * @param group the group
 	 * @return a string representation of the given group
 	 */
@@ -322,7 +318,7 @@ public final class InstanceUtil {
 
 	/**
 	 * Indents the given string with one tab.
-	 * 
+	 *
 	 * @param string the string to indent
 	 * @return the string indented with one tab
 	 */
@@ -332,7 +328,7 @@ public final class InstanceUtil {
 
 	/**
 	 * Creates a list of instances out of a FamilyInstance
-	 * 
+	 *
 	 * @param fi the FamilyInstance, may be <code>null</code>
 	 * @return a collection of instances or an empty list
 	 */

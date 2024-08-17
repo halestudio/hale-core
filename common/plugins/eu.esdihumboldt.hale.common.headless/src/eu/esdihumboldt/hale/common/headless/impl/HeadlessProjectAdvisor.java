@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.impl;
 
 import java.io.IOException;
@@ -53,7 +50,7 @@ import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
  * Advisor for loading a project headless. Only loads schemas and alignment, and
  * stores them in the advisor. As such an advisor instance may be used only once
  * to load a single project.
- * 
+ *
  * @author Simon Templer
  */
 @SuppressWarnings("restriction")
@@ -85,7 +82,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 
 		/**
 		 * Get the loaded alignment.
-		 * 
+		 *
 		 * @return the alignment
 		 */
 		public Alignment getAlignment() {
@@ -135,7 +132,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param reportHandler the report handler to use when executing contained I/O
 	 *            configurations, may be <code>null</code>
 	 * @param serviceProvider the service provider in the current context
@@ -146,7 +143,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param reportHandler the report handler to use when executing contained I/O
 	 *            configurations, may be <code>null</code>
 	 * @param serviceProvider the service provider in the current context
@@ -257,7 +254,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Get the loaded project. Can be retrieved after the project was successfully
 	 * loaded.
-	 * 
+	 *
 	 * @return the project
 	 */
 	public Project getProject() {
@@ -267,7 +264,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Get the alignment between source and target schemas. Can be retrieved after
 	 * the project was successfully loaded.
-	 * 
+	 *
 	 * @return the alignment
 	 */
 	public Alignment getAlignment() {
@@ -277,7 +274,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Get the source schemas. Can be retrieved after the project was successfully
 	 * loaded.
-	 * 
+	 *
 	 * @return the source schemas
 	 */
 	public SchemaSpace getSourceSchema() {
@@ -287,7 +284,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 	/**
 	 * Get the target schemas. Can be retrieved after the project was successfully
 	 * loaded.
-	 * 
+	 *
 	 * @return the target schemas
 	 */
 	public SchemaSpace getTargetSchema() {
@@ -296,7 +293,7 @@ public class HeadlessProjectAdvisor extends AbstractIOAdvisor<ProjectReader> {
 
 	/**
 	 * Get the registry of code lists loaded in the project.
-	 * 
+	 *
 	 * @return the code list registry
 	 */
 	public CodeListRegistry getCodeListRegistry() {

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.headless.transform.filter;
 
 import java.util.ArrayList;
@@ -38,7 +35,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 /**
  * Filter definition is a group of filters, applied on {@link Instance}s one by
  * one.
- * 
+ *
  * @author Arun
  */
 public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
@@ -76,7 +73,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * To add type filters
-	 * 
+	 *
 	 * @param types types of schema
 	 * @param filter {@link Filter}
 	 */
@@ -86,7 +83,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * To add type filters based on expression
-	 * 
+	 *
 	 * @param types types of schema
 	 * @param expression filter expression
 	 */
@@ -96,7 +93,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * To add simple filters
-	 * 
+	 *
 	 * @param filter {@link Filter}
 	 */
 	public void addUnconditionalFilter(Filter filter) {
@@ -105,7 +102,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * Add an exclude filter.
-	 * 
+	 *
 	 * @param expression the filter expression
 	 */
 	public void addExcludeFilter(String expression) {
@@ -114,7 +111,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * To add simple filters
-	 * 
+	 *
 	 * @param expression filter expression
 	 */
 	public void addUnconditionalFilter(String expression) {
@@ -123,7 +120,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * to get typeFilters
-	 * 
+	 *
 	 * @return multimap of {@link String} and {@link Filter}
 	 */
 	public Multimap<String, Filter> getTypeFilters() {
@@ -132,7 +129,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * to get Unconditional Filters
-	 * 
+	 *
 	 * @return List of {@link Filter}
 	 */
 	public List<Filter> getUnconditionalFilters() {
@@ -141,7 +138,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * Get the defined exclude filters.
-	 * 
+	 *
 	 * @return the list of exclude filters
 	 */
 	public List<Filter> getExcludeFilters() {
@@ -150,7 +147,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * Add excluded types from source
-	 * 
+	 *
 	 * @param value type of Source
 	 */
 	public void addExcludedType(String value) {
@@ -173,7 +170,7 @@ public class InstanceFilterDefinition implements Filter, ContextAwareFilter {
 
 	/**
 	 * Create a filter from the given test.
-	 * 
+	 *
 	 * @param expression the filter expression
 	 * @return the filter or may be <code>null</code>
 	 */

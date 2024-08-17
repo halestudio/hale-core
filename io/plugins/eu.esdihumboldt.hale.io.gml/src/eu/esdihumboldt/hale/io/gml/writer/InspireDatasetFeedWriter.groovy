@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer;
 import groovy.json.JsonException
 import groovy.json.JsonSlurper
@@ -47,7 +44,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements
 
 /**
  * Writer for INSPIRE data set feeds as used by INSPIRE download services.
- * 
+ *
  * @author Kai Schwierczek
  */
 @CompileStatic
@@ -100,7 +97,7 @@ public class InspireDatasetFeedWriter extends AbstractExportProvider {
 
 	/**
 	 * Returns the parameters used by this writer.
-	 * 
+	 *
 	 * @return the parameters used by this writer
 	 */
 	public static String[] getAdditionalParams() {
@@ -153,7 +150,7 @@ public class InspireDatasetFeedWriter extends AbstractExportProvider {
 	/**
 	 * Sets the occurring types. References will be included to the INSPIRE
 	 * Feature Concept Dictionary when possible.
-	 * 
+	 *
 	 * @param types the occurring types
 	 */
 	public void setOccurringTypes(Set<TypeDefinition> types) {
@@ -162,7 +159,7 @@ public class InspireDatasetFeedWriter extends AbstractExportProvider {
 
 	/**
 	 * Sets the occurring CRSs.
-	 * 
+	 *
 	 * @param crss the occurring CRSs
 	 */
 	public void setOccurringCRSs(Multiset<CRSDefinition> crss) {

@@ -1,36 +1,15 @@
-/*
- * The JTS Topology Suite is a collection of Java classes that
- * implement the fundamental operations required to validate a given
- * geo-spatial data set to a known topological specification.
- *
- * Copyright (C) 2001 Vivid Solutions
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * For more information, contact:
- *
- *     Vivid Solutions
- *     Suite #1A
- *     2328 Government Street
- *     Victoria BC  V8T 5G5
- *     Canada
- *
- *     (250)385-6040
- *     www.vividsolutions.com
- */
 
+/*
+ * Copyright (c) 2001 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.common.instance.orient.internal;
 
 import java.io.IOException;
@@ -66,7 +45,7 @@ public class ExtendedWKBReader {
 	/**
 	 * Converts a hexadecimal string to a byte array. The hexadecimal digit symbols
 	 * are case-insensitive.
-	 * 
+	 *
 	 * @param hex a string containing hex digits
 	 * @return an array of bytes with the value of the hex string
 	 */
@@ -116,7 +95,7 @@ public class ExtendedWKBReader {
 
 	/**
 	 * Create an extended WKB reader with the given geometry factory.
-	 * 
+	 *
 	 * @param geometryFactory the geometry factory
 	 */
 	public ExtendedWKBReader(GeometryFactory geometryFactory) {
@@ -127,7 +106,7 @@ public class ExtendedWKBReader {
 
 	/**
 	 * Reads a single {@link Geometry} in WKB format from a byte array.
-	 * 
+	 *
 	 * @param bytes the byte array to read from
 	 * @return the geometry read
 	 * @throws ParseException if the WKB is ill-formed
@@ -144,7 +123,7 @@ public class ExtendedWKBReader {
 
 	/**
 	 * Reads a {@link Geometry} in binary WKB format from an {@link InStream}.
-	 * 
+	 *
 	 * @param is the stream to read from
 	 * @return the Geometry read
 	 * @throws IOException if the underlying stream creates an error
@@ -217,7 +196,7 @@ public class ExtendedWKBReader {
 
 	/**
 	 * Sets the SRID, if it was specified in the WKB
-	 * 
+	 *
 	 * @param g the geometry to update
 	 * @param SRID the SRID value
 	 * @return the geometry with an updated SRID value, if required
@@ -331,7 +310,7 @@ public class ExtendedWKBReader {
 	/**
 	 * Reads a coordinate value with the specified dimensionality. Makes the X and Y
 	 * ordinates precise according to the precision model in use.
-	 * 
+	 *
 	 * @throws IOException if an error occurs reading the coordinate
 	 */
 	private void readCoordinate() throws IOException, ParseException {

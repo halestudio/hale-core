@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.common.test.docker.config;
 
 import java.util.ArrayList;
@@ -7,9 +19,9 @@ import com.typesafe.config.Config;
 
 /**
  * A general docker config instance
- * 
+ *
  * @author Sameer Sheikh
- * 
+ *
  */
 public class DockerConfigInstance implements ContainerParameters {
 
@@ -19,7 +31,7 @@ public class DockerConfigInstance implements ContainerParameters {
 
 	/**
 	 * Parameterized constructor
-	 * 
+	 *
 	 * @param confKey a key for the configuration group
 	 * @param cl a class loader to fetch the configuration from class path
 	 */
@@ -54,7 +66,7 @@ public class DockerConfigInstance implements ContainerParameters {
 	 * It checks if the global configuration for the docker host is available. It
 	 * overrides the local configuration for the docker host and takes the global
 	 * configuration.
-	 * 
+	 *
 	 * @see eu.esdihumboldt.hale.common.test.docker.config.ContainerParameters#getDockerHost()
 	 */
 	@Override

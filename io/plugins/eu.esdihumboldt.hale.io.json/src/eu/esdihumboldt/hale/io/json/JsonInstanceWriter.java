@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.json;
 
 import java.io.BufferedWriter;
@@ -35,7 +32,7 @@ import eu.esdihumboldt.hale.io.json.internal.InstanceToJson;
 
 /**
  * Writes instances as JSON.
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class JsonInstanceWriter extends AbstractInstanceWriter {
@@ -95,7 +92,7 @@ public class JsonInstanceWriter extends AbstractInstanceWriter {
 
 	/**
 	 * Method to write collection of instances to output
-	 * 
+	 *
 	 * @param instanceCollection the collection of instances
 	 * @param reporter the reporter
 	 * @throws Exception if writer instance fails
@@ -120,7 +117,7 @@ public class JsonInstanceWriter extends AbstractInstanceWriter {
 
 	/**
 	 * Method to write collection of instances to tmp output file
-	 * 
+	 *
 	 * @param instanceCollection the collection of instances
 	 * @param reporter the reporter
 	 * @param jsonFile the tmp out file

@@ -1,25 +1,22 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.cli.bash;
 
 import eu.esdihumboldt.util.cli.bash.internal.CompletionCommand;
 
 /**
  * Represents a reply from the program regarding bash completion.
- * 
+ *
  * @author Simon Templer
  */
 public interface BashCompletion {
@@ -31,7 +28,7 @@ public interface BashCompletion {
 
 	/**
 	 * Bash completion based on a Unix command.
-	 * 
+	 *
 	 * @param command the Unix command to use to generate bash completions
 	 * @return the bash completion representation
 	 */
@@ -41,7 +38,7 @@ public interface BashCompletion {
 
 	/**
 	 * Bash completion for local files.
-	 * 
+	 *
 	 * @return the bash completion representation
 	 */
 	static BashCompletion file() {
@@ -51,7 +48,7 @@ public interface BashCompletion {
 	/**
 	 * Return a Unix command to use to generate bash completions. Alternatively a
 	 * reserved keyword can be used to use a pre-configured completion.
-	 * 
+	 *
 	 * @return the Unix command or <code>null</code>
 	 */
 	String getCommand();

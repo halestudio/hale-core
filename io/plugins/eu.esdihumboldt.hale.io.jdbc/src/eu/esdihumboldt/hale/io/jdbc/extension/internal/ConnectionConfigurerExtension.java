@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.extension.internal;
 
 import java.sql.Connection;
@@ -25,7 +21,7 @@ import eu.esdihumboldt.hale.io.jdbc.extension.ConnectionConfigurer;
 
 /**
  * Extension for {@link ConnectionConfigurer}s.
- * 
+ *
  * @author Simon Templer
  */
 public class ConnectionConfigurerExtension extends IdentifiableExtension<ConnectionConfiguration> {
@@ -39,7 +35,7 @@ public class ConnectionConfigurerExtension extends IdentifiableExtension<Connect
 
 	/**
 	 * Get the extension instance.
-	 * 
+	 *
 	 * @return the extension instance
 	 */
 	public static ConnectionConfigurerExtension getInstance() {
@@ -79,7 +75,7 @@ public class ConnectionConfigurerExtension extends IdentifiableExtension<Connect
 	/**
 	 * Apply the configurations to a connection. Nothing is done for configurations
 	 * that are not applicable for this type of connection.
-	 * 
+	 *
 	 * @param connection the database connection
 	 */
 	public void applyAll(Connection connection) {

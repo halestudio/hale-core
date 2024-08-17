@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.xls.reader;
 
 import java.util.LinkedHashMap;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.io.xls.XLSUtil;
 
 /**
  * Default lookup table reader for xls files
- * 
+ *
  * @author Patrick Lieb
  */
 public class DefaultXLSLookupTableReader {
@@ -37,7 +34,7 @@ public class DefaultXLSLookupTableReader {
 	 * Reads a xls/xlsx lookup table workbook (from apache POI). The selected
 	 * columns specified by parameters keyColumn and valueColumn are mapped
 	 * together.
-	 * 
+	 *
 	 * @param workbook the workbook to read
 	 * @param skipFirst true, if first row should be skipped
 	 * @param keyColumn source column of the lookup table

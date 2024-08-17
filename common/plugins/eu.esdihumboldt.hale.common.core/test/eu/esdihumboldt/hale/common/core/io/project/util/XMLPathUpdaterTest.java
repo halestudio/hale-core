@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2019 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.util;
 
 import java.io.File;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.common.cache.Request;
 
 /**
  * Tests for {@link XMLPathUpdater} / {@link XMLSchemaUpdater}.
- * 
+ *
  * @author Simon Templer
  */
 public class XMLPathUpdaterTest {
@@ -36,7 +33,7 @@ public class XMLPathUpdaterTest {
 	/**
 	 * Test for retrieving and updating this schema was added because this lead to a
 	 * deadlock due to HTTP connections that were not released.
-	 * 
+	 *
 	 * @throws Exception if any error occurs during the test
 	 */
 	@Ignore("Depends on remote resources")

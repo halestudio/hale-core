@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.io.xsd.reader.internal;
 
@@ -32,7 +29,7 @@ import eu.esdihumboldt.util.resource.Resources;
  * This resolver provides the means of resolving the imports and includes of a
  * given schema document. The system will call this default resolver if there is
  * no other resolver present in the system.
- * 
+ *
  * @author Bernd Schneiders
  * @author Simon Templer
  */

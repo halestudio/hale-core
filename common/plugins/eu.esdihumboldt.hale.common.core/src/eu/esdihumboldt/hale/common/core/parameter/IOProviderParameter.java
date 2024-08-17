@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.parameter;
 
 import java.util.List;
@@ -23,7 +20,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 
 /**
  * Definition of a parameter for an I/O provider.
- * 
+ *
  * @author Yasmina Kammeyer
  */
 public class IOProviderParameter extends AbstractCommonParameter {
@@ -41,7 +38,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 
 	/**
 	 * Create a InstanceProvider parameter definition
-	 * 
+	 *
 	 * @param conf the configuration element
 	 */
 	public IOProviderParameter(IConfigurationElement conf) {
@@ -62,7 +59,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 	/**
 	 * Returns the binding class for this function parameter or null if there is an
 	 * enumeration present.
-	 * 
+	 *
 	 * @return the binding
 	 */
 	public Class<?> getBinding() {
@@ -72,7 +69,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 	/**
 	 * Returns the validator associated with this function parameter or null if
 	 * there is none. A validator can only be present if a binding is present.
-	 * 
+	 *
 	 * @return the validator or <code>null</code>
 	 */
 	public @Nullable Validator getValidator() {
@@ -82,7 +79,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 	/**
 	 * Returns the enumeration of allowed values for this function parameter or null
 	 * if there is a binding present.
-	 * 
+	 *
 	 * @return the enumeration
 	 */
 	public List<String> getEnumeration() {
@@ -91,7 +88,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 
 	/**
 	 * Returns the optional whether the parameter is optional or not.
-	 * 
+	 *
 	 * @return true, if the parameter is optional
 	 */
 	public boolean isOptional() {
@@ -100,7 +97,7 @@ public class IOProviderParameter extends AbstractCommonParameter {
 
 	/**
 	 * Returns the ComplexValue or null.
-	 * 
+	 *
 	 * @return the ComplexValue
 	 */
 	public ParameterValueDescriptor getValueDescriptor() {

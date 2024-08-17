@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.common.referencing.factory.adv;
 
 import java.net.URI;
@@ -37,7 +34,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 /**
  * Wraps {@link AdvCrsAuthorityFactory} for the {@code "urn:adv:crs"} namespace.
  * An example of a complete URN is {@code "urn:adv:crs:DE_DHDN_3GK3"}.
- * 
+ *
  * @author Florian Esser
  */
 public class AdvCrsUrnAuthorityFactory extends AuthorityFactoryAdapter
@@ -81,7 +78,7 @@ public class AdvCrsUrnAuthorityFactory extends AuthorityFactoryAdapter
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param urn the full URN string
 		 */
 		public AdvCrsUrn(String urn) {
@@ -97,7 +94,7 @@ public class AdvCrsUrnAuthorityFactory extends AuthorityFactoryAdapter
 
 		/**
 		 * Creates a parser for the given URN
-		 * 
+		 *
 		 * @param urn URN to parse
 		 * @return the parser
 		 */

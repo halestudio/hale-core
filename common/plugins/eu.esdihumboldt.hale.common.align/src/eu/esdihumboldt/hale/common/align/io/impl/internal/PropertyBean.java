@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import java.text.MessageFormat;
@@ -43,7 +39,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Represents a {@link Property}.
- * 
+ *
  * @author Simon Templer
  */
 public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
@@ -59,7 +55,7 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 	/**
 	 * Create a property entity bean based on the given property entity
-	 * 
+	 *
 	 * @param property the property entity
 	 */
 	public PropertyBean(Property property) {
@@ -142,7 +138,7 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 	/**
 	 * The function to look for a child as ChildDefinition or as Group
-	 * 
+	 *
 	 * @param parent the starting point to traverse from
 	 * @param childName the name of the parent's child
 	 * @return a pair of child and a list with the full path from parent to the
@@ -207,7 +203,7 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 	/**
 	 * Create a condition.
-	 * 
+	 *
 	 * @param conditionFilter the condition filter
 	 * @return the condition or <code>null</code>
 	 */
@@ -221,7 +217,7 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 	/**
 	 * Get the property names
-	 * 
+	 *
 	 * @return the property names
 	 */
 	public List<ChildContextBean> getProperties() {
@@ -230,7 +226,7 @@ public class PropertyBean extends EntityBean<PropertyEntityDefinition> {
 
 	/**
 	 * Set the property names
-	 * 
+	 *
 	 * @param properties the property names to set
 	 */
 	public void setProperties(List<ChildContextBean> properties) {

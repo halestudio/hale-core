@@ -19,7 +19,7 @@ import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Bundle Activator for the NON OSGi registry.
- * 
+ *
  */
 public class Activator implements BundleActivator {
 
@@ -50,7 +50,7 @@ public class Activator implements BundleActivator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
 	 */
@@ -60,7 +60,7 @@ public class Activator implements BundleActivator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
@@ -70,7 +70,7 @@ public class Activator implements BundleActivator {
 
 	/**
 	 * Returns the Bundle context.
-	 * 
+	 *
 	 * @return
 	 */
 	public BundleContext getBundleContext() {
@@ -79,7 +79,7 @@ public class Activator implements BundleActivator {
 
 	/**
 	 * Returns the singleton {@link Activator}.
-	 * 
+	 *
 	 * @return
 	 */
 	public static Activator getDefault() {
@@ -89,7 +89,7 @@ public class Activator implements BundleActivator {
 	/**
 	 * Return the debug value of the option if founded otherwise return
 	 * defaultValue.
-	 * 
+	 *
 	 * @param option
 	 * @param defaultValue
 	 * @return

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.internal;
 
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ import groovy.lang.Closure;
 
 /**
  * Target binding class for {@link GroovyTransformation}.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class TargetCollector {
@@ -67,7 +64,7 @@ public class TargetCollector {
 
 	/**
 	 * Create a new target collector.
-	 * 
+	 *
 	 * @param builder the builder used to create target instances
 	 * @param typeDef the target type definition
 	 */
@@ -78,7 +75,7 @@ public class TargetCollector {
 
 	/**
 	 * Call method for easy access from Groovy.
-	 * 
+	 *
 	 * @param targetClosure the target closure
 	 */
 	public void call(Closure<?> targetClosure) {
@@ -89,7 +86,7 @@ public class TargetCollector {
 
 	/**
 	 * Call method for easy access from Groovy.
-	 * 
+	 *
 	 * @param value the property value
 	 */
 	public void call(Object value) {
@@ -102,7 +99,7 @@ public class TargetCollector {
 
 	/**
 	 * Call method for easy access from Groovy.
-	 * 
+	 *
 	 * @param value the property value
 	 * @param targetClosure the target closure
 	 */
@@ -122,7 +119,7 @@ public class TargetCollector {
 	/**
 	 * Transforms the closures added to this collector to a {@link MultiValue} using
 	 * the supplied builder.
-	 * 
+	 *
 	 * @param builder the instance builder for creating target instances
 	 * @param type the type of the instance to create
 	 * @param log the log
@@ -178,7 +175,7 @@ public class TargetCollector {
 
 	/**
 	 * Returns the number of collected targets.
-	 * 
+	 *
 	 * @return the number of collected targets
 	 */
 	public int size() {

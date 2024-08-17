@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.report.impl;
 
 import java.text.MessageFormat;
@@ -24,7 +20,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link IOMessage} implementation
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.2
@@ -38,7 +34,7 @@ public class IOMessageImpl extends MessageImpl implements IOMessage {
 
 	/**
 	 * Create a new message
-	 * 
+	 *
 	 * @param message the message string
 	 * @param throwable the associated throwable, may be <code>null</code>
 	 */
@@ -48,7 +44,7 @@ public class IOMessageImpl extends MessageImpl implements IOMessage {
 
 	/**
 	 * Create a new message
-	 * 
+	 *
 	 * @param message the message string
 	 * @param throwable the associated throwable, may be <code>null</code>
 	 * @param lineNumber the line number in the file, <code>-1</code> for none
@@ -62,7 +58,7 @@ public class IOMessageImpl extends MessageImpl implements IOMessage {
 
 	/**
 	 * Create a new message
-	 * 
+	 *
 	 * @param message the message string
 	 * @param throwable the associated throwable, may be <code>null</code>
 	 * @param stackTrace the associated stack trace, or <code>null</code>
@@ -78,7 +74,7 @@ public class IOMessageImpl extends MessageImpl implements IOMessage {
 
 	/**
 	 * Create a new message and format it using {@link MessageFormat}
-	 * 
+	 *
 	 * @param pattern the message format pattern
 	 * @param throwable the associated throwable, may be <code>null</code>
 	 * @param lineNumber the line number in the file, <code>-1</code> for none

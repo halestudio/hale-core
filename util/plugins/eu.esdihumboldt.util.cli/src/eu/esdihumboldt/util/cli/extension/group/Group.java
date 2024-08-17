@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.cli.extension.group;
 
 import javax.annotation.Nullable;
@@ -23,7 +20,7 @@ import de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension.Identifiab
 /**
  * Represents a CLI command group. Usually provided through the corresponding
  * extension point.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -38,7 +35,7 @@ public final class Group implements Identifiable {
 
 	/**
 	 * Create a command group.
-	 * 
+	 *
 	 * @param id the group id
 	 * @param name the group name
 	 * @param parent the parent group or <code>null</code>

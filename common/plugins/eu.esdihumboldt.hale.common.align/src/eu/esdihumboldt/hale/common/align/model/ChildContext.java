@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model;
 
 import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
@@ -21,7 +17,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Associates an instance context with a child definition.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -37,7 +33,7 @@ public class ChildContext {
 
 	/**
 	 * Create a child with the default context
-	 * 
+	 *
 	 * @param child the child definition
 	 */
 	public ChildContext(ChildDefinition<?> child) {
@@ -46,7 +42,7 @@ public class ChildContext {
 
 	/**
 	 * Create a child context.
-	 * 
+	 *
 	 * @param contextName the instance context name, may be <code>null</code>
 	 * @param index the context index, may be <code>null</code>
 	 * @param condition the context condition, may be <code>null</code>

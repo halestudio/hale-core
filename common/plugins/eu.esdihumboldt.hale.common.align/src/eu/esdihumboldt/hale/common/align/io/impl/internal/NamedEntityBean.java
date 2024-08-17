@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.io.impl.internal;
 
 import eu.esdihumboldt.hale.common.align.model.Entity;
@@ -22,7 +18,7 @@ import eu.esdihumboldt.hale.common.align.model.Type;
 
 /**
  * A name associated with an entity bean
- * 
+ *
  * @author Simon Templer
  */
 public class NamedEntityBean {
@@ -40,7 +36,7 @@ public class NamedEntityBean {
 
 	/**
 	 * Create a named entity bean and initialize it using the given entity
-	 * 
+	 *
 	 * @param name the entity name
 	 * @param entity the entity
 	 */
@@ -61,7 +57,7 @@ public class NamedEntityBean {
 
 	/**
 	 * Get the entity name
-	 * 
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -70,7 +66,7 @@ public class NamedEntityBean {
 
 	/**
 	 * Set the entity name
-	 * 
+	 *
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
@@ -79,7 +75,7 @@ public class NamedEntityBean {
 
 	/**
 	 * Get the entity bean
-	 * 
+	 *
 	 * @return the entity
 	 */
 	public EntityBean<?> getEntity() {
@@ -88,7 +84,7 @@ public class NamedEntityBean {
 
 	/**
 	 * Set the entity bean
-	 * 
+	 *
 	 * @param entity the entity to set
 	 */
 	public void setEntity(EntityBean<?> entity) {

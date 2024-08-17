@@ -1,17 +1,14 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
 package eu.esdihumboldt.hale.io.shp.reader.internal;
 
@@ -57,7 +54,7 @@ import eu.esdihumboldt.hale.io.shp.internal.Messages;
 
 /**
  * Reads a schema from a shapefile.
- * 
+ *
  * @author Thorsten Reitz
  * @author Simon Templer
  */
@@ -68,7 +65,7 @@ public class ShapeSchemaReader extends AbstractCachedSchemaReader implements Sha
 	/**
 	 * Set if an attribute should be added that will be filled with the file name
 	 * when loading data from a Shapefile.
-	 * 
+	 *
 	 * @param addFilename if a filename attribute should be added
 	 */
 	public void setAddFilenameAttribute(boolean addFilename) {
@@ -176,7 +173,7 @@ public class ShapeSchemaReader extends AbstractCachedSchemaReader implements Sha
 
 	/**
 	 * Create a type definition for a simple attribute type
-	 * 
+	 *
 	 * @param type the attribute type
 	 * @param schema the schema
 	 * @param namespace the namespace to use for the type definition
@@ -237,7 +234,7 @@ public class ShapeSchemaReader extends AbstractCachedSchemaReader implements Sha
 
 	/**
 	 * Get the type definition from a Shapefile.
-	 * 
+	 *
 	 * @param source the Shapefile source
 	 * @return the type definition or <code>null</code> in case reading the type was
 	 *         not possible

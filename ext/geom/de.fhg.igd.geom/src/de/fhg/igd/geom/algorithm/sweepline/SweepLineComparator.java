@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -19,7 +19,7 @@ import java.util.Comparator;
 
 /**
  * Compares SweepLine segments to sort them by their increasing y ordinate.
- * 
+ *
  * @author Michel Kraemer
  */
 public class SweepLineComparator implements Comparator<SweepLineSegment> {
@@ -36,7 +36,7 @@ public class SweepLineComparator implements Comparator<SweepLineSegment> {
 
 	/**
 	 * Constructs a new comparator
-	 * 
+	 *
 	 * @param x the sweep line's current position
 	 */
 	public SweepLineComparator(double x) {
@@ -45,7 +45,7 @@ public class SweepLineComparator implements Comparator<SweepLineSegment> {
 
 	/**
 	 * Sets the sweep line's position
-	 * 
+	 *
 	 * @param x the position
 	 */
 	public void setPosition(double x) {
@@ -54,7 +54,7 @@ public class SweepLineComparator implements Comparator<SweepLineSegment> {
 
 	/**
 	 * Compares two SweepLine segments.
-	 * 
+	 *
 	 * @param s1 the first segment
 	 * @param s2 the second segment
 	 * @return -1 if the first segment is "above" the second one, 1 if it is below

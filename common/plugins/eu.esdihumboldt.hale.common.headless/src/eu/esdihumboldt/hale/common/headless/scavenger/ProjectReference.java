@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.scavenger;
 
 import java.io.File;
@@ -40,7 +37,7 @@ import eu.esdihumboldt.hale.common.headless.report.ReportFile;
 /**
  * Represents a project residing in a specific folder and its configuration. The
  * configuration is stored in a file in the project folder.
- * 
+ *
  * @param <C> the update context type
  * @author Simon Templer
  */
@@ -102,7 +99,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Force an update by resetting the loaded project information.
-	 * 
+	 *
 	 * @param context the update context
 	 */
 	public void forceUpdate(C context) {
@@ -114,7 +111,7 @@ public class ProjectReference<C> {
 	 * Updates the project status from the configuration and if needed loads the
 	 * project and transformation environment and adds or removes the transformation
 	 * environment.
-	 * 
+	 *
 	 * @param context the update context
 	 */
 	public void update(C context) {
@@ -156,7 +153,7 @@ public class ProjectReference<C> {
 	/**
 	 * States if the report file should be deleted in {@link #update(Object)} even
 	 * if the project info is already loaded.
-	 * 
+	 *
 	 * @return if the report file should be deleted for an already loaded project
 	 */
 	protected boolean isForceClearReports() {
@@ -165,7 +162,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Called when the project was successfully loaded in {@link #update(Object)}.
-	 * 
+	 *
 	 * @param context the update context
 	 * @param projectId the project identifier
 	 * @param projectFile the project file
@@ -179,7 +176,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Called when the project failed to load in {@link #update(Object)}.
-	 * 
+	 *
 	 * @param context the update context
 	 * @param projectId the project identifier
 	 */
@@ -189,7 +186,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Called when the project file is not available in {@link #update(Object)}.
-	 * 
+	 *
 	 * @param context the update context
 	 * @param projectId the project identifier
 	 */
@@ -199,7 +196,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Get the project information if available.
-	 * 
+	 *
 	 * @return the projectInfo
 	 */
 	public ProjectInfo getProjectInfo() {
@@ -208,7 +205,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Get the loaded project if available.
-	 * 
+	 *
 	 * @return the project
 	 */
 	protected Project getProject() {
@@ -217,7 +214,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Set the internal project.
-	 * 
+	 *
 	 * @param project the project to set
 	 */
 	protected void setProject(Project project) {
@@ -226,7 +223,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Get the file the reports for loading the project are stored in.
-	 * 
+	 *
 	 * @return the report file
 	 */
 	public File getLoadReportFile() {
@@ -235,7 +232,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Load project information.
-	 * 
+	 *
 	 * @param projectFile the project file
 	 * @param reportHandler the report handler
 	 * @return the project info or <code>null</code> if the project file could not
@@ -259,7 +256,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Get the project file is possible.
-	 * 
+	 *
 	 * @return the project file or <code>null</code>
 	 */
 	public File getProjectFile() {
@@ -300,7 +297,7 @@ public class ProjectReference<C> {
 
 	/**
 	 * Get the supported file extensions for projects.
-	 * 
+	 *
 	 * @return the set of file extensions (with leading dot)
 	 */
 	protected Set<String> getSupportedExtensions() {

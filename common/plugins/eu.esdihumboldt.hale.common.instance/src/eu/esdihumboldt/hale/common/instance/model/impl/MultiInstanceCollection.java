@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.model.impl;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
  * which may be inefficient. The iterator supports
  * {@link ResourceIterator#remove()} if the underlying InstanceCollection's
  * ResourceIterator does so.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class MultiInstanceCollection implements InstanceCollection, LogAware {
@@ -46,7 +42,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 
 	/**
 	 * Constructor using a list of instance collections..
-	 * 
+	 *
 	 * @param collections the list of instance collections
 	 */
 	public MultiInstanceCollection(List<InstanceCollection> collections) {
@@ -125,7 +121,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 
 	/**
 	 * Create a new multi instance collection with filtered child collections
-	 * 
+	 *
 	 * @param filtered the filtered child collections
 	 * @return the multi instance collection
 	 */
@@ -140,7 +136,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	/**
 	 * Internal resource iterator iterating over all given instance collections in
 	 * order. Supports {@link #remove()} if the underlying iterator supports remove.
-	 * 
+	 *
 	 * @author Kai Schwierczek
 	 */
 	private class MultiInstanceCollectionResourceIterator implements ResourceIterator<Instance> {
@@ -218,7 +214,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	/**
 	 * Internal class for decorating the instances with the index of the instance
 	 * collection list.
-	 * 
+	 *
 	 * @author Kai Schwierczek
 	 */
 	private static class MultiInstanceCollectionInstance extends InstanceDecorator {
@@ -227,7 +223,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param instance the instance to decorate
 		 * @param listIndex the index of the list this instance originated from
 		 */
@@ -240,7 +236,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 	/**
 	 * Internal class for decorating the references with the index of the instance
 	 * collection list.
-	 * 
+	 *
 	 * @author Kai Schwierczek
 	 */
 	private static class MultiInstanceCollectionReference implements InstanceReference {
@@ -250,7 +246,7 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param reference the reference to decorate
 		 * @param listIndex the index of the list this reference originated from
 		 */

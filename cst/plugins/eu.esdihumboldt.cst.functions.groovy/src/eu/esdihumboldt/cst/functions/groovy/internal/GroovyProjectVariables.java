@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.internal;
 
 import javax.annotation.Nullable;
@@ -24,7 +21,7 @@ import groovy.lang.GroovyObjectSupport;
 
 /**
  * Accessor for project variables in Groovy scripts.
- * 
+ *
  * @author Simon Templer
  */
 public class GroovyProjectVariables extends GroovyObjectSupport {
@@ -35,7 +32,7 @@ public class GroovyProjectVariables extends GroovyObjectSupport {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectInfo the project information service
 	 * @param executionContext the transformation execution context
 	 * @param cellLog the cell-associated transformation log
@@ -49,7 +46,7 @@ public class GroovyProjectVariables extends GroovyObjectSupport {
 
 	/**
 	 * Support subscript operator.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @return the variable value or <code>null</code>
 	 */
@@ -73,7 +70,7 @@ public class GroovyProjectVariables extends GroovyObjectSupport {
 
 	/**
 	 * Get a variable value with a default value as fall-back.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @param def the variable default value
 	 * @return the variable value or the default
@@ -84,7 +81,7 @@ public class GroovyProjectVariables extends GroovyObjectSupport {
 
 	/**
 	 * Get a variable value. Fail with an exception if the variable does not exist.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @return the variable value
 	 * @throws IllegalArgumentException if a variable value with the given name

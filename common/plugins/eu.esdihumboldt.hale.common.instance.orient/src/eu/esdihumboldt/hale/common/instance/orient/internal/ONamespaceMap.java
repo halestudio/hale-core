@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.internal;
 
 import javax.xml.XMLConstants;
@@ -29,7 +25,7 @@ import eu.esdihumboldt.util.Identifiers;
 /**
  * Temporary static namespace map for storing {@link OInstance}s/{@link OGroup}s
  * in a temporary database or using them inside this JVM.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class ONamespaceMap {
@@ -39,7 +35,7 @@ public abstract class ONamespaceMap {
 	/**
 	 * Map the namespace of the given qualified name to a short identifier and
 	 * return the adapted name.
-	 * 
+	 *
 	 * @param org the original qualified name
 	 * @return the adapted qualified name
 	 */
@@ -53,7 +49,7 @@ public abstract class ONamespaceMap {
 
 	/**
 	 * Encode a {@link QName} for runtime use with OrientDB.
-	 * 
+	 *
 	 * @param org the qualified name
 	 * @return the encoded name
 	 */
@@ -69,7 +65,7 @@ public abstract class ONamespaceMap {
 	/**
 	 * Determine the original namespace of the given qualified name with a namespace
 	 * previously mapped with {@link #map(QName)} and return the original name.
-	 * 
+	 *
 	 * @param mapped the adapted qualified name
 	 * @return the original qualified name
 	 */
@@ -83,7 +79,7 @@ public abstract class ONamespaceMap {
 
 	/**
 	 * Decode a name based on the runtime namespace map.
-	 * 
+	 *
 	 * @param name the encoded name
 	 * @return the decoded qualified name
 	 * @throws DecoderException of decoding the local part of the name fails

@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.geometry.impl;
 
 import java.util.concurrent.TimeUnit;
@@ -32,7 +28,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 
 /**
  * CRS definition based on a code
- * 
+ *
  * @author Simon Templer
  */
 public class CodeDefinition implements CRSDefinition {
@@ -67,7 +63,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param code the CRS code (e.g. EPSG:4326)
 	 * @param crs the coordinate reference system, may be <code>null</code>
 	 */
@@ -79,7 +75,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Create a code definition with only a code.
-	 * 
+	 *
 	 * @param code the code
 	 */
 	public CodeDefinition(String code) {
@@ -88,7 +84,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Create a code definition with only a code.
-	 * 
+	 *
 	 * @param code the code
 	 * @param longitudeFirst if the axis order should be assumed as longitude first
 	 */
@@ -121,7 +117,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Get the CRS code
-	 * 
+	 *
 	 * @return the code
 	 */
 	public String getCode() {
@@ -158,7 +154,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Extract EPSG code number from a given CRS code.
-	 * 
+	 *
 	 * @param candidate the CRS code
 	 * @return the EPSG code as string or <code>null</code> if it cannot be
 	 *         identified
@@ -184,7 +180,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Extract code number from a given CRS code for a specified prefix.
-	 * 
+	 *
 	 * @param candidate the CRS code
 	 * @param prefix the allowed prefix / authority
 	 * @return the CRS code part w/o prefix or <code>null</code>
@@ -217,7 +213,7 @@ public class CodeDefinition implements CRSDefinition {
 
 	/**
 	 * Try to resolve the CRS with the given code
-	 * 
+	 *
 	 * @param code CRS code
 	 * @return a resolved CodeDefinition or <code>null</code> if the code could not
 	 *         be resolved

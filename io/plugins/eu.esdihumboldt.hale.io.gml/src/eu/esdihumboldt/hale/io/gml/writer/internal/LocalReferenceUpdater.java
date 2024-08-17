@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal;
 
 import java.net.URI;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.util.io.IOUtils;
 /**
  * Reference updater that updates local references (starting with
  * "<code>#</code>" ) to relative references according to an ID->target map.
- * 
+ *
  * @author Florian Esser
  */
 public class LocalReferenceUpdater implements ReferenceUpdater {
@@ -35,7 +32,7 @@ public class LocalReferenceUpdater implements ReferenceUpdater {
 
 	/**
 	 * Create the reference updater
-	 * 
+	 *
 	 * @param idToTargetMapping Mapping of local IDs to the new target URIs
 	 * @param originalTarget URI of the original target
 	 */

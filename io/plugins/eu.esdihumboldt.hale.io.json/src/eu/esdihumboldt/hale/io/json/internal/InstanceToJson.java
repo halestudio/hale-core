@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal;
 
 import java.io.IOException;
@@ -62,7 +59,7 @@ import eu.esdihumboldt.util.geometry.WindingOrder;
 
 /**
  * Class to generate instance to JSON.
- * 
+ *
  * @author Simon Templer
  */
 public class InstanceToJson implements InstanceJsonConstants {
@@ -438,7 +435,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Writes the properties of a group into JSON
-	 * 
+	 *
 	 * @param jsonGen json generator
 	 * @param group the group to write
 	 * @param log logger
@@ -499,7 +496,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Writes the properties of a value into JSON
-	 * 
+	 *
 	 * @param jsonGen json generator
 	 * @param value value to be written
 	 * @param log logger
@@ -525,7 +522,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Writes the simple value into JSON
-	 * 
+	 *
 	 * @param jsonGen json generator
 	 * @param value value to be written
 	 * @param log logger
@@ -573,7 +570,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Writes the numeric values into JSON
-	 * 
+	 *
 	 * @param jsonGen json generator
 	 * @param num numeric value
 	 * @param log logger
@@ -614,7 +611,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Writes geometry properties into JSON
-	 * 
+	 *
 	 * @param jsonGen json generator
 	 * @param geomProp geometry property
 	 * @param log logger
@@ -665,7 +662,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Method to generate json from instance.
-	 * 
+	 *
 	 * @param instance instance
 	 * @param log reporter
 	 * @return json in string format
@@ -687,7 +684,7 @@ public class InstanceToJson implements InstanceJsonConstants {
 
 	/**
 	 * Method to generate json from instanceCollection.
-	 * 
+	 *
 	 * @param instanceCollection instance collection
 	 * @param log reporter
 	 * @return json in string format

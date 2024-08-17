@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.internal;
 
 import java.text.MessageFormat;
@@ -61,7 +57,7 @@ import eu.esdihumboldt.util.Pair;
 
 /**
  * Function executor on a transformation tree.
- * 
+ *
  * @author Simon Templer
  */
 public class FunctionExecutor extends CellNodeValidator {
@@ -74,7 +70,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Create a function executor.
-	 * 
+	 *
 	 * @param reporter the transformation reporter
 	 * @param engines the transformation engine manager
 	 * @param context the transformation execution context
@@ -136,7 +132,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Execute a property transformation.
-	 * 
+	 *
 	 * @param transformation the transformation factory
 	 * @param cell the alignment cell
 	 * @param sources the named source entities and nodes
@@ -273,7 +269,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 					/*
 					 * TODO
-					 * 
+					 *
 					 * set node value only if no result has already been set. If a value is already
 					 * there and we are in a lower priority executor, we do not overwrite.
 					 */
@@ -287,7 +283,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Processes the given value. Does not handle {@link MultiValue}!
-	 * 
+	 *
 	 * @param cellLog the transformation log
 	 * @param function the property function
 	 * @param value the value to process
@@ -335,7 +331,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Convert a value according to a target property entity definition.
-	 * 
+	 *
 	 * @param value the value to convert
 	 * @param propertyEntityDefinition the target property entity definition
 	 * @return the converted object
@@ -385,7 +381,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Returns a {@link PropertyEntityDefinition} for a given entity definition.
-	 * 
+	 *
 	 * @param def the entity definition
 	 * @return the property entity definition
 	 */
@@ -401,7 +397,7 @@ public class FunctionExecutor extends CellNodeValidator {
 
 	/**
 	 * Set the current type cell. The value is stored in a {@link ThreadLocal}.
-	 * 
+	 *
 	 * @param typeCell the current type cell
 	 */
 	public void setTypeCell(Cell typeCell) {

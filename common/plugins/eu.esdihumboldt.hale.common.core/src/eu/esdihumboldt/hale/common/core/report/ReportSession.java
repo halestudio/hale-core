@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report;
 
 import java.util.HashMap;
@@ -25,7 +21,7 @@ import com.google.common.collect.Multimap;
 /**
  * A {@link ReportSession} contains all {@link Report}s from a session, which is
  * currently based on a date.
- * 
+ *
  * @author Andreas Burchert
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @since 2.5
@@ -44,7 +40,7 @@ public class ReportSession {
 
 	/**
 	 * Constructor. The timestamp is used as an identifier.
-	 * 
+	 *
 	 * @param timestamp the timestamp
 	 */
 	public ReportSession(long timestamp) {
@@ -53,7 +49,7 @@ public class ReportSession {
 
 	/**
 	 * Returns the the id of this session
-	 * 
+	 *
 	 * @return the id
 	 */
 	public long getId() {
@@ -62,7 +58,7 @@ public class ReportSession {
 
 	/**
 	 * Add a {@link Report} to this session.
-	 * 
+	 *
 	 * @param report the report
 	 */
 	@SuppressWarnings("unchecked")
@@ -80,9 +76,9 @@ public class ReportSession {
 
 	/**
 	 * Get all reports matching the given message type
-	 * 
+	 *
 	 * @param messageType the message type
-	 * 
+	 *
 	 * @return report types mapped to reports
 	 */
 	public Multimap<Class<? extends Report<?>>, Report<?>> getReports(
@@ -100,7 +96,7 @@ public class ReportSession {
 
 	/**
 	 * Get all reports.
-	 * 
+	 *
 	 * @return reports
 	 */
 	public Multimap<Class<? extends Report<?>>, Report<?>> getAllReports() {

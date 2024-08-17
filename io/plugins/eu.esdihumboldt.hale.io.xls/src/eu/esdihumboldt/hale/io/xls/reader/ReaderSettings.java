@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.xls.reader;
 
 import java.io.IOException;
@@ -39,7 +36,7 @@ import eu.esdihumboldt.hale.io.xls.AbstractAnalyseTable;
 
 /**
  * Class collecting information and settings on reading
- * 
+ *
  * @author Simon Templer
  */
 public class ReaderSettings {
@@ -129,7 +126,7 @@ public class ReaderSettings {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param sheets information in sheets
 	 */
 	private ReaderSettings(List<SheetInfo> sheets) {
@@ -147,7 +144,7 @@ public class ReaderSettings {
 
 	/**
 	 * Load reader settings for Excel file reader.
-	 * 
+	 *
 	 * @param reader the Excel reader
 	 * @return the loaded settings
 	 * @throws InvalidFormatException if the source file has a wrong format or is
@@ -268,7 +265,7 @@ public class ReaderSettings {
 
 	/**
 	 * Determine if the given content type represents an XLSX file.
-	 * 
+	 *
 	 * @param contentType the content type to test
 	 * @return if the given content type represents an XLSX file
 	 */

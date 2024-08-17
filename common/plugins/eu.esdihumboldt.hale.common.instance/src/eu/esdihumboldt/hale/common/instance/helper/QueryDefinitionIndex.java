@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.helper;
 
 import eu.esdihumboldt.hale.common.instance.model.DataSet;
@@ -21,7 +17,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Index for hash map used in property resolver.
- * 
+ *
  * @author Sebastian Reinhardt
  */
 public class QueryDefinitionIndex {
@@ -32,7 +28,7 @@ public class QueryDefinitionIndex {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param def the definition
 	 * @param dataSet the data set
 	 * @param query the query
@@ -45,7 +41,7 @@ public class QueryDefinitionIndex {
 
 	/**
 	 * Returns the definition
-	 * 
+	 *
 	 * @return the definition
 	 */
 	public TypeDefinition getDef() {
@@ -54,7 +50,7 @@ public class QueryDefinitionIndex {
 
 	/**
 	 * Returns the query
-	 * 
+	 *
 	 * @return the query
 	 */
 	public String getQuery() {
@@ -63,7 +59,7 @@ public class QueryDefinitionIndex {
 
 	/**
 	 * Returns the associated data set which may be null.
-	 * 
+	 *
 	 * @return the data set
 	 */
 	public DataSet getDataSet() {

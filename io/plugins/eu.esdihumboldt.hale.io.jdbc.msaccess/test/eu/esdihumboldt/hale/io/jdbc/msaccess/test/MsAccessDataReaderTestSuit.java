@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.msaccess.test;
 
 import static org.junit.Assert.assertFalse;
@@ -42,7 +39,7 @@ import eu.esdihumboldt.hale.io.jdbc.msaccess.MsAccessSchemaReader;
 
 /**
  * Abstract suit class to test Access database
- * 
+ *
  * @author Arun
  *
  */
@@ -85,7 +82,7 @@ public abstract class MsAccessDataReaderTestSuit {
 
 	/**
 	 * Copies the source database to a temporary file.
-	 * 
+	 *
 	 * @throws IOException if temp file can't be created
 	 */
 	public void createSourceTempFile() throws IOException {
@@ -98,7 +95,7 @@ public abstract class MsAccessDataReaderTestSuit {
 	/**
 	 * Generates a random path (within the system's temporary folder) for the source
 	 * database.
-	 * 
+	 *
 	 * @return the absolute path of the source temp file
 	 */
 	public File getSourceTempFilePath() {
@@ -130,7 +127,7 @@ public abstract class MsAccessDataReaderTestSuit {
 	/**
 	 * Test - reads a sample MsAccess Database schema. UCanAccess lib should not
 	 * throw any error.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	public void schemaReaderTest() throws Exception {
@@ -155,7 +152,7 @@ public abstract class MsAccessDataReaderTestSuit {
 
 	/**
 	 * Test - reads a sample MsAccess schema and data.
-	 * 
+	 *
 	 * @throws Exception if an error occurs
 	 */
 	public void instanceRaderTest() throws Exception {
@@ -182,7 +179,7 @@ public abstract class MsAccessDataReaderTestSuit {
 
 	/**
 	 * Reads a schema from a MsAccess database file.
-	 * 
+	 *
 	 * @param sourceFile the file of the source database.
 	 * @return the schema
 	 * @throws Exception any exception thrown by {@link MsAccessSchemaReader}
@@ -203,7 +200,7 @@ public abstract class MsAccessDataReaderTestSuit {
 
 	/**
 	 * Reads instances from from a MsAccess database file with the provided schema.
-	 * 
+	 *
 	 * @param sourceSchema the schema of the source database
 	 * @param sourceFile the file of the source database.
 	 * @return the read instances
@@ -228,7 +225,7 @@ public abstract class MsAccessDataReaderTestSuit {
 	/**
 	 * Check table names should not be in excluded table list (UCA_METADATA table
 	 * list)
-	 * 
+	 *
 	 * @param tableNames table names collection return from Schema
 	 */
 	public void checkTables(Collection<? extends TypeDefinition> tableNames) {

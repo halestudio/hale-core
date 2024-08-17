@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.http.client.metrics;
 
 import java.util.ArrayList;
@@ -35,11 +32,11 @@ import io.prometheus.client.GaugeMetricFamily;
 
 /**
  * Metrics collector for {@link PoolingHttpClientConnectionManager}.
- * 
+ *
  * Inspired by https://github.com/micrometer-metrics/micrometer/pull/1223/files
  * and
  * https://github.com/jborgers/http-client-monitor/blob/main/http-client-monitor-lib/src/main/java/com/jpinpoint/monitor/PoolingHttpClientConnectionManagerStats.java
- * 
+ *
  * @author Simon Templer
  */
 public class PoolingHttpClientConnectionManagerMetrics extends Collector
@@ -48,13 +45,13 @@ public class PoolingHttpClientConnectionManagerMetrics extends Collector
 	/*
 	 * Note: Request execution times could be tracked with a custom
 	 * HttpRequestExecutor
-	 * 
+	 *
 	 * Example: https://github.com/micrometer-metrics/micrometer/pull/1286/files
 	 */
 
 	/**
 	 * Install a metric collector for a {@link PoolingHttpClientConnectionManager}.
-	 * 
+	 *
 	 * @param connectionManager the connection manager
 	 * @param clientName the client name the metrics should be labeled with
 	 * @param enablePerHostMetrics if metrics that include information on routes per
@@ -119,7 +116,7 @@ public class PoolingHttpClientConnectionManagerMetrics extends Collector
 
 	/**
 	 * Create a metric collector for a {@link PoolingHttpClientConnectionManager}.
-	 * 
+	 *
 	 * @param connectionManager the connection manager
 	 * @param clientName the client name the metrics should be labeled with
 	 * @param enablePerHostMetrics if metrics that include information on routes per

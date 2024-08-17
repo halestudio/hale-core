@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.functions;
 
 import java.io.UnsupportedEncodingException;
@@ -34,7 +31,7 @@ import eu.esdihumboldt.hale.common.lookup.impl.LookupTableImpl;
 
 /**
  * Common utility methods for dealing with the classification mapping function.
- * 
+ *
  * @author Simon Templer
  */
 public class ClassificationMappingUtil implements ClassificationMappingFunction {
@@ -43,7 +40,7 @@ public class ClassificationMappingUtil implements ClassificationMappingFunction 
 
 	/**
 	 * Get the classification lookup table from the transformation parameters.
-	 * 
+	 *
 	 * @param parameters the transformation parameters
 	 * @param serviceProvider service provider in case a lookup table has to be
 	 *            retrieved through a service

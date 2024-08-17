@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.transformation.report.impl;
 
 import eu.esdihumboldt.hale.common.align.model.Cell;
@@ -23,7 +19,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TransformationMessage} implementation
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -33,7 +29,7 @@ public class TransformationMessageImpl extends MessageImpl implements Transforma
 
 	/**
 	 * Create a new transformation message.
-	 * 
+	 *
 	 * @param cell the cell the message is associated to
 	 * @param message the message
 	 * @param throwable the throwable associated to the message, may be
@@ -47,7 +43,7 @@ public class TransformationMessageImpl extends MessageImpl implements Transforma
 
 	/**
 	 * Create a new transformation message.
-	 * 
+	 *
 	 * @param cell the cell the message is associated to
 	 * @param message the message
 	 * @param throwable the throwable associated to the message, may be
@@ -63,7 +59,7 @@ public class TransformationMessageImpl extends MessageImpl implements Transforma
 
 	/**
 	 * Create a new transformation message.
-	 * 
+	 *
 	 * @param cellId the identifier of the cell the message is associated to
 	 * @param message the message
 	 * @param throwable the throwable associated to the message, may be

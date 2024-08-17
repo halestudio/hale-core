@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.functions.join;
 
 import java.util.ArrayList;
@@ -29,7 +26,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Information for a Join transformation.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class JoinParameter {
@@ -46,7 +43,7 @@ public class JoinParameter {
 
 	/**
 	 * Constructs a new join parameter descriptor.
-	 * 
+	 *
 	 * @param types the list of join types, in order
 	 * @param conditions the join conditions
 	 */
@@ -74,7 +71,7 @@ public class JoinParameter {
 	 * <br>
 	 * Valid means, that there has to be at least two types, with each type after
 	 * the first having at least one join condition on previous types.
-	 * 
+	 *
 	 * @return a error description or <code>null</code> if the parameter is valid.
 	 */
 	public String validate() {
@@ -86,10 +83,10 @@ public class JoinParameter {
 	 * <br>
 	 * Valid means, that there has to be at least two types, with each type after
 	 * the first having at least one join condition on previous types.
-	 * 
+	 *
 	 * @param tryFix if it should be attempted to fix the configuration, the user is
 	 *            expected to complete it
-	 * 
+	 *
 	 * @return a error description or <code>null</code> if the parameter is valid.
 	 */
 	public String validate(boolean tryFix) {
@@ -204,7 +201,7 @@ public class JoinParameter {
 		/**
 		 * Constructs a join condition to join the type of <code>joinProperty</code> if
 		 * the condition <code>joinProperty = baseProperty</code> matches.
-		 * 
+		 *
 		 * @param baseProperty the property of a base type
 		 * @param joinProperty the property of the type to join
 		 */

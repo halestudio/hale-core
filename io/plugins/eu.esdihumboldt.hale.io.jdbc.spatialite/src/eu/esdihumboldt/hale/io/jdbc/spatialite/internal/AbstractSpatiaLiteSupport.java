@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.spatialite.internal;
 
 import java.sql.PreparedStatement;
@@ -28,7 +25,7 @@ import de.fhg.igd.slf4jplus.ALoggerFactory;
 
 /**
  * Base implementation of {@link SpatiaLiteSupport} interface.
- * 
+ *
  * @author Stefano Costa, GeoSolutions
  */
 public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
@@ -147,7 +144,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
-	 * 
+	 *
 	 * @return SQL statement to extract geometry type metadata from the
 	 *         <code>geometry_columns</code> metadata table
 	 */
@@ -159,7 +156,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
-	 * 
+	 *
 	 * @param coordDimension the value of the <code>coord_dimension</code> column
 	 * @return the dimensionality of the geometry coordinates (either 2, 3, 4 or -1
 	 *         in case of error)
@@ -172,7 +169,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
-	 * 
+	 *
 	 * @param type the value of the <code>type</code> column
 	 * @return the corresponding JTS {@link Geometry} subclass
 	 */
@@ -185,7 +182,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
-	 * 
+	 *
 	 * @return SQL statement to extract SRS metadata from the
 	 *         <code>spatial_ref_sys</code> metadata table
 	 */
@@ -198,7 +195,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 	 * <p>
 	 * Template method, implementation is provided by subclasses.
 	 * </p>
-	 * 
+	 *
 	 * @return SQL statement to extract SRS metadata from the
 	 *         <code>spatial_ref_sys</code> metadata table
 	 */
@@ -206,7 +203,7 @@ public abstract class AbstractSpatiaLiteSupport implements SpatiaLiteSupport {
 
 	/**
 	 * Utility method to close a {@link ResultSet} and a {@link Statement} instance.
-	 * 
+	 *
 	 * @param stmt the {@link Statement} to close
 	 * @param rs the {@link ResultSet} to close
 	 */

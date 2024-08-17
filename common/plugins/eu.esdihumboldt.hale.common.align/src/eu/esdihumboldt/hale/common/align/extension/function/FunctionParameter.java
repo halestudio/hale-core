@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.extension.function;
 
 import java.util.List;
@@ -30,7 +26,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Definition of a function parameter.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -47,7 +43,7 @@ public final class FunctionParameter extends AbstractParameter
 
 	/**
 	 * Create a function parameter definition.
-	 * 
+	 *
 	 * @param conf the configuration element
 	 */
 	public FunctionParameter(IConfigurationElement conf) {

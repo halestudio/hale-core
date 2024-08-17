@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.app.transform;
 
 import static eu.esdihumboldt.hale.app.transform.ExecUtil.*
@@ -35,7 +32,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 
 /**
  * Application that executes a transformation based on a project file.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -412,7 +409,7 @@ $baseCommand
 
 	/**
 	 * Create an URI from a String that is a file or URI.
-	 * 
+	 *
 	 * @param value the string value
 	 * @return the URI
 	 */
@@ -435,7 +432,7 @@ $baseCommand
 
 	/**
 	 * Store a setting for a {@link Configurable}
-	 * 
+	 *
 	 * @param key the setting key/name
 	 * @param value the setting's value
 	 */
@@ -471,7 +468,7 @@ $baseCommand
 
 	/**
 	 * Create Element Object from String value
-	 * 
+	 *
 	 * @param value The file/path to the XML file as String
 	 * @return The (XML) Element
 	 */

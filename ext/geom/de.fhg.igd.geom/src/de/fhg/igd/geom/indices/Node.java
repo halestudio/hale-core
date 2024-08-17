@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -25,7 +25,7 @@ import de.fhg.igd.geom.Localizable;
  * Represents a node (or leaf) in a R-Tree. The splitting techniques used in
  * this Node implements the Quadratic Algorithm described in Guttman - R-Trees:
  * A dynamic index structure for spatial searching
- * 
+ *
  * @author Michel Kraemer
  * @param <T> the type of the objects stored in the RTree
  */
@@ -64,7 +64,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param pageSize the page size (number of children/locs that can be attached
 	 *            to this node before it gets splitted). Must be even and greater
 	 *            than or equal to 4.
@@ -88,7 +88,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Calculates the minimum size of a Node
-	 * 
+	 *
 	 * @return the number of children a Node must have at least
 	 */
 	private int calculateMinSize() {
@@ -99,7 +99,7 @@ public class Node<T extends Localizable> implements Localizable {
 	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to index
 	 * n-dimensional stuff. We make sure irregular stuff won't get in anyway, so be
 	 * relaxed about BBs.
-	 * 
+	 *
 	 * @param bb the boundingBox
 	 * @return the ersatz volume
 	 */
@@ -118,7 +118,7 @@ public class Node<T extends Localizable> implements Localizable {
 	 * In the RTree we can't use @link{BoundingBox#getVolume} as we want to index
 	 * n-dimensional stuff. We make sure irregular stuff won't get in anyway, so be
 	 * relaxed about BBs.
-	 * 
+	 *
 	 * @param bb the boundingBox
 	 * @return the ersatz volume
 	 */
@@ -128,7 +128,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Relates one bounding box to another
-	 * 
+	 *
 	 * @param b1 the first bounding box
 	 * @param b2 the second bounding box
 	 * @param useExtent true if the extents of the bounding boxes should be compared
@@ -146,7 +146,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Searches this Node and all children and returns the leaf that contains the
 	 * given Localizable
-	 * 
+	 *
 	 * @param loc the Localizable to find
 	 * @return the leaf that contains loc or null if loc is not contained by any
 	 *         leaf
@@ -181,7 +181,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Select a leaf node in which to place a new index entry.
-	 * 
+	 *
 	 * @param loc the localizable to find a leaf for
 	 * @return the leaf node
 	 */
@@ -241,7 +241,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Finds the first entries of two splitted groups (Quadratic Split)
-	 * 
+	 *
 	 * @return the two entries
 	 */
 	private Localizable[] pickSeeds() {
@@ -295,7 +295,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Splits this node into two nodes and adds them to the parent node. (Quadratic
 	 * Split)
-	 * 
+	 *
 	 * @return the new second Node
 	 */
 	private Node<T> split() {
@@ -411,7 +411,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Inserts a Localizable to the Node. Splits the Node if there are too many
 	 * children.
-	 * 
+	 *
 	 * @param loc the Localizable to insert
 	 */
 	private void internalInsert(final Localizable loc) {
@@ -461,7 +461,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Finds the Leaf L in which to insert the given Localizable loc and inserts loc
 	 * to L. Splits L if there are too many children.
-	 * 
+	 *
 	 * @param loc the Localizable to insert
 	 */
 	public void insert(final Localizable loc) {
@@ -473,7 +473,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Adds the BoundingBox of this Node to all parent nodes and adds the
 	 * Localizable nn, which resulted from a split operation, to the parent.
-	 * 
+	 *
 	 * @param nn the Localizable produced by a split operation
 	 */
 	private void adjustTree(Node<T> nn) {
@@ -495,7 +495,7 @@ public class Node<T extends Localizable> implements Localizable {
 	 * Traverses the given Node "no" and all its children. If a leaf is found its
 	 * children (the actual Localizables) will be inserted into the given RTree as
 	 * usual.
-	 * 
+	 *
 	 * @param <T> the type of the objects stored in the RTree
 	 * @param no the Node to traverse
 	 * @param tree the RTree to insert the Localizables into
@@ -521,7 +521,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Eliminate l if it has too few entries. Propagate elimination upwards. Adjust
 	 * BoundingBoxes.
-	 * 
+	 *
 	 * @param l the Leaf from which an entry has been deleted
 	 */
 	@SuppressWarnings("unchecked")
@@ -573,7 +573,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * Removes a Localizable from the Node
-	 * 
+	 *
 	 * @param loc the Localizable to remove
 	 * @return true if the Node has been changed, false otherwise
 	 */
@@ -605,7 +605,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Returns a list of all Localizables that have any relation to the given
 	 * Localizable loc.
-	 * 
+	 *
 	 * @param loc the Localizable to match
 	 * @param ignoreZ true if the z coordinate should be ignored during candidate
 	 *            search
@@ -637,7 +637,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Returns a list of all Localizables that have any relation to the given
 	 * Localizable loc.
-	 * 
+	 *
 	 * @param loc the Localizable to match
 	 * @return a list of Localizables (containing only leafs of this tree and no
 	 *         nodes)
@@ -649,7 +649,7 @@ public class Node<T extends Localizable> implements Localizable {
 	/**
 	 * Returns a list of all Localizables that have any relation to the given
 	 * Localizable loc. Ignores the z ordinate.
-	 * 
+	 *
 	 * @param loc the Localizable to match
 	 * @return a list of Localizables (containing only leafs of this tree and no
 	 *         nodes)
@@ -660,7 +660,7 @@ public class Node<T extends Localizable> implements Localizable {
 
 	/**
 	 * This method will return the "Neighborhood" of a given Localizable.
-	 * 
+	 *
 	 * @param k the number of neighbor candidates to retrieve
 	 * @param loc the given Localizable
 	 * @param stepsize the size of each step in which the neighborhood is enlarged.

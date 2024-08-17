@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.definition;
 
 import java.util.ArrayList;
@@ -26,10 +22,10 @@ import eu.esdihumboldt.util.Pair;
  * Provides support for converting certain objects to a definition string and
  * vice versa based on the {@link ObjectDefinition}ies available for the
  * supported object type and its sub-types.
- * 
+ *
  * @param <T> the supported object type
  * @param <D> the supported definition type
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? extends T>> {
@@ -48,7 +44,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 
 	/**
 	 * Get all available definitions compatible with the supported type.
-	 * 
+	 *
 	 * @return the definitions
 	 */
 	protected abstract List<D> getDefinitions();
@@ -56,13 +52,13 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 	/**
 	 * Represent the given object as a definition string, so that it can be used to
 	 * again create an object instance using {@link #parse(String)}.
-	 * 
+	 *
 	 * @param <X> the object type, an {@link ObjectDefinition} supporting this type
 	 *            must be available
 	 * @param object the object to create a string representation for
 	 * @return the string representation of the object or <code>null</code> if no
 	 *         corresponding {@link ObjectDefinition} is available
-	 * 
+	 *
 	 * @see #getDefinitions()
 	 */
 	public <X extends T> String asString(X object) {
@@ -79,14 +75,14 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 	 * Get the object type identifier and the string representation of the object.
 	 * Please note that the string representation is not the same as the definition
 	 * string retrieved through {@link #asString(Object)}.
-	 * 
+	 *
 	 * @param <X> the object type, an {@link ObjectDefinition} supporting this type
 	 *            must be available
 	 * @param object the object to create a string representation for
 	 * @return the object type identifier and string representation of the object,
 	 *         <code>null</code> if no corresponding {@link ObjectDefinition} is
 	 *         available
-	 * 
+	 *
 	 * @see #getDefinitions()
 	 */
 	@SuppressWarnings("unchecked")
@@ -119,7 +115,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 
 	/**
 	 * Compares two objects based on there implemented interfaces.
-	 * 
+	 *
 	 * @param object object to check
 	 * @param definition definition to check on
 	 * @return true if they implemented the same interfaces
@@ -134,7 +130,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 
 	/**
 	 * Provides the definitions in a topological order.
-	 * 
+	 *
 	 * @return sorted definitions
 	 */
 	private Iterable<D> getSortedDefinitions() {
@@ -183,7 +179,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 
 	/**
 	 * Parse the given definition string and create a corresponding object.
-	 * 
+	 *
 	 * @param value the definition string to parse
 	 * @return the created object or <code>null</code>
 	 */
@@ -206,7 +202,7 @@ public abstract class AbstractObjectFactory<T, D extends ObjectDefinition<? exte
 	/**
 	 * Recreate an object from type identifier and string representation as
 	 * retrieved using {@link #asPair(Object)}.
-	 * 
+	 *
 	 * @param typeId the type identifier
 	 * @param value the object string representation
 	 * @return the created object or <code>null</code>

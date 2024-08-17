@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.jdbc.spatialite;
 
 import java.sql.PreparedStatement;
@@ -38,7 +50,7 @@ import schemacrawler.schema.ColumnDataType;
 
 /**
  * Geometry advisor for SpatiaLite.
- * 
+ *
  * @author Stefano Costa, GeoSolutions
  */
 public class SpatiaLiteGeometries implements GeometryAdvisor<SQLiteConnection> {
@@ -164,7 +176,7 @@ public class SpatiaLiteGeometries implements GeometryAdvisor<SQLiteConnection> {
 		 * Note: WKTWriter does produce wrong WKT (as of the OGC specification) for 3D
 		 * geometries. For example does produce "MULTIPOLGON" instead of
 		 * "MULTIPOLYGON Z".
-		 * 
+		 *
 		 * This is why we use the GeomFromEWKT function. See also http://postgis.
 		 * refractions.net/docs/using_postgis_dbmanagement.html#EWKB_EWKT
 		 */

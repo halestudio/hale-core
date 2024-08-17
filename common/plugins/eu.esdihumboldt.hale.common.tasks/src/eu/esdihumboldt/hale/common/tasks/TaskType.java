@@ -1,25 +1,21 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.tasks;
 
 /**
  * Represents a certain type of task and allows retrieving information on a task
  * of that type
- * 
+ *
  * @param <C> the type of the context object
  *
  * @author Simon Templer, Thorsten Reitz
@@ -48,10 +44,10 @@ public interface TaskType<C> {
 
 		/**
 		 * Get the maximum severity level based on the given levels
-		 * 
+		 *
 		 * @param one one level
 		 * @param theOther the other level
-		 * 
+		 *
 		 * @return the maximum severity of both given levels
 		 */
 		public static TaskSeverity max(TaskSeverity one, TaskSeverity theOther) {
@@ -77,14 +73,14 @@ public interface TaskType<C> {
 
 	/**
 	 * Get the type name of the task type
-	 * 
+	 *
 	 * @return the task type name
 	 */
 	public String getName();
 
 	/**
 	 * The task factory that provides tasks of this type
-	 * 
+	 *
 	 * @return the task factory
 	 */
 	public TaskFactory<C> getTaskFactory();
@@ -98,30 +94,30 @@ public interface TaskType<C> {
 	 * take the case that two classes are declared equal via an equality relation,
 	 * but an algorithm finds they share no substructures like attribute names and
 	 * types.
-	 * 
+	 *
 	 * @param task the task which severity level shall be identified. The task's
 	 *            type name must match that of the task type
-	 * 
+	 *
 	 * @return the severity level of the task
 	 */
 	public TaskSeverity getSeverityLevel(Task<C> task);
 
 	/**
 	 * Get the creation reason for the given task
-	 * 
+	 *
 	 * @param task the task which reason shall be determined. The task's type name
 	 *            must match that of the task type
-	 * 
+	 *
 	 * @return the task's creation reason
 	 */
 	public String getReason(Task<C> task);
 
 	/**
 	 * Get the title of the given task
-	 * 
+	 *
 	 * @param task the task which title shall be determined. The task's type name
 	 *            must match that of the task type
-	 * 
+	 *
 	 * @return the task title
 	 */
 	public String getTitle(Task<C> task);

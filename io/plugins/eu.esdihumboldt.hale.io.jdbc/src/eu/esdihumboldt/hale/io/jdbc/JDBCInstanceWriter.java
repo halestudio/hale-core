@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc;
 
 import java.io.IOException;
@@ -62,7 +58,7 @@ import eu.esdihumboldt.hale.io.jdbc.constraints.internal.GeometryAdvisorConstrai
 
 /**
  * Writes instance to a database through a JDBC connection.
- * 
+ *
  * @author Simon Templer
  */
 public class JDBCInstanceWriter extends AbstractInstanceWriter
@@ -178,13 +174,13 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * the database with the new generated values, and updated the foreign key
 	 * values with this newly generated auto incremental values of the referenced
 	 * column.
-	 * 
+	 *
 	 * <p>
 	 * <b>Limitation:</b>
 	 * </p>
 	 * This implementation for auto generated key insert is supported only for those
 	 * tables which has only single auto generated fields.
-	 * 
+	 *
 	 * @param connection the database connection
 	 * @param instances the instances to write
 	 * @param progress the progress indicator
@@ -291,11 +287,11 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * 
+	 *
 	 * This helps to store the mapping of the old value to the auto generated value
 	 * for a particular type. If same type appears twice that means the sorting and
 	 * filtering of the types has not been done properly.
-	 * 
+	 *
 	 * @param type a type definition whose child has the auto incremented constraint
 	 * @param orgId original id as string
 	 * @param genId auto incremented id
@@ -319,7 +315,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * 
+	 *
 	 * Retrieves the target schema and orders it based on the references, so that
 	 * there should not be any integrity constrain violation exception.
 	 * <p>
@@ -330,7 +326,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * <li>Create a new <code>set</code> for the sorted types</li>
 	 * <li>Create a visited type map to keep hold of the types whose references have
 	 * already been checked.
-	 * 
+	 *
 	 * <li>Iterate over the types that needs to be sorted
 	 * <ol>
 	 * <li>If the type is already in the visited map means references for this type
@@ -344,17 +340,17 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * <li>Traverse till the type whose childs do not have any reference, add this
 	 * type to the sorted set first</li>
 	 * <li>Add the iterated type</li>
-	 * 
+	 *
 	 * </ol>
 	 * </li>
 	 * <li>Add the sorted types in the sorted set</li>
 	 * </ol>
-	 * 
-	 * 
+	 *
+	 *
 	 * @param collection types to be sorted
-	 * 
+	 *
 	 * @return returns the sorted schema based on the references
-	 * 
+	 *
 	 */
 	public Set<TypeDefinition> getSortedSchemas(Collection<? extends TypeDefinition> collection) {
 
@@ -377,7 +373,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * the types based on the references. This method recursively calls itself till
 	 * it finds a type which does not have any reference and that type to the sorted
 	 * list as first element.
-	 * 
+	 *
 	 * @param td type definition of the reference
 	 * @return list of type definitions of referenced
 	 */
@@ -413,7 +409,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Filters the set of properties to only contain properties that can be used for
 	 * inserting (e. g. no groups).
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param properties the available properties
 	 */
@@ -432,7 +428,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	/**
 	 * Create a prepared insert statement, based on the given type definition.
 	 * Currently, auto incremented fields are not inserted into the statement.
-	 * 
+	 *
 	 * @param type the type definition
 	 * @param properties the set properties of the instance for which this statement
 	 *            is
@@ -512,8 +508,8 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 	 * changed. Thus, insertion of the foreign key wont fail. It will either execute
 	 * the statement directly or add it into the batches depending upon the auto
 	 * incremented flag.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param statement the insert statement
 	 * @param properties the properties to fill the statement with
 	 * @param instance the instance
@@ -625,7 +621,7 @@ public class JDBCInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Set a prepared statement parameter value.
-	 * 
+	 *
 	 * @param statement the prepared statement
 	 * @param index the parameter index
 	 * @param value the value, not <code>null</code>

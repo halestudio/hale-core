@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.extension.hooks;
 
 import de.fhg.igd.slf4jplus.ALogger;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
 
 /**
  * Hooks utility methods.
- * 
+ *
  * @author Simon Templer
  */
 public class HooksUtil {
@@ -33,7 +29,7 @@ public class HooksUtil {
 
 	/**
 	 * Execute transformation tree hooks according to the given state.
-	 * 
+	 *
 	 * @param hooks the hooks, may be <code>null</code>
 	 * @param state the tree state
 	 * @param tree the transformation tree

@@ -12,7 +12,7 @@ package org.eclipse.equinox.nonosgi.internal.registry;
 
 /**
  * OSGi constants.
- * 
+ *
  */
 public class Constants implements org.osgi.framework.Constants {
 

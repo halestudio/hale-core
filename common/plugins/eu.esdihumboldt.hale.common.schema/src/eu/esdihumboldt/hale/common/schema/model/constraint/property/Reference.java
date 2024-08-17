@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.schema.model.constraint.property;
 
 import java.util.Collection;
@@ -29,7 +25,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.PrimaryKey;
 /**
  * Specifies that a property references another identifiers of other objects,
  * e.g. the {@link PrimaryKey}.
- * 
+ *
  * @author Kai Schwierczek
  * @author Simon Templer
  */
@@ -56,7 +52,7 @@ public class Reference implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Create a reference constraint.
-	 * 
+	 *
 	 * @param reference <code>true</code>, if the property should be marked as
 	 *            reference, w/o specifying specific target types,
 	 *            <code>false</code> if it should not be marked as reference
@@ -67,7 +63,7 @@ public class Reference implements PropertyConstraint, ReferenceLike {
 
 	/**
 	 * Creates a reference to the specified type.
-	 * 
+	 *
 	 * @param targetType the type that gets referenced
 	 */
 	public Reference(TypeDefinition targetType) {
@@ -111,7 +107,7 @@ public class Reference implements PropertyConstraint, ReferenceLike {
 	/**
 	 * Extract the identifier of a referenced object from a reference value. The
 	 * default implementation just returns the given reference.
-	 * 
+	 *
 	 * @param refValue the reference
 	 * @return the identifier of the referenced object
 	 */
@@ -122,7 +118,7 @@ public class Reference implements PropertyConstraint, ReferenceLike {
 	/**
 	 * Converts the identifier of a referenced object to the reference value. The
 	 * default implementation just returns the given identifier.
-	 * 
+	 *
 	 * @param id the identifier
 	 * @return the reference value
 	 */

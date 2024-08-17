@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.helper;
 
 import javax.xml.namespace.QName;
@@ -24,7 +20,7 @@ import eu.esdihumboldt.hale.common.schema.model.DefinitionGroup;
 
 /**
  * Instance traverser that traverses the model depth first.
- * 
+ *
  * @author Simon Templer
  */
 public class DepthFirstInstanceTraverser implements InstanceTraverser {
@@ -40,7 +36,7 @@ public class DepthFirstInstanceTraverser implements InstanceTraverser {
 
 	/**
 	 * Creates a depth first instance traverser.
-	 * 
+	 *
 	 * @param cancelChildTraversalOnly if when the callback cancels the traversal,
 	 *            only the traversal of the children should be canceled (meaning
 	 *            traversal is continued but not down from the current object)
@@ -115,7 +111,7 @@ public class DepthFirstInstanceTraverser implements InstanceTraverser {
 
 	/**
 	 * Traverse the children of a given group.
-	 * 
+	 *
 	 * @param group the group
 	 * @param callback the traversal callback
 	 * @return if traversal shall be continued

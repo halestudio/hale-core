@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.inspire.codelists;
 
 import groovy.transform.CompileStatic
@@ -32,7 +29,7 @@ import eu.esdihumboldt.hale.io.codelist.inspire.reader.INSPIRECodeListReader
 
 /**
  * Provides access to code lists in INSPIRE registry.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -49,7 +46,7 @@ public class RegistryCodeLists {
 
 	/**
 	 * Load the code lists from the registry, may access an already cached lists.
-	 * @return application schema IDs mapped to code list references 
+	 * @return application schema IDs mapped to code list references
 	 */
 	public static Multimap<String, CodeListRef> loadCodeLists() {
 		synchronized (RegistryCodeLists) {
@@ -64,7 +61,7 @@ public class RegistryCodeLists {
 
 	/**
 	 * Get the code lists for a specific application schema.
-	 * 
+	 *
 	 * @param applicationSchemaId the application schema identifier/url
 	 * @return the code lists
 	 */

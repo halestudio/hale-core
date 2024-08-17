@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.report.impl;
 
 import java.io.IOException;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.hale.common.core.report.Statistics;
 
 /**
  * Abstract report definition.
- * 
+ *
  * @author Andreas Burchert
  * @param <T> the report type
  * @param <R> the reporter
@@ -118,7 +114,7 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 
 	/**
 	 * Create report definition.
-	 * 
+	 *
 	 * @param reportClass the report class
 	 * @param id the identifier for the definition (without prefix)
 	 */
@@ -168,7 +164,7 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 
 	/**
 	 * Create a report from a set of properties.
-	 * 
+	 *
 	 * @param props the properties
 	 * @return the report
 	 */
@@ -176,7 +172,7 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 
 	/**
 	 * Configure the report.
-	 * 
+	 *
 	 * @param reporter report to configure
 	 * @param props properties to set
 	 * @return the report
@@ -185,7 +181,7 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 
 	/**
 	 * Basic configuration that should be called from every child class!
-	 * 
+	 *
 	 * @param reporter reporter
 	 * @param props properties
 	 * @throws Exception if parsing fails
@@ -256,7 +252,7 @@ public abstract class AbstractReportDefinition<T extends Report<?>, R extends T>
 	/**
 	 * Get a {@link Properties} representation of the given report that can be used
 	 * to create a new report instance using {@link #createReport(Properties)}.
-	 * 
+	 *
 	 * @param report the message
 	 * @return the properties representing the report
 	 */

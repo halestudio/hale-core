@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2016 Fraunhofer IGD
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Contributors:
  *     Fraunhofer IGD <http://www.igd.fraunhofer.de/>
  */
@@ -19,7 +19,7 @@ import com.google.common.base.Preconditions;
 
 /**
  * Some mathematical helper methods
- * 
+ *
  * @author Simon Thum
  * @author Michel Kraemer
  */
@@ -27,7 +27,7 @@ public class MathHelper {
 
 	/**
 	 * Enforces a value range
-	 * 
+	 *
 	 * @param in the input value
 	 * @param lower the lower limit
 	 * @param upper the upper limit
@@ -45,7 +45,7 @@ public class MathHelper {
 
 	/**
 	 * Enforces a value range
-	 * 
+	 *
 	 * @param in the input value
 	 * @param lower the lower limit
 	 * @param upper the upper limit
@@ -63,7 +63,7 @@ public class MathHelper {
 
 	/**
 	 * Enforces a value range
-	 * 
+	 *
 	 * @param in the input value
 	 * @param lower the lower limit
 	 * @param upper the upper limit
@@ -81,7 +81,7 @@ public class MathHelper {
 
 	/**
 	 * Translate a value based on input and output ranges. Does not saturate.
-	 * 
+	 *
 	 * @param in the value to translate
 	 * @param in_min minimum of the input range
 	 * @param in_range size of the input range
@@ -96,7 +96,7 @@ public class MathHelper {
 
 	/**
 	 * scales a double range using integer indexed segments.
-	 * 
+	 *
 	 * @param start the range start
 	 * @param end the range end
 	 * @param unit the unit (usually end-start / max )
@@ -114,7 +114,7 @@ public class MathHelper {
 
 	/**
 	 * SQL-like coalescing using isReal()
-	 * 
+	 *
 	 * @param p array of at least unit length
 	 * @return the first real value from the given array
 	 */
@@ -129,7 +129,7 @@ public class MathHelper {
 
 	/**
 	 * Checks if a floating point number is real (not infinite and not NaN)
-	 * 
+	 *
 	 * @param x the number to check
 	 * @return true if x is real, false otherwise
 	 */
@@ -139,7 +139,7 @@ public class MathHelper {
 
 	/**
 	 * Checks if a floating point number is real (not infinite and not NaN)
-	 * 
+	 *
 	 * @param x the number to check
 	 * @return true if x is real, false otherwise
 	 */
@@ -149,7 +149,7 @@ public class MathHelper {
 
 	/**
 	 * The so-called 'euclidean' modulo, a modulo which won't yield negative results
-	 * 
+	 *
 	 * @param x the number to divide
 	 * @param mod the divisor
 	 * @return the euclidean modulo
@@ -165,7 +165,7 @@ public class MathHelper {
 
 	/**
 	 * Calculates the dot product between two vectors
-	 * 
+	 *
 	 * @param p1x the x ordinate of the first vector
 	 * @param p1y the y ordinate of the first vector
 	 * @param p2x the x ordinate of the second vector
@@ -179,7 +179,7 @@ public class MathHelper {
 	/**
 	 * given two angels in radians, returns a difference in radians closest to zero
 	 * such that a + angleDiff(a, b) represents b.
-	 * 
+	 *
 	 * @param a angle a
 	 * @param b angle b
 	 * @return the angular difference in radians
@@ -191,7 +191,7 @@ public class MathHelper {
 	/**
 	 * given two angels in radians, returns a difference in radians closest to zero
 	 * such that a + angleDiff(a, b) represents b.
-	 * 
+	 *
 	 * @param a angle a
 	 * @param b angle b
 	 * @param ring the ring in which the difference is meaningful (2PI is full
@@ -210,7 +210,7 @@ public class MathHelper {
 	/**
 	 * given two angels in radians, returns a difference in radians closest to zero
 	 * and >= zero.
-	 * 
+	 *
 	 * @param a angle a
 	 * @param b angle b
 	 * @return the angular difference in radians
@@ -224,7 +224,7 @@ public class MathHelper {
 	 * and >= zero, depending on the scale. For example, while two angles pi/2 and
 	 * -pi/2 may differ on a full circle (scale 1), they are considered equal at
 	 * scale 2. At scale 3, also orthogonal angles would match, and so on.
-	 * 
+	 *
 	 * @param a angle a
 	 * @param b angle b
 	 * @param scale the scale to base the difference on
@@ -236,7 +236,7 @@ public class MathHelper {
 
 	/**
 	 * Checks if a given integer is a power of two
-	 * 
+	 *
 	 * @param i the integer
 	 * @return true if i is a power of two
 	 */
@@ -247,7 +247,7 @@ public class MathHelper {
 	/**
 	 * Finds the next power of two for a given integer (see
 	 * http://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2)
-	 * 
+	 *
 	 * @param i the integer (must be positive)
 	 * @return the next power of two
 	 */
@@ -265,7 +265,7 @@ public class MathHelper {
 
 	/**
 	 * Finds the next power of two lower than the given number
-	 * 
+	 *
 	 * @param i the number (must larger than 0)
 	 * @return the next power of two lower than i
 	 */
@@ -278,7 +278,7 @@ public class MathHelper {
 	 * Calls {@link #nextPowerOfTwo(int)} and {@link #previousPowerOfTwo(int)} and
 	 * finds the nearest value to the given number. Prefers the higher number if the
 	 * distance is equal.
-	 * 
+	 *
 	 * @param i the number (must be positive)
 	 * @return the nearest power of two
 	 */
@@ -298,7 +298,7 @@ public class MathHelper {
 
 	/**
 	 * Compares two double for equality within e
-	 * 
+	 *
 	 * @param a the first double
 	 * @param b the second double
 	 * @param e the maximum allowed difference

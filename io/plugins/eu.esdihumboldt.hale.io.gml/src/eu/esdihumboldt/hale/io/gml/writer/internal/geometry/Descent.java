@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry;
 
 import java.text.MessageFormat;
@@ -28,7 +24,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.GmlWriterUtil;
 /**
  * Represents a descent in the document, must be used to end elements started
  * with
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  */
@@ -40,7 +36,7 @@ public class Descent {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param writer the XMl stream writer
 	 * @param path the descent path
 	 */
@@ -59,7 +55,7 @@ public class Descent {
 
 	/**
 	 * Close the descent
-	 * 
+	 *
 	 * @throws XMLStreamException if an error occurs closing the elements
 	 */
 	public void close() throws XMLStreamException {
@@ -78,7 +74,7 @@ public class Descent {
 
 	/**
 	 * Descend the given path
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param descendPath the path to descend
 	 * @param previousDescent the previous descent, that will be closed or partially
@@ -96,7 +92,7 @@ public class Descent {
 
 	/**
 	 * Descend the given path
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param descendPath the path to descend
 	 * @param previousDescent the previous descent, that will be closed or partially

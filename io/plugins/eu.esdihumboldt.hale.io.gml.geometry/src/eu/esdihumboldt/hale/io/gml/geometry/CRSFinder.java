@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.geometry;
 
 import javax.xml.namespace.QName;
@@ -30,7 +26,7 @@ import eu.esdihumboldt.hale.common.schema.model.DefinitionGroup;
 /**
  * Finds a CRS definition in a GML instance. The first valid definition found
  * will be stored, traversal in this case is aborted.
- * 
+ *
  * @author Simon Templer
  */
 public class CRSFinder implements InstanceTraversalCallback {
@@ -76,7 +72,7 @@ public class CRSFinder implements InstanceTraversalCallback {
 	/**
 	 * Check a candidate for a CRS code. Set {@link #definition} to the
 	 * corresponding {@link CRSDefinition} if it represents a CRS.
-	 * 
+	 *
 	 * @param candidate the CRS code candidate
 	 * @param prefix the expected code prefix
 	 * @return if {@link #definition} was set
@@ -105,7 +101,7 @@ public class CRSFinder implements InstanceTraversalCallback {
 
 	/**
 	 * Get the CRS definition found during traversal.
-	 * 
+	 *
 	 * @return the definition the CRS definition or <code>null</code>
 	 */
 	public CRSDefinition getDefinition() {

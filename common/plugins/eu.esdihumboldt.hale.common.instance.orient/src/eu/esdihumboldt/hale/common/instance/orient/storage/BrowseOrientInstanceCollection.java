@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.orient.storage;
 
 import java.util.ArrayList;
@@ -47,9 +43,9 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 
 /**
  * Instance collection based on a {@link LocalOrientDB}
- * 
+ *
  * FIXME implement instance collection fan-out (InstanceCollection2)
- * 
+ *
  * @author Simon Templer
  */
 public class BrowseOrientInstanceCollection implements InstanceCollection {
@@ -194,7 +190,7 @@ public class BrowseOrientInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Create an instance collection based on the given database
-	 * 
+	 *
 	 * @param database the database
 	 * @param types the type index
 	 * @param dataSet the data set the instances are associated to
@@ -253,7 +249,7 @@ public class BrowseOrientInstanceCollection implements InstanceCollection {
 
 	/**
 	 * Get the main class names
-	 * 
+	 *
 	 * @return the main class names
 	 */
 	private Collection<String> getMainClassNames() {

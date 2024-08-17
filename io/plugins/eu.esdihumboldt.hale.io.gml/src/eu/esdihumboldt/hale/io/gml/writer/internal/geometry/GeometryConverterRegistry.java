@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.geometry.converters.PolygonTo
 
 /**
  * Registry for {@link GeometryConverter}s
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @version $Id$
@@ -59,7 +55,7 @@ public class GeometryConverterRegistry {
 
 		/**
 		 * Create a conversion ladder for the given geometry
-		 * 
+		 *
 		 * @param geometry the geometry
 		 * @param noLossOnly if only no-loss converters may be used
 		 */
@@ -132,9 +128,9 @@ public class GeometryConverterRegistry {
 
 		/**
 		 * Tells if to ignore a converter
-		 * 
+		 *
 		 * @param converter the converter
-		 * 
+		 *
 		 * @return if to ignore the converter
 		 */
 		private boolean ignore(GeometryConverter<?, ?> converter) {
@@ -181,7 +177,7 @@ public class GeometryConverterRegistry {
 
 	/**
 	 * Get the singleton instance of the registry
-	 * 
+	 *
 	 * @return the geometry converter registry
 	 */
 	public static GeometryConverterRegistry getInstance() {
@@ -218,7 +214,7 @@ public class GeometryConverterRegistry {
 
 	/**
 	 * Register a geometry converter
-	 * 
+	 *
 	 * @param converter the converter
 	 */
 	public void registerConverter(GeometryConverter<?, ?> converter) {
@@ -233,9 +229,9 @@ public class GeometryConverterRegistry {
 
 	/**
 	 * Create a conversion ladder for the given geometry
-	 * 
+	 *
 	 * @param geometry the geometry
-	 * 
+	 *
 	 * @return the conversion ladder
 	 */
 	public ConversionLadder createLadder(Geometry geometry) {
@@ -245,9 +241,9 @@ public class GeometryConverterRegistry {
 	/**
 	 * Create a conversion ladder for the given geometry that does only no-loss
 	 * conversions.
-	 * 
+	 *
 	 * @param geometry the geometry
-	 * 
+	 *
 	 * @return the conversion ladder
 	 */
 	public ConversionLadder createNoLossLadder(Geometry geometry) {

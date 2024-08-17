@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.compatibility;
 
 import com.google.common.base.Predicate;
@@ -26,14 +23,14 @@ import eu.esdihumboldt.hale.common.instance.model.Filter;
 
 /**
  * Utilities for compatibility mode checks.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class CompatibilityModeUtil {
 
 	/**
 	 * Check all filters referenced in a cell for compatibility.
-	 * 
+	 *
 	 * @param cell the cell to check
 	 * @param predicate the predicate to test the filters with
 	 * @return if all filters were accepted

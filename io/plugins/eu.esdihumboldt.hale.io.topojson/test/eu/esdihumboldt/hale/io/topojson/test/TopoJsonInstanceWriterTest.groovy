@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
  *
@@ -8,11 +9,7 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- *
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.topojson.test
 
 import static org.junit.Assert.assertEquals

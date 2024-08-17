@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.xls.reader;
 
 import java.io.IOException;
@@ -50,7 +47,7 @@ import eu.esdihumboldt.hale.io.xls.reader.ReaderSettings.SheetInfo;
 /**
  * Read source data of xls instance files (based on the
  * {@link CSVInstanceReader}
- * 
+ *
  * @author Patrick Lieb
  */
 public class XLSInstanceReader extends AbstractInstanceReader {
@@ -122,7 +119,7 @@ public class XLSInstanceReader extends AbstractInstanceReader {
 	 * Try to match the given type name to a schema type based on the name. Prefers
 	 * a full match of the qualified name but also test for display name and local
 	 * name matching the provided local name.
-	 * 
+	 *
 	 * @param typeName the type name to match
 	 * @param schema the schema to check
 	 * @return the matched type or <code>null</code>
@@ -196,7 +193,7 @@ public class XLSInstanceReader extends AbstractInstanceReader {
 	/**
 	 * create instances, see
 	 * {@link CSVInstanceReader#execute(ProgressIndicator, IOReporter)}
-	 * 
+	 *
 	 * @param row the current row
 	 * @param reporter the reporter of the writer
 	 * @param solveNestedProperties true, if schema should not be flat <b>(not

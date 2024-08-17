@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.model.transformation.tree.impl;
 
 import java.util.ArrayList;
@@ -45,7 +41,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link TargetNode} implementation
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -58,7 +54,7 @@ public class TargetNodeImpl extends AbstractGroupNode implements TargetNode {
 	/**
 	 * Create a target node that is populated with assignments and children
 	 * according to the given parameters.
-	 * 
+	 *
 	 * @param entity the associated definition
 	 * @param cells the cells associated with this node or its children
 	 * @param parentType the type representing the root
@@ -118,7 +114,7 @@ public class TargetNodeImpl extends AbstractGroupNode implements TargetNode {
 	/**
 	 * Create a target node associated with the given entity definition but
 	 * unpopulated.
-	 * 
+	 *
 	 * @param entity the entity definition
 	 * @param parent the parent node
 	 */
@@ -133,7 +129,7 @@ public class TargetNodeImpl extends AbstractGroupNode implements TargetNode {
 	 * Add an assignment to the target node. May only be called if the target node
 	 * was created using the {@link #TargetNodeImpl(EntityDefinition, GroupNode)}
 	 * constructor.
-	 * 
+	 *
 	 * @param names the entity names associated to the assignment
 	 * @param cell the cell node representing the assignment
 	 */
@@ -145,7 +141,7 @@ public class TargetNodeImpl extends AbstractGroupNode implements TargetNode {
 	 * Add a child to the target node. May only be called if the target node was
 	 * created using the {@link #TargetNodeImpl(EntityDefinition, GroupNode)}
 	 * constructor.
-	 * 
+	 *
 	 * @param node the node to add as child, this node will be set as its parent
 	 */
 	public void addChild(TargetNode node) {

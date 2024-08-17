@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.writer.internal.geometry.writers;
 
 import java.text.DecimalFormat;
@@ -40,7 +36,7 @@ import eu.esdihumboldt.util.format.DecimalFormatUtil;
 
 /**
  * Abstract geometry writer implementation
- * 
+ *
  * @author Simon Templer
  * @partner 01 / Fraunhofer Institute for Computer Graphics Research
  * @version $Id$
@@ -61,7 +57,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * or
 	 * {@link #descendAndWriteCoordinates(XMLStreamWriter, Pattern, Coordinate[], TypeDefinition, QName, String, boolean, DecimalFormat)}
 	 * .
-	 * 
+	 *
 	 * Use for validating end-points.
 	 */
 	private final static Set<String> SUPPORTED_COORDINATES_TYPES = Collections
@@ -70,7 +66,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param geometryType the geometry type
 	 */
 	public AbstractGeometryWriter(Class<T> geometryType) {
@@ -89,7 +85,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	/**
 	 * Add a compatible type. A {@link Pattern#GML_NAMESPACE_PLACEHOLDER} namespace
 	 * references the GML namespace.
-	 * 
+	 *
 	 * @param typeName the type name
 	 */
 	public void addCompatibleType(QName typeName) {
@@ -112,11 +108,11 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 	 * end-point of the matched base pattern will be verified. The default
 	 * implementation checks for properties with any of the types supported for
 	 * writing coordinates.
-	 * 
+	 *
 	 * @see #SUPPORTED_COORDINATES_TYPES
-	 * 
+	 *
 	 * @param endPoint the end-point type definition
-	 * 
+	 *
 	 * @return if the end-point is valid for writing the geometry
 	 */
 	@Override
@@ -135,7 +131,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Write coordinates into a posList or coordinates property
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param descendPattern the pattern to descend
 	 * @param coordinates the coordinates to write
@@ -160,7 +156,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Write coordinates into a pos, posList or coordinates property
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param coordinates the coordinates to write
 	 * @param elementType the type of the encompassing element
@@ -193,7 +189,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Write coordinates into a pos property
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param coordinates the coordinates to write
 	 * @param elementType the type of the encompassing element
@@ -255,7 +251,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Write coordinates into a posList or coordinates property
-	 * 
+	 *
 	 * @param writer the XML stream writer
 	 * @param coordinates the coordinates to write
 	 * @param elementType the type of the encompassing element
@@ -334,7 +330,7 @@ public abstract class AbstractGeometryWriter<T extends Geometry> extends Abstrac
 
 	/**
 	 * Check if the given geometry is valid to be written by this writer.
-	 * 
+	 *
 	 * @param geometry the geometry to check
 	 * @return if the geometry is valid, the default implementation just returns
 	 *         <code>true</code>

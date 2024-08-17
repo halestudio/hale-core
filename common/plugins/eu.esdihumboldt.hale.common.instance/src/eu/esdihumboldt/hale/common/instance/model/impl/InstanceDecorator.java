@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.model.impl;
 
 import java.util.List;
@@ -27,7 +23,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Instance decorator class.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class InstanceDecorator implements Instance {
@@ -36,7 +32,7 @@ public class InstanceDecorator implements Instance {
 
 	/**
 	 * Constructs the decorator with the given instance.
-	 * 
+	 *
 	 * @param instance the instance to decorate
 	 */
 	public InstanceDecorator(Instance instance) {
@@ -45,7 +41,7 @@ public class InstanceDecorator implements Instance {
 
 	/**
 	 * Returns the original instance.
-	 * 
+	 *
 	 * @return the original instance
 	 */
 	public Instance getOriginalInstance() {
@@ -110,7 +106,7 @@ public class InstanceDecorator implements Instance {
 
 	/**
 	 * Get the root {@link Instance} in a layer of {@link InstanceDecorator}s
-	 * 
+	 *
 	 * @param inst <code>Instance</code> to find the root of
 	 * @return The root instance of <code>inst</code> itself if it is not an
 	 *         <code>InstanceDecorator</code>

@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.haleconnect.internal;
 
 import groovy.transform.CompileStatic
@@ -64,7 +61,7 @@ import eu.esdihumboldt.hale.io.haleconnect.project.SharingOptions
 
 /**
  * hale connect service facade implementation
- * 
+ *
  * @author Florian Esser
  */
 @CompileStatic
@@ -524,7 +521,7 @@ public class HaleConnectServiceImpl implements HaleConnectService, BasePathManag
 	/**
 	 * Convert a list of {@link BucketDetail}s received from the project store
 	 * to a list of {@link HaleConnectProjectInfo}
-	 * 
+	 *
 	 * @param bucketDetails bucket details
 	 * @return list of hale connect project info
 	 */

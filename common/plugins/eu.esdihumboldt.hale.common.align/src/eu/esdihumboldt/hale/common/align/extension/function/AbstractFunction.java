@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.align.extension.function;
 
 import java.net.URL;
@@ -38,7 +34,7 @@ import net.jcip.annotations.Immutable;
 
 /**
  * {@link IConfigurationElement} based function base class
- * 
+ *
  * @param <P> the parameter type
  * @author Simon Templer
  */
@@ -62,7 +58,7 @@ public abstract class AbstractFunction<P extends ParameterDefinition>
 
 	/**
 	 * Create a function definition based on the given configuration element
-	 * 
+	 *
 	 * @param conf the configuration element
 	 */
 	protected AbstractFunction(IConfigurationElement conf) {
@@ -134,7 +130,7 @@ public abstract class AbstractFunction<P extends ParameterDefinition>
 
 	/**
 	 * Get the source entities
-	 * 
+	 *
 	 * @return the source entities
 	 */
 	@Override
@@ -142,7 +138,7 @@ public abstract class AbstractFunction<P extends ParameterDefinition>
 
 	/**
 	 * Get the target entities
-	 * 
+	 *
 	 * @return the target entities
 	 */
 	@Override

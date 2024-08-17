@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation;
 
 import static org.junit.Assert.assertEquals;
@@ -36,7 +33,7 @@ import eu.esdihumboldt.util.svg.test.SVGPainter;
 
 /**
  * Base class for Arc based tests.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractArcTest extends AbstractSVGPainterTest {
@@ -44,7 +41,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Prepare a canvas to draw an arc, perform the given draw operation and save
 	 * the drawing.
-	 * 
+	 *
 	 * @param arc the arc to draw
 	 * @param draw function that draws on the canvas
 	 * @throws IOException if saving the drawing fails
@@ -69,7 +66,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Prepare a canvas to draw an arc, perform the given draw operation and save
 	 * the drawing.
-	 * 
+	 *
 	 * @param arcs the arc string to draw
 	 * @param draw function that draws on the canvas
 	 * @throws IOException if saving the drawing fails
@@ -93,7 +90,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw a name.
-	 * 
+	 *
 	 * @param svg the SVG painter
 	 * @param name the name
 	 */
@@ -112,7 +109,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Draw an arc with markers for the points defining the arc. Saves the resulting
 	 * drawing.
-	 * 
+	 *
 	 * @param arc the arc to draw
 	 * @throws IOException if saving the drawing fails
 	 */
@@ -123,7 +120,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Draw an arc with markers for the points defining the arc. Saves the resulting
 	 * drawing.
-	 * 
+	 *
 	 * @param arc the arc to draw
 	 * @param name an optional name for the drawing
 	 * @throws IOException if saving the drawing fails
@@ -148,7 +145,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw an interpolated arc with debug information. Saves the resulting drawing.
-	 * 
+	 *
 	 * @param arc the arc to draw
 	 * @param gridSize the grid size
 	 * @param interpolated the interpolated geometry
@@ -173,7 +170,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw an interpolated arc with debug information. Saves the resulting drawing.
-	 * 
+	 *
 	 * @param arc the arc to draw
 	 * @param interpolated the interpolated geometry
 	 * @throws IOException if saving the drawing fails
@@ -202,7 +199,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Draw an interpolated arc string with debug information. Saves the resulting
 	 * drawing.
-	 * 
+	 *
 	 * @param arcs the arc string to draw
 	 * @param gridSize the grid size
 	 * @param interpolated the interpolated geometry
@@ -228,7 +225,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 	/**
 	 * Draw an interpolated arc string with debug information. Saves the resulting
 	 * drawing.
-	 * 
+	 *
 	 * @param arcs the arc string to draw
 	 * @param interpolated the interpolated geometry
 	 * @throws IOException if saving the drawing fails
@@ -257,7 +254,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw a grid with a specified grid size.
-	 * 
+	 *
 	 * @param svg the SVG painter
 	 * @param gridSize the grid size, i.e. the height/width of grid cells
 	 */
@@ -294,7 +291,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw an arc with markers for the points defining the arc.
-	 * 
+	 *
 	 * @param painter the SVG painter
 	 * @param arc the arc to draw
 	 */
@@ -327,7 +324,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Draw an arc.
-	 * 
+	 *
 	 * @param painter the SVG painter
 	 * @param arc the arc to draw
 	 */
@@ -338,7 +335,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Create an Arc AWT shape from a given arc.
-	 * 
+	 *
 	 * @param arc the arc
 	 * @param paintSettings the paint settings for coordinate conversion
 	 * @return the arc shape
@@ -359,7 +356,7 @@ public abstract class AbstractArcTest extends AbstractSVGPainterTest {
 
 	/**
 	 * Test coordinates being equal using a lax comparison for X and Y.
-	 * 
+	 *
 	 * @param expected the expected coordinate
 	 * @param other the coordinate to compare
 	 */

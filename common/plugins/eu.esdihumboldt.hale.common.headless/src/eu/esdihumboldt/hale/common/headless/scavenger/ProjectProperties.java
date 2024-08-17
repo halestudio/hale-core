@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.headless.scavenger;
 
 import java.io.File;
@@ -23,7 +20,7 @@ import eu.esdihumboldt.util.SyncedPropertiesFile;
 
 /**
  * Basic project configuration properties.
- * 
+ *
  * @author Simon Templer
  */
 public class ProjectProperties extends SyncedPropertiesFile {
@@ -35,11 +32,11 @@ public class ProjectProperties extends SyncedPropertiesFile {
 
 	/**
 	 * Create project properties.
-	 * 
+	 *
 	 * @param projectPropertiesFile the project properties file
 	 * @param defaultProperties the properties with default settings, may be
 	 *            <code>null</code>
-	 * 
+	 *
 	 * @throws IOException if reading the properties file fails
 	 */
 	public ProjectProperties(File projectPropertiesFile, Properties defaultProperties)
@@ -49,7 +46,7 @@ public class ProjectProperties extends SyncedPropertiesFile {
 
 	/**
 	 * Get the project file name.
-	 * 
+	 *
 	 * @return the project file name, may be <code>null</code>
 	 */
 	public String getProjectFileName() {
@@ -58,7 +55,7 @@ public class ProjectProperties extends SyncedPropertiesFile {
 
 	/**
 	 * Set the project file name.
-	 * 
+	 *
 	 * @param filename the project file name
 	 */
 	public void setProjectFileName(String filename) {

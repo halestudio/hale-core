@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2015 Data Harmonisation Panel
- * 
+ * Copyright (c) 2015 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.jdbc.postgresql.test;
 
 import static org.junit.Assert.*
@@ -31,10 +28,10 @@ import ru.yandex.qatools.allure.annotations.Stories
 
 /**
  * Test to check the sorting of the cyclic reference between the types
- * 
+ *
  * <p><b>Example</b></p>
  * Consider this cyclic reference: <pre>t1 -> t2-> t3 -> t4 -> t1 </pre> In this case there is cycle of referencing and it will be infinite recursion for sorting the types based on referencing. </br>
- * 
+ *
  * @author Sameer Sheikh
  */
 @Features("Databases")

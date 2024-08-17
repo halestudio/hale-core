@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2014 Data Harmonisation Panel
- * 
+ * Copyright (c) 2014 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.groovy.json
 
 import groovy.json.JsonOutput
@@ -32,7 +29,7 @@ import eu.esdihumboldt.util.groovy.builder.BuilderBase
  * for simpler structures use for instance {@link JsonOutput}.
  * <br>
  * See {@link JsonStreamBuilderTest} for examples.
- * 
+ *
  * @author Simon Templer
  */
 @CompileStatic
@@ -71,7 +68,7 @@ class JsonStreamBuilder extends BuilderBase {
 
 	/**
 	 * Create a new builder streaming JSON to the given writer.
-	 * 
+	 *
 	 * @param writer the writer, it's the callers responsibility to close the writer
 	 * @param prettyPrint if the output should be pretty printed
 	 * @param rootArray if as root an array should be created instead of a root object
@@ -87,7 +84,7 @@ class JsonStreamBuilder extends BuilderBase {
 	 * root JSON object exists yet it will be created and wrap the property.<br>
 	 * <br>
 	 * Convenience method for type safe JSON building.
-	 * 
+	 *
 	 * @param name the property name
 	 * @param array states if the property should be an array
 	 * @param content the property content
@@ -149,7 +146,7 @@ class JsonStreamBuilder extends BuilderBase {
 	/**
 	 * Creates a JSON root object. If a parent already exists will just call
 	 * the given closure.
-	 * 
+	 *
 	 * @param closure the closure defining the object
 	 */
 	public void call(Closure closure) {

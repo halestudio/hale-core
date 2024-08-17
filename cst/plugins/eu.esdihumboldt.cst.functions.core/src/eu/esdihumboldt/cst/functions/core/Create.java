@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.cst.functions.core;
 
 import java.util.Map;
@@ -32,7 +29,7 @@ import net.jcip.annotations.Immutable;
  * Function that creates target instances independently from source instances.
  * As it is not bound to source instances, it should only be executed once, not
  * per source.
- * 
+ *
  * @author Simon Templer
  */
 @Immutable
@@ -72,7 +69,7 @@ public class Create extends AbstractTypeTransformation<TransformationEngine>
 
 	/**
 	 * Create an instance.
-	 * 
+	 *
 	 * @param type the instance type
 	 * @param index the instance index
 	 * @param log the transformation log

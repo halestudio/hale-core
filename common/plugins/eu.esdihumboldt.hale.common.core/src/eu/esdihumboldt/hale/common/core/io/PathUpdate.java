@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io;
 
 import java.io.UnsupportedEncodingException;
@@ -31,7 +27,7 @@ import eu.esdihumboldt.util.resource.Resources;
 
 /**
  * Updater class for a path.
- * 
+ *
  * @author Patrick Lieb
  * @author Kai Schwierczek
  */
@@ -46,7 +42,7 @@ public class PathUpdate {
 
 	/**
 	 * Create a path updater based on a pair of known old and new locations.
-	 * 
+	 *
 	 * @param oldLocation the old location of a file, may be null
 	 * @param newLocation the new location of the same file (though the file name
 	 *            may be different), may be null
@@ -85,7 +81,7 @@ public class PathUpdate {
 	 * If none of the applicable cases results in a valid, existing URI and
 	 * tryFallback is true {@link #updatePathFallback(URI)} is returned, otherwise
 	 * <code>null</code> is returned.
-	 * 
+	 *
 	 * @param uri the URI in question
 	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the end
 	 *            or not
@@ -116,7 +112,7 @@ public class PathUpdate {
 	 * If none of the applicable cases results in a valid, existing URI and
 	 * tryFallback is true {@link #updatePathFallback(URI)} is returned, otherwise
 	 * <code>null</code> is returned.
-	 * 
+	 *
 	 * @param uri the URI in question
 	 * @param tryFallback whether to use {@link #updatePathFallback(URI)} in the end
 	 *            or not
@@ -200,7 +196,7 @@ public class PathUpdate {
 	 * Create an alternative path for the given location if it matches changes from
 	 * old to new location. If either old or new location is null, or the given URI
 	 * wasn't changed in the same way, this method has no effect.
-	 * 
+	 *
 	 * @param oldSource path where the file was saved to
 	 * @return the new URI
 	 */
@@ -272,7 +268,7 @@ public class PathUpdate {
 	 * Update the path to a resource if automatic update fails. The default
 	 * implementation returns <code>null</code>, which means the location is not
 	 * updated.
-	 * 
+	 *
 	 * @param oldLocation the old resource location
 	 * @return the replacement resource location or <code>null</code>
 	 */

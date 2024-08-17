@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.impl;
 
 import java.io.BufferedInputStream;
@@ -43,7 +39,7 @@ import eu.esdihumboldt.util.io.InputStreamDecorator;
 
 /**
  * Reads a project file
- * 
+ *
  * @author Simon Templer
  */
 public class DefaultProjectReader extends AbstractProjectReader {
@@ -57,7 +53,7 @@ public class DefaultProjectReader extends AbstractProjectReader {
 
 		/**
 		 * Create an input stream for a ZIP entry
-		 * 
+		 *
 		 * @param zip the ZIP input stream
 		 */
 		public EntryInputStream(ZipInputStream zip) {
@@ -239,7 +235,7 @@ public class DefaultProjectReader extends AbstractProjectReader {
 		 * so when saving the project this information is not saved again as-is, but on
 		 * the basis of actual files written. However, this case is handled in the
 		 * project writer already.
-		 * 
+		 *
 		 * As this information is in fact necessary when trying to identify certain
 		 * files like the alignment, clearing the list of project files was commented
 		 * out.

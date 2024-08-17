@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.instance.geometry;
 
 import java.util.HashMap;
@@ -36,7 +32,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 
 /**
  * Utility methods related to {@link CRSDefinition}s
- * 
+ *
  * @author Simon Templer
  */
 public abstract class CRSDefinitionUtil {
@@ -48,7 +44,7 @@ public abstract class CRSDefinitionUtil {
 
 	/**
 	 * Create a {@link CRSDefinition} from an existing coordinate reference system.
-	 * 
+	 *
 	 * @param crs the coordinate reference system
 	 * @param cache the cache for CRS resolving
 	 * @return the CRS definition
@@ -93,7 +89,7 @@ public abstract class CRSDefinitionUtil {
 	 * returned {@link CRSDefinition} will contain a
 	 * {@link CoordinateReferenceSystem} with additional information like Bursa-Wolf
 	 * parameters, otherwise the WKT definition of the input CRS will be used as is.
-	 * 
+	 *
 	 * @param crs The CRS to look up
 	 * @return A {@link CodeDefinition} with the resolved CRS or a
 	 *         {@link WKTDefinition} if the CRS could not be resolved.
@@ -126,7 +122,7 @@ public abstract class CRSDefinitionUtil {
 
 	/**
 	 * Get the code for a CRS definition if possible.
-	 * 
+	 *
 	 * @param def the CRS definition
 	 * @return the CRS code representing the definition or <code>null</code>
 	 */
@@ -173,7 +169,7 @@ public abstract class CRSDefinitionUtil {
 
 	/**
 	 * Get the EPSG number for a CRS definition if possible.
-	 * 
+	 *
 	 * @param def the CRS definition
 	 * @return the EPSG code representing the definition or <code>null</code>
 	 */

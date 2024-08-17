@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2022 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.topojson;
 
 import java.io.File;
@@ -59,14 +56,14 @@ import json.topojson.api.TopojsonApi;
 /**
  * Writes instances as TopoJSON by first creating an intermediate Shapefile and
  * then converting the Shapefile to TopoJSON. Supports only local file targets.
- * 
+ *
  * If the Shapefile writer creates multiple intermediate files (e.g. because the
  * target schema contains multiple types and/or multiple geometry types), this
  * instance writer will also create multiple TopoJSON files with a numeric
  * suffix added to the configured output file name. So if the configured output
  * file name is <code>output.json</code>, the created files will be named
  * <code>output_1.json</code>, <code>output_2.json</code>, etc.
- * 
+ *
  * @author Flaminia Catalli
  * @author Florian Esser
  */
@@ -75,7 +72,7 @@ public class TopoJsonInstanceWriter extends AbstractInstanceWriter {
 	/**
 	 * Parameter for TopoJSON generation that controls how the polygons are
 	 * simplified. A value of 0 means that no simplification will take place.
-	 * 
+	 *
 	 * TODO make configurable
 	 */
 	private static final int KINK_VALUE = 0;
@@ -83,14 +80,14 @@ public class TopoJsonInstanceWriter extends AbstractInstanceWriter {
 	/**
 	 * Parameter for TopoJSON generation that controls if and how the TopoJSON
 	 * output is quantized.
-	 * 
+	 *
 	 * TODO make configurable
 	 */
 	private static final int QUANTIZE_DIGIT_VALUE = 4;
 
 	/**
 	 * Name of the generated topology
-	 * 
+	 *
 	 * TODO make configurable
 	 */
 	private static final String DEFAULT_TOPOLOGY_NAME = "Topology";

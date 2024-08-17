@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.io.gml.reader.internal.instance;
 
 import java.text.MessageFormat;
@@ -46,7 +42,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
 
 /**
  * Utility methods regarding group handling
- * 
+ *
  * @author Simon Templer
  */
 public class GroupUtil {
@@ -55,7 +51,7 @@ public class GroupUtil {
 
 	/**
 	 * Determine the property definition for the given property name.
-	 * 
+	 *
 	 * @param groups the stack of the current group objects. The topmost element is
 	 *            the current group object
 	 * @param propertyName the property name
@@ -72,7 +68,7 @@ public class GroupUtil {
 
 	/**
 	 * Determine the property definition for the given property name.
-	 * 
+	 *
 	 * @param groups the stack of the current group objects. The topmost element is
 	 *            the current group object
 	 * @param propertyName the property name
@@ -98,16 +94,16 @@ public class GroupUtil {
 
 		/*
 		 * Policy: find the property as high in the hierarchy as possible
-		 * 
+		 *
 		 * This might lead to problems with some special schemas, e.g. if a group is
 		 * defined that allows unbounded occurrences of an element X and the parent type
 		 * allows one occurrence there will be trouble if we have more than two or three
 		 * of those elements (depending on group and element cardinalities).
-		 * 
+		 *
 		 * If this really poses a problem in the practice we might need configuration
 		 * parameters to use different policies. IMHO (ST) in well designed schemas this
 		 * problem will not occur.
-		 * 
+		 *
 		 * This problem only arises because we read all the data from the stream and
 		 * don't know anything about what comes ahead - another possibility could be to
 		 * change this behavior where needed.
@@ -216,7 +212,7 @@ public class GroupUtil {
 
 	/**
 	 * Find a child definition based on the name.
-	 * 
+	 *
 	 * @param parent the parent type or group
 	 * @param propertyName the property name
 	 * @param ignoreNamespaces if matches with differing namespace should be allowed
@@ -243,7 +239,7 @@ public class GroupUtil {
 	/**
 	 * Determines if a property value for the given property name may be added to
 	 * the given group and returns the corresponding property definition.
-	 * 
+	 *
 	 * @param group the group
 	 * @param propertyName the property name
 	 * @param strict states if additional checks are applied apart from whether the
@@ -267,7 +263,7 @@ public class GroupUtil {
 	/**
 	 * Determine the property definition for the given property name in sub-groups
 	 * of the given group stack.
-	 * 
+	 *
 	 * @param paths the group paths whose children shall be checked for the property
 	 * @param propertyName the property name
 	 * @param leafs the queue is populated with the leafs in the explored definition
@@ -356,7 +352,7 @@ public class GroupUtil {
 
 	/**
 	 * Determines if the given group is valid and may be closed
-	 * 
+	 *
 	 * @param currentGroup the current group
 	 * @return if the group may be closed
 	 */
@@ -398,7 +394,7 @@ public class GroupUtil {
 	/**
 	 * Determines if a child is contained in a given group with a valid minimum
 	 * cardinality.
-	 * 
+	 *
 	 * @param group the group
 	 * @param childDef the child definition
 	 * @return if the minimum cardinality of the child definition is matched in the
@@ -434,7 +430,7 @@ public class GroupUtil {
 	/**
 	 * Determines if another value of the given property may be added to the given
 	 * group.
-	 * 
+	 *
 	 * @param group the group, <code>null</code> represents an empty group
 	 * @param groupDef the definition of the given group, may be <code>null</code>
 	 *            if the group is not <code>null</code>
@@ -527,7 +523,7 @@ public class GroupUtil {
 	 * Determines if another value of the given property may be added to the given
 	 * group based on values available in the group and the order of the child
 	 * definitions in the given definition group.
-	 * 
+	 *
 	 * @param group the group, <code>null</code> represents an empty group
 	 * @param propertyName the property name
 	 * @param groupDef the definition group
@@ -583,7 +579,7 @@ public class GroupUtil {
 	/**
 	 * Determines if another value of the given property may be added to the given
 	 * group based on the cardinality of the property.
-	 * 
+	 *
 	 * @param group the group
 	 * @param propertyName the property name
 	 * @return if another property value may be added to the group based on the

@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2016 Data Harmonisation Panel
- * 
+ * Copyright (c) 2016 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project;
 
 import javax.annotation.Nullable;
@@ -25,7 +22,7 @@ import eu.esdihumboldt.hale.common.core.io.ValueProperties;
 /**
  * Accessor for project variables. Project variable values may be overriden by
  * environment variables or system properties.
- * 
+ *
  * @author Simon Templer
  */
 public class ProjectVariables {
@@ -49,7 +46,7 @@ public class ProjectVariables {
 
 	/**
 	 * Helper method to store a project variable value.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @param value the variable value
 	 * @param projectConfiguration the project configuration service
@@ -74,7 +71,7 @@ public class ProjectVariables {
 
 	/**
 	 * Create a project variables accessor.
-	 * 
+	 *
 	 * @param projectInfo the project information service
 	 */
 	public ProjectVariables(@Nullable ProjectInfoService projectInfo) {
@@ -84,7 +81,7 @@ public class ProjectVariables {
 
 	/**
 	 * Get the value for a given variable name.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @return the project variable value or {@link Value#NULL}
 	 */
@@ -120,7 +117,7 @@ public class ProjectVariables {
 
 	/**
 	 * Get the string value for a given variable name.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @param def the default value if none is configured
 	 * @return the project variable value if set, otherwise the provided default
@@ -138,7 +135,7 @@ public class ProjectVariables {
 
 	/**
 	 * Get the string value for a given variable name.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @return the project variable value if set, otherwise <code>null</code>
 	 */
@@ -148,7 +145,7 @@ public class ProjectVariables {
 
 	/**
 	 * Get the string value for a given variable name.
-	 * 
+	 *
 	 * @param name the variable name
 	 * @return the project variable value if set
 	 * @throws IllegalArgumentException if the project variable with the given name

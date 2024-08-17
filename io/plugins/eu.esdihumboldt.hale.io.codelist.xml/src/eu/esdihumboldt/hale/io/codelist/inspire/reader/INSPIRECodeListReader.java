@@ -1,3 +1,15 @@
+
+/*
+ * Copyright (c) 2024 wetransform GmbH
+ *
+ * All rights reserved. This program and the accompanying materials are made
+ * available under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
+ */
 package eu.esdihumboldt.hale.io.codelist.inspire.reader;
 
 import java.io.IOException;
@@ -45,7 +57,7 @@ import eu.esdihumboldt.util.resource.Resources;
 
 /**
  * Load XML code lists as provided by the INSPIRE registry.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class INSPIRECodeListReader extends AbstractImportProvider implements CodeListReader {
@@ -120,7 +132,7 @@ public class INSPIRECodeListReader extends AbstractImportProvider implements Cod
 	/**
 	 * Load an XML document via HTTP, providing headers to request proper format and
 	 * language.
-	 * 
+	 *
 	 * @param loc the location
 	 * @return the XML document
 	 * @throws IOException if reading the document fails
@@ -272,7 +284,7 @@ public class INSPIRECodeListReader extends AbstractImportProvider implements Cod
 	 * location, adds header to accept application/xml content type. Sets the proxy
 	 * if proxy is configured. Executes the fluent request and returns the fluent
 	 * response
-	 * 
+	 *
 	 * @param uri uri reference of the resource location.
 	 * @return Executor, returns the executor for executing fluent request
 	 * @throws IOException throws if there are some interruption I/O operations

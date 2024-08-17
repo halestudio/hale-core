@@ -1,18 +1,15 @@
+
 /*
- * Copyright (c) 2013 Data Harmonisation Panel
- * 
+ * Copyright (c) 2013 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.util.groovy.sandbox.internal;
 
 import java.math.BigDecimal;
@@ -65,7 +62,7 @@ import groovy.lang.Script;
 /**
  * {@link GroovyInterceptor} which allows some basic classes but is pretty
  * restrictive. Constructor offers parameters to allow more classes.
- * 
+ *
  * @author Kai Schwierczek
  */
 public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
@@ -217,7 +214,7 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 
 		/**
 		 * Default constructor which accepts a package name.
-		 * 
+		 *
 		 * @param prefix the package prefix (final '.' is added if not present)
 		 * @param allowChildren whether child-packages are allowed, too
 		 */
@@ -231,7 +228,7 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 		/**
 		 * Checks whether the given class is allowed to be used because of this allowed
 		 * package.
-		 * 
+		 *
 		 * @param clazz the class to test
 		 * @return true, if the class may be used, false otherwise
 		 */
@@ -253,7 +250,7 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 
 	/**
 	 * Constructor using additional allowed classes.
-	 * 
+	 *
 	 * @param additionalAllowedClasses classes, which may be initialized, and all
 	 *            their declared methods may be used
 	 * @param additionalAllAllowedClasses classes, which may be initialized, and any
@@ -348,7 +345,7 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 
 	/**
 	 * Checks for an execute call on List, String, String[] and GString.
-	 * 
+	 *
 	 * @param receiver the receiver object
 	 * @param method the method name
 	 */

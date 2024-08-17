@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2023 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.json.internal;
 
 import java.io.IOException;
@@ -29,7 +26,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
  * Abstract class for processing instances from JSON.
- * 
+ *
  * @author Simon Templer
  */
 public abstract class AbstractJsonInstanceProcessor<T>
@@ -40,7 +37,7 @@ public abstract class AbstractJsonInstanceProcessor<T>
 	private final JsonReadMode mode;
 
 	/**
-	 * 
+	 *
 	 * @param expectGeoJson if the input is expected to be GeoJson
 	 */
 	public AbstractJsonInstanceProcessor(boolean expectGeoJson) {
@@ -48,7 +45,7 @@ public abstract class AbstractJsonInstanceProcessor<T>
 	}
 
 	/**
-	 * 
+	 *
 	 * @param mode the mode for reading the Json, supporting different kinds of
 	 *            document structures
 	 * @param expectGeoJson if the input is expected to be GeoJson
@@ -134,7 +131,7 @@ public abstract class AbstractJsonInstanceProcessor<T>
 
 	/**
 	 * Proceed to the first array found.
-	 * 
+	 *
 	 * @param parser the Json parser
 	 */
 	private void proceedToArray(JsonParser parser) throws JsonParseException, IOException {
@@ -163,11 +160,11 @@ public abstract class AbstractJsonInstanceProcessor<T>
 		 * Note: It would be nice to use the streaming API to process the complete JSON,
 		 * but in that case we would rely for some things on information being provided
 		 * in a certain order, which we can't rely on.
-		 * 
+		 *
 		 * Example cases where order does matter:
-		 * 
+		 *
 		 * - detecting if GeoJson is used
-		 * 
+		 *
 		 * - determining a schema type automatically (based on @type field or event
 		 * structure) [not done yet]
 		 */
@@ -181,10 +178,10 @@ public abstract class AbstractJsonInstanceProcessor<T>
 
 	/**
 	 * Process an instance given its root object fields.
-	 * 
+	 *
 	 * The default implementation determines whether the fields represent a GeoJson
 	 * object and continue processing based on that.
-	 * 
+	 *
 	 * @param fields the object's root fields
 	 * @return the processing result
 	 */
@@ -236,7 +233,7 @@ public abstract class AbstractJsonInstanceProcessor<T>
 
 	/**
 	 * Process an instance after determining if it is a GeoJson object
-	 * 
+	 *
 	 * @param fields the object's root fields
 	 * @param geom the GeoJson geometry node or null
 	 * @param properties the instance properties
@@ -247,7 +244,7 @@ public abstract class AbstractJsonInstanceProcessor<T>
 
 	/**
 	 * Read the fields of the current object as Json nodes.
-	 * 
+	 *
 	 * @param parser the JSON parser
 	 * @return the map of field names and and values as nodes
 	 * @throws IOException if parsing the JSON fails

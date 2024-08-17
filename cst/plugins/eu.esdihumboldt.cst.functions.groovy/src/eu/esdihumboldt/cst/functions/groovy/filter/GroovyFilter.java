@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2016 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.cst.functions.groovy.filter;
 
 import java.util.Map;
@@ -33,7 +30,7 @@ import groovy.lang.Script;
 
 /**
  * Filter based on a Groovy script.
- * 
+ *
  * @author Simon Templer
  */
 public class GroovyFilter implements ContextAwareFilter {
@@ -48,7 +45,7 @@ public class GroovyFilter implements ContextAwareFilter {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param script the Groovy script text
 	 */
 	public GroovyFilter(String script) {
@@ -63,7 +60,7 @@ public class GroovyFilter implements ContextAwareFilter {
 
 	/**
 	 * Get a Groovy script instance and configure it with the given binding.
-	 * 
+	 *
 	 * @param service the Groovy service
 	 * @param binding the script binding
 	 * @return the Groovy script instance

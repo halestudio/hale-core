@@ -1,19 +1,15 @@
+
 /*
- * Copyright (c) 2012 Data Harmonisation Panel
- * 
+ * Copyright (c) 2012 wetransform GmbH
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     HUMBOLDT EU Integrated Project #030962
- *     Data Harmonisation Panel <http://www.dhpanel.eu>
  */
-
 package eu.esdihumboldt.hale.common.core.io.project.impl;
 
 import java.io.File;
@@ -64,7 +60,7 @@ import eu.esdihumboldt.util.io.IOUtils;
 
 /**
  * Save projects (including all related resources) as an archive (zip)
- * 
+ *
  * @author Patrick Lieb
  */
 public class ArchiveProjectWriter extends AbstractProjectWriter {
@@ -101,7 +97,7 @@ public class ArchiveProjectWriter extends AbstractProjectWriter {
 
 	/**
 	 * Creates the project archive.
-	 * 
+	 *
 	 * @param target {@link OutputStream} to write the archive to
 	 * @param reporter the reporter to use for the execution report
 	 * @param progress the progress indicator
@@ -196,7 +192,7 @@ public class ArchiveProjectWriter extends AbstractProjectWriter {
 
 	/**
 	 * Get a project's alignment file
-	 * 
+	 *
 	 * @param project the project
 	 * @return info object for the alignment file
 	 */
@@ -210,7 +206,7 @@ public class ArchiveProjectWriter extends AbstractProjectWriter {
 
 	/**
 	 * Update the resources and copy them into the target directory
-	 * 
+	 *
 	 * @param targetDirectory target directory
 	 * @param includeWebResources whether to include web resources in the copy
 	 * @param progress the progress indicator

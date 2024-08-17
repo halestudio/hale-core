@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2018 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.hale.io.xsd.reader.internal.constraint;
 
 import java.util.Collection;
@@ -28,7 +25,7 @@ import eu.esdihumboldt.hale.io.xsd.model.XmlIndex;
 /**
  * Reference property constraints that references XML elements and is only
  * resolved after loading the schema.
- * 
+ *
  * @author Simon Templer
  */
 public class ElementReferenceProperty extends ReferenceProperty {
@@ -41,7 +38,7 @@ public class ElementReferenceProperty extends ReferenceProperty {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param index the XML index
 	 * @param referencedElements the referenced XML elements
 	 */
@@ -53,7 +50,7 @@ public class ElementReferenceProperty extends ReferenceProperty {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param index the XML index
 	 * @param valuePath the path to the reference value property
 	 * @param referencedElements the referenced XML elements

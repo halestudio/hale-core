@@ -1,18 +1,15 @@
+
 /*
  * Copyright (c) 2017 wetransform GmbH
- * 
+ *
  * All rights reserved. This program and the accompanying materials are made
  * available under the terms of the GNU Lesser General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Contributors:
- *     wetransform GmbH <http://www.wetransform.to>
  */
-
 package eu.esdihumboldt.util.geometry.interpolation;
 
 import java.util.ArrayList;
@@ -28,14 +25,14 @@ import eu.esdihumboldt.util.geometry.interpolation.model.ArcString;
 
 /**
  * Interface for interpolations algorithms.
- * 
+ *
  * @author Simon Templer
  */
 public interface InterpolationAlgorithm {
 
 	/**
 	 * Configure the algorithm.
-	 * 
+	 *
 	 * @param factory the geometry factory
 	 * @param maxPositionalError the maximum positional error
 	 * @param properties interpolation configuration properties
@@ -45,7 +42,7 @@ public interface InterpolationAlgorithm {
 
 	/**
 	 * Interpolate an arc.
-	 * 
+	 *
 	 * @param arc the arc to interpolate
 	 * @return the interpolated geometry
 	 */
@@ -53,7 +50,7 @@ public interface InterpolationAlgorithm {
 
 	/**
 	 * Interpolate an arc string.
-	 * 
+	 *
 	 * @param arcs the arc string to interpolate
 	 * @return the interpolated geometry
 	 */
