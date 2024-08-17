@@ -7,7 +7,9 @@
 # Advantage over calling Gradle for a single file directly is identifying a subproject and only running the task there.
 # Also, Gradle is only run for certain file extensions (in case this can't bbe filtered easily when calling the script)
 #
-# Note: Sadly we can't avoid the Gradle configuration phase which takes relatively long due to the big number of subprojects.
+# We can't avoid the Gradle configuration phase which takes relatively long due to the big number of subprojects,
+# But when targeting individual projects we can speed up the process using the on-demand configuration feature
+# (see https://docs.gradle.org/current/userguide/multi_project_configuration_and_execution.html).
 #
 # Configuration as file watcher in IntelliJ:
 #
@@ -31,7 +33,7 @@ allowed_extensions=("java" "md" "groovy" "gradle")
 if [ -z "$1" ]; then
   echo "No file path provided"
 
-  exec ./gradlew spotlessApply
+  exec ./gradlew spotlessApply --parallel
   exit 0
 fi
 
@@ -63,13 +65,13 @@ while [ "$current_dir" != "/" ]; do
     if [ "$current_dir" == "$script_dir" ]; then
       echo "Found build.gradle in the project root: $relative_path"
 
-      exec ./gradlew spotlessApply "-PspotlessIdeHook=$file_path" --parallel
+      exec ./gradlew :spotlessApply "-PspotlessIdeHook=$file_path" --parallel --configure-on-demand
     else
       # Replace / with : in the relative path
       formatted_path=$(echo "$relative_path" | tr '/' ':')
       echo "Found build.gradle in a subfolder: $formatted_path"
 
-      exec ./gradlew ":$formatted_path:spotlessApply" "-PspotlessIdeHook=$file_path" --parallel
+      exec ./gradlew ":$formatted_path:spotlessApply" "-PspotlessIdeHook=$file_path" --parallel --configure-on-demand
     fi
     exit 0
   fi
