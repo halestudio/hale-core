@@ -130,7 +130,7 @@ jmep = {module = "com.iabcinc:jmep", version = "0.1.0"}
 
 trove = {module = "net.sf.trove4j:trove4j", version = "2.0.4"}
 
-jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.0"}
+jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.2"}
 
 apache-ws-xsd = {module = "org.apache.ws.commons.schema:XmlSchema", version = "1.4.7"}
 
