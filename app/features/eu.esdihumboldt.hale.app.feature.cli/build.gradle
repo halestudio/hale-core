@@ -1,0 +1,26 @@
+plugins {
+  id 'hale.feature-conventions'
+}
+
+description = 'HALE core CLI dependencies including headless transformation'
+
+dependencies {
+  // features
+
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
+  api(project(":common:features:eu.esdihumboldt.hale.common.feature.orient"))
+
+  api(project(":cst:features:eu.esdihumboldt.cst.feature"))
+
+
+  // plugins
+
+  api(project(":app:plugins:eu.esdihumboldt.hale.app.cli.commands"))
+  api(project(":app:plugins:eu.esdihumboldt.hale.app.transform"))
+
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.cli"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.headless"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.headless.orient"))
+
+  api(project(":util:plugins:eu.esdihumboldt.util.cli"))
+}
