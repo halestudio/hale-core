@@ -11,8 +11,8 @@ on:
 jobs:
   delete-allure:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    concurrency:
+      group: allure-${{ github.ref }}
 
     steps:
       - name: Checkout
