@@ -24,6 +24,9 @@ pom.xml
 
 allure-results/
 
+# we generate allure properties
+allure.properties
+
 # generic main project
 /.project
 

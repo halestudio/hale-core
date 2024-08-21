@@ -83,3 +83,67 @@ publishing {
     }
   }
 }
+
+/*
+ * Allure configuration
+ *
+ * See https://allurereport.org/docs/junit4-configuration/
+ */
+
+task generateAllureProperties {
+  doLast {
+    // Get the first directory of the test resources source set
+    def outputDir = sourceSets.test.resources.srcDirs.iterator().next()
+
+    // Specify the name of the generated file
+    def outputFile = new File(outputDir, "allure.properties")
+
+    // Create the directory if it doesn't exist
+    outputDir.mkdirs()
+
+    def properties = [:]
+
+    // defaults
+    properties['allure.link.issue.pattern'] = 'https://github.com/halestudio/hale-core/issues/{}'
+    properties['allure.link.JIRA.pattern'] = 'https://wetransform.atlassian.net/browse/{}'
+
+    def config = project.hale.allure as AllureConfig
+
+    // derive default epic from project structure
+    def p = project.parent?.parent
+    if (p != null) {
+      switch (p.name) {
+        case 'io':
+          properties.epic = 'Import and export formats'
+          break
+        case 'util':
+          properties.epic = 'Utilities'
+          break
+        case 'cst':
+          properties.epic = 'Conceptual Schema Transformer'
+          break
+        case 'ext':
+          properties.epic = 'Extensions'
+          break
+        case 'common':
+          properties.epic = 'Common libraries'
+          break
+        case 'app':
+          properties.epic = 'Command line applications'
+          break
+      }
+    }
+
+    def labels = ['epic', 'story', 'feature']
+    labels.each {label ->
+      if (config."$label") {
+        properties[label] = config."$label"
+      }
+    }
+
+    // Write some content to the file
+    outputFile.text = properties.collect { "${it.key} = ${it.value}" }.join('\n')
+  }
+}
+
+processTestResources.dependsOn generateAllureProperties
