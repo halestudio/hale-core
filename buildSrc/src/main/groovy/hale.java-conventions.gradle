@@ -115,33 +115,38 @@ task generateAllureProperties {
 
     // derive default epic from project structure
     def p = project.parent?.parent
+    def defaultEpic
     if (p != null) {
       switch (p.name) {
         case 'io':
-          properties.epic = 'Import and export formats'
+          defaultEpic = 'Import and export formats'
           break
         case 'util':
-          properties.epic = 'Utilities'
+          defaultEpic = 'Utilities'
           break
         case 'cst':
-          properties.epic = 'Conceptual Schema Transformer'
+          defaultEpic = 'Conceptual Schema Transformer'
           break
         case 'ext':
-          properties.epic = 'Extensions'
+          defaultEpic = 'Extensions'
           break
         case 'common':
-          properties.epic = 'Common libraries'
+          defaultEpic = 'Common libraries'
           break
         case 'app':
-          properties.epic = 'Command line applications'
+          defaultEpic = 'Command line applications'
           break
       }
+    }
+
+    if (defaultEpic) {
+      properties['allure.label.epic'] = defaultEpic
     }
 
     def labels = ['epic', 'story', 'feature']
     labels.each {label ->
       if (config."$label") {
-        properties[label] = config."$label"
+        properties["allure.label.$label"] = config."$label"
       }
     }
 
