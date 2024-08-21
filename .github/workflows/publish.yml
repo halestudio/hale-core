@@ -54,14 +54,14 @@ jobs:
           path: gh-pages
 
       - name: Build test report
-        uses: simple-elf/allure-report-action@v1.9
+        uses: simple-elf/allure-report-action@58e6590adf6d8f196a0d771bf8a00e6921086a62 # v1.9
         with:
           gh_pages: gh-pages
           allure_history: allure-history
           allure_results: allure-results
 
       - name: Publish test report
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@94f3c658273cf92fb48ef99e5fbc02bd2dc642b2 # v4
         with:
           branch: gh-pages
           folder: allure-history
