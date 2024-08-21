@@ -19,9 +19,6 @@ dependencies {
   implementation libs.jts
   implementation libs.geotools.opengis
 
-  testImplementation testLibs.junit4
-  testImplementation testLibs.allure.annotations
-
   testImplementation libs.geotools.referencing
   testRuntimeOnly libs.geotools.epsg
 

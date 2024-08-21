@@ -35,16 +35,16 @@ import eu.esdihumboldt.util.geometry.interpolation.model.ArcString;
 import eu.esdihumboldt.util.geometry.interpolation.model.impl.ArcByCenterPointImpl;
 import eu.esdihumboldt.util.geometry.interpolation.model.impl.ArcByPointsImpl;
 import eu.esdihumboldt.util.geometry.interpolation.model.impl.ArcStringImpl;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 /**
  * Tests for interpolation with {@link GridInterpolation}.
  *
  * @author Simon Templer
  */
-@Features("Geometries")
-@Stories("Arcs")
+@Feature("Geometries")
+@Story("Arcs")
 @SuppressWarnings("javadoc")
 public class GridInterpolationTest extends AbstractArcTest {
 

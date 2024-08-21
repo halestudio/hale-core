@@ -1,0 +1,41 @@
+/*
+ * Using JUnit 4 for testing
+ *
+ * Includes setting up Allure
+ * https://allurereport.org/docs/junit4/
+ */
+
+plugins {
+  id 'hale.java-conventions'
+}
+
+// Define configuration for AspectJ agent
+configurations {
+  agent {
+    canBeResolved = true
+    canBeConsumed = true
+  }
+}
+
+dependencies {
+  // add JUnit 4 dependency
+  testImplementation testLibs.junit4
+
+
+  // Add aspectjweaver dependency
+  agent testLibs.aspectj.weaver
+
+  // Import allure-bom to ensure correct versions of all the dependencies are used
+  testImplementation platform("io.qameta.allure:allure-bom:${testLibs.versions.allure.get()}")
+
+  // Add necessary Allure dependencies to dependencies section
+  testImplementation testLibs.allure.junit4.adapter
+  // Add AspectJ integration for Allure
+  testImplementation testLibs.allure.junit4.aspect
+}
+
+test {
+  useJUnit()
+
+  jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+}

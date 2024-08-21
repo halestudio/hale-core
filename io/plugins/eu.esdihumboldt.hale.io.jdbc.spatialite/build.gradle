@@ -32,9 +32,6 @@ dependencies {
 
   implementation project(':util:plugins:eu.esdihumboldt.util')
 
-  testImplementation testLibs.junit4
-  testImplementation testLibs.allure.annotations
-
   testRuntimeOnly libs.geotools.epsg
 
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.test')

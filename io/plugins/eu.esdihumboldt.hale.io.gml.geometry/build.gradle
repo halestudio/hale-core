@@ -26,9 +26,6 @@ dependencies {
 
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
 
-  testImplementation testLibs.junit4
-  testImplementation testLibs.allure.annotations
-
   testImplementation libs.findbugs.annotations
 
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')

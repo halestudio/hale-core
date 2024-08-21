@@ -26,8 +26,8 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 /**
  * test the order of the instances to be written to the database, as unorder
@@ -35,8 +35,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  *
  * @author Sameer Sheikh
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 public class WriteInstanceOrderIT extends AbstractDBTest {
 	private static final FIRST_TABLE_LINES = '''CREATE TABLE statisticalunits
 		(

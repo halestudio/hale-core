@@ -30,8 +30,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 
 /**
@@ -39,8 +39,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  *
  * @author Simon Templer
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 class ReadWriteIT extends AbstractDBTest{
 
 	private static final TABLE_LINES = '''CREATE TABLE lines

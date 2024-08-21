@@ -44,8 +44,8 @@ import eu.esdihumboldt.hale.io.jdbc.JDBCInstanceReader;
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 import eu.esdihumboldt.hale.io.jdbc.mssql.MsSqlURIBuilder;
 import eu.esdihumboldt.util.test.AbstractPlatformTest;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 /**
  * Test class for Ms SQL Server
@@ -53,8 +53,8 @@ import ru.yandex.qatools.allure.annotations.Stories;
  * @author Arun
  *
  */
-@Features("Databases")
-@Stories("SQL Server")
+@Feature("Databases")
+@Story("SQL Server")
 public class MsSqlDataReaderTest extends AbstractPlatformTest {
 
 	/**

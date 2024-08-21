@@ -10,7 +10,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.esdihumboldt.hale.io.jdbc.postgresql.test;
+package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
 
@@ -23,8 +23,8 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Reference
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition
 import eu.esdihumboldt.hale.io.jdbc.JDBCInstanceWriter
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 /**
  * Test to check the sorting of the cyclic reference between the types
@@ -34,8 +34,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  *
  * @author Sameer Sheikh
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 public class CheckSortingForCyclicTypesTest {
 
 	private static final NAMESPACE = "jdbc:postgresql:gis:public";

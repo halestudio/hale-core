@@ -12,5 +12,5 @@ dependencies {
   implementation libs.jts
 
   implementation testLibs.junit4
-  implementation testLibs.allure.annotations
+  implementation testLibs.allure.junit4.adapter
 }

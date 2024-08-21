@@ -21,8 +21,8 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 /**
  * Unit test for checking writing og the instances which has reference and
@@ -30,8 +30,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  *
  * @author Sameer Sheikh
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 public class AutoGenKeyReferenceIT extends AbstractDBTest {
 
 	private static final String STATISTICAL_UNIT = '''create table statisticalunits
