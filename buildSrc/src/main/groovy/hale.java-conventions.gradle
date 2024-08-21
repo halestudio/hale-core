@@ -44,6 +44,10 @@ dependencies {
 
   // make offline resources available to all tests
   testRuntimeOnly project(':util:features:eu.esdihumboldt.util.feature.resource')
+
+  // AssertJ + Allure aspect
+  testImplementation testLibs.assertj
+  testRuntimeOnly testLibs.allure.assertj
 }
 
 task sourcesJar(type: Jar) {
