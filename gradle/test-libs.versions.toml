@@ -10,6 +10,7 @@ junit4 = {module = "junit:junit", version.ref = "junit4"}
 
 allure-junit4-adapter = {module = "io.qameta.allure:allure-junit4", version.ref = "allure"}
 allure-junit4-aspect = {module = "io.qameta.allure:allure-junit4-aspect", version.ref = "allure"}
+allure-assertj = {module = "io.qameta.allure:allure-assertj", version.ref = "allure"}
 
 assertj = {module = "org.assertj:assertj-core", version.ref = "assertj"}
 
