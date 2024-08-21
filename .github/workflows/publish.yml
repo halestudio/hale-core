@@ -13,13 +13,56 @@ concurrency:
 
 jobs:
   publish:
-    uses: wetransform/gha-workflows/.github/workflows/gradle-library-publish.yml@feat/multi-module-improvements
+    # Only on main repository (no publishing on forks)
+    if: github.repository_owner == 'halestudio'
+
+    uses: wetransform/gha-workflows/.github/workflows/gradle-library-publish.yml@master # TODO use release
     with:
       java-version: 17
       multi-module: true
       skip-scan: true
-      build-tasks: 'clean spotlessCheck check'
+      build-tasks: '--continue clean spotlessCheck check :allure:allureAggreggateResults'
+      upload-artifact-path: allure/build/allure-results
+      upload-artifact-name: allure-results
     secrets:
       WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
       WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
       SLACK_NOTIFICATIONS_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+
+  allure:
+    # https://allurereport.org/docs/integrations-github/
+    runs-on: ubuntu-latest
+    if: always() // even if tests fail
+    needs: publish
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download artifact from build
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Load test report history
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: allure-results
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          publish_branch: gh-pages
+          publish_dir: allure-history
