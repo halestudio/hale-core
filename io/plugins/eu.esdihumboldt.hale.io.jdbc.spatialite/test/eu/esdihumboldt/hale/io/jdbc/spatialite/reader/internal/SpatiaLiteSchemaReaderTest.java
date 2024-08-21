@@ -19,8 +19,8 @@ import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuite;
 import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuiteVersion3;
 import eu.esdihumboldt.hale.io.jdbc.spatialite.test.SpatiaLiteTestSuiteVersion4;
 import eu.esdihumboldt.util.test.AbstractPlatformTest;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 /**
  * Test class for {@link SpatiaLiteSchemaReader}. The tests are automatically
@@ -28,8 +28,8 @@ import ru.yandex.qatools.allure.annotations.Stories;
  *
  * @author Stefano Costa, GeoSolutions
  */
-@Features("Databases")
-@Stories("SpatiaLite")
+@Feature("Databases")
+@Story("SpatiaLite")
 public class SpatiaLiteSchemaReaderTest extends AbstractPlatformTest {
 
 	/**

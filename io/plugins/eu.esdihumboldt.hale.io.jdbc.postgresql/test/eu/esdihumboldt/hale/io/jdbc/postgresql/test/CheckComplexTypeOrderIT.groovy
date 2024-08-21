@@ -10,7 +10,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.esdihumboldt.hale.io.jdbc.postgresql.test;
+package eu.esdihumboldt.hale.io.jdbc.postgresql.test
 
 import static org.junit.Assert.*
 
@@ -23,19 +23,16 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
 import eu.esdihumboldt.hale.io.jdbc.test.DBConfigInstance
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
-
-
-
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 /**
  * Unit test to check the sorting of the complex referencing types.
  *
  * @author Sameer Sheikh
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 public class CheckComplexTypeOrderIT extends AbstractDBTest{
 	private static final FIRST_TABLE_LINES = '''CREATE TABLE FIRST_TABLE
 		(

@@ -26,16 +26,16 @@ import eu.esdihumboldt.util.geometry.interpolation.InterpolationUtil;
 import eu.esdihumboldt.util.geometry.interpolation.model.Angle;
 import eu.esdihumboldt.util.geometry.interpolation.model.ArcByCenterPoint;
 import eu.esdihumboldt.util.geometry.interpolation.model.ArcByPoints;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 /**
  * Tests for Arc represented by a center point.
  *
  * @author Simon Templer
  */
-@Features("Geometries")
-@Stories("Arcs")
+@Feature("Geometries")
+@Story("Arcs")
 @SuppressWarnings("javadoc")
 public class ArcByCenterPointImplTest extends AbstractArcTest {
 

@@ -28,9 +28,6 @@ dependencies {
 
   implementation project(':io:plugins:eu.esdihumboldt.hale.io.jdbc')
 
-  testImplementation testLibs.junit4
-  testImplementation testLibs.allure.annotations
-
   testRuntimeOnly libs.geotools.epsg
 
   testImplementation libs.groovy.sql

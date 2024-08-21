@@ -32,8 +32,5 @@ dependencies {
 
   implementation project(':util:plugins:eu.esdihumboldt.util')
 
-  testImplementation testLibs.junit4
-  testImplementation testLibs.allure.annotations
-
   testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
 }

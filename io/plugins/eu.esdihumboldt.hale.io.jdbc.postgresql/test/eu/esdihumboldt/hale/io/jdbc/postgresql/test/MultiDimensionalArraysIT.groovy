@@ -26,8 +26,8 @@ import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 /**
  * Tests for multi-dimensional arrays. Also documents the current state of support.
@@ -37,8 +37,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  *
  * @author Simon Templer
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 class MultiDimensionalArraysIT extends AbstractDBTest {
 
 	public static final String query = '''

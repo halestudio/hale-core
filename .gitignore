@@ -22,6 +22,8 @@ pom.xml
 .metadata/
 .recommenders/
 
+allure-results/
+
 # generic main project
 /.project
 

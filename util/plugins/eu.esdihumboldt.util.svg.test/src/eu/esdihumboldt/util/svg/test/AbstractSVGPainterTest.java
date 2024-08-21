@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import ru.yandex.qatools.allure.annotations.Attachment;
+import io.qameta.allure.Attachment;
 
 /**
  * Base class for tests with attachments based on {@link SVGPainter}.

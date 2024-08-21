@@ -35,8 +35,8 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.io.jdbc.test.AbstractDBTest
-import ru.yandex.qatools.allure.annotations.Features
-import ru.yandex.qatools.allure.annotations.Stories
+import io.qameta.allure.Feature
+import io.qameta.allure.Story
 
 
 /**
@@ -45,8 +45,8 @@ import ru.yandex.qatools.allure.annotations.Stories
  * @author Sameer Sheikh
  * @author Simon Templer
  */
-@Features("Databases")
-@Stories("PostgreSQL")
+@Feature("Databases")
+@Story("PostgreSQL")
 public class PostDataTypesIT extends AbstractDBTest {
 
 	public static final String query = ''' CREATE TABLE employees

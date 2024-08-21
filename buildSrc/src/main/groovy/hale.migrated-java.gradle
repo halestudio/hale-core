@@ -4,6 +4,7 @@
 
 plugins {
   id 'hale.library-conventions'
+  id 'hale.junit4-conventions'
 }
 
 sourceSets {

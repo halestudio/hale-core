@@ -20,16 +20,16 @@ import java.text.MessageFormat;
 import org.junit.Test;
 import org.locationtech.jts.geom.Coordinate;
 
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
 /**
  * Tests for grid utilities.
  *
  * @author Simon Templer
  */
-@Features("Geometries")
-@Stories("Arcs")
+@Feature("Geometries")
+@Story("Arcs")
 @SuppressWarnings("javadoc")
 public class GridUtilTest {
 
