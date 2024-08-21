@@ -1,0 +1,1 @@
+{"total":768,"items":[{"uid":"84dea22722a5be985a1b75c0a86f2d59","name":"Databases","statistic":{"failed":0,"broken":0,"skipped":1,"passed":3,"unknown":0,"total":4}},{"uid":"2bd1da64d8918a8be73eb462135140e5","name":"Geometries","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

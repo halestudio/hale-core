@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","","","0","0","709","57","0"
+"","Databases","SpatiaLite","0","0","6","0","0"
+"","Geometries","Arcs","0","0","44","0","0"
+"","Databases","PostgreSQL","0","0","12","0","0"
+"","Databases","SQL Server","0","0","0","4","0"
+"","Databases","MS Access","0","0","2","1","0"
