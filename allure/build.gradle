@@ -1,0 +1,48 @@
+plugins {
+  id 'hale.base'
+
+  // https://github.com/allure-framework/allure-gradle
+  id("io.qameta.allure-aggregate-report") version "2.12.0"
+}
+
+repositories {
+  mavenCentral()
+}
+
+// Removing the default allprojects:
+configurations.allureAggregateReport.dependencies.clear()
+
+def allureProjects = []
+
+dependencies {
+  rootProject.subprojects.each { p ->
+    // add all projects except:
+    // - root project
+    // - this project
+    // - bom project
+    // - intermediate projects w/o build.gradle
+    if (p != project && p.name != 'bom' && new File(p.projectDir, 'build.gradle').exists()) {
+      //TODO better way to determine if allure adapter is enabled for a project?
+      allureAggregateReport(p)
+
+      allureProjects << p
+    }
+  }
+}
+
+tasks.create('allureAggreggateResults').doLast {
+  def targetDir = new File(project.layout.buildDirectory.asFile.get(), 'allure-results')
+  targetDir.deleteDir()
+  targetDir.mkdirs()
+
+  allureProjects.each { Project p ->
+    def bdir = p.layout.buildDirectory.asFile.get()
+    def adir = new File(bdir, 'allure-results')
+    if (adir.exists()) {
+      copy {
+        from adir
+        into targetDir
+      }
+    }
+  }
+}

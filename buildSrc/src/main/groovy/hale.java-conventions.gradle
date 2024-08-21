@@ -8,6 +8,8 @@ plugins {
 
   id 'com.diffplug.spotless'
 
+  id 'io.qameta.allure-adapter'
+
   id 'hale.common'
 }
 

@@ -17,8 +17,9 @@ dependencies {
       // add all projects except:
       // - root project
       // - this project
+      // - allure project
       // - intermediate projects w/o build.gradle
-      if (p != project && new File(p.projectDir, 'build.gradle').exists()) {
+      if (p != project && p.name != 'allure' && new File(p.projectDir, 'build.gradle').exists()) {
         api(p)
       }
     }
