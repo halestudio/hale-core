@@ -16,6 +16,7 @@ import static org.junit.Assert.*
 
 import groovy.transform.CompileStatic
 
+import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
 import org.opengis.referencing.crs.CoordinateReferenceSystem
@@ -23,6 +24,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 import eu.esdihumboldt.hale.common.instance.geometry.GeometryUtil
+import eu.esdihumboldt.hale.common.instance.helper.PropertyResolver
 import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator
@@ -40,6 +42,12 @@ import eu.esdihumboldt.util.test.AbstractPlatformTest
 @SuppressWarnings("restriction")
 @CompileStatic
 class StreamGmlReaderTest extends AbstractPlatformTest {
+
+	@Before
+	void clearResolverCache() {
+		PropertyResolver.clearCache()
+	}
+
 	/**
 	 * Test whether the reader detects the CRS from the GML srsName attribute
 	 * correctly.

@@ -25,12 +25,14 @@ import java.util.Collection;
 
 import javax.xml.namespace.QName;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
+import eu.esdihumboldt.hale.common.instance.helper.PropertyResolver;
 import eu.esdihumboldt.hale.common.instance.model.Group;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
@@ -60,6 +62,11 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 	@BeforeClass
 	public static void waitForServices() {
 		TestUtil.startConversionService();
+	}
+
+	@Before
+	public void clearResolverCache() {
+		PropertyResolver.clearCache();
 	}
 
 	/**

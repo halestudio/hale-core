@@ -35,6 +35,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
 import eu.esdihumboldt.hale.common.core.io.supplier.Locatable
 import eu.esdihumboldt.hale.common.instance.geometry.GeometryUtil
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
+import eu.esdihumboldt.hale.common.instance.helper.PropertyResolver
 import eu.esdihumboldt.hale.common.instance.io.GeoInstanceWriter
 import eu.esdihumboldt.hale.common.instance.io.InstanceWriter
 import eu.esdihumboldt.hale.common.instance.model.Instance
@@ -70,6 +71,11 @@ class StreamGmlWriter2Test extends AbstractPlatformTest {
 	@BeforeClass
 	public static void initAll() {
 		TestUtil.startConversionService();
+	}
+
+	@Before
+	void clearResolverCache() {
+		PropertyResolver.clearCache()
 	}
 
 	//	@Before
