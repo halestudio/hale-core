@@ -5,12 +5,11 @@ plugins {
 description = 'hale-core BOM'
 
 javaPlatform {
-  // allowDependencies() // for including other BOMs
+  allowDependencies() // for including other BOMs
 }
 
 dependencies {
-  // api(platform(project("other bom")))
-
+  // include all repository projects
   constraints {
     // Note: transitive dependencies are not included for a dependency
 
@@ -24,4 +23,11 @@ dependencies {
       }
     }
   }
+
+  /*
+   * Other BOMs
+   */
+
+  // Groovy BOM
+  api(platform("org.codehaus.groovy:groovy-bom:${libs.versions.groovy.get()}"))
 }
