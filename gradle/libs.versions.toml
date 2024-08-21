@@ -118,7 +118,7 @@ jts = {module = "org.locationtech.jts:jts-core", version = "1.19.0"}
 batik-svggen = {module = "org.apache.xmlgraphics:batik-svggen", version.ref = "batik"}
 batik-dom = {module = "org.apache.xmlgraphics:batik-dom", version.ref = "batik"}
 
-apache-http-core = {module = "org.apache.httpcomponents:httpcore", version = "4.4.13"}
+apache-http-core = {module = "org.apache.httpcomponents:httpcore", version = "4.4.16"}
 apache-http-client = {module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client"}
 apache-http-fluent = {module = "org.apache.httpcomponents:fluent-hc", version.ref = "apache-http-client"}
 
