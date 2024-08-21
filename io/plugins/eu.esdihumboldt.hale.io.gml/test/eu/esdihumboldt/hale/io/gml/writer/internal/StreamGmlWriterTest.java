@@ -30,6 +30,7 @@ import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -51,6 +52,7 @@ import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier;
 import eu.esdihumboldt.hale.common.core.io.supplier.Locatable;
 import eu.esdihumboldt.hale.common.instance.geometry.GeometryUtil;
+import eu.esdihumboldt.hale.common.instance.helper.PropertyResolver;
 import eu.esdihumboldt.hale.common.instance.io.GeoInstanceWriter;
 import eu.esdihumboldt.hale.common.instance.io.InstanceReader;
 import eu.esdihumboldt.hale.common.instance.io.InstanceWriter;
@@ -106,6 +108,11 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	 * The geometry factory
 	 */
 	private static final GeometryFactory geomFactory = new GeometryFactory();
+
+	@Before
+	public void clearResolverCache() {
+		PropertyResolver.clearCache();
+	}
 
 //	/**
 //	 * Test writing a simple feature from a simple schema (Watercourses VA)
