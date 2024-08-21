@@ -652,7 +652,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 
 		IOReport report = fillFeatureTest("AggregateTest", //$NON-NLS-1$
 				getClass().getResource("/data/geom_schema/geom-gml32.xsd").toURI(), //$NON-NLS-1$
-				values, "geometryAggregate_32_MultiPolygon", DEF_SRS_NAME, //$NON-NLS-1$
+				values, "geometryAggregate_32_MultiPolygon_WindingOrder_CCW", DEF_SRS_NAME, //$NON-NLS-1$
 				false, false, EnumWindingOrderTypes.counterClockwise);
 
 		assertTrue("Expected GML output to be valid", report.isSuccess()); //$NON-NLS-1$
@@ -675,7 +675,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 
 		IOReport report = fillFeatureTest("AggregateTest", //$NON-NLS-1$
 				getClass().getResource("/data/geom_schema/geom-gml32.xsd").toURI(), //$NON-NLS-1$
-				values, "geometryPrimitive_32_MultiPolygon", DEF_SRS_NAME, //$NON-NLS-1$
+				values, "geometryPrimitive_32_MultiPolygon_WindingOrder_CW", DEF_SRS_NAME, //$NON-NLS-1$
 				false, false, EnumWindingOrderTypes.clockwise);
 
 		assertTrue("Expected GML output to be valid", report.isSuccess()); //$NON-NLS-1$
@@ -699,7 +699,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 
 		IOReport report = fillFeatureTest("AggregateTest", //$NON-NLS-1$
 				getClass().getResource("/data/geom_schema/geom-gml32.xsd").toURI(), //$NON-NLS-1$
-				values, "geometryPrimitive_32_MultiPolygon", DEF_SRS_NAME, //$NON-NLS-1$
+				values, "geometryPrimitive_32_MultiPolygon_WindingOrder", DEF_SRS_NAME, //$NON-NLS-1$
 				false, false, EnumWindingOrderTypes.noChanges);
 
 		assertTrue("Expected GML output to be valid", report.isSuccess()); //$NON-NLS-1$
