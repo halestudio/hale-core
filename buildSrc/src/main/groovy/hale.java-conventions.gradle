@@ -143,6 +143,18 @@ task generateAllureProperties {
       properties['allure.label.epic'] = defaultEpic
     }
 
+    // default feature is project name minus common prefix
+    def defaultFeature = project.name
+    defaultFeature = defaultFeature
+      .replaceFirst(/^eu\.esdihumboldt\.cst\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\.hale\.app\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\.hale\.common\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\.hale\.io\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\.hale\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\.util\./, '')
+      .replaceFirst(/^eu\.esdihumboldt\./, '')
+    properties['allure.label.feature'] = defaultFeature
+
     def labels = ['epic', 'story', 'feature']
     labels.each {label ->
       if (config."$label") {
