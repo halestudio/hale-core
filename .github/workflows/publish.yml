@@ -32,7 +32,7 @@ jobs:
   allure:
     # https://allurereport.org/docs/integrations-github/
     runs-on: ubuntu-latest
-    if: always() // even if tests fail
+    if: always() # even if tests fail
     needs: publish
     permissions:
       contents: write
