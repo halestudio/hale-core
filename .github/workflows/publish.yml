@@ -34,10 +34,11 @@ jobs:
     runs-on: ubuntu-latest
     if: always() # even if tests fail
     needs: publish
-    permissions:
-      contents: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
       - name: Download artifact from build
         uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
         with:
@@ -54,15 +55,15 @@ jobs:
 
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.9
-        if: always()
         with:
           gh_pages: gh-pages
           allure_history: allure-history
           allure_results: allure-results
 
       - name: Publish test report
-        uses: peaceiris/actions-gh-pages@v4
-        if: always()
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          publish_branch: gh-pages
-          publish_dir: allure-history
+          branch: gh-pages
+          folder: allure-history
+          clean-exclude: pr-preview/
+          force: false

@@ -28,10 +28,46 @@ jobs:
       java-version: 17
       multi-module: true
       skip-scan: true
-      build-tasks: '--continue clean check :allure:allureAggregateReport' # perform all tasks even if tests of one project fail
-      upload-artifact-path: allure/build/reports/allure-report/allureAggregateReport
-      upload-artifact-name: Allure test report
+      build-tasks: '--continue clean check :allure:allureAggreggateResults' # perform all tasks even if tests of one project fail
+      upload-artifact-path: allure/build/allure-results
+      upload-artifact-name: allure-results
       notify-failure: false
     secrets:
       WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
       WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
+
+  allure:
+    # https://allurereport.org/docs/integrations-github/
+    runs-on: ubuntu-latest
+    if: always() # even if tests fail
+    needs: check
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Download artifact from build
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Load test report history
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.9
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: allure-results
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./allure-history/
