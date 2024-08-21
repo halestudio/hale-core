@@ -1,0 +1,21 @@
+---
+name: Delete test report
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  delete-allure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          action: remove
