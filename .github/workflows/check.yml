@@ -62,7 +62,7 @@ jobs:
           path: gh-pages
 
       - name: Build test report
-        uses: simple-elf/allure-report-action@v1.9
+        uses: simple-elf/allure-report-action@58e6590adf6d8f196a0d771bf8a00e6921086a62 # v1.9
         with:
           gh_pages: gh-pages
           allure_history: allure-history
@@ -71,6 +71,6 @@ jobs:
           report_url: https://${{ github.repository_owner }}.github.io/hale-core/pr-preview/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1
+        uses: rossjrw/pr-preview-action@f31d5aa7b364955ea86228b9dcd346dc3f29c408 # v1
         with:
           source-dir: ./allure-history/
