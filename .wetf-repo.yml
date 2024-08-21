@@ -6,6 +6,6 @@ presets: []
 
 # List of custom required checks
 required_checks:
-  - check / run
+  - check / check / run
   - require-challenge
   - spotless
