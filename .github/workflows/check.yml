@@ -23,12 +23,15 @@ jobs:
           ./gradlew spotlessCheck
 
   check:
-    uses: wetransform/gha-workflows/.github/workflows/gradle-library-check.yml@feat/multi-module-improvements
+    uses: wetransform/gha-workflows/.github/workflows/gradle-library.yml@06a242e21c2f8e81407d629a67b747eea7c91706 # v2.4.0
     with:
       java-version: 17
       multi-module: true
       skip-scan: true
-      gradle-tasks: '--continue clean check' # perform all tasks even if tests of one project fail
+      build-tasks: '--continue clean check :allure:allureAggregateReport' # perform all tasks even if tests of one project fail
+      upload-artifact-path: allure/build/reports/allure-report/allureAggregateReport
+      upload-artifact-name: Allure test report
+      notify-failure: false
     secrets:
       WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
       WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
