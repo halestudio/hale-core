@@ -167,7 +167,7 @@ typesafe-config = {module = "com.typesafe:config", version = "1.2.1"}
 jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}
 jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
 
-ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "3.0.6"}
+ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "3.0.7"}
 
 poi-core = {module = "org.apache.poi:poi", version.ref = "poi"}
 poi-ooxml = {module = "org.apache.poi:poi-ooxml", version.ref = "poi"}
