@@ -57,7 +57,7 @@ If you want to show a report for locally run tests proceed as follows:
 1. Run desired tests with Gradle (e.g. `./gradlew test`)
 2. Serve aggregated report over all projects (`./gradlew :allure:allureAggregateServe`)
 
-**Note:** Please do not changes `allure.properties` files manually, they are automatically generated for each project.
+**Note:** Please do not change `allure.properties` files manually, they are automatically generated for each project.
 
 ### Set labels per project
 
