@@ -162,7 +162,7 @@ schemacrawler = {module = "us.fatehi:schemacrawler", version = "12.06.03"}
 
 sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.46.1.0"}
 
-typesafe-config = {module = "com.typesafe:config", version = "1.2.1"}
+typesafe-config = {module = "com.typesafe:config", version = "1.4.3"}
 
 jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}
 jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
