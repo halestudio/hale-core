@@ -110,6 +110,7 @@ task generateAllureProperties {
     // defaults
     properties['allure.link.issue.pattern'] = 'https://github.com/halestudio/hale-core/issues/{}'
     properties['allure.link.JIRA.pattern'] = 'https://wetransform.atlassian.net/browse/{}'
+    properties['allure.link.hale.pattern'] = 'https://github.com/halestudio/hale/issues/{}'
 
     def config = project.hale.allure as AllureConfig
 
