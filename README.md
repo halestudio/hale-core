@@ -1,6 +1,9 @@
 hale-core
 =========
 
+[![publish](https://github.com/halestudio/hale-core/actions/workflows/publish.yml/badge.svg)](https://github.com/halestudio/hale-core/actions/workflows/publish.yml)
+[![allure](https://img.shields.io/badge/Allure-test%20report-blue.svg)](https://halestudio.github.io/hale-core/)
+
 Core libraries of [hale»studio](https://github.com/halestudio/hale).
 
 Previously part of hale»studio these libraries have been moved to this repository with version 6 of hale.
