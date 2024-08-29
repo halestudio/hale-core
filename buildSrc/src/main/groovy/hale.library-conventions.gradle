@@ -12,8 +12,17 @@ plugins {
 
 // https://github.com/bndtools/bnd/blob/master/gradle-plugins/README.md#replacing-use-of-gradles-deprecated-osgi-plugin
 jar {
-  bundle {
-    afterEvaluate {
+  afterEvaluate {
+    def symName = project.hale.bundleSymbolicName
+    if (!symName) {
+      symName = projectDir.name
+    }
+
+    manifest {
+      attributes('Automatic-Module-Name': symName)
+    }
+
+    bundle {
       def bunName = project.hale.bundleName ?: project.description
       if (bunName) {
         bnd(
@@ -21,10 +30,6 @@ jar {
         )
       }
 
-      def symName = project.hale.bundleSymbolicName
-      if (!symName) {
-        symName = projectDir.name
-      }
       def useSymName = symName
 
       boolean singleton = false
