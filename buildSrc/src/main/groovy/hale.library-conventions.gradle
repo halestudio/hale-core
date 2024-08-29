@@ -85,6 +85,13 @@ jar {
           'Eclipse-BuddyPolicy': 'registered'
         )
       }
+
+      def ip = project.hale.importPackage
+      if (ip) {
+        bnd(
+          'Import-Package': ip
+        )
+      }
     }
   }
 }
