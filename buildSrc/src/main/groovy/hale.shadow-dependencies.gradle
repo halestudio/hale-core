@@ -1,0 +1,124 @@
+/*
+ * Common settings for projects with shadowed dependencies.
+ *
+ * In part inspired by
+ * https://github.com/palantir/gradle-shadow-jar/blob/develop/src/main/groovy/com/palantir/gradle/shadowjar/ShadowJarPlugin.java
+ */
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+plugins {
+  id 'hale.java-conventions'
+  id 'com.gradleup.shadow'
+}
+
+configurations {
+  shadowImplementation
+  shadowRuntime
+
+  shadowCollection
+
+  configurations.shadowImplementation.visible = false
+  configurations.shadowImplementation.canBeConsumed = false
+  configurations.shadowImplementation.canBeResolved = false
+
+  configurations.shadowRuntime.visible = false
+  configurations.shadowRuntime.canBeConsumed = false
+  configurations.shadowRuntime.canBeResolved = false
+
+  configurations.shadowCollection.visible = false
+  configurations.shadowCollection.canBeConsumed = false
+
+  // configuration "shadow" for runtime dependencies already added by plugin and used for
+  // another purpose
+  // see https://gradleup.com/shadow/publishing/#shadow-configuration-and-publishing
+
+  // Important to extend classpath configs directly from shadow configs (otherwise deps appear in module metadata)
+  // see https://github.com/gradle/gradle/issues/10861#issuecomment-576562961
+
+  compileClasspath.extendsFrom(configurations.shadowImplementation)
+  runtimeClasspath.extendsFrom(configurations.shadowImplementation)
+  testCompileClasspath.extendsFrom(configurations.shadowImplementation)
+  testRuntimeClasspath.extendsFrom(configurations.shadowImplementation)
+
+  runtimeClasspath.extendsFrom(configurations.shadowRuntime)
+  testRuntimeClasspath.extendsFrom(configurations.shadowRuntime)
+
+  // configuration that collects deps to shadow
+  shadowCollection.extendsFrom(configurations.shadowImplementation, configurations.shadowRuntime)
+}
+
+shadowJar {
+  // only shadow selected dependencies
+  configurations = [project.configurations.shadowCollection]
+
+  // always merge service files
+  mergeServiceFiles()
+}
+
+tasks.named('jar', Jar) {
+  // ensure default qualifier (required so shadowjar overrides normal jar, if we don't override we end up with problems on publishing)
+  archiveClassifier = null // 'thin'
+}
+
+/*
+ * TODO use JPMS modules to really hide shadowed dependencies from classpath (of other modules)?
+ * Note: tested on SKOS plugin, but with current Eclipse version used too many different conflicting packages offered by different JARs
+ */
+
+tasks.named('shadowJar', ShadowJar) {
+  relocationPrefix 'shadow_' + project.name.replaceAll(/[\.\-]/, '_')
+  // ensure default classifier
+  archiveClassifier = null
+
+  dependsOn('jar')
+}
+
+afterEvaluate {
+  // FIXME relocation necessary if using explicitly defined Java Module?
+
+  tasks.named('shadowJar', ShadowJar) {
+    enableRelocation project.extensions.hale.shadow.relocate
+  }
+}
+
+// XXX seems not necessary (added by default, complains about duplicate)
+// publishing.publications.library.artifact tasks.shadowJar
+
+publishing {
+  publications {
+    library(MavenPublication) {
+      artifacts = [shadowJar, sourcesJar]
+
+      // required for exclusion of shadowed dependencies
+      // exclude from POM and Gradle metadata
+      // see https://github.com/gradle/gradle/issues/10861#issuecomment-576562961
+      versionMapping {
+        usage("java-api") {
+          fromResolutionResult()
+        }
+        usage("java-runtime") {
+          fromResolutionResult()
+        }
+      }
+
+      // https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPom.html#org.gradle.api.publish.maven.MavenPom:withXml(org.gradle.api.Action)
+      /* Note: Not necessary with above logic
+      pom.withXml {
+        // exclude shadowed dependencies from POM
+
+        def excludeDeps = new HashSet()
+        def configs = [project.configurations.shadowImplementation, project.configurations.shadowRuntime]
+        configs.each {
+          excludeDeps.addAll( it.allDependencies.collect { dep -> "${dep.group}:${dep.name}" } )
+        }
+
+        def dependenciesNode = asNode().getAt('dependencies')[0]
+        dependenciesNode?.children()?.findAll {
+          def depStr = "${it.groupId.text()}:${it.artifactId.text()}"
+          excludeDeps.contains(depStr)
+        }?.each { it.parent().remove(it) }
+      }
+       */
+    }
+  }
+}

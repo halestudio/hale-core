@@ -5,6 +5,7 @@ import org.gradle.api.Action
 class HaleProjectExtension {
 	// internal
 	AllureConfig allure = new AllureConfig()
+	ShadowConfig shadow = new ShadowConfig()
 
 	// OSGI bundle options
 	String activator = null
@@ -16,10 +17,15 @@ class HaleProjectExtension {
 	String bundleVendor = null
 	String privatePackage = null
 	String exportPackage = null
+	String importPackage = null
 	boolean registeredBuddies = false
 
 	void allure(Action<AllureConfig> action) {
 		action.execute(allure)
+	}
+
+	void shadow(Action<ShadowConfig> action) {
+		action.execute(shadow)
 	}
 
 }

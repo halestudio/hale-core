@@ -150,6 +150,9 @@ xerces = {module = "xerces:xercesImpl", version = "2.12.2"}
 
 opencsv = {module = "net.sf.opencsv:opencsv", version = "2.3"}
 
+# No regular Maven dependency available for this
+# This specific dependency includes other third party dependencies like OGSi
+# Sources seem to be available at https://github.com/simonjupp/java-skos-api
 skos = {module = "eu.esdihumboldt.unpuzzled:org.semanticweb.owlapi.osgi.skos", version = "3.0.0"}
 
 deegree-featurestore-sql = {module = "org.deegree:deegree-featurestore-sql", version.ref = "deegree"}

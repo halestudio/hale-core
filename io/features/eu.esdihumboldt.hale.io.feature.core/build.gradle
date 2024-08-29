@@ -7,7 +7,7 @@ description = 'Core I/O Providers'
 dependencies {
   api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
 
-  api(project(":io:plugins:eu.esdihumboldt.hale.io.codelist.skos"))
+  api(project(path: ":io:plugins:eu.esdihumboldt.hale.io.codelist.skos", configuration: 'shadow'))
   api(project(":io:plugins:eu.esdihumboldt.hale.io.codelist.xml"))
   api(project(":io:plugins:eu.esdihumboldt.hale.io.csv"))
   api(project(":io:plugins:eu.esdihumboldt.hale.io.geopackage"))

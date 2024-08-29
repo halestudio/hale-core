@@ -1,15 +1,26 @@
 plugins {
   id 'hale.migrated-java'
+  id 'hale.shadow-dependencies'
 }
 
 hale {
   bundleName = 'Skos Reader'
+
+  // prevent importing skos packages (shadowed dependency)
+  importPackage '!org.semanticweb.*,*'
+}
+
+shadowJar {
+  minimize() // get rid of OSGi classes even if not relocating
+
+  // exclude '*.jar' // XXX excludes everything not just the actual Jar files
 }
 
 dependencies {
   implementation libs.slf4jplus.api
 
-  implementation libs.skos
+  // SKOS library JAR includes many other dependencies including OSGi framework which causes problems if not shaded
+  shadowImplementation libs.skos
 
   implementation libs.eclipse.core.runtime
 
