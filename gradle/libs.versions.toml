@@ -178,7 +178,7 @@ poi-ooxml-lite = {module = "org.apache.poi:poi-ooxml-lite", version.ref = "poi"}
 
 json-simple = {module = "com.googlecode.json-simple:json-simple", version = "1.1.1"}
 
-saxon = {module = "net.sf.saxon:Saxon-HE", version = "9.4.0-9"} # "9.0.0-8" was originally used but not available in Maven Central
+saxon = {module = "net.sf.saxon:Saxon-HE", version = "9.9.1-8"} # "9.0.0-8" was originally used but not available in Maven Central
 
 opengis-cite-schema-utils = {module = "org.opengis.cite:schema-utils", version = "1.8"}
 
