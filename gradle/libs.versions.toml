@@ -113,7 +113,7 @@ orient-common = {module = "com.orientechnologies:orient-commons", version.ref = 
 
 snakeyaml = {module = "org.yaml:snakeyaml", version = "2.2"}
 
-jts = {module = "org.locationtech.jts:jts-core", version = "1.19.0"}
+jts = {module = "org.locationtech.jts:jts-core", version = "1.20.0"}
 
 batik-svggen = {module = "org.apache.xmlgraphics:batik-svggen", version.ref = "batik"}
 batik-dom = {module = "org.apache.xmlgraphics:batik-dom", version.ref = "batik"}
