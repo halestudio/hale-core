@@ -24,7 +24,7 @@ dependencies {
   implementation libs.findbugs.annotations
 
   api libs.eclipse.core.runtime // e.g. returned in HalePlatform#getContentTypeManager()
-  implementation libs.igd.eclipse.util
+  api libs.igd.eclipse.util // e.g. IOProviderExtension
   implementation libs.igd.osgi.util
 
   implementation libs.spring.core
