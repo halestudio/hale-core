@@ -9,8 +9,8 @@ javaPlatform {
 }
 
 dependencies {
-  // include all repository projects
   constraints {
+    // include all repository projects
     // Note: transitive dependencies are not included for a dependency
 
     rootProject.subprojects.each { p ->
@@ -22,6 +22,12 @@ dependencies {
       if (p != project && p.name != 'allure' && new File(p.projectDir, 'build.gradle').exists()) {
         api(p)
       }
+    }
+
+    // include all third party dependencies from version catalog
+    def versionCatalog = rootProject.extensions.getByType(VersionCatalogsExtension).named("libs")
+    versionCatalog.libraryAliases.each { alias ->
+      api(versionCatalog.findLibrary(alias).get())
     }
   }
 
