@@ -18,11 +18,12 @@ dependencies {
   implementation libs.groovy.json
   implementation libs.groovy.xml
 
-  implementation libs.guava
+  api libs.guava
   implementation libs.commons.io
   implementation libs.castor.xml
   implementation libs.findbugs.annotations
 
+  api libs.eclipse.core.runtime // e.g. returned in HalePlatform#getContentTypeManager()
   implementation libs.igd.eclipse.util
   implementation libs.igd.osgi.util
 

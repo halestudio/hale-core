@@ -16,7 +16,6 @@ dependencies {
   implementation libs.findbugs.annotations
   implementation libs.slf4jplus.api
 
-  implementation libs.eclipse.core.runtime
   implementation libs.igd.eclipse.util
   implementation libs.igd.osgi.util
 
