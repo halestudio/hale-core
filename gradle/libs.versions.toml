@@ -85,7 +85,7 @@ findbugs-annotations = {module="com.google.code.findbugs:annotations", version =
 
 guava = {module = "com.google.guava:guava", version = "27.1-jre"}
 
-xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.1.1"}
+xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.2.1"}
 
 commons-io = {module = "commons-io:commons-io", version = "2.16.1"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
