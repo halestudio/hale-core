@@ -9,6 +9,8 @@ plugins {
 
 spotless {
   groovy {
+    toggleOffOn()
+
     importOrder('groovy', 'java', 'javax', 'org', 'com', '')
 
     // https://github.com/diffplug/spotless/tree/main/plugin-gradle#eclipse-groovy
