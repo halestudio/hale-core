@@ -22,6 +22,7 @@ import groovy.transform.CompileStatic
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.LocalDate
+import java.time.ZoneId
 import java.util.function.Consumer
 
 import org.junit.Test
@@ -176,7 +177,7 @@ class TopoJsonInstanceWriterTest extends AbstractPlatformTest {
 			assertEquals('Area 1', json.objects.Topology.geometries[0].'properties'.name)
 			assertEquals(1, json.objects.Topology.geometries[0].'properties'.id)
 			assertEquals('Label 1', json.objects.Topology.geometries[0].'properties'.label)
-			assertEquals("2023-11-28", json.objects.Topology.geometries[0].'properties'.date)
+			assertEquals('2023-11-28', json.objects.Topology.geometries[0].'properties'.date)
 			assertEquals(1, json.objects.Topology.geometries[0].'properties'.fiin)
 			assertEquals(1.2, json.objects.Topology.geometries[0].'properties'.fido)
 			assertEquals(true, json.objects.Topology.geometries[0].'properties'.fibo)
