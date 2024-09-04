@@ -37,4 +37,7 @@ dependencies {
 
   // Groovy BOM
   api(platform("org.codehaus.groovy:groovy-bom:${libs.versions.groovy.get()}"))
+
+  // SLF4J BOM
+  api(platform("org.slf4j:slf4j-bom:${libs.versions.slf4j.get()}"))
 }
