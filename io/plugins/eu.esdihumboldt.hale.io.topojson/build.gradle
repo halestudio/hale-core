@@ -25,6 +25,8 @@ dependencies {
   implementation project(':io:plugins:eu.esdihumboldt.hale.io.shp')
   implementation project(':io:plugins:eu.esdihumboldt.hale.io.json')
 
+  runtimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
+
   testImplementation testLibs.junit4
 
   testImplementation libs.groovy.json

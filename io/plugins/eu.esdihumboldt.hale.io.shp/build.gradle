@@ -31,6 +31,8 @@ dependencies {
   implementation project(':util:plugins:eu.esdihumboldt.util')
   implementation project(':util:plugins:eu.esdihumboldt.util.groovy.sandbox')
 
+  runtimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
+
   testImplementation testLibs.junit4
   testImplementation testLibs.assertj
 
