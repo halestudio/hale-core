@@ -115,6 +115,48 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		validateArokFnpIkg(list, 'geometrie')
 	}
 
+	/**
+	 * Test reading Shapefile instances using an XML schema, type detection based on file name, but name has result_ prefix.
+	 */
+	@Test
+	void testReadXsdInstancesResultPrefix1() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		InstanceCollection instances = loadInstances(xmlSchema, getClass().getClassLoader().getResource("testdata/arokfnp/alt_name/result_ikg.shp").toURI())
+
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// instance validation
+		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/**
+	 * Test reading Shapefile instances using an XML schema, type detection based on file name, but name has result_ prefix.
+	 */
+	@CompileStatic(TypeCheckingMode.SKIP) // due to strange Groovy compile error on assertThat
+	@Test
+	void testReadXsdInstancesResultPrefix2() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		InstanceCollection instances = loadInstances(xmlSchema, getClass().getClassLoader().getResource("testdata/arokfnp/alt_name/result_fnpgelt.shp").toURI())
+
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// type validation
+		Set<String> types = list.collect { it.definition.displayName }.toSet()
+		assertThat(types)
+				.hasSize(1)
+				.containsExactly('fnpgelt')
+	}
+
 	@CompileStatic(TypeCheckingMode.SKIP)
 	private void validateArokFnpIkg(List<Instance> instances, String geometryPropertyName) {
 		Map<String, List<Instance>> instancesByType = [:]
