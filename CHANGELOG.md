@@ -1,3 +1,59 @@
+## [6.0.0](https://github.com/halestudio/hale-core/compare/v5.3.0...v6.0.0) (2024-09-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Downstream dependencies need to use newer slf4j backend
+implementation.
+* Core libraries are now no longer part of the hale
+studio repository but were moved to this repository (hale-core).
+
+### Features
+
+* add feature project for CLI dependencies ([62fe49d](https://github.com/halestudio/hale-core/commit/62fe49dabbe2dd99556969e2deba4cd62506796e))
+* **shp:** support detecting type based on file name with result_ prefix ([299de8c](https://github.com/halestudio/hale-core/commit/299de8cde2a93fc546060c605833fd354ce0699b)), closes [ING-4416](https://wetransform.atlassian.net/browse/ING-4416)
+* **shp:** support writing date fields with other bindings than Date ([cf410c0](https://github.com/halestudio/hale-core/commit/cf410c05441cdf97f79dd9ada97732527566fb54))
+
+
+### Bug Fixes
+
+* **deps:** update allure to v2.29.0 ([3dd9b7f](https://github.com/halestudio/hale-core/commit/3dd9b7ff92dbc452d3b6ef9737ba0dd0df871519))
+* **deps:** update apache.http.client to v4.5.14 ([d44cc4d](https://github.com/halestudio/hale-core/commit/d44cc4dd603aa882c6da42402734c8adf85c62b9))
+* **deps:** update batik to v1.17 ([12939e5](https://github.com/halestudio/hale-core/commit/12939e5efb33b24934957e3d80ec23cca7e3da42))
+* **deps:** update dependency com.google.guava:guava to v27.1-jre ([d19e53c](https://github.com/halestudio/hale-core/commit/d19e53c0a6489e0a713cac52dcb734907748d08a))
+* **deps:** update dependency com.typesafe:config to v1.4.3 ([ce6c6de](https://github.com/halestudio/hale-core/commit/ce6c6de585a580311a74eb87d410c1b71e61214a))
+* **deps:** update dependency commons-codec:commons-codec to v1.17.1 ([a201a8a](https://github.com/halestudio/hale-core/commit/a201a8a1685d8713d8903a9215e78204e34e24a9))
+* **deps:** update dependency commons-io:commons-io to v2.16.1 ([ce9d77d](https://github.com/halestudio/hale-core/commit/ce9d77d77b800bec01a32dd06ec33545907c1329))
+* **deps:** update dependency jakarta.xml.bind:jakarta.xml.bind-api to v4.0.2 ([d0111ac](https://github.com/halestudio/hale-core/commit/d0111ac1f98f6b8a7c951c3d936833fc7d0665a2))
+* **deps:** update dependency joda-time:joda-time to v2.12.7 ([430ca72](https://github.com/halestudio/hale-core/commit/430ca723ebab8ac259521d9c052bf42e9a8bb01e))
+* **deps:** update dependency net.sf.trove4j:trove4j to v2.1.0 ([0a5a258](https://github.com/halestudio/hale-core/commit/0a5a258edde087b21d3a1817b735b72d3f4e1605))
+* **deps:** update dependency net.sf.ucanaccess:ucanaccess to v3.0.7 ([80de49c](https://github.com/halestudio/hale-core/commit/80de49c0ebf4385e7b0307870eb63a20d0bac5d6))
+* **deps:** update dependency org.apache.httpcomponents:httpcore to v4.4.16 ([43b2a7f](https://github.com/halestudio/hale-core/commit/43b2a7f46854cab88f60fd26a7f5b67d82fa3ead))
+* **deps:** update dependency org.apache.xmlbeans:xmlbeans to v5.2.1 ([b871341](https://github.com/halestudio/hale-core/commit/b8713413f25508e2ddb9ec3f33beed9436052882))
+* **deps:** update dependency org.aspectj:aspectjweaver to v1.9.22.1 ([b61eaf2](https://github.com/halestudio/hale-core/commit/b61eaf209254be9531bfa84f98ca6482c59e29b4))
+* **deps:** update dependency org.assertj:assertj-core to v3.26.3 ([aae94ba](https://github.com/halestudio/hale-core/commit/aae94ba5ed31ff0c733d0d60f9aadd7f4803117f))
+* **deps:** update dependency org.glassfish.jaxb:jaxb-runtime to v4.0.5 ([66ae7e8](https://github.com/halestudio/hale-core/commit/66ae7e8e4ccb406b6a0c3d1bb6b372d3b932d39b))
+* **deps:** update dependency org.locationtech.jts:jts-core to v1.20.0 ([244c1b6](https://github.com/halestudio/hale-core/commit/244c1b60f50ca679627decb01047c29a1463b27e))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.3 ([2bde5b1](https://github.com/halestudio/hale-core/commit/2bde5b1cf98225d8a091e5f24254289ffd9ccb35))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.4 ([a6d4ce1](https://github.com/halestudio/hale-core/commit/a6d4ce175dfab0889f268667657e2cc88a331903))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.46.1.0 ([682b7e9](https://github.com/halestudio/hale-core/commit/682b7e99be54eb4a406d115f1e8151fc54307fba))
+* **deps:** update dependency org.yaml:snakeyaml to v2.3 ([576230d](https://github.com/halestudio/hale-core/commit/576230d1479e98781ea6a81baaf11b85c4d80b3f))
+* **deps:** update dependency us.fatehi:schemacrawler to v12.06.03 ([4b1afaa](https://github.com/halestudio/hale-core/commit/4b1afaab68d97ac62a4211c4550dffbe857af282))
+* **deps:** update flexmark to v0.64.8 ([e6c7eaa](https://github.com/halestudio/hale-core/commit/e6c7eaafcd01763013b0566e93f72b9e449b3eb8))
+* **deps:** update geopackage to v3.5.0 ([eea30f3](https://github.com/halestudio/hale-core/commit/eea30f3ef82772309f80d58faff5d1942dc2e89d))
+* **deps:** update logback dependencies to v1.5.7 ([11a25e6](https://github.com/halestudio/hale-core/commit/11a25e6899c399b3473cad2b3a079338ce286449))
+* **deps:** update slf4j monorepo to v2 ([97ceea8](https://github.com/halestudio/hale-core/commit/97ceea84d386a4f8e95cf16c8059012acd6eaf8a))
+* **deps:** update spring core to v5.3.39 ([528f552](https://github.com/halestudio/hale-core/commit/528f55224a772391f9c12edfae52e890078f49aa))
+* download linked objects in a WFS using "resolvedepth" ([0243b38](https://github.com/halestudio/hale-core/commit/0243b38289b5c5c1e5bd4b82f7ebdc5f44ca22fd)), closes [ING-4128](https://wetransform.atlassian.net/browse/ING-4128)
+* make eclipse utilities API dependency ([e7ed836](https://github.com/halestudio/hale-core/commit/e7ed83622734e96a71eb2e201d36ca9f64f77920))
+* make some dependencies API dependencies ([a54a3b0](https://github.com/halestudio/hale-core/commit/a54a3b0bb3c570a8a497c5c81a97e9ce5322adb8))
+* resolve extension contributions from local projects w/o manifest ([4760a37](https://github.com/halestudio/hale-core/commit/4760a3742424b2c1d9c2e06a5022e6f0051f8e27))
+
+
+### Build System
+
+* migrate bundles that are not only relevant for UI to Gradle ([444098e](https://github.com/halestudio/hale-core/commit/444098edea8077b0e11324d6947993f57a9a900b)), closes [ING-4375](https://wetransform.atlassian.net/browse/ING-4375)
+
 ## [5.3.0](https://github.com/halestudio/hale/compare/v5.2.1...v5.3.0) (2024-08-07)
 
 
