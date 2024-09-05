@@ -46,6 +46,7 @@ import eu.esdihumboldt.hale.io.xsd.constraint.XmlElements;
 import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader;
 import eu.esdihumboldt.util.test.AbstractPlatformTest;
+import io.qameta.allure.Link;
 
 /**
  * Tests for {@link GmlInstanceCollection}
@@ -276,6 +277,8 @@ public class GmlInstanceCollectionTest extends AbstractPlatformTest {
 	 *
 	 * @throws Exception if an error occurs
 	 */
+	@Link(value = "1084", type = "hale")
+	@Link(value = "ING-4128", type = "JIRA")
 	@Test
 	public void testLoadFilterNoDuplicates() throws Exception {
 
