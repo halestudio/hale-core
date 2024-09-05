@@ -33,6 +33,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.io.xsd.reader.XmlSchemaReader
 import eu.esdihumboldt.util.test.AbstractPlatformTest
+import io.qameta.allure.Link
 
 /**
  * Tests for {@link StreamGmlReader}
@@ -144,8 +145,14 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 		assertEquals(expected, count)
 	}
 
-	//	this test might not work anymore in the future. At that moment please ignore it
-	//	@Ignore
+	/**
+	 * Test retrieving all features from a WFS when using pagination and resolvedepth.
+	 *
+	 * Additional objects need to be included in the results.
+	 * There should be no duplicate features even if the individual requests repeatedly include the same features.
+	 */
+	@Link(value = "1084", type = "hale")
+	@Link(value = "ING-4128", type = "JIRA")
 	@Test
 	public void testWfsPagination() {
 		/*
