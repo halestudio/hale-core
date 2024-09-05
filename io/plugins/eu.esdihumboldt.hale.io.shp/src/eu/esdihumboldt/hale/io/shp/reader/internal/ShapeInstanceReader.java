@@ -20,6 +20,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 import javax.xml.namespace.QName;
 
@@ -242,15 +243,20 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		TypeDefinition preferredType = types
 				.getType(new QName(ShapefileConstants.SHAPEFILE_NS, preferredName));
 		if (allowNonShapefileTypes && preferredType == null) {
-			preferredType = types.getMappingRelevantTypes().stream()
-					.filter(t -> t.getName().getLocalPart().equals(preferredName)).findFirst()
-					.orElse(null);
+			preferredType = findPreferred(preferredName, findName -> {
+				return types.getMappingRelevantTypes().stream()
+						.filter(t -> t.getName().getLocalPart().equals(findName)).findFirst()
+						.orElse(null);
+			});
 		}
 		if (allowNonShapefileTypes && preferredType == null) {
-			preferredType = types.getMappingRelevantTypes().stream()
-					// check displayname as well (e.g. in case of XSD where this
-					// represents the XML element)
-					.filter(t -> t.getDisplayName().equals(preferredName)).findFirst().orElse(null);
+			preferredType = findPreferred(preferredName, findName -> {
+				return types.getMappingRelevantTypes().stream()
+						// check displayname as well (e.g. in case of XSD where this
+						// represents the XML element)
+						.filter(t -> t.getDisplayName().equals(preferredName)).findFirst()
+						.orElse(null);
+			});
 		}
 		if (preferredType != null) {
 			int comp = checkCompatibility(preferredType, dataType, allowNonShapefileTypes);
@@ -290,6 +296,23 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		}
 
 		return null;
+	}
+
+	private static TypeDefinition findPreferred(String preferredName,
+			Function<String, TypeDefinition> find) {
+		TypeDefinition result = find.apply(preferredName);
+
+		if (result == null) {
+			// also allow for type w/o result_ prefix as the case for transformation results
+			// on hale-connect by default
+			String checkName = preferredName;
+			while (result == null && checkName.startsWith("result_")) {
+				checkName = checkName.substring("result_".length());
+				result = find.apply(checkName);
+			}
+		}
+
+		return result;
 	}
 
 	/**
