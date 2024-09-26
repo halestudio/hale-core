@@ -83,7 +83,7 @@ slf4jplus-logback-observer = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf
 
 findbugs-annotations = {module="com.google.code.findbugs:annotations", version = "3.0.1"}
 
-guava = {module = "com.google.guava:guava", version = "33.3.0-jre"}
+guava = {module = "com.google.guava:guava", version = "33.3.1-jre"}
 
 xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.2.1"}
 
