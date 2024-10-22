@@ -144,7 +144,7 @@ ibm-icu = {module = "eu.esdihumboldt.unpuzzled:com.ibm.icu", version = "64.2.0.v
 geopackage-lib = {module = "mil.nga.geopackage:geopackage", version.ref = "geopackage"}
 geopackage-core = {module = "mil.nga.geopackage:geopackage-core", version.ref = "geopackage"}
 
-picocli = {module = "info.picocli:picocli", version = "4.3.2"}
+picocli = {module = "info.picocli:picocli", version = "4.7.6"}
 
 xerces = {module = "xerces:xercesImpl", version = "2.12.2"}
 
