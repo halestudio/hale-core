@@ -10,12 +10,15 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.esdihumboldt.hale.app.transform.test;
+package eu.esdihumboldt.hale.app.transform.test
+
+import static org.assertj.core.api.Assertions.*
 
 import groovy.json.JsonSlurper
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 
+import org.junit.Ignore
 import org.junit.Test
 
 import eu.esdihumboldt.hale.app.transform.ExecApplication
@@ -1119,5 +1122,73 @@ assert aggregated['eu.esdihumboldt.hale.instance.validation.internal'].report.wa
 				line
 			}
 		}.join('\n')
+	}
+
+	// local test cases not intended to be enabled in the CI build
+
+	/**
+	 * Test running a local transformation for https://wetransform.atlassian.net/browse/ING-4479.
+	 * Data and project can be downloaded from the ticket.
+	 */
+	@Ignore
+	@Test
+	void testLocalING4479() {
+		def basePath = '/home/simon/Downloads/ING-4479'
+		def projectUri = new File(basePath + '/AROK FNP replace textual values-2024-10-22T07_55_29.halez').toURI().toString()
+
+		def args = [
+			'-project',
+			projectUri
+		]
+
+		def sourceBasePath = basePath + '/RPT AROK FNP-2024-10-22T07_54_40'
+		def ns = 'https://www.geoportal-raumordnung-bw.de/arok-fnp'
+		def sources = [
+			[
+				name: 'fnp0.shp',
+				type: 'fnp0'
+			],
+			[
+				name: 'fnpgelt.shp',
+				type: 'fnpgelt'
+			],
+			[
+				name: 'fnppkt0.shp',
+				type: 'fnppkt0'
+			],
+			[
+				name: 'ikg.shp',
+				type: 'ikg'
+			],
+		]
+
+		sources.each { source ->
+			args << '-source'
+			args << new File(sourceBasePath, source.name).toURI().toString()
+
+			args << '-Stypename'
+			args << "{${ns}}${source.type}".toString()
+		}
+
+		File targetFolder =  new File(basePath + '/output')
+		targetFolder.deleteDir()
+		targetFolder.mkdirs()
+		println ">> Transformed data will be written to ${targetFolder}..."
+
+		args << '-target'
+		args << new File(targetFolder, 'result.shp').absolutePath
+
+		args << '-preset'
+		args << 'hale-connect'
+
+		transform(args) { //
+			File output, int code ->
+			// check exit code
+			assert code == 0
+		}
+
+		// find all .shp files in target folder
+		def shpFiles = targetFolder.listFiles().findAll { it.name.endsWith('.shp') }
+		assertThat(shpFiles).hasSize(4)
 	}
 }
