@@ -6,6 +6,17 @@ hale {
   bundleName = 'Application for command line transformation'
 }
 
+test {
+  maxHeapSize = "2g"
+
+  jvmArgs = [
+    '--add-exports',
+    'java.base/sun.nio.ch=ALL-UNNAMED',
+    '--add-exports',
+    'java.base/jdk.internal.ref=ALL-UNNAMED'
+  ]
+}
+
 dependencies {
   implementation libs.groovy.json
 
@@ -37,4 +48,6 @@ dependencies {
 
   testRuntimeOnly project(':io:features:eu.esdihumboldt.hale.io.feature.core')
   testRuntimeOnly project(':cst:features:eu.esdihumboldt.cst.feature')
+
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.headless.orient') // for OrientDB instance sink
 }
