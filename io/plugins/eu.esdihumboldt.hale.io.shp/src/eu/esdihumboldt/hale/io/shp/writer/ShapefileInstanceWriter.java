@@ -134,9 +134,11 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 				}).collect(Collectors.toList());
 
 				// Reset the target property so that a caller can find out
-				// which
-				// files were created.
+				// which files were created.
 				setTarget(new MultiLocationOutputSupplier(uris));
+
+				reporter.info("Multiple Shapefiles have been exported. The file names are: "
+						+ filesWritten.stream().collect(Collectors.joining(", ")));
 			}
 
 			for (String f : filesWritten) {
@@ -194,7 +196,7 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 		Map<String, Map<String, List<SimpleFeature>>> schemaFeaturesMap = createFeatures(
 				instanceCollection, progress, reporter, schemaFtMap);
 
-		return writeToFile(schemaDataStoreMap, schemaFtMap, schemaFeaturesMap);
+		return writeToFile(schemaDataStoreMap, schemaFtMap, schemaFeaturesMap, reporter);
 	}
 
 	/**
@@ -750,7 +752,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	private List<String> writeToFile(
 			Map<String, Map<String, ShapefileDataStore>> schemaDataStoreMap,
 			Map<String, Map<String, SimpleFeatureType>> schemaFtMap,
-			Map<String, Map<String, List<SimpleFeature>>> schemaFeaturesMap) throws IOException {
+			Map<String, Map<String, List<SimpleFeature>>> schemaFeaturesMap, SimpleLog log)
+			throws IOException {
 
 		List<String> filesWritten = new ArrayList<String>();
 
@@ -764,37 +767,43 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 						ShapefileConstants.CREATE_CONSTANT);
 
 				ShapefileDataStore dataStore = geomEntry.getValue();
-				String typeName = dataStore.getTypeNames()[0];
-				for (Name name : dataStore.getNames()) {
-					// The local part of the Name contains the file name of the
-					// ShapefileDataStore (without suffix)
-					filesWritten.add(name.getLocalPart());
-				}
-
-				SimpleFeatureSource geomSpecificFeatureSource = geomEntry.getValue()
-						.getFeatureSource(typeName);
-				if (geomSpecificFeatureSource instanceof SimpleFeatureStore) {
-					SimpleFeatureStore geomSpecificFeatureStore = (SimpleFeatureStore) geomSpecificFeatureSource;
-
-					// create collection to write to the shape file.
-					SimpleFeatureCollection collection = new ListFeatureCollection(
-							schemaFtMap.get(localPart).get(geomEntry.getKey()),
-							schemaFeaturesMap.get(localPart).get(geomEntry.getKey()));
-					geomSpecificFeatureStore.setTransaction(transaction);
-					try {
-						geomSpecificFeatureStore.addFeatures(collection);
-						transaction.commit();
-					} catch (IOException e) {
-						transaction.rollback();
-						throw e;
-					} finally {
-						transaction.close();
+				try {
+					String typeName = dataStore.getTypeNames()[0];
+					for (Name name : dataStore.getNames()) {
+						// The local part of the Name contains the file name of the
+						// ShapefileDataStore (without suffix)
+						filesWritten.add(name.getLocalPart());
 					}
-				}
-				else {
-					// throw exception
-					transaction.close();
-					throw new IOException(typeName + " does not support read/write access");
+
+					SimpleFeatureSource geomSpecificFeatureSource = geomEntry.getValue()
+							.getFeatureSource(typeName);
+					if (geomSpecificFeatureSource instanceof SimpleFeatureStore) {
+						SimpleFeatureStore geomSpecificFeatureStore = (SimpleFeatureStore) geomSpecificFeatureSource;
+
+						// create collection to write to the shape file.
+						SimpleFeatureCollection collection = new ListFeatureCollection(
+								schemaFtMap.get(localPart).get(geomEntry.getKey()),
+								schemaFeaturesMap.get(localPart).get(geomEntry.getKey()));
+						geomSpecificFeatureStore.setTransaction(transaction);
+						try {
+							log.info("Writing {0} features to Shapefile {1} with geometry type {2}",
+									collection.size(), localPart, geomEntry.getKey());
+							geomSpecificFeatureStore.addFeatures(collection);
+							transaction.commit();
+						} catch (IOException e) {
+							transaction.rollback();
+							throw e;
+						} finally {
+							transaction.close();
+						}
+					}
+					else {
+						// throw exception
+						transaction.close();
+						throw new IOException(typeName + " does not support read/write access");
+					}
+				} finally {
+					dataStore.dispose();
 				}
 			}
 		}
