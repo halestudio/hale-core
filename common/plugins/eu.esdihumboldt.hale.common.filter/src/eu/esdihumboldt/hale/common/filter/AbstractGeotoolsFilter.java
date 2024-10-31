@@ -242,4 +242,8 @@ public abstract class AbstractGeotoolsFilter
 		}
 	}
 
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "{" + "filterTerm='" + getFilterTerm() + '\'' + '}';
+	}
 }

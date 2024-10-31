@@ -185,13 +185,21 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	protected List<String> writeInstances(InstanceCollection instanceCollection,
 			ProgressIndicator progress, IOReporter reporter, URI location) throws IOException {
 
+		String size = instanceCollection.hasSize() ? String.valueOf(instanceCollection.size())
+				: "unknown";
+		reporter.info("Exporting " + size + " instances to Shapefile from " + instanceCollection);
+
 		// in all the variables, outer Map is for tracking multiple schemas and
 		// inner Map for multiple geometries.
 		Map<String, Map<String, SimpleFeatureType>> schemaFtMap = createFeatureType(
 				instanceCollection, progress, reporter);
+		reporter.info("Feature types for Shapefile export identified: "
+				+ schemaFtMap.keySet().stream().collect(Collectors.joining(", ")));
 
 		Map<String, Map<String, ShapefileDataStore>> schemaDataStoreMap = createSchema(location,
 				schemaFtMap);
+		reporter.info("Data stores for Shapefile export created: "
+				+ schemaDataStoreMap.keySet().stream().collect(Collectors.joining(", ")));
 
 		Map<String, Map<String, List<SimpleFeature>>> schemaFeaturesMap = createFeatures(
 				instanceCollection, progress, reporter, schemaFtMap);
@@ -225,6 +233,8 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 
 		Map<String, Map<String, SimpleFeatureTypeBuilder>> schemaBuilderMap = new HashMap<String, Map<String, SimpleFeatureTypeBuilder>>();
 
+		Set<String> seenTypes = new HashSet<>();
+
 		LinkedHashSet<String> missingGeomsForSchemas = new LinkedHashSet<String>();
 		try (ResourceIterator<Instance> it = instances.iterator()) {
 			while (it.hasNext() && !progress.isCanceled()) {
@@ -232,6 +242,9 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 				TypeDefinition type = instance.getDefinition();
 
 				String localPart = type.getName().getLocalPart();
+
+				seenTypes.add(localPart);
+
 				Map<String, SimpleFeatureTypeBuilder> geometryBuilderMap = schemaBuilderMap
 						.computeIfAbsent(localPart,
 								k -> new HashMap<String, SimpleFeatureTypeBuilder>());
@@ -247,11 +260,15 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 			}
 		}
 
+		reporter.info("Observed types for instances to write to Shapefile: "
+				+ seenTypes.stream().collect(Collectors.joining(", ")));
+
 		// create SimpleFeatureType from SimpleFeatureTypeBuilder.
 		for (Entry<String, Map<String, SimpleFeatureTypeBuilder>> schemaEntry : schemaBuilderMap
 				.entrySet()) {
 
-			if (missingGeomsForSchemas.contains(schemaEntry.getKey())) {
+			if (missingGeomsForSchemas.contains(schemaEntry.getKey())
+					|| schemaEntry.getValue().isEmpty()) {
 				reporter.warn("No geometry found for " + schemaEntry.getKey());
 			}
 

@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -154,6 +155,8 @@ public class OrientTransformationSink extends AbstractTransformationSink {
 	private final AtomicBoolean complete = new AtomicBoolean();
 	private final AtomicBoolean skipLimbo = new AtomicBoolean();
 
+	private final AtomicInteger counter = new AtomicInteger(0);
+
 	private final ExecutorService dbThread = Executors.newSingleThreadExecutor();
 
 	/**
@@ -200,9 +203,13 @@ public class OrientTransformationSink extends AbstractTransformationSink {
 				}
 			}
 		});
+
 		limboSink.done(cancel);
 		complete.set(true);
 		dbThread.shutdown();
+
+		log.debug("Instance sink completed (cancel={}), processed {} instances", cancel,
+				counter.get());
 	}
 
 	@Override
@@ -236,6 +243,8 @@ public class OrientTransformationSink extends AbstractTransformationSink {
 					// possible problem: limbo sink may block
 					limboSink.addInstance(new InstanceWithReference(instance, ref));
 				}
+
+				counter.incrementAndGet();
 			}
 		});
 
