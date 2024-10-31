@@ -249,4 +249,9 @@ public class FilteredInstanceCollection extends InstanceCollectionDecorator {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "FilteredInstanceCollection{" + "filter=" + filter + ", decoratee=" + decoratee
+				+ '}';
+	}
 }

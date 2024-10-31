@@ -15,6 +15,11 @@ package eu.esdihumboldt.hale.common.headless.transform;
 import java.util.NoSuchElementException;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import eu.esdihumboldt.hale.common.instance.model.Filter;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
@@ -34,6 +39,11 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
  */
 public class LimboInstanceSink extends AbstractTransformationSink {
 
+	private static final Logger log = LoggerFactory.getLogger(LimboInstanceSink.class);
+
+	private final AtomicInteger counter = new AtomicInteger(0);
+	private final AtomicBoolean loggedCancel = new AtomicBoolean(false);
+
 	private static final Instance END = new DefaultInstance(null, null);
 
 	private final TargetInstanceCollection collection = new TargetInstanceCollection();
@@ -46,10 +56,17 @@ public class LimboInstanceSink extends AbstractTransformationSink {
 	@Override
 	protected synchronized void internalAddInstance(Instance instance) {
 		// ignore incoming instances if we are cancelled
-		if (cancelled)
+		if (cancelled) {
+			if (loggedCancel.compareAndSet(false, true)) {
+				log.warn(
+						"Received instance after sink was cancelled, ignoring this and further instances");
+			}
 			return;
+		}
 		try {
 			queue.put(instance);
+
+			counter.incrementAndGet();
 		} catch (InterruptedException e) {
 			// ignore
 		}
@@ -71,6 +88,9 @@ public class LimboInstanceSink extends AbstractTransformationSink {
 		} catch (InterruptedException e) {
 			// ignore
 		}
+
+		log.debug("Instance sink completed (cancel={}), processed {} instances", cancel,
+				counter.get());
 	}
 
 	@Override

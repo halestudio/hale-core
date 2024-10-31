@@ -351,4 +351,8 @@ public class BrowseOrientInstanceCollection implements InstanceCollection {
 		return ref.load(database, this);
 	}
 
+	@Override
+	public String toString() {
+		return "BrowseOrientInstanceCollection{" + "dataSet=" + dataSet + '}';
+	}
 }
