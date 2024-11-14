@@ -1,3 +1,40 @@
+## [6.1.0](https://github.com/halestudio/hale-core/compare/v6.0.0...v6.1.0) (2024-11-14)
+
+### Features
+
+* add IntRange to Groovy restriction whitelist ([0a78400](https://github.com/halestudio/hale-core/commit/0a7840005b3fffc9d85bd67b2a3ccad613618373))
+* extend Shapefile writer with log messages on written files ([9b06d1e](https://github.com/halestudio/hale-core/commit/9b06d1eb40ac79c7c2bfadbaf19d92c9bc64916d)), closes [ING-4479](https://wetransform.atlassian.net/browse/ING-4479)
+
+### Bug Fixes
+
+* **deps:** update batik to v1.18 ([cdfd68c](https://github.com/halestudio/hale-core/commit/cdfd68c4bbe0ab5d83ac008acec72559311a69c4))
+* **deps:** update dependency ch.qos.logback:logback-core to v1.5.8 ([7971b98](https://github.com/halestudio/hale-core/commit/7971b981b499a0b1357867e1418d02e7757406e3))
+* **deps:** update dependency com.fasterxml.jackson.core:jackson-annotations to v2.18.0 ([b5362e5](https://github.com/halestudio/hale-core/commit/b5362e5ad5091b0216cfb055c3cf065a53efa219))
+* **deps:** update dependency com.fasterxml.jackson.core:jackson-databind to v2.17.2 ([c2a84ea](https://github.com/halestudio/hale-core/commit/c2a84ea2ac1712d85db35459fb78f91162be89db))
+* **deps:** update dependency com.google.code.findbugs:annotations to v3 ([8d1e158](https://github.com/halestudio/hale-core/commit/8d1e1583dd75565c572ada1a5206839379e1488c))
+* **deps:** update dependency com.google.guava:guava to v33 ([90815eb](https://github.com/halestudio/hale-core/commit/90815eb71cfdb12e8714181b1fc6bef42ca332b2))
+* **deps:** update dependency com.google.guava:guava to v33.3.1-jre ([e971a15](https://github.com/halestudio/hale-core/commit/e971a15b1efca155b2f02537fc3252a4695a8a2a))
+* **deps:** update dependency commons-io:commons-io to v2.17.0 ([64da035](https://github.com/halestudio/hale-core/commit/64da03516faadb4733dadd9fdf217d97c16baf68))
+* **deps:** update dependency joda-time:joda-time to v2.13.0 ([8d9bebe](https://github.com/halestudio/hale-core/commit/8d9bebedd6d44ebc4b5aa303cd4a62e5a667d829))
+* **deps:** update dependency net.sf.saxon:saxon-he to v9.9.1-8 ([136ebf4](https://github.com/halestudio/hale-core/commit/136ebf4f2f66a5b314d6fa212ecda96bc0950a0b))
+* **deps:** update dependency net.sf.ucanaccess:ucanaccess to v5 ([ddb987d](https://github.com/halestudio/hale-core/commit/ddb987deba13c259823c8b2db97d9917fff8a3d0))
+* **deps:** update dependency org.testcontainers:testcontainers to v1.20.2 ([9579e8f](https://github.com/halestudio/hale-core/commit/9579e8fdf7e42277f65096f71541825efee5e045))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.46.1.3 ([0bd344f](https://github.com/halestudio/hale-core/commit/0bd344fe0b36bc24cc0dddb464b3252124c6ac04))
+* **deps:** update geotools to v29.6 ([2f6b791](https://github.com/halestudio/hale-core/commit/2f6b791c54946c0bd87a94c1f327a75f541e613a))
+* **deps:** update logback dependencies to v1.5.11 ([a70f5c2](https://github.com/halestudio/hale-core/commit/a70f5c21d454ff73133a142bcafb1cdf45d5c38e))
+* **deps:** update poi to v5.3.0 ([1f07614](https://github.com/halestudio/hale-core/commit/1f0761472c800054a6860493b58974df608adac5))
+* **deps:** update protobuf to v3.25.4 ([b2d02aa](https://github.com/halestudio/hale-core/commit/b2d02aa93fd7322ebd9e550d438987f0f613806b))
+* **deps:** update protobuf to v4 ([b0ac427](https://github.com/halestudio/hale-core/commit/b0ac4277433364f5294afbe127a41069b2e17ecd))
+* **deps:** update protobuf to v4.28.2 ([a01dcc6](https://github.com/halestudio/hale-core/commit/a01dcc67fda9a74107cf310b81914a455256132a))
+* **deps:** update spring core to v6 ([7f136c8](https://github.com/halestudio/hale-core/commit/7f136c8c4fa3243bb159822dcc5d532e31cb192d))
+* **deps:** update spring core to v6.1.13 ([179f4ac](https://github.com/halestudio/hale-core/commit/179f4ace9110c56b6ceeacb2343ed4bdca7cbffd))
+* **deps:** update spring core to v6.1.14 ([1cf95e9](https://github.com/halestudio/hale-core/commit/1cf95e93e0bccb0e6376bbdf277c453a682c55d5))
+* wait until adding instance to sink is complete ([eae6e82](https://github.com/halestudio/hale-core/commit/eae6e827c7f48fee7bc812a21f1cb10e5b74bf8b)), closes [ING-4479](https://wetransform.atlassian.net/browse/ING-4479)
+
+### Performance Improvements
+
+* make index join/merge handlers optional ([181304f](https://github.com/halestudio/hale-core/commit/181304f4f221bb0123572c37a3cd789beb513f36)), closes [ING-4464](https://wetransform.atlassian.net/browse/ING-4464)
+
 ## [6.0.0](https://github.com/halestudio/hale-core/compare/v5.3.0...v6.0.0) (2024-09-05)
 
 
