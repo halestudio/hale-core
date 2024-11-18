@@ -13,7 +13,7 @@ package eu.esdihumboldt.hale.common.schema.geometry;
 
 import java.io.Serializable;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Represents a CRS definition using WKT or a CODE

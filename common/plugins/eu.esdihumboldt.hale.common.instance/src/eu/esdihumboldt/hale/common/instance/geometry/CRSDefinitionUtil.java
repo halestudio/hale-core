@@ -16,12 +16,12 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.ReferenceIdentifier;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 import org.geotools.gml2.SrsSyntax;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.CRS.AxisOrder;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.ReferenceIdentifier;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;

@@ -14,9 +14,9 @@ package eu.esdihumboldt.hale.common.style.io.impl;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.geotools.api.style.Style;
+import org.geotools.api.style.StyleFactory;
 import org.geotools.factory.CommonFactoryFinder;
-import org.geotools.styling.Style;
-import org.geotools.styling.StyleFactory;
 import org.geotools.xml.styling.SLDParser;
 
 import eu.esdihumboldt.hale.common.core.io.IOProvider;

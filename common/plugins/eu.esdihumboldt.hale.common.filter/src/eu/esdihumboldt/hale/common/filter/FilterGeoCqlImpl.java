@@ -11,9 +11,9 @@
  */
 package eu.esdihumboldt.hale.common.filter;
 
+import org.geotools.api.filter.Filter;
 import org.geotools.filter.text.cql2.CQL;
 import org.geotools.filter.text.cql2.CQLException;
-import org.opengis.filter.Filter;
 
 /**
  * CQL Filter. Two CQL filters are seen as equal if they are based on the same

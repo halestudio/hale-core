@@ -18,7 +18,7 @@ package eu.esdihumboldt.hale.io.oml.internal.goml.omwg.comparator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.opengis.feature.Property;
+import org.geotools.api.feature.Property;
 
 import eu.esdihumboldt.hale.io.oml.internal.goml.omwg.Restriction;
 import eu.esdihumboldt.hale.io.oml.internal.model.align.ext.IValueExpression;
@@ -30,7 +30,7 @@ import eu.esdihumboldt.hale.io.oml.internal.model.align.ext.IValueExpression;
  * the <b><i>corresponding</i></b> target Property the evaluation returns true.
  * 
  * @author Mark Doyle (Logica)
- * @see org.opengis.feature.Property
+ * @see org.geotools.api.feature.Property
  * @see IValueExpression
  */
 public class OneOfComparator implements IComparator {

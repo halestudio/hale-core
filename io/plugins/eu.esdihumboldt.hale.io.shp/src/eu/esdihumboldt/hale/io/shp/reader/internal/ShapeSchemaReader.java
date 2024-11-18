@@ -20,12 +20,12 @@ import java.util.Collection;
 
 import javax.xml.namespace.QName;
 
+import org.geotools.api.feature.simple.SimpleFeatureType;
+import org.geotools.api.feature.type.AttributeDescriptor;
+import org.geotools.api.feature.type.AttributeType;
+import org.geotools.api.feature.type.Name;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.locationtech.jts.geom.Geometry;
-import org.opengis.feature.simple.SimpleFeatureType;
-import org.opengis.feature.type.AttributeDescriptor;
-import org.opengis.feature.type.AttributeType;
-import org.opengis.feature.type.Name;
 
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;

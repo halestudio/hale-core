@@ -11,12 +11,12 @@
  */
 package eu.esdihumboldt.hale.common.filter;
 
+import org.geotools.api.filter.Filter;
+import org.geotools.api.filter.expression.Expression;
 import org.geotools.filter.IsEqualsToImpl;
 import org.geotools.filter.LiteralExpressionImpl;
 import org.geotools.filter.text.cql2.CQLException;
 import org.geotools.filter.text.ecql.ECQL;
-import org.opengis.filter.Filter;
-import org.opengis.filter.expression.Expression;
 
 /**
  * Extended CQL Filter. Two ECQL filters are seen as equal if they are based on

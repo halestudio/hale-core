@@ -24,11 +24,11 @@ import java.util.function.Function;
 
 import javax.xml.namespace.QName;
 
+import org.geotools.api.referencing.operation.MathTransform;
 import org.geotools.geojson.geom.GeometryJSON;
 import org.geotools.geometry.jts.JTS;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryCollection;
-import org.opengis.referencing.operation.MathTransform;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

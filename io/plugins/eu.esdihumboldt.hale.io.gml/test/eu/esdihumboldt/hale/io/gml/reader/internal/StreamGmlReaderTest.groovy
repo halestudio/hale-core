@@ -15,10 +15,10 @@ import static org.junit.Assert.*
 
 import groovy.transform.CompileStatic
 
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
-import org.opengis.referencing.crs.CoordinateReferenceSystem
 
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier

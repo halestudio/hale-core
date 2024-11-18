@@ -21,58 +21,58 @@ import java.util.List;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 
-import org.opengis.filter.And;
-import org.opengis.filter.ExcludeFilter;
-import org.opengis.filter.Filter;
-import org.opengis.filter.FilterVisitor;
-import org.opengis.filter.Id;
-import org.opengis.filter.IncludeFilter;
-import org.opengis.filter.Not;
-import org.opengis.filter.Or;
-import org.opengis.filter.PropertyIsBetween;
-import org.opengis.filter.PropertyIsEqualTo;
-import org.opengis.filter.PropertyIsGreaterThan;
-import org.opengis.filter.PropertyIsGreaterThanOrEqualTo;
-import org.opengis.filter.PropertyIsLessThan;
-import org.opengis.filter.PropertyIsLessThanOrEqualTo;
-import org.opengis.filter.PropertyIsLike;
-import org.opengis.filter.PropertyIsNil;
-import org.opengis.filter.PropertyIsNotEqualTo;
-import org.opengis.filter.PropertyIsNull;
-import org.opengis.filter.expression.Add;
-import org.opengis.filter.expression.Divide;
-import org.opengis.filter.expression.ExpressionVisitor;
-import org.opengis.filter.expression.Function;
-import org.opengis.filter.expression.Literal;
-import org.opengis.filter.expression.Multiply;
-import org.opengis.filter.expression.NilExpression;
-import org.opengis.filter.expression.PropertyName;
-import org.opengis.filter.expression.Subtract;
-import org.opengis.filter.spatial.BBOX;
-import org.opengis.filter.spatial.Beyond;
-import org.opengis.filter.spatial.Contains;
-import org.opengis.filter.spatial.Crosses;
-import org.opengis.filter.spatial.DWithin;
-import org.opengis.filter.spatial.Disjoint;
-import org.opengis.filter.spatial.Equals;
-import org.opengis.filter.spatial.Intersects;
-import org.opengis.filter.spatial.Overlaps;
-import org.opengis.filter.spatial.Touches;
-import org.opengis.filter.spatial.Within;
-import org.opengis.filter.temporal.After;
-import org.opengis.filter.temporal.AnyInteracts;
-import org.opengis.filter.temporal.Before;
-import org.opengis.filter.temporal.Begins;
-import org.opengis.filter.temporal.BegunBy;
-import org.opengis.filter.temporal.During;
-import org.opengis.filter.temporal.EndedBy;
-import org.opengis.filter.temporal.Ends;
-import org.opengis.filter.temporal.Meets;
-import org.opengis.filter.temporal.MetBy;
-import org.opengis.filter.temporal.OverlappedBy;
-import org.opengis.filter.temporal.TContains;
-import org.opengis.filter.temporal.TEquals;
-import org.opengis.filter.temporal.TOverlaps;
+import org.geotools.api.filter.And;
+import org.geotools.api.filter.ExcludeFilter;
+import org.geotools.api.filter.Filter;
+import org.geotools.api.filter.FilterVisitor;
+import org.geotools.api.filter.Id;
+import org.geotools.api.filter.IncludeFilter;
+import org.geotools.api.filter.Not;
+import org.geotools.api.filter.Or;
+import org.geotools.api.filter.PropertyIsBetween;
+import org.geotools.api.filter.PropertyIsEqualTo;
+import org.geotools.api.filter.PropertyIsGreaterThan;
+import org.geotools.api.filter.PropertyIsGreaterThanOrEqualTo;
+import org.geotools.api.filter.PropertyIsLessThan;
+import org.geotools.api.filter.PropertyIsLessThanOrEqualTo;
+import org.geotools.api.filter.PropertyIsLike;
+import org.geotools.api.filter.PropertyIsNil;
+import org.geotools.api.filter.PropertyIsNotEqualTo;
+import org.geotools.api.filter.PropertyIsNull;
+import org.geotools.api.filter.expression.Add;
+import org.geotools.api.filter.expression.Divide;
+import org.geotools.api.filter.expression.ExpressionVisitor;
+import org.geotools.api.filter.expression.Function;
+import org.geotools.api.filter.expression.Literal;
+import org.geotools.api.filter.expression.Multiply;
+import org.geotools.api.filter.expression.NilExpression;
+import org.geotools.api.filter.expression.PropertyName;
+import org.geotools.api.filter.expression.Subtract;
+import org.geotools.api.filter.spatial.BBOX;
+import org.geotools.api.filter.spatial.Beyond;
+import org.geotools.api.filter.spatial.Contains;
+import org.geotools.api.filter.spatial.Crosses;
+import org.geotools.api.filter.spatial.DWithin;
+import org.geotools.api.filter.spatial.Disjoint;
+import org.geotools.api.filter.spatial.Equals;
+import org.geotools.api.filter.spatial.Intersects;
+import org.geotools.api.filter.spatial.Overlaps;
+import org.geotools.api.filter.spatial.Touches;
+import org.geotools.api.filter.spatial.Within;
+import org.geotools.api.filter.temporal.After;
+import org.geotools.api.filter.temporal.AnyInteracts;
+import org.geotools.api.filter.temporal.Before;
+import org.geotools.api.filter.temporal.Begins;
+import org.geotools.api.filter.temporal.BegunBy;
+import org.geotools.api.filter.temporal.During;
+import org.geotools.api.filter.temporal.EndedBy;
+import org.geotools.api.filter.temporal.Ends;
+import org.geotools.api.filter.temporal.Meets;
+import org.geotools.api.filter.temporal.MetBy;
+import org.geotools.api.filter.temporal.OverlappedBy;
+import org.geotools.api.filter.temporal.TContains;
+import org.geotools.api.filter.temporal.TEquals;
+import org.geotools.api.filter.temporal.TOverlaps;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
@@ -165,7 +165,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.ExcludeFilter,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.ExcludeFilter,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.IncludeFilter,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.IncludeFilter,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -193,7 +193,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.And,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.And,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -214,7 +214,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.Id,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.Id,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -225,7 +225,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.Not,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.Not,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -241,7 +241,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.Or,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.Or,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -262,7 +262,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsBetween,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsBetween,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -281,7 +281,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsEqualTo,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsEqualTo,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -300,7 +300,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsNotEqualTo,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsNotEqualTo,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -317,7 +317,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsGreaterThan,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsGreaterThan,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -333,7 +333,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsGreaterThanOrEqualTo,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsGreaterThanOrEqualTo,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -349,7 +349,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsLessThan,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsLessThan,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -365,7 +365,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsLessThanOrEqualTo,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsLessThanOrEqualTo,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -381,7 +381,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsLike,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsLike,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -457,7 +457,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.PropertyIsNull,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.PropertyIsNull,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -482,7 +482,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	// TODO Can these geometric filters easily be converted to XPath?
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.BBOX,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.BBOX,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -491,7 +491,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Beyond,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Beyond,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -500,7 +500,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Contains,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Contains,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -509,7 +509,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Crosses,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Crosses,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -518,7 +518,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Disjoint,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Disjoint,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -527,7 +527,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.DWithin,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.DWithin,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -536,7 +536,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Equals,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Equals,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -545,7 +545,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Intersects,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Intersects,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -554,7 +554,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Overlaps,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Overlaps,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -563,7 +563,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Touches,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Touches,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -572,7 +572,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.spatial.Within,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.spatial.Within,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -584,7 +584,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	// FilterToCQL does not support them.
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.After,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.After,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -593,7 +593,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.AnyInteracts,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.AnyInteracts,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -602,7 +602,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.Before,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.Before,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -611,7 +611,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.Begins,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.Begins,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -620,7 +620,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.BegunBy,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.BegunBy,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -629,7 +629,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.During,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.During,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -638,7 +638,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.EndedBy,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.EndedBy,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -647,7 +647,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.Ends,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.Ends,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -656,7 +656,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.Meets,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.Meets,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -665,7 +665,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.MetBy,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.MetBy,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -674,7 +674,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.OverlappedBy,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.OverlappedBy,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -683,7 +683,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.TContains,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.TContains,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -692,7 +692,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.TEquals,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.TEquals,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -701,7 +701,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visit(org.opengis.filter.temporal.TOverlaps,
+	 * @see org.geotools.api.filter.FilterVisitor#visit(org.geotools.api.filter.temporal.TOverlaps,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -710,7 +710,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.FilterVisitor#visitNullFilter(java.lang.Object)
+	 * @see org.geotools.api.filter.FilterVisitor#visitNullFilter(java.lang.Object)
 	 */
 	@Override
 	public Object visitNullFilter(Object buffer) {
@@ -720,7 +720,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.NilExpression,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.NilExpression,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -730,7 +730,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Function,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Function,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -742,7 +742,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Literal,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Literal,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -775,7 +775,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Add,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Add,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -790,7 +790,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Divide,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Divide,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -805,7 +805,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Multiply,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Multiply,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -820,7 +820,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.Subtract,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.Subtract,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -835,7 +835,7 @@ public class GeotoolsFilterToXPath implements ExpressionVisitor, FilterVisitor {
 	}
 
 	/**
-	 * @see org.opengis.filter.expression.ExpressionVisitor#visit(org.opengis.filter.expression.PropertyName,
+	 * @see org.geotools.api.filter.expression.ExpressionVisitor#visit(org.geotools.api.filter.expression.PropertyName,
 	 *      java.lang.Object)
 	 */
 	@Override

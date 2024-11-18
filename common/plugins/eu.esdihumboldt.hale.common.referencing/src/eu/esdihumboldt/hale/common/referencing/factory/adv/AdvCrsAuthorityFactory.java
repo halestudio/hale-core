@@ -17,6 +17,19 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import org.geotools.api.metadata.citation.Citation;
+import org.geotools.api.metadata.citation.PresentationForm;
+import org.geotools.api.metadata.citation.Role;
+import org.geotools.api.referencing.AuthorityFactory;
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.IdentifiedObject;
+import org.geotools.api.referencing.NoSuchAuthorityCodeException;
+import org.geotools.api.referencing.crs.CRSAuthorityFactory;
+import org.geotools.api.referencing.crs.CRSFactory;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.GeographicCRS;
+import org.geotools.api.referencing.crs.ProjectedCRS;
+import org.geotools.api.util.InternationalString;
 import org.geotools.metadata.iso.IdentifierImpl;
 import org.geotools.metadata.iso.citation.CitationImpl;
 import org.geotools.metadata.iso.citation.Citations;
@@ -28,19 +41,6 @@ import org.geotools.referencing.ReferencingFactoryFinder;
 import org.geotools.referencing.factory.AbstractAuthorityFactory;
 import org.geotools.util.SimpleInternationalString;
 import org.geotools.util.factory.Hints;
-import org.opengis.metadata.citation.Citation;
-import org.opengis.metadata.citation.PresentationForm;
-import org.opengis.metadata.citation.Role;
-import org.opengis.referencing.AuthorityFactory;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.IdentifiedObject;
-import org.opengis.referencing.NoSuchAuthorityCodeException;
-import org.opengis.referencing.crs.CRSAuthorityFactory;
-import org.opengis.referencing.crs.CRSFactory;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.crs.GeographicCRS;
-import org.opengis.referencing.crs.ProjectedCRS;
-import org.opengis.util.InternationalString;
 
 /**
  * CRSAuthorityFactory for AdV CRS definitions (e.g. "DE_DHDN_3GK3")
@@ -269,7 +269,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createCompoundCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.CompoundCRS createCompoundCRS(String str)
+	public org.geotools.api.referencing.crs.CompoundCRS createCompoundCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
@@ -278,7 +278,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createDerivedCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.DerivedCRS createDerivedCRS(String str)
+	public org.geotools.api.referencing.crs.DerivedCRS createDerivedCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
@@ -287,7 +287,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createEngineeringCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.EngineeringCRS createEngineeringCRS(String str)
+	public org.geotools.api.referencing.crs.EngineeringCRS createEngineeringCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
@@ -296,7 +296,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createGeocentricCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.GeocentricCRS createGeocentricCRS(String str)
+	public org.geotools.api.referencing.crs.GeocentricCRS createGeocentricCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
@@ -305,7 +305,8 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createImageCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.ImageCRS createImageCRS(String str) throws FactoryException {
+	public org.geotools.api.referencing.crs.ImageCRS createImageCRS(String str)
+			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
 
@@ -313,7 +314,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createTemporalCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.TemporalCRS createTemporalCRS(String str)
+	public org.geotools.api.referencing.crs.TemporalCRS createTemporalCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}
@@ -322,7 +323,7 @@ public class AdvCrsAuthorityFactory extends AbstractAuthorityFactory
 	 * @see CRSAuthorityFactory#createVerticalCRS(String)
 	 */
 	@Override
-	public org.opengis.referencing.crs.VerticalCRS createVerticalCRS(String str)
+	public org.geotools.api.referencing.crs.VerticalCRS createVerticalCRS(String str)
 			throws FactoryException {
 		throw new FactoryException("Not implemented"); //$NON-NLS-1$
 	}

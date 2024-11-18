@@ -15,8 +15,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.geotools.api.filter.expression.PropertyName;
 import org.geotools.filter.visitor.DuplicatingFilterVisitor;
-import org.opengis.filter.expression.PropertyName;
 
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration;
 import eu.esdihumboldt.hale.common.align.model.AlignmentUtil;

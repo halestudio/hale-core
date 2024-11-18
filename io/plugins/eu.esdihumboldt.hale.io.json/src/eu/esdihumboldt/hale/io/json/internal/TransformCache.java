@@ -11,9 +11,9 @@
  */
 package eu.esdihumboldt.hale.io.json.internal;
 
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.operation.MathTransform;
 import org.geotools.referencing.CRS;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.MathTransform;
 
 import eu.esdihumboldt.util.groovy.collector.GenericCollector;
 

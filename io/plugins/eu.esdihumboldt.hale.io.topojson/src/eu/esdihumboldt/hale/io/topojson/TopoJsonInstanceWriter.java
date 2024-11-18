@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -15,11 +15,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.MessageFormat;
 
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 import org.geotools.gml2.SrsSyntax;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.CRS.AxisOrder;
 import org.junit.Test;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Test for {@link CRSDefinitionUtil}
@@ -51,13 +51,16 @@ public class CRSDefinitionUtilTest {
 					true);
 
 			// Longitude first currently works only with EPSG_CODE prefix
-			if (SrsSyntax.EPSG_CODE.equals(prefix)) {
+			if (SrsSyntax.EPSG_CODE.getPrefix().equals(prefix.getPrefix())) {
 				assertEquals(AxisOrder.EAST_NORTH, CRS.getAxisOrder(wgs84lonlat));
 			}
 			else {
 				// If this fails in the future, check if Geotools supports
 				// longitude first for other prefixes now
-				assertEquals(AxisOrder.NORTH_EAST, CRS.getAxisOrder(wgs84lonlat));
+				assertEquals(
+						"axis order change expected to be not supported for prefix "
+								+ prefix.getPrefix(),
+						AxisOrder.NORTH_EAST, CRS.getAxisOrder(wgs84lonlat));
 			}
 		}
 	}

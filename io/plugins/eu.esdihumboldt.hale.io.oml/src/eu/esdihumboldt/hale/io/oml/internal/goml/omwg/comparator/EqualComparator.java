@@ -18,7 +18,7 @@ package eu.esdihumboldt.hale.io.oml.internal.goml.omwg.comparator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.opengis.feature.Property;
+import org.geotools.api.feature.Property;
 
 import eu.esdihumboldt.hale.io.oml.internal.goml.omwg.Restriction;
 import eu.esdihumboldt.hale.io.oml.internal.model.align.ext.IValueExpression;

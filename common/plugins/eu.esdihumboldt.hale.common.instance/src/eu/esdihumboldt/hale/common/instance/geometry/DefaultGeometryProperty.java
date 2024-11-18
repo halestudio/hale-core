@@ -11,10 +11,10 @@
  */
 package eu.esdihumboldt.hale.common.instance.geometry;
 
+import org.geotools.api.referencing.ReferenceIdentifier;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.io.WKTWriter;
-import org.opengis.referencing.ReferenceIdentifier;
 
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
