@@ -23,9 +23,9 @@ import java.util.function.Function;
 
 import javax.xml.namespace.QName;
 
+import org.geotools.api.data.SimpleFeatureSource;
+import org.geotools.api.feature.type.Name;
 import org.geotools.data.shapefile.ShapefileDataStore;
-import org.geotools.data.simple.SimpleFeatureSource;
-import org.opengis.feature.type.Name;
 
 import eu.esdihumboldt.hale.common.core.io.IOProvider;
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;

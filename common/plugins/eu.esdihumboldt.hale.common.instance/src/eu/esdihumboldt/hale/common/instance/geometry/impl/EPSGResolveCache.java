@@ -14,7 +14,7 @@ package eu.esdihumboldt.hale.common.instance.geometry.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import eu.esdihumboldt.hale.common.instance.geometry.CRSDefinitionUtil;
 import eu.esdihumboldt.hale.common.instance.geometry.CRSResolveCache;

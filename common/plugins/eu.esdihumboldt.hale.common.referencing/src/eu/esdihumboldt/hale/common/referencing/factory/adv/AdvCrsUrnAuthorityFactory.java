@@ -14,6 +14,13 @@ package eu.esdihumboldt.hale.common.referencing.factory.adv;
 import java.net.URI;
 import java.util.Objects;
 
+import org.geotools.api.metadata.citation.Citation;
+import org.geotools.api.metadata.citation.PresentationForm;
+import org.geotools.api.metadata.citation.Role;
+import org.geotools.api.referencing.AuthorityFactory;
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.crs.CRSAuthorityFactory;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 import org.geotools.metadata.iso.IdentifierImpl;
 import org.geotools.metadata.iso.citation.CitationImpl;
 import org.geotools.metadata.iso.citation.ContactImpl;
@@ -22,13 +29,6 @@ import org.geotools.metadata.iso.citation.ResponsiblePartyImpl;
 import org.geotools.referencing.factory.AllAuthoritiesFactory;
 import org.geotools.referencing.factory.AuthorityFactoryAdapter;
 import org.geotools.util.SimpleInternationalString;
-import org.opengis.metadata.citation.Citation;
-import org.opengis.metadata.citation.PresentationForm;
-import org.opengis.metadata.citation.Role;
-import org.opengis.referencing.AuthorityFactory;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.crs.CRSAuthorityFactory;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * Wraps {@link AdvCrsAuthorityFactory} for the {@code "urn:adv:crs"} namespace.

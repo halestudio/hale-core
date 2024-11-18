@@ -35,6 +35,6 @@ public interface IComparator {
 	 *         IComparator implementation.
 	 * @see Restriction
 	 */
-	public boolean evaluate(Restriction sourceRestriction, org.opengis.feature.Property sourceProp);
+	public boolean evaluate(Restriction sourceRestriction, org.geotools.api.feature.Property sourceProp);
 
 }

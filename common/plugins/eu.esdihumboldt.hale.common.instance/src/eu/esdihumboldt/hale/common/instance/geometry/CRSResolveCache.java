@@ -13,7 +13,7 @@ package eu.esdihumboldt.hale.common.instance.geometry;
 
 import javax.annotation.Nullable;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 

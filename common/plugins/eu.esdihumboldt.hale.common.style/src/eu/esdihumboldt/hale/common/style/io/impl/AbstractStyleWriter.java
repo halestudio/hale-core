@@ -11,7 +11,7 @@
  */
 package eu.esdihumboldt.hale.common.style.io.impl;
 
-import org.geotools.styling.Style;
+import org.geotools.api.style.Style;
 
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.impl.AbstractExportProvider;
