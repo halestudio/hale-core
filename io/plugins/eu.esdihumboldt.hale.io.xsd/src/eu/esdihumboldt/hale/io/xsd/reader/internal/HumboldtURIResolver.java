@@ -51,7 +51,13 @@ public class HumboldtURIResolver implements CollectionURIResolver {
 					// -> resolve against file URI and add Jar part later
 					baseUri = baseUri.substring(4);
 					uriLoc = new URI(baseUri).resolve(new URI(schemaLocation));
-					stringLoc = "jar:" + uriLoc.toString();
+					if (uriLoc.getScheme().equals("file")) {
+						// add jar part
+						stringLoc = "jar:" + uriLoc.toString();
+					}
+					else {
+						stringLoc = uriLoc.toString();
+					}
 				}
 				else {
 					// XXX don't really understand what this File/URI juggling
