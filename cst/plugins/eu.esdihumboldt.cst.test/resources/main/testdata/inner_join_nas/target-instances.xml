@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<gml:FeatureCollection xmlns:adv="http://www.adv-online.de/namespaces/adv/gid/7.1" xmlns:ln="http://www.adv-online.de/namespaces/adv/ln/1.0" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:wfsext="http://www.adv-online.de/namespaces/adv/gid/wfsext/2.0" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/AppInfo" xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmlexr="http://www.opengis.net/gml/3.3/exr" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns1="http://www.w3.org/1999/xhtml" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.adv-online.de/namespaces/adv/ln/1.0 file:/home/simon/repos/hale-core/cst/plugins/eu.esdihumboldt.cst.test/resources/main/testdata/inner_join_nas/target-schema.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/deprecatedTypes.xsd">
+  <gml:featureMember>
+    <ln:LN_Schiffsverkehr gml:id="DENW36AL1000Hngo">
+      <gml:identifier codeSpace="http://www.adv-online.de/">urn:adv:oid:DENW36ALZY0000yd</gml:identifier>
+    </ln:LN_Schiffsverkehr>
+  </gml:featureMember>
+  <gml:featureMember>
+    <ln:LN_Schiffsverkehr gml:id="DENW36AL1000IQPS">
+      <gml:identifier codeSpace="http://www.adv-online.de/">urn:adv:oid:DENW36ALZY0000yf</gml:identifier>
+    </ln:LN_Schiffsverkehr>
+  </gml:featureMember>
+  <gml:featureMember>
+    <ln:LN_OhneNutzung gml:id="DENW36ALZY0000yd">
+      <gml:identifier>urn:adv:oid:DENW36AL1000Hngo</gml:identifier>
+    </ln:LN_OhneNutzung>
+  </gml:featureMember>
+  <gml:featureMember>
+    <ln:LN_OhneNutzung gml:id="DENW36ALZY0000yf">
+      <gml:identifier>urn:adv:oid:DENW36AL1000IQPS</gml:identifier>
+    </ln:LN_OhneNutzung>
+  </gml:featureMember>
+</gml:FeatureCollection>

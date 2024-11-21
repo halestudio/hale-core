@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<alignment xmlns="http://www.esdi-humboldt.eu/hale/alignment">
+    <cell relation="eu.esdihumboldt.hale.align.join" id="C5b06cd2a-4cca-4006-981d-32d200d38ce7" priority="normal">
+        <source name="types">
+            <class>
+                <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+            </class>
+        </source>
+        <source name="types">
+            <class>
+                <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+            </class>
+        </source>
+        <target>
+            <class>
+                <type name="LN_OhneNutzungType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+            </class>
+        </target>
+        <parameter value="true" name="innerJoin"/>
+        <complexParameter name="join">
+            <jp:join-parameter xmlns:jp="http://www.esdi-humboldt.eu/hale/join">
+                <class>
+                    <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                </class>
+                <class>
+                    <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                </class>
+                <jp:condition>
+                    <property>
+                        <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="bestehtAus" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="href" ns="http://www.w3.org/1999/xlink"/>
+                    </property>
+                    <property>
+                        <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+                    </property>
+                </jp:condition>
+            </jp:join-parameter>
+        </complexParameter>
+    </cell>
+    <cell relation="eu.esdihumboldt.hale.align.rename" id="C5f034316-800a-4523-a71a-5a248c0cff75" priority="normal">
+        <source>
+            <property>
+                <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                <child name="id" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </source>
+        <target>
+            <property>
+                <type name="LN_OhneNutzungType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+                <child name="id" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </target>
+        <parameter value="false" name="ignoreNamespaces"/>
+        <parameter value="false" name="structuralRename"/>
+    </cell>
+    <cell relation="eu.esdihumboldt.hale.align.rename" id="C2a5ebf20-8bbc-42a0-a234-9c0186cbafe2" priority="normal">
+        <source>
+            <property>
+                <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </source>
+        <target>
+            <property>
+                <type name="LN_OhneNutzungType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+                <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </target>
+        <parameter value="false" name="ignoreNamespaces"/>
+        <parameter value="false" name="structuralRename"/>
+    </cell>
+    <cell relation="eu.esdihumboldt.hale.align.join" id="C870e1c37-188b-42c6-b141-ab6e61301465" priority="normal">
+        <source name="types">
+            <class>
+                <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+            </class>
+        </source>
+        <source name="types">
+            <class>
+                <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+            </class>
+        </source>
+        <target>
+            <class>
+                <type name="LN_SchiffsverkehrType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+            </class>
+        </target>
+        <parameter value="true" name="innerJoin"/>
+        <complexParameter name="join">
+            <jp:join-parameter xmlns:jp="http://www.esdi-humboldt.eu/hale/join">
+                <class>
+                    <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                </class>
+                <class>
+                    <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                </class>
+                <jp:condition>
+                    <property>
+                        <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="istTeilVon" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="href" ns="http://www.w3.org/1999/xlink"/>
+                    </property>
+                    <property>
+                        <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                        <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+                    </property>
+                </jp:condition>
+            </jp:join-parameter>
+        </complexParameter>
+    </cell>
+    <cell relation="eu.esdihumboldt.hale.align.rename" id="C61ee73b2-6e56-445e-947b-d7d5c6c75256" priority="normal">
+        <source>
+            <property>
+                <type name="AX_FliessgewaesserType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                <child name="id" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </source>
+        <target>
+            <property>
+                <type name="LN_SchiffsverkehrType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+                <child name="id" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </target>
+        <parameter value="false" name="ignoreNamespaces"/>
+        <parameter value="false" name="structuralRename"/>
+    </cell>
+    <cell relation="eu.esdihumboldt.hale.align.rename" id="C2af7d724-c9f8-4448-ac98-8cf184d53ea7" priority="normal">
+        <source>
+            <property>
+                <type name="AX_WasserlaufType" ns="http://www.adv-online.de/namespaces/adv/gid/7.1"/>
+                <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </source>
+        <target>
+            <property>
+                <type name="LN_SchiffsverkehrType" ns="http://www.adv-online.de/namespaces/adv/ln/1.0"/>
+                <child name="identifier" ns="http://www.opengis.net/gml/3.2"/>
+            </property>
+        </target>
+        <parameter value="false" name="ignoreNamespaces"/>
+        <parameter value="true" name="structuralRename"/>
+    </cell>
+</alignment>
