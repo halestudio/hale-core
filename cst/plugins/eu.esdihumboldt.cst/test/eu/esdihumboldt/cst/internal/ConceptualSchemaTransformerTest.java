@@ -374,6 +374,53 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 	}
 
 	/**
+	 * Test a Join with the innerJoin flag enabled. Data is from NAS model and uses
+	 * identifiers to join.
+	 *
+	 * @throws Exception if an error occurs executing the test
+	 */
+	@Test
+	public void testInnerJoinNas() throws Exception {
+		testTransform(TransformationExamples.getExample(TransformationExamples.INNER_JOIN_NAS));
+	}
+
+	/**
+	 * Test a Join with the innerJoin flag enabled. Data is from NAS model and uses
+	 * identifiers to join. Join uses the index based Join handler.
+	 *
+	 * @throws Exception if an error occurs executing the test
+	 */
+	@Ignore("fails with index based join handler")
+	@Test
+	public void testInnerJoinNasIndexBased() throws Exception {
+		withIndexJoin(() -> {
+			try {
+				testTransform(
+						TransformationExamples.getExample(TransformationExamples.INNER_JOIN_NAS));
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		});
+	}
+
+	private void withIndexJoin(Runnable runner) {
+		var prop = "hale.functions.use_index_join_handler";
+
+		var orgValue = System.getProperty(prop);
+		try {
+			System.setProperty(prop, "true");
+			runner.run();
+		} finally {
+			if (orgValue == null) {
+				System.clearProperty(prop);
+			}
+			else {
+				System.setProperty(prop, orgValue);
+			}
+		}
+	}
+
+	/**
 	 * Test a Join that has the innerJoin flag enabled. Conditions are bound to some
 	 * of the joined types.
 	 *

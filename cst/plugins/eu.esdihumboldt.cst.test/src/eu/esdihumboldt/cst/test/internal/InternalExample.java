@@ -59,6 +59,10 @@ public class InternalExample extends TransformationExampleImpl {
 	 * @throws URISyntaxException if toURI throws an exception
 	 */
 	private static URI toLocalURI(String location, boolean mustExist) throws URISyntaxException {
+		if (location.startsWith("http://") || location.startsWith("https://")) {
+			return new URI(location);
+		}
+
 		URL loc = InternalExample.class.getResource(location);
 		if (loc == null) {
 			if (mustExist) {

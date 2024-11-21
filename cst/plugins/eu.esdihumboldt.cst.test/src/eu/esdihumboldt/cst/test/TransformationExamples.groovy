@@ -112,6 +112,7 @@ abstract class TransformationExamples {
 	public static final String FORMATTING_STRING_INSTANCE = 'formatting_string_instance'
 	public static final String INNER_JOIN = 'inner_join'
 	public static final String INNER_JOIN_FIRST_LEVEL = 'inner_join_first_level'
+	public static final String INNER_JOIN_NAS = 'inner_join_nas'
 	public static final String INNER_JOIN_CONDITIONS = 'inner_join_conditions'
 	public static final String JOIN = 'join'
 
@@ -234,6 +235,7 @@ abstract class TransformationExamples {
 		(FORMATTING_STRING_INSTANCE): builderExample(FORMATTING_STRING_INSTANCE),
 		(INNER_JOIN): builderExample(INNER_JOIN),
 		(INNER_JOIN_FIRST_LEVEL): builderExample(INNER_JOIN_FIRST_LEVEL),
+		(INNER_JOIN_NAS): gmlExample(INNER_JOIN_NAS/*, 'https://repository.gdi-de.org/schemas/adv/nas/7.1/aaa.xsd'*/),
 		(INNER_JOIN_CONDITIONS): builderExample(INNER_JOIN_CONDITIONS),
 		(JOIN): builderExample(JOIN)
 	];
@@ -247,6 +249,19 @@ abstract class TransformationExamples {
 			transformedData: "/testdata/${folder}/instance2.xml",
 			containerNamespace: null,
 			containerName: 'collection'
+		]
+	}
+
+	static def gmlExample(String folder, sourceSchema = null, targetSchema = null) {
+		[
+			sourceSchema: sourceSchema != null ? sourceSchema : "/testdata/${folder}/source-schema.xsd",
+			targetSchema: targetSchema != null ? targetSchema : "/testdata/${folder}/target-schema.xsd",
+			alignment: "/testdata/${folder}/mapping.halex.alignment.xml",
+			sourceData: "/testdata/${folder}/source-instances.xml",
+			transformedData: "/testdata/${folder}/target-instances.xml",
+			// TODO relevant?
+			containerNamespace: null,
+			containerName: null
 		]
 	}
 
