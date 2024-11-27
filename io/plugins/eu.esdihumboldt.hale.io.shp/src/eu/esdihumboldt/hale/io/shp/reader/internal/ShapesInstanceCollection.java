@@ -12,6 +12,8 @@
  */
 package eu.esdihumboldt.hale.io.shp.reader.internal;
 
+import static eu.esdihumboldt.hale.common.schema.SchemaConstants.GML_NAMESPACE_CORE;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -183,12 +185,31 @@ public class ShapesInstanceCollection implements InstanceCollection2 {
 						// the source property's name
 						propertyName = candidates.get(0).getName();
 					}
+					else if (candidates.size() == 2) {
+						// handle special case:
+						// if one candidate is from GML namespace, choose the other
+						if (candidates.get(0).getName().getNamespaceURI()
+								.startsWith(GML_NAMESPACE_CORE)) {
+							propertyName = candidates.get(1).getName();
+						}
+						else if (candidates.get(1).getName().getNamespaceURI()
+								.startsWith(GML_NAMESPACE_CORE)) {
+							propertyName = candidates.get(0).getName();
+						}
+					}
 
 					if (propertyName == null) {
 						if (!missingProperties.contains(lookForPropertyName)) {
-							log.warn("Discarding values of property "
-									+ lookForPropertyName.getLocalPart()
-									+ " as it is not contained in the schema type.");
+							if (candidates.isEmpty()) {
+								log.warn("Discarding values of property "
+										+ lookForPropertyName.getLocalPart()
+										+ " as it is not contained in the schema type.");
+							}
+							else {
+								log.warn("Discarding values of property "
+										+ lookForPropertyName.getLocalPart()
+										+ " as there is no unique match in the schema type.");
+							}
 							missingProperties.add(lookForPropertyName);
 						}
 					}
