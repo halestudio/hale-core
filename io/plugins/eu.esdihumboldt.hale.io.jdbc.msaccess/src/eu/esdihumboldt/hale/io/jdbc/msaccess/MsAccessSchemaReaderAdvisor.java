@@ -14,7 +14,8 @@ package eu.esdihumboldt.hale.io.jdbc.msaccess;
 import java.util.regex.Pattern;
 
 import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
-import schemacrawler.schemacrawler.InclusionRule;
+import schemacrawler.inclusionrule.InclusionRule;
+import schemacrawler.schemacrawler.LimitOptionsBuilder;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;
 
 /**
@@ -48,8 +49,8 @@ public class MsAccessSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 	}
 
 	@Override
-	public void configureSchemaCrawler(SchemaCrawlerOptions options) {
-		options.setTableInclusionRule(new InclusionRule() {
+	public SchemaCrawlerOptions configureSchemaCrawler(SchemaCrawlerOptions options) {
+		var tableInclusion = new InclusionRule() {
 
 			private static final long serialVersionUID = -1559715487368953641L;
 
@@ -72,6 +73,12 @@ public class MsAccessSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 
 				return true;
 			}
-		});
+		};
+
+		var limitOptions = LimitOptionsBuilder.builder() //
+				.fromOptions(options.getLimitOptions()) //
+				.includeTables(tableInclusion).toOptions();
+
+		return options.withLimitOptions(limitOptions);
 	}
 }

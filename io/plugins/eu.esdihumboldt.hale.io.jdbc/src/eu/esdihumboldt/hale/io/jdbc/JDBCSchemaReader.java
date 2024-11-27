@@ -56,6 +56,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 import eu.esdihumboldt.hale.common.schema.persist.AbstractCachedSchemaReader;
+import eu.esdihumboldt.hale.io.jdbc.connection.ConnectionSource;
 import eu.esdihumboldt.hale.io.jdbc.constraints.AutoIncrementFlag;
 import eu.esdihumboldt.hale.io.jdbc.constraints.DatabaseTable;
 import eu.esdihumboldt.hale.io.jdbc.constraints.DefaultValue;
@@ -68,20 +69,19 @@ import eu.esdihumboldt.hale.io.jdbc.extension.internal.CustomTypeExtension;
 import eu.esdihumboldt.hale.io.jdbc.extension.internal.GeometryTypeExtension;
 import eu.esdihumboldt.hale.io.jdbc.extension.internal.GeometryTypeInfo;
 import eu.esdihumboldt.hale.io.jdbc.extension.internal.SchemaReaderAdvisorExtension;
+import schemacrawler.inclusionrule.RegularExpressionInclusionRule;
 import schemacrawler.schema.BaseColumn;
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Column;
 import schemacrawler.schema.ColumnDataType;
-import schemacrawler.schema.IndexColumn;
 import schemacrawler.schema.PrimaryKey;
 import schemacrawler.schema.ResultsColumn;
 import schemacrawler.schema.ResultsColumns;
 import schemacrawler.schema.Table;
-import schemacrawler.schemacrawler.RegularExpressionInclusionRule;
-import schemacrawler.schemacrawler.SchemaCrawlerException;
-import schemacrawler.schemacrawler.SchemaCrawlerOptions;
-import schemacrawler.schemacrawler.SchemaInfoLevel;
-import schemacrawler.utility.SchemaCrawlerUtility;
+import schemacrawler.schemacrawler.*;
+import schemacrawler.schemacrawler.exceptions.SchemaCrawlerException;
+import schemacrawler.tools.options.Config;
+import schemacrawler.tools.utility.SchemaCrawlerUtility;
 
 /**
  * Reads a database schema through JDBC.
@@ -170,29 +170,27 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 
 			URI jdbcURI = getSource().getLocation();
 
-			final SchemaCrawlerOptions options = new SchemaCrawlerOptions();
-			SchemaInfoLevel level = new SchemaInfoLevel();
-			level.setTag("hale");
-			// these are enabled by default, we don't need them (yet)
-			level.setRetrieveSchemaCrawlerInfo(false);
-			level.setRetrieveJdbcDriverInfo(false);
-			level.setRetrieveDatabaseInfo(false);
+			var schemaInfoLevel = SchemaInfoLevelBuilder.builder().withTag("hale")
+					// these are enabled by default, we don't need them (yet)
+					.setRetrieveAdditionalJdbcDriverInfo(false) //
+					.setRetrieveDatabaseInfo(false)
 
-			// set what we need
-			level.setRetrieveTables(true);
-			level.setRetrieveColumnDataTypes(true);
-			level.setRetrieveUserDefinedColumnDataTypes(true);
-			level.setRetrieveTableColumns(true); // to get table columns
-													// information, also
+					// set what we need
+					.setRetrieveTables(true) //
+					.setRetrieveColumnDataTypes(true) //
+					.setRetrieveUserDefinedColumnDataTypes(true) //
+					.setRetrieveTableColumns(true) // to get table columns information, also
 													// includes primary key
-			level.setRetrieveForeignKeys(true); // to get linking information
-//			level.setRetrieveIndices(true); // to get info about UNIQUE indices for validation
-			// XXX For some advanced info / DBMS specific info we'll need a
-			// properties file. See Config & InformationSchemaViews.
-			level.setTag("hale");
+					.setRetrieveForeignKeys(true) // to get linking information
+					// .setRetrieveIndices(true) // to get info about UNIQUE indices for validation
+
+					.toOptions();
+
+			var limitBuilder = LimitOptionsBuilder.builder();
+
 			if (getParameter(SCHEMAS).as(String.class) != null) {
 				String schemas = getParameter(SCHEMAS).as(String.class).replace(',', '|');
-				options.setSchemaInclusionRule(new RegularExpressionInclusionRule(schemas));
+				limitBuilder.includeSchemas(new RegularExpressionInclusionRule(schemas));
 			}
 
 			if (SchemaSpaceID.SOURCE.equals(getSchemaSpace())) {
@@ -216,27 +214,45 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 					tableTypeSupported.addAll(tableTypesWanted);
 				}
 
-				options.setTableTypes(
+				limitBuilder.tableTypes(
 						tableTypesWanted.stream().filter(tt -> tableTypeSupported.contains(tt))
 								.collect(Collectors.toList()));
 			}
 			else {
 				// only show tables
-				options.setTableTypes(Arrays.asList("TABLE"));
+				limitBuilder.tableTypes(List.of("TABLE"));
 			}
 
-			options.setSchemaInfoLevel(level);
+			var limitOptions = limitBuilder.toOptions();
+
+			var loadOptions = LoadOptionsBuilder.builder() //
+					.withSchemaInfoLevel(schemaInfoLevel) //
+					.toOptions();
+
+			SchemaCrawlerOptions options = SchemaCrawlerOptionsBuilder.newSchemaCrawlerOptions() //
+					.withLimitOptions(limitOptions) //
+					.withLoadOptions(loadOptions);
 
 			// get advisor
 			// XXX should be created once, and used in other places if
 			// applicable
 			JDBCSchemaReaderAdvisor advisor = SchemaReaderAdvisorExtension.getInstance()
 					.getAdvisor(connection);
+			SchemaRetrievalOptions retrievalOptions = null;
 			if (advisor != null) {
-				advisor.configureSchemaCrawler(options);
+				options = advisor.configureSchemaCrawler(options);
+				retrievalOptions = advisor.getSchemaRetrievalOptions(connection);
 			}
 
-			final Catalog database = SchemaCrawlerUtility.getCatalog(connection, options);
+			final Catalog database;
+			if (retrievalOptions == null) {
+				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
+						options);
+			}
+			else {
+				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
+						retrievalOptions, options, new Config());
+			}
 
 			@SuppressWarnings("unused")
 			String quotes = JDBCUtil.determineQuoteString(connection);
@@ -280,7 +296,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 						}
 						ResultSet rs = stmt
 								.executeQuery("SELECT * FROM " + fullTableName + " WHERE 1 = 0");
-						additionalInfo = SchemaCrawlerUtility.getResultColumns(rs);
+						additionalInfo = SchemaCrawlerUtility.getResultsColumns(rs);
 					} catch (SQLException sqle) {
 						reporter.warn(new IOMessageImpl(
 								"Couldn't retrieve additional column meta data.", sqle));
@@ -309,7 +325,8 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 						if (additionalInfo != null) {
 							// ResultColumns does not quote the column namen in
 							// contrast to every other place
-							ResultsColumn rc = additionalInfo.getColumn(unquote(column.getName()));
+							ResultsColumn rc = additionalInfo
+									.lookupColumn(unquote(column.getName())).orElse(null);
 							if (rc != null && rc.isAutoIncrement())
 								property.setConstraint(AutoIncrementFlag.get(true));
 						}
@@ -513,7 +530,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 			type.setConstraint(SQLType.get(cust.getSQLType()));
 		}
 		else {
-			type.setConstraint(SQLType.get(columnType.getJavaSqlType().getJavaSqlType()));
+			type.setConstraint(SQLType.get(columnType.getJavaSqlType().getVendorTypeNumber()));
 		}
 
 		if (geomType != null && geomAdvisor != null) {
@@ -535,7 +552,8 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 				binding = cust.getBinding();
 			}
 			else {
-				if (column.getColumnDataType().getJavaSqlType().getJavaSqlType() == Types.ARRAY) {
+				if (column.getColumnDataType().getJavaSqlType()
+						.getVendorTypeNumber() == Types.ARRAY) {
 					// TODO let this be handled by a possible advisor?
 
 					/*
@@ -557,7 +575,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 					// prefix and look up type
 					if (dbTypeName.startsWith("_")) {
 						String testName = dbTypeName.substring(1);
-						itemType = catalog.getSystemColumnDataType(testName);
+						itemType = catalog.lookupSystemColumnDataType(testName).orElse(null);
 					}
 
 					if (itemType == null) {
@@ -693,7 +711,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 		}
 
 		if (key != null) {
-			List<IndexColumn> columns = key.getColumns();
+			var columns = key.getConstrainedColumns();
 			if (columns.size() > 1) {
 				reporter.warn(new IOMessageImpl(
 						"Primary keys over multiple columns are not yet supported.", null));
@@ -703,10 +721,12 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 				// column (maybe could use index column, too)
 				type.setConstraint(
 						new eu.esdihumboldt.hale.common.schema.model.constraint.type.PrimaryKey(
-								Collections.<QName> singletonList(getOrCreateProperty(schema, type,
-										table.getColumn(columns.get(0).getName()), overallNamespace,
-										namespace, types, connection, reporter, catalog)
-										.getName())));
+								Collections
+										.<QName> singletonList(getOrCreateProperty(schema, type,
+												table.lookupColumn(columns.get(0).getName())
+														.orElse(null),
+												overallNamespace, namespace, types, connection,
+												reporter, catalog).getName())));
 			}
 		}
 

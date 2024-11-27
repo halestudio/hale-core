@@ -15,7 +15,7 @@ dependencies {
 
   implementation libs.jackson.annotations
 
-  implementation libs.schemacrawler
+  implementation libs.schemacrawler.core
 
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')

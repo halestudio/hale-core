@@ -15,7 +15,7 @@ dependencies {
 
   implementation libs.guava
 
-  implementation libs.schemacrawler
+  implementation libs.schemacrawler.core
   implementation libs.sqlite.jdbc
 
   implementation libs.jts

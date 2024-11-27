@@ -11,14 +11,13 @@
  */
 package eu.esdihumboldt.hale.io.jdbc.spatialite;
 
+import java.sql.Connection;
 import java.util.regex.Pattern;
 
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
-import schemacrawler.schemacrawler.DatabaseSpecificOverrideOptions;
-import schemacrawler.schemacrawler.InclusionRule;
-import schemacrawler.schemacrawler.InformationSchemaViews;
-import schemacrawler.schemacrawler.SchemaCrawlerOptions;
+import schemacrawler.inclusionrule.InclusionRule;
+import schemacrawler.schemacrawler.*;
 
 /**
  * Adapts {@link JDBCSchemaReader} behavior for SpatialLite.
@@ -83,22 +82,23 @@ public class SpatialLiteSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 			+ "		name";
 
 	@Override
-	public void configureSchemaCrawler(SchemaCrawlerOptions options) {
+	public SchemaRetrievalOptions getSchemaRetrievalOptions(Connection connection) {
+		InformationSchemaViews infoSchemaViews = InformationSchemaViewsBuilder.builder() //
+				.withSql(InformationSchemaKey.VIEWS, VIEWS_SQL) //
+				.withSql(InformationSchemaKey.TRIGGERS, TRIGGERS_SQL) //
+				.toOptions();
 
-		InformationSchemaViews infoSchemaViews = new InformationSchemaViews();
-		infoSchemaViews.setViewsSql(VIEWS_SQL);
-		infoSchemaViews.setTriggersSql(TRIGGERS_SQL);
+		return SchemaRetrievalOptionsBuilder.builder() //
+				.fromConnnection(connection) //
+				.withInformationSchemaViews(infoSchemaViews) //
+				.withoutSupportsSchemas() // SQLite has no notion of schemas
+				.withIdentifierQuoteString("\"") //
+				.toOptions();
+	}
 
-		DatabaseSpecificOverrideOptions dbOvrOptions = new DatabaseSpecificOverrideOptions();
-		dbOvrOptions.setIdentifierQuoteString("\"");
-		dbOvrOptions.setSupportsSchemas(false); // SQLite has no notion of
-												// schemas
-
-		options.setDatabaseSpecificOverrideOptions(dbOvrOptions);
-		options.setInformationSchemaViews(infoSchemaViews);
-
-		// exclude system tables / views
-		options.setTableInclusionRule(new InclusionRule() {
+	@Override
+	public SchemaCrawlerOptions configureSchemaCrawler(SchemaCrawlerOptions options) {
+		var includeTables = new InclusionRule() {
 
 			private static final long serialVersionUID = -1559715487368953641L;
 
@@ -135,7 +135,13 @@ public class SpatialLiteSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 
 				return true;
 			}
-		});
+		};
+
+		var limits = LimitOptionsBuilder.builder() //
+				.fromOptions(options.getLimitOptions()) //
+				.includeTables(includeTables).toOptions();
+
+		return options.withLimitOptions(limits);
 	}
 
 	@Override

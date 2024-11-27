@@ -42,6 +42,7 @@ import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchema;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 import eu.esdihumboldt.hale.common.schema.persist.AbstractCachedSchemaReader;
+import eu.esdihumboldt.hale.io.jdbc.connection.ConnectionSource;
 import eu.esdihumboldt.hale.io.jdbc.constraints.SQLArray;
 import eu.esdihumboldt.hale.io.jdbc.constraints.SQLQuery;
 import eu.esdihumboldt.hale.io.jdbc.extension.JDBCSchemaReaderAdvisor;
@@ -49,9 +50,9 @@ import eu.esdihumboldt.hale.io.jdbc.extension.internal.SchemaReaderAdvisorExtens
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.ResultsColumn;
 import schemacrawler.schema.ResultsColumns;
-import schemacrawler.schemacrawler.SchemaCrawlerOptions;
-import schemacrawler.schemacrawler.SchemaInfoLevel;
-import schemacrawler.utility.SchemaCrawlerUtility;
+import schemacrawler.schemacrawler.*;
+import schemacrawler.tools.options.Config;
+import schemacrawler.tools.utility.SchemaCrawlerUtility;
 
 /**
  * Reads the schema of an SQL query via JDBC.
@@ -175,24 +176,42 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 			String dbNamespace = determineNamespace(jdbcURI, advisor);
 			String namespace = NAMESPACE;
 
-			SchemaCrawlerOptions options = new SchemaCrawlerOptions();
-			SchemaInfoLevel level = new SchemaInfoLevel();
-			level.setTag("hale");
-			// these are enabled by default, we don't need them (yet)
-			level.setRetrieveSchemaCrawlerInfo(false);
-			level.setRetrieveJdbcDriverInfo(false);
-			level.setRetrieveDatabaseInfo(false);
-			level.setRetrieveTables(false);
-			level.setRetrieveTableColumns(false);
-			level.setRetrieveForeignKeys(false);
-			// set what we need
-			level.setRetrieveColumnDataTypes(true);
-			level.setRetrieveUserDefinedColumnDataTypes(true);
-			options.setSchemaInfoLevel(level);
+			var schemaInfoLevel = SchemaInfoLevelBuilder.builder() //
+					.withTag("hale") //
+
+					// these are enabled by default, we don't need them (yet)
+					.setRetrieveAdditionalJdbcDriverInfo(false) //
+					.setRetrieveDatabaseInfo(false) //
+					.setRetrieveTables(false) //
+					.setRetrieveTableColumns(false) //
+					.setRetrieveForeignKeys(false) //
+
+					// set what we need
+					.setRetrieveColumnDataTypes(true) //
+					.setRetrieveUserDefinedColumnDataTypes(true) //
+
+					.toOptions();
+
+			var loadOptions = LoadOptionsBuilder.builder() //
+					.withSchemaInfoLevel(schemaInfoLevel) //
+					.toOptions();
+
+			SchemaCrawlerOptions options = SchemaCrawlerOptionsBuilder.newSchemaCrawlerOptions()
+					.withLoadOptions(loadOptions);
+			SchemaRetrievalOptions retrievalOptions = null;
 			if (advisor != null) {
-				advisor.configureSchemaCrawler(options);
+				options = advisor.configureSchemaCrawler(options);
+				retrievalOptions = advisor.getSchemaRetrievalOptions(connection);
 			}
-			final Catalog database = SchemaCrawlerUtility.getCatalog(connection, options);
+			final Catalog database;
+			if (retrievalOptions == null) {
+				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
+						options);
+			}
+			else {
+				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
+						retrievalOptions, options, new Config());
+			}
 
 			// create the type index
 			typeIndex = new DefaultSchema(dbNamespace, jdbcURI);
@@ -212,7 +231,7 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 				TypeDefinition type = addTableType(query, namespace, typeIndex, connection,
 						reporter, typename);
 
-				ResultsColumns additionalInfo = SchemaCrawlerUtility.getResultColumns(result);
+				ResultsColumns additionalInfo = SchemaCrawlerUtility.getResultsColumns(result);
 				for (final ResultsColumn column : additionalInfo.getColumns()) {
 					getOrCreateProperty(type, column, namespace, typeIndex, connection, reporter,
 							database);
