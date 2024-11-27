@@ -12,6 +12,8 @@
  */
 package eu.esdihumboldt.hale.io.geopackage.internal
 
+import static eu.esdihumboldt.hale.common.schema.SchemaConstants.GML_NAMESPACE_CORE
+
 import groovy.transform.CompileStatic
 
 import java.sql.SQLException
@@ -100,6 +102,16 @@ class TableInstanceBuilder {
 			if (cand == null) {
 				// prefer property that is mandatory
 				cand = candidates.find { it.getConstraint(Cardinality).getMinOccurs() > 0 && !it.getConstraint(NillableFlag).isEnabled() }
+			}
+
+			if (cand == null && candidates.size() == 2) {
+				// prefer property that is not in GML namespace, if the other is in a GML namespace
+				if (candidates[0].name.namespaceURI.startsWith(GML_NAMESPACE_CORE)) {
+					cand = candidates[1]
+				}
+				else if (candidates[1].name.namespaceURI.startsWith(GML_NAMESPACE_CORE)) {
+					cand = candidates[0]
+				}
 			}
 
 			if (cand == null) {

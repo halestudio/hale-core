@@ -22,6 +22,8 @@ import groovy.transform.TypeCheckingMode
 
 import java.util.function.Consumer
 
+import javax.xml.namespace.QName
+
 import org.junit.Test
 import org.locationtech.jts.geom.Geometry
 
@@ -36,6 +38,7 @@ import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.util.test.AbstractPlatformTest
+import io.qameta.allure.Link
 
 /**
  * Tests loading GeoPackage instances.
@@ -260,5 +263,65 @@ class GeopackageInstanceReaderTest extends AbstractPlatformTest {
 					assertThat(value.CRSDefinition.CRS)
 							.isNotNull()
 				} as Consumer)
+	}
+
+	/**
+	 * Test reading Geopackage data based on an XML schema (Use case: Rewrite Geopackage as GML).
+	 */
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@Link(value = "ING-4543", type = "JIRA")
+	@Test
+	public void testReadInstancesXsdGmlConflict() {
+		GeopackageApiTest.withTestFile("testdata/gml-conflict.gpkg") { File file ->
+			Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/gml-conflict.xsd").toURI())
+
+			InstanceCollection instances = loadInstances(xmlSchema, file)
+
+			assertNotNull(instances)
+			assertTrue(instances.hasSize())
+
+			// test count
+			assertEquals(3, instances.size())
+
+			// check instances
+			def list = instances.toList()
+			def all =  { new InstanceAccessor(list) }
+
+			def expectedNames = [
+				'Allgäubahn',
+				'Bodensee-Gürtelbahn',
+				'Donaubahn'
+			].toArray()
+
+			// verify that names are present
+			assertThat(all().name.values())
+					.containsExactlyInAnyOrder(expectedNames)
+
+			// verify that correct name property is used
+			def nameProperty = new QName('https://www.geoportal-raumordnung-bw.de/planAtlas-rp', 'name')
+			def names = list.collect { it.getProperty(nameProperty)[0] }.toList()
+			assertThat(names)
+					.containsExactlyInAnyOrder(expectedNames)
+
+			// also check for id element (which is present in the schema in addition to the GML id attribute)
+			def idProperty = new QName('https://www.geoportal-raumordnung-bw.de/planAtlas-rp', 'id')
+			def ids = list.collect { it.getProperty(idProperty)[0] }.toList()
+			assertThat(ids)
+					.containsExactlyInAnyOrder('ln_8164_843_1', 'ln_8164_843_2', 'ln_8164_843_3')
+
+			// GML id attribute should be empty
+			def gmlIdProperty = new QName('http://www.opengis.net/gml/3.2', 'id')
+			def gmlIds = list.collect {
+				def prop = it.getProperty(gmlIdProperty)
+				if (prop) {
+					prop[0]
+				}
+				else {
+					null
+				}
+			}.findAll()
+			assertThat(gmlIds)
+					.isEmpty()
+		}
 	}
 }
