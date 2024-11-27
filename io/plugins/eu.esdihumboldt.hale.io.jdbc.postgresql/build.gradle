@@ -12,7 +12,8 @@ hale {
 dependencies {
   implementation libs.slf4jplus.api
 
-  implementation libs.schemacrawler
+  implementation libs.schemacrawler.core
+  implementation libs.schemacrawler.postgres
 
   implementation libs.bundles.postgis
 

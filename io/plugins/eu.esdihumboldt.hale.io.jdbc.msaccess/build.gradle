@@ -9,7 +9,7 @@ hale {
 dependencies {
   implementation libs.slf4jplus.api
 
-  implementation libs.schemacrawler
+  implementation libs.schemacrawler.core
   implementation libs.ucanaccess
 
   implementation libs.eclipse.core.runtime

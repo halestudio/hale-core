@@ -11,10 +11,13 @@
  */
 package eu.esdihumboldt.hale.io.jdbc.extension;
 
+import java.sql.Connection;
+
 import javax.annotation.Nullable;
 
 import eu.esdihumboldt.hale.io.jdbc.JDBCSchemaReader;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;
+import schemacrawler.schemacrawler.SchemaRetrievalOptions;
 
 /**
  * Advisor for the behavior of a {@link JDBCSchemaReader}.
@@ -23,12 +26,17 @@ import schemacrawler.schemacrawler.SchemaCrawlerOptions;
  */
 public interface JDBCSchemaReaderAdvisor {
 
+	default SchemaRetrievalOptions getSchemaRetrievalOptions(Connection connection) {
+		return null;
+	}
+
 	/**
 	 * Adapt the options passed to SchemaCrawler to retrieve the database schema.
 	 *
 	 * @param options the schema crawler options
+	 * @return the adapted schema crawler options
 	 */
-	void configureSchemaCrawler(SchemaCrawlerOptions options);
+	SchemaCrawlerOptions configureSchemaCrawler(SchemaCrawlerOptions options);
 
 	/**
 	 * Determine the path that should be included in the namespace for table types.
