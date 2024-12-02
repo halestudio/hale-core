@@ -128,7 +128,7 @@ joda-time = {module = "joda-time:joda-time", version = "2.13.0"}
 
 jmep = {module = "com.iabcinc:jmep", version = "0.1.0"}
 
-trove = {module = "net.sf.trove4j:trove4j", version = "2.1.0"}
+trove = {module = "net.sf.trove4j:trove4j", version = "3.0.3"}
 
 jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.2"}
 
