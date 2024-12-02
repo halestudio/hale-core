@@ -13,13 +13,13 @@ package eu.esdihumboldt.hale.io.jdbc.postgresql;
 
 import java.sql.SQLException;
 
-import org.postgis.PGbox3d;
-import org.postgis.PGgeometry;
 import org.postgresql.PGConnection;
 
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
 import eu.esdihumboldt.hale.io.jdbc.extension.ConnectionConfigurer;
+import net.postgis.jdbc.PGbox3d;
+import net.postgis.jdbc.PGgeometry;
 
 /**
  * Configures a connection to support PostGIS data types.

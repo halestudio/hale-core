@@ -29,7 +29,6 @@ import org.locationtech.jts.geom.MultiPoint;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
-import org.postgis.PGgeometry;
 import org.postgresql.PGConnection;
 
 import de.fhg.igd.slf4jplus.ALogger;
@@ -44,6 +43,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
 import eu.esdihumboldt.hale.io.jdbc.GeometryAdvisor;
+import net.postgis.jdbc.PGgeometry;
+import net.postgis.jdbc.geometry.GeometryBuilder;
 import schemacrawler.schema.BaseColumn;
 import schemacrawler.schema.ColumnDataType;
 
@@ -206,7 +207,7 @@ public class PostGISGeometries implements GeometryAdvisor<PGConnection> {
 			WKTReader2 reader = new WKTReader2();
 
 			String value = pgeom.getGeometry().toString();
-			if (value.startsWith(PGgeometry.SRIDPREFIX) && value.indexOf(';') >= 0) {
+			if (value.startsWith(GeometryBuilder.SRIDPREFIX) && value.indexOf(';') >= 0) {
 				value = value.substring(value.indexOf(';') + 1);
 
 				if (_log.isDebugEnabled()) {
