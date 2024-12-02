@@ -37,9 +37,9 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.NillableFlag
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata
 import eu.esdihumboldt.hale.io.geopackage.GeopackageSchemaBuilder
-import mil.nga.geopackage.core.srs.SpatialReferenceSystem
 import mil.nga.geopackage.features.columns.GeometryColumns
 import mil.nga.geopackage.features.user.FeatureResultSet
+import mil.nga.geopackage.srs.SpatialReferenceSystem
 import mil.nga.geopackage.user.UserResultSet
 
 
@@ -175,7 +175,7 @@ class TableInstanceBuilder {
 							def geomData = ((FeatureResultSet) row).geometry
 
 							// read JTS geometry from WKB
-							def jtsGeom = wkbReader.read(geomData.wkbBytes)
+							def jtsGeom = wkbReader.read(geomData.wkb)
 
 							CRSDefinition crsDef = null
 

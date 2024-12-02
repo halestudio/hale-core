@@ -25,6 +25,7 @@ import javax.xml.namespace.QName
 
 import org.junit.Test
 import org.locationtech.jts.geom.Geometry
+import org.locationtech.jts.geom.Point
 
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
@@ -132,7 +133,11 @@ class GeopackageInstanceReaderTest extends AbstractPlatformTest {
 		assert testInstance.p.fid.value() == 2701
 		assert testInstance.p.item_id.value() == '67983-MONI0000000001'
 		assert testInstance.p.descriptio.value() == 'Franconia Township 1 (J1-1442)'
-		//TODO test geometry
+
+		def geom = testInstance.p.geom.value()
+		assert geom instanceof GeometryProperty
+		assert geom.CRSDefinition != null
+		assert geom.geometry instanceof Point
 	}
 
 	/**

@@ -21,7 +21,7 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.common.schema.persist.AbstractCachedSchemaReader;
 import mil.nga.geopackage.GeoPackage;
-import mil.nga.geopackage.manager.GeoPackageManager;
+import mil.nga.geopackage.GeoPackageManager;
 
 /**
  * Reader for geopackage schema.

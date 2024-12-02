@@ -43,7 +43,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.PrimaryKey
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import mil.nga.geopackage.manager.GeoPackageManager
+import mil.nga.geopackage.GeoPackageManager
 
 /**
  * Tests for writing instances to GeoPackage.

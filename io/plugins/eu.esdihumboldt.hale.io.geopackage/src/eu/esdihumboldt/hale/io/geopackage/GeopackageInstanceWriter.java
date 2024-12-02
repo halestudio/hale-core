@@ -19,11 +19,7 @@ import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.xml.namespace.QName;
@@ -70,22 +66,18 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.PrimaryKey;
 import mil.nga.geopackage.BoundingBox;
 import mil.nga.geopackage.GeoPackage;
-import mil.nga.geopackage.attributes.AttributesColumn;
-import mil.nga.geopackage.attributes.AttributesDao;
-import mil.nga.geopackage.attributes.AttributesRow;
-import mil.nga.geopackage.core.srs.SpatialReferenceSystem;
-import mil.nga.geopackage.core.srs.SpatialReferenceSystemDao;
+import mil.nga.geopackage.GeoPackageManager;
+import mil.nga.geopackage.attributes.*;
 import mil.nga.geopackage.db.GeoPackageDataType;
-import mil.nga.geopackage.extension.index.FeatureTableIndex;
+import mil.nga.geopackage.db.TableColumnKey;
+import mil.nga.geopackage.extension.nga.index.FeatureTableIndex;
 import mil.nga.geopackage.features.columns.GeometryColumns;
 import mil.nga.geopackage.features.index.FeatureIndexManager;
 import mil.nga.geopackage.features.index.FeatureIndexType;
-import mil.nga.geopackage.features.user.FeatureColumn;
-import mil.nga.geopackage.features.user.FeatureDao;
-import mil.nga.geopackage.features.user.FeatureRow;
+import mil.nga.geopackage.features.user.*;
 import mil.nga.geopackage.geom.GeoPackageGeometryData;
-import mil.nga.geopackage.manager.GeoPackageManager;
-import mil.nga.geopackage.schema.TableColumnKey;
+import mil.nga.geopackage.srs.SpatialReferenceSystem;
+import mil.nga.geopackage.srs.SpatialReferenceSystemDao;
 import mil.nga.geopackage.user.UserColumn;
 import mil.nga.geopackage.user.UserCoreRow;
 import mil.nga.sf.util.ByteReader;
@@ -352,7 +344,12 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 			// differs from the column SrsId?
 
 			byte[] wkb = new WKBWriter().write(targetGeometry);
-			mil.nga.sf.Geometry geometry = GeometryReader.readGeometry(new ByteReader(wkb));
+			mil.nga.sf.Geometry geometry = null;
+			try {
+				geometry = GeometryReader.readGeometry(new ByteReader(wkb));
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
 
 			geometryData.setGeometry(geometry);
 		}
@@ -439,7 +436,7 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 					// AugmentedValue
 					return p.getPropertyType().getConstraint(HasValueFlag.class).isEnabled() || p
 							.getPropertyType().getConstraint(AugmentedValueFlag.class).isEnabled();
-				}).collect(Collectors.toList());
+				}).toList();
 
 		Optional<? extends PropertyDefinition> geometryProperty = allProperties.stream()
 				.filter(property -> {
@@ -455,6 +452,15 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 		else {
 			primaryKeyColumn = null;
 		}
+		final var fPrimaryKeyColumn = primaryKeyColumn;
+
+		Collection<? extends PropertyDefinition> additionalProperties = allProperties.stream()
+				// exclude primary key
+				.filter(p -> !p.getName().getLocalPart().equals(fPrimaryKeyColumn))
+				// exclude selected geometry property
+				.filter(p -> !geometryProperty.map(gp -> gp.getName().equals(p.getName()))
+						.orElse(false))
+				.toList();
 
 		GeopackageTableType tableType;
 		if (geometryProperty.isPresent()) {
@@ -469,20 +475,24 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 			geometryColumns.setGeometryType(convertGeometryType(
 					geomProp.getPropertyType().getConstraint(GeometryType.class).getBinding()));
 
-			BoundingBox boundingBox = null; // not known at that point
 			// determine SRS from GeometryMetadata or sample instance
 			long srsId = determineSrsId(geoPackage, geomProp, instance, log);
-			List<FeatureColumn> columns = allProperties.stream()
-					.map(p -> createFeatureColumn(p, primaryKeyColumn))
+			geometryColumns.setSrsId(srsId);
+
+			BoundingBox boundingBox = null; // not known at that point
+
+			// additional columns = columns w/o geometry column + id column
+			List<FeatureColumn> additionalColumns = additionalProperties.stream()
+					.map(p -> createFeatureColumn(p, fPrimaryKeyColumn))
 					.collect(Collectors.toList());
 
 			if (primaryKeyColumn == null) {
-				// primary key column seems to be always needed (without there
-				// were errors reading the data)
-				columns.add(FeatureColumn.createPrimaryKeyColumn(findIdName(columns)));
+				// name for ID column
+				primaryKeyColumn = findIdName(additionalColumns);
 			}
 
-			geoPackage.createFeatureTableWithMetadata(geometryColumns, boundingBox, srsId, columns);
+			geoPackage.createFeatureTable(FeatureTableMetadata.create(geometryColumns,
+					primaryKeyColumn, true, additionalColumns, boundingBox));
 
 			FeatureDao featureDao = geoPackage.getFeatureDao(tableName);
 			String spatialIndexType = getParameter(PARAM_SPATIAL_INDEX_TYPE).as(String.class,
@@ -506,17 +516,18 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 			// create attributes table
 			tableType = GeopackageTableType.ATTRIBUTE;
 
-			List<AttributesColumn> columns = allProperties.stream()
-					.map(p -> createAttributeColumn(p, primaryKeyColumn))
+			// additional columns = columns w/o geometry column + id column
+			List<AttributesColumn> additionalColumns = additionalProperties.stream()
+					.map(p -> createAttributeColumn(p, fPrimaryKeyColumn))
 					.collect(Collectors.toList());
 
 			if (primaryKeyColumn == null) {
-				// primary key column seems to be always needed (without there
-				// were errors reading the data)
-				columns.add(AttributesColumn.createPrimaryKeyColumn(findIdName(columns)));
+				// name for ID column
+				primaryKeyColumn = findIdName(additionalColumns);
 			}
 
-			geoPackage.createAttributesTable(tableName, columns);
+			geoPackage.createAttributesTable(AttributesTableMetadata.create(tableName,
+					primaryKeyColumn, true, additionalColumns));
 		}
 
 		return tableType;
