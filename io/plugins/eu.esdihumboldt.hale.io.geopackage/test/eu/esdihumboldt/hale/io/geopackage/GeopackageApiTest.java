@@ -24,8 +24,8 @@ import java.util.function.Consumer;
 import org.junit.Test;
 
 import mil.nga.geopackage.GeoPackage;
+import mil.nga.geopackage.GeoPackageManager;
 import mil.nga.geopackage.features.user.FeatureDao;
-import mil.nga.geopackage.manager.GeoPackageManager;
 
 /**
  * Tests using the Geopackage API. These are mostly intended to verify that the

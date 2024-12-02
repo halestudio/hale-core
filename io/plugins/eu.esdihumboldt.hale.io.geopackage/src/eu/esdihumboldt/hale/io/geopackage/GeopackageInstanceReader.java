@@ -36,10 +36,10 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.MappingRelevantFlag;
 import eu.esdihumboldt.hale.io.geopackage.internal.GeopackageFeatureCollection;
 import mil.nga.geopackage.GeoPackage;
+import mil.nga.geopackage.GeoPackageManager;
 import mil.nga.geopackage.attributes.AttributesDao;
 import mil.nga.geopackage.features.columns.GeometryColumns;
 import mil.nga.geopackage.features.user.FeatureDao;
-import mil.nga.geopackage.manager.GeoPackageManager;
 
 /**
  * Instance reader for {@link GeoPackage} files.
