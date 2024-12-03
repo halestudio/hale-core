@@ -1,3 +1,15 @@
+## [6.2.0](https://github.com/halestudio/hale-core/compare/v6.1.0...v6.2.0) (2024-12-03)
+
+### Features
+
+* **geopackage:** prefer non-GML namespace on multiple candidates for property ([9c4ecbe](https://github.com/halestudio/hale-core/commit/9c4ecbe1c568c60ea19a20024b01f172b0f67ef6)), closes [ING-4543](https://wetransform.atlassian.net/browse/ING-4543)
+* **shp:** prefer non-GML namespace on multiple candidates for property ([0089368](https://github.com/halestudio/hale-core/commit/00893689ab79003cf77a6c8b1242bb8367341945)), closes [ING-4543](https://wetransform.atlassian.net/browse/ING-4543)
+
+### Bug Fixes
+
+* adapt name of system property for join handler ([1b47ecf](https://github.com/halestudio/hale-core/commit/1b47ecfabb7a6de37ff3ec150ec18857fa72d630))
+* fix resolving http/https URIs with jar base URIs ([256a93c](https://github.com/halestudio/hale-core/commit/256a93ca0afea19fadb4201fc057db7ca00a6378))
+
 ## [6.1.0](https://github.com/halestudio/hale-core/compare/v6.0.0...v6.1.0) (2024-11-14)
 
 ### Features
