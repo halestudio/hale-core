@@ -12,7 +12,8 @@ dependencies {
   implementation libs.groovy.core
 
   implementation libs.guava
-  api libs.trove
+  api libs.eclipse.collections.api
+  implementation libs.eclipse.collections.core
   implementation libs.commons.codec
   implementation libs.spring.core
 

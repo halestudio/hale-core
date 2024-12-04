@@ -61,6 +61,8 @@ import org.apache.ws.commons.schema.XmlSchemaSimpleType;
 import org.apache.ws.commons.schema.XmlSchemaType;
 import org.apache.ws.commons.schema.constants.Constants;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
+import org.eclipse.collections.api.factory.primitive.ObjectIntMaps;
+import org.eclipse.collections.api.map.primitive.MutableObjectIntMap;
 import org.w3c.dom.Node;
 
 import com.google.common.base.Objects;
@@ -133,7 +135,6 @@ import eu.esdihumboldt.hale.io.xsd.reader.internal.constraint.XLinkReference;
 import eu.esdihumboldt.util.Identifiers;
 import eu.esdihumboldt.util.io.InputSupplier;
 import eu.esdihumboldt.util.resource.Resources;
-import gnu.trove.TObjectIntHashMap;
 
 /**
  * The main functionality of this class is to load an XML schema file (XSD) and
@@ -247,7 +248,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 	 * Holds the number of created groups for a parent. The parent identifier is
 	 * mapped to the number of groups.
 	 */
-	private TObjectIntHashMap<String> groupCounter;
+	private MutableObjectIntMap<String> groupCounter;
 
 	/**
 	 * The current reporter
@@ -352,7 +353,7 @@ public class XmlSchemaReader extends AbstractSchemaReader {
 		index = new XmlIndex(namespace, location);
 
 		// create group counter
-		groupCounter = new TObjectIntHashMap<String>();
+		groupCounter = ObjectIntMaps.mutable.of();
 
 		// Map schema locations to target namespaces
 		Map<String, String> imports = new HashMap<>();
