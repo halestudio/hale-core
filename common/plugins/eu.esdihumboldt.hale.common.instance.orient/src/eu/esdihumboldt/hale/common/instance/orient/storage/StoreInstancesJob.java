@@ -19,6 +19,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.collections.api.block.procedure.primitive.ObjectIntProcedure;
+import org.eclipse.collections.api.factory.primitive.ObjectIntMaps;
+import org.eclipse.collections.api.map.primitive.MutableObjectIntMap;
+import org.eclipse.collections.api.map.primitive.ObjectIntMap;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -53,8 +57,6 @@ import eu.esdihumboldt.hale.common.instance.orient.OInstance;
 import eu.esdihumboldt.hale.common.instance.processing.InstanceProcessingExtension;
 import eu.esdihumboldt.hale.common.instance.processing.InstanceProcessor;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import gnu.trove.TObjectIntHashMap;
-import gnu.trove.TObjectIntProcedure;
 
 /**
  * Store instances in a database
@@ -155,7 +157,7 @@ public abstract class StoreInstancesJob extends Job {
 				(exactProgress) ? (instances.size()) : (IProgressMonitor.UNKNOWN));
 
 		AtomicInteger count = new AtomicInteger(0);
-		TObjectIntHashMap<QName> typeCount = new TObjectIntHashMap<>();
+		MutableObjectIntMap<QName> typeCount = ObjectIntMaps.mutable.of();
 
 		if (report != null) {
 			// set the correct start time
@@ -255,7 +257,7 @@ public abstract class StoreInstancesJob extends Job {
 
 						TypeDefinition type = instance.getDefinition();
 						if (type != null) {
-							typeCount.adjustOrPutValue(type.getName(), 1, 1);
+							typeCount.addToValue(type.getName(), 1);
 						}
 
 						if (exactProgress) {
@@ -343,29 +345,23 @@ public abstract class StoreInstancesJob extends Job {
 				"eu.esdihumboldt.hale.common.instance.orient", message);
 	}
 
-	private void reportTypeCount(Reporter<Message> report, TObjectIntHashMap<QName> typeCount) {
-		typeCount.forEachEntry(new TObjectIntProcedure<QName>() {
-
-			@Override
-			public boolean execute(QName typeName, int count) {
-				StringBuilder msg = new StringBuilder("Stored ");
-				msg.append(count);
-				msg.append(" instances of type ");
-				msg.append(typeName.getLocalPart());
-				String ns = typeName.getNamespaceURI();
-				if (ns != null && !ns.isEmpty()) {
-					msg.append(" (");
-					msg.append(ns);
-					msg.append(")");
-				}
-
-				report.info(new MessageImpl(msg.toString(), null));
-
-				// store info in statistics
-				report.stats().at("countPerType").at(typeName.toString()).set(count);
-
-				return true;
+	private void reportTypeCount(Reporter<Message> report, ObjectIntMap<QName> typeCount) {
+		typeCount.forEachKeyValue((ObjectIntProcedure<QName>) (typeName, count) -> {
+			StringBuilder msg = new StringBuilder("Stored ");
+			msg.append(count);
+			msg.append(" instances of type ");
+			msg.append(typeName.getLocalPart());
+			String ns = typeName.getNamespaceURI();
+			if (ns != null && !ns.isEmpty()) {
+				msg.append(" (");
+				msg.append(ns);
+				msg.append(")");
 			}
+
+			report.info(new MessageImpl(msg.toString(), null));
+
+			// store info in statistics
+			report.stats().at("countPerType").at(typeName.toString()).set(count);
 		});
 	}
 

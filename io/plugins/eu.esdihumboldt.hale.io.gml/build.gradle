@@ -59,7 +59,8 @@ dependencies {
 
   testRuntimeOnly libs.geotools.epsg
 
-  testImplementation libs.trove
+  testImplementation libs.eclipse.collections.api
+  testImplementation libs.eclipse.collections.core
   testImplementation libs.apache.ws.xsd
 
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')

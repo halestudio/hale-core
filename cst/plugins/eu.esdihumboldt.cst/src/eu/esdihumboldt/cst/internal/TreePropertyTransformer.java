@@ -22,6 +22,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.collections.api.block.procedure.primitive.ObjectIntProcedure;
+import org.eclipse.collections.api.factory.primitive.ObjectIntMaps;
+import org.eclipse.collections.api.map.primitive.MutableObjectIntMap;
+
 import eu.esdihumboldt.cst.extension.hooks.HooksUtil;
 import eu.esdihumboldt.cst.extension.hooks.TransformationTreeHook.TreeState;
 import eu.esdihumboldt.cst.extension.hooks.TransformationTreeHooks;
@@ -46,8 +50,6 @@ import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceMetadata;
 import eu.esdihumboldt.hale.common.instance.model.InstanceUtil;
 import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
-import gnu.trove.TObjectIntHashMap;
-import gnu.trove.TObjectIntProcedure;
 
 /**
  * Property transformer based on a {@link TransformationTree}.
@@ -84,7 +86,7 @@ public class TreePropertyTransformer implements PropertyTransformer {
 
 	private final TransformationTreeHooks treeHooks;
 
-	private final TObjectIntHashMap<Cell> instanceCounter = new TObjectIntHashMap<>();
+	private final MutableObjectIntMap<Cell> instanceCounter = ObjectIntMaps.mutable.of();
 
 	private final TransformationReporter reporter;
 
@@ -162,7 +164,7 @@ public class TreePropertyTransformer implements PropertyTransformer {
 	@Override
 	public void publish(final FamilyInstance source, final MutableInstance target,
 			final TransformationLog typeLog, final Cell typeCell) {
-		instanceCounter.adjustOrPutValue(typeCell, 1, 1);
+		instanceCounter.addToValue(typeCell, 1);
 
 		// increase output type counter
 		reporter.stats().at("createdPerType").at(target.getDefinition().getName().toString())
@@ -284,19 +286,13 @@ public class TreePropertyTransformer implements PropertyTransformer {
 		}
 
 		// report instance counts
-		instanceCounter.forEachEntry(new TObjectIntProcedure<Cell>() {
+		instanceCounter.forEachKeyValue((ObjectIntProcedure<Cell>) (cell, count) -> {
+			reporter.info(new TransformationMessageImpl(cell,
+					MessageFormat.format("Created {0} instances during transformation", count),
+					null));
 
-			@Override
-			public boolean execute(Cell cell, int count) {
-				reporter.info(new TransformationMessageImpl(cell,
-						MessageFormat.format("Created {0} instances during transformation", count),
-						null));
-
-				// also store as statistics
-				reporter.stats().at("createdPerCell").at(cell.getId()).set(count);
-
-				return true;
-			}
+			// also store as statistics
+			reporter.stats().at("createdPerCell").at(cell.getId()).set(count);
 		});
 	}
 
