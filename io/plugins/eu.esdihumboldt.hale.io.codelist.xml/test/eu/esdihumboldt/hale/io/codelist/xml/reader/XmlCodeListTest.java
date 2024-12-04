@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2020 wetransform GmbH
  *

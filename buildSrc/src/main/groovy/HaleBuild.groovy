@@ -6,8 +6,7 @@ import java.nio.file.Path
 @CompileStatic
 class HaleBuild {
 
-	static LICENSE_HEADER_DEFAULT = '''
-/*
+	static LICENSE_HEADER_DEFAULT = '''/*
  * Copyright (c) $YEAR wetransform GmbH
  *
  * All rights reserved. This program and the accompanying materials are made
