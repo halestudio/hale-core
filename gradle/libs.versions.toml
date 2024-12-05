@@ -147,8 +147,9 @@ hc-buckets = {module = "com.haleconnect.api:haleconnect-bucket-api", version = "
 
 ibm-icu = {module = "eu.esdihumboldt.unpuzzled:com.ibm.icu", version = "64.2.0.v20190507-1337"}
 
-geopackage-lib = {module = "mil.nga.geopackage:geopackage", version.ref = "geopackage"}
-geopackage-core = {module = "mil.nga.geopackage:geopackage-core", version.ref = "geopackage"}
+geopackage-java = {module = "mil.nga.geopackage:geopackage", version.ref = "geopackage"}
+# included as transitive dependency of geopackage, may use different version number
+# geopackage-core = {module = "mil.nga.geopackage:geopackage-core", version.ref = "geopackage"}
 
 picocli = {module = "info.picocli:picocli", version = "4.7.6"}
 
@@ -206,7 +207,7 @@ flexmark = ['flexmark-core', 'flexmark-pegdown', 'flexmark-util', 'flexmark-util
 
 hc-api = ['hc-users', 'hc-projects', 'hc-projectstore', 'hc-buckets']
 
-geopackage = ['geopackage-core', 'geopackage-lib']
+geopackage = ['geopackage-java']
 
 deegree = ['deegree-featurestore-sql', 'deegree-postgis', 'deegree-cs']
 
