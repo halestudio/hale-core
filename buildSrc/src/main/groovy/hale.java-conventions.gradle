@@ -39,6 +39,45 @@ java {
   }
 }
 
+configurations {
+  all {
+    /*
+     * Modify dependency resolution for logging dependencies for use of SLF4J and Logback.
+     */
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+      if (details.requested.name == 'commons-logging') {
+        // prefer 'jcl-over-slf4j' over 'commons-logging'
+        details.useTarget "org.slf4j:jcl-over-slf4j:${libs.versions.slf4j.get()}"
+      }
+    }
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+      if (details.requested.name == 'log4j' && details.requested.group == 'log4j') {
+        // prefer 'log4j-over-slf4j' over 'log4j'
+        details.useTarget "org.slf4j:log4j-over-slf4j:${libs.versions.slf4j.get()}"
+      }
+    }
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+      if (details.requested.name == 'log4j-core' && details.requested.group == 'org.apache.logging.log4j') {
+        // prefer 'log4j-to-slf4j' over 'log4j-core'
+        details.useTarget "org.apache.logging.log4j:log4j-to-slf4j:${libs.versions.log4j2.get()}"
+      }
+    }
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+      if (details.requested.name == 'slf4j-jdk14' && details.requested.group == 'org.slf4j') {
+        // do not use slf4j-jdk14
+        details.useTarget "org.slf4j:slf4j-api:${libs.versions.slf4j.get()}"
+      }
+    }
+
+    // exclude SLF4J over LOG4J - logback is used
+    exclude group: "org.slf4j", module: "slf4j-log4j12"
+  }
+}
+
 dependencies {
   testRuntimeOnly libs.logback.core
   testRuntimeOnly libs.logback.classic
