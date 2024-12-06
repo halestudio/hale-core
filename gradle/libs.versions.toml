@@ -92,7 +92,7 @@ guava = {module = "com.google.guava:guava", version = "33.3.1-jre"}
 
 xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.2.2"}
 
-commons-io = {module = "commons-io:commons-io", version = "2.17.0"}
+commons-io = {module = "commons-io:commons-io", version = "2.18.0"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
 commons-codec = {module = "commons-codec:commons-codec", version = "1.17.1"}
 
