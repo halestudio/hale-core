@@ -5,10 +5,10 @@ schemas-portele = {module = "to.wetransform.offline-resources:eu.esdihumboldt.ut
 schemas-w3 = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.w3.org", version = "2024.1.25"}
 schemas-gdi-de = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.repository.gdi-de.org", version = "2024.5.23"}
 
-codelists-inspire = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.codelists.inspire", version = "2024.7.31"}
-codelists-inspire-xml = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.codelists.inspire.accept-xml", version = "2024.7.31"}
+codelists-inspire = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.codelists.inspire", version = "2024.11.27"}
+codelists-inspire-xml = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.codelists.inspire.accept-xml", version = "2024.11.27"}
 
-featureconcepts-inspire = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.featureconcepts.inspire", version = "2024.2.20"}
+featureconcepts-inspire = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.featureconcepts.inspire", version = "2024.11.27"}
 
 [bundles]
 all = ['schemas-ogc', 'schemas-inspire', 'schemas-portele', 'schemas-w3', 'schemas-gdi-de', 'codelists-inspire', 'codelists-inspire-xml', 'featureconcepts-inspire']
