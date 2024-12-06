@@ -61,7 +61,7 @@ jobs:
           allure_results: allure-results
 
       - name: Publish test report
-        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # v4.6.8
+        uses: JamesIves/github-pages-deploy-action@15de0f09300eea763baee31dff6c6184995c5f6a # v4.7.2
         with:
           branch: gh-pages
           folder: allure-history
