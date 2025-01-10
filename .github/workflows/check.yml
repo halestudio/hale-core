@@ -71,6 +71,6 @@ jobs:
           report_url: https://${{ github.repository_owner }}.github.io/hale-core/pr-preview/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@430e3dfc1de8a8ae77e77d862d25676ef9db55d1 # v1.4.8
+        uses: rossjrw/pr-preview-action@85ebedd64d707ad74231271607ef09d4a965485b # v1.5.0
         with:
           source-dir: ./allure-history/
