@@ -590,7 +590,7 @@ public abstract class XmlTypeUtil {
 //			//FIXME concept of binding constraint and geometry property must be adapted to include built-in support for multiple geometries (with possible different CRS)
 //			type.setConstraint(Binding.get(GeometryProperty.class));
 //			//TODO set geometry type?
-////			type.setConstraint(...);
+		////			type.setConstraint(...);
 //
 //			// enable augmented value, as the derived geometry will be stored as the value
 //			type.setConstraint(AugmentedValueFlag.ENABLED);
