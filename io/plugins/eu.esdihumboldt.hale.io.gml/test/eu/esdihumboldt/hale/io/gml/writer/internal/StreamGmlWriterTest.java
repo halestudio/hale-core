@@ -123,7 +123,7 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 //		Map<List<String>, Object> values = new HashMap<List<String>, Object>();
 //
 //		// create the geometry
-////		MultiLineString mls = geomFactory.createMultiLineString(
+	////		MultiLineString mls = geomFactory.createMultiLineString(
 ////				new LineString[]{createLineString(0.0), createLineString(1.0),
 ////						createLineString(2.0)});
 //		//XXX for some reason the MultiLineString is converted to a LineString when set a value -> so we are using a LineString instead to allow value comparison

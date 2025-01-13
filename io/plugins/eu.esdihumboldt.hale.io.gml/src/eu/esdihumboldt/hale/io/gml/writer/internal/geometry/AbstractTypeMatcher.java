@@ -202,7 +202,7 @@ public abstract class AbstractTypeMatcher<T> {
 					// FIXME how to determine which types are ok for xsi:type?!
 //					if (!substitutionTypes.contains(subtype)) { // only types that are no valid substitutions
 //						// add candidate
-////						Name element = basePath.getLastName(); // the element name that will be extended with xsi:type
+					////						Name element = basePath.getLastName(); // the element name that will be extended with xsi:type
 //						candidates.add(new PathCandidate(subtype,
 //								new DefinitionPath(basePath).addDowncast(subtype),
 //								new HashSet<TypeDefinition>(checkedTypes)));

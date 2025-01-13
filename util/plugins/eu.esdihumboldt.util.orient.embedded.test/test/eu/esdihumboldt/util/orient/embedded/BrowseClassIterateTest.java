@@ -164,7 +164,7 @@ public class BrowseClassIterateTest {
 //		   + "<protocol name=\"http\" implementation=\"com.orientechnologies.orient.server.network.protocol.http.ONetworkProtocolHttpDb\"/>"
 //		   + "</protocols>"
 //		   + "<listeners>"
-////		   + "<listener ip-address=\"0.0.0.0\" port-range=\"2424-2430\" protocol=\"binary\"/>"
+		////		   + "<listener ip-address=\"0.0.0.0\" port-range=\"2424-2430\" protocol=\"binary\"/>"
 ////		   + "<listener ip-address=\"0.0.0.0\" port-range=\"2480-2490\" protocol=\"http\"/>"
 //		   + "</listeners>"
 //		   + "</network>"
