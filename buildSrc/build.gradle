@@ -13,7 +13,7 @@ repositories {
 dependencies {
   implementation 'to.wetransform:gradle-semantic-release-version:2.1.2'
   implementation 'biz.aQute.bnd:biz.aQute.bnd.gradle:7.1.0'
-  implementation 'com.diffplug.spotless:spotless-plugin-gradle:7.0.1'
+  implementation 'com.diffplug.spotless:spotless-plugin-gradle:7.0.2'
 
   implementation 'com.gradleup.shadow:shadow-gradle-plugin:8.3.5'
 
