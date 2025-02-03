@@ -129,7 +129,7 @@ apache-http-fluent = {module = "org.apache.httpcomponents:fluent-hc", version.re
 
 jaxb-runtime = {module = "org.glassfish.jaxb:jaxb-runtime", version = "4.0.5"}
 
-joda-time = {module = "joda-time:joda-time", version = "2.13.0"}
+joda-time = {module = "joda-time:joda-time", version = "2.13.1"}
 
 jmep = {module = "com.iabcinc:jmep", version = "0.1.0"}
 
