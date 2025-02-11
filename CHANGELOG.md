@@ -1,3 +1,9 @@
+## [6.2.2](https://github.com/halestudio/hale-core/compare/v6.2.1...v6.2.2) (2025-02-11)
+
+### Bug Fixes
+
+* **deps:** remove not needed dependency from Excel format support ([fb52fa5](https://github.com/halestudio/hale-core/commit/fb52fa55ed962c305b4bc97d9209fdb8bb7e966b))
+
 ## [6.2.1](https://github.com/halestudio/hale-core/compare/v6.2.0...v6.2.1) (2025-02-10)
 
 ### Bug Fixes
