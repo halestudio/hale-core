@@ -116,7 +116,7 @@ tinkerpop-gremlin-java = {module = "com.tinkerpop.gremlin:gremlin-java", version
 orientdb-core = {module = "com.orientechnologies:orientdb-core", version.ref = "orientdb"}
 orient-common = {module = "com.orientechnologies:orient-commons", version.ref = "orient-common"}
 
-snakeyaml = {module = "org.yaml:snakeyaml", version = "2.3"}
+snakeyaml = {module = "org.yaml:snakeyaml", version = "2.4"}
 
 jts = {module = "org.locationtech.jts:jts-core", version = "1.20.0"}
 
