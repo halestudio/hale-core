@@ -14,6 +14,7 @@ package eu.esdihumboldt.hale.common.align.extension.function;
 import java.util.List;
 
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 
@@ -21,7 +22,6 @@ import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueDefinition;
 import eu.esdihumboldt.hale.common.core.parameter.ParameterUtil;
 import eu.esdihumboldt.hale.common.core.parameter.ParameterValueDescriptor;
 import eu.esdihumboldt.hale.common.core.parameter.Validator;
-import net.jcip.annotations.Immutable;
 
 /**
  * Definition of a function parameter.

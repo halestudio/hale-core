@@ -13,9 +13,10 @@ package eu.esdihumboldt.hale.common.core.io.report.impl;
 
 import java.text.MessageFormat;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.core.io.report.IOMessage;
 import eu.esdihumboldt.hale.common.core.report.impl.MessageImpl;
-import net.jcip.annotations.Immutable;
 
 /**
  * Default {@link IOMessage} implementation

@@ -14,12 +14,13 @@ package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.ConstraintUtil;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractPropertyDecorator;
-import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link PropertyDefinition}s that overrides given constraints.

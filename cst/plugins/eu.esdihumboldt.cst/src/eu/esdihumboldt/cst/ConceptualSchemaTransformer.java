@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimaps;
@@ -62,7 +64,6 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.instance.model.impl.GenericResourceIteratorAdapter;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Transformation service implementation

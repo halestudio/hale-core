@@ -19,8 +19,6 @@ dependencies {
   implementation libs.eclipse.collections.core
   implementation libs.commons.lang
 
-  implementation libs.findbugs.annotations
-
   implementation libs.apache.ws.xsd
 
   implementation libs.jts

@@ -11,7 +11,7 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.constraint;
 
-import net.jcip.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * Abstract constraint that represents a flag that can be enabled or disabled

@@ -11,13 +11,14 @@
  */
 package eu.esdihumboldt.hale.common.align.transformation.report.impl;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.align.model.Cell;
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog;
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationMessage;
 import eu.esdihumboldt.hale.common.core.report.Message;
 import eu.esdihumboldt.hale.common.core.report.Report;
 import eu.esdihumboldt.hale.common.core.report.ReportLog;
-import net.jcip.annotations.Immutable;
 
 /**
  * Transformation log for a fixed cell.

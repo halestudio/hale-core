@@ -13,8 +13,6 @@ dependencies {
 
   implementation libs.guava
 
-  implementation libs.findbugs.annotations
-
   implementation libs.igd.eclipse.util
   implementation libs.eclipse.core.runtime
 

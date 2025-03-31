@@ -11,9 +11,9 @@
  */
 package eu.esdihumboldt.hale.common.core.parameter;
 
-import org.eclipse.core.runtime.IConfigurationElement;
+import javax.annotation.concurrent.Immutable;
 
-import net.jcip.annotations.Immutable;
+import org.eclipse.core.runtime.IConfigurationElement;
 
 /**
  * Class used as a common parameter representation

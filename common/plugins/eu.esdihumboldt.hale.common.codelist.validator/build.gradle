@@ -11,8 +11,6 @@ dependencies {
 
   implementation libs.groovy.core
 
-  implementation libs.findbugs.annotations
-
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instancevalidator')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')

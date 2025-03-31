@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.concurrent.Immutable;
 import javax.xml.namespace.QName;
 
 import com.google.common.collect.ListMultimap;
@@ -33,7 +34,6 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultTypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Simple 1:1 retype. In addition supports structural rename for properties.

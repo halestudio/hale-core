@@ -14,12 +14,12 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.concurrent.Immutable;
 import javax.xml.namespace.QName;
 
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Reference;
-import net.jcip.annotations.Immutable;
 
 /**
  * Specifies a type's primary key, which may be the target of {@link Reference}

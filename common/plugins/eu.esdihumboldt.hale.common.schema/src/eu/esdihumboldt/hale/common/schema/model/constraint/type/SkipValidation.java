@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
-import net.jcip.annotations.Immutable;
 
 /**
  * Specifies if validation should be skipped for a property value. May be

@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.io.csv.reader.internal;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.io.csv.reader.CSVConstants;
-import net.jcip.annotations.Immutable;
 
 /**
  * CSVConfiguration represented as TypeConstraints

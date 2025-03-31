@@ -13,9 +13,10 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 
 import java.util.Collection;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
-import net.jcip.annotations.Immutable;
 
 /**
  * Constraint that holds allowed values for a type

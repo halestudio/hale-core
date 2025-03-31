@@ -11,6 +11,8 @@
  */
 package eu.esdihumboldt.hale.common.align.model.condition.impl;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.springframework.core.convert.ConversionService;
 
 import eu.esdihumboldt.hale.common.align.model.Entity;
@@ -23,7 +25,6 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.AugmentedValueFl
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.ElementType;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
-import net.jcip.annotations.Immutable;
 
 /**
  * Type condition that checks its binding and element type

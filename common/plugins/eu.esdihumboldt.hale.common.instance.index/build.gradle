@@ -11,8 +11,6 @@ dependencies {
 
   implementation libs.jts
 
-  implementation libs.findbugs.annotations
-
   implementation libs.eclipse.core.runtime
   implementation libs.igd.eclipse.util
 

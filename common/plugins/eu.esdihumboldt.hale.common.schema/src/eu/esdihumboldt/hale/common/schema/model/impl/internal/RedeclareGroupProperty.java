@@ -11,12 +11,13 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.base.Preconditions;
 
 import eu.esdihumboldt.hale.common.schema.model.DefinitionGroup;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractGroupPropertyDecorator;
-import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link GroupPropertyDefinition}s that has a changed declaring

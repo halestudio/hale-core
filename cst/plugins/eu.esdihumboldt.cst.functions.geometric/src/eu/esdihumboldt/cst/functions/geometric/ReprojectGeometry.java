@@ -14,6 +14,8 @@ package eu.esdihumboldt.cst.functions.geometric;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.geotools.api.geometry.MismatchedDimensionException;
 import org.geotools.api.referencing.FactoryException;
 import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
@@ -40,7 +42,6 @@ import eu.esdihumboldt.hale.common.instance.helper.DepthFirstInstanceTraverser;
 import eu.esdihumboldt.hale.common.instance.helper.InstanceTraverser;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
-import net.jcip.annotations.Immutable;
 
 /**
  * Reproject geometry function.

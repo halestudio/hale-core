@@ -18,8 +18,6 @@ dependencies {
 
   implementation libs.jts
 
-  implementation libs.findbugs.annotations
-
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')

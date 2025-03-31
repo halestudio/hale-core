@@ -11,8 +11,9 @@
  */
 package eu.esdihumboldt.hale.common.align.model;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.instance.model.Filter;
-import net.jcip.annotations.Immutable;
 
 /**
  * Property condition.

@@ -11,8 +11,9 @@
  */
 package eu.esdihumboldt.hale.common.align.extension.category;
 
+import javax.annotation.concurrent.Immutable;
+
 import de.fhg.igd.eclipse.util.extension.simple.IdentifiableExtension.Identifiable;
-import net.jcip.annotations.Immutable;
 
 /**
  * Represents a function category. Usually provided through the corresponding

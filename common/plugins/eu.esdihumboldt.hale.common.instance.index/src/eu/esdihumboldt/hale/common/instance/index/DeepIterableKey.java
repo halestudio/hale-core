@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.concurrent.Immutable;
 import javax.xml.namespace.QName;
 
 import com.google.common.collect.Lists;
@@ -24,7 +25,6 @@ import com.google.common.collect.Lists;
 import eu.esdihumboldt.hale.common.instance.model.Group;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.util.StructuredEquals;
-import net.jcip.annotations.Immutable;
 
 /**
  * Key that uses {@link StructuredEquals#deepIterableEquals(Object, Object)} in

@@ -11,7 +11,7 @@
  */
 package eu.esdihumboldt.util;
 
-import net.jcip.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * Class that defines its {@link #equals(Object)} and {@link #hashCode()} based

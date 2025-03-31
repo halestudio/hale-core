@@ -14,6 +14,8 @@ package eu.esdihumboldt.cst.functions.core;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.Entity;
@@ -25,7 +27,6 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TransformationE
 import eu.esdihumboldt.hale.common.align.transformation.function.impl.NoResultException;
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog;
 import eu.esdihumboldt.hale.common.scripting.transformation.AbstractSingleTargetScriptedPropertyTransformation;
-import net.jcip.annotations.Immutable;
 
 /**
  * Property value assignment function.

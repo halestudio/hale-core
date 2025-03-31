@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.constraint.property;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
-import net.jcip.annotations.Immutable;
 
 /**
  * Specifies the cardinality for a property, default is for a property to occur

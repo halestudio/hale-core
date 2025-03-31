@@ -13,7 +13,6 @@ dependencies {
   implementation libs.groovy.xml
   implementation libs.guava
   implementation libs.eclipse.core.runtime
-  implementation libs.findbugs.annotations
 
   implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
 

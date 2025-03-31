@@ -16,9 +16,9 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IConfigurationElement;
+import javax.annotation.concurrent.Immutable;
 
-import net.jcip.annotations.Immutable;
+import org.eclipse.core.runtime.IConfigurationElement;
 
 /**
  * Property function

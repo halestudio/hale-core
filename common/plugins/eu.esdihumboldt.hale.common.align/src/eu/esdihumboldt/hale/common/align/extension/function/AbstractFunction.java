@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
@@ -29,7 +31,6 @@ import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
 import eu.esdihumboldt.hale.common.align.migrate.CellMigrator;
 import eu.esdihumboldt.hale.common.align.model.CellExplanation;
-import net.jcip.annotations.Immutable;
 
 /**
  * {@link IConfigurationElement} based function base class

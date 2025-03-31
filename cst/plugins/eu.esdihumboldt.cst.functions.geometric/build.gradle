@@ -23,8 +23,6 @@ dependencies {
   implementation libs.geotools.opengis
   implementation libs.geotools.referencing
 
-  implementation libs.findbugs.annotations
-
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.core')
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.numeric')

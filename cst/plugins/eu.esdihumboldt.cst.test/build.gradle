@@ -9,8 +9,6 @@ hale {
 dependencies {
   implementation libs.eclipse.core.runtime
 
-  implementation libs.findbugs.annotations
-
   implementation testLibs.junit4
 
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')

@@ -11,13 +11,14 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.impl.internal;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.base.Preconditions;
 
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractGroupPropertyDecorator;
 import eu.esdihumboldt.hale.common.schema.model.impl.AbstractPropertyDecorator;
-import net.jcip.annotations.Immutable;
 
 /**
  * Decorator for {@link GroupPropertyDefinition}s that has a changed parent type

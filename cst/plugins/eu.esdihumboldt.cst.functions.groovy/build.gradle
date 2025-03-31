@@ -22,8 +22,6 @@ dependencies {
   implementation libs.igd.osgi.util
   implementation libs.eclipse.core.runtime
 
-  implementation libs.findbugs.annotations
-
   implementation libs.spring.core
 
   implementation project(':cst:plugins:eu.esdihumboldt.cst')

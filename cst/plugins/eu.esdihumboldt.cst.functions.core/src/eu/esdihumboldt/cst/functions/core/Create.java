@@ -13,6 +13,8 @@ package eu.esdihumboldt.cst.functions.core;
 
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.align.model.Cell;
 import eu.esdihumboldt.hale.common.align.model.functions.CreateFunction;
 import eu.esdihumboldt.hale.common.align.transformation.engine.TransformationEngine;
@@ -22,7 +24,6 @@ import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Function that creates target instances independently from source instances.

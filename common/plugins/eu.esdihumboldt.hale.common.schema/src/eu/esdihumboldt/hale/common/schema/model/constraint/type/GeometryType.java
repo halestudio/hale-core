@@ -15,13 +15,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Specifies the geometry type for properties with a {@link GeometryProperty}

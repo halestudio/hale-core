@@ -14,8 +14,6 @@ dependencies {
   implementation libs.guava
   implementation libs.spring.core
 
-  implementation libs.findbugs.annotations
-
   api project(':common:plugins:eu.esdihumboldt.hale.common.schema')
   api project(':common:plugins:eu.esdihumboldt.hale.common.instance')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')

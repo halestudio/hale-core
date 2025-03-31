@@ -11,8 +11,6 @@ dependencies {
 
   implementation libs.jmep
 
-  implementation libs.findbugs.annotations
-
   implementation libs.spring.core
 
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')

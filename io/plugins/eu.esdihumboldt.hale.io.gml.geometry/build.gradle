@@ -26,8 +26,6 @@ dependencies {
 
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
 
-  testImplementation libs.findbugs.annotations
-
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
 
   testImplementation project(':util:plugins:eu.esdihumboldt.util.svg.test')

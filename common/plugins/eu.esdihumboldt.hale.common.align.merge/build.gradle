@@ -9,8 +9,6 @@ hale {
 dependencies {
   implementation libs.slf4jplus.api
 
-  implementation libs.findbugs.annotations
-
   implementation libs.guava
   implementation libs.jts
 
