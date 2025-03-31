@@ -15,7 +15,6 @@ dependencies {
 
   implementation libs.guava
   implementation libs.spring.core
-  implementation libs.findbugs.annotations
   implementation libs.commons.io
   implementation libs.xmlbeans
 

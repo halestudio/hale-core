@@ -14,10 +14,11 @@ package eu.esdihumboldt.hale.common.schema.model.constraint.type;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeConstraint;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Specifies a Java binding and optionally a {@link TypeDefinition} for a

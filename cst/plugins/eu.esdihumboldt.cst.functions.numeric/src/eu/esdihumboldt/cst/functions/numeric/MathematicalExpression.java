@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.base.Joiner;
 import com.google.common.collect.ListMultimap;
 import com.iabcinc.jmep.Environment;
@@ -29,7 +31,6 @@ import eu.esdihumboldt.hale.common.align.transformation.function.PropertyValue;
 import eu.esdihumboldt.hale.common.align.transformation.function.TransformationException;
 import eu.esdihumboldt.hale.common.align.transformation.function.impl.AbstractSingleTargetPropertyTransformation;
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog;
-import net.jcip.annotations.Immutable;
 
 /**
  * Mathematical expression evaluation function.

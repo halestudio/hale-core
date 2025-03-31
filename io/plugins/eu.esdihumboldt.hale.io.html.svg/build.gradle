@@ -20,8 +20,6 @@ dependencies {
 
   implementation libs.jakarta.xml.bind.api
 
-  implementation libs.findbugs.annotations
-
   implementation libs.eclipse.core.runtime
   implementation libs.igd.eclipse.util
 

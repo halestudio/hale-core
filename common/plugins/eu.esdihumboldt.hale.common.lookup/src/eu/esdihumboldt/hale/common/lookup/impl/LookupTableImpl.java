@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
@@ -24,7 +26,6 @@ import com.google.common.collect.Maps;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.lookup.LookupTable;
-import net.jcip.annotations.Immutable;
 
 /**
  * Simple lookup table implementation based on a {@link Map}.

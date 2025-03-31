@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.common.schema.model.constraint.property;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
-import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a property group is a choice, disabled by default

@@ -14,8 +14,6 @@ dependencies {
   implementation libs.guava
   implementation libs.spring.core
 
-  implementation libs.findbugs.annotations
-
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
 
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')

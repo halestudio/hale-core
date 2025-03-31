@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.io.xsd.constraint;
 
+import javax.annotation.concurrent.Immutable;
+
 import eu.esdihumboldt.hale.common.schema.model.Constraint;
 import eu.esdihumboldt.hale.common.schema.model.PropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.constraint.AbstractFlagConstraint;
-import net.jcip.annotations.Immutable;
 
 /**
  * Flags if a property is represented by a XML attribute, disabled by default

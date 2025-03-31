@@ -17,8 +17,6 @@ dependencies {
   implementation libs.commons.codec
   implementation libs.spring.core
 
-  implementation libs.findbugs.annotations
-
   implementation libs.jts
 
   implementation libs.eclipse.core.runtime

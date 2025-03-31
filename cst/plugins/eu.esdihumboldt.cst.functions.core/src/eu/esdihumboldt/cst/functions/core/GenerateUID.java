@@ -14,6 +14,8 @@ package eu.esdihumboldt.cst.functions.core;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.concurrent.Immutable;
+
 import com.google.common.collect.ListMultimap;
 
 import eu.esdihumboldt.hale.common.align.model.functions.GenerateUIDFunction;
@@ -24,7 +26,6 @@ import eu.esdihumboldt.hale.common.align.transformation.function.TransformationE
 import eu.esdihumboldt.hale.common.align.transformation.report.TransformationLog;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.scripting.transformation.AbstractSingleTargetScriptedPropertyTransformation;
-import net.jcip.annotations.Immutable;
 
 /**
  * Generate unique id function.

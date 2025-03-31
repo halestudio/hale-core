@@ -14,6 +14,7 @@ package eu.esdihumboldt.hale.common.schema.model.impl;
 import java.net.URI;
 import java.util.Collection;
 
+import javax.annotation.concurrent.Immutable;
 import javax.xml.namespace.QName;
 
 import eu.esdihumboldt.hale.common.core.io.supplier.Locatable;
@@ -24,7 +25,6 @@ import eu.esdihumboldt.hale.common.schema.model.GroupPropertyConstraint;
 import eu.esdihumboldt.hale.common.schema.model.GroupPropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
-import net.jcip.annotations.Immutable;
 
 /**
  * Abstract decorator for {@link GroupPropertyDefinition}s

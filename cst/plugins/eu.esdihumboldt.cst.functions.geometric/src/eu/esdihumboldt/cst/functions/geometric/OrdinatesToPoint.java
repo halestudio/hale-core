@@ -13,6 +13,8 @@ package eu.esdihumboldt.cst.functions.geometric;
 
 import java.util.Map;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
@@ -29,7 +31,6 @@ import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty;
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
-import net.jcip.annotations.Immutable;
 
 /**
  * Ordinates to point function.

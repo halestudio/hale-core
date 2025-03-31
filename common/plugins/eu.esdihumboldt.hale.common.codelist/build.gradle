@@ -12,7 +12,5 @@ dependencies {
 
   implementation libs.guava
 
-  implementation libs.findbugs.annotations
-
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
 }

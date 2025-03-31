@@ -11,8 +11,6 @@ dependencies {
 
   implementation libs.groovy.core
 
-  implementation libs.findbugs.annotations
-
   implementation libs.tinkerpop.blueprints.core
   implementation libs.tinkerpop.pipes
   implementation libs.tinkerpop.gremlin.java

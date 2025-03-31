@@ -17,8 +17,6 @@ dependencies {
   implementation libs.eclipse.core.runtime
   implementation libs.igd.eclipse.util
 
-  implementation libs.findbugs.annotations
-
   implementation libs.jts
   implementation libs.geotools.opengis
 

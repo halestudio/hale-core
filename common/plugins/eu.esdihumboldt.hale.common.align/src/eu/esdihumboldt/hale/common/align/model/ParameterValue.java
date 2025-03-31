@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.common.align.model;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.w3c.dom.Element;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
-import net.jcip.annotations.Immutable;
 
 /**
  * Class to represent the value of a transformation parameter.

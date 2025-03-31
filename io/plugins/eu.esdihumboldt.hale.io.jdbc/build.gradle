@@ -20,8 +20,6 @@ dependencies {
 
   implementation libs.jts
 
-  implementation libs.findbugs.annotations
-
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
   api project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')

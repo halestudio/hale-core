@@ -21,7 +21,6 @@ dependencies {
   api libs.guava
   implementation libs.commons.io
   implementation libs.castor.xml
-  implementation libs.findbugs.annotations
 
   api libs.eclipse.core.runtime // e.g. returned in HalePlatform#getContentTypeManager()
   api libs.igd.eclipse.util // e.g. IOProviderExtension

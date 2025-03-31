@@ -11,10 +11,11 @@
  */
 package eu.esdihumboldt.hale.common.align.extension.function;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.eclipse.core.runtime.IConfigurationElement;
 
 import eu.esdihumboldt.hale.common.core.parameter.AbstractCommonParameter;
-import net.jcip.annotations.Immutable;
 
 /**
  * Abstract definition of a parameter based on an {@link IConfigurationElement}

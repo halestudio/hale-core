@@ -11,6 +11,8 @@ plugins {
   id 'io.qameta.allure-adapter'
 
   id 'hale.common'
+
+  // id 'com.github.spotbugs'
 }
 
 spotless {
@@ -32,6 +34,26 @@ spotless {
     endWithNewline()
   }
 }
+
+/*
+spotbugs { // https://github.com/spotbugs/spotbugs-gradle-plugin
+  ignoreFailures = false
+  showStackTraces = true
+  showProgress = false
+  reportsDir = file("$buildDir/spotbugs")
+}
+
+tasks.withType(com.github.spotbugs.snom.SpotBugsTask) {
+  reports {
+    xml {
+      enabled = true
+    }
+    html {
+      enabled = true
+    }
+  }
+}
+*/
 
 java {
   toolchain {
@@ -89,6 +111,11 @@ dependencies {
   // AssertJ + Allure aspect
   testImplementation testLibs.assertj
   testRuntimeOnly testLibs.allure.assertj
+
+  // Spotbugs
+  // use version from spotbugs plugin XXX currently not used
+  //compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+  compileOnly "com.github.spotbugs:spotbugs-annotations:4.9.3"
 }
 
 task sourcesJar(type: Jar) {

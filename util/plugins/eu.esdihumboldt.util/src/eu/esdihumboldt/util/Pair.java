@@ -11,7 +11,7 @@
  */
 package eu.esdihumboldt.util;
 
-import net.jcip.annotations.Immutable;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * An object pair
