@@ -191,7 +191,7 @@ opengis-cite-schema-utils = {module = "org.opengis.cite:schema-utils", version =
 
 wetf-topojson = {module = "com.github.wetransform-os:topojson-j", version = "2.0.0"}
 
-postgis = {module = "net.postgis:postgis-jdbc", version = "2024.1.0"}
+postgis = {module = "net.postgis:postgis-jdbc", version = "2025.1.0"}
 postgres = {module = "org.postgresql:postgresql", version = "42.7.6"}
 
 mssql-jdbc = {module = "eu.esdihumboldt.unpuzzled:com.microsoft.sqlserver.jdbc.SQLServerDriver", version = "4.2.0"}
