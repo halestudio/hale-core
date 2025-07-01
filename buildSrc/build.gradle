@@ -15,7 +15,7 @@ dependencies {
   implementation 'biz.aQute.bnd:biz.aQute.bnd.gradle:7.1.0'
   implementation 'com.diffplug.spotless:spotless-plugin-gradle:7.2.0'
 
-  implementation 'com.gradleup.shadow:shadow-gradle-plugin:8.3.7'
+  implementation 'com.gradleup.shadow:shadow-gradle-plugin:8.3.8'
 
   implementation 'io.qameta.allure.gradle.adapter:allure-adapter-plugin:2.12.0'
 
