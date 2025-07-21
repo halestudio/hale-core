@@ -11,6 +11,17 @@
  */
 package eu.esdihumboldt.hale.io.shp
 
+import groovy.transform.TypeChecked
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import org.testcontainers.containers.BindMode
+import org.testcontainers.containers.GenericContainer
+import org.testcontainers.containers.Network
+import org.testcontainers.containers.output.Slf4jLogConsumer
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
+import org.testcontainers.utility.DockerImageName
+import org.testcontainers.utility.MountableFile
+
 import static org.assertj.core.api.Assertions.*
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
@@ -50,6 +61,7 @@ import io.qameta.allure.Link
  */
 @CompileStatic
 class ShapeInstanceReaderTest extends AbstractPlatformTest {
+	private static final Logger log = LoggerFactory.getLogger(ShapeInstanceReaderTest.class);
 
 	/**
 	 * Test reading Shapefile instances using the Shapefile as schema.
@@ -116,6 +128,51 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 
 		// instance validation
 		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/**
+	 * Test reading Shapefile instances using an XML schema.
+	 *
+	 */
+	@Test
+	void testShapefileInstanceFromFile() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/ing-4811/ing-4811.hsd").toURI());
+		InstanceCollection instances = loadInstances(xmlSchema, getClass().getClassLoader().getResource("testdata/ing-4811/BPL_631019_0104_003_000.shp").toURI())
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+		assertThat(list).hasSize(1)
+	}
+
+	@Test
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@TypeChecked
+	void testShapefileInstanceFromNginxUrl() {
+		def network = Network.newNetwork();
+		def mapOfFile = new HashMap();
+		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/ing-4811/BPL_631019_0104_003_000.dbf");
+		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/ing-4811/BPL_631019_0104_003_000.prj");
+		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/ing-4811/BPL_631019_0104_003_000.shp");
+		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/ing-4811/BPL_631019_0104_003_000.shx");
+		def  nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
+			.withNetwork(network)
+			.withExposedPorts(80)
+			.waitingFor(new HttpWaitStrategy())
+		// add all files
+		for (Map.Entry<String, String> entry : mapOfFile.entrySet()) {
+			nginxContainer.withCopyFileToContainer(
+				MountableFile.forClasspathResource(entry.getValue()),
+				"/usr/share/nginx/html/" + entry.getKey())
+		}
+		nginxContainer.start();
+		def host = nginxContainer.getHost()
+		def exposedPort = nginxContainer.getMappedPort(80)
+		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
+		log.info("Shapefile URL: {}", shapeFileUrl)
+		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
+		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
+		assertNotNull(instances)
+		println "Instances: " + instances.toList().size()
+		assertThat(instances.toList()).hasSize(1)
 	}
 
 	/**
