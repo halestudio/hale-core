@@ -49,6 +49,8 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 import eu.esdihumboldt.hale.io.shp.ShapefileConstants;
 import eu.esdihumboldt.hale.io.shp.internal.Messages;
 import eu.esdihumboldt.util.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Reads instances from a shapefile.
@@ -99,6 +101,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		progress.begin(Messages.getString("ShapeSchemaProvider.1"), ProgressIndicator.UNKNOWN); //$NON-NLS-1$
 
 		URI loc = getSource().getLocation();
+		reporter.info(MessageFormat.format("Loading shapefile from {0}", loc.toString()));
 		try {
 			File file = new File(loc);
 
