@@ -14,18 +14,13 @@ package eu.esdihumboldt.hale.io.shp
 import groovy.transform.TypeChecked
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.Network
-import org.testcontainers.containers.output.Slf4jLogConsumer
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
 import org.testcontainers.utility.DockerImageName
 import org.testcontainers.utility.MountableFile
 
 import static org.assertj.core.api.Assertions.*
-import static org.junit.Assert.assertEquals
-import static org.junit.Assert.assertNotNull
-import static org.junit.Assert.assertTrue
 
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
@@ -51,9 +46,8 @@ import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeInstanceReader
 import eu.esdihumboldt.util.test.AbstractPlatformTest
-import io.qameta.allure.Issue
 import io.qameta.allure.Link
-
+import static org.junit.Assert.*
 /**
  * Tests for reading Shapefiles.
  *
@@ -136,8 +130,8 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	 */
 	@Test
 	void testShapefileInstanceFromFile() {
-		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/ing-4811/ing-4811.hsd").toURI());
-		InstanceCollection instances = loadInstances(xmlSchema, getClass().getClassLoader().getResource("testdata/ing-4811/BPL_631019_0104_003_000.shp").toURI())
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/bplshp/BPL_631019_0104_003_000.shp").toURI());
+		InstanceCollection instances = loadInstances(xmlSchema, getClass().getClassLoader().getResource("testdata/bplshp/BPL_631019_0104_003_000.shp").toURI())
 		assertNotNull(instances)
 		List<Instance> list = instances.toList()
 		assertThat(list).hasSize(1)
@@ -149,10 +143,10 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	void testShapefileInstanceFromNginxUrl() {
 		def network = Network.newNetwork();
 		def mapOfFile = new HashMap();
-		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/ing-4811/BPL_631019_0104_003_000.dbf");
-		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/ing-4811/BPL_631019_0104_003_000.prj");
-		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/ing-4811/BPL_631019_0104_003_000.shp");
-		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/ing-4811/BPL_631019_0104_003_000.shx");
+		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/bplshp/BPL_631019_0104_003_000.dbf");
+		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/bplshp/BPL_631019_0104_003_000.prj");
+		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/bplshp/BPL_631019_0104_003_000.shp");
+		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/bplshp/BPL_631019_0104_003_000.shx");
 		def  nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
 			.withNetwork(network)
 			.withExposedPorts(80)
