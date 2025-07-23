@@ -12,6 +12,9 @@
 package eu.esdihumboldt.hale.io.shp
 
 import static org.assertj.core.api.Assertions.*
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertTrue
 
 import groovy.transform.CompileStatic
 import groovy.transform.TypeChecked
