@@ -307,11 +307,9 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def host = nginxContainer.getHost()
 		def exposedPort = nginxContainer.getMappedPort(80)
 		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
-		log.info("Shapefile URL: {}", shapeFileUrl)
 		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
 		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
 		assertNotNull(instances)
-		println "Instances: " + instances.toList().size()
 		assertThat(instances.toList()).hasSize(1)
 	}
 
@@ -335,11 +333,9 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def host = nginxContainer.getHost()
 		def exposedPort = nginxContainer.getMappedPort(80)
 		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
-		log.info("Shapefile URL: {}", shapeFileUrl)
 		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
 		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
 		assertNotNull(instances)
-		println "Instances: " + instances.toList().size()
 		assertThat(instances.toList()).hasSize(1)
 	}
 
@@ -374,7 +370,6 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def actual =reader.getBaseName(file)
 		def filePath = file.getAbsoluteFile().toString()
 		def expected = filePath.substring(0,filePath.lastIndexOf("."))
-		print("Actual: " + actual)
 		assertEquals(expected, actual)
 	}
 

@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.text.MessageFormat;
@@ -63,6 +64,7 @@ import eu.esdihumboldt.util.Pair;
  */
 public class ShapeInstanceReader extends AbstractInstanceReader implements ShapefileConstants {
 
+	private static final String FILE = "file";
 	private InstanceCollection instances;
 
 	/**
@@ -106,14 +108,16 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		URI loc = getSource().getLocation();
 		reporter.info(MessageFormat.format("Loading shapefile from {0}", loc.toString()));
 
-		File tempDirPath = downloadShpFiles(loc, reporter);
-		// if files were downloaded to temp directory due to presence of .fix file, then
-		// use it as the location
-		loc = tempDirPath == null ? loc : tempDirPath.toURI();
+		if (loc.getScheme() != null && !loc.getScheme().equals(FILE)) {
+			File tempDirPath = downloadShpFiles(loc, reporter);
+			// if files were downloaded to temp directory due to presence of .fix file, then
+			// use it as the location
+			loc = tempDirPath == null ? loc : tempDirPath.toURI();
+		}
+		// special handling for directory as source -> load single Shapefile
 
 		try {
 			File file = new File(loc);
-
 			// special handling for directory as source -> load single Shapefile
 			if (file.exists() && file.isDirectory()) {
 				File[] candidates = file
@@ -455,11 +459,15 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	 */
 	private boolean checkFileExistence(URL url, IOReporter reporter) {
 		try {
-			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-			int responseCode = httpURLConnection.getResponseCode();
-			if (responseCode == HttpURLConnection.HTTP_OK) {
-				return true;
+			URLConnection urlConnection = url.openConnection();
+			if (urlConnection instanceof HttpURLConnection httpURLConnection) {
+				// If the URL is HTTP, we can check the response code
+				int responseCode = httpURLConnection.getResponseCode();
+				if (responseCode == HttpURLConnection.HTTP_OK) {
+					return true;
+				}
 			}
+			// nothing to do in case of File
 		} catch (IOException e) {
 			reporter.error(new IOMessageImpl(MessageFormat.format(
 					"Exception when reading file from the given URL {0}.", url.toString()), e));
