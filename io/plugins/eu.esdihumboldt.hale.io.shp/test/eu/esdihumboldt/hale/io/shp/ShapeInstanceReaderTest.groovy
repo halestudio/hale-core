@@ -11,18 +11,13 @@
  */
 package eu.esdihumboldt.hale.io.shp
 
-import groovy.transform.TypeChecked
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.testcontainers.containers.GenericContainer
-import org.testcontainers.containers.Network
-import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
-import org.testcontainers.utility.DockerImageName
-import org.testcontainers.utility.MountableFile
-
 import static org.assertj.core.api.Assertions.*
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertTrue
 
 import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
 import groovy.transform.TypeCheckingMode
 
 import java.nio.charset.StandardCharsets
@@ -34,6 +29,11 @@ import javax.xml.namespace.QName
 import org.apache.commons.io.IOUtils
 import org.junit.Test
 import org.locationtech.jts.geom.Geometry
+import org.testcontainers.containers.GenericContainer
+import org.testcontainers.containers.Network
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
+import org.testcontainers.utility.DockerImageName
+import org.testcontainers.utility.MountableFile
 
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
@@ -47,7 +47,6 @@ import eu.esdihumboldt.hale.common.test.TestUtil
 import eu.esdihumboldt.hale.io.shp.reader.internal.ShapeInstanceReader
 import eu.esdihumboldt.util.test.AbstractPlatformTest
 import io.qameta.allure.Link
-import static org.junit.Assert.*
 /**
  * Tests for reading Shapefiles.
  *
@@ -55,7 +54,6 @@ import static org.junit.Assert.*
  */
 @CompileStatic
 class ShapeInstanceReaderTest extends AbstractPlatformTest {
-	private static final Logger log = LoggerFactory.getLogger(ShapeInstanceReaderTest.class);
 
 	/**
 	 * Test reading Shapefile instances using the Shapefile as schema.
@@ -137,37 +135,7 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		assertThat(list).hasSize(1)
 	}
 
-	@Test
-	@CompileStatic(TypeCheckingMode.SKIP)
-	@TypeChecked
-	void testShapefileInstanceFromNginxUrl() {
-		def network = Network.newNetwork();
-		def mapOfFile = new HashMap();
-		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/bplshp/BPL_631019_0104_003_000.dbf");
-		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/bplshp/BPL_631019_0104_003_000.prj");
-		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/bplshp/BPL_631019_0104_003_000.shp");
-		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/bplshp/BPL_631019_0104_003_000.shx");
-		def  nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
-			.withNetwork(network)
-			.withExposedPorts(80)
-			.waitingFor(new HttpWaitStrategy())
-		// add all files
-		for (Map.Entry<String, String> entry : mapOfFile.entrySet()) {
-			nginxContainer.withCopyFileToContainer(
-				MountableFile.forClasspathResource(entry.getValue()),
-				"/usr/share/nginx/html/" + entry.getKey())
-		}
-		nginxContainer.start();
-		def host = nginxContainer.getHost()
-		def exposedPort = nginxContainer.getMappedPort(80)
-		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
-		log.info("Shapefile URL: {}", shapeFileUrl)
-		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
-		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
-		assertNotNull(instances)
-		println "Instances: " + instances.toList().size()
-		assertThat(instances.toList()).hasSize(1)
-	}
+
 
 	/**
 	 * Test reading Shapefile instances using an XML schema, type detection based on file name, but name has result_ prefix.
@@ -318,6 +286,93 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 				.isEmpty()
 	}
 
+	/**
+	 * Test reading Shapefile instance from URL provided by nginx container.
+	 * If Shapefile is provided via URL and contains FIX file then ShappeInstanceReader fails to read the instances.
+	 */
+	@Test
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@TypeChecked
+	void testShapefileInstanceFromNginxUrl() {
+
+		def mapOfFile = new HashMap();
+		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/bplshp/BPL_631019_0104_003_000.dbf");
+		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/bplshp/BPL_631019_0104_003_000.prj");
+		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/bplshp/BPL_631019_0104_003_000.shp");
+		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/bplshp/BPL_631019_0104_003_000.shx");
+		mapOfFile.put("BPL_631019_0104_003_000.fix", "testdata/bplshp/BPL_631019_0104_003_000.fix");
+
+		def nginxContainer = createNginxContainerToProvideFileUrls(mapOfFile)
+
+		def host = nginxContainer.getHost()
+		def exposedPort = nginxContainer.getMappedPort(80)
+		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
+		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
+		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
+		assertNotNull(instances)
+		assertThat(instances.toList()).hasSize(1)
+	}
+
+	/**
+	 * Test reading Shapefile instance from URL provided by nginx container.
+	 * If Shapefile is provided via URL and contains FIX file then ShappeInstanceReader fails to read the instances.
+	 * This test does not provide the FIX file, so it should also work.
+	 */
+	@Test
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@TypeChecked
+	void testShapefileInstanceFromNginxUrlWithoutFixFile() {
+		def mapOfFile = new HashMap();
+		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/bplshp/BPL_631019_0104_003_000.dbf");
+		mapOfFile.put("BPL_631019_0104_003_000.prj", "testdata/bplshp/BPL_631019_0104_003_000.prj");
+		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/bplshp/BPL_631019_0104_003_000.shp");
+		mapOfFile.put("BPL_631019_0104_003_000.shx", "testdata/bplshp/BPL_631019_0104_003_000.shx");
+
+		def nginxContainer = createNginxContainerToProvideFileUrls(mapOfFile)
+
+		def host = nginxContainer.getHost()
+		def exposedPort = nginxContainer.getMappedPort(80)
+		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
+		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
+		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
+		assertNotNull(instances)
+		assertThat(instances.toList()).hasSize(1)
+	}
+
+	/**
+	 * Test reading the base name of a shapefile URL.
+	 */
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@Test
+	void testBaseNameFromURL(){
+		def mapOfFile = new HashMap();
+		mapOfFile.put("BPL_631019_0104_003_000.shp", "testdata/bplshp/BPL_631019_0104_003_000.shp");
+		def nginxContainer = createNginxContainerToProvideFileUrls(mapOfFile)
+		def host = nginxContainer.getHost()
+		def exposedPort = nginxContainer.getMappedPort(80)
+		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
+		def url = URI.create(shapeFileUrl).toURL()
+		def reader = new ShapeInstanceReader()
+		def actual =reader.getBaseName(url).toString()
+		def expected = "http://$host:$exposedPort/BPL_631019_0104_003_000".toString()
+		assertEquals(expected, actual)
+	}
+
+	/**
+	 * Test reading the base name of a shapefile file.
+	 */
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@Test
+	void testBaseNameFromFile(){
+		def loc = getClass().getClassLoader().getResource("testdata/bplshp/BPL_631019_0104_003_000.shp").toURI()
+		def file = new File(loc)
+		def reader = new ShapeInstanceReader()
+		def actual =reader.getBaseName(file)
+		def filePath = file.getAbsoluteFile().toString()
+		def expected = filePath.substring(0,filePath.lastIndexOf("."))
+		assertEquals(expected, actual)
+	}
+
 	// helpers
 
 	/**
@@ -341,5 +396,29 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		assertTrue(report.getErrors().isEmpty())
 
 		return reader.getInstances();
+	}
+
+	/**
+	 * Create a Testcontainers Nginx container to provide file URLs.
+	 * @param network
+	 * @param mapOfFile
+	 * @return
+	 */
+	@CompileStatic(TypeCheckingMode.SKIP)
+	@TypeChecked
+	static GenericContainer createNginxContainerToProvideFileUrls(HashMap mapOfFile) {
+		def network = Network.newNetwork();
+		def nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
+				.withNetwork(network)
+				.withExposedPorts(80)
+				.waitingFor(new HttpWaitStrategy())
+		// add all files
+		for (Map.Entry<String, String> entry : mapOfFile.entrySet()) {
+			nginxContainer.withCopyFileToContainer(
+					MountableFile.forClasspathResource(entry.getValue()),
+					"/usr/share/nginx/html/" + entry.getKey())
+		}
+		nginxContainer.start();
+		nginxContainer
 	}
 }
