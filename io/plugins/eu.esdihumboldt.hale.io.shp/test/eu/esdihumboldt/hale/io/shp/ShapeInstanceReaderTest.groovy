@@ -11,18 +11,10 @@
  */
 package eu.esdihumboldt.hale.io.shp
 
-import groovy.transform.TypeChecked
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.testcontainers.containers.GenericContainer
-import org.testcontainers.containers.Network
-import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
-import org.testcontainers.utility.DockerImageName
-import org.testcontainers.utility.MountableFile
-
 import static org.assertj.core.api.Assertions.*
 
 import groovy.transform.CompileStatic
+import groovy.transform.TypeChecked
 import groovy.transform.TypeCheckingMode
 
 import java.nio.charset.StandardCharsets
@@ -34,6 +26,11 @@ import javax.xml.namespace.QName
 import org.apache.commons.io.IOUtils
 import org.junit.Test
 import org.locationtech.jts.geom.Geometry
+import org.testcontainers.containers.GenericContainer
+import org.testcontainers.containers.Network
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
+import org.testcontainers.utility.DockerImageName
+import org.testcontainers.utility.MountableFile
 
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
@@ -54,7 +51,6 @@ import io.qameta.allure.Link
  */
 @CompileStatic
 class ShapeInstanceReaderTest extends AbstractPlatformTest {
-	private static final Logger log = LoggerFactory.getLogger(ShapeInstanceReaderTest.class);
 
 	/**
 	 * Test reading Shapefile instances using the Shapefile as schema.
@@ -415,17 +411,16 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	static GenericContainer createNginxContainerToProvideFileUrls(HashMap mapOfFile) {
 		def network = Network.newNetwork();
 		def nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
-			.withNetwork(network)
-			.withExposedPorts(80)
-			.waitingFor(new HttpWaitStrategy())
+				.withNetwork(network)
+				.withExposedPorts(80)
+				.waitingFor(new HttpWaitStrategy())
 		// add all files
 		for (Map.Entry<String, String> entry : mapOfFile.entrySet()) {
 			nginxContainer.withCopyFileToContainer(
-				MountableFile.forClasspathResource(entry.getValue()),
-				"/usr/share/nginx/html/" + entry.getKey())
+					MountableFile.forClasspathResource(entry.getValue()),
+					"/usr/share/nginx/html/" + entry.getKey())
 		}
 		nginxContainer.start();
 		nginxContainer
 	}
-
 }
