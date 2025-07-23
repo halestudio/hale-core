@@ -13,8 +13,11 @@ package eu.esdihumboldt.hale.io.shp.reader.internal;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,6 +26,7 @@ import java.util.function.Function;
 
 import javax.xml.namespace.QName;
 
+import org.apache.commons.io.FileUtils;
 import org.geotools.api.data.SimpleFeatureSource;
 import org.geotools.api.feature.type.Name;
 import org.geotools.data.shapefile.ShapefileDataStore;
@@ -49,8 +53,7 @@ import eu.esdihumboldt.hale.common.schema.model.TypeIndex;
 import eu.esdihumboldt.hale.io.shp.ShapefileConstants;
 import eu.esdihumboldt.hale.io.shp.internal.Messages;
 import eu.esdihumboldt.util.Pair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.geotools.data.shapefile.files.ShpFileType;
 
 /**
  * Reads instances from a shapefile.
@@ -92,6 +95,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		return false;
 	}
 
+
 	/**
 	 * @see AbstractIOProvider#execute(ProgressIndicator, IOReporter)
 	 */
@@ -102,6 +106,11 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 
 		URI loc = getSource().getLocation();
 		reporter.info(MessageFormat.format("Loading shapefile from {0}", loc.toString()));
+
+		File tempDirPath = downloadShpFiles(loc, reporter);
+		// if files were downloaded to temp directory due to presence of .fix file, then use it as the location
+		loc = tempDirPath == null ? loc : tempDirPath.toURI();
+
 		try {
 			File file = new File(loc);
 
@@ -383,6 +392,89 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 					.findFirst().orElse(null);
 		}
 		return result;
+	}
+
+	/**
+	 * Download Shapefiles from the given URL if a .fix file exists at the URL. Otherwise, IOException related to `Read Channel is not a File Channel` is thrown when reading indexes.
+	 * @param loc the URI location of the shapefile
+	 * @param reporter the reporter to report errors
+	 * @return the temporary directory where the shapefiles are downloaded, or <code>null</code> if no files were downloaded
+	 */
+	private File downloadShpFiles(URI loc, IOReporter reporter) {
+
+		try {
+			URL locUrl = loc.toURL();
+            // extract baseName of the file so that we can download all the files if they exist.
+			String baseName = getBaseName(locUrl);
+
+			// create URL for .fix file from whatever URI is passed
+			URL fixFileUrl = URI.create(baseName.concat(ShpFileType.FIX.extensionWithPeriod)).toURL();
+			boolean fixFileExists = checkFileExistence(fixFileUrl, reporter);
+			if (fixFileExists) {
+				reporter.info(MessageFormat.format("Valid URL {0} is provided and also provides FIX file. Therefore, downloading all the available files to proceed with Shapefile processing ", loc.toString()));
+				// proceed to download all the files from the URL
+				File tempDir = Files.createTempDirectory("shp_from_url_").toFile();
+				String fileName = baseName.substring(baseName.lastIndexOf(File.separator) + 1);
+
+				//iterate over all the ShpFileTypes and download them if they exist at the URL.
+				for (ShpFileType type : ShpFileType.values()) {
+					URL fileToDownload = URI.create(baseName.concat(type.extensionWithPeriod)).toURL();
+					if (checkFileExistence(fileToDownload, reporter)) {
+						File file = new File(tempDir, fileName + type.extensionWithPeriod);
+						FileUtils.copyURLToFile(fileToDownload, file);
+					}
+				}
+				reporter.info(new IOMessageImpl(
+					"Downloaded shapefile files to temporary directory: " + tempDir.getAbsolutePath(),
+					null));
+				return tempDir;
+			}
+		} catch (IOException e) {
+			reporter.error(new IOMessageImpl(MessageFormat.format("Exception downloading Shapefiles from the given URL  {0}." , loc), e));
+        }
+        // No need to download anything as the fix file does not exist at the URL and loading files from the URL will work.
+		return null;
+	}
+
+	/**
+	 * Check if file in the URL exists.
+	 * @param url the URL to check
+	 * @param reporter the reporter to report errors
+	 * @return <code>true</code> if the file exists, <code>false</code> otherwise
+	 */
+	private boolean checkFileExistence(URL url, IOReporter reporter) {
+		try{
+			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+			int responseCode = httpURLConnection.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK){
+				return true;
+			}
+		} catch (IOException e) {
+			reporter.error(new IOMessageImpl(MessageFormat.format("Exception when reading file from the given URL {0}." , url.toString()), e));
+		}
+		return false;
+	}
+
+	/**
+	 * Get the base name of the shapefile from the given object.
+	 * @param obj File or URL
+	 * @return the base name of the shapefile, or <code>null</code> if no base name
+	 */
+	public String getBaseName(Object obj) {
+		ShpFileType[] values = ShpFileType.values();
+		String base = null;
+		for (ShpFileType type : values) {
+			if(obj instanceof File file){
+				base = type.toBase(file);
+			}
+			if(obj instanceof URL url){
+				base = type.toBase(url);
+			}
+			if(base !=null){
+				return base;
+			}
+		}
+		return base;
 	}
 
 	/**
