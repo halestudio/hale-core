@@ -292,7 +292,6 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	 */
 	@Test
 	@CompileStatic(TypeCheckingMode.SKIP)
-	@TypeChecked
 	void testShapefileInstanceFromNginxUrl() {
 
 		def mapOfFile = new HashMap();
@@ -315,12 +314,11 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 
 	/**
 	 * Test reading Shapefile instance from URL provided by nginx container.
-	 * If Shapefile is provided via URL and contains FIX file then ShappeInstanceReader fails to read the instances.
+	 * If Shapefile is provided via URL and contains FIX file then ShapeInstanceReader fails to read the instances.
 	 * This test does not provide the FIX file, so it should also work.
 	 */
 	@Test
 	@CompileStatic(TypeCheckingMode.SKIP)
-	@TypeChecked
 	void testShapefileInstanceFromNginxUrlWithoutFixFile() {
 		def mapOfFile = new HashMap();
 		mapOfFile.put("BPL_631019_0104_003_000.dbf", "testdata/bplshp/BPL_631019_0104_003_000.dbf");
@@ -353,7 +351,7 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def shapeFileUrl = "http://$host:$exposedPort/BPL_631019_0104_003_000.shp"
 		def url = URI.create(shapeFileUrl).toURL()
 		def reader = new ShapeInstanceReader()
-		def actual =reader.getBaseName(url).toString()
+		def actual = reader.getBaseName(url).toString()
 		def expected = "http://$host:$exposedPort/BPL_631019_0104_003_000".toString()
 		assertEquals(expected, actual)
 	}
@@ -367,7 +365,7 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def loc = getClass().getClassLoader().getResource("testdata/bplshp/BPL_631019_0104_003_000.shp").toURI()
 		def file = new File(loc)
 		def reader = new ShapeInstanceReader()
-		def actual =reader.getBaseName(file)
+		def actual = reader.getBaseName(file)
 		def filePath = file.getAbsoluteFile().toString()
 		def expected = filePath.substring(0,filePath.lastIndexOf("."))
 		assertEquals(expected, actual)
@@ -405,7 +403,6 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	 * @return
 	 */
 	@CompileStatic(TypeCheckingMode.SKIP)
-	@TypeChecked
 	static GenericContainer createNginxContainerToProvideFileUrls(HashMap mapOfFile) {
 		def network = Network.newNetwork();
 		def nginxContainer = new GenericContainer<>(DockerImageName.parse("nginx:latest"))
