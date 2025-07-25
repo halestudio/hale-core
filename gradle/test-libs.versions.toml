@@ -4,6 +4,7 @@ allure = "2.29.1"
 assertj = "3.27.3"
 testcontainers = "1.21.3"
 aspectj = "1.9.24"
+nginxContainer = "1.21.3"
 
 [libraries]
 junit4 = {module = "junit:junit", version.ref = "junit4"}
@@ -19,3 +20,5 @@ testcontainers-core = {module = "org.testcontainers:testcontainers", version.ref
 junit-system-rules = {module = "com.github.stefanbirkner:system-rules", version = "1.19.0"}
 
 aspectj-weaver = {module = "org.aspectj:aspectjweaver", version.ref = "aspectj"}
+
+testcontainernginx = {module = "org.testcontainers:nginx", version.ref = 'nginxContainer'}
