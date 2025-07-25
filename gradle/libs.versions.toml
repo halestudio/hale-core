@@ -92,7 +92,7 @@ xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.3.0"}
 
 commons-io = {module = "commons-io:commons-io", version = "2.20.0"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
-commons-codec = {module = "commons-codec:commons-codec", version = "1.18.0"}
+commons-codec = {module = "commons-codec:commons-codec", version = "1.19.0"}
 
 igd-eclipse-util = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.eclipse.util", version = "1.0.0.201407081822"}
 igd-osgi-util = {module = "de.fhg.igd:osgi-util", version = "1.0"}
