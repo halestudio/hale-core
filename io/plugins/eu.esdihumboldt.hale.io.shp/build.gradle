@@ -35,6 +35,7 @@ dependencies {
 
   testImplementation testLibs.junit4
   testImplementation testLibs.assertj
+  testImplementation testLibs.testcontainernginx
 
   testRuntimeOnly libs.geotools.epsg
 
@@ -46,5 +47,4 @@ dependencies {
 
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
-  testImplementation "org.testcontainers:nginx:1.21.3"
 }
