@@ -26,6 +26,18 @@
 
 set -e
 
+# Detect macOS and set realpath command
+if [[ "$(uname)" == "Darwin" ]]; then
+  if ! command -v grealpath >/dev/null 2>&1; then
+    echo "Error: 'grealpath' not found. Please install coreutils with:"
+    echo "  brew install coreutils"
+    exit 1
+  fi
+  realpath_cmd="grealpath"
+else
+  realpath_cmd="realpath"
+fi
+
 # Define the list of allowed file extensions
 allowed_extensions=("java" "md" "groovy" "gradle")
 
@@ -47,19 +59,19 @@ if [[ ! "${allowed_extensions[@]}" =~ "${file_extension}" ]]; then
 fi
 
 # Get the absolute path of the provided file
-file_path=$(realpath "$1")
+file_path=$($realpath_cmd "$1")
 
 # Get the directory containing the file
 current_dir=$(dirname "$file_path")
 
 # Get the directory where the script resides
-script_dir=$(dirname "$(realpath "$0")")
+script_dir=$(dirname "$($realpath_cmd "$0")")
 
 # Traverse up the directory tree to find the first parent directory with build.gradle
 while [ "$current_dir" != "/" ]; do
   if [ -f "$current_dir/build.gradle" ]; then
     # Determine the relative path from the script's directory
-    relative_path=$(realpath --relative-to="$script_dir" "$current_dir")
+    relative_path=$($realpath_cmd --relative-to="$script_dir" "$current_dir")
 
     # Check if the folder is the same as the script directory
     if [ "$current_dir" == "$script_dir" ]; then
