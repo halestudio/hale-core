@@ -423,7 +423,8 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 					.toURL();
 			boolean fixFileExists = checkFileExistence(fixFileUrl, reporter);
 			if (fixFileExists) {
-				reporter.info("Found FIX file at the URL {0}. Proceeding to download Shapefiles as geotools raises exception reading FIX file from URL.",
+				reporter.info(
+						"Found FIX file at the URL {0}. Proceeding to download Shapefiles as geotools raises exception reading FIX file from URL.",
 						loc.toString());
 
 				// proceed to download all the files from the URL
@@ -446,7 +447,8 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 				reporter.info("Downloaded Shapefiles to temporary directory: {0}",
 						tempDir.getAbsolutePath(), null);
 				return tempDir;
-			} else {
+			}
+			else {
 				reporter.info(
 						"No FIX file found at the URL {0}. Proceeding with Shapefile processing without downloading files.",
 						loc.toString());
@@ -480,16 +482,15 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 				}
 			}
 			else {
-				try (InputStream in = urlConnection.getInputStream()){
-					if(in != null ){
+				try (InputStream in = urlConnection.getInputStream()) {
+					if (in != null) {
 						return true;
 					}
-					// hc transformer returned null for the input stream no logging as this check is done for all extensions of Shapefiles and it will produce unnecessary logs
 				}
 			}
-		}catch (IOException e) {
-			reporter.warn("Exception when reading file or file not present at given URL {0}.", url.toString(),
-				e);
+		} catch (IOException e) {
+			reporter.warn("Exception when reading file or file not present at given URL {0}.",
+					url.toString(), e);
 		}
 
 		return false;
