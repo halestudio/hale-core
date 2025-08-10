@@ -115,7 +115,7 @@ dependencies {
   // Spotbugs
   // use version from spotbugs plugin XXX currently not used
   //compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
-  compileOnly "com.github.spotbugs:spotbugs-annotations:4.9.3"
+  compileOnly "com.github.spotbugs:spotbugs-annotations:4.9.4"
 }
 
 task sourcesJar(type: Jar) {
