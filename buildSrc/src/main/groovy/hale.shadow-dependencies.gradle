@@ -64,9 +64,9 @@ tasks.named('jar', Jar) {
  * TODO use JPMS modules to really hide shadowed dependencies from classpath (of other modules)?
  * Note: tested on SKOS plugin, but with current Eclipse version used too many different conflicting packages offered by different JARs
  */
-
 tasks.named('shadowJar', ShadowJar) {
-  relocationPrefix 'shadow_' + project.name.replaceAll(/[\.\-]/, '_')
+  relocationPrefix = 'shadow_' + project.name.replaceAll(/[\.\-]/, '_')
+
   // ensure default classifier
   archiveClassifier = null
 
@@ -77,7 +77,7 @@ afterEvaluate {
   // FIXME relocation necessary if using explicitly defined Java Module?
 
   tasks.named('shadowJar', ShadowJar) {
-    enableRelocation project.extensions.hale.shadow.relocate
+    enableAutoRelocation = project.extensions.hale.shadow.relocate
   }
 }
 
