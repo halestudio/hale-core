@@ -7,7 +7,9 @@ hale {
 }
 
 dependencies {
-  implementation libs.groovy.core
+  // api dependency as downstream use needs GroovyObject
+  api libs.groovy.core
+
   implementation libs.snakeyaml
 
   testImplementation testLibs.junit4
