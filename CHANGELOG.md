@@ -1,3 +1,18 @@
+## [6.2.4](https://github.com/halestudio/hale-core/compare/v6.2.3...v6.2.4) (2025-09-09)
+
+### Bug Fixes
+
+* **deps:** expose groovy-core as API dependency ([d216f89](https://github.com/halestudio/hale-core/commit/d216f89fae57084097be00fe44282f60f44319d9))
+* **deps:** update deegree to v3.6.0 ([407ca8f](https://github.com/halestudio/hale-core/commit/407ca8f71a2aace14da80d586ce50ef1579bf3f9))
+* **deps:** update deegree to v3.6.1 ([966f507](https://github.com/halestudio/hale-core/commit/966f5076478f78708bb70c9d4f1488f5e99a0718))
+* **deps:** update dependency org.yaml:snakeyaml to v2.5 ([69a2b14](https://github.com/halestudio/hale-core/commit/69a2b1441cac4728c7ea8feebe4f3a87c722c188))
+* **deps:** update geotools to v32.4 ([7feef8a](https://github.com/halestudio/hale-core/commit/7feef8a80067fa3a85e0321661a193e92ce48cad))
+* **deps:** update protobuf monorepo to v4.32.0 ([579e5b4](https://github.com/halestudio/hale-core/commit/579e5b46d2ef314a51119a3707d48d7d78248960))
+* **deps:** update schemacrawler to v16.27.1 ([4102a6c](https://github.com/halestudio/hale-core/commit/4102a6c2faa40b56df6a047d43ea650abafdeb68))
+* **deps:** update schemacrawler to v16.27.2 ([cb31e19](https://github.com/halestudio/hale-core/commit/cb31e196189672d680099151e12e6d01ff4b1b5b))
+* **deps:** update spring core to v6.2.10 ([b64d4d5](https://github.com/halestudio/hale-core/commit/b64d4d514c2dfb5f22dbad186d004e8ead82108c))
+* **ShapefileReader:** check file existence in case of custom urls ([ea3abff](https://github.com/halestudio/hale-core/commit/ea3abff1d6a5c96edd1074cfe3627ea952dcfb66)), closes [ING-4811](https://wetransform.atlassian.net/browse/ING-4811)
+
 ## [6.2.3](https://github.com/halestudio/hale-core/compare/v6.2.2...v6.2.3) (2025-08-05)
 
 ### Bug Fixes
