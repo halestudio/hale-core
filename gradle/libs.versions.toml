@@ -171,7 +171,7 @@ schemacrawler-postgres = {module = "us.fatehi:schemacrawler-postgresql", version
 
 sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.50.3.0"}
 
-typesafe-config = {module = "com.typesafe:config", version = "1.4.4"}
+typesafe-config = {module = "com.typesafe:config", version = "1.4.5"}
 
 jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}
 jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
