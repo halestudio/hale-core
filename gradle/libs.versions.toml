@@ -2,7 +2,7 @@
 slf4j = "2.0.17"
 logback = "1.5.18"
 slf4jplus = "1.2.0.201503311443"
-spring = "6.2.10"
+spring = "6.2.11"
 groovy = "2.5.23" # "2.5.19"
 tinkerpop = "2.5.0-orientDB151"
 orientdb = "1.5.1"
