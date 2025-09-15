@@ -134,7 +134,7 @@ jmep = {module = "com.iabcinc:jmep", version = "0.1.0"}
 eclipse-collections-api = {module = "org.eclipse.collections:eclipse-collections-api", version.ref = "eclipse-collections"}
 eclipse-collections-core = {module = "org.eclipse.collections:eclipse-collections", version.ref = "eclipse-collections"}
 
-jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.2"}
+jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", version = "4.0.4"}
 
 apache-ws-xsd = {module = "org.apache.ws.commons.schema:XmlSchema", version = "1.4.7"}
 
