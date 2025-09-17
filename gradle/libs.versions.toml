@@ -86,7 +86,7 @@ slf4jplus-logback-core = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jpl
 slf4jplus-logback-appender = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus.logback.appender", version.ref = "slf4jplus"}
 slf4jplus-logback-observer = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf4jplus.logback.observer", version.ref = "slf4jplus"}
 
-guava = {module = "com.google.guava:guava", version = "33.4.8-jre"}
+guava = {module = "com.google.guava:guava", version = "33.5.0-jre"}
 
 xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.3.0"}
 
