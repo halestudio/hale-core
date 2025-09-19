@@ -1,5 +1,5 @@
 [libraries]
-schemas-ogc = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.opengis.net", version = "2024.7.31"}
+schemas-ogc = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.opengis.net", version = "2025.9.19"}
 schemas-inspire = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.inspire", version = "2025.2.4"}
 schemas-portele = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.portele.de", version = "2024.1.25"}
 schemas-w3 = {module = "to.wetransform.offline-resources:eu.esdihumboldt.util.resource.w3.org", version = "2024.1.25"}
