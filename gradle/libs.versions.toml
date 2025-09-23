@@ -125,7 +125,7 @@ apache-http-core = {module = "org.apache.httpcomponents:httpcore", version = "4.
 apache-http-client = {module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client"}
 apache-http-fluent = {module = "org.apache.httpcomponents:fluent-hc", version.ref = "apache-http-client"}
 
-jaxb-runtime = {module = "org.glassfish.jaxb:jaxb-runtime", version = "4.0.5"}
+jaxb-runtime = {module = "org.glassfish.jaxb:jaxb-runtime", version = "4.0.6"}
 
 joda-time = {module = "joda-time:joda-time", version = "2.14.0"}
 
