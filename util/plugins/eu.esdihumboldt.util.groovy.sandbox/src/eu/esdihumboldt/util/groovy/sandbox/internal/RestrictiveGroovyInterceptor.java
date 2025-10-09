@@ -45,6 +45,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.codehaus.groovy.runtime.GStringImpl;
@@ -146,6 +147,7 @@ public class RestrictiveGroovyInterceptor extends GroovyInterceptor {
 
 		// regular expressions
 		allowedClasses.add(Pattern.class);
+		allowedClasses.add(Matcher.class);
 
 		// helper classes
 		allowedClasses.add(SimpleDateFormat.class);
