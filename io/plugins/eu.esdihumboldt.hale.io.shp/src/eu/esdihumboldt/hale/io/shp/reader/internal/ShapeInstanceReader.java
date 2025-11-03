@@ -421,7 +421,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 			// create URL for .fix file from whatever URI is passed
 			URL fixFileUrl = URI.create(baseName.concat(ShpFileType.FIX.extensionWithPeriod))
 					.toURL();
-			boolean fixFileExists = checkFileExistence(fixFileUrl, reporter);
+			boolean fixFileExists = checkFileExistence(fixFileUrl, ShpFileType.FIX, reporter);
 			if (fixFileExists) {
 				reporter.info(
 						"Found FIX file at the URL {0}. Proceeding to download Shapefiles as geotools raises exception reading FIX file from URL.",
@@ -439,7 +439,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 				for (ShpFileType type : ShpFileType.values()) {
 					URL fileToDownload = URI.create(baseName.concat(type.extensionWithPeriod))
 							.toURL();
-					if (checkFileExistence(fileToDownload, reporter)) {
+					if (checkFileExistence(fileToDownload, type, reporter)) {
 						File file = new File(tempDir, fileName + type.extensionWithPeriod);
 						FileUtils.copyURLToFile(fileToDownload, file);
 					}
@@ -468,10 +468,11 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 	 * Check if file in the URL exists.
 	 *
 	 * @param url the URL to check
+	 * @param type the Shapefile type
 	 * @param reporter the reporter to report errors
 	 * @return <code>true</code> if the file exists, <code>false</code> otherwise
 	 */
-	private boolean checkFileExistence(URL url, IOReporter reporter) {
+	private boolean checkFileExistence(URL url, ShpFileType type, IOReporter reporter) {
 		try {
 			URLConnection urlConnection = url.openConnection();
 			if (urlConnection instanceof HttpURLConnection httpURLConnection) {
@@ -482,15 +483,40 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 				}
 			}
 			else {
+				reporter.info("Checking file existence at URL: {0}", url.toString());
 				try (InputStream in = urlConnection.getInputStream()) {
-					if (in != null) {
-						return true;
+					if (in == null) {
+						reporter.warn("InputStream is null for shapefile type: {0} at URL: {1}.",
+								type.extensionWithPeriod, url.toString());
+						return false;
 					}
+					// using read() method to check if InputStream has content
+					boolean hasContent = true;
+					try {
+						var b = in.read();
+						if (b == -1) {
+							hasContent = false;
+						}
+					} catch (Exception e) {
+						hasContent = false;
+					}
+					if (hasContent) {
+						reporter.info(
+								"Shapefile type: {0} is valid and has some content returned from BucketService",
+								type.extensionWithPeriod);
+					}
+					else {
+						reporter.info(
+								"Shapefile type: {0} is either null or a 0 byte file returned from BucketService",
+								type.extensionWithPeriod);
+					}
+					return hasContent;
 				}
 			}
 		} catch (IOException e) {
-			reporter.warn("Exception when reading file or file not present at given URL {0}.",
-					url.toString(), e);
+			reporter.warn(
+					"Exception when reading file or file not present at given URL {0}, message: {1}",
+					url.toString(), e.getLocalizedMessage());
 		}
 
 		return false;
