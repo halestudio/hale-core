@@ -1,3 +1,30 @@
+## [6.3.0](https://github.com/halestudio/hale-core/compare/v6.2.4...v6.3.0) (2025-11-04)
+
+### Features
+
+* add regex Matcher to Groovy restriction whitelist ([99ebc4a](https://github.com/halestudio/hale-core/commit/99ebc4a9c214fb1f992522a617c830808cdcb09c)), closes [ING-4874](https://wetransform.atlassian.net/browse/ING-4874)
+
+### Bug Fixes
+
+* **deps:** update deegree to v3.6.2 ([c258ebb](https://github.com/halestudio/hale-core/commit/c258ebb54cd486e4b90c3fe7e12a74834dfcbb9d))
+* **deps:** update dependency com.google.guava:guava to v33.5.0-jre ([2e3be82](https://github.com/halestudio/hale-core/commit/2e3be82007967d7461dc93408a50cdfeb6fb528e))
+* **deps:** update dependency com.typesafe:config to v1.4.5 ([0a04eff](https://github.com/halestudio/hale-core/commit/0a04eff856bc53be589672ac36d6cfe4d802eda5))
+* **deps:** update dependency jakarta.xml.bind:jakarta.xml.bind-api to v4.0.4 ([7fac496](https://github.com/halestudio/hale-core/commit/7fac4962c5b8dc6c97699e0af419586b0021fd96))
+* **deps:** update dependency org.apache.logging.log4j:log4j-to-slf4j to v2.25.2 ([4a1282d](https://github.com/halestudio/hale-core/commit/4a1282d463e3f8d8d09118920ebedd83d8fee2e4))
+* **deps:** update dependency org.glassfish.jaxb:jaxb-runtime to v4.0.6 ([018f676](https://github.com/halestudio/hale-core/commit/018f676718db9cac4cc9c5d89fc9957c75b8258a))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.8 ([bb45ddc](https://github.com/halestudio/hale-core/commit/bb45ddc494da469876c4151802ddab9e49f247c9))
+* **deps:** update dependency to.wetransform.offline-resources:eu.esdihumboldt.util.resource.schemas.opengis.net to v2025 ([9742d0f](https://github.com/halestudio/hale-core/commit/9742d0f76da3259beeee78403e3cdf14eb6b504a))
+* **deps:** update logback dependencies to v1.5.19 ([74f59c9](https://github.com/halestudio/hale-core/commit/74f59c9a470b2bde182c1e806c6c91074c293e97))
+* **deps:** update logback dependencies to v1.5.20 ([b462540](https://github.com/halestudio/hale-core/commit/b4625400f2c915849271ef5c53fea197deae0393))
+* **deps:** update protobuf monorepo to v4.32.1 ([cf627e7](https://github.com/halestudio/hale-core/commit/cf627e7f65e39127026351c11370a83878fdfa83))
+* **deps:** update protobuf monorepo to v4.33.0 ([a0f4197](https://github.com/halestudio/hale-core/commit/a0f4197705cdfe0cb4b36c8dc88e4f6c791fb9e3))
+* **deps:** update schemacrawler to v16.28.1 ([6b57c0f](https://github.com/halestudio/hale-core/commit/6b57c0f2a228372f43a696ee735ec4d46152799a))
+* **deps:** update schemacrawler to v16.28.2 ([272be8f](https://github.com/halestudio/hale-core/commit/272be8fa8999c2d2d7a10d9d43b46c719cb555ae))
+* **deps:** update schemacrawler to v16.28.3 ([82957b7](https://github.com/halestudio/hale-core/commit/82957b7c66f7e264d1488bde101a43adb06e1af5))
+* **deps:** update schemacrawler to v16.29.1 ([815f41d](https://github.com/halestudio/hale-core/commit/815f41db675c106795a4fa2b6141f612262412a6))
+* **deps:** update spring core to v6.2.11 ([bd1822c](https://github.com/halestudio/hale-core/commit/bd1822c0436573eba2191a8d34834722577b63d7))
+* **deps:** update spring core to v6.2.12 ([70909eb](https://github.com/halestudio/hale-core/commit/70909eb415f9f878289264171785ad26b3876731))
+
 ## [6.2.4](https://github.com/halestudio/hale-core/compare/v6.2.3...v6.2.4) (2025-09-09)
 
 ### Bug Fixes
