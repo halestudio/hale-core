@@ -2,7 +2,7 @@ plugins {
   id 'hale.base'
 
   // https://github.com/allure-framework/allure-gradle
-  id("io.qameta.allure-aggregate-report") version "2.12.0"
+  id("io.qameta.allure-aggregate-report") version "3.0.1"
 }
 
 repositories {
