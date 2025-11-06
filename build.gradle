@@ -1,5 +1,6 @@
 plugins {
   id 'hale.base'
+  id 'org.cyclonedx.bom'
 }
 
 repositories {
@@ -8,6 +9,14 @@ repositories {
 
 allprojects {
   group = 'eu.esdihumboldt.hale'
+
+  tasks.cyclonedxDirectBom {
+    // Include only runtime dependencies
+    includeConfigs = [
+      "runtimeClasspath",
+      "compileClasspath"
+    ]
+  }
 }
 
 tasks.wrapper {
