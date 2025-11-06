@@ -59,6 +59,9 @@ geotools-gml3 = {module = "org.geotools.xsd:gt-xsd-gml3", version.ref = "geotool
 geotools-xsd = {module = "org.geotools.xsd:gt-xsd-core", version.ref = "geotools"}
 geotools-geojson = {module = "org.geotools:gt-geojson", version.ref = "geotools"}
 
+# update transitively used version to fix CVEs
+hsqldb = {module = "org.hsqldb:hsqldb", version = "2.7.1"}
+
 groovy-core = {module = "org.codehaus.groovy:groovy", version.ref = "groovy"}
 groovy-test = {module = "org.codehaus.groovy:groovy-test", version.ref = "groovy"}
 groovy-templates = {module = "org.codehaus.groovy:groovy-templates", version.ref = "groovy"}
@@ -88,11 +91,23 @@ slf4jplus-logback-observer = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.slf
 
 guava = {module = "com.google.guava:guava", version = "33.5.0-jre"}
 
+# update transitively used version to fix CVEs
+gson = {module = "com.google.code.gson:gson", version = "2.8.9"}
+
+# update transitively used version to fix CVEs
+jettison = {module = "org.codehaus.jettison:jettison", version = "1.5.4"}
+
 xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.3.0"}
 
 commons-io = {module = "commons-io:commons-io", version = "2.20.0"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
 commons-codec = {module = "commons-codec:commons-codec", version = "1.19.0"}
+
+# update transitively used version to fix CVEs
+commons-beanutils = {module = "commons-beanutils:commons-beanutils", version = "1.11.0"}
+
+# update transitively used version to fix CVEs
+commons-collections = {module = "commons-collections:commons-collections", version = "3.2.2"}
 
 igd-eclipse-util = {module = "eu.esdihumboldt.unpuzzled:de.fhg.igd.eclipse.util", version = "1.0.0.201407081822"}
 igd-osgi-util = {module = "de.fhg.igd:osgi-util", version = "1.0"}
