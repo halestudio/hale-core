@@ -1,0 +1,29 @@
+plugins {
+  id 'hale.bom-conventions'
+}
+
+description = 'hale-core dependencies BOM'
+
+javaPlatform {
+  allowDependencies() // for including other BOMs
+}
+
+dependencies {
+  constraints {
+    // include all third party dependencies from version catalog
+    def versionCatalog = rootProject.extensions.getByType(VersionCatalogsExtension).named("libs")
+    versionCatalog.libraryAliases.each { alias ->
+      api(versionCatalog.findLibrary(alias).get())
+    }
+  }
+
+  /*
+   * Other BOMs
+   */
+
+  // Groovy BOM
+  api(platform("org.codehaus.groovy:groovy-bom:${libs.versions.groovy.get()}"))
+
+  // SLF4J BOM
+  api(platform("org.slf4j:slf4j-bom:${libs.versions.slf4j.get()}"))
+}

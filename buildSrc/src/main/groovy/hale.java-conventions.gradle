@@ -101,6 +101,8 @@ configurations {
 }
 
 dependencies {
+  implementation(platform(project(':bom-deps')))
+
   testRuntimeOnly libs.logback.core
   testRuntimeOnly libs.logback.classic
   testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.logback.config.test')

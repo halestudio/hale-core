@@ -21,7 +21,7 @@ dependencies {
     // - this project
     // - bom project
     // - intermediate projects w/o build.gradle
-    if (p != project && p.name != 'bom' && new File(p.projectDir, 'build.gradle').exists()) {
+    if (p != project && p.name != 'bom' && !(p.name.startsWith('bom-')) && new File(p.projectDir, 'build.gradle').exists()) {
       //TODO better way to determine if allure adapter is enabled for a project?
       allureAggregateReport(p)
 
