@@ -35,6 +35,15 @@ jobs:
       WETF_ARTIFACTORY_USER: ${{ secrets.WETF_ARTIFACTORY_USER }}
       WETF_ARTIFACTORY_PASSWORD: ${{ secrets.WETF_ARTIFACTORY_PASSWORD }}
 
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Vulnerability scan
+        uses: ./.github/scan
+
   allure:
     # https://allurereport.org/docs/integrations-github/
     runs-on: ubuntu-latest
