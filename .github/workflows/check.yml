@@ -24,6 +24,7 @@ jobs:
 
   check:
     uses: wetransform/gha-workflows/.github/workflows/gradle-library-check.yml@7f8cab53bf0b02b6400307f8e3a9fb68dd648902 # v3.8.0
+    needs: spotless
     with:
       java-version: 17
       multi-module: true
