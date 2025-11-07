@@ -18,8 +18,9 @@ dependencies {
       // - root project
       // - this project
       // - allure project
+      // - other BOM projects
       // - intermediate projects w/o build.gradle
-      if (p != project && p.name != 'allure' && new File(p.projectDir, 'build.gradle').exists()) {
+      if (p != project && p.name != 'allure' && !(p.name.startsWith('bom-')) && new File(p.projectDir, 'build.gradle').exists()) {
         api(p)
       }
     }
@@ -29,5 +30,6 @@ dependencies {
    * Other BOMs
    */
 
-  api(platform(":bom-deps"))
+  api(platform(findProject(":bom-deps")))
+  // Note: using a notation like api(platform(":bom-deps")) resulted in an invalid POM when publishing
 }
