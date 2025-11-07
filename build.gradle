@@ -1,6 +1,7 @@
 plugins {
-  id 'hale.base'
   id 'org.cyclonedx.bom'
+  // add so generateSpotlessWatcher task is available to easily set up local IntelliJ Idea formatting watcher
+  id 'to.wetransform.conventions.spotless'
 }
 
 repositories {
