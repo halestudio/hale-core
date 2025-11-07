@@ -8,6 +8,10 @@ repositories {
   gradlePluginPortal() // so that external plugins can be resolved in dependencies section
 
   mavenCentral()
+
+  maven {
+    url 'https://artifactory.wetransform.to/artifactory/local'
+  }
 }
 
 dependencies {
@@ -20,6 +24,8 @@ dependencies {
   implementation 'io.qameta.allure.gradle.adapter:allure-adapter-plugin:3.0.1'
 
   implementation 'org.cyclonedx.bom:org.cyclonedx.bom.gradle.plugin:3.0.1'
+
+  implementation 'to.wetransform.gradle:convention-plugins:2.2.0'
 
   // implementation 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:6.1.7'
 }
