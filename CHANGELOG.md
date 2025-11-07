@@ -1,3 +1,9 @@
+## [6.3.2](https://github.com/halestudio/hale-core/compare/v6.3.1...v6.3.2) (2025-11-07)
+
+### Bug Fixes
+
+* fix invalid dependency in BOM ([99d1ca2](https://github.com/halestudio/hale-core/commit/99d1ca20d8cfdbb84918ea24ed5a36a511ee1cdb))
+
 ## [6.3.1](https://github.com/halestudio/hale-core/compare/v6.3.0...v6.3.1) (2025-11-07)
 
 ### Bug Fixes
