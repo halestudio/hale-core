@@ -1,3 +1,14 @@
+## [6.3.1](https://github.com/halestudio/hale-core/compare/v6.3.0...v6.3.1) (2025-11-07)
+
+### Bug Fixes
+
+* check for InputStream content when reading ShapeInstance ([4783e26](https://github.com/halestudio/hale-core/commit/4783e26127c2ddb3ba342504e036226091840df5)), closes [ING-5018](https://wetransform.atlassian.net/browse/ING-5018)
+* **deps:** update dependency com.google.code.gson:gson to v2.13.2 ([aacf633](https://github.com/halestudio/hale-core/commit/aacf633c6c2774141f64e081396562adad69ae08))
+* **deps:** update dependency commons-codec:commons-codec to v1.20.0 ([1ff75e1](https://github.com/halestudio/hale-core/commit/1ff75e192bdc5c9fb081761e2af531d730936f88))
+* **deps:** update dependency org.hsqldb:hsqldb to v2.7.4 ([160375a](https://github.com/halestudio/hale-core/commit/160375afda2af1794ade53cc23ddb5b52b2062ce))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.51.0.0 ([30f6868](https://github.com/halestudio/hale-core/commit/30f68683dee0bc8c24e0ea4b4d9d126e2eda54e4))
+* **deps:** update transitive dependencies with high vulnerabilities ([bd16512](https://github.com/halestudio/hale-core/commit/bd16512b710974b3f2460cdd7ff6ae6728f4514e))
+
 ## [6.3.0](https://github.com/halestudio/hale-core/compare/v6.2.4...v6.3.0) (2025-11-04)
 
 ### Features
