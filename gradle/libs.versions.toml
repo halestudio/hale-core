@@ -60,7 +60,7 @@ geotools-xsd = {module = "org.geotools.xsd:gt-xsd-core", version.ref = "geotools
 geotools-geojson = {module = "org.geotools:gt-geojson", version.ref = "geotools"}
 
 # update transitively used version to fix CVEs
-hsqldb = {module = "org.hsqldb:hsqldb", version = "2.7.1"}
+hsqldb = {module = "org.hsqldb:hsqldb", version = "2.7.4"}
 
 groovy-core = {module = "org.codehaus.groovy:groovy", version.ref = "groovy"}
 groovy-test = {module = "org.codehaus.groovy:groovy-test", version.ref = "groovy"}
