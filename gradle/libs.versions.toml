@@ -99,7 +99,7 @@ jettison = {module = "org.codehaus.jettison:jettison", version = "1.5.4"}
 
 xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.3.0"}
 
-commons-io = {module = "commons-io:commons-io", version = "2.20.0"}
+commons-io = {module = "commons-io:commons-io", version = "2.21.0"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
 commons-codec = {module = "commons-codec:commons-codec", version = "1.20.0"}
 
