@@ -17,7 +17,7 @@ runs:
       shell: bash
 
     - name: Vulnerability scan
-      uses: wetransform/gha-trivy@30ed72bb9e9b7130ea30ea43b3b7082a7b39b832 # v2.5.0
+      uses: wetransform/gha-trivy@dafb78eaf440e1d9217b3432965692ab2fd1d204 # v2.5.1
       with:
         scan-ref: "build/reports/cyclonedx/bom.json"
         upload-scan-ref: true
