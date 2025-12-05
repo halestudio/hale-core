@@ -15,6 +15,10 @@ dependencies {
     versionCatalog.libraryAliases.each { alias ->
       api(versionCatalog.findLibrary(alias).get())
     }
+
+    // update transitive dependencies manually if needed, e.g. to fix CVE issues - alternatively add to version catalog (where it is picked up from above)
+
+    api("org.lz4:lz4-java:1.8.1") // update to fix CVE-2025-12183
   }
 
   /*
