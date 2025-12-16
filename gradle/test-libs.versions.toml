@@ -2,7 +2,7 @@
 junit4 = "4.13.2"
 allure = "2.31.0"
 assertj = "3.27.6"
-testcontainers = "1.21.3"
+testcontainers = "2.0.3"
 aspectj = "1.9.25"
 
 [libraries]
