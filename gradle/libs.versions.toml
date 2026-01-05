@@ -204,7 +204,7 @@ json-simple = {module = "com.googlecode.json-simple:json-simple", version = "1.1
 
 opengis-cite-schema-utils = {module = "org.opengis.cite:schema-utils", version = "1.8"}
 
-wetf-topojson = {module = "com.github.wetransform-os:topojson-j", version = "2.0.1"}
+wetf-topojson = {module = "com.github.wetransform-os:topojson-j", version = "2.0.2"}
 
 postgis = {module = "net.postgis:postgis-jdbc", version = "2025.1.1"}
 postgres = {module = "org.postgresql:postgresql", version = "42.7.8"}
