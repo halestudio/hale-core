@@ -1,3 +1,26 @@
+## [6.3.3](https://github.com/halestudio/hale-core/compare/v6.3.2...v6.3.3) (2026-01-06)
+
+### Bug Fixes
+
+* **deps:** update apache-poi monorepo to v5.5.0 ([b00550f](https://github.com/halestudio/hale-core/commit/b00550faa205437abf5a62d5a272c93788a9ccfc))
+* **deps:** update apache-poi monorepo to v5.5.1 ([1747d5e](https://github.com/halestudio/hale-core/commit/1747d5e0be6d956ac418940df93b53c410c5b7a6))
+* **deps:** update deegree to v3.6.3 ([7a0b2a7](https://github.com/halestudio/hale-core/commit/7a0b2a76eb9a99a5a8ae3557627de5f8042d8e63))
+* **deps:** update deegree to v3.6.4 ([364957e](https://github.com/halestudio/hale-core/commit/364957e66d2b6af872dfd3a55c462887f2b2a787))
+* **deps:** update deegree to v3.6.5 ([3fc408d](https://github.com/halestudio/hale-core/commit/3fc408de773743346a7a86b71187c79fafb6b9a2))
+* **deps:** update dependency com.github.wetransform-os:topojson-j to v2.0.1 ([a730270](https://github.com/halestudio/hale-core/commit/a73027096fecfa7d14f377edaa9d1e195cc6307a))
+* **deps:** update dependency com.github.wetransform-os:topojson-j to v2.0.2 ([176fbe1](https://github.com/halestudio/hale-core/commit/176fbe1be2ea73fdf11b8937337ddaf544b3b237))
+* **deps:** update dependency commons-io:commons-io to v2.21.0 ([0bb596c](https://github.com/halestudio/hale-core/commit/0bb596c18a5f5d2324ab25bbe603f5def25fad18))
+* **deps:** update dependency org.apache.logging.log4j:log4j-to-slf4j to v2.25.3 ([59c3bb3](https://github.com/halestudio/hale-core/commit/59c3bb3b9bd62c8e52a708c7aac9c99e21744224))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.51.1.0 ([30a4f6a](https://github.com/halestudio/hale-core/commit/30a4f6adcc50bf41f15dee3d733972d167025272))
+* **deps:** update geotools to v34 ([5a17e18](https://github.com/halestudio/hale-core/commit/5a17e18dee4b4a15a12bcb658994d80fc477d5e6))
+* **deps:** update logback dependencies to v1.5.21 ([f6c63ab](https://github.com/halestudio/hale-core/commit/f6c63ab6be17e5a03a137066162b7522d2a117f4))
+* **deps:** update logback dependencies to v1.5.23 ([c3d8b66](https://github.com/halestudio/hale-core/commit/c3d8b66e1e230bcbdb8ac35052793a8985f971c6))
+* **deps:** update protobuf monorepo to v4.33.1 ([91e6f53](https://github.com/halestudio/hale-core/commit/91e6f53f57211d336fcb3be4ed8abc437339eb39))
+* **deps:** update protobuf monorepo to v4.33.2 ([1473851](https://github.com/halestudio/hale-core/commit/14738515616fa2156cf31a105ba57090abea0ea6))
+* **deps:** update spring core to v6.2.13 ([59f1551](https://github.com/halestudio/hale-core/commit/59f1551c4c86be1063dc46e2c3ef39d555cf6723))
+* **deps:** update spring core to v6.2.14 ([b7ef7c7](https://github.com/halestudio/hale-core/commit/b7ef7c7bbd474d706b984baf268eaaffdfc8c3ac))
+* **deps:** update spring core to v6.2.15 ([f502741](https://github.com/halestudio/hale-core/commit/f502741abbead89e7d929256e3894650e47ecfef))
+
 ## [6.3.2](https://github.com/halestudio/hale-core/compare/v6.3.1...v6.3.2) (2025-11-07)
 
 ### Bug Fixes
