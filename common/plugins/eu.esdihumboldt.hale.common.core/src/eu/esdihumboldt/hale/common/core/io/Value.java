@@ -20,6 +20,7 @@ import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueDefinition;
 import eu.esdihumboldt.hale.common.core.io.extension.ComplexValueExtension;
 import eu.esdihumboldt.hale.common.core.io.impl.ComplexValue;
 import eu.esdihumboldt.hale.common.core.io.impl.SimpleValue;
+import eu.esdihumboldt.hale.common.core.io.impl.StringBuilderValue;
 import eu.esdihumboldt.hale.common.core.io.impl.StringValue;
 
 /**
@@ -95,6 +96,19 @@ public abstract class Value implements Serializable {
 			return Value.NULL;
 		}
 		return new StringValue(str);
+	}
+
+	/**
+	 * Create a value from a string.
+	 *
+	 * @param sb the string
+	 * @return the value wrapper
+	 */
+	public static Value of(StringBuilder sb) {
+		if (sb == null) {
+			return Value.NULL;
+		}
+		return new StringBuilderValue(sb);
 	}
 
 	/**

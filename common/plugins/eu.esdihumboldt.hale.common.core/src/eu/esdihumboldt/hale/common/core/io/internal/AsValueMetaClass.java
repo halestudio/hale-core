@@ -23,6 +23,8 @@ import groovy.lang.MetaClass;
 public class AsValueMetaClass extends DelegatingMetaClass {
 
 	/**
+	 * r
+	 *
 	 * @see DelegatingMetaClass#DelegatingMetaClass(Class)
 	 */
 	public AsValueMetaClass(@SuppressWarnings("rawtypes") Class theClass) {
@@ -40,6 +42,7 @@ public class AsValueMetaClass extends DelegatingMetaClass {
 
 	@Override
 	public Object invokeMethod(Object object, String methodName, Object[] arguments) {
+
 		if (arguments != null && arguments.length == 1 && "asType".equals(methodName)
 				&& Value.class.equals(arguments[0])) {
 			// call to asType(Value.class)
@@ -51,7 +54,14 @@ public class AsValueMetaClass extends DelegatingMetaClass {
 				return object;
 			}
 			else if (object instanceof String) {
+				System.out.println("+++++ AsValueMetaClass: invokeMethod " + methodName + " on "
+						+ object.getClass().getName() + " with args " + arguments.length);
 				return Value.of((String) object);
+			}
+			else if (object instanceof StringBuilder) {
+				System.out.println("+++++ AsValueMetaClass: invokeMethod " + methodName + " on "
+						+ object.getClass().getName() + " with args " + arguments.length);
+				return Value.of((String) object.toString());
 			}
 			else if (object instanceof Boolean) {
 				return Value.of((Boolean) object);

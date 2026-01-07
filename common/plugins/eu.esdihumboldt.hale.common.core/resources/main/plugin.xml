@@ -196,6 +196,10 @@
             for="java.lang.String"
             implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
       </metaClass>
+       <metaClass
+            for="java.lang.StringBuilder"
+            implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
+      </metaClass>
       <metaClass
             for="java.lang.Number"
             implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
@@ -216,7 +220,11 @@
             for="eu.esdihumboldt.hale.common.core.io.ValueProperties"
             implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
       </metaClass>
-      <metaClass
+       <metaClass
+               for="eu.esdihumboldt.hale.common.core.io.Value"
+               implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
+       </metaClass>
+             <metaClass
             for="eu.esdihumboldt.hale.common.core.io.ValueMap"
             implementation="eu.esdihumboldt.hale.common.core.io.internal.AsValueMetaClass">
       </metaClass>

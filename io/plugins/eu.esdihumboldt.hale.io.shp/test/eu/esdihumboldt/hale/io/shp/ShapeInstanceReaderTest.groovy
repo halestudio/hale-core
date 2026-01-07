@@ -338,6 +338,31 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * Test reading Shapefile instance from URL provided by nginx container.
+	 * If Shapefile is provided via URL and contains FIX file then ShapeInstanceReader fails to read the instances.
+	 * This test does not provide the FIX file, so it should also work.
+	 */
+	@Test
+	@CompileStatic(TypeCheckingMode.SKIP)
+	void testING_5018_arok() {
+		def mapOfFile = new HashMap();
+		mapOfFile.put("sanier.dbf", "testdata/arok/sanier.dbf");
+		mapOfFile.put("sanier.prj", "testdata/arok/sanier.prj");
+		mapOfFile.put("sanier.shp", "testdata/arok/sanier.shp");
+		mapOfFile.put("sanier.shx", "testdata/arok/sanier.shx");
+
+		def nginxContainer = createNginxContainerToProvideFileUrls(mapOfFile)
+
+		def host = nginxContainer.getHost()
+		def exposedPort = nginxContainer.getMappedPort(80)
+		def shapeFileUrl = "http://$host:$exposedPort/sanier.shp"
+		Schema xmlSchema = TestUtil.loadSchema(URI.create(shapeFileUrl));
+		InstanceCollection instances = loadInstances(xmlSchema, URI.create(shapeFileUrl))
+		assertNotNull(instances)
+		assertThat(instances.toList()).hasSize(1)
+	}
+
+	/**
 	 * Test reading the base name of a shapefile URL.
 	 */
 	@CompileStatic(TypeCheckingMode.SKIP)
@@ -410,6 +435,7 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 				.withExposedPorts(80)
 				.waitingFor(new HttpWaitStrategy())
 		// add all files
+
 		for (Map.Entry<String, String> entry : mapOfFile.entrySet()) {
 			nginxContainer.withCopyFileToContainer(
 					MountableFile.forClasspathResource(entry.getValue()),

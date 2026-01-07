@@ -13,6 +13,9 @@ package groovy.runtime.metaclass;
 
 import java.lang.reflect.Constructor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import eu.esdihumboldt.util.groovy.meta.extension.MetaClassDescriptor;
 import eu.esdihumboldt.util.groovy.meta.extension.MetaClassExtension;
 import groovy.lang.MetaClass;
@@ -27,10 +30,13 @@ import groovy.lang.MetaClassRegistry.MetaClassCreationHandle;
  */
 public class CustomMetaClassCreationHandle extends MetaClassCreationHandle {
 
+	private static final Logger log = LoggerFactory.getLogger(CustomMetaClassCreationHandle.class);
 	private final MetaClassExtension ext;
 
 	public CustomMetaClassCreationHandle() {
 		ext = new MetaClassExtension();
+		log.info("+++++ CustomMetaClassCreationHandle: initialized with " + ext.getElements().size()
+				+ " meta class descriptors");
 	}
 
 	@Override
@@ -38,7 +44,13 @@ public class CustomMetaClassCreationHandle extends MetaClassCreationHandle {
 			MetaClassRegistry registry) {
 		MetaClass metaClass = super.createNormalMetaClass(theClass, registry);
 
+		// TODO: add some debug messages maybe for string class specifically
+		log.info("+++++ CustomMetaClassCreationHandle: checking for meta class extensions for "
+				+ theClass.getName());
 		for (MetaClassDescriptor descriptor : ext.getElements()) {
+			// TODO: check if AsValueMetaClass is already applied and added here for string
+			log.info("+++++ CustomMetaClassCreationHandle: checking descriptor for "
+					+ descriptor.getForClass().getName() + (descriptor.isForArray() ? "[]" : ""));
 			if (descriptorApplies(descriptor, theClass)) {
 				// create meta class
 				Class<?> delegatingMetaClass = descriptor.getMetaClass();
