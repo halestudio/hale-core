@@ -160,16 +160,18 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		if (!autoDetect) {
 			if (typename != null && !typename.isEmpty()) {
 				try {
-					defaultType = getSourceSchema().getType(QName.valueOf(typename));
-				} catch (Exception e) {
-					// ignore
-				}
-			}
-			if (defaultType == null) {
-				// check if typename was supplied w/o namespace
-				try {
-					defaultType = getSourceSchema()
-							.getType(new QName(ShapefileConstants.SHAPEFILE_NS, typename));
+
+					if ((defaultType = getSourceSchema()
+							.getType(QName.valueOf(typename))) == null) {
+						// check if typename was supplied w/o default Shapefile namespace
+						if ((defaultType = getSourceSchema().getType(
+								new QName(ShapefileConstants.SHAPEFILE_NS, typename))) == null) {
+							// check if typename was supplied w/o namespace
+							defaultType = getSourceSchema().getTypes().stream()
+									.filter(type -> type.getName().getLocalPart().equals(typename))
+									.findFirst().orElse(null);
+						}
+					}
 				} catch (Exception e) {
 					// ignore
 					// TODO report?
