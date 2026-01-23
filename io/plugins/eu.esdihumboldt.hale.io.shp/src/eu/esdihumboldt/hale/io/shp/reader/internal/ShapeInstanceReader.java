@@ -23,8 +23,10 @@ import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.xml.namespace.QName;
 
@@ -160,16 +162,37 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 		if (!autoDetect) {
 			if (typename != null && !typename.isEmpty()) {
 				try {
-					defaultType = getSourceSchema().getType(QName.valueOf(typename));
-				} catch (Exception e) {
-					// ignore
-				}
-			}
-			if (defaultType == null) {
-				// check if typename was supplied w/o namespace
-				try {
-					defaultType = getSourceSchema()
-							.getType(new QName(ShapefileConstants.SHAPEFILE_NS, typename));
+
+					if ((defaultType = getSourceSchema()
+							.getType(QName.valueOf(typename))) == null) {
+						// check if typename was supplied without default Shapefile namespace
+						if ((defaultType = getSourceSchema().getType(
+								new QName(ShapefileConstants.SHAPEFILE_NS, typename))) == null) {
+							// check if typename was supplied without namespace
+							List<TypeDefinition> matchingTypes = getSourceSchema().getTypes()
+									.stream()
+									.filter(type -> type.getName().getLocalPart().equals(typename))
+									.collect(Collectors.toList());
+
+							if (matchingTypes.size() == 1) {
+								// unique match found
+								defaultType = matchingTypes.get(0);
+							}
+							else if (matchingTypes.size() > 1) {
+								// TODO: continue to Auto-detect or return from here?
+								// ambiguous match - multiple types with same local name
+								reporter.warn(
+										"Multiple types found with local name ''{0}'' in different namespaces. "
+												+ "Please specify the full type name including namespace (e.g., ''{1}''). "
+												+ "Matching namespaces: {2}. Schema would be Auto-detected instead.",
+										typename, matchingTypes.get(0).getName().toString(),
+										matchingTypes.stream()
+												.map(type -> type.getName().getNamespaceURI())
+												.collect(Collectors.joining(", ")));
+							}
+							// if no match or ambiguous, defaultType remains null
+						}
+					}
 				} catch (Exception e) {
 					// ignore
 					// TODO report?
