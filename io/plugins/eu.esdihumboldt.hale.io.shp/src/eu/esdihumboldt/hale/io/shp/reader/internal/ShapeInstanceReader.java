@@ -178,11 +178,13 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 								defaultType = matchingTypes.get(0);
 							} else if (matchingTypes.size() > 1) {
 								// multiple matches found, log warning
+								String exampleType = matchingTypes.get(0).getName().toString();
 								reporter.warn(
 										"Multiple types found with local name ''{0}'' in different namespaces. "
-										+ "Please specify the type name with namespace (e.g., '{{namespace}}localname''). "
-										+ "Matching namespaces: {1}",
+										+ "Please specify the full type name including namespace (e.g., ''{1}''). "
+										+ "Matching namespaces: {2}",
 										typename,
+										exampleType,
 										matchingTypes.stream()
 												.map(type -> type.getName().getNamespaceURI())
 												.collect(Collectors.joining(", ")));
