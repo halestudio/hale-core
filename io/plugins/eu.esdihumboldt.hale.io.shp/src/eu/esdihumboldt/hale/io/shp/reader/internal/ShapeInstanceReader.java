@@ -23,8 +23,10 @@ import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.xml.namespace.QName;
 
@@ -167,9 +169,26 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 						if ((defaultType = getSourceSchema().getType(
 								new QName(ShapefileConstants.SHAPEFILE_NS, typename))) == null) {
 							// check if typename was supplied w/o namespace
-							defaultType = getSourceSchema().getTypes().stream()
+							List<TypeDefinition> matchingTypes = getSourceSchema().getTypes().stream()
 									.filter(type -> type.getName().getLocalPart().equals(typename))
-									.findFirst().orElse(null);
+									.collect(Collectors.toList());
+							
+							if (matchingTypes.size() == 1) {
+								// unique match found, use it
+								defaultType = matchingTypes.get(0);
+							} else if (matchingTypes.size() > 1) {
+								// multiple matches found, log warning
+								reporter.warn(
+										"Multiple types found with local name ''{0}'' in different namespaces. "
+										+ "Please specify the type name with namespace (e.g., '{{namespace}}localname''). "
+										+ "Matching namespaces: {1}",
+										typename,
+										matchingTypes.stream()
+												.map(type -> type.getName().getNamespaceURI())
+												.collect(Collectors.joining(", ")));
+								defaultType = null;
+							}
+							// else: no matches found, defaultType remains null
 						}
 					}
 				} catch (Exception e) {
