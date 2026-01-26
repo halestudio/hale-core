@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ns1="http://example.com/ns1"
+           xmlns:ns2="http://example.com/ns2"
+           targetNamespace="http://example.com/ns1"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://example.com/ns2" schemaLocation="ambiguous-ns2.xsd"/>
+
+    <xs:element name="duplicateType" type="ns1:duplicateType"/>
+    <xs:complexType name="duplicateType">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

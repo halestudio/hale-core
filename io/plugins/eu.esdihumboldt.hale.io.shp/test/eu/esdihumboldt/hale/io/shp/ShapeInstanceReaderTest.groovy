@@ -17,7 +17,6 @@ import static org.junit.Assert.assertNotNull
 import static org.junit.Assert.assertTrue
 
 import groovy.transform.CompileStatic
-import groovy.transform.TypeChecked
 import groovy.transform.TypeCheckingMode
 
 import java.nio.charset.StandardCharsets
@@ -35,6 +34,7 @@ import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
 import org.testcontainers.utility.DockerImageName
 import org.testcontainers.utility.MountableFile
 
+import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
@@ -371,7 +371,193 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		assertEquals(expected, actual)
 	}
 
-	// helpers
+	/**
+	 * Test reading Shapefile instances using an XML schema with type specified by local name only.
+	 * The typename parameter is supplied without namespace, and should fall back to local name lookup.
+	 */
+	@Test
+	void testReadXsdInstancesTypenameWithoutNamespace() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/arokfnp/ikg.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+
+		// Set typename parameter to local name only (without namespace)
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("ikg"))
+
+		IOReport report = reader.execute(new LogProgressIndicator())
+
+		assertTrue(report.isSuccess())
+		assertTrue(report.getErrors().isEmpty())
+
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// instance validation - should use the correct type from namespace
+		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/**
+	 * Test reading Shapefile instances using an XML schema with type specified by fully qualified name.
+	 * This tests the primary lookup path (not the fallback).
+	 */
+	@Test
+	void testReadXsdInstancesTypenameWithNamespace() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/arokfnp/ikg.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+
+		// Set typename parameter to fully qualified name
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("{https://www.geoportal-raumordnung-bw.de/arok-fnp}ikg"))
+
+		IOReport report = reader.execute(new LogProgressIndicator())
+
+		assertTrue(report.isSuccess())
+		assertTrue(report.getErrors().isEmpty())
+
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// instance validation
+		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/**
+	 * Test for ambiguous type names (multiple types with same local name in different namespaces)
+	 *
+	 * The expected behavior is:
+	 * 1. When typename parameter is set to a local name that exists in multiple namespaces,
+	 *    the ShapeInstanceReader should issue a warning and NOT select any type (defaultType remains null).
+	 * 2. It should proceed with Auto-Detection of the typebased on the shapefile name.
+	 *
+	 */
+	@Test
+	void testReadXsdInstancesTypenameAmbiguousLocalName() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+
+		// Set typename parameter to local name only (without namespace)
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("duplicateType"))
+
+		IOReport report = reader.execute(new LogProgressIndicator())
+
+		// Should not be successful due to ambiguity
+		assertTrue("Expected report to Auto-Detect typename due to ambiguous typename without namespace", report.isSuccess())
+		assertThat(report.getWarnings()).anyMatch { it.message.contains("Multiple types found with local name") }
+		assertThat(report.getInfos()).anyMatch { it.message.contains("Auto-deteted {http://example.com/ns1}duplicateType as schema type") }
+
+		InstanceCollection instances = reader.getInstances()
+		checkTypeDefinitionForDuplicateType(instances, "http://example.com/ns1")
+	}
+
+
+	/**
+	 * Test for ambiguous type names (multiple types with same local name in different namespaces)
+	 *
+	 * The expected behavior is:
+	 * 1. The user specifies the fully qualified name with namespace to resolve the ambiguity.
+	 *
+	 */
+	@Test
+	void testReadXsdInstancesTypenameAmbiguousLocalNameWithNamespace() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+
+		// Set typename parameter to local name only (with namespace)
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("{http://example.com/ns1}duplicateType"))
+
+		IOReport report = reader.execute(new LogProgressIndicator())
+
+		// Should not be successful due to ambiguity
+		assertTrue("Expected report to find ambiguous typename with namespace", report.isSuccess())
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+		// test count
+		assertThat(list).hasSize(1)
+		checkTypeDefinitionForDuplicateType(instances,"http://example.com/ns1")
+	}
+
+	/**
+	 * Test for ambiguous type names (multiple types with same local name in different namespaces)
+	 *
+	 * The expected behavior is:
+	 * 1. The user specifies the fully qualified name with namespace to resolve the ambiguity.
+	 *
+	 */
+	@Test
+	void testReadXsdInstancesTypenameAmbiguousLocalNameWithNamespace2() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/ambiguous/ambiguous.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+
+		// Set typename parameter to local name only (with namespace)
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("{http://example.com/ns2}duplicateType"))
+
+		IOReport report = reader.execute(new LogProgressIndicator())
+
+		// Should not be successful due to ambiguity
+		assertTrue("Expected report to find ambiguous typename with namespace", report.isSuccess())
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+		// test count
+		assertThat(list).hasSize(1)
+		checkTypeDefinitionForDuplicateType(instances,"http://example.com/ns2")
+	}
+
+	/**
+	 * Check that the instances have the expected type definition for ambiguous duplicateType.
+	 * @param instances
+	 * @param namespaceURL
+	 */
+	private static void checkTypeDefinitionForDuplicateType(InstanceCollection instances, String namespaceURL) {
+		Map<String, List<Instance>> instancesByType = [:]
+
+		instances.iterator().with {
+			while (it.hasNext()) {
+				Instance instance = it.next()
+
+				String typeName = instance.getDefinition().displayName
+				instancesByType.computeIfAbsent(typeName) { [] }
+				instancesByType[typeName] << instance
+			}
+		}
+
+		// check count of feature types
+		assertThat(instancesByType)
+				.hasSize(1)
+				.containsOnlyKeys('duplicateType')
+
+		assertEquals 1, instancesByType.duplicateType.size()
+
+		assertThat(instancesByType.get('duplicateType').get(0).definition.name.namespaceURI)
+				.isEqualTo(namespaceURL)
+	}
 
 	/**
 	 * Load an instance collection from a Shapefile.
