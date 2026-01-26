@@ -23,8 +23,10 @@ import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.xml.namespace.QName;
 
@@ -163,13 +165,27 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 
 					if ((defaultType = getSourceSchema()
 							.getType(QName.valueOf(typename))) == null) {
-						// check if typename was supplied w/o default Shapefile namespace
+						// check if typename was supplied without default Shapefile namespace
 						if ((defaultType = getSourceSchema().getType(
 								new QName(ShapefileConstants.SHAPEFILE_NS, typename))) == null) {
-							// check if typename was supplied w/o namespace
-							defaultType = getSourceSchema().getTypes().stream()
+							// check if typename was supplied without namespace
+							List<TypeDefinition> matchingTypes = getSourceSchema().getTypes().stream()
 									.filter(type -> type.getName().getLocalPart().equals(typename))
-									.findFirst().orElse(null);
+									.collect(Collectors.toList());
+							
+							if (matchingTypes.size() == 1) {
+								// unique match found
+								defaultType = matchingTypes.get(0);
+							} else if (matchingTypes.size() > 1) {
+								// ambiguous match - multiple types with same local name
+								reporter.warn(new IOMessageImpl(
+										"Multiple types found with local name ''{0}'' in different namespaces. Please specify the type with its full namespace. Namespaces found: {1}",
+										null, typename, 
+										matchingTypes.stream()
+												.map(type -> type.getName().getNamespaceURI())
+												.collect(Collectors.joining(", "))));
+							}
+							// if no match or ambiguous, defaultType remains null
 						}
 					}
 				} catch (Exception e) {

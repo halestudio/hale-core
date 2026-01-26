@@ -38,6 +38,7 @@ import org.testcontainers.utility.MountableFile
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
+import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceAccessor
 import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
@@ -370,6 +371,82 @@ class ShapeInstanceReaderTest extends AbstractPlatformTest {
 		def expected = filePath.substring(0,filePath.lastIndexOf("."))
 		assertEquals(expected, actual)
 	}
+
+	/**
+	 * Test reading Shapefile instances using an XML schema with type specified by local name only.
+	 * The typename parameter is supplied without namespace, and should fall back to local name lookup.
+	 */
+	@Test
+	void testReadXsdInstancesTypenameWithoutNamespace() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/arokfnp/ikg.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+		
+		// Set typename parameter to local name only (without namespace)
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("ikg"))
+		
+		IOReport report = reader.execute(new LogProgressIndicator())
+		
+		assertTrue(report.isSuccess())
+		assertTrue(report.getErrors().isEmpty())
+		
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// instance validation - should use the correct type from namespace
+		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/**
+	 * Test reading Shapefile instances using an XML schema with type specified by fully qualified name.
+	 * This tests the primary lookup path (not the fallback).
+	 */
+	@Test
+	void testReadXsdInstancesTypenameWithNamespace() {
+		Schema xmlSchema = TestUtil.loadSchema(getClass().getClassLoader().getResource("testdata/arokfnp/arok-fnp.xsd").toURI())
+
+		ShapeInstanceReader reader = new ShapeInstanceReader()
+		reader.setSource(new DefaultInputSupplier(getClass().getClassLoader().getResource("testdata/arokfnp/ikg.shp").toURI()))
+		reader.setSourceSchema(xmlSchema)
+		reader.setCharset(StandardCharsets.UTF_8)
+		
+		// Set typename parameter to fully qualified name
+		reader.setParameter(ShapeInstanceReader.PARAM_TYPENAME, Value.of("{https://www.geoportal-raumordnung-bw.de/arok-fnp}ikg"))
+		
+		IOReport report = reader.execute(new LogProgressIndicator())
+		
+		assertTrue(report.isSuccess())
+		assertTrue(report.getErrors().isEmpty())
+		
+		InstanceCollection instances = reader.getInstances()
+		assertNotNull(instances)
+		List<Instance> list = instances.toList()
+
+		// test count
+		assertThat(list).hasSize(14)
+
+		// instance validation
+		validateArokFnpIkg(list, 'geometrie')
+	}
+
+	/*
+	 * NOTE: Test for ambiguous type names (multiple types with same local name in different namespaces)
+	 * would require creating an XSD with types having identical local names but different namespaces.
+	 * The expected behavior is:
+	 * 1. When typename parameter is set to a local name that exists in multiple namespaces,
+	 *    the ShapeInstanceReader should issue a warning and NOT select any type (defaultType remains null).
+	 * 2. The warning should list all the namespaces where the type name was found.
+	 * 3. The user should then specify the fully qualified name with namespace to resolve the ambiguity.
+	 * 
+	 * This scenario is handled by the code in lines 172-187 of ShapeInstanceReader.java.
+	 */
 
 	// helpers
 
