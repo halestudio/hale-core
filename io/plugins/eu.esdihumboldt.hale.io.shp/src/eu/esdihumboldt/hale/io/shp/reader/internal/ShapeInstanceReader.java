@@ -179,7 +179,7 @@ public class ShapeInstanceReader extends AbstractInstanceReader implements Shape
 								defaultType = matchingTypes.get(0);
 							}
 							else if (matchingTypes.size() > 1) {
-								// TODO: continue to Auto-detect or return from here?
+								// continue to Auto-detect
 								// ambiguous match - multiple types with same local name
 								reporter.warn(
 										"Multiple types found with local name ''{0}'' in different namespaces. "
