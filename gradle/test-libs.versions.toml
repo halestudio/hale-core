@@ -1,7 +1,7 @@
 [versions]
 junit4 = "4.13.2"
 allure = "2.32.0"
-assertj = "3.27.6"
+assertj = "3.27.7"
 testcontainers = "1.21.4"
 aspectj = "1.9.25.1"
 
