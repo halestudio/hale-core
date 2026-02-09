@@ -101,7 +101,7 @@ xmlbeans = {module = "org.apache.xmlbeans:xmlbeans", version = "5.3.0"}
 
 commons-io = {module = "commons-io:commons-io", version = "2.21.0"}
 commons-lang = {module = "commons-lang:commons-lang", version = "2.6"}
-commons-codec = {module = "commons-codec:commons-codec", version = "1.20.0"}
+commons-codec = {module = "commons-codec:commons-codec", version = "1.21.0"}
 
 # update transitively used version to fix CVEs
 commons-beanutils = {module = "commons-beanutils:commons-beanutils", version = "1.11.0"}
