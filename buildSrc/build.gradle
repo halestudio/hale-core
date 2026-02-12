@@ -21,7 +21,7 @@ dependencies {
 
   implementation 'com.gradleup.shadow:shadow-gradle-plugin:9.3.1'
 
-  implementation 'io.qameta.allure.gradle.adapter:allure-adapter-plugin:3.0.1'
+  implementation 'io.qameta.allure.gradle.adapter:allure-adapter-plugin:3.0.2'
 
   implementation 'org.cyclonedx.bom:org.cyclonedx.bom.gradle.plugin:3.1.0'
 
