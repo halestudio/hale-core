@@ -25,7 +25,7 @@ dependencies {
 
   implementation 'org.cyclonedx.bom:org.cyclonedx.bom.gradle.plugin:3.2.0'
 
-  implementation 'to.wetransform.gradle:convention-plugins:2.2.0'
+  implementation 'to.wetransform.gradle:convention-plugins:2.3.0'
 
   // implementation 'com.github.spotbugs:com.github.spotbugs.gradle.plugin:6.1.7'
 }
