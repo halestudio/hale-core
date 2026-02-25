@@ -153,7 +153,7 @@ jakarta-xml-bind-api = {module = "jakarta.xml.bind:jakarta.xml.bind-api", versio
 
 apache-ws-xsd = {module = "org.apache.ws.commons.schema:XmlSchema", version = "1.4.7"}
 
-hc-users = {module = "com.haleconnect.api:haleconnect-user-api", version = "1.0.2"}
+hc-users = {module = "com.haleconnect.api:haleconnect-user-api", version = "1.1.0"}
 hc-projects = {module = "com.haleconnect.api:haleconnect-project-api", version = "0.1.0"}
 hc-projectstore = {module = "com.haleconnect.api:haleconnect-projectstore-api", version = "1.6.0"}
 hc-buckets = {module = "com.haleconnect.api:haleconnect-bucket-api", version = "1.0.1"}
