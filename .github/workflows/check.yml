@@ -23,7 +23,7 @@ jobs:
           ./gradlew spotlessCheck
 
   check:
-    uses: wetransform/gha-workflows/.github/workflows/gradle-library-check.yml@b8c149abb6fed430a99dbd7ca25a093ffe875ab1 # v4.0.0
+    uses: wetransform/gha-workflows/.github/workflows/gradle-library-check.yml@2740e518e1d9ea2e965a901281e051ea26e3512c # v4.1.0
     needs: spotless
     with:
       java-version: 17
