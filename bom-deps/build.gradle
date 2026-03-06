@@ -26,4 +26,7 @@ dependencies {
 
   // SLF4J BOM
   api(platform("org.slf4j:slf4j-bom:${libs.versions.slf4j.get()}"))
+
+  // Jackson BOM
+  api(platform("com.fasterxml.jackson:jackson-bom:${libs.versions.jackson.get()}"))
 }
