@@ -28,6 +28,8 @@ jobs:
 
       - name: Squash history
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan temp-squash
           git add -A
           git commit -m "chore: squash gh-pages history"
