@@ -77,6 +77,7 @@ jobs:
           gh_pages: gh-pages
           allure_history: allure-history
           allure_results: allure-results
+          keep_reports: 20
           # needs to be adapted because action adds redirect
           report_url: https://${{ github.repository_owner }}.github.io/hale-core/pr-preview/pr-${{ github.event.pull_request.number }}
 
