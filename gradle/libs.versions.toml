@@ -188,8 +188,9 @@ sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.51.2.0"}
 
 typesafe-config = {module = "com.typesafe:config", version = "1.4.6"}
 
-jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson"}
-jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
+jackson-bom = {module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson"}
+jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations"}
+jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind"}
 
 ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "5.0.1"}
 
