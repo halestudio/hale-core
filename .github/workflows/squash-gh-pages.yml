@@ -1,0 +1,35 @@
+---
+name: Squash gh-pages history
+
+on:
+  schedule:
+    # First day of each month at 03:00 UTC
+    - cron: '0 3 1 * *'
+  workflow_dispatch: {}
+
+concurrency:
+  group: gh-pages-squash
+
+jobs:
+  squash:
+    runs-on: ubuntu-latest
+    # Only on main repository (no squashing on forks)
+    if: github.repository_owner == 'halestudio'
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Squash history
+        run: |
+          git checkout --orphan temp-squash
+          git add -A
+          git commit -m "chore: squash gh-pages history"
+          git branch -M temp-squash gh-pages
+          git push --force origin gh-pages
