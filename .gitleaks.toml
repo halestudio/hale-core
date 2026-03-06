@@ -1,0 +1,9 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Ignore false positives in PR preview for GitHub pages"
+targetRules = ["generic-api-key"]
+paths = [
+  '''(.*?)(data/suites.csv)'''
+]
