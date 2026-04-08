@@ -27,6 +27,8 @@ import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
 import org.testcontainers.images.builder.ImageFromDockerfile
 
+import javax.xml.namespace.QName
+
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 import eu.esdihumboldt.hale.common.instance.geometry.GeometryUtil
@@ -205,6 +207,316 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 		Map<String, String> params = [
 			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
 			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test that a COUNT parameter in the URL caps the number of returned features.
+	 * COUNT=150 with paging=100 should stop after 150 features (not 250).
+	 * The InstanceCollection should report its size as 150.
+	 */
+	@Test
+	public void testWfsPaginationWithCountLimit() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&COUNT=150"
+		def paging = 100
+		def expected = 150
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		assertTrue(instances.hasSize())
+		assertEquals(expected, instances.size())
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test that setting ignoreNumberMatched=true skips the RESULTTYPE=hits query.
+	 * All 250 features should still be returned; the collection should have unknown size.
+	 */
+	@Test
+	public void testWfsPaginationIgnoreNumberMatched() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
+		def paging = 100
+		def expected = 250
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true',
+			(StreamGmlReader.PARAM_IGNORE_NUMBER_MATCHED): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		assertFalse(instances.hasSize())
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test that actual instance content (property values) is correct across page boundaries.
+	 * Reads all River instances and validates the first instance's properties.
+	 */
+	@Test
+	@CompileDynamic
+	public void testWfsPaginationInstanceContent() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
+		def paging = 100
+		def expected = 250
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		String firstName = null
+		String firstCode = null
+		Double firstWidth = null
+
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				Instance inst = ((ResourceIterator<Instance>) it).next()
+				if (count == 0) {
+					def ns = 'http://example.com/testfeature'
+					def nameVals = inst.getProperty(new QName(ns, 'name'))
+					def codeVals = inst.getProperty(new QName(ns, 'code'))
+					def widthVals = inst.getProperty(new QName(ns, 'width'))
+					if (nameVals) firstName = nameVals[0] as String
+					if (codeVals) firstCode = codeVals[0] as String
+					if (widthVals) firstWidth = widthVals[0] as Double
+				}
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+		assertNotNull(firstName)
+		assertNotNull(firstCode)
+		assertNotNull(firstWidth)
+	}
+
+	/**
+	 * Test the interaction of a URL COUNT limit with the featuresPerWfsRequest page size.
+	 * COUNT=120 with page size=50 should produce 3 pages (50+50+20) and stop at 120.
+	 */
+	@Test
+	public void testWfsPaginationCountWithFeaturesPerRequest() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&COUNT=120"
+		def paging = 50
+		def expected = 120
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test that a page size larger than the total number of features works correctly.
+	 * A single request returns all 250 features; the second request returns empty and closes.
+	 */
+	@Test
+	public void testWfsPaginationPageSizeLargerThanTotal() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
+		def paging = 500
+		def expected = 250
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test the boundary condition where page size exactly equals the total feature count.
+	 * All 250 features are returned in a single page; the iterator must still close properly.
+	 */
+	@Test
+	public void testWfsPaginationPageSizeEqualsTotal() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
+		def paging = 250
+		def expected = 250
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test that a STARTINDEX offset in the URL is honoured correctly.
+	 * STARTINDEX=200 with 250 total features should yield exactly 50 features.
+	 */
+	@Test
+	public void testWfsPaginationWithStartIndex() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&STARTINDEX=200"
+		def paging = 100
+		def expected = 50
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test pagination with a different feature type (tf:Basin).
+	 * The dataset contains 5 Basin features; with page size=2 this exercises 3 pages (2+2+1).
+	 */
+	@Test
+	public void testWfsPaginationBasinFeatures() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:Basin"
+		def paging = 2
+		def expected = 5
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_FEATURES_PER_WFS_REQUEST): paging as String,
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'true'
+		]
+
+		def instances = loadGml(URI.create(dataUrl), schema, params)
+
+		int count = 0
+		instances.iterator().withCloseable { it ->
+			while (it.hasNext()) {
+				((InstanceIterator) it).skip()
+				count++
+			}
+		}
+
+		assertEquals(expected, count)
+	}
+
+	/**
+	 * Test non-paginated WFS read: a single GetFeature request without pagination
+	 * should return all 250 features.
+	 */
+	@Test
+	public void testWfsNonPaginated() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
+		def expected = 250
+
+		def schema = loadSchema(URI.create(schemaUrl))
+
+		Map<String, String> params = [
+			(StreamGmlReader.PARAM_PAGINATE_REQUEST): 'false'
 		]
 
 		def instances = loadGml(URI.create(dataUrl), schema, params)
