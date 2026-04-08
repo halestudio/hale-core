@@ -13,12 +13,19 @@ package eu.esdihumboldt.hale.io.gml.reader.internal
 
 import static org.junit.Assert.*
 
+import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 
+import java.time.Duration
+
 import org.geotools.api.referencing.crs.CoordinateReferenceSystem
+import org.junit.AfterClass
 import org.junit.Before
-import org.junit.Ignore
+import org.junit.BeforeClass
 import org.junit.Test
+import org.testcontainers.containers.GenericContainer
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
+import org.testcontainers.images.builder.ImageFromDockerfile
 
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
@@ -42,6 +49,40 @@ import io.qameta.allure.Link
 @SuppressWarnings("restriction")
 @CompileStatic
 class StreamGmlReaderTest extends AbstractPlatformTest {
+
+	@SuppressWarnings("rawtypes")
+	static GenericContainer deegreeContainer
+
+	@BeforeClass
+	@CompileDynamic
+	static void startDeegreeContainer() {
+		def image = new ImageFromDockerfile()
+				.withFileFromClasspath('Dockerfile', 'data/deegree-wfs/Dockerfile')
+				.withFileFromClasspath('workspace/services/wfs.xml', 'data/deegree-wfs/workspace/services/wfs.xml')
+				.withFileFromClasspath('workspace/datasources/feature/memory.xml', 'data/deegree-wfs/workspace/datasources/feature/memory.xml')
+				.withFileFromClasspath('workspace/appschemas/testfeature.xsd', 'data/deegree-wfs/workspace/appschemas/testfeature.xsd')
+				.withFileFromClasspath('workspace/data/features.gml', 'data/deegree-wfs/workspace/data/features.gml')
+
+		def waitStrategy = new HttpWaitStrategy()
+				.forPort(8080)
+				.forPath('/deegree-webservices/services/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&COUNT=1')
+				.forResponsePredicate({ body -> body.contains('tf:River') })
+				.withStartupTimeout(Duration.ofSeconds(120))
+
+		deegreeContainer = new GenericContainer(image)
+				.withExposedPorts(8080)
+				.waitingFor(waitStrategy)
+		deegreeContainer.start()
+	}
+
+	@AfterClass
+	static void stopDeegreeContainer() {
+		deegreeContainer?.stop()
+	}
+
+	static String wfsBaseUrl() {
+		"http://${deegreeContainer.host}:${deegreeContainer.getMappedPort(8080)}/deegree-webservices/services/wfs"
+	}
 
 	@Before
 	void clearResolverCache() {
@@ -108,17 +149,18 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 		}
 	}
 
-	@Ignore
+	/**
+	 * Test retrieving all features from a local WFS using pagination.
+	 * The test data contains 250 River features served by a deegree WFS backed
+	 * by a Memory Feature Store.
+	 */
 	@Test
-	public void testSkipWfs() {
-		/*
-		 * FIXME relies on external resources that are not guaranteed to exist and is thus not enabled for automated testing.
-		 * Better would be a test that could mock the WFS responses (e.g. a mock service running w/ testcontainers)
-		 */
-		def schemaUrl = 'https://test.haleconnect.de/ows/services/org.325.bf74352b-36e7-4711-9aca-bdec2658ef68_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType'
-		def dataUrl = 'https://test.haleconnect.de/ows/services/org.325.bf74352b-36e7-4711-9aca-bdec2658ef68_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&NAMESPACES=xmlns%28ex%2Ceu%3Aesdihumboldt%3Ahale%3Aexample%29&TYPENAMES=ex%3ARiver'
+	public void testWfsPagination() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River"
 		def paging = 100
-		def expected = 982
+		def expected = 250
 
 		def schema = loadSchema(URI.create(schemaUrl))
 
@@ -134,34 +176,29 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 			while (it.hasNext()) {
 				((InstanceIterator) it).skip()
 				count++
-				if (count % 100 == 0) {
-					println("$count instances skipped")
-				}
 			}
 		}
 
-		println("$count instances skipped")
 		assertEquals(expected, count)
 	}
 
 	/**
-	 * Test retrieving all features from a WFS when using pagination and resolvedepth.
-	 *
-	 * Additional objects need to be included in the results.
-	 * There should be no duplicate features even if the individual requests repeatedly include the same features.
+	 * Test retrieving all features from a local WFS when using pagination and resolvedepth.
+	 * Each River feature references a Basin via xlink:href. With resolvedepth=*, deegree
+	 * inlines the referenced Basin inside the River's property on each paginated response.
+	 * The {@link eu.esdihumboldt.hale.io.gml.reader.internal.wfs.DuplicateIDsFilterIterator}
+	 * is activated by the presence of RESOLVEDEPTH in the URL.
+	 * Since each River has a unique GML id the iterator returns all 250 Rivers.
 	 */
 	@Link(value = "1084", type = "hale")
 	@Link(value = "ING-4128", type = "JIRA")
 	@Test
-	public void testWfsPagination() {
-		/*
-		 * FIXME relies on external resources that are not guaranteed to exist and is thus not enabled for automated testing.
-		 * Better would be a test that could mock the WFS responses (e.g. a mock service running w/ testcontainers)
-		 */
-		def schemaUrl = 'https://geodienste.komm.one/ows/services/org.107.7e499bca-5e63-4595-b3c4-eaece8b68608_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType'
-		def dataUrl = 'https://geodienste.komm.one/ows/services/org.107.7e499bca-5e63-4595-b3c4-eaece8b68608_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=xplan:BP_Plan&resolvedepth=*'
+	public void testWfsPaginationWithResolvedepth() {
+		def base = wfsBaseUrl()
+		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
+		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&resolvedepth=*"
 		def paging = 100
-		def expected = 2262
+		def expected = 250
 
 		def schema = loadSchema(URI.create(schemaUrl))
 

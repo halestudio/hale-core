@@ -1,0 +1,4 @@
+<MemoryFeatureStore xmlns="http://www.deegree.org/datasource/feature/memory">
+  <GMLSchema version="GML_32">../../appschemas/testfeature.xsd</GMLSchema>
+  <GMLFeatureCollection version="GML_32">../../data/features.gml</GMLFeatureCollection>
+</MemoryFeatureStore>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tf="http://example.com/testfeature"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        targetNamespace="http://example.com/testfeature"
+        elementFormDefault="qualified">
+
+  <import namespace="http://www.opengis.net/gml/3.2"
+          schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+
+  <element name="Basin" type="tf:BasinType" substitutionGroup="gml:AbstractFeature"/>
+  <complexType name="BasinType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="name" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <element name="River" type="tf:RiverType" substitutionGroup="gml:AbstractFeature"/>
+  <complexType name="RiverType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="name" type="string"/>
+          <element name="code" type="string"/>
+          <element name="width" type="double"/>
+          <element name="basin" type="tf:BasinPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <!-- Feature property type enabling xlink:href references to Basin features -->
+  <complexType name="BasinPropertyType">
+    <sequence minOccurs="0">
+      <element ref="tf:Basin"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+
+</schema>
