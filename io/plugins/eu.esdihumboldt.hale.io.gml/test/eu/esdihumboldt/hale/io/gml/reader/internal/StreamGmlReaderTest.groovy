@@ -18,6 +18,8 @@ import groovy.transform.CompileStatic
 
 import java.time.Duration
 
+import javax.xml.namespace.QName
+
 import org.geotools.api.referencing.crs.CoordinateReferenceSystem
 import org.junit.AfterClass
 import org.junit.Before
@@ -26,8 +28,6 @@ import org.junit.Test
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
 import org.testcontainers.images.builder.ImageFromDockerfile
-
-import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
@@ -54,6 +54,8 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 
 	@SuppressWarnings("rawtypes")
 	static GenericContainer deegreeContainer
+
+	static final int PAGE_SIZE_HAS_ADDITIONAL_RIVERS = 13
 
 	@BeforeClass
 	@CompileDynamic
@@ -185,22 +187,96 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * Verify the deegree WFS serves wfs:additionalObjects containing both Basin and River features
+	 * when querying tf:River with resolvedepth=*. With limited count, the first page of Rivers is returned
+	 * as wfs:member elements, and the resolved Basin references (plus River back-references from
+	 * those Basins that fall outside the page) are returned in wfs:additionalObjects.
+	 * Prints a full summary of members and additional objects to aid debugging.
+	 *
+	 * Please note that features only appear in wfs:additionalObjects because the related properties only
+	 * allow references. If the schema would allow nesting the related features directly, deegree would
+	 * return them as nested elements in the main wfs:member features instead of putting them in
+	 * additionalObjects. This can also lead to some of the Feature Collection members to be references,
+	 * if the related objects appeared before inline.
+	 */
+	@Test
+	@CompileDynamic
+	public void testWfsResolvedepthResponseStructure() {
+		def base = wfsBaseUrl()
+		def count = PAGE_SIZE_HAS_ADDITIONAL_RIVERS
+		def url = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&resolvedepth=*&COUNT=${count}"
+
+		def xmlText = new URL(url).text
+
+		println '=== Complete WFS GetFeature response:'
+		println xmlText
+		println '==='
+
+		// Non-namespace-aware parser so element names retain their prefix (e.g. "tf:River", "tf:Basin")
+		def fc = new XmlSlurper(false, false).parseText(xmlText)
+
+		// Direct wfs:member children hold the main result features
+		List members = fc.'wfs:member'.collect { member ->
+			def feature = member.children()[0]
+			[type: feature.name(), id: feature.'@gml:id'.text()]
+		}
+
+		// wfs:additionalObjects > wfs:SimpleFeatureCollection > wfs:member
+		List additional = fc.'wfs:additionalObjects'.'wfs:SimpleFeatureCollection'.'wfs:member'.collect { member ->
+			def feature = member.children()[0]
+			[type: feature.name(), id: feature.'@gml:id'.text()]
+		}
+
+		println "=== WFS GetFeature resolvedepth=* response structure (COUNT=${count}) ==="
+		println "Members (${members.size()}):"
+		members.each { f -> println "  ${f.type} ${f.id}" }
+		println "Additional Objects (${additional.size()}):"
+		additional.each { f -> println "  ${f.type} ${f.id}" }
+		println "==="
+
+		assertEquals(count, members.size())
+		assertTrue("All members should be Rivers", members.every { it.type == 'tf:River' })
+		assertFalse("Should have additional objects", additional.isEmpty())
+		assertTrue("Additional objects should include at least one Basin",
+				additional.any { it.type == 'tf:Basin' })
+		assertTrue("Additional objects should include at least one River",
+				additional.any { it.type == 'tf:River' })
+	}
+
+	/**
 	 * Test retrieving all features from a local WFS when using pagination and resolvedepth.
-	 * Each River feature references a Basin via xlink:href. With resolvedepth=*, deegree
-	 * inlines the referenced Basin inside the River's property on each paginated response.
-	 * The {@link eu.esdihumboldt.hale.io.gml.reader.internal.wfs.DuplicateIDsFilterIterator}
-	 * is activated by the presence of RESOLVEDEPTH in the URL.
-	 * Since each River has a unique GML id the iterator returns all 250 Rivers.
+	 * Each River references a Basin via xlink:href, and each Basin references back to a set
+	 * of Rivers (spanning page boundaries). With resolvedepth=* and a limited page size, some
+	 * of the features are expected to appear on different pages (via additionalObjects). The
+	 * {@link eu.esdihumboldt.hale.io.gml.reader.internal.wfs.DuplicateIDsFilterIterator}
+	 * is activated by the presence of RESOLVEDEPTH in the URL and ensures each unique GML id
+	 * is returned exactly once. The first 50 lines of the first paginated WFS response are
+	 * printed to aid debugging of the deegree resolvedepth behaviour.
 	 */
 	@Link(value = "1084", type = "hale")
 	@Link(value = "ING-4128", type = "JIRA")
 	@Test
+	@CompileDynamic
 	public void testWfsPaginationWithResolvedepth() {
 		def base = wfsBaseUrl()
 		def schemaUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType"
 		def dataUrl = "${base}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typenames=tf:River&resolvedepth=*"
-		def paging = 100
-		def expected = 250
+		def paging = PAGE_SIZE_HAS_ADDITIONAL_RIVERS
+		def expectedRivers = 250
+		def expectedBasins = 5
+
+		// Print first 50 lines of pages 1 and 2 to aid debugging of deegree resolvedepth behaviour
+		[0, paging].eachWithIndex { startIndex, pageNum ->
+			def pageUrl = "${dataUrl}&COUNT=${paging}&STARTINDEX=${startIndex}"
+			def pageText = new URL(pageUrl).openStream().withCloseable { s ->
+				new InputStreamReader(s, 'UTF-8').withCloseable { r ->
+					r.readLines().take(50).join('\n')
+				}
+			}
+			println "=== First 50 lines of WFS GetFeature response (resolvedepth=*, page ${pageNum + 1}) ==="
+			println pageText
+			println "==="
+		}
 
 		def schema = loadSchema(URI.create(schemaUrl))
 
@@ -211,15 +287,32 @@ class StreamGmlReaderTest extends AbstractPlatformTest {
 
 		def instances = loadGml(URI.create(dataUrl), schema, params)
 
+		def gmlIdQName = new QName('http://www.opengis.net/gml/3.2', 'id')
+		Set<String> returnedIds = new LinkedHashSet<>()
 		int count = 0
+		int riverCount = 0
 		instances.iterator().withCloseable { it ->
 			while (it.hasNext()) {
-				((InstanceIterator) it).skip()
+				Instance inst = ((ResourceIterator<Instance>) it).next()
+				def ids = inst.getProperty(gmlIdQName)
+				if (ids) returnedIds.add(ids[0] as String)
 				count++
+				if (inst.getDefinition().getName().getLocalPart() == 'RiverType') {
+					riverCount++
+				}
 			}
 		}
 
-		assertEquals(expected, count)
+		def expectedIds = (1..250).collect { "river_${it}" } as Set
+		def missing = expectedIds - returnedIds
+		def extra = returnedIds - expectedIds
+		if (missing) println "Missing IDs: ${missing.sort()}"
+		if (extra) println "Extra (non-river) IDs: ${extra.take(10)}"
+		println "Returned ${count} features total, of which ${riverCount} are Rivers"
+
+		assertEquals(expectedRivers, riverCount)
+		assertEquals(expectedBasins, extra.size())
+		assertEquals(expectedRivers + expectedBasins, count)
 	}
 
 	/**

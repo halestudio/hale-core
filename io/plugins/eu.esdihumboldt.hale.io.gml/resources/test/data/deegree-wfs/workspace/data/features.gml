@@ -4,19 +4,44 @@
                        xmlns:xlink="http://www.w3.org/1999/xlink"
                        gml:id="test-collection">
   <gml:featureMember>
-    <tf:Basin gml:id="basin_1"><tf:name>Basin 1</tf:name></tf:Basin>
+    <tf:Basin gml:id="basin_1">
+      <tf:name>Basin 1</tf:name>
+      <tf:river xlink:href="#river_1"/>
+      <tf:river xlink:href="#river_101"/>
+      <tf:river xlink:href="#river_201"/>
+    </tf:Basin>
   </gml:featureMember>
   <gml:featureMember>
-    <tf:Basin gml:id="basin_2"><tf:name>Basin 2</tf:name></tf:Basin>
+    <tf:Basin gml:id="basin_2">
+      <tf:name>Basin 2</tf:name>
+      <tf:river xlink:href="#river_2"/>
+      <tf:river xlink:href="#river_102"/>
+      <tf:river xlink:href="#river_202"/>
+    </tf:Basin>
   </gml:featureMember>
   <gml:featureMember>
-    <tf:Basin gml:id="basin_3"><tf:name>Basin 3</tf:name></tf:Basin>
+    <tf:Basin gml:id="basin_3">
+      <tf:name>Basin 3</tf:name>
+      <tf:river xlink:href="#river_3"/>
+      <tf:river xlink:href="#river_103"/>
+      <tf:river xlink:href="#river_203"/>
+    </tf:Basin>
   </gml:featureMember>
   <gml:featureMember>
-    <tf:Basin gml:id="basin_4"><tf:name>Basin 4</tf:name></tf:Basin>
+    <tf:Basin gml:id="basin_4">
+      <tf:name>Basin 4</tf:name>
+      <tf:river xlink:href="#river_4"/>
+      <tf:river xlink:href="#river_104"/>
+      <tf:river xlink:href="#river_204"/>
+    </tf:Basin>
   </gml:featureMember>
   <gml:featureMember>
-    <tf:Basin gml:id="basin_5"><tf:name>Basin 5</tf:name></tf:Basin>
+    <tf:Basin gml:id="basin_5">
+      <tf:name>Basin 5</tf:name>
+      <tf:river xlink:href="#river_5"/>
+      <tf:river xlink:href="#river_105"/>
+      <tf:river xlink:href="#river_205"/>
+    </tf:Basin>
   </gml:featureMember>
   <gml:featureMember>
     <tf:River gml:id="river_1">

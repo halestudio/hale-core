@@ -15,6 +15,7 @@
       <extension base="gml:AbstractFeatureType">
         <sequence>
           <element name="name" type="string"/>
+          <element name="river" type="tf:RiverPropertyType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
       </extension>
     </complexContent>
@@ -34,11 +35,14 @@
     </complexContent>
   </complexType>
 
-  <!-- Feature property type enabling xlink:href references to Basin features -->
+  <!-- Reference-only property type for Basin features (no inline allowed) -->
   <complexType name="BasinPropertyType">
-    <sequence minOccurs="0">
-      <element ref="tf:Basin"/>
-    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+
+  <!-- Reference-only property type for River features (no inline allowed) -->
+  <complexType name="RiverPropertyType">
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
