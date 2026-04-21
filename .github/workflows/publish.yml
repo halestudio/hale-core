@@ -20,7 +20,7 @@ jobs:
     with:
       multi-module: true
       skip-scan: true
-      build-tasks: '--continue clean spotlessCheck check :allure:allureAggreggateResults'
+      build-tasks: "--continue clean spotlessCheck check :allure:allureAggreggateResults"
       upload-artifact-path: allure/build/allure-results
       upload-artifact-name: allure-results
     secrets:

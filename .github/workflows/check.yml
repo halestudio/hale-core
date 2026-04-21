@@ -28,7 +28,7 @@ jobs:
     with:
       multi-module: true
       skip-scan: true
-      gradle-tasks: '--continue clean check :allure:allureAggreggateResults' # perform all tasks even if tests of one project fail
+      gradle-tasks: "--continue clean check :allure:allureAggreggateResults" # perform all tasks even if tests of one project fail
       upload-artifact-path: allure/build/allure-results
       upload-artifact-name: allure-results
     secrets:
@@ -47,7 +47,7 @@ jobs:
   allure:
     # https://allurereport.org/docs/integrations-github/
     runs-on: ubuntu-latest
-    if: ${{ failure() && !startsWith(github.head_ref, 'renovate/') }}  # only if tests fail, but not for renovate changes
+    if: ${{ failure() && !startsWith(github.head_ref, 'renovate/') }} # only if tests fail, but not for renovate changes
     needs: check
     concurrency:
       group: allure-${{ github.ref }}
