@@ -23,7 +23,7 @@ jobs:
     with:
       multi-module: true
       skip-scan: true
-      build-tasks: 'clean spotlessCheck check'
+      build-tasks: "clean spotlessCheck check"
       semantic-release: true
       semantic-release-dryrun: ${{ inputs.dryRun }}
     secrets:

@@ -1,5 +1,4 @@
-hale-core
-=========
+# hale-core
 
 [![publish](https://github.com/halestudio/hale-core/actions/workflows/publish.yml/badge.svg)](https://github.com/halestudio/hale-core/actions/workflows/publish.yml)
 [![allure](https://img.shields.io/badge/Allure-test%20report-blue.svg)](https://halestudio.github.io/hale-core/)
@@ -39,7 +38,6 @@ There are at least the following options to integrate the formatting in IntelliJ
 2. Automatically run `spotlessApply` before building (right click on Gradle task in UI, select respective option)
 3. Add the call to Gradle as external tool and assign a key binding (Settings -> Tools -> External tools; Settings -> Keymap)
 4. Add a file watcher (requires file watchers plugin) to run spotless for individual changed files **(recommended)**
-
 
 ## Allure test framework
 
@@ -86,8 +84,7 @@ The following link types are supported:
 | hale      | hale studio GitHub issue | `@Link(value = "1136", type = "hale")`     |
 | JIRA      | wetransform JIRA         | `@Link(value = "ING-4128", type = "JIRA")` |
 
-
 ## License
 
-* The main hale components/libaries are released under the GNU Lesser General Public License (LGPL) v3.0.
-* Different licenses may apply to the extensions residing in **ext/**, please see the respective subfolders.
+- The main hale components/libaries are released under the GNU Lesser General Public License (LGPL) v3.0.
+- Different licenses may apply to the extensions residing in **ext/**, please see the respective subfolders.
