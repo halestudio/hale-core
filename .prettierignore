@@ -1,0 +1,2 @@
+# ignore Explanation files that are processed as templates
+*Explanation*.md

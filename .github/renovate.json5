@@ -3,6 +3,7 @@
   extends: [
     "github>wetransform/renovate-config:default.json5",
     "github>wetransform/renovate-config:hale-studio.json5",
+    "github>wetransform/renovate-config:java-17.json5",
 
     // Updates to build dependencies use build commits to not trigger a release
     ":pathSemanticCommitType(build/**/build.gradle,build)",
@@ -14,32 +15,32 @@
   // If you're looking for an online regex testing tool that supports capture groups, try regex101.com. You must select the ECMAScript (JavaScript) flavor of regex. Be aware that backslashes ('\') of the resulting regex have to still be escaped e.g. \n\s --> \\n\\s. You can use the Code Generator in the sidebar and copy the regex in the generated "Alternative syntax" comment into JSON.
   customManagers: [
     {
-      "customType": "regex",
-      "fileMatch": ["\\.target$"],
-      "datasourceTemplate": "custom.p2OfflineResources",
-      "matchStrings": [
+      customType: "regex",
+      managerFilePatterns: ["/\\.target$/"],
+      datasourceTemplate: "custom.p2OfflineResources",
+      matchStrings: [
         // Example: <unit id="to.wetransform.offlineresources.feature.feature.group" version="2024.3.15.bnd-bQhqgw"/>
         // https://regex101.com/r/OGGb5r/1
-        '<unit id="to\\.wetransform\\.offlineresources\\.feature\\.feature\\.group" version="(?<currentValue>.*?)"\\/>'
+        '<unit id="to\\.wetransform\\.offlineresources\\.feature\\.feature\\.group" version="(?<currentValue>.*?)"\\/>',
       ],
       // OSGi version with optional qualifier - https://regex101.com/r/SHYlv1/1
-      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(\\.(?<build>[\\w\\-]+))?$",
+      versioningTemplate: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(\\.(?<build>[\\w\\-]+))?$",
       // fixed dependency name for now, but could in principle also be extracted and used in the custom data source
-      "depNameTemplate": "to.wetransform.offlineresources.feature"
-    }
+      depNameTemplate: "to.wetransform.offlineresources.feature",
+    },
   ],
   customDatasources: {
     // custom datasource for feature "to.wetransform.offlineresources.feature" from offline-resources update site
     p2OfflineResources: {
-      "defaultRegistryUrlTemplate": "http://build-artifacts.wetransform.to/p2/offline-resources/site/to.wetransform.offlineresources.feature_versions.json",
-    }
+      defaultRegistryUrlTemplate: "http://build-artifacts.wetransform.to/p2/offline-resources/site/to.wetransform.offlineresources.feature_versions.json",
+    },
   },
   packageRules: [
     // Using current maven-embedder or maven-compat versions results in build errors like this:
     // java.lang.NoSuchMethodError: 'java.util.List org.eclipse.aether.spi.connector.layout.RepositoryLayout.getChecksums(org.eclipse.aether.artifact.Artifact, boolean, java.net.URI)'
     {
-      matchPackagePrefixes: ["org.apache.maven:maven-"],
+      matchPackageNames: ["org.apache.maven:maven-{/,}**"],
       allowedVersions: "< 3.9",
     },
-  ]
+  ],
 }

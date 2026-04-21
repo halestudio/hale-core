@@ -1,4 +1,5 @@
 name: "Generate and scan SBOM"
+description: Generate and scan a Software Bill of Materials (SBOM) for vulnerabilities using CycloneDX and Trivy.
 
 runs:
   using: "composite"

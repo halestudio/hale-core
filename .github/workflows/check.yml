@@ -26,7 +26,6 @@ jobs:
     uses: wetransform/gha-workflows/.github/workflows/gradle-library-check.yml@1e60dcabbcf6acccf458c4626baaef1db63f9a8a # v4.1.3
     needs: spotless
     with:
-      java-version: 17
       multi-module: true
       skip-scan: true
       gradle-tasks: '--continue clean check :allure:allureAggreggateResults' # perform all tasks even if tests of one project fail
