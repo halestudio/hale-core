@@ -2,7 +2,7 @@
 junit4 = "4.13.2"
 allure = "2.34.0"
 assertj = "3.27.7"
-testcontainers = "1.21.4"
+testcontainers = "2.0.5"
 aspectj = "1.9.25.1"
 
 [libraries]
@@ -16,7 +16,7 @@ assertj = {module = "org.assertj:assertj-core", version.ref = "assertj"}
 
 testcontainers-core = {module = "org.testcontainers:testcontainers", version.ref = "testcontainers"}
 
-testcontainernginx = {module = "org.testcontainers:nginx", version.ref = 'testcontainers'}
+testcontainernginx = {module = "org.testcontainers:testcontainers-nginx", version.ref = 'testcontainers'}
 
 junit-system-rules = {module = "com.github.stefanbirkner:system-rules", version = "1.19.0"}
 
