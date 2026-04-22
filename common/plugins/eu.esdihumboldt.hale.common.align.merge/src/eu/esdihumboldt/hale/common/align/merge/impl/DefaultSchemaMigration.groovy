@@ -18,6 +18,7 @@ import javax.xml.namespace.QName
 
 import eu.esdihumboldt.hale.common.align.groovy.accessor.EntityAccessor
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration
+import eu.esdihumboldt.hale.common.align.migrate.EntityMatch
 import eu.esdihumboldt.hale.common.align.model.ChildContext
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition
 import eu.esdihumboldt.hale.common.align.model.impl.PropertyEntityDefinition
@@ -41,7 +42,7 @@ class DefaultSchemaMigration implements AlignmentMigration {
 	}
 
 	@Override
-	public Optional<EntityDefinition> entityReplacement(EntityDefinition entity, TypeDefinition preferRoot, SimpleLog log) {
+	public Optional<EntityMatch> entityReplacement(EntityDefinition entity, TypeDefinition preferRoot, SimpleLog log) {
 
 		// default behavior - try to find entity in new schema, based on names w/o namespace
 
@@ -57,7 +58,7 @@ class DefaultSchemaMigration implements AlignmentMigration {
 
 		if (entity.propertyPath.empty) {
 			// type entity definition - yield
-			return Optional.<EntityDefinition>of(typeEntity)
+			return Optional.of(EntityMatch.of(typeEntity))
 		}
 		else {
 			// property entity definition -> follow the path
@@ -92,7 +93,8 @@ class DefaultSchemaMigration implements AlignmentMigration {
 				return Optional.empty()
 			}
 			else {
-				return Optional.ofNullable(applyContexts(candidate, entity))
+				EntityDefinition resolved = applyContexts(candidate, entity)
+				return resolved == null ? Optional.empty() : Optional.of(EntityMatch.of(resolved))
 			}
 		}
 	}
