@@ -41,7 +41,7 @@ class DefaultSchemaMigration implements AlignmentMigration {
 	}
 
 	@Override
-	public Optional<EntityDefinition> entityReplacement(EntityDefinition entity, SimpleLog log) {
+	public Optional<EntityDefinition> entityReplacement(EntityDefinition entity, TypeDefinition preferRoot, SimpleLog log) {
 
 		// default behavior - try to find entity in new schema, based on names w/o namespace
 

@@ -15,9 +15,11 @@ import java.util.List;
 import java.util.Optional;
 
 import eu.esdihumboldt.hale.common.align.migrate.AlignmentMigration;
+import eu.esdihumboldt.hale.common.align.migrate.EntityMatch;
 import eu.esdihumboldt.hale.common.align.model.EntityDefinition;
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 import eu.esdihumboldt.hale.common.instance.model.Filter;
+import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Extended filter interface for filters aware of referenced entities.
@@ -38,7 +40,7 @@ public interface EntityAwareFilter extends Filter {
 
 	/**
 	 * States if the filter supports migration via
-	 * {@link #migrateFilter(EntityDefinition, AlignmentMigration, SimpleLog)}
+	 * {@link #migrateFilter(EntityDefinition, EntityMatch, AlignmentMigration, TypeDefinition, SimpleLog)}
 	 *
 	 * @return <code>true</code> if migration is supported, <code>false</code>
 	 *         otherwise
@@ -49,11 +51,14 @@ public interface EntityAwareFilter extends Filter {
 	 * Migrate the filter based on the given entity context and alignment migration.
 	 *
 	 * @param context the entity context
+	 * @param targetMatch the match representing the entity the filter is applied to
 	 * @param migration the alignment migration
+	 * @param preferRoot hint on which entity to prefer if there are multiple
+	 *            matches
 	 * @param log the operation log
 	 * @return the migrated filter, if migration is possible
 	 */
-	Optional<Filter> migrateFilter(EntityDefinition context, AlignmentMigration migration,
-			SimpleLog log);
+	Optional<Filter> migrateFilter(EntityDefinition context, EntityMatch targetMatch,
+			AlignmentMigration migration, TypeDefinition preferRoot, SimpleLog log);
 
 }
