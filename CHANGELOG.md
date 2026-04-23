@@ -1,3 +1,51 @@
+## [6.4.0](https://github.com/halestudio/hale-core/compare/v6.3.3...v6.4.0) (2026-04-23)
+
+### Features
+
+* apply conditions to individually joined types ([9700972](https://github.com/halestudio/hale-core/commit/97009723de46826f9cfbc544abdcc9f82796b71b)), closes [ING-4146](https://wetransform.atlassian.net/browse/ING-4146) [ING-5131](https://wetransform.atlassian.net/browse/ING-5131)
+
+### Bug Fixes
+
+* **deps:** update deegree to v3.6.6 ([c0bf8bd](https://github.com/halestudio/hale-core/commit/c0bf8bdb91de037f477f3026c337b9543678a22e))
+* **deps:** update deegree to v3.6.7 ([4c09b87](https://github.com/halestudio/hale-core/commit/4c09b87b17308ffaaca8ab7f3614b6051c9d1c0d))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.21.2 ([74581a9](https://github.com/halestudio/hale-core/commit/74581a9733a1a9d67493743de4b0fff36f460c04))
+* **deps:** update dependency com.google.guava:guava to v33.6.0-jre ([45a031b](https://github.com/halestudio/hale-core/commit/45a031b54c28c21d3b0e040e75931de6b90c988f))
+* **deps:** update dependency com.typesafe:config to v1.4.6 ([d5aa5e7](https://github.com/halestudio/hale-core/commit/d5aa5e7a52712377c0cc545561504f8316e6d695))
+* **deps:** update dependency commons-codec:commons-codec to v1.21.0 ([ee122ce](https://github.com/halestudio/hale-core/commit/ee122ce423adf0bf2e545ffd95c9b3d71e819150))
+* **deps:** update dependency jakarta.xml.bind:jakarta.xml.bind-api to v4.0.5 ([d25842a](https://github.com/halestudio/hale-core/commit/d25842a1ae1370a9da0bf11c6fa1cba47ec75657))
+* **deps:** update dependency joda-time:joda-time to v2.14.1 ([edc5d11](https://github.com/halestudio/hale-core/commit/edc5d112fa46a4d3aea815322bccbbb47dd616a8))
+* **deps:** update dependency org.apache.logging.log4j:log4j-to-slf4j to v2.25.4 ([603d0ef](https://github.com/halestudio/hale-core/commit/603d0ef8d4b9b9877651c6946cd97253649f558a))
+* **deps:** update dependency org.codehaus.jettison:jettison to v1.5.5 ([b55cf95](https://github.com/halestudio/hale-core/commit/b55cf95cdbbf96fa46cd25e0b165346035d5fda3))
+* **deps:** update dependency org.glassfish.jaxb:jaxb-runtime to v4.0.7 ([83164b9](https://github.com/halestudio/hale-core/commit/83164b982df27112c588deaa36632b8cbc3aad68))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.10 ([7a270c3](https://github.com/halestudio/hale-core/commit/7a270c3f741951ade6ff6826f0cab376014ad4fd))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.9 ([63acf45](https://github.com/halestudio/hale-core/commit/63acf457cfbe255525949b8b22e5b4db7bb701f1))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.51.2.0 ([3091d2f](https://github.com/halestudio/hale-core/commit/3091d2f394eb6d941cc1abd4092d54c96fd8b293))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.51.3.0 ([9f1c0d9](https://github.com/halestudio/hale-core/commit/9f1c0d94625173f69d8bf0b5dccf810851910774))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.53.0.0 ([a7ab5b5](https://github.com/halestudio/hale-core/commit/a7ab5b56daca80a2808e689a20eb58d0c48be5ab))
+* **deps:** update dependency org.yaml:snakeyaml to v2.6 ([c132e80](https://github.com/halestudio/hale-core/commit/c132e8011e2137d625e9fe24f3e23f60e8d7d59b))
+* **deps:** update geotools to v34.2 ([6de9961](https://github.com/halestudio/hale-core/commit/6de9961e79ad5e1158ff62a38d4940afcea18e29))
+* **deps:** update geotools to v34.3 ([83b769d](https://github.com/halestudio/hale-core/commit/83b769d0f0e843ba43b6215000c9f6a7cd9bff39))
+* **deps:** update Jackson to 2.18.6 ([ff2a101](https://github.com/halestudio/hale-core/commit/ff2a101c6987e665baef74cb3d86edc7f3e4b485))
+* **deps:** update Jackson to 2.21.1 ([56403e3](https://github.com/halestudio/hale-core/commit/56403e3f5e68608e47ad8a2d6f8f6510c1d447db))
+* **deps:** update logback dependencies to v1.5.24 ([c853bb7](https://github.com/halestudio/hale-core/commit/c853bb7d92f1124e6ea48d1e8565e8f5681c7e1c))
+* **deps:** update logback dependencies to v1.5.25 ([fa95189](https://github.com/halestudio/hale-core/commit/fa95189cdd9a28ff9489d81bccf86ea3150800cb))
+* **deps:** update logback dependencies to v1.5.28 ([48ddffe](https://github.com/halestudio/hale-core/commit/48ddffeada8041ed7a3408e05705882c935e548c))
+* **deps:** update logback dependencies to v1.5.29 ([c616bb1](https://github.com/halestudio/hale-core/commit/c616bb135abb767b8919afa74c25d0ec9c034a77))
+* **deps:** update logback dependencies to v1.5.32 ([c56c6aa](https://github.com/halestudio/hale-core/commit/c56c6aa92b0f2fcebd24453aea4c41bdaf309a9c))
+* **deps:** update protobuf monorepo to v4.33.3 ([1f2d59e](https://github.com/halestudio/hale-core/commit/1f2d59ed3a23e7075d78f3adbb039d2dc6ae31c7))
+* **deps:** update protobuf monorepo to v4.33.4 ([7d065eb](https://github.com/halestudio/hale-core/commit/7d065eb617456e0ecb17237db41fae056c0b6791))
+* **deps:** update protobuf monorepo to v4.33.5 ([6641f51](https://github.com/halestudio/hale-core/commit/6641f517233497dd954bd07e8bf5a4d110f699f2))
+* **deps:** update protobuf monorepo to v4.34.0 ([8c0073f](https://github.com/halestudio/hale-core/commit/8c0073fc9b173d4dea6d771bab717f4cf7e7fe28))
+* **deps:** update protobuf monorepo to v4.34.1 ([e463e4f](https://github.com/halestudio/hale-core/commit/e463e4f1987dd23f726b3467298f4c34186f78d7))
+* **deps:** update spring core to v7 ([682a2ab](https://github.com/halestudio/hale-core/commit/682a2ab82c13bf27065403ad6bdc5c95c324671d))
+* **deps:** update spring core to v7.0.4 ([9a6e1f6](https://github.com/halestudio/hale-core/commit/9a6e1f6bec9e63d56e63347167d98b2bc0250a51))
+* **deps:** update spring core to v7.0.5 ([c732657](https://github.com/halestudio/hale-core/commit/c732657e04416a0328a075d77e951022ab0a8af2))
+* **deps:** update spring core to v7.0.6 ([0afeee3](https://github.com/halestudio/hale-core/commit/0afeee34279e8f980cff58e73b32b9b4b097422d))
+* **deps:** update spring core to v7.0.7 ([d8c07c4](https://github.com/halestudio/hale-core/commit/d8c07c47c7d19cdd8b1ca69d4a42ec35e359f676))
+* **deps:** update transitive aircompressor dependency to fix CVE ([40e48c6](https://github.com/halestudio/hale-core/commit/40e48c68d0015ce00f462e48861c71d0cb6fc834))
+* fix use of EntityMatch and condition for multiple candidates ([9b31e9c](https://github.com/halestudio/hale-core/commit/9b31e9cf8bd50380b9a44189183c2623990be948)), closes [ING-5131](https://wetransform.atlassian.net/browse/ING-5131)
+* ShapeInstanceReader look for types w/o namespace when no direct match found ([40fe3ff](https://github.com/halestudio/hale-core/commit/40fe3ff008f31971e451320c15f2d8749a086830)), closes [ING-5092](https://wetransform.atlassian.net/browse/ING-5092)
+
 ## [6.3.3](https://github.com/halestudio/hale-core/compare/v6.3.2...v6.3.3) (2026-01-06)
 
 ### Bug Fixes
