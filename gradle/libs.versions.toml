@@ -20,7 +20,7 @@ jackson = "2.21.3"
 poi = "5.5.1"
 protobuf = "4.34.1"
 eclipse-collections = "13.0.0"
-schemacrawler = "16.29.1"
+schemacrawler = "17.11.0"
 log4j2 = "2.25.4"
 
 [libraries]
