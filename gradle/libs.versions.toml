@@ -1,5 +1,5 @@
 [versions]
-slf4j = "2.0.17"
+slf4j = "2.0.18"
 logback = "1.5.32"
 slf4jplus = "1.2.0.201503311443"
 spring = "7.0.7"
