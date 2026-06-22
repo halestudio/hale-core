@@ -35,6 +35,7 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.Cardinality
 import eu.esdihumboldt.hale.common.schema.model.constraint.property.NillableFlag
+import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata
 import eu.esdihumboldt.hale.io.geopackage.GeopackageSchemaBuilder
 import mil.nga.geopackage.features.columns.GeometryColumns
@@ -168,6 +169,13 @@ class TableInstanceBuilder {
 					}
 
 					Object value = row.getResultSet().getObject(columnName)
+
+					// SQLite stores BOOLEAN columns as INTEGER (0/1); convert if the schema expects Boolean
+					if (value instanceof Number && !isGeometry) {
+						if (property.propertyType.getConstraint(Binding).binding == Boolean) {
+							value = ((Number) value).intValue() != 0
+						}
+					}
 
 					// geometry conversion
 					if (value != null) {
