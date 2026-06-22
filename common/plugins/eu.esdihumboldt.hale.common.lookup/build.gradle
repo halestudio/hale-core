@@ -21,4 +21,5 @@ dependencies {
   testImplementation testLibs.junit4
   testImplementation libs.groovy.json
   testImplementation project(':ext:nonosgi:org.eclipse.equinox.nonosgi.registry')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
 }
