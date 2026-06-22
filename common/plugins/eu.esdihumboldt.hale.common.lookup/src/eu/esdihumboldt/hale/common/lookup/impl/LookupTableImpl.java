@@ -19,10 +19,8 @@ import java.util.Set;
 
 import javax.annotation.concurrent.Immutable;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Maps;
 
 import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.lookup.LookupTable;
@@ -44,9 +42,7 @@ public class LookupTableImpl implements LookupTable {
 	 */
 	public LookupTableImpl(Map<Value, Value> table) {
 		super();
-		// ignore null values, so their entries don't show up in any methods
-		this.table = new LinkedHashMap<Value, Value>(
-				Maps.filterValues(table, Predicates.notNull()));
+		this.table = new LinkedHashMap<Value, Value>(table);
 	}
 
 	@Override
@@ -64,7 +60,9 @@ public class LookupTableImpl implements LookupTable {
 		ListMultimap<Value, Value> result = ArrayListMultimap.create();
 
 		for (Entry<Value, Value> entry : table.entrySet()) {
-			result.put(entry.getValue(), entry.getKey());
+			if (entry.getValue() != null) {
+				result.put(entry.getValue(), entry.getKey());
+			}
 		}
 
 		return result;
