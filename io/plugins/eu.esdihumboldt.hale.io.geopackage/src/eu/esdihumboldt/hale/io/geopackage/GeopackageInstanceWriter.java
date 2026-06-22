@@ -187,7 +187,11 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 					.as(Boolean.class, false);
 			if (file.exists() && (file.length() == 0L || overwriteTargetFile)) {
 				// overwrite empty existing file or if requested via setting
-				file.delete();
+				if (!deleteTargetFile(file)) {
+					throw new IOException(
+							"Cannot overwrite existing GeoPackage file (file may be in use): "
+									+ file.getAbsolutePath());
+				}
 			}
 			if (!file.exists()) {
 				GeoPackageManager.create(file);
@@ -252,6 +256,20 @@ public class GeopackageInstanceWriter extends AbstractGeoInstanceWriter {
 		}
 
 		return reporter;
+	}
+
+	/**
+	 * Delete the existing target file before overwriting it.
+	 * <p>
+	 * Extracted as a separate method so that tests can simulate a deletion failure
+	 * (e.g. a file locked by another process such as QGIS on Windows), which cannot
+	 * be reproduced reliably via the file system on all platforms.
+	 *
+	 * @param file the existing target file to delete
+	 * @return {@code true} if the file was deleted, {@code false} otherwise
+	 */
+	protected boolean deleteTargetFile(File file) {
+		return file.delete();
 	}
 
 	/**
