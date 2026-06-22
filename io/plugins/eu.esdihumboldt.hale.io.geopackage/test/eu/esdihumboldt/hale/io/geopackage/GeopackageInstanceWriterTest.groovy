@@ -12,6 +12,7 @@
 package eu.esdihumboldt.hale.io.geopackage
 
 import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
 
 import groovy.transform.CompileStatic
@@ -651,6 +652,69 @@ class GeopackageInstanceWriterTest extends AbstractPlatformTest {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * Regression test for https://github.com/halestudio/hale/issues/1201
+	 * When the target GeoPackage file cannot be deleted (e.g. it is locked by
+	 * QGIS or another process on Windows), the writer must fail with an error
+	 * instead of silently appending data to the existing, still-valid file.
+	 *
+	 * <p>
+	 * A real locked file is not reproducible on the Linux CI runner: on POSIX
+	 * neither an open file handle nor an advisory {@code FileLock} prevents
+	 * {@code unlink}, and the only way to make {@code File.delete()} fail (a
+	 * non-writable parent directory) would also break SQLite journal creation,
+	 * so the append would fail for the wrong reason. Instead the writer's
+	 * {@code deleteTargetFile} seam is overridden to return {@code false}
+	 * without deleting — exactly mimicking a locked file (deletion fails, the
+	 * file remains a valid GeoPackage that would otherwise be opened and
+	 * appended to). Without the fix this test fails: the writer opens the
+	 * existing file and reports success after silently appending.
+	 * </p>
+	 */
+	@Test
+	void testOverwriteFailsWhenFileCannotBeDeleted() {
+		Schema schema = new SchemaBuilder().schema {
+			items {
+				name(String)
+			}
+		}
+
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			items {
+				name 'test'
+			}
+		}
+
+		Path tmpFile = Files.createTempFile('overwrite_inuse_test', '.gpkg')
+		try {
+			// First write creates a valid existing GeoPackage that, without the
+			// fix, the writer would happily open and append to.
+			writeInstances(tmpFile.toFile(), schema, instances)
+
+			// Simulate a target that exists but cannot be deleted (locked file):
+			// deletion fails and the file is left untouched.
+			GeopackageInstanceWriter writer = new GeopackageInstanceWriter() {
+						@Override
+						protected boolean deleteTargetFile(File file) {
+							return false
+						}
+					}
+			writer.setTarget(new FileIOSupplier(tmpFile.toFile()))
+			def ss = new DefaultSchemaSpace()
+			ss.addSchema(schema)
+			writer.setTargetSchema(ss)
+			writer.setInstances(instances)
+			writer.setOverwriteTargetFile(true)
+
+			IOReport report = writer.execute(new LogProgressIndicator())
+
+			assertFalse('Writer should fail when target file cannot be deleted', report.isSuccess())
+			assertFalse('Report should contain an error', report.getErrors().isEmpty())
+		} finally {
+			Files.deleteIfExists(tmpFile)
 		}
 	}
 
