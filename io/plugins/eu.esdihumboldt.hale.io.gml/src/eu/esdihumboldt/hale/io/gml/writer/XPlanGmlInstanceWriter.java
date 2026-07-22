@@ -25,20 +25,31 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import java.text.DecimalFormat;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
+import org.locationtech.jts.geom.Envelope;
+import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException;
 import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
+import eu.esdihumboldt.hale.common.instance.geometry.GeometryFinder;
 import eu.esdihumboldt.hale.common.instance.graph.reference.ReferenceGraph;
 import eu.esdihumboldt.hale.common.instance.graph.reference.impl.XMLInspector;
+import eu.esdihumboldt.hale.common.instance.helper.DepthFirstInstanceTraverser;
+import eu.esdihumboldt.hale.common.instance.helper.InstanceTraverser;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.impl.MultiInstanceCollection;
+import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
+import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.AbstractFlag;
 import eu.esdihumboldt.hale.io.gml.writer.internal.DefaultMultipartHandler;
@@ -46,6 +57,7 @@ import eu.esdihumboldt.hale.io.gml.writer.internal.MultipartHandler;
 import eu.esdihumboldt.hale.io.gml.writer.internal.StreamGmlWriter;
 import eu.esdihumboldt.hale.io.xsd.model.XmlElement;
 import eu.esdihumboldt.util.Pair;
+import eu.esdihumboldt.util.format.DecimalFormatUtil;
 
 /**
  * Writes instances to a XPlanGML XPlanAuszug
@@ -96,6 +108,141 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 
 	private boolean isPartitionByPlanConfigured() {
 		return getParameter(PARAM_PARTITION_BY_PLAN).as(Boolean.class, false);
+	}
+
+	/**
+	 * Writes a {@code gml:boundedBy} with a {@code gml:Envelope} for the XPlanAuszug
+	 * container. This defines the mandatory default CRS of the XPlanung model
+	 * through the envelope's {@code srsName} (XPlanung conformance rule 2.1.3.1).
+	 *
+	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter,
+	 *      InstanceCollection, TypeDefinition, IOReporter)
+	 */
+	@Override
+	protected void writeAdditionalElements(XMLStreamWriter writer, InstanceCollection instances,
+			TypeDefinition containerDefinition, IOReporter reporter) throws XMLStreamException {
+		// The gml:boundedBy must precede the feature members in the container, so
+		// the extent is computed in a separate pass over the instances here. This
+		// intentionally reads (and reprojects) the geometries a second time rather
+		// than buffering all of them in memory, which keeps the streaming writer's
+		// memory profile intact for large plans.
+		boolean written = writeBoundedBy(writer, instances, reporter);
+
+		if (!written) {
+			// Fall back to the default handling (e.g. GML 2 boundedBy) if no
+			// extent could be determined from the instances.
+			super.writeAdditionalElements(writer, instances, containerDefinition, reporter);
+		}
+	}
+
+	/**
+	 * Determine the overall extent of the given instances and write it as a
+	 * {@code gml:boundedBy} containing a {@code gml:Envelope}. The envelope's
+	 * {@code srsName} provides the default CRS required for a valid XPlanung model.
+	 *
+	 * @param writer the XML stream writer
+	 * @param instances the instances written to the container
+	 * @param reporter the reporter
+	 * @return <code>true</code> if a bounding envelope was written,
+	 *         <code>false</code> if no extent could be determined (e.g. because no
+	 *         geometries were present)
+	 * @throws XMLStreamException if writing the elements fails
+	 */
+	private boolean writeBoundedBy(XMLStreamWriter writer, InstanceCollection instances,
+			IOReporter reporter) throws XMLStreamException {
+		final Envelope envelope = new Envelope();
+		CRSDefinition crsDef = null;
+		String crsCode = null;
+		boolean mixedCrs = false;
+
+		final InstanceTraverser traverser = new DepthFirstInstanceTraverser();
+		try (ResourceIterator<Instance> it = instances.iterator()) {
+			while (it.hasNext()) {
+				Instance inst = it.next();
+
+				GeometryFinder finder = new GeometryFinder(getTargetCRS());
+				traverser.traverse(inst, finder);
+
+				for (GeometryProperty<?> geomProperty : finder.getGeometries()) {
+					// Extract the geometry using the same conversion (e.g. to the
+					// target CRS) that is applied when the geometry is written, so
+					// that the envelope and its srsName are consistent with the
+					// feature geometries. The reporter is intentionally not passed
+					// on here: any conversion error is deterministic and will be
+					// reported once already when the feature geometry itself is
+					// written below, so passing it here would just duplicate that
+					// error in the report.
+					Pair<Geometry, CRSDefinition> pair = extractGeometry(geomProperty, true, null);
+					if (pair == null) {
+						continue;
+					}
+
+					Geometry geom = pair.getFirst();
+					if (geom == null || geom.isEmpty()) {
+						continue;
+					}
+
+					envelope.expandToInclude(geom.getEnvelopeInternal());
+
+					CRSDefinition geomCrs = pair.getSecond();
+					if (geomCrs != null) {
+						if (crsDef == null) {
+							crsDef = geomCrs;
+							crsCode = extractCode(geomCrs);
+						}
+						else if (!mixedCrs) {
+							// Detect geometries in a different CRS. This only
+							// happens when no target CRS is configured to unify
+							// them; with a target CRS everything is reprojected.
+							String otherCode = extractCode(geomCrs);
+							if (crsCode == null ? otherCode != null
+									: !crsCode.equals(otherCode)) {
+								mixedCrs = true;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (envelope.isNull()) {
+			return false;
+		}
+
+		final String gmlNs = getGmlNs();
+		final String srsName = extractCode(crsDef);
+		final DecimalFormat formatter = getCoordinateFormatter();
+
+		if (srsName == null) {
+			reporter.warn(
+					"No CRS could be determined for the XPlanAuszug bounding envelope; the mandatory default CRS (srsName) is missing and the output will not satisfy XPlanung conformance rule 2.1.3.1. Configure a target CRS or ensure the source geometries carry a CRS."); //$NON-NLS-1$
+		}
+		else if (mixedCrs) {
+			reporter.warn(String.format(
+					"The exported geometries use more than one CRS but no target CRS is configured to unify them. The XPlanAuszug bounding envelope was labelled with the first encountered CRS (%s), so its extent may be inconsistent. Configure a target CRS to obtain a consistent default CRS.", //$NON-NLS-1$
+					srsName));
+		}
+
+		writer.writeStartElement(gmlNs, "boundedBy"); //$NON-NLS-1$
+		writer.writeStartElement(gmlNs, "Envelope"); //$NON-NLS-1$
+		if (srsName != null) {
+			writer.writeAttribute("srsName", srsName); //$NON-NLS-1$
+		}
+
+		writer.writeStartElement(gmlNs, "lowerCorner"); //$NON-NLS-1$
+		writer.writeCharacters(DecimalFormatUtil.applyFormatter(envelope.getMinX(), formatter) + " " //$NON-NLS-1$
+				+ DecimalFormatUtil.applyFormatter(envelope.getMinY(), formatter));
+		writer.writeEndElement();
+
+		writer.writeStartElement(gmlNs, "upperCorner"); //$NON-NLS-1$
+		writer.writeCharacters(DecimalFormatUtil.applyFormatter(envelope.getMaxX(), formatter) + " " //$NON-NLS-1$
+				+ DecimalFormatUtil.applyFormatter(envelope.getMaxY(), formatter));
+		writer.writeEndElement();
+
+		writer.writeEndElement(); // Envelope
+		writer.writeEndElement(); // boundedBy
+
+		return true;
 	}
 
 	/**
