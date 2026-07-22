@@ -50,6 +50,7 @@ import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
 import eu.esdihumboldt.hale.common.core.io.report.impl.IOMessageImpl;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
+import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.groovy.DefinitionAccessor;
 import eu.esdihumboldt.hale.common.schema.model.Definition;
@@ -214,13 +215,13 @@ public class InspireInstanceWriter extends GmlInstanceWriter {
 	}
 
 	/**
-	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter, TypeDefinition,
-	 *      IOReporter)
+	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter,
+	 *      InstanceCollection, TypeDefinition, IOReporter)
 	 */
 	@Override
-	protected void writeAdditionalElements(XMLStreamWriter writer,
+	protected void writeAdditionalElements(XMLStreamWriter writer, InstanceCollection instances,
 			TypeDefinition containerDefinition, IOReporter reporter) throws XMLStreamException {
-		super.writeAdditionalElements(writer, containerDefinition, reporter);
+		super.writeAdditionalElements(writer, instances, containerDefinition, reporter);
 
 		// determine INSPIRE identifier and metadata names
 		Path<Definition<?>> localIdPath = new DefinitionAccessor(containerDefinition)
