@@ -966,6 +966,14 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	}
 
 	/**
+	 * @return the GML namespace determined from the target schema (available after
+	 *         {@link #init()} has been called), may be <code>null</code>
+	 */
+	protected String getGmlNs() {
+		return gmlNs;
+	}
+
+	/**
 	 * @return if the output should be pretty printed
 	 */
 	public boolean isPrettyPrint() {
@@ -1192,7 +1200,7 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 						noNamespaceLocation);
 			}
 
-			writeAdditionalElements(writer, containerDefinition, reporter);
+			writeAdditionalElements(writer, instances, containerDefinition, reporter);
 
 			// write the instances
 			ResourceIterator<Instance> itInstance = instances.iterator();
@@ -1301,11 +1309,14 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 	 * boundedBy of GML 2 FeatureCollection is written.
 	 *
 	 * @param writer the XML stream writer
+	 * @param instances the instances that are written to the container (e.g. the
+	 *            current part when partitioning), allowing derived writers to
+	 *            compute aggregate information such as the overall extent
 	 * @param containerDefinition the container type definition
 	 * @param reporter the reporter
 	 * @throws XMLStreamException if writing anything fails
 	 */
-	protected void writeAdditionalElements(XMLStreamWriter writer,
+	protected void writeAdditionalElements(XMLStreamWriter writer, InstanceCollection instances,
 			TypeDefinition containerDefinition, IOReporter reporter) throws XMLStreamException {
 		// boundedBy is needed for GML 2 FeatureCollections
 		// XXX working like this - getting the child with only a local name?
