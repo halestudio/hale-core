@@ -111,7 +111,7 @@ public class WFSFeatureCollectionWriter extends GmlInstanceWriter
 	}
 
 	@Override
-	protected void writeAdditionalElements(XMLStreamWriter writer,
+	protected void writeAdditionalElements(XMLStreamWriter writer, InstanceCollection instances,
 			TypeDefinition containerDefinition, IOReporter reporter) throws XMLStreamException {
 		// write additional needed attributes for WFS 2.0
 
@@ -165,7 +165,7 @@ public class WFSFeatureCollectionWriter extends GmlInstanceWriter
 			writer.writeAttribute("timeStamp", result.getStringValue());
 		}
 
-		super.writeAdditionalElements(writer, containerDefinition, reporter);
+		super.writeAdditionalElements(writer, instances, containerDefinition, reporter);
 	}
 
 	private boolean requiresCount() {
