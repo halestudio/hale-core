@@ -30,6 +30,9 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.geotools.api.referencing.operation.MathTransform;
+import org.geotools.geometry.jts.JTS;
+import org.geotools.referencing.CRS;
 import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
 
@@ -154,6 +157,14 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		CRSDefinition crsDef = null;
 		String crsCode = null;
 		boolean mixedCrs = false;
+		boolean mixedCrsGeometrySkipped = false;
+		boolean conversionFailed = false;
+
+		// If a target CRS is configured, every geometry below is expected to end
+		// up in that CRS; used to detect a silently failed conversion (see below).
+		final CRSDefinition targetCrs = getTargetCRS();
+		final boolean hasUsableTargetCrs = targetCrs != null && targetCrs.getCRS() != null;
+		final String targetCrsCode = extractCode(targetCrs);
 
 		final InstanceTraverser traverser = new DepthFirstInstanceTraverser();
 		try (ResourceIterator<Instance> it = instances.iterator()) {
@@ -168,10 +179,11 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 					// target CRS) that is applied when the geometry is written, so
 					// that the envelope and its srsName are consistent with the
 					// feature geometries. The reporter is intentionally not passed
-					// on here: any conversion error is deterministic and will be
-					// reported once already when the feature geometry itself is
-					// written below, so passing it here would just duplicate that
-					// error in the report.
+					// on here to avoid duplicating the per-feature error that gets
+					// reported below when the feature geometry itself is written;
+					// instead, a failed conversion is detected explicitly below,
+					// since AbstractGeoInstanceWriter#convertGeometry otherwise
+					// falls back to returning the untransformed geometry silently.
 					Pair<Geometry, CRSDefinition> pair = extractGeometry(geomProperty, true, null);
 					if (pair == null) {
 						continue;
@@ -182,26 +194,66 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 						continue;
 					}
 
-					envelope.expandToInclude(geom.getEnvelopeInternal());
-
 					CRSDefinition geomCrs = pair.getSecond();
-					if (geomCrs != null) {
-						if (crsDef == null) {
-							crsDef = geomCrs;
-							crsCode = extractCode(geomCrs);
+
+					if (hasUsableTargetCrs) {
+						String returnedCode = extractCode(geomCrs);
+						boolean convertedToTarget = targetCrsCode == null ? returnedCode == null
+								: targetCrsCode.equals(returnedCode);
+						if (!convertedToTarget) {
+							// The conversion to the target CRS silently failed for
+							// this geometry; its coordinates are not comparable to
+							// the other, correctly reprojected geometries, so it
+							// cannot be used to compute the envelope.
+							conversionFailed = true;
+							continue;
 						}
-						else if (!mixedCrs) {
-							// Detect geometries in a different CRS. This only
-							// happens when no target CRS is configured to unify
-							// them; with a target CRS everything is reprojected.
-							String otherCode = extractCode(geomCrs);
-							if (crsCode == null ? otherCode != null : !crsCode.equals(otherCode)) {
-								mixedCrs = true;
-							}
-						}
+					}
+
+					if (crsDef == null) {
+						// first geometry encountered defines the envelope's CRS
+						crsDef = geomCrs;
+						crsCode = extractCode(geomCrs);
+						envelope.expandToInclude(geom.getEnvelopeInternal());
+						continue;
+					}
+
+					String otherCode = extractCode(geomCrs);
+					boolean sameCrs = crsCode == null ? otherCode == null
+							: crsCode.equals(otherCode);
+					if (sameCrs) {
+						envelope.expandToInclude(geom.getEnvelopeInternal());
+						continue;
+					}
+
+					// Geometry in a different CRS than the envelope's reference
+					// CRS. This only happens when no target CRS is configured to
+					// unify them; with a target CRS configured, geometries either
+					// end up in that CRS above or are excluded as a conversion
+					// failure. Reproject it to the envelope's reference CRS so its
+					// extent stays numerically correct; if that is not possible,
+					// exclude the geometry from the envelope rather than mixing
+					// incompatible coordinates.
+					mixedCrs = true;
+					Geometry reprojected = reprojectGeometry(geom, geomCrs, crsDef, reporter);
+					if (reprojected != null) {
+						envelope.expandToInclude(reprojected.getEnvelopeInternal());
+					}
+					else {
+						mixedCrsGeometrySkipped = true;
 					}
 				}
 			}
+		}
+
+		if (conversionFailed) {
+			// A geometry could not be reprojected to the configured target CRS,
+			// so the envelope cannot be reliably computed: an incomplete or
+			// wrong extent would be worse than none. The per-feature error for
+			// the affected geometry is reported separately when it is written.
+			reporter.error(
+					"Could not determine the XPlanAuszug bounding envelope: at least one geometry could not be reprojected to the configured target CRS, so its extent cannot be reliably included. The mandatory default CRS (srsName) is omitted rather than risk an incorrect extent."); //$NON-NLS-1$
+			return false;
 		}
 
 		if (envelope.isNull()) {
@@ -218,8 +270,10 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		}
 		else if (mixedCrs) {
 			reporter.warn(String.format(
-					"The exported geometries use more than one CRS but no target CRS is configured to unify them. The XPlanAuszug bounding envelope was labelled with the first encountered CRS (%s), so its extent may be inconsistent. Configure a target CRS to obtain a consistent default CRS.", //$NON-NLS-1$
-					srsName));
+					"The exported geometries use more than one CRS but no target CRS is configured to unify them. Geometries in a CRS other than the envelope's reference CRS (%s) were reprojected for the XPlanAuszug bounding envelope%s. Configure a target CRS to obtain consistent output.", //$NON-NLS-1$
+					srsName, mixedCrsGeometrySkipped
+							? "; some of them could not be reprojected and were excluded from the extent" //$NON-NLS-1$
+							: ""));
 		}
 
 		writer.writeStartElement(gmlNs, "boundedBy"); //$NON-NLS-1$
@@ -227,6 +281,11 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		if (srsName != null) {
 			writer.writeAttribute("srsName", srsName); //$NON-NLS-1$
 		}
+		// The envelope is computed from a 2D JTS Envelope, so it always has two
+		// coordinate values per corner, regardless of whether the CRS itself is
+		// 3D; without srsDimension a 3D srsName would imply a dimension mismatch
+		// with the two-value lowerCorner/upperCorner written below.
+		writer.writeAttribute("srsDimension", "2"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		writer.writeStartElement(gmlNs, "lowerCorner"); //$NON-NLS-1$
 		writer.writeCharacters(DecimalFormatUtil.applyFormatter(envelope.getMinX(), formatter) + " " //$NON-NLS-1$
@@ -242,6 +301,39 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		writer.writeEndElement(); // boundedBy
 
 		return true;
+	}
+
+	/**
+	 * Reproject a geometry from its source CRS to the given target CRS. Used to
+	 * unify geometries in different CRS for the bounding envelope when no target
+	 * CRS is configured for the writer (in which case
+	 * {@link #extractGeometry(Object, boolean, IOReporter)} does not already
+	 * reproject them).
+	 *
+	 * @param geom the geometry to reproject
+	 * @param sourceCrs the CRS of the geometry
+	 * @param targetCrs the CRS to reproject to
+	 * @param reporter the reporter
+	 * @return the reprojected geometry, or <code>null</code> if it could not be
+	 *         reprojected (e.g. because a CRS is not resolvable or no transform
+	 *         could be found)
+	 */
+	private Geometry reprojectGeometry(Geometry geom, CRSDefinition sourceCrs,
+			CRSDefinition targetCrs, IOReporter reporter) {
+		if (sourceCrs == null || sourceCrs.getCRS() == null || targetCrs == null
+				|| targetCrs.getCRS() == null) {
+			return null;
+		}
+		try {
+			MathTransform transform = CRS.findMathTransform(sourceCrs.getCRS(),
+					targetCrs.getCRS());
+			return JTS.transform(geom, transform);
+		} catch (Exception e) {
+			reporter.warn(
+					"Could not reproject a geometry to the XPlanAuszug bounding envelope's CRS; it was excluded from the extent computation", //$NON-NLS-1$
+					e);
+			return null;
+		}
 	}
 
 	/**

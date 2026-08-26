@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<xplan:XPlanAuszug xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xplan="http://www.xplanung.de/xplangml/6/0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns1="http://www.w3.org/1999/xhtml" xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="_bdf07d78-ab15-4b58-b44a-d9fcd7bbdb22" xsi:schemaLocation="http://www.xplanung.de/xplangml/6/0 file:/C:/Users/AnnaTamm/AppData/Local/Temp/1756297425538-0/resource1/XPlanung-Operationen-BW-Profil.xsd">
+<xplan:XPlanAuszug xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xplan="http://www.xplanung.de/xplangml/6/0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns1="http://www.w3.org/1999/xhtml" xmlns:hfp="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="_bdf07d78-ab15-4b58-b44a-d9fcd7bbdb22" xsi:schemaLocation="http://www.xplanung.de/xplangml/6/0 XPlanung-Operationen-BW-Profil.xsd">
   <gml:featureMember>
     <xplan:BP_Bereich gml:id="BP_Bereich_BP_082375003027_4463_11_01">
       <xplan:nummer>1</xplan:nummer>
@@ -58,7 +58,7 @@
       <xplan:gemeinde>
         <xplan:XP_Gemeinde>
           <xplan:rs>082375003027</xplan:rs>
-          <xplan:gemeindeName>Gemeinde Eutingen im GÃ¤u</xplan:gemeindeName>
+          <xplan:gemeindeName>Gemeinde Eutingen im Gäu</xplan:gemeindeName>
           <xplan:ortsteilName>Weitingen</xplan:ortsteilName>
         </xplan:XP_Gemeinde>
       </xplan:gemeinde>
