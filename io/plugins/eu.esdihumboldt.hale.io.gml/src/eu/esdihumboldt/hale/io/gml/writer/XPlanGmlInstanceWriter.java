@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,8 +25,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import java.text.DecimalFormat;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
@@ -111,9 +110,10 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 	}
 
 	/**
-	 * Writes a {@code gml:boundedBy} with a {@code gml:Envelope} for the XPlanAuszug
-	 * container. This defines the mandatory default CRS of the XPlanung model
-	 * through the envelope's {@code srsName} (XPlanung conformance rule 2.1.3.1).
+	 * Writes a {@code gml:boundedBy} with a {@code gml:Envelope} for the
+	 * XPlanAuszug container. This defines the mandatory default CRS of the XPlanung
+	 * model through the envelope's {@code srsName} (XPlanung conformance rule
+	 * 2.1.3.1).
 	 *
 	 * @see StreamGmlWriter#writeAdditionalElements(XMLStreamWriter,
 	 *      InstanceCollection, TypeDefinition, IOReporter)
@@ -195,8 +195,7 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 							// happens when no target CRS is configured to unify
 							// them; with a target CRS everything is reprojected.
 							String otherCode = extractCode(geomCrs);
-							if (crsCode == null ? otherCode != null
-									: !crsCode.equals(otherCode)) {
+							if (crsCode == null ? otherCode != null : !crsCode.equals(otherCode)) {
 								mixedCrs = true;
 							}
 						}

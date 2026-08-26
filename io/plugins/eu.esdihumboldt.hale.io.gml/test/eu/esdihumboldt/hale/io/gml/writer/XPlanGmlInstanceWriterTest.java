@@ -41,12 +41,12 @@ import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier;
 import eu.esdihumboldt.hale.common.core.report.Message;
 import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty;
+import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
 import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstance;
 import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstanceCollection;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
-import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.Schema;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace;
@@ -74,11 +74,11 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 	private static final GeometryFactory geomFactory = new GeometryFactory();
 
 	/**
-	 * Writing with geometries that carry a CRS must produce a
-	 * {@code gml:boundedBy} with a {@code gml:Envelope} whose {@code srsName}
-	 * defines the default CRS and whose extent covers all exported geometries.
-	 * The envelope must use the GML 3.2 {@code lowerCorner}/{@code upperCorner}
-	 * form and must not use {@code gml:pos}.
+	 * Writing with geometries that carry a CRS must produce a {@code gml:boundedBy}
+	 * with a {@code gml:Envelope} whose {@code srsName} defines the default CRS and
+	 * whose extent covers all exported geometries. The envelope must use the GML
+	 * 3.2 {@code lowerCorner}/{@code upperCorner} form and must not use
+	 * {@code gml:pos}.
 	 *
 	 * @throws Exception if any error occurs
 	 */
@@ -159,8 +159,8 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 	 * XPlanManager) as input, instead of the synthetic points used by
 	 * {@link #testBoundedByWithDefaultCrs()}, to verify the {@code gml:boundedBy}
 	 * extent and {@code srsName} are correctly derived from actual XPlanGML
-	 * geometries and their GML-3.2-style {@code srsName} (a full URL, not a
-	 * simple {@code EPSG:<code>} code).
+	 * geometries and their GML-3.2-style {@code srsName} (a full URL, not a simple
+	 * {@code EPSG:<code>} code).
 	 *
 	 * @throws Exception if any error occurs
 	 */
@@ -233,8 +233,8 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 				assertEquals("Expected exactly one gml:posList per polygon", 1, //$NON-NLS-1$
 						posLists.getLength());
 
-				result.add(new RealGeometry(parsePolygon(posLists.item(0).getTextContent()),
-						srsName));
+				result.add(
+						new RealGeometry(parsePolygon(posLists.item(0).getTextContent()), srsName));
 			}
 			return result;
 		}
