@@ -136,6 +136,14 @@ public class WindingOrder {
 	}
 
 	/**
+	 * Maximum number of characters of a WKT representation of a ring to include
+	 * when enriching an orientation-determination failure, so that the specific
+	 * offending ring can be pinpointed within a larger geometry (e.g. a
+	 * MultiPolygon with many rings).
+	 */
+	private static final int RING_WKT_EXCERPT_MAX_LENGTH = 200;
+
+	/**
 	 * Unify order for LinearRing as CounterClockwise or Clockwise.
 	 *
 	 * @param linearRing LinearRing object for unifying
@@ -146,11 +154,42 @@ public class WindingOrder {
 	public static LinearRing unifyWindingOrderForLinearRing(LinearRing linearRing,
 			boolean counterClockWise) {
 
+		boolean isCCW;
+		try {
+			isCCW = isCounterClockwise(linearRing);
+		} catch (RuntimeException e) {
+			// enrich the failure with the specific ring that could not be
+			// oriented, so it can be identified even if it is nested deep
+			// inside a larger geometry (e.g. a MultiPolygon)
+			throw new IllegalArgumentException(
+					e.getMessage() + " [ring: " + toRingWktExcerpt(linearRing) + "]", e);
+		}
+
 		// Checking and reversing geometry
-		if (isCounterClockwise(linearRing) == counterClockWise)
+		if (isCCW == counterClockWise)
 			return linearRing;
 		else
 			return (LinearRing) linearRing.reverse();
+	}
+
+	/**
+	 * Create a (possibly truncated) WKT representation of a ring, for use in an
+	 * enriched error message.
+	 *
+	 * @param ring the ring
+	 * @return the WKT excerpt, or <code>null</code> if it could not be determined
+	 */
+	private static String toRingWktExcerpt(LinearRing ring) {
+		try {
+			String wkt = ring.toText();
+			if (wkt != null && wkt.length() > RING_WKT_EXCERPT_MAX_LENGTH) {
+				wkt = wkt.substring(0, RING_WKT_EXCERPT_MAX_LENGTH) + "...";
+			}
+			return wkt;
+		} catch (Exception e) {
+			// WKT representation could not be created, omit it
+			return null;
+		}
 	}
 
 	/**
