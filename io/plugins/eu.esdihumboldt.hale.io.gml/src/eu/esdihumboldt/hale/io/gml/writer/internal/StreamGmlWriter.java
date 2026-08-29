@@ -1548,7 +1548,17 @@ public class StreamGmlWriter extends AbstractGeoInstanceWriter
 
 		boolean isInspireType = GmlWriterUtil.isInspireType(type);
 
-		writeProperties(instance, type, true, false, report, isInspireType, false);
+		// make feature identity available for enriching geometry error
+		// messages while writing this instance's properties
+		Object idValue = GmlWriterUtil.findIdValue(type, instance);
+		FeatureContext featureContext = new FeatureContext(type.getDisplayName(),
+				(idValue != null) ? String.valueOf(idValue) : null);
+		FeatureContext previousContext = setCurrentFeatureContext(featureContext);
+		try {
+			writeProperties(instance, type, true, false, report, isInspireType, false);
+		} finally {
+			setCurrentFeatureContext(previousContext);
+		}
 	}
 
 	/**

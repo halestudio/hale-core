@@ -13,6 +13,7 @@ package eu.esdihumboldt.util.geometry;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.concurrent.TimeUnit;
 
@@ -273,6 +274,69 @@ public class WindingOrderTest {
 		assertFalse(clockWise4.equalsExact(result));
 		assertTrue(
 				((GeometryCollection) result).getNumGeometries() == clockWise4.getNumGeometries());
+	}
+
+	/**
+	 * Regression test for SVC-2232/ING-5109: a ring with fewer than 4 points
+	 * (i.e. fewer than 3 distinct points plus the closing point) cannot have
+	 * its orientation determined and must fail with an
+	 * {@link IllegalArgumentException}, as is the case for an invalid source
+	 * geometry. This documents the current (unchanged) behavior on
+	 * encountering such an invalid geometry.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testIsCounterClockwiseFewerThanFourPoints() {
+		GeometryFactory factory = new GeometryFactory();
+		// not a valid, closed ring (only 3 points), reproducing the shape
+		// that JTS' orientation algorithm rejects with
+		// "Ring has fewer than 4 points, so orientation cannot be determined"
+		Geometry invalidRing = factory.createLineString(new Coordinate[] { new Coordinate(0, 0),
+				new Coordinate(1, 1), new Coordinate(2, 2) });
+
+		WindingOrder.isCounterClockwise(invalidRing);
+	}
+
+	/**
+	 * Regression test for SVC-2232/ING-5109: when unifying the winding order
+	 * of a MultiPolygon that contains one invalid (collapsed) ring among
+	 * several valid ones, the failure message must identify the specific
+	 * offending ring, not just repeat the whole (potentially much larger)
+	 * MultiPolygon, so the invalid ring can actually be pinpointed.
+	 */
+	@Test
+	public void testUnifyWindingOrderForMultiPolygon_InvalidRing_IdentifiesOffendingRing() {
+		GeometryFactory factory = new GeometryFactory();
+
+		// a valid polygon
+		LinearRing validShell = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(0, 0), new Coordinate(0, 10), new Coordinate(10, 10),
+				new Coordinate(10, 0), new Coordinate(0, 0) });
+		Polygon validPolygon = factory.createPolygon(validShell);
+
+		// a "collapsed" ring (2 distinct points, plus the closing point):
+		// valid to construct, but its orientation cannot be determined
+		LinearRing collapsedShell = factory.createLinearRing(new Coordinate[] {
+				new Coordinate(100, 100), new Coordinate(101, 101),
+				new Coordinate(100, 100) });
+		Polygon invalidPolygon = factory.createPolygon(collapsedShell, null);
+
+		MultiPolygon multiPolygon = factory
+				.createMultiPolygon(new Polygon[] { validPolygon, invalidPolygon });
+
+		IllegalArgumentException error = null;
+		try {
+			WindingOrder.unifyWindingOrder(multiPolygon, true, null);
+			fail("Expected an IllegalArgumentException");
+		}
+		catch (IllegalArgumentException e) {
+			error = e;
+		}
+
+		assertTrue("Message should identify the specific offending ring",
+				error.getMessage().contains(collapsedShell.toText()));
+		assertFalse("Message should not merely repeat the whole MultiPolygon",
+				error.getMessage().contains(multiPolygon.toText()));
+		assertTrue(error.getCause() instanceof IllegalArgumentException);
 	}
 
 }

@@ -299,6 +299,35 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	}
 
 	/**
+	 * Find the value of the ID attribute (e.g. gml:id) of the given object, if
+	 * one is defined and set. Unlike {@link #writeID}/{@link #writeRequiredID}
+	 * this does not write anything nor generate a value if none is set.
+	 *
+	 * @param type the type definition
+	 * @param parent the object to read the ID value from, may be
+	 *            <code>null</code>
+	 * @return the ID value, or <code>null</code> if none is set or no ID
+	 *         attribute is defined
+	 */
+	public static Object findIdValue(DefinitionGroup type, Group parent) {
+		if (parent == null) {
+			return null;
+		}
+
+		for (PropertyDefinition prop : collectProperties(DefinitionUtil.getAllChildren(type))) {
+			if (prop.getConstraint(XmlAttributeFlag.class).isEnabled()
+					&& isID(prop.getPropertyType())) {
+				Object[] values = parent.getProperty(prop.getName());
+				if (values != null && values.length > 0) {
+					return values[0];
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * Write the opening element of a {@link PathElement} to the given stream writer
 	 *
 	 * @param writer the stream writer
