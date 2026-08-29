@@ -15,6 +15,7 @@ import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 import org.geotools.api.referencing.cs.AxisDirection;
 import org.locationtech.jts.algorithm.CGAlgorithms;
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryCollection;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -136,6 +137,22 @@ public class WindingOrder {
 	}
 
 	/**
+	 * Maximum number of characters of a WKT representation of a ring to include
+	 * when enriching an orientation-determination failure, so that the specific
+	 * offending ring can be pinpointed within a larger geometry (e.g. a
+	 * MultiPolygon with many rings).
+	 */
+	private static final int RING_WKT_EXCERPT_MAX_LENGTH = 200;
+
+	/**
+	 * Maximum number of points a ring may have for its full WKT representation to
+	 * be built for an enriched error message. Beyond this, building the WKT text is
+	 * skipped and a cheap description is used instead, to avoid materializing a
+	 * potentially huge string only to truncate it.
+	 */
+	private static final int RING_WKT_EXCERPT_MAX_POINTS = 200;
+
+	/**
 	 * Unify order for LinearRing as CounterClockwise or Clockwise.
 	 *
 	 * @param linearRing LinearRing object for unifying
@@ -146,11 +163,77 @@ public class WindingOrder {
 	public static LinearRing unifyWindingOrderForLinearRing(LinearRing linearRing,
 			boolean counterClockWise) {
 
+		boolean isCCW;
+		try {
+			isCCW = isCounterClockwise(linearRing);
+		} catch (RuntimeException e) {
+			// enrich the failure with the specific ring that could not be
+			// oriented, so it can be identified even if it is nested deep
+			// inside a larger geometry (e.g. a MultiPolygon)
+			throw new IllegalArgumentException(
+					e.getMessage() + " [ring: " + toRingWktExcerpt(linearRing) + "]", e);
+		}
+
 		// Checking and reversing geometry
-		if (isCounterClockwise(linearRing) == counterClockWise)
+		if (isCCW == counterClockWise)
 			return linearRing;
 		else
 			return (LinearRing) linearRing.reverse();
+	}
+
+	/**
+	 * Create a (possibly truncated) WKT representation of a ring, for use in an
+	 * enriched error message.
+	 *
+	 * @param ring the ring
+	 * @return the WKT excerpt, or <code>null</code> if it could not be determined
+	 */
+	private static String toRingWktExcerpt(LinearRing ring) {
+		try {
+			if (ring.getNumPoints() > RING_WKT_EXCERPT_MAX_POINTS) {
+				// avoid materializing the full WKT of a large ring just to
+				// truncate it again afterwards
+				return describeLargeRing(ring);
+			}
+
+			String wkt = ring.toText();
+			if (wkt != null && wkt.length() > RING_WKT_EXCERPT_MAX_LENGTH) {
+				wkt = wkt.substring(0, RING_WKT_EXCERPT_MAX_LENGTH) + "...";
+			}
+			return wkt;
+		} catch (Exception e) {
+			// WKT representation could not be created, omit it
+			return null;
+		}
+	}
+
+	/**
+	 * Describe a ring that is too large to include a WKT representation of in an
+	 * enriched error message, using cheap-to-compute properties instead.
+	 *
+	 * @param ring the ring to describe
+	 * @return the description
+	 */
+	private static String describeLargeRing(LinearRing ring) {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(ring.getGeometryType()).append(" with ").append(ring.getNumPoints())
+				.append(" points");
+
+		Envelope envelope = ring.getEnvelopeInternal();
+		sb.append(", bbox: [").append(envelope.getMinX()).append(", ").append(envelope.getMinY())
+				.append(", ").append(envelope.getMaxX()).append(", ").append(envelope.getMaxY())
+				.append(']');
+
+		Coordinate first = ring.getCoordinate();
+		if (first != null) {
+			// report x/y individually, as a Coordinate's own text form appends a
+			// NaN third ordinate for two-dimensional data
+			sb.append(", first coordinate: (").append(first.getX()).append(", ")
+					.append(first.getY()).append(')');
+		}
+
+		return sb.toString();
 	}
 
 	/**
