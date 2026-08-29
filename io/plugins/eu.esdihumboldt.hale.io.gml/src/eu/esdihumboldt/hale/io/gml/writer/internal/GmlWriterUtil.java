@@ -299,15 +299,14 @@ public abstract class GmlWriterUtil implements GMLConstants {
 	}
 
 	/**
-	 * Find the value of the ID attribute (e.g. gml:id) of the given object, if
-	 * one is defined and set. Unlike {@link #writeID}/{@link #writeRequiredID}
-	 * this does not write anything nor generate a value if none is set.
+	 * Find the value of the ID attribute (e.g. gml:id) of the given object, if one
+	 * is defined and set. Unlike {@link #writeID}/{@link #writeRequiredID} this
+	 * does not write anything nor generate a value if none is set.
 	 *
 	 * @param type the type definition
-	 * @param parent the object to read the ID value from, may be
-	 *            <code>null</code>
-	 * @return the ID value, or <code>null</code> if none is set or no ID
-	 *         attribute is defined
+	 * @param parent the object to read the ID value from, may be <code>null</code>
+	 * @return the ID value, or <code>null</code> if none is set or no ID attribute
+	 *         is defined
 	 */
 	public static Object findIdValue(DefinitionGroup type, Group parent) {
 		if (parent == null) {

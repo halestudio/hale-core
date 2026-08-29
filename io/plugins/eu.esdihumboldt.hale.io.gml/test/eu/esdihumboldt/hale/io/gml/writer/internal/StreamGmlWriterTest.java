@@ -709,10 +709,10 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	/**
 	 * Regression test for SVC-2232/ING-5109: writing a feature with an invalid
 	 * (collapsed) exterior ring while winding order unification is enabled must
-	 * still fail the write (no change in behavior), but the resulting error
-	 * message must identify the affected feature (its type) and include a WKT
-	 * excerpt of the offending geometry, so the problematic element can be
-	 * located in the source data.
+	 * still fail the write (no change in behavior), but the resulting error message
+	 * must identify the affected feature (its type) and include a WKT excerpt of
+	 * the offending geometry, so the problematic element can be located in the
+	 * source data.
 	 *
 	 * @throws Exception if an error occurs
 	 */
@@ -721,9 +721,8 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 		// a "collapsed" ring (2 distinct points, plus the closing point):
 		// valid to construct, but its orientation cannot be determined, just
 		// like the invalid source geometry reported in SVC-2232
-		LinearRing collapsedShell = geomFactory.createLinearRing(
-				new Coordinate[] { new Coordinate(0, 0), new Coordinate(1, 1),
-						new Coordinate(0, 0) });
+		LinearRing collapsedShell = geomFactory.createLinearRing(new Coordinate[] {
+				new Coordinate(0, 0), new Coordinate(1, 1), new Coordinate(0, 0) });
 		Polygon invalid = geomFactory.createPolygon(collapsedShell, null);
 
 		Map<List<QName>, Object> values = new HashMap<List<QName>, Object>();

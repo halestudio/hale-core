@@ -136,10 +136,10 @@ public class WindingOrder {
 	}
 
 	/**
-	 * Maximum number of characters of a WKT representation of a ring to
-	 * include when enriching an orientation-determination failure, so that
-	 * the specific offending ring can be pinpointed within a larger geometry
-	 * (e.g. a MultiPolygon with many rings).
+	 * Maximum number of characters of a WKT representation of a ring to include
+	 * when enriching an orientation-determination failure, so that the specific
+	 * offending ring can be pinpointed within a larger geometry (e.g. a
+	 * MultiPolygon with many rings).
 	 */
 	private static final int RING_WKT_EXCERPT_MAX_LENGTH = 200;
 
@@ -157,8 +157,7 @@ public class WindingOrder {
 		boolean isCCW;
 		try {
 			isCCW = isCounterClockwise(linearRing);
-		}
-		catch (RuntimeException e) {
+		} catch (RuntimeException e) {
 			// enrich the failure with the specific ring that could not be
 			// oriented, so it can be identified even if it is nested deep
 			// inside a larger geometry (e.g. a MultiPolygon)
@@ -174,12 +173,11 @@ public class WindingOrder {
 	}
 
 	/**
-	 * Create a (possibly truncated) WKT representation of a ring, for use in
-	 * an enriched error message.
+	 * Create a (possibly truncated) WKT representation of a ring, for use in an
+	 * enriched error message.
 	 *
 	 * @param ring the ring
-	 * @return the WKT excerpt, or <code>null</code> if it could not be
-	 *         determined
+	 * @return the WKT excerpt, or <code>null</code> if it could not be determined
 	 */
 	private static String toRingWktExcerpt(LinearRing ring) {
 		try {

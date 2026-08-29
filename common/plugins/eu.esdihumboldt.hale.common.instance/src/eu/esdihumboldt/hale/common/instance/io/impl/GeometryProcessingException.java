@@ -14,9 +14,8 @@ package eu.esdihumboldt.hale.common.instance.io.impl;
 /**
  * Exception thrown when a geometry cannot be processed (e.g. unified) while
  * writing instances. The message is enriched with information about the
- * affected source element (feature type, feature identifier, geometry
- * excerpt), where available, to help locate the problematic geometry in the
- * source data.
+ * affected source element (feature type, feature identifier, geometry excerpt),
+ * where available, to help locate the problematic geometry in the source data.
  */
 public class GeometryProcessingException extends RuntimeException {
 

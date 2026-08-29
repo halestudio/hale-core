@@ -32,14 +32,14 @@ import eu.esdihumboldt.util.test.AbstractPlatformTest;
 /**
  * Tests for {@link AbstractGeoInstanceWriter}, in particular that
  * geometry-related errors encountered while unifying the winding order are
- * enriched with information identifying the affected source element, while
- * the current behavior (the error still fails the write) is preserved.
+ * enriched with information identifying the affected source element, while the
+ * current behavior (the error still fails the write) is preserved.
  */
 public class AbstractGeoInstanceWriterTest extends AbstractPlatformTest {
 
 	/**
-	 * Minimal concrete writer used only to invoke the protected geometry
-	 * handling methods under test.
+	 * Minimal concrete writer used only to invoke the protected geometry handling
+	 * methods under test.
 	 */
 	private static class TestWriter extends AbstractGeoInstanceWriter {
 
@@ -75,10 +75,10 @@ public class AbstractGeoInstanceWriterTest extends AbstractPlatformTest {
 	 * Build a "collapsed" ring with only 3 points (2 distinct points plus the
 	 * closing point). JTS allows constructing such a ring, as it can occur in
 	 * (invalid) source data and needs to be representable so it can be
-	 * reported/repaired - see {@link LinearRing}'s class documentation.
-	 * Determining its orientation is not possible though, and fails exactly
-	 * like the invalid geometry from SVC-2232/ING-5109 with
-	 * "Ring has fewer than 4 points, so orientation cannot be determined".
+	 * reported/repaired - see {@link LinearRing}'s class documentation. Determining
+	 * its orientation is not possible though, and fails exactly like the invalid
+	 * geometry from SVC-2232/ING-5109 with "Ring has fewer than 4 points, so
+	 * orientation cannot be determined".
 	 *
 	 * @return a collapsed, 3-point ring
 	 */
@@ -89,10 +89,10 @@ public class AbstractGeoInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * On an invalid source geometry, unifying the winding order must still
-	 * fail (no change in behavior), but the error message must be enriched
-	 * with the identifying information of the affected feature and a WKT
-	 * excerpt of the geometry, where available.
+	 * On an invalid source geometry, unifying the winding order must still fail (no
+	 * change in behavior), but the error message must be enriched with the
+	 * identifying information of the affected feature and a WKT excerpt of the
+	 * geometry, where available.
 	 */
 	@Test
 	public void testGeometryErrorIncludesFeatureContext() {
@@ -112,9 +112,9 @@ public class AbstractGeoInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
-	 * Without a feature context set (e.g. for writers that don't provide
-	 * one), the error is still raised, just without the feature-identifying
-	 * parts of the message.
+	 * Without a feature context set (e.g. for writers that don't provide one), the
+	 * error is still raised, just without the feature-identifying parts of the
+	 * message.
 	 */
 	@Test
 	public void testGeometryErrorWithoutFeatureContext() {

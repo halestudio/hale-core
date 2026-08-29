@@ -42,16 +42,16 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 		implements GeoInstanceWriter {
 
 	/**
-	 * Maximum number of characters of a WKT representation of a geometry to
-	 * include in an error message.
+	 * Maximum number of characters of a WKT representation of a geometry to include
+	 * in an error message.
 	 */
 	private static final int WKT_EXCERPT_MAX_LENGTH = 200;
 
 	/**
-	 * Identifying information about the source element (feature) currently
-	 * being written, used to enrich geometry error messages so that the
-	 * affected element can be located in the source data. Any of the fields
-	 * may be <code>null</code> if the information is not available.
+	 * Identifying information about the source element (feature) currently being
+	 * written, used to enrich geometry error messages so that the affected element
+	 * can be located in the source data. Any of the fields may be <code>null</code>
+	 * if the information is not available.
 	 */
 	public static class FeatureContext {
 
@@ -72,16 +72,14 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 		}
 
 		/**
-		 * @return a display name for the feature type, may be
-		 *         <code>null</code>
+		 * @return a display name for the feature type, may be <code>null</code>
 		 */
 		public String getFeatureType() {
 			return featureType;
 		}
 
 		/**
-		 * @return the feature's identifier (e.g. gml:id), may be
-		 *         <code>null</code>
+		 * @return the feature's identifier (e.g. gml:id), may be <code>null</code>
 		 */
 		public String getFeatureId() {
 			return featureId;
@@ -93,14 +91,12 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Set the context describing the feature currently being written, to be
-	 * included in geometry error messages raised while writing it.
-	 * Subclasses that have access to the source instance should call this
-	 * before writing an instance's properties, and restore the previous
-	 * context (as returned by this method) afterwards, e.g. in a
-	 * <code>finally</code> block.
+	 * included in geometry error messages raised while writing it. Subclasses that
+	 * have access to the source instance should call this before writing an
+	 * instance's properties, and restore the previous context (as returned by this
+	 * method) afterwards, e.g. in a <code>finally</code> block.
 	 *
-	 * @param context the current feature context, or <code>null</code> to
-	 *            reset it
+	 * @param context the current feature context, or <code>null</code> to reset it
 	 * @return the previous context, may be <code>null</code>
 	 */
 	protected FeatureContext setCurrentFeatureContext(FeatureContext context) {
@@ -110,12 +106,11 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Build a diagnostic suffix identifying the feature/geometry associated
-	 * with a geometry-related error, for inclusion in error messages.
-	 * Information that is not available is simply omitted.
+	 * Build a diagnostic suffix identifying the feature/geometry associated with a
+	 * geometry-related error, for inclusion in error messages. Information that is
+	 * not available is simply omitted.
 	 *
-	 * @param geom the geometry associated with the error, may be
-	 *            <code>null</code>
+	 * @param geom the geometry associated with the error, may be <code>null</code>
 	 * @return a describing string, starting with a separator if not empty
 	 */
 	protected String describeGeometryContext(Geometry geom) {
@@ -140,8 +135,8 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 	}
 
 	/**
-	 * Create a (possibly truncated) WKT representation of a geometry, for use
-	 * in error messages.
+	 * Create a (possibly truncated) WKT representation of a geometry, for use in
+	 * error messages.
 	 *
 	 * @param geom the geometry, may be <code>null</code>
 	 * @return the WKT excerpt, or <code>null</code> if it is not available
@@ -230,10 +225,8 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 					return new Pair<>(targetGeometry, getTargetCRS());
 				} catch (Exception e) {
 					if (report != null) {
-						report.error(new IOMessageImpl(
-								"Could not convert geometry to target CRS"
-										+ describeGeometryContext(geom),
-								e));
+						report.error(new IOMessageImpl("Could not convert geometry to target CRS"
+								+ describeGeometryContext(geom), e));
 					}
 					// return original geometry
 					return new Pair<>(geom, sourceCrs);
@@ -395,15 +388,14 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 
 	/**
 	 * Unify the winding order of a geometry, enriching the error message with
-	 * information identifying the affected feature/geometry (where available)
-	 * if the underlying geometry processing fails, e.g. because of an invalid
-	 * source geometry. The exception is rethrown so that behavior on
-	 * encountering an invalid geometry is unchanged; only the log output is
-	 * improved.
+	 * information identifying the affected feature/geometry (where available) if
+	 * the underlying geometry processing fails, e.g. because of an invalid source
+	 * geometry. The exception is rethrown so that behavior on encountering an
+	 * invalid geometry is unchanged; only the log output is improved.
 	 *
 	 * @param geom the geometry to unify
-	 * @param counterClockWise whether to unify to counter-clockwise or
-	 *            clockwise order
+	 * @param counterClockWise whether to unify to counter-clockwise or clockwise
+	 *            order
 	 * @param crs the CRS of the geometry
 	 * @return the unified geometry
 	 */
@@ -413,10 +405,8 @@ public abstract class AbstractGeoInstanceWriter extends AbstractInstanceWriter
 			return WindingOrder.unifyWindingOrder(geom, counterClockWise, crs);
 		} catch (RuntimeException e) {
 			String cause = e.getMessage() != null ? e.getMessage() : e.getClass().getSimpleName();
-			throw new GeometryProcessingException(
-					"Could not unify winding order of geometry: " + cause
-							+ describeGeometryContext(geom),
-					e);
+			throw new GeometryProcessingException("Could not unify winding order of geometry: "
+					+ cause + describeGeometryContext(geom), e);
 		}
 	}
 

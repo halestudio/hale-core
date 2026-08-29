@@ -277,12 +277,12 @@ public class WindingOrderTest {
 	}
 
 	/**
-	 * Regression test for SVC-2232/ING-5109: a ring with fewer than 4 points
-	 * (i.e. fewer than 3 distinct points plus the closing point) cannot have
-	 * its orientation determined and must fail with an
+	 * Regression test for SVC-2232/ING-5109: a ring with fewer than 4 points (i.e.
+	 * fewer than 3 distinct points plus the closing point) cannot have its
+	 * orientation determined and must fail with an
 	 * {@link IllegalArgumentException}, as is the case for an invalid source
-	 * geometry. This documents the current (unchanged) behavior on
-	 * encountering such an invalid geometry.
+	 * geometry. This documents the current (unchanged) behavior on encountering
+	 * such an invalid geometry.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testIsCounterClockwiseFewerThanFourPoints() {
@@ -297,27 +297,26 @@ public class WindingOrderTest {
 	}
 
 	/**
-	 * Regression test for SVC-2232/ING-5109: when unifying the winding order
-	 * of a MultiPolygon that contains one invalid (collapsed) ring among
-	 * several valid ones, the failure message must identify the specific
-	 * offending ring, not just repeat the whole (potentially much larger)
-	 * MultiPolygon, so the invalid ring can actually be pinpointed.
+	 * Regression test for SVC-2232/ING-5109: when unifying the winding order of a
+	 * MultiPolygon that contains one invalid (collapsed) ring among several valid
+	 * ones, the failure message must identify the specific offending ring, not just
+	 * repeat the whole (potentially much larger) MultiPolygon, so the invalid ring
+	 * can actually be pinpointed.
 	 */
 	@Test
 	public void testUnifyWindingOrderForMultiPolygon_InvalidRing_IdentifiesOffendingRing() {
 		GeometryFactory factory = new GeometryFactory();
 
 		// a valid polygon
-		LinearRing validShell = factory.createLinearRing(new Coordinate[] {
-				new Coordinate(0, 0), new Coordinate(0, 10), new Coordinate(10, 10),
-				new Coordinate(10, 0), new Coordinate(0, 0) });
+		LinearRing validShell = factory
+				.createLinearRing(new Coordinate[] { new Coordinate(0, 0), new Coordinate(0, 10),
+						new Coordinate(10, 10), new Coordinate(10, 0), new Coordinate(0, 0) });
 		Polygon validPolygon = factory.createPolygon(validShell);
 
 		// a "collapsed" ring (2 distinct points, plus the closing point):
 		// valid to construct, but its orientation cannot be determined
 		LinearRing collapsedShell = factory.createLinearRing(new Coordinate[] {
-				new Coordinate(100, 100), new Coordinate(101, 101),
-				new Coordinate(100, 100) });
+				new Coordinate(100, 100), new Coordinate(101, 101), new Coordinate(100, 100) });
 		Polygon invalidPolygon = factory.createPolygon(collapsedShell, null);
 
 		MultiPolygon multiPolygon = factory
@@ -327,8 +326,7 @@ public class WindingOrderTest {
 		try {
 			WindingOrder.unifyWindingOrder(multiPolygon, true, null);
 			fail("Expected an IllegalArgumentException");
-		}
-		catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			error = e;
 		}
 
