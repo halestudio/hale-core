@@ -52,6 +52,7 @@ import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstanceCollection
 import eu.esdihumboldt.hale.common.instance.model.impl.MultiInstanceCollection;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
+import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.AbstractFlag;
 import eu.esdihumboldt.hale.io.gml.writer.internal.DefaultMultipartHandler;
@@ -129,13 +130,47 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		// intentionally reads (and reprojects) the geometries a second time rather
 		// than buffering all of them in memory, which keeps the streaming writer's
 		// memory profile intact for large plans.
-		boolean written = writeBoundedBy(writer, instances, reporter);
+		boolean written = supportsBoundedByEnvelope(containerDefinition)
+				&& writeBoundedBy(writer, instances, reporter);
 
 		if (!written) {
-			// Fall back to the default handling (e.g. GML 2 boundedBy) if no
-			// extent could be determined from the instances.
+			// Fall back to the default handling (e.g. GML 2 boundedBy) if the
+			// container's schema doesn't declare gml:boundedBy, the target GML
+			// namespace doesn't support the Envelope content model written by
+			// writeBoundedBy, or no extent could be determined from the instances.
 			super.writeAdditionalElements(writer, instances, containerDefinition, reporter);
 		}
+	}
+
+	/**
+	 * @param containerDefinition the container type definition
+	 * @return <code>true</code> if the container's schema declares a
+	 *         {@code gml:boundedBy} child and the target GML namespace is GML 3.2
+	 *         ({@link #NS_GML_32}). GML 2 and GML 3.0/3.1 all share the
+	 *         {@link #NS_GML} namespace returned by {@link #getGmlNs()} for those
+	 *         versions, but unlike GML 3.2 their {@code gml:Envelope} does not
+	 *         support {@code lowerCorner}/{@code upperCorner}, so
+	 *         {@link #writeBoundedBy(XMLStreamWriter, InstanceCollection, IOReporter)}
+	 *         must not be used for them
+	 */
+	private boolean supportsBoundedByEnvelope(TypeDefinition containerDefinition) {
+		if (!NS_GML_32.equals(getGmlNs())) {
+			return false;
+		}
+
+		// containerDefinition.getChild(QName) requires an exact (namespace
+		// qualified) match, but boundedBy may be declared/inherited in either the
+		// GML 3.2 or GML 2/3.0/3.1 namespace depending on which schema the
+		// container type derives from, so match on the local name instead; this
+		// includes children inherited from a super type (e.g. gml:AbstractFeatureType),
+		// see TypeDefinition#getChildren()
+		for (ChildDefinition<?> child : containerDefinition.getChildren()) {
+			if ("boundedBy".equals(child.getName().getLocalPart()) //$NON-NLS-1$
+					&& child.asProperty() != null) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -271,7 +306,8 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 		else if (mixedCrs) {
 			reporter.warn(String.format(
 					"The exported geometries use more than one CRS but no target CRS is configured to unify them. Geometries in a CRS other than the envelope's reference CRS (%s) were reprojected for the XPlanAuszug bounding envelope%s. Configure a target CRS to obtain consistent output.", //$NON-NLS-1$
-					srsName, mixedCrsGeometrySkipped
+					srsName,
+					mixedCrsGeometrySkipped
 							? "; some of them could not be reprojected and were excluded from the extent" //$NON-NLS-1$
 							: ""));
 		}
@@ -325,8 +361,7 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 			return null;
 		}
 		try {
-			MathTransform transform = CRS.findMathTransform(sourceCrs.getCRS(),
-					targetCrs.getCRS());
+			MathTransform transform = CRS.findMathTransform(sourceCrs.getCRS(), targetCrs.getCRS());
 			return JTS.transform(geom, transform);
 		} catch (Exception e) {
 			reporter.warn(
