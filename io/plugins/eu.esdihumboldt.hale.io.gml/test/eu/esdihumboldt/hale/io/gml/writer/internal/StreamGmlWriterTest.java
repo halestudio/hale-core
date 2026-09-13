@@ -707,6 +707,48 @@ public class StreamGmlWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * Regression test for SVC-2232/ING-5109: writing a feature with an invalid
+	 * (collapsed) exterior ring while winding order unification is enabled must
+	 * still fail the write (no change in behavior), but the resulting error message
+	 * must identify the affected feature (its type) and include a WKT excerpt of
+	 * the offending geometry, so the problematic element can be located in the
+	 * source data.
+	 *
+	 * @throws Exception if an error occurs
+	 */
+	@Test
+	public void testGeometryPrimitive_32_Polygon_InvalidRing_WindingOrder() throws Exception {
+		// a "collapsed" ring (2 distinct points, plus the closing point):
+		// valid to construct, but its orientation cannot be determined, just
+		// like the invalid source geometry reported in SVC-2232
+		LinearRing collapsedShell = geomFactory.createLinearRing(new Coordinate[] {
+				new Coordinate(0, 0), new Coordinate(1, 1), new Coordinate(0, 0) });
+		Polygon invalid = geomFactory.createPolygon(collapsedShell, null);
+
+		Map<List<QName>, Object> values = new HashMap<List<QName>, Object>();
+		values.put(GEOMETRY_PROPERTY, invalid); // $NON-NLS-1$
+
+		IOReport report = fillFeatureTest("PrimitiveTest", //$NON-NLS-1$
+				getClass().getResource("/data/geom_schema/geom-gml32.xsd").toURI(), //$NON-NLS-1$
+				values, "geometryPrimitive_32_Polygon_InvalidRing_WindingOrder", DEF_SRS_NAME, //$NON-NLS-1$
+				true, true, EnumWindingOrderTypes.counterClockwise);
+
+		assertFalse("Writing an invalid geometry should still fail the write", //$NON-NLS-1$
+				report.isSuccess());
+
+		StringBuilder messages = new StringBuilder();
+		for (eu.esdihumboldt.hale.common.core.io.report.IOMessage message : report.getErrors()) {
+			messages.append(message.getMessage()).append('\n');
+		}
+
+		assertTrue("Error message should identify the affected feature type", //$NON-NLS-1$
+				messages.toString().contains("PrimitiveTest")); //$NON-NLS-1$
+		assertTrue("Error message should include a WKT excerpt of the geometry", //$NON-NLS-1$
+				messages.toString().contains("LINEARRING") //$NON-NLS-1$
+						|| messages.toString().contains("POLYGON")); //$NON-NLS-1$
+	}
+
+	/**
 	 * Create a feature, fill it with values, write it as GML, validate the GML and
 	 * load the GML file again to compare the loaded values with the ones that were
 	 * written
