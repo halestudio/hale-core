@@ -49,6 +49,7 @@ import eu.esdihumboldt.hale.common.core.io.ProgressIndicator;
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.common.core.io.report.IOReporter;
 import eu.esdihumboldt.hale.common.core.io.report.impl.IOMessageImpl;
+import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier;
 import eu.esdihumboldt.hale.common.core.io.supplier.MultiLocationOutputSupplier;
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 import eu.esdihumboldt.hale.common.instance.geometry.GeometryFinder;
@@ -139,6 +140,13 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 				reporter.info("Multiple Shapefiles have been exported. The file names are: "
 						+ filesWritten.stream().collect(Collectors.joining(", ")));
 			}
+			else if (filesWritten.size() == 1 && isUseTypeNameAsFilename()) {
+				// the file name differs from the configured target, point the
+				// target to the file that was actually written
+				File file = new File(
+						filePath + "/" + filesWritten.get(0) + ShapefileConstants.SHP_EXTENSION);
+				setTarget(new FileIOSupplier(file));
+			}
 
 			for (String f : filesWritten) {
 				String cpgFileName = filePath + "/" + f + ShapefileConstants.CPG_EXTENSION;
@@ -162,6 +170,15 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	@Override
 	protected String getDefaultTypeName() {
 		return null;
+	}
+
+	/**
+	 * @return if the type name should be used as file base name instead of the
+	 *         configured target file name
+	 */
+	private boolean isUseTypeNameAsFilename() {
+		return getParameter(ShapefileConstants.PARAM_USE_TYPE_NAME_AS_FILENAME).as(Boolean.class,
+				false);
 	}
 
 	/**
@@ -539,7 +556,11 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 	 * - filename_schemaName_geometryType.shp if multiple schema and geom.<br>
 	 * - filename_schemaName.shp if multiple schemas.<br>
 	 * - filename_geometryType.shp if multiple geometries.<br>
-	 * - filename.shp single schema and geom.
+	 * - filename.shp single schema and geom.<br>
+	 * If the parameter {@link ShapefileConstants#PARAM_USE_TYPE_NAME_AS_FILENAME}
+	 * is enabled, the schema name is used as base name instead:<br>
+	 * - schemaName_geometryType.shp if multiple geometries.<br>
+	 * - schemaName.shp otherwise.
 	 *
 	 * @param location file location.
 	 * @param numberOfSchemas number of schemas.
@@ -555,7 +576,17 @@ public class ShapefileInstanceWriter extends AbstractGeoInstanceWriter {
 		String filePath = Paths.get(location).getParent().toString();
 		String baseFilename = Paths.get(location).getFileName().toString();
 		baseFilename = baseFilename.substring(0, baseFilename.lastIndexOf("."));
-		if (numberOfSchemas > 1) {
+		if (isUseTypeNameAsFilename()) {
+			// use the type name as base name, only the directory of the
+			// configured target is used
+			filenameWithType = filePath + FileSystems.getDefault().getSeparator()
+					+ schemaEntry.getKey();
+			if (numberOfGeometries > 1) {
+				filenameWithType += ShapefileConstants.UNDERSCORE + geometryEntry.getKey();
+			}
+			filenameWithType += ShapefileConstants.SHP_EXTENSION;
+		}
+		else if (numberOfSchemas > 1) {
 			if (numberOfGeometries > 1) {
 				filenameWithType = filePath + FileSystems.getDefault().getSeparator() + baseFilename
 						+ ShapefileConstants.UNDERSCORE + schemaEntry.getKey()
