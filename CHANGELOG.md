@@ -1,3 +1,23 @@
+## [6.5.0](https://github.com/halestudio/hale-core/compare/v6.4.1...v6.5.0) (2026-09-18)
+
+### Features
+
+* **gml:** include feature/geometry context in geometry error logs ([026277e](https://github.com/halestudio/hale-core/commit/026277ea87fe1db69b31ae5cc370bd4a9341af0f)), closes [ING-5109](https://wetransform.atlassian.net/browse/ING-5109)
+* **resources:** add offline resource bundle for shapechange.net ([17910fe](https://github.com/halestudio/hale-core/commit/17910fe15169fe8fa1e620222191b69dd6f713ce))
+* **shp:** add option to use type name as Shapefile file name ([e58fbc7](https://github.com/halestudio/hale-core/commit/e58fbc7f934a376b3fac336a6ff451e230f67836)), closes [ING-5397](https://wetransform.atlassian.net/browse/ING-5397)
+
+### Bug Fixes
+
+* **deps:** update deegree to v3.6.11 ([ee811fd](https://github.com/halestudio/hale-core/commit/ee811fd1132acd504f272155023221bfc4cca38e))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.22.2 ([4236384](https://github.com/halestudio/hale-core/commit/4236384ddd6afccaa6c11e2621d58af9128e4e3d))
+* **deps:** update dependency commons-codec:commons-codec to v1.22.1 ([83736c0](https://github.com/halestudio/hale-core/commit/83736c0747288f7a3a2e6f8c7930dc7a9ebccba7))
+* **deps:** update dependency joda-time:joda-time to v2.14.3 ([c57623e](https://github.com/halestudio/hale-core/commit/c57623ef7ee7625f6c00b906d5d86a7a14e70325))
+* **deps:** update dependency org.codehaus.jettison:jettison to v1.5.7 ([6b386d4](https://github.com/halestudio/hale-core/commit/6b386d4900fd42de3eec46ffada55c34962eb29e))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.53.2.1 ([0bc432e](https://github.com/halestudio/hale-core/commit/0bc432e5ef493793ba5d48b6a5b8d238ae07cff6))
+* **deps:** update logback dependencies to v1.5.38 ([d599f30](https://github.com/halestudio/hale-core/commit/d599f303e534ac287cdc500671994f978fa27dac))
+* **deps:** update spring core to v7.0.9 ([e265746](https://github.com/halestudio/hale-core/commit/e265746b64723a071bd6f449653d67544b46fa67))
+* **xplan:** add default CRS to XPlanGML (XPlanAuszug) export ([a03702d](https://github.com/halestudio/hale-core/commit/a03702dbdd689bf6a1460cec63fd1d96825a9082)), closes [ING-4920](https://wetransform.atlassian.net/browse/ING-4920)
+
 ## [6.4.1](https://github.com/halestudio/hale-core/compare/v6.4.0...v6.4.1) (2026-07-08)
 
 ### Bug Fixes
