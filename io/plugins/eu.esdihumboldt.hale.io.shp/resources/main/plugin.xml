@@ -93,6 +93,21 @@
                   sampleDescription="Reference systems can be defined either as code or WKT (preceded with code: or wkt: respectively)">
             </valueDescriptor>
          </providerParameter>
+         <providerParameter
+               description="Use the type name as base name for the written Shapefiles. Only the directory of the configured target file is used, its file name is ignored. If a type is written to multiple Shapefiles because of different geometry types, the geometry type is appended to the type name."
+               label="Use type name as file name"
+               name="useTypeNameAsFilename"
+               optional="true">
+            <parameterBinding
+                  class="java.lang.Boolean">
+            </parameterBinding>
+            <valueDescriptor
+                  default="false"
+                  defaultDescription="By default the configured target file name is used as base name for the written Shapefiles, with the type name and geometry type appended if multiple files are written"
+                  sample="true"
+                  sampleDescription="Name the Shapefiles after the types that are written">
+            </valueDescriptor>
+         </providerParameter>
       </provider>
    </extension>
    <extension

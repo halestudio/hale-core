@@ -37,10 +37,12 @@ import org.locationtech.jts.geom.Point
 
 import eu.esdihumboldt.cst.functions.geometric.GeometryHelperFunctions
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException
+import eu.esdihumboldt.hale.common.core.io.Value
 import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
+import eu.esdihumboldt.hale.common.core.io.supplier.MultiLocationOutputSupplier
 import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
@@ -1626,6 +1628,163 @@ class ShapefileInstanceWriterTest extends AbstractPlatformTest {
 
 			// two instances were loaded
 			assertEquals(1, num)
+		}
+	}
+
+	/**
+	 * Write instances with the type name used as file base name. The configured
+	 * target file is placed in the given directory and only its parent directory
+	 * is expected to be used.
+	 */
+	@CompileStatic
+	static ShapefileInstanceWriter writeWithTypeNameAsFilename(Path dir, Schema schema,
+			InstanceCollection instances) {
+		File target = dir.resolve('output.shp').toFile()
+
+		ShapefileInstanceWriter writer = new ShapefileInstanceWriter()
+		writer.setTarget(new FileIOSupplier(target))
+		def ss = new DefaultSchemaSpace()
+		ss.addSchema(schema)
+		writer.setTargetSchema(ss)
+		writer.setInstances(instances)
+		writer.setParameter(ShapefileConstants.PARAM_USE_TYPE_NAME_AS_FILENAME, Value.of(true))
+
+		IOReport report = writer.execute(new LogProgressIndicator())
+
+		assertTrue(report.isSuccess())
+		assertTrue(report.getErrors().isEmpty())
+
+		return writer
+	}
+
+	@Test
+	void testTypeNameAsFilenameSingleType() {
+		Schema schema = new SchemaBuilder().schema {
+			river {
+				name()
+				location(GeometryProperty)
+			}
+		}
+
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			river {
+				name('Rhine')
+				location( createGeometry('POINT(49.872833 8.651222)', 4326) )
+			}
+		}
+
+		def tmpDir = Files.createTempDirectory("ShapefileTest")
+		try {
+			def writer = writeWithTypeNameAsFilename(tmpDir, schema, instances)
+
+			def shpFile = tmpDir.resolve('river.shp').toFile()
+			assertTrue("Shapefile named after type expected", shpFile.exists())
+			assertTrue("CPG file named after type expected", tmpDir.resolve('river.cpg').toFile().exists())
+			assertFalse("Configured file name must not be used", tmpDir.resolve('output.shp').toFile().exists())
+
+			// target must point to the file that was actually written
+			assertEquals(shpFile.toURI(), writer.getTarget().getLocation())
+
+			def loaded = loadInstances(shpFile)
+			int num = 0
+			loaded.iterator().withCloseable {
+				while (it.hasNext()) {
+					Instance inst = it.next()
+					num++
+					assert inst.p.name.value() == 'Rhine'
+				}
+			}
+			assertEquals(1, num)
+		} finally {
+			tmpDir.deleteDir()
+		}
+	}
+
+	@Test
+	void testTypeNameAsFilenameMultipleTypes() {
+		Schema schema = new SchemaBuilder().schema {
+			river {
+				name()
+				location(GeometryProperty)
+			}
+			lake {
+				name()
+				location(GeometryProperty)
+			}
+		}
+
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			river {
+				name('Rhine')
+				location( createGeometry('POINT(49.872833 8.651222)', 4326) )
+			}
+			lake {
+				name('Chiemsee')
+				location( createGeometry('POINT(47.872833 12.451222)', 4326) )
+			}
+		}
+
+		def tmpDir = Files.createTempDirectory("ShapefileTest")
+		try {
+			def writer = writeWithTypeNameAsFilename(tmpDir, schema, instances)
+
+			def riverFile = tmpDir.resolve('river.shp').toFile()
+			def lakeFile = tmpDir.resolve('lake.shp').toFile()
+			assertTrue(riverFile.exists())
+			assertTrue(lakeFile.exists())
+			assertTrue(tmpDir.resolve('river.cpg').toFile().exists())
+			assertTrue(tmpDir.resolve('lake.cpg').toFile().exists())
+			assertFalse(tmpDir.resolve('output_river.shp').toFile().exists())
+			assertFalse(tmpDir.resolve('output_lake.shp').toFile().exists())
+
+			assertTrue(writer.getTarget() instanceof MultiLocationOutputSupplier)
+			def locations = ((MultiLocationOutputSupplier) writer.getTarget()).getLocations()
+			assertThat(locations).containsExactlyInAnyOrder(riverFile.toURI(), lakeFile.toURI())
+		} finally {
+			tmpDir.deleteDir()
+		}
+	}
+
+	@Test
+	void testTypeNameAsFilenameMultipleGeometries() {
+		GeometryFactory gf = new GeometryFactory()
+		def poly = gf.createPolygon([
+			new Coordinate(0, 0),
+			new Coordinate(1, 0),
+			new Coordinate(1, 1),
+			new Coordinate(0, 1),
+			new Coordinate(0, 0)
+		] as Coordinate[])
+		def polyGeom = new DefaultGeometryProperty<Geometry>(new CodeDefinition("EPSG:4326", null), poly)
+
+		Schema schema = new SchemaBuilder().schema {
+			river {
+				name()
+				location(GeometryProperty)
+			}
+		}
+
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			river {
+				name('Rhine')
+				location( createGeometry('POINT(49.872833 8.651222)', 4326) )
+			}
+			river {
+				name('Rhine area')
+				location( polyGeom )
+			}
+		}
+
+		def tmpDir = Files.createTempDirectory("ShapefileTest")
+		try {
+			writeWithTypeNameAsFilename(tmpDir, schema, instances)
+
+			assertTrue(tmpDir.resolve('river_Point.shp').toFile().exists())
+			assertTrue(tmpDir.resolve('river_Polygon.shp').toFile().exists())
+			assertFalse(tmpDir.resolve('output_Point.shp').toFile().exists())
+			assertFalse(tmpDir.resolve('output_Polygon.shp').toFile().exists())
+		} finally {
+			tmpDir.deleteDir()
 		}
 	}
 }

@@ -67,6 +67,13 @@ public interface ShapefileConstants {
 	public static final String PARAM_MATCH_SHORT_PROPERTY_NAMES = "matchShortPropertyNames";
 
 	/**
+	 * Name of the boolean parameter for the Shapefile instance writer to use the
+	 * type name as file base name instead of the configured target file name.
+	 * Defaults to <code>false</code>.
+	 */
+	public static final String PARAM_USE_TYPE_NAME_AS_FILENAME = "useTypeNameAsFilename";
+
+	/**
 	 * Constant for the geometry property for the shape files. Used when exporting
 	 * the data to the shape files.
 	 */
