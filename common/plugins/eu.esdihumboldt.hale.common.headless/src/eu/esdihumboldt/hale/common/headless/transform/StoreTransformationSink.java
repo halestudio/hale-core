@@ -17,6 +17,8 @@ import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.apache.commons.io.FileUtils;
+
 import de.fhg.igd.slf4jplus.ALogger;
 import de.fhg.igd.slf4jplus.ALoggerFactory;
 import eu.esdihumboldt.hale.common.instance.model.DataSet;
@@ -42,7 +44,7 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 	private class StoreLimboCollection implements InstanceCollection {
 
 		private boolean firstIterator = true;
-		private boolean limboOpen = false;
+		private volatile boolean limboOpen = false;
 
 		private InstanceCollection stored() {
 			return store.getInstances(types);
@@ -76,6 +78,7 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 				return limboSink.getInstanceCollection().iterator();
 			}
 			waitToComplete();
+			checkWriteFailure();
 			return stored().iterator();
 		}
 
@@ -98,7 +101,21 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 		@Override
 		public InstanceCollection select(Filter filter) {
 			waitToComplete();
+			checkWriteFailure();
 			return stored().select(filter);
+		}
+
+		/**
+		 * Fail if not all instances could be written to the store, to prevent silently
+		 * reading a partial store.
+		 */
+		private void checkWriteFailure() {
+			Exception failure = writeFailure;
+			if (failure != null) {
+				throw new IllegalStateException(
+						"Transformed instances could not be written to the temporary store",
+						failure);
+			}
 		}
 
 		private void waitToComplete() {
@@ -127,6 +144,10 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 	private volatile TypeIndex types;
 
 	private final AtomicBoolean complete = new AtomicBoolean();
+	/**
+	 * Failure completing writing to the store, if any
+	 */
+	private volatile Exception writeFailure;
 	private final AtomicBoolean skipLimbo = new AtomicBoolean();
 	private final AtomicInteger counter = new AtomicInteger();
 
@@ -134,14 +155,45 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 	 * Create a sink with a new temporary store.
 	 */
 	public StoreTransformationSink() {
+		this(createLocation());
+	}
+
+	private StoreTransformationSink(Path location) {
+		this(createStore(location), location);
+	}
+
+	/**
+	 * Create a sink based on the given store.
+	 *
+	 * @param store the instance store, it is closed when the sink is disposed
+	 * @param location the store location
+	 */
+	StoreTransformationSink(InstanceStore store, Path location) {
+		this.store = store;
+		this.location = location;
+		writer = store.openWriter();
+	}
+
+	private static Path createLocation() {
 		try {
-			location = Files.createTempDirectory("transformationSink");
-			store = InstanceStoreExtension.getInstance().createStore(DataSet.TRANSFORMED, location,
-					null);
+			return Files.createTempDirectory("transformationSink");
 		} catch (IOException e) {
+			throw new IllegalStateException("Cannot create temporary instance store directory", e);
+		}
+	}
+
+	private static InstanceStore createStore(Path location) {
+		try {
+			return InstanceStoreExtension.getInstance().createStore(DataSet.TRANSFORMED, location,
+					null);
+		} catch (IOException | RuntimeException e) {
+			try {
+				FileUtils.deleteDirectory(location.toFile());
+			} catch (IOException | RuntimeException e1) {
+				log.warn("Could not delete temporary instance store directory " + location, e1);
+			}
 			throw new IllegalStateException("Cannot create temporary instance store", e);
 		}
-		writer = store.openWriter();
 	}
 
 	@Override
@@ -163,7 +215,8 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 	protected void internalDone(boolean cancel) {
 		try {
 			writer.close();
-		} catch (IOException e) {
+		} catch (IOException | RuntimeException e) {
+			writeFailure = e;
 			log.error("Failed to write transformed instances to temporary store", e);
 		}
 		limboSink.done(cancel);
