@@ -25,6 +25,8 @@ dependencies {
   api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.graph"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.groovy"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.index"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.store"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.store.sqlite"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.lookup"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.propertyaccessor"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.referencing"))

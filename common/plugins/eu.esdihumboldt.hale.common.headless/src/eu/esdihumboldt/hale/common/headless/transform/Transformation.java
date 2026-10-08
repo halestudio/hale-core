@@ -11,8 +11,8 @@
  */
 package eu.esdihumboldt.hale.common.headless.transform;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,7 +28,6 @@ import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import com.google.common.io.Files;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
@@ -59,16 +58,12 @@ import eu.esdihumboldt.hale.common.instance.io.InstanceReader;
 import eu.esdihumboldt.hale.common.instance.io.InstanceValidator;
 import eu.esdihumboldt.hale.common.instance.io.InstanceWriter;
 import eu.esdihumboldt.hale.common.instance.model.DataSet;
-import eu.esdihumboldt.hale.common.instance.model.Filter;
-import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.impl.FilteredInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.model.impl.InstanceDecorator;
 import eu.esdihumboldt.hale.common.instance.model.impl.MultiInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.orient.OInstance;
-import eu.esdihumboldt.hale.common.instance.orient.storage.BrowseOrientInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.orient.storage.LocalOrientDB;
-import eu.esdihumboldt.hale.common.instance.orient.storage.StoreInstancesJob;
+import eu.esdihumboldt.hale.common.instance.store.InstanceStore;
+import eu.esdihumboldt.hale.common.instance.store.InstanceStoreExtension;
+import eu.esdihumboldt.hale.common.instance.store.StoreInstancesJob;
 import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
 
 /**
@@ -321,7 +316,7 @@ public class Transformation {
 		// Check whether to create a temporary database or not.
 		// Currently do not create a temporary DB is there are Retypes/Creates
 		// only.
-		final LocalOrientDB db;
+		final InstanceStore store;
 		boolean useTempDatabase = settings.useTemporaryDatabase().orElseGet(() -> {
 			boolean useDb = false;
 
@@ -340,39 +335,21 @@ public class Transformation {
 			return useDb;
 		});
 
-		// Create temporary database if necessary.
+		// Create temporary instance store if necessary.
 		if (useTempDatabase) {
-			// create db
-			File tmpDir = Files.createTempDir();
-			db = new LocalOrientDB(tmpDir);
-			tmpDir.deleteOnExit();
-
-			// get instance collection
-//			sourceToUse = new BrowseOrientInstanceCollection(db, sourceSchema, DataSet.SOURCE);
-			// only yield instances that were actually inserted
-			// this is also done in OrientInstanceService
-			// TODO make configurable?
-			sourceToUse = FilteredInstanceCollection.applyFilter(
-					new BrowseOrientInstanceCollection(db, sourceSchema, DataSet.SOURCE),
-					new Filter() {
-
-						@Override
-						public boolean match(Instance instance) {
-							Instance inst = (instance instanceof InstanceDecorator)
-									? InstanceDecorator.getRoot(instance)
-									: instance;
-
-							if (inst instanceof OInstance) {
-								return ((OInstance) inst).isInserted();
-							}
-							return true;
-						}
-
-					});
+			try {
+				Path storeDir = java.nio.file.Files.createTempDirectory("hale-source-instances");
+				store = InstanceStoreExtension.getInstance().createStore(DataSet.SOURCE, storeDir,
+						serviceProvider);
+			} catch (IOException e) {
+				result.setException(e);
+				return result;
+			}
+			sourceToUse = store.getInstances(sourceSchema);
 		}
 		else {
 			sourceToUse = new StatsCountInstanceCollection(sources, reportHandler);
-			db = null;
+			store = null;
 		}
 
 		// create transformation job
@@ -448,8 +425,12 @@ public class Transformation {
 					exportJob.cancel();
 				}
 
-				if (db != null) {
-					db.delete();
+				if (store != null) {
+					try {
+						store.close();
+					} catch (IOException e) {
+						log.warn("Failed to delete temporary instance store", e);
+					}
 				}
 			}
 		});
@@ -504,7 +485,7 @@ public class Transformation {
 
 			// run store instance job first...
 			Job storeJob = new StoreInstancesJob("Load source instances into temporary database",
-					db, sources, serviceProvider, reportHandler, true) {
+					store, sources, sourceSchema, serviceProvider, reportHandler, true) {
 
 				@Override
 				protected void onComplete() {
