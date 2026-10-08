@@ -1,16 +1,22 @@
 plugins {
-  id 'hale.migrated-java'
+  id 'hale.migrated-groovy'
 }
 
 hale {
-  bundleName = 'OrientDB transformation sink'
+  bundleName = 'OrientDB temporary instance store'
 }
 
 dependencies {
   implementation libs.slf4jplus.api
+  implementation libs.commons.io
 
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.orient')
-  implementation project(':common:plugins:eu.esdihumboldt.hale.common.headless')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store.test')
 }
