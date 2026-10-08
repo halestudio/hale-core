@@ -60,8 +60,13 @@ public class StoreInstancesJob extends Job {
 
 	/**
 	 * Report task type.
+	 * <p>
+	 * The name still refers to OrientDB, which was the only temporary instance
+	 * store before. It is kept for backwards compatibility, as it is the key of the
+	 * report in transformation statistics (e.g. used in success evaluation
+	 * scripts).
 	 */
-	public static final String TASK_TYPE = "eu.esdihumboldt.hale.instance.store.load";
+	public static final String TASK_TYPE = "eu.esdihumboldt.hale.instance.orient.store";
 
 	private static final ALogger log = ALoggerFactory.getLogger(StoreInstancesJob.class);
 
