@@ -21,6 +21,8 @@ dependencies {
   api(project(":common:plugins:eu.esdihumboldt.hale.common.cli"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.headless"))
   api(project(":common:plugins:eu.esdihumboldt.hale.common.headless.orient"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.store"))
+  api(project(":common:plugins:eu.esdihumboldt.hale.common.instance.store.sqlite"))
 
   api(project(":util:plugins:eu.esdihumboldt.util.cli"))
 }

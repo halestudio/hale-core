@@ -49,5 +49,7 @@ dependencies {
   testRuntimeOnly project(':io:features:eu.esdihumboldt.hale.io.feature.core')
   testRuntimeOnly project(':cst:features:eu.esdihumboldt.cst.feature')
 
-  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.headless.orient') // for OrientDB instance sink
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store')
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.instance.store.sqlite')
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.headless.orient') // fallback store, ExecuteOrientStoreTest
 }
