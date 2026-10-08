@@ -11,6 +11,7 @@ dependencies {
 
   implementation libs.eclipse.core.runtime
   implementation libs.igd.eclipse.util
+  implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
   implementation libs.eclipse.collections.api
   implementation libs.eclipse.collections.core
 
