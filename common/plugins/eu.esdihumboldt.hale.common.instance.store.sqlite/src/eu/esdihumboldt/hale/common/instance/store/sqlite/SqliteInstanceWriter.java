@@ -71,6 +71,10 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 	// writer thread state
 	private final List<Item> batch = new ArrayList<>();
 	private final Set<Integer> storedTypes = new HashSet<>();
+	/** statements prepared once per writer thread, on the first insert */
+	private PreparedStatement insertType;
+	private PreparedStatement insertInstance;
+	private PreparedStatement insertMetadata;
 
 	SqliteInstanceWriter(StoreContext ctx) {
 		this.ctx = ctx;
@@ -215,6 +219,14 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 	}
 
 	private void run() {
+		try {
+			loop();
+		} finally {
+			closeStatements();
+		}
+	}
+
+	private void loop() {
 		while (true) {
 			Object item;
 			try {
@@ -262,37 +274,64 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 	}
 
 	private void insert(Item item) throws SQLException {
+		if (insertInstance == null) {
+			prepareStatements();
+		}
+		if (storedTypes.add(item.typeId())) {
+			insertType.setInt(1, item.typeId());
+			insertType.setString(2, item.typeName().toString());
+			insertType.executeUpdate();
+		}
+		insertInstance.setLong(1, item.id());
+		insertInstance.setInt(2, item.typeId());
+		insertInstance.setBytes(3, item.payload());
+		insertInstance.executeUpdate();
+		for (String[] entry : item.metadata()) {
+			insertMetadata.setString(1, entry[0]);
+			insertMetadata.setString(2, entry[1]);
+			insertMetadata.setLong(3, item.id());
+			insertMetadata.executeUpdate();
+		}
+		batch.add(item);
+	}
+
+	/**
+	 * Prepare the insert statements, after disabling auto-commit on the writer
+	 * connection.
+	 *
+	 * @throws SQLException if preparing the statements fails
+	 */
+	private void prepareStatements() throws SQLException {
 		Connection c = ctx.database.writerConnection();
 		if (c.getAutoCommit()) {
 			c.setAutoCommit(false);
 		}
-		if (storedTypes.add(item.typeId())) {
-			try (PreparedStatement p = c
-					.prepareStatement("INSERT OR IGNORE INTO types (id, name) VALUES (?, ?)")) {
-				p.setInt(1, item.typeId());
-				p.setString(2, item.typeName().toString());
-				p.executeUpdate();
-			}
+		try {
+			insertType = c.prepareStatement("INSERT OR IGNORE INTO types (id, name) VALUES (?, ?)");
+			insertInstance = c
+					.prepareStatement("INSERT INTO instances (id, type, payload) VALUES (?, ?, ?)");
+			insertMetadata = c.prepareStatement(
+					"INSERT OR IGNORE INTO metadata (key, value, instance) VALUES (?, ?, ?)");
+		} catch (SQLException e) {
+			closeStatements();
+			throw e;
 		}
-		try (PreparedStatement p = c
-				.prepareStatement("INSERT INTO instances (id, type, payload) VALUES (?, ?, ?)")) {
-			p.setLong(1, item.id());
-			p.setInt(2, item.typeId());
-			p.setBytes(3, item.payload());
-			p.executeUpdate();
-		}
-		if (!item.metadata().isEmpty()) {
-			try (PreparedStatement p = c.prepareStatement(
-					"INSERT OR IGNORE INTO metadata (key, value, instance) VALUES (?, ?, ?)")) {
-				for (String[] entry : item.metadata()) {
-					p.setString(1, entry[0]);
-					p.setString(2, entry[1]);
-					p.setLong(3, item.id());
-					p.executeUpdate();
+	}
+
+	private void closeStatements() {
+		for (PreparedStatement statement : new PreparedStatement[] { insertType, insertInstance,
+				insertMetadata }) {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (Throwable e) {
+					log.warn("Failed to close prepared statement", e);
 				}
 			}
 		}
-		batch.add(item);
+		insertType = null;
+		insertInstance = null;
+		insertMetadata = null;
 	}
 
 	private void commit() throws SQLException {
