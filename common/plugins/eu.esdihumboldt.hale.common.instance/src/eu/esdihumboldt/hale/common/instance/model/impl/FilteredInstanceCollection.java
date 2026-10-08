@@ -11,8 +11,10 @@
  */
 package eu.esdihumboldt.hale.common.instance.model.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -24,6 +26,7 @@ import eu.esdihumboldt.hale.common.instance.model.Filter;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
+import eu.esdihumboldt.hale.common.instance.model.TypeAwareFilter;
 import eu.esdihumboldt.hale.common.instance.model.TypeFilter;
 import eu.esdihumboldt.hale.common.instance.model.ext.InstanceCollection2;
 import eu.esdihumboldt.hale.common.instance.model.ext.InstanceIterator;
@@ -61,6 +64,29 @@ public class FilteredInstanceCollection extends InstanceCollectionDecorator {
 					result = EmptyInstanceCollection.INSTANCE;
 				}
 				return result;
+			}
+		}
+
+		if (filter instanceof TypeAwareFilter && instances instanceof InstanceCollection2) {
+			InstanceCollection2 instances2 = (InstanceCollection2) instances;
+
+			if (instances2.supportsFanout()) {
+				// only read the collections of the types the filter can match
+				Map<TypeDefinition, InstanceCollection> fanout = instances2.fanout();
+				List<InstanceCollection> parts = new ArrayList<>();
+				for (TypeDefinition type : ((TypeAwareFilter) filter).getTypes()) {
+					InstanceCollection part = fanout.get(type);
+					if (part != null) {
+						parts.add(new FilteredInstanceCollection(part, filter));
+					}
+				}
+				if (parts.isEmpty()) {
+					return EmptyInstanceCollection.INSTANCE;
+				}
+				if (parts.size() == 1) {
+					return parts.get(0);
+				}
+				return new MultiInstanceCollection(parts);
 			}
 		}
 
