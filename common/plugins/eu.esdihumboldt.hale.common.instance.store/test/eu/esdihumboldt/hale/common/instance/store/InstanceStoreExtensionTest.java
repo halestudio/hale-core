@@ -120,4 +120,39 @@ public class InstanceStoreExtensionTest {
 			assertTrue(e.getMessage().contains("No instance store"));
 		}
 	}
+
+	@Test
+	public void testFallbackOnLinkageError() throws IOException {
+		InstanceStore store = dummyStore();
+		InstanceStore result = InstanceStoreExtension
+				.createStore(List.of(candidate("sqlite", 10, (ds, dir, sp) -> {
+					throw new UnsatisfiedLinkError("native library missing");
+				}), working("orient", 0, store)), null, DataSet.SOURCE, DIR, null);
+		assertSame(store, result);
+	}
+
+	@Test
+	public void testFallbackOnFactoryLinkageError() throws IOException {
+		InstanceStore store = dummyStore();
+		Candidate missing = new Candidate() {
+
+			@Override
+			public String getId() {
+				return "sqlite";
+			}
+
+			@Override
+			public int getStorePriority() {
+				return 10;
+			}
+
+			@Override
+			public InstanceStoreFactory createFactory() {
+				throw new NoClassDefFoundError("bundle missing");
+			}
+		};
+		InstanceStore result = InstanceStoreExtension.createStore(
+				List.of(missing, working("orient", 0, store)), null, DataSet.SOURCE, DIR, null);
+		assertSame(store, result);
+	}
 }

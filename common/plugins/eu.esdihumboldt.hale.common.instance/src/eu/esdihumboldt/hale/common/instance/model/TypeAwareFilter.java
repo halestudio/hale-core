@@ -18,6 +18,12 @@ import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 /**
  * Filter that can only match instances of a known set of types. Instance
  * collections may use this information to only read instances of these types.
+ * <p>
+ * The types are matched exactly, i.e. the filter must not match instances of
+ * sub-types of the given types (unless they are included in the set
+ * themselves). When a selection is performed based on this information, the
+ * iteration order across different types is not necessarily the order of the
+ * source collection.
  */
 public interface TypeAwareFilter extends Filter {
 
