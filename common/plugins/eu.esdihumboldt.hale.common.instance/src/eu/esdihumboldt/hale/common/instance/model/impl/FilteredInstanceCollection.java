@@ -17,14 +17,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 
 import eu.esdihumboldt.hale.common.instance.model.ContextAwareFilter;
+import eu.esdihumboldt.hale.common.instance.model.DataSet;
 import eu.esdihumboldt.hale.common.instance.model.Filter;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
+import eu.esdihumboldt.hale.common.instance.model.ResolvableInstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.instance.model.TypeAwareFilter;
 import eu.esdihumboldt.hale.common.instance.model.TypeFilter;
@@ -86,12 +90,117 @@ public class FilteredInstanceCollection extends InstanceCollectionDecorator {
 				if (parts.size() == 1) {
 					return parts.get(0);
 				}
-				return new MultiInstanceCollection(parts);
+				return new FanoutSelection(parts, instances, fanout);
 			}
 		}
 
 		// create a filtered collection
 		return new FilteredInstanceCollection(instances, filter);
+	}
+
+	/**
+	 * Selection on a collection supporting fan-out, combining the filtered
+	 * collections of the individual types. Iteration and size are based on the
+	 * filtered per type collections.
+	 * <p>
+	 * In addition to references of the instances provided by this collection,
+	 * references can also be created for undecorated instances (e.g. retrieved via
+	 * {@link InstanceDecorator#getRoot(Instance)}, as done by the index join
+	 * handler). Those are resolved via the original collection, or, if the original
+	 * collection itself is a {@link MultiInstanceCollection} (that only accepts its
+	 * own decorated instances), via the fan-out collection of the instance type.
+	 */
+	private static class FanoutSelection extends MultiInstanceCollection {
+
+		private final InstanceCollection original;
+		private final Map<TypeDefinition, InstanceCollection> fanout;
+
+		/**
+		 * Create a selection on a fan-out collection.
+		 *
+		 * @param parts the filtered per type collections
+		 * @param original the original collection
+		 * @param fanout the fan-out of the original collection
+		 */
+		public FanoutSelection(List<InstanceCollection> parts, InstanceCollection original,
+				Map<TypeDefinition, InstanceCollection> fanout) {
+			super(parts);
+			this.original = original;
+			this.fanout = fanout;
+		}
+
+		@Override
+		public InstanceReference getReference(Instance instance) {
+			if (isCollectionInstance(instance)) {
+				return super.getReference(instance);
+			}
+			if (!(original instanceof MultiInstanceCollection)) {
+				return original.getReference(instance);
+			}
+			TypeDefinition type = instance.getDefinition();
+			InstanceCollection part = fanout.get(type);
+			if (part == null) {
+				return null;
+			}
+			InstanceReference reference = part.getReference(instance);
+			return reference == null ? null : new FanoutTypeReference(reference, type);
+		}
+
+		@Override
+		public Instance getInstance(InstanceReference reference) {
+			if (isCollectionReference(reference)) {
+				return super.getInstance(reference);
+			}
+			if (reference instanceof FanoutTypeReference) {
+				FanoutTypeReference typeRef = (FanoutTypeReference) reference;
+				InstanceCollection part = fanout.get(typeRef.type);
+				return part == null ? null : part.getInstance(typeRef.reference);
+			}
+			return original.getInstance(reference);
+		}
+	}
+
+	/**
+	 * Reference to an instance in a fan-out collection of a specific type.
+	 * <p>
+	 * Intentionally no {@link InstanceReferenceDecorator}, as decorators are
+	 * removed when resolving a {@link ResolvableInstanceReference}.
+	 */
+	private static class FanoutTypeReference implements InstanceReference {
+
+		private final InstanceReference reference;
+		private final TypeDefinition type;
+
+		/**
+		 * @param reference the reference in the fan-out collection
+		 * @param type the type the fan-out collection is associated to
+		 */
+		public FanoutTypeReference(InstanceReference reference, TypeDefinition type) {
+			this.reference = reference;
+			this.type = type;
+		}
+
+		@Override
+		public DataSet getDataSet() {
+			return reference.getDataSet();
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(reference, type);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			if (!(obj instanceof FanoutTypeReference)) {
+				return false;
+			}
+			FanoutTypeReference other = (FanoutTypeReference) obj;
+			return Objects.equals(type, other.type) && Objects.equals(reference, other.reference);
+		}
 	}
 
 	/**
