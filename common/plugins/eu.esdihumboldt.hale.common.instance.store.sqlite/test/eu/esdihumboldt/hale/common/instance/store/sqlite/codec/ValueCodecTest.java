@@ -218,4 +218,42 @@ public class ValueCodecTest {
 		assertSame(ValueCodec.DROPPED, result);
 		assertEquals(1, warnings.size());
 	}
+
+	/**
+	 * Serializable value that fails with a runtime exception when serialized.
+	 */
+	private static class FailingSerializableValue implements java.io.Serializable {
+
+		private static final long serialVersionUID = 1L;
+
+		private void writeObject(java.io.ObjectOutputStream out) {
+			throw new IllegalStateException("Cannot serialize");
+		}
+	}
+
+	@Test
+	public void testSerializationRuntimeExceptionIsDropped() {
+		List<String> warnings = new ArrayList<>();
+		SimpleLog log = new SimpleLog() {
+
+			@Override
+			public void warn(String message, Throwable e) {
+				warnings.add(message);
+			}
+
+			@Override
+			public void error(String message, Throwable e) {
+				warnings.add(message);
+			}
+
+			@Override
+			public void info(String message, Throwable e) {
+				// ignore
+			}
+		};
+		Object result = SimpleLogContext.withLog(log,
+				() -> roundTrip(new FailingSerializableValue()));
+		assertSame(ValueCodec.DROPPED, result);
+		assertEquals(1, warnings.size());
+	}
 }

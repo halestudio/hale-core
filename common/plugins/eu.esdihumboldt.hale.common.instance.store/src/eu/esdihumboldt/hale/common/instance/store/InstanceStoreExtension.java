@@ -205,7 +205,8 @@ public class InstanceStoreExtension
 						services);
 				log.debug("Using instance store \"{}\" for {} data", candidate.getId(), dataSet);
 				return store;
-			} catch (Exception e) {
+			} catch (Exception | LinkageError e) {
+				// LinkageError e.g. if a native library or a bundle is missing
 				log.error("Failed to create instance store \"" + candidate.getId() + "\"", e);
 				failure.addSuppressed(e);
 			}

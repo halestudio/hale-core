@@ -46,8 +46,19 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 		private boolean firstIterator = true;
 		private volatile boolean limboOpen = false;
 
+		/**
+		 * Collection of the stored instances, created on first use after the types were
+		 * set
+		 */
+		private volatile InstanceCollection stored;
+
 		private InstanceCollection stored() {
-			return store.getInstances(types);
+			InstanceCollection result = stored;
+			if (result == null) {
+				result = store.getInstances(types);
+				stored = result;
+			}
+			return result;
 		}
 
 		@Override
@@ -199,6 +210,8 @@ public class StoreTransformationSink extends AbstractTransformationSink {
 	@Override
 	public void setTypes(TypeIndex types) {
 		this.types = types;
+		// the store collection depends on the types
+		collection.stored = null;
 	}
 
 	@Override

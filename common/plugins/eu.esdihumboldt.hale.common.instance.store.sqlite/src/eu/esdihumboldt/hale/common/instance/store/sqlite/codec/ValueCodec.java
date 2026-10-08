@@ -322,7 +322,8 @@ public class ValueCodec {
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
 			out.writeObject(value);
-		} catch (IOException e) {
+		} catch (IOException | RuntimeException e) {
+			// value is dropped
 			return null;
 		}
 		return bytes.toByteArray();
