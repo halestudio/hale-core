@@ -212,9 +212,19 @@ public class StoreInstanceCollection implements InstanceCollection2 {
 
 	private String buildQuery(Set<Integer> typeIds) {
 		StringBuilder sql = new StringBuilder(
-				"SELECT id, type, payload FROM instances WHERE id > ? AND type IN (");
-		sql.append(typeIds.stream().map(String::valueOf).collect(Collectors.joining(",")));
-		sql.append(")");
+				"SELECT id, type, payload FROM instances WHERE id > ?");
+		String ids = typeIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+		if (typeIds.size() == 1) {
+			// use the (type, id) index
+			sql.append(" AND type = ").append(ids);
+		}
+		else {
+			/*
+			 * Unary plus prevents using the (type, id) index, which would require sorting
+			 * each chunk by id. Instead the table is scanned in rowid (id) order.
+			 */
+			sql.append(" AND +type IN (").append(ids).append(")");
+		}
 		if (metaKey != null) {
 			sql.append(" AND id IN (SELECT instance FROM metadata WHERE key = ? AND value IN (");
 			sql.append(String.join(",", Collections.nCopies(metaValues.size(), "?")));
