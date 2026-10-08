@@ -18,4 +18,6 @@ dependencies {
   implementation libs.igd.eclipse.util
 
   implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
 }
