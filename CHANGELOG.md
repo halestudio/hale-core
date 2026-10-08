@@ -1,3 +1,16 @@
+## [6.5.1](https://github.com/halestudio/hale-core/compare/v6.5.0...v6.5.1) (2026-10-08)
+
+### Bug Fixes
+
+* **deps:** update deegree to v3.6.12 ([e0c3f35](https://github.com/halestudio/hale-core/commit/e0c3f3584d71d895916be1f24a716d2117752027))
+* **deps:** update deegree to v3.6.13 ([8941763](https://github.com/halestudio/hale-core/commit/8941763b65d351a20a6c18f5bf589f0476b5cc41))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.22.3 ([3312cdc](https://github.com/halestudio/hale-core/commit/3312cdc879d928a8db6a553e9dfd80d927694dea))
+* **deps:** update dependency joda-time:joda-time to v2.15.0 ([1513010](https://github.com/halestudio/hale-core/commit/1513010ebd9352ea09ee7c8d32374e4a0a24f8d4))
+* **deps:** update dependency org.postgresql:postgresql to v42.7.14 ([22babe8](https://github.com/halestudio/hale-core/commit/22babe870e06ceaccd9ca0b042955752d8c96b1c))
+* **deps:** update dependency org.xerial:sqlite-jdbc to v3.53.4.0 ([84047b8](https://github.com/halestudio/hale-core/commit/84047b802f311bec76aa8b3aa0448e5a07d17011))
+* **deps:** update slf4j monorepo to v2.0.20 ([98dad85](https://github.com/halestudio/hale-core/commit/98dad8556390667791bfcfb2983a6bcca67eeceb))
+* **resources:** skip directories when resolving resources without OSGi ([84a4b5f](https://github.com/halestudio/hale-core/commit/84a4b5f4e854aba106145f483620c170427a8a0d))
+
 ## [6.5.0](https://github.com/halestudio/hale-core/compare/v6.4.1...v6.5.0) (2026-09-18)
 
 ### Features
