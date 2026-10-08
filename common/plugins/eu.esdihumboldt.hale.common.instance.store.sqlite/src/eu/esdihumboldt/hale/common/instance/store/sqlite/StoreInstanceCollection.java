@@ -231,7 +231,6 @@ public class StoreInstanceCollection implements InstanceCollection2 {
 		private final Deque<Row> buffer = new ArrayDeque<>();
 		private long lastId = 0;
 		private boolean exhausted;
-		private Instance decoded;
 
 		StoreIterator(Map<Integer, TypeDefinition> typeIds) {
 			this.typeIds = typeIds;
@@ -275,41 +274,43 @@ public class StoreInstanceCollection implements InstanceCollection2 {
 			buffer.addAll(rows);
 		}
 
+		/**
+		 * {@inheritDoc}
+		 * <p>
+		 * Only checks if another row exists, the instance is not decoded. Thus
+		 * {@link #next()} may still throw a {@link NoSuchElementException} if all
+		 * remaining rows are unreadable.
+		 */
 		@Override
 		public boolean hasNext() {
-			if (decoded != null) {
-				return true;
-			}
+			return peekRow() != null;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * <p>
+		 * Rows that cannot be decoded are logged and skipped. If no readable row
+		 * remains a {@link NoSuchElementException} is thrown.
+		 */
+		@Override
+		public Instance next() {
 			Row row;
 			while ((row = peekRow()) != null) {
 				buffer.pollFirst();
 				try {
-					decoded = ctx.codec.decode(row.payload(), typeIds.get(row.typeId()),
-							ctx.dataSet, ctx.key, row.id(), types);
-					return true;
+					return ctx.codec.decode(row.payload(), typeIds.get(row.typeId()), ctx.dataSet,
+							ctx.key, row.id(), types);
 				} catch (RuntimeException e) {
 					log.error("Could not read instance " + row.id()
 							+ " from the temporary database, skipping it", e);
 				}
 			}
-			return false;
-		}
-
-		@Override
-		public Instance next() {
-			if (!hasNext()) {
-				throw new NoSuchElementException();
-			}
-			Instance result = decoded;
-			decoded = null;
-			return result;
+			throw new NoSuchElementException(
+					"The remaining instances could not be read from the temporary database");
 		}
 
 		@Override
 		public TypeDefinition typePeek() {
-			if (decoded != null) {
-				return decoded.getDefinition();
-			}
 			Row row = peekRow();
 			return row == null ? null : typeIds.get(row.typeId());
 		}
@@ -321,10 +322,7 @@ public class StoreInstanceCollection implements InstanceCollection2 {
 
 		@Override
 		public void skip() {
-			if (decoded != null) {
-				decoded = null;
-			}
-			else if (peekRow() != null) {
+			if (peekRow() != null) {
 				buffer.pollFirst();
 			}
 		}
