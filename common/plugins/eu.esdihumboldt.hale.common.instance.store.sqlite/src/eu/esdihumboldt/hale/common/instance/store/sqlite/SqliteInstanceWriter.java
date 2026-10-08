@@ -147,19 +147,20 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 		boolean interrupted = false;
 		lock.writeLock().lock();
 		try {
-			if (closed) {
-				return;
-			}
-			closed = true;
-			// enqueue uninterruptibly, so the writer thread is always stopped
-			while (true) {
-				try {
-					queue.put(STOP);
-					break;
-				} catch (InterruptedException e) {
-					interrupted = true;
+			if (!closed) {
+				closed = true;
+				// enqueue uninterruptibly, so the writer thread is always stopped
+				while (true) {
+					try {
+						queue.put(STOP);
+						break;
+					} catch (InterruptedException e) {
+						interrupted = true;
+					}
 				}
 			}
+			// every caller (also concurrent or repeated ones) waits below for the
+			// writer thread to complete pending writes
 		} finally {
 			lock.writeLock().unlock();
 			if (interrupted) {

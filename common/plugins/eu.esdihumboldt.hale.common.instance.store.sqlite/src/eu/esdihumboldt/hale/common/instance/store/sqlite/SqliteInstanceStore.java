@@ -55,7 +55,12 @@ public class SqliteInstanceStore implements InstanceStore {
 
 	@Override
 	public synchronized InstanceStoreWriter openWriter() {
-		if (writer == null || writer.isClosed()) {
+		if (writer != null && writer.isClosed()) {
+			// the previous writer may still be committing on the shared writer
+			// connection - wait for it to finish before starting a new one
+			closeWriter();
+		}
+		if (writer == null) {
 			writer = new SqliteInstanceWriter(ctx);
 		}
 		return writer;
