@@ -25,6 +25,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import javax.xml.namespace.QName;
 
@@ -60,6 +61,13 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 	private final Thread thread;
 	private volatile boolean closed;
 
+	/**
+	 * Guards the transition to closed: producers hold the read lock while checking
+	 * the state and enqueueing, close holds the write lock while marking closed and
+	 * enqueueing the stop marker. The writer thread never uses this lock.
+	 */
+	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+
 	// writer thread state
 	private final List<Item> batch = new ArrayList<>();
 	private final Set<Integer> storedTypes = new HashSet<>();
@@ -73,6 +81,10 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 
 	boolean isClosed() {
 		return closed;
+	}
+
+	boolean isWriterThreadAlive() {
+		return thread.isAlive();
 	}
 
 	@Override
@@ -90,16 +102,33 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 		} catch (RuntimeException e) {
 			throw new IllegalArgumentException("Instance cannot be serialized", e);
 		}
-		ctx.pending.put(id, new PendingRecord(typeId, payload));
-		put(new Item(id, typeId, type.getName(), payload, stringMetadata(instance)));
+		Item item = new Item(id, typeId, type.getName(), payload, stringMetadata(instance));
+		lock.readLock().lock();
+		try {
+			checkUsable();
+			ctx.pending.put(id, new PendingRecord(typeId, payload));
+			try {
+				put(item);
+			} catch (RuntimeException e) {
+				ctx.pending.remove(id);
+				throw e;
+			}
+		} finally {
+			lock.readLock().unlock();
+		}
 		return new StoreInstanceReference(ctx.key, id, ctx.dataSet, type);
 	}
 
 	@Override
 	public void flush() {
-		checkUsable();
 		CountDownLatch latch = new CountDownLatch(1);
-		put(latch);
+		lock.readLock().lock();
+		try {
+			checkUsable();
+			put(latch);
+		} finally {
+			lock.readLock().unlock();
+		}
 		try {
 			latch.await();
 		} catch (InterruptedException e) {
@@ -111,12 +140,28 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 
 	@Override
 	public void close() throws IOException {
-		if (closed) {
-			return;
-		}
-		closed = true;
-		put(STOP);
 		boolean interrupted = false;
+		lock.writeLock().lock();
+		try {
+			if (closed) {
+				return;
+			}
+			closed = true;
+			// enqueue uninterruptibly, so the writer thread is always stopped
+			while (true) {
+				try {
+					queue.put(STOP);
+					break;
+				} catch (InterruptedException e) {
+					interrupted = true;
+				}
+			}
+		} finally {
+			lock.writeLock().unlock();
+			if (interrupted) {
+				Thread.currentThread().interrupt();
+			}
+		}
 		while (thread.isAlive()) {
 			try {
 				thread.join();

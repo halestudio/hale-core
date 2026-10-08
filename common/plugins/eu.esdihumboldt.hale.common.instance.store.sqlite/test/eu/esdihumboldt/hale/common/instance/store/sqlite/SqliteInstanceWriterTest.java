@@ -213,4 +213,88 @@ public class SqliteInstanceWriterTest {
 			// expected
 		}
 	}
+
+	@Test(timeout = 30000)
+	public void testCloseWhileAdding() throws Exception {
+		for (int round = 0; round < 5; round++) {
+			SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx);
+			java.util.concurrent.ConcurrentLinkedQueue<StoreInstanceReference> refs = new java.util.concurrent.ConcurrentLinkedQueue<>();
+			java.util.concurrent.CountDownLatch started = new java.util.concurrent.CountDownLatch(
+					4);
+			ExecutorService executor = Executors.newFixedThreadPool(5);
+			List<Future<?>> futures = new ArrayList<>();
+			for (int t = 0; t < 4; t++) {
+				int thread = t;
+				futures.add(executor.submit(() -> {
+					started.countDown();
+					for (int i = 0; i < 100000; i++) {
+						try {
+							refs.add((StoreInstanceReference) writer
+									.add(instance(thread + "-" + i)));
+							if (i % 500 == 0) {
+								writer.flush();
+							}
+						} catch (IllegalStateException e) {
+							return; // closed
+						}
+					}
+					fail("writer was never closed");
+				}));
+			}
+			futures.add(executor.submit(() -> {
+				started.await();
+				Thread.sleep(50);
+				writer.close();
+				return null;
+			}));
+			for (Future<?> f : futures) {
+				f.get();
+			}
+			executor.shutdown();
+			assertTrue(ctx.pending.isEmpty());
+			for (StoreInstanceReference ref : refs) {
+				assertEquals(1,
+						count("SELECT COUNT(*) FROM instances WHERE id = " + ref.getStoreId()));
+			}
+			assertEquals(refs.size(), count("SELECT COUNT(*) FROM instances"));
+			ctx.database.withReader(c -> {
+				try (Statement s = c.createStatement()) {
+					s.executeUpdate("SELECT 1");
+				}
+				return null;
+			});
+			// clear for next round
+			ctx.database.close();
+			ctx.reset();
+			org.apache.commons.io.FileUtils.deleteDirectory(dir.toFile());
+			dir = Files.createTempDirectory("sqlite-writer-test");
+			ctx.database = new SqliteDatabase(dir);
+		}
+	}
+
+	@Test(timeout = 30000)
+	public void testCloseInterrupted() throws Exception {
+		SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx);
+		writer.add(instance("a"));
+		Thread.currentThread().interrupt();
+		try {
+			writer.close();
+			assertTrue("interrupt flag must be restored", Thread.currentThread().isInterrupted());
+		} finally {
+			Thread.interrupted(); // clear
+		}
+		assertTrue(writer.isClosed());
+		assertTrue(!writer.isWriterThreadAlive());
+		assertEquals(1, count("SELECT COUNT(*) FROM instances"));
+	}
+
+	@Test(timeout = 30000)
+	public void testSecondCloseNoop() throws Exception {
+		SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx);
+		writer.add(instance("a"));
+		writer.close();
+		writer.close();
+		assertTrue(!writer.isWriterThreadAlive());
+		assertEquals(1, count("SELECT COUNT(*) FROM instances"));
+	}
 }
