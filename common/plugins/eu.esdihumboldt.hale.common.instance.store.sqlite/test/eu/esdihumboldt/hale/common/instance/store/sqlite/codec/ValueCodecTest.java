@@ -110,6 +110,30 @@ public class ValueCodecTest {
 		}
 	}
 
+	private static final Set<Class<?>> WRAPPERS = Set.of(Integer.class, Long.class, Short.class,
+			Byte.class, Double.class, Float.class, Boolean.class, Character.class);
+
+	@Test
+	public void testRegistrationIdsFollowTablePosition() {
+		Kryo kryo = codec.createKryo();
+		for (int i = 0; i < ValueCodec.REGISTRATIONS.size(); i++) {
+			Class<?> type = ValueCodec.REGISTRATIONS.get(i).type();
+			if (WRAPPERS.contains(type)) {
+				// Kryo resolves primitive wrappers to the built-in primitive
+				// registrations; the table entry only reserves the id
+				continue;
+			}
+			assertEquals(type.getName(), ValueCodec.FIRST_REGISTRATION_ID + i,
+					kryo.getRegistration(type).getId());
+		}
+	}
+
+	@Test
+	public void testQName() {
+		assertRoundTrip(new QName("http://example.com", "local", "ex"));
+		assertRoundTrip(new QName("local"));
+	}
+
 	@Test
 	public void testTimestampKeepsNanos() {
 		Timestamp ts = new Timestamp(1234567890123L);
