@@ -76,8 +76,6 @@ public class SqliteDatabase implements Closeable {
 		String url = "jdbc:sqlite:" + directory.resolve(FILE_NAME).toAbsolutePath();
 
 		SQLiteConfig writeConfig = new SQLiteConfig();
-		writeConfig.setPageSize(8192);
-		writeConfig.setJournalMode(SQLiteConfig.JournalMode.WAL);
 		writeConfig.setSynchronous(SQLiteConfig.SynchronousMode.OFF);
 		writeConfig.setBusyTimeout(BUSY_TIMEOUT_MILLIS);
 		writeConfig.setCacheSize(-65536); // 64 MB
@@ -93,6 +91,10 @@ public class SqliteDatabase implements Closeable {
 		try {
 			writer = writeSource.getConnection();
 			try (Statement s = writer.createStatement()) {
+				// page size must be set before WAL mode is enabled, SQLiteConfig does
+				// not guarantee the order of these pragmas
+				s.execute("PRAGMA page_size = 8192");
+				s.execute("PRAGMA journal_mode = WAL");
 				s.execute("CREATE TABLE types (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE)");
 				s.execute("CREATE TABLE instances (id INTEGER PRIMARY KEY, type INTEGER NOT NULL, "
 						+ "payload BLOB NOT NULL)");

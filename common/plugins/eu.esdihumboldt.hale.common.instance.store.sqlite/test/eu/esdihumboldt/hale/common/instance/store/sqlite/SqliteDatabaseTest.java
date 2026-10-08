@@ -69,6 +69,14 @@ public class SqliteDatabaseTest {
 			}
 		});
 		assertEquals("wal", mode);
+		String pageSize = db.withReader(c -> {
+			try (Statement s = c.createStatement();
+					ResultSet rs = s.executeQuery("PRAGMA page_size")) {
+				rs.next();
+				return rs.getString(1);
+			}
+		});
+		assertEquals("8192", pageSize);
 		assertTrue(Files.exists(dir.resolve(SqliteDatabase.FILE_NAME)));
 	}
 
