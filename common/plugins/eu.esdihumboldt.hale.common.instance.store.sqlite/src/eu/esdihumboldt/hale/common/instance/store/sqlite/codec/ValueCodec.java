@@ -41,6 +41,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 import javax.xml.namespace.QName;
 
@@ -87,20 +88,42 @@ public class ValueCodec {
 	public static final Object DROPPED = new Object();
 
 	/**
-	 * Value types handled by Kryo. Registration ids are derived from the position -
-	 * only append to this list.
+	 * A Kryo registration: the type and an optional serializer factory
+	 * (<code>null</code> for the Kryo default).
 	 */
-	private static final List<Class<?>> REGISTERED_TYPES = List.of(Integer.class, Long.class,
-			Short.class, Byte.class, Double.class, Float.class, Boolean.class, Character.class,
-			BigDecimal.class, BigInteger.class, byte[].class, int[].class, long[].class,
-			short[].class, double[].class, float[].class, char[].class, boolean[].class,
-			java.util.Date.class, java.sql.Date.class, java.sql.Time.class,
-			java.sql.Timestamp.class, Instant.class, LocalDate.class, LocalTime.class,
-			LocalDateTime.class, OffsetDateTime.class, OffsetTime.class, ZonedDateTime.class,
-			Duration.class, Period.class, Year.class, YearMonth.class, MonthDay.class, URI.class,
-			URL.class, UUID.class);
+	record Registration(Class<?> type, Supplier<Serializer<?>> serializer) {
+	}
 
-	private static final int FIRST_REGISTRATION_ID = 20;
+	/**
+	 * All types handled by Kryo, in registration order. Registration ids are
+	 * derived from the position (starting at {@link #FIRST_REGISTRATION_ID}) - ONLY
+	 * APPEND to this list, never insert or reorder.
+	 */
+	static final List<Registration> REGISTRATIONS = List.of(new Registration(Integer.class, null),
+			new Registration(Long.class, null), new Registration(Short.class, null),
+			new Registration(Byte.class, null), new Registration(Double.class, null),
+			new Registration(Float.class, null), new Registration(Boolean.class, null),
+			new Registration(Character.class, null), new Registration(BigDecimal.class, null),
+			new Registration(BigInteger.class, null), new Registration(byte[].class, null),
+			new Registration(int[].class, null), new Registration(long[].class, null),
+			new Registration(short[].class, null), new Registration(double[].class, null),
+			new Registration(float[].class, null), new Registration(char[].class, null),
+			new Registration(boolean[].class, null), new Registration(java.util.Date.class, null),
+			new Registration(java.sql.Date.class, null),
+			new Registration(java.sql.Time.class, null),
+			new Registration(java.sql.Timestamp.class, TimestampSerializer::new),
+			new Registration(Instant.class, null), new Registration(LocalDate.class, null),
+			new Registration(LocalTime.class, null), new Registration(LocalDateTime.class, null),
+			new Registration(OffsetDateTime.class, null), new Registration(OffsetTime.class, null),
+			new Registration(ZonedDateTime.class, null), new Registration(Duration.class, null),
+			new Registration(Period.class, null), new Registration(Year.class, null),
+			new Registration(YearMonth.class, null), new Registration(MonthDay.class, null),
+			new Registration(URI.class, URISerializer::new),
+			new Registration(URL.class, URLSerializer::new),
+			new Registration(UUID.class, UUIDSerializer::new),
+			new Registration(QName.class, QNameSerializer::new));
+
+	static final int FIRST_REGISTRATION_ID = 20;
 
 	private final Dictionary<CRSDefinition> crsDictionary;
 	private final Dictionary<Class<?>> classDictionary;
@@ -123,24 +146,14 @@ public class ValueCodec {
 		kryo.setRegistrationRequired(true);
 		kryo.setReferences(false);
 		int id = FIRST_REGISTRATION_ID;
-		for (Class<?> type : REGISTERED_TYPES) {
-			if (type == URI.class) {
-				kryo.register(type, new URISerializer(), id++);
-			}
-			else if (type == java.sql.Timestamp.class) {
-				kryo.register(type, new TimestampSerializer(), id++);
-			}
-			else if (type == UUID.class) {
-				kryo.register(type, new UUIDSerializer(), id++);
-			}
-			else if (type == URL.class) {
-				kryo.register(type, new URLSerializer(), id++);
+		for (Registration registration : REGISTRATIONS) {
+			if (registration.serializer() == null) {
+				kryo.register(registration.type(), id++);
 			}
 			else {
-				kryo.register(type, id++);
+				kryo.register(registration.type(), registration.serializer().get(), id++);
 			}
 		}
-		kryo.register(QName.class, new QNameSerializer(), id++);
 		return kryo;
 	}
 
