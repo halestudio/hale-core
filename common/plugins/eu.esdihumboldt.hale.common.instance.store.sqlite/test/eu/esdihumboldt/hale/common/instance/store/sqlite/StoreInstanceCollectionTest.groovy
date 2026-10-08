@@ -216,6 +216,53 @@ class StoreInstanceCollectionTest extends AbstractPlatformTest {
 		assertEquals(['item2'], names)
 	}
 
+	private void corrupt(String where) {
+		def c = ctx.database.writerConnection()
+		c.createStatement().withCloseable {
+			it.executeUpdate("UPDATE instances SET payload = x'FF' WHERE $where")
+		}
+		c.commit()
+	}
+
+	@Test
+	void testSkippedRowsAreNotDecoded() {
+		write([
+			item(1),
+			person('a'),
+			item(2),
+			person('b')
+		])
+		corrupt("type = ${ctx.types.idOf(personType.name)}")
+
+		InstanceIterator it = (InstanceIterator) new StoreInstanceCollection(ctx, schema).iterator()
+		List<String> seen = []
+		while (it.hasNext()) {
+			if (it.typePeek() == personType) {
+				it.skip()
+			}
+			else {
+				seen << it.next().getProperty(new QName('name'))[0]
+			}
+		}
+		assertEquals(['item1', 'item2'], seen)
+	}
+
+	@Test
+	void testCorruptLastRow() {
+		write([item(1), item(2)])
+		corrupt('id = 2')
+		def it = new StoreInstanceCollection(ctx, schema).iterator()
+		assertTrue it.hasNext()
+		assertEquals 'item1', it.next().getProperty(new QName('name'))[0]
+		assertTrue it.hasNext()
+		try {
+			it.next()
+			fail('expected NoSuchElementException')
+		} catch (NoSuchElementException e) {
+			// expected
+		}
+	}
+
 	@Test
 	void testWithoutTypeIndex() {
 		def refs = write([item(1)])
