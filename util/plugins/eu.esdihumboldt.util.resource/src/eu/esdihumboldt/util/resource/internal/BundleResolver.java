@@ -37,7 +37,23 @@ public class BundleResolver implements ResourceResolver {
 
 	private final Bundle bundle;
 
+	/**
+	 * Class loader to look up resources in if OSGi is not available
+	 */
+	private final ClassLoader classLoader;
+
 	private final ALogger log = ALoggerFactory.getLogger(BundleResolver.class);
+
+	/**
+	 * Create a bundle resolver that looks up resources in the given class loader,
+	 * for use without OSGi.
+	 *
+	 * @param classLoader the class loader to look up resources in
+	 */
+	BundleResolver(ClassLoader classLoader) {
+		this.bundle = null;
+		this.classLoader = classLoader;
+	}
 
 	/**
 	 * Create a bundle resolver.
@@ -68,6 +84,7 @@ public class BundleResolver implements ResourceResolver {
 			// no OSGi available
 			this.bundle = null;
 		}
+		this.classLoader = getClass().getClassLoader();
 	}
 
 	/**
@@ -95,7 +112,7 @@ public class BundleResolver implements ResourceResolver {
 		}
 		else {
 			// no OSGi
-			final ClassLoader loader = getClass().getClassLoader(); // ClassLoader.getSystemClassLoader();
+			final ClassLoader loader = classLoader;
 			String pathCandidate = uri.getPath();
 			final String path = (pathCandidate != null && pathCandidate.startsWith("/"))
 					? (pathCandidate.substring(1))
