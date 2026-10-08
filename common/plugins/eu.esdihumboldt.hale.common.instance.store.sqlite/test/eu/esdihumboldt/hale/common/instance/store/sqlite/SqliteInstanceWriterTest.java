@@ -12,6 +12,7 @@
 package eu.esdihumboldt.hale.common.instance.store.sqlite;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -23,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -174,6 +176,36 @@ public class SqliteInstanceWriterTest {
 			writer.flush();
 		}
 		assertEquals(1, count("SELECT COUNT(*) FROM instances"));
+	}
+
+	@Test(timeout = 30000)
+	public void testConcurrentCloseWaitsForWriterThread() throws Exception {
+		int perRound = 5000;
+		int rounds = 5;
+		for (int round = 0; round < rounds; round++) {
+			SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx);
+			for (int i = 0; i < perRound; i++) {
+				writer.add(instance(round + "-" + i));
+			}
+
+			CountDownLatch start = new CountDownLatch(1);
+			ExecutorService executor = Executors.newFixedThreadPool(2);
+			List<Future<Boolean>> writerAliveAfterClose = new ArrayList<>();
+			for (int t = 0; t < 2; t++) {
+				writerAliveAfterClose.add(executor.submit(() -> {
+					start.await();
+					writer.close();
+					return writer.isWriterThreadAlive();
+				}));
+			}
+			start.countDown();
+			for (Future<Boolean> alive : writerAliveAfterClose) {
+				assertFalse("close() returned while the writer thread was still running",
+						alive.get());
+			}
+			executor.shutdown();
+		}
+		assertEquals(perRound * rounds, count("SELECT COUNT(*) FROM instances"));
 	}
 
 	@Test
