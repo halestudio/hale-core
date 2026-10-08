@@ -175,8 +175,8 @@ In-memory, thread-safe dictionaries map property and metadata names (QNames), CR
 
 1. Nested `Instance` / `Group`: written recursively and embedded.
 2. Registered value types (Kryo built-in or small custom serializers): primitives and wrappers, `String`, `BigDecimal`, `BigInteger`, `byte[]`, `java.util.Date`, `java.sql.Date/Time/Timestamp` (time part preserved), `java.time` types (`Instant`, `Local*`, `Offset*`, `Zoned*`), `URI`, `URL`, `UUID`, `QName`, `List` / `Set` (recursive), `Object[]`.
-3. Geometries: `Geometry` as WKB including Z, M and SRID, with the extended linear ring handling of today's `ExtendedWKBWriter/Reader` (moved into this module). `GeometryProperty` as CRS dictionary id plus geometry, read back as `DefaultGeometryProperty`. Geometry structure in the instance tree (e.g. GML geometry properties) is retained since geometries are ordinary values.
-4. String conversion: values that `ConversionService` can convert to and from `String`, for a class whitelist defined in code (initially today's `BigInteger`, `URI`, which step 2 already covers; extended when needed), stored as target class id plus string.
+3. Geometries: `Geometry` as WKB with 2D or 3D coordinates (as today; M values and SRID are not preserved), with the extended linear ring handling of today's `ExtendedWKBWriter/Reader` (moved into this module). `GeometryProperty` as CRS dictionary id plus geometry, read back as `DefaultGeometryProperty`. Geometry structure in the instance tree (e.g. GML geometry properties) is retained since geometries are ordinary values.
+4. (dropped during planning) String conversion via `ConversionService` is not implemented: its whitelist (`BigInteger`, `URI`) is fully covered by item 2.
 5. Java serialization for other `Serializable` values; classes resolved on read through hale's OSGi-aware class loading (as today).
 6. Otherwise the value is dropped with a warning (as today).
 
