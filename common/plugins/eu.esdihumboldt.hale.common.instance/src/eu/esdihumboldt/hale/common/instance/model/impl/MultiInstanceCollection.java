@@ -64,6 +64,30 @@ public class MultiInstanceCollection implements InstanceCollection, LogAware {
 				collections.get(ref.listIndex).getInstance(ref.reference), ref.listIndex);
 	}
 
+	/**
+	 * Determines if the given instance was provided by this collection (i.e. by its
+	 * iterator or {@link #getInstance(InstanceReference)}) and thus can be handled
+	 * by {@link #getReference(Instance)}.
+	 *
+	 * @param instance the instance to check
+	 * @return if the instance is an instance decorated by this collection type
+	 */
+	protected boolean isCollectionInstance(Instance instance) {
+		return instance instanceof MultiInstanceCollectionInstance;
+	}
+
+	/**
+	 * Determines if the given reference was created by
+	 * {@link #getReference(Instance)} of a multi instance collection and thus can
+	 * be handled by {@link #getInstance(InstanceReference)}.
+	 *
+	 * @param reference the reference to check
+	 * @return if the reference is a reference created by this collection type
+	 */
+	protected boolean isCollectionReference(InstanceReference reference) {
+		return reference instanceof MultiInstanceCollectionReference;
+	}
+
 	@Override
 	public ResourceIterator<Instance> iterator() {
 		return new MultiInstanceCollectionResourceIterator();
