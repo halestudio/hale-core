@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="eu.esdihumboldt.hale.instance.store">
+      <store
+            class="eu.esdihumboldt.hale.common.instance.store.sqlite.SqliteInstanceStoreFactory"
+            id="sqlite"
+            priority="10">
+      </store>
+   </extension>
+   <extension
+         point="eu.esdihumboldt.util.groovy.sandbox">
+      <allow
+            allowAll="false"
+            class="eu.esdihumboldt.hale.common.instance.store.sqlite.codec.StoredInstance">
+      </allow>
+   </extension>
+</plugin>

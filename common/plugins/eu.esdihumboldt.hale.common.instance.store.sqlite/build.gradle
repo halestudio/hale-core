@@ -25,4 +25,5 @@ dependencies {
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
   testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store.test')
 }
