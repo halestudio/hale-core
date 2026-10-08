@@ -1,0 +1,21 @@
+plugins {
+  id 'hale.migrated-java'
+}
+
+hale {
+  bundleName = 'Temporary instance store API'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.eclipse.core.runtime
+  implementation libs.igd.eclipse.util
+  implementation libs.eclipse.collections.api
+  implementation libs.eclipse.collections.core
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.core')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  api project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+}
