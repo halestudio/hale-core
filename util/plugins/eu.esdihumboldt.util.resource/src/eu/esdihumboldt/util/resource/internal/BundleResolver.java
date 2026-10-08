@@ -11,11 +11,16 @@
  */
 package eu.esdihumboldt.util.resource.internal;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.JarURLConnection;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.Enumeration;
+import java.util.jar.JarEntry;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.osgi.framework.Bundle;
@@ -125,24 +130,58 @@ public class BundleResolver implements ResourceResolver {
 				throw new ResourceNotFoundException(e);
 			}
 
-			if (resources.hasMoreElements()) {
-				URL entry = resources.nextElement();
+			// the class loader is shared by all resolvers, so the same path may
+			// be present multiple times, e.g. as directory in another bundle
+			while (resources.hasMoreElements()) {
+				final URL entry = resources.nextElement();
 
-				// XXX not sure if this is needed here
-				preventDirectoryMatch(uri, entry);
+				if (!isDirectory(entry)) {
+					return new InputSupplier<InputStream>() {
 
-				return new InputSupplier<InputStream>() {
-
-					@Override
-					public InputStream getInput() throws IOException {
-						return loader.getResourceAsStream(path);
-					}
-				};
+						@Override
+						public InputStream getInput() throws IOException {
+							return entry.openStream();
+						}
+					};
+				}
 			}
-			else {
-				throw new ResourceNotFoundException();
-			}
+
+			throw new ResourceNotFoundException(
+					"Resource with path " + path + " not found on class path");
 		}
+	}
+
+	/**
+	 * Determines if a resource URL obtained from a class loader references a
+	 * directory. Directory URLs obtained from a class loader don't necessarily end
+	 * with a slash.
+	 *
+	 * @param url the resource URL
+	 * @return <code>true</code> if the URL references a directory
+	 */
+	private boolean isDirectory(URL url) {
+		if (url.getPath().endsWith("/")) {
+			return true;
+		}
+
+		try {
+			switch (url.getProtocol()) {
+			case "jar":
+				URLConnection connection = url.openConnection();
+				if (connection instanceof JarURLConnection) {
+					// jar entry lookup falls back to the directory entry
+					JarEntry entry = ((JarURLConnection) connection).getJarEntry();
+					return entry != null && entry.isDirectory();
+				}
+				break;
+			case "file":
+				return new File(url.toURI()).isDirectory();
+			}
+		} catch (IOException | URISyntaxException | IllegalArgumentException e) {
+			log.warn("Unable to determine if resource " + url + " is a directory", e);
+		}
+
+		return false;
 	}
 
 	private void preventDirectoryMatch(URI uri, URL candidate) throws ResourceNotFoundException {
