@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -24,10 +25,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.xml.namespace.QName;
 
@@ -176,6 +179,59 @@ public class SqliteInstanceWriterTest {
 			writer.flush();
 		}
 		assertEquals(1, count("SELECT COUNT(*) FROM instances"));
+	}
+
+	@Test
+	public void testMetadataFailureAfterSerialization() throws Exception {
+		QName typeName = new QName("FlakyMetadata");
+		AtomicInteger metadataReads = new AtomicInteger();
+		DefaultInstance flaky = new DefaultInstance(new DefaultTypeDefinition(typeName), null) {
+
+			@Override
+			public Set<String> getMetaDataNames() {
+				// first read (serialization) works, the second one fails
+				if (metadataReads.incrementAndGet() > 1) {
+					throw new IllegalStateException("metadata no longer readable");
+				}
+				return super.getMetaDataNames();
+			}
+		};
+		try (SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx)) {
+			try {
+				writer.add(flaky);
+				fail("Expected exception");
+			} catch (IllegalArgumentException e) {
+				// expected
+			}
+			// writer still usable
+			writer.add(instance("a"));
+			writer.flush();
+		}
+		assertNull("type of an instance that was not stored must not be registered",
+				ctx.types.findId(typeName));
+		assertEquals(1, count("SELECT COUNT(*) FROM instances"));
+	}
+
+	@Test
+	public void testUnserializableInstanceRegistersNoType() throws Exception {
+		QName typeName = new QName("Broken");
+		DefaultInstance broken = new DefaultInstance(new DefaultTypeDefinition(typeName), null) {
+
+			@Override
+			public Iterable<QName> getPropertyNames() {
+				throw new IllegalStateException("broken instance");
+			}
+		};
+		try (SqliteInstanceWriter writer = new SqliteInstanceWriter(ctx)) {
+			try {
+				writer.add(broken);
+				fail("Expected exception");
+			} catch (IllegalArgumentException e) {
+				// expected
+			}
+		}
+		assertNull("type of an instance that was not stored must not be registered",
+				ctx.types.findId(typeName));
 	}
 
 	@Test(timeout = 30000)
