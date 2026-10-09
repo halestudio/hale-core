@@ -21,7 +21,7 @@ dependencies {
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.codelist')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
-  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.orient')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instancevalidator')
 
   implementation project(':cst:plugins:eu.esdihumboldt.cst.functions.groovy')
@@ -31,4 +31,8 @@ dependencies {
 
   implementation project(':util:plugins:eu.esdihumboldt.util')
   implementation project(':util:plugins:eu.esdihumboldt.util.groovy')
+
+  testImplementation testLibs.junit4
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.instance.store.sqlite')
 }

@@ -10,6 +10,12 @@
             priority="0"
             reiterable="false">
       </sink>
+      <sink
+            class="eu.esdihumboldt.hale.common.headless.transform.StoreTransformationSink"
+            id="eu.esdihumboldt.hale.headless.sink.store"
+            priority="10"
+            reiterable="true">
+      </sink>
    </extension>
 
 </plugin>

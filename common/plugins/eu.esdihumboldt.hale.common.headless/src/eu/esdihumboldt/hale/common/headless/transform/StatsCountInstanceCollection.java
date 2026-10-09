@@ -11,6 +11,9 @@
  */
 package eu.esdihumboldt.hale.common.headless.transform;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.xml.namespace.QName;
 
 import eu.esdihumboldt.hale.common.core.report.Message;
@@ -116,6 +119,22 @@ public class StatsCountInstanceCollection extends InstanceCollectionDecorator {
 	@Override
 	public InstanceCollection select(Filter filter) {
 		return new StatsCountInstanceCollection(super.select(filter), reportHandler);
+	}
+
+	@Override
+	public Map<TypeDefinition, InstanceCollection> fanout() {
+		Map<TypeDefinition, InstanceCollection> fanout = super.fanout();
+		if (fanout == null) {
+			return null;
+		}
+
+		// wrap each part so that the statistics are collected for fan-out too
+		Map<TypeDefinition, InstanceCollection> result = new LinkedHashMap<>();
+		for (Map.Entry<TypeDefinition, InstanceCollection> entry : fanout.entrySet()) {
+			result.put(entry.getKey(),
+					new StatsCountInstanceCollection(entry.getValue(), reportHandler));
+		}
+		return result;
 	}
 
 }

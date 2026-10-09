@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.concurrent.Immutable;
 
@@ -62,6 +63,8 @@ import eu.esdihumboldt.hale.common.instance.model.Filter;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
+import eu.esdihumboldt.hale.common.instance.model.TypeAwareFilter;
+import eu.esdihumboldt.hale.common.instance.model.impl.FilteredInstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.impl.GenericResourceIteratorAdapter;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
@@ -270,7 +273,8 @@ public class ConceptualSchemaTransformer implements TransformationService {
 		else {
 			// Step 1: selection
 			// Select only instances that are relevant for the transformation.
-			source = source.select(new TypeCellFilter(typeCell));
+			// uses fan-out by type if supported by the source collection
+			source = FilteredInstanceCollection.applyFilter(source, new TypeCellFilter(typeCell));
 
 			// Step 2: partition
 			// use InstanceHandler if available - for example merge or join
@@ -346,7 +350,7 @@ public class ConceptualSchemaTransformer implements TransformationService {
 	 *
 	 * @author Kai Schwierczek
 	 */
-	private static class TypeCellFilter implements Filter {
+	private static class TypeCellFilter implements TypeAwareFilter {
 
 		private final HashMap<TypeDefinition, Object> lookup = new HashMap<TypeDefinition, Object>();
 
@@ -362,6 +366,11 @@ public class ConceptualSchemaTransformer implements TransformationService {
 				lookup.put(sourceType.getDefinition().getDefinition(),
 						filter == null ? NO_FILTER : filter);
 			}
+		}
+
+		@Override
+		public Set<TypeDefinition> getTypes() {
+			return lookup.keySet();
 		}
 
 		/**
