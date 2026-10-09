@@ -98,15 +98,18 @@ class SqliteInstanceWriter implements InstanceStoreWriter {
 		if (type == null) {
 			throw new IllegalArgumentException("Instance without type definition cannot be stored");
 		}
-		long id = ctx.nextId.getAndIncrement();
-		int typeId = ctx.types.idOf(type.getName());
 		byte[] payload;
+		List<String[]> metadata;
 		try {
 			payload = ctx.codec.encode(instance);
+			metadata = stringMetadata(instance);
 		} catch (RuntimeException e) {
 			throw new IllegalArgumentException("Instance cannot be serialized", e);
 		}
-		Item item = new Item(id, typeId, type.getName(), payload, stringMetadata(instance));
+		// only register the type once the instance can actually be stored
+		int typeId = ctx.types.idOf(type.getName());
+		long id = ctx.nextId.getAndIncrement();
+		Item item = new Item(id, typeId, type.getName(), payload, metadata);
 		lock.readLock().lock();
 		try {
 			checkUsable();
