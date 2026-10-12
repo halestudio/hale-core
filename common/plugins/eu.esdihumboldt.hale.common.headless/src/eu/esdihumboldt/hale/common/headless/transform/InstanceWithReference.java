@@ -9,7 +9,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this distribution. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.esdihumboldt.hale.common.headless.orient;
+package eu.esdihumboldt.hale.common.headless.transform;
 
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceReference;

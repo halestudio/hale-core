@@ -188,6 +188,7 @@ schemacrawler-core = {module = "us.fatehi:schemacrawler", version.ref = "schemac
 schemacrawler-postgres = {module = "us.fatehi:schemacrawler-postgresql", version.ref = "schemacrawler"}
 
 sqlite-jdbc = {module = "org.xerial:sqlite-jdbc", version = "3.53.4.0"}
+kryo = {module = "com.esotericsoftware:kryo", version = "5.7.1"}
 
 typesafe-config = {module = "com.typesafe:config", version = "1.4.9"}
 

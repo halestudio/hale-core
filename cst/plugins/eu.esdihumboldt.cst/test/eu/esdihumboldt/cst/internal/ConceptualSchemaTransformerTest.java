@@ -12,6 +12,7 @@
 package eu.esdihumboldt.cst.internal;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,9 +34,18 @@ import eu.esdihumboldt.hale.common.core.service.ServiceManager;
 import eu.esdihumboldt.hale.common.core.service.ServiceProvider;
 import eu.esdihumboldt.hale.common.instance.index.InstanceIndexService;
 import eu.esdihumboldt.hale.common.instance.index.InstanceIndexServiceImpl;
+import eu.esdihumboldt.hale.common.instance.model.Identifiable;
+import eu.esdihumboldt.hale.common.instance.model.IdentifiableInstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
+import eu.esdihumboldt.hale.common.instance.model.ResolvableInstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
+import eu.esdihumboldt.hale.common.instance.model.ext.impl.PerTypeInstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstance;
+import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.impl.InstanceDecorator;
+import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 
 /**
  * Tests for the CST's alignment processor implementation
@@ -402,6 +412,73 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 		});
 	}
 
+	/**
+	 * Test a Join that does not have the innerJoin flag enabled, using the index
+	 * based join handler on a source collection supporting fan-out (the type cell
+	 * selection then yields a combination of the per type collections).
+	 *
+	 * @throws Exception if an error occurs executing the test
+	 */
+	@Test
+	public void testJoinIndexBasedFanoutSource() throws Exception {
+		fanoutSource = true;
+		try {
+			withIndexJoin(() -> {
+				try {
+					testTransform(TransformationExamples.getExample(TransformationExamples.JOIN));
+				} catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+			});
+		} finally {
+			fanoutSource = false;
+		}
+	}
+
+	/**
+	 * If the source instances should be provided as a collection supporting
+	 * fan-out.
+	 */
+	private boolean fanoutSource = false;
+
+	/**
+	 * Instance with an identifier (required by the index join handler).
+	 */
+	private static class IdentifiedInstance extends DefaultInstance implements Identifiable {
+
+		private final Object id;
+
+		public IdentifiedInstance(Instance org, Object id) {
+			super(org);
+			this.id = id;
+		}
+
+		@Override
+		public Object getId() {
+			return id;
+		}
+	}
+
+	/**
+	 * Create a collection supporting fan-out with identifiable instances from the
+	 * given instances.
+	 *
+	 * @param source the source instances
+	 * @return the fan-out collection
+	 */
+	private static InstanceCollection toFanoutCollection(InstanceCollection source) {
+		Map<TypeDefinition, InstanceCollection> perType = new LinkedHashMap<>();
+		int id = 0;
+		try (ResourceIterator<Instance> it = source.iterator()) {
+			while (it.hasNext()) {
+				Instance instance = new IdentifiedInstance(it.next(), "id" + id++);
+				((DefaultInstanceCollection) perType.computeIfAbsent(instance.getDefinition(),
+						t -> new DefaultInstanceCollection())).add(instance);
+			}
+		}
+		return new PerTypeInstanceCollection(perType);
+	}
+
 	private void withIndexJoin(Runnable runner) {
 		var prop = "hale.functions.use_index_join_handler";
 
@@ -477,10 +554,28 @@ public class ConceptualSchemaTransformerTest extends DefaultTransformationTest {
 				serviceProvider);
 
 		InstanceCollection source = example.getSourceInstances();
+		if (fanoutSource) {
+			source = toFanoutCollection(source);
+		}
 
+		InstanceCollection rootResolver = new DefaultInstanceCollection();
 		try (ResourceIterator<Instance> it = source.iterator()) {
 			while (it.hasNext()) {
-				indexService.add(it.next(), source);
+				Instance instance = it.next();
+				Instance root = InstanceDecorator.getRoot(instance);
+				if (Identifiable.is(root)) {
+					/*
+					 * The decorated instance is not identifiable, index the root instance (resolved
+					 * directly, so joined instances are identifiable as well).
+					 */
+					InstanceReference ref = rootResolver.getReference(root);
+					indexService.add(root, new ResolvableInstanceReference(
+							new IdentifiableInstanceReference(ref, Identifiable.getId(root)),
+							rootResolver));
+				}
+				else {
+					indexService.add(instance, source);
+				}
 			}
 		}
 

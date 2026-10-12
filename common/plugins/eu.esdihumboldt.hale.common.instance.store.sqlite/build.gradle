@@ -1,0 +1,32 @@
+plugins {
+  id 'hale.migrated-groovy'
+}
+
+hale {
+  bundleName = 'Temporary instance store based on SQLite'
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.sqlite.jdbc
+  implementation libs.kryo
+  implementation libs.jts
+  implementation libs.commons.io
+  implementation libs.igd.osgi.util
+
+  api project(':common:plugins:eu.esdihumboldt.hale.common.instance.store')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.core')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema')
+
+  testImplementation testLibs.junit4
+  testImplementation libs.eclipse.core.runtime
+  testImplementation libs.eclipse.collections.api
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.index')
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.store.test')
+}

@@ -2,13 +2,12 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="eu.esdihumboldt.hale.headless.sink">
-      <sink
-            class="eu.esdihumboldt.hale.common.headless.orient.OrientTransformationSink"
-            id="eu.esdihumboldt.hale.headless.sink.orient"
-            priority="0"
-            reiterable="true">
-      </sink>
+         point="eu.esdihumboldt.hale.instance.store">
+      <store
+            class="eu.esdihumboldt.hale.common.headless.orient.OrientInstanceStoreFactory"
+            id="orient"
+            priority="0">
+      </store>
    </extension>
 
 </plugin>
