@@ -18,6 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,14 +37,19 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import eu.esdihumboldt.hale.common.core.io.Value;
 import eu.esdihumboldt.hale.common.core.io.report.IOReport;
 import eu.esdihumboldt.hale.common.core.io.supplier.DefaultInputSupplier;
 import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier;
 import eu.esdihumboldt.hale.common.core.report.Message;
 import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty;
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition;
+import eu.esdihumboldt.hale.common.instance.model.Filter;
+import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.MutableInstance;
+import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstance;
 import eu.esdihumboldt.hale.common.instance.model.impl.DefaultInstanceCollection;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
@@ -68,6 +74,8 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 	private static final String XPLAN_NS = "http://www.xplanung.de/xplangml/test"; //$NON-NLS-1$
 
 	private static final String GML_NS = "http://www.opengis.net/gml/3.2"; //$NON-NLS-1$
+
+	private static final String XLINK_NS = "http://www.w3.org/1999/xlink"; //$NON-NLS-1$
 
 	private static final String SRS_NAME = "EPSG:25832"; //$NON-NLS-1$
 
@@ -114,6 +122,99 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 		// corners are (minX minY) / (maxX maxY) independent of CRS axis order.
 		final double[] low = parseCoordinates(lower.item(0).getTextContent());
 		final double[] up = parseCoordinates(upper.item(0).getTextContent());
+		assertEquals(10.0, low[0], 1e-6);
+		assertEquals(20.0, low[1], 1e-6);
+		assertEquals(110.0, up[0], 1e-6);
+		assertEquals(220.0, up[1], 1e-6);
+	}
+
+	/**
+	 * A writer that reports to be passthrough is provided with instances that can
+	 * only be iterated once in a headless transformation (see
+	 * {@code LimboInstanceSink}). As the {@code gml:boundedBy} is determined in a
+	 * separate pass over the instances, writing must still succeed in that case.
+	 *
+	 * @throws Exception if any error occurs
+	 */
+	@Test
+	public void testPassthroughContract() throws Exception {
+		final XmlIndex schema = loadSchema();
+		final TypeDefinition featureType = getFeatureType(schema);
+		final CRSDefinition crs = new CodeDefinition(SRS_NAME);
+
+		final XPlanGmlInstanceWriter writer = new XPlanGmlInstanceWriter();
+		InstanceCollection instances = new DefaultInstanceCollection(
+				Arrays.asList(createFeature(featureType, crs, 10.0, 20.0),
+						createFeature(featureType, crs, 110.0, 220.0)));
+		if (writer.isPassthrough()) {
+			instances = new SinglePassInstanceCollection(instances);
+		}
+
+		final File output = File.createTempFile("xplanAuszug", ".gml"); //$NON-NLS-1$ //$NON-NLS-2$
+		output.deleteOnExit();
+		final IOReport report = write(writer, schema, instances, output);
+		assertTrue("Writing the XPlanGML output was not successful", report.isSuccess()); //$NON-NLS-1$
+		assertNotNull(getSingleEnvelope(output));
+	}
+
+	/**
+	 * Partitioning by plan iterates the instances only once, so the writer is
+	 * passthrough in that case and writing must succeed with instances that can
+	 * only be iterated once.
+	 *
+	 * @throws Exception if any error occurs
+	 */
+	@Test
+	public void testPassthroughWithPartitionByPlan() throws Exception {
+		final XmlIndex schema = loadSchema();
+		final TypeDefinition featureType = getFeatureType(schema);
+		final TypeDefinition planType = getType(schema, "Test_Plan"); //$NON-NLS-1$
+		final CRSDefinition crs = new CodeDefinition(SRS_NAME);
+
+		final MutableInstance feature1 = createFeature(featureType, crs, 10.0, 20.0);
+		feature1.addProperty(new QName(GML_NS, "id"), "feature1"); //$NON-NLS-1$ //$NON-NLS-2$
+		final MutableInstance feature2 = createFeature(featureType, crs, 110.0, 220.0);
+		feature2.addProperty(new QName(GML_NS, "id"), "feature2"); //$NON-NLS-1$ //$NON-NLS-2$
+		final MutableInstance plan = new DefaultInstance(planType, null);
+		plan.addProperty(new QName(GML_NS, "id"), "plan1"); //$NON-NLS-1$ //$NON-NLS-2$
+		plan.addProperty(new QName(XPLAN_NS, "feature"), //$NON-NLS-1$
+				createReference(planType, "#feature1")); //$NON-NLS-1$
+		plan.addProperty(new QName(XPLAN_NS, "feature"), //$NON-NLS-1$
+				createReference(planType, "#feature2")); //$NON-NLS-1$
+
+		final XPlanGmlInstanceWriter writer = new XPlanGmlInstanceWriter();
+		writer.setParameter(XPlanGmlInstanceWriter.PARAM_PARTITION_BY_PLAN, Value.of(true));
+		assertTrue("Writer should be passthrough when partitioning by plan", //$NON-NLS-1$
+				writer.isPassthrough());
+
+		final InstanceCollection instances = new SinglePassInstanceCollection(
+				new DefaultInstanceCollection(Arrays.asList(feature1, plan, feature2)));
+
+		final File outputDir = Files.createTempDirectory("xplanAuszug").toFile(); //$NON-NLS-1$
+		outputDir.deleteOnExit();
+		final File output = new File(outputDir, "xplanAuszug.gml"); //$NON-NLS-1$
+		final IOReport report = write(writer, schema, instances, output);
+		assertTrue("Writing the XPlanGML output was not successful", report.isSuccess()); //$NON-NLS-1$
+
+		final File[] files = outputDir.listFiles();
+		assertNotNull(files);
+		assertEquals("Expected one file for the plan", 1, files.length); //$NON-NLS-1$
+		files[0].deleteOnExit();
+		assertTrue("File name should contain the plan ID", //$NON-NLS-1$
+				files[0].getName().contains("plan1")); //$NON-NLS-1$
+
+		final Document doc = parse(files[0]);
+		assertEquals("Plan should be written", 1, //$NON-NLS-1$
+				doc.getElementsByTagNameNS(XPLAN_NS, "Test_Plan").getLength()); //$NON-NLS-1$
+		assertEquals("Features referenced by the plan should be written", 2, //$NON-NLS-1$
+				doc.getElementsByTagNameNS(XPLAN_NS, "TestFeature").getLength()); //$NON-NLS-1$
+
+		final Element envelope = getSingleEnvelope(files[0]);
+		assertEquals(SRS_NAME, envelope.getAttribute("srsName")); //$NON-NLS-1$
+		final double[] low = parseCoordinates(
+				envelope.getElementsByTagNameNS(GML_NS, "lowerCorner").item(0).getTextContent()); //$NON-NLS-1$
+		final double[] up = parseCoordinates(
+				envelope.getElementsByTagNameNS(GML_NS, "upperCorner").item(0).getTextContent()); //$NON-NLS-1$
 		assertEquals(10.0, low[0], 1e-6);
 		assertEquals(20.0, low[1], 1e-6);
 		assertEquals(110.0, up[0], 1e-6);
@@ -278,12 +379,24 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	private TypeDefinition getFeatureType(XmlIndex schema) {
+		return getType(schema, "TestFeature"); //$NON-NLS-1$
+	}
+
+	private TypeDefinition getType(XmlIndex schema, String elementName) {
 		for (XmlElement element : schema.getElements().values()) {
-			if (element.getName().getLocalPart().equals("TestFeature")) { //$NON-NLS-1$
+			if (element.getName().getLocalPart().equals(elementName)) {
 				return element.getType();
 			}
 		}
-		throw new IllegalStateException("TestFeature element not found in schema"); //$NON-NLS-1$
+		throw new IllegalStateException(elementName + " element not found in schema"); //$NON-NLS-1$
+	}
+
+	private MutableInstance createReference(TypeDefinition planType, String href) {
+		final TypeDefinition referenceType = planType.getChild(new QName(XPLAN_NS, "feature")) //$NON-NLS-1$
+				.asProperty().getPropertyType();
+		final MutableInstance reference = new DefaultInstance(referenceType, null);
+		reference.addProperty(new QName(XLINK_NS, "href"), href); //$NON-NLS-1$
+		return reference;
 	}
 
 	private MutableInstance createFeature(TypeDefinition featureType, CRSDefinition crs, double x,
@@ -302,7 +415,11 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 
 	private IOReport write(Schema schema, InstanceCollection instances, File output)
 			throws Exception {
-		final XPlanGmlInstanceWriter writer = new XPlanGmlInstanceWriter();
+		return write(new XPlanGmlInstanceWriter(), schema, instances, output);
+	}
+
+	private IOReport write(XPlanGmlInstanceWriter writer, Schema schema,
+			InstanceCollection instances, File output) throws Exception {
 		writer.setInstances(instances);
 		final DefaultSchemaSpace schemaSpace = new DefaultSchemaSpace();
 		schemaSpace.addSchema(schema);
@@ -312,11 +429,15 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 		return writer.execute(null);
 	}
 
-	private Element getSingleEnvelope(File output) throws Exception {
+	private Document parse(File output) throws Exception {
 		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		final DocumentBuilder builder = factory.newDocumentBuilder();
-		final Document doc = builder.parse(output);
+		return builder.parse(output);
+	}
+
+	private Element getSingleEnvelope(File output) throws Exception {
+		final Document doc = parse(output);
 
 		final NodeList boundedBy = doc.getElementsByTagNameNS(GML_NS, "boundedBy"); //$NON-NLS-1$
 		assertEquals("Exactly one gml:boundedBy expected", 1, boundedBy.getLength()); //$NON-NLS-1$
@@ -333,5 +454,58 @@ public class XPlanGmlInstanceWriterTest extends AbstractPlatformTest {
 		final String[] parts = text.trim().split("\\s+"); //$NON-NLS-1$
 		assertEquals("Expected two coordinate values", 2, parts.length); //$NON-NLS-1$
 		return new double[] { Double.parseDouble(parts[0]), Double.parseDouble(parts[1]) };
+	}
+
+	/**
+	 * Instance collection that may only be iterated once, like the collection
+	 * provided by {@code LimboInstanceSink}.
+	 */
+	private static class SinglePassInstanceCollection implements InstanceCollection {
+
+		private final InstanceCollection decoratee;
+		private boolean iterated = false;
+
+		public SinglePassInstanceCollection(InstanceCollection decoratee) {
+			this.decoratee = decoratee;
+		}
+
+		@Override
+		public InstanceReference getReference(Instance instance) {
+			return decoratee.getReference(instance);
+		}
+
+		@Override
+		public Instance getInstance(InstanceReference reference) {
+			return decoratee.getInstance(reference);
+		}
+
+		@Override
+		public ResourceIterator<Instance> iterator() {
+			if (iterated) {
+				throw new IllegalStateException("Instances may only be iterated once"); //$NON-NLS-1$
+			}
+			iterated = true;
+			return decoratee.iterator();
+		}
+
+		@Override
+		public boolean hasSize() {
+			return false;
+		}
+
+		@Override
+		public int size() {
+			return UNKNOWN_SIZE;
+		}
+
+		@Override
+		public boolean isEmpty() {
+			return false;
+		}
+
+		@Override
+		public InstanceCollection select(Filter filter) {
+			throw new UnsupportedOperationException();
+		}
 	}
 }
