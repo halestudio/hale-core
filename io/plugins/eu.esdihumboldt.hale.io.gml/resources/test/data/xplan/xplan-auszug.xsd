@@ -10,10 +10,26 @@
     feature collection with a single feature type carrying a geometry,
     which is all that is needed to test the gml:boundedBy / gml:Envelope
     output (XPlanung conformance rule 2.1.3.1).
+    A plan type referencing features is included to exercise partitioning
+    by plan.
   -->
 
   <import namespace="http://www.opengis.net/gml/3.2"
     schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" />
+
+  <element name="Test_Plan" type="xplan:Test_PlanType"
+    substitutionGroup="gml:AbstractFeature" />
+
+  <complexType name="Test_PlanType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="feature" type="gml:ReferenceType"
+            minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
 
   <element name="XPlanAuszug" type="xplan:XPlanAuszugType"
     substitutionGroup="gml:AbstractFeature" />

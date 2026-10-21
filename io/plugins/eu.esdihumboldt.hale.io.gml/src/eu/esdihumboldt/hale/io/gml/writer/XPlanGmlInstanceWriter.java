@@ -114,6 +114,27 @@ public class XPlanGmlInstanceWriter extends StreamGmlWriter {
 	}
 
 	/**
+	 * Writing a single document needs two passes over the instances, as the
+	 * {@code gml:boundedBy} is determined in a separate pass before the instances
+	 * are written (see
+	 * {@link #writeAdditionalElements(XMLStreamWriter, InstanceCollection, TypeDefinition, IOReporter)}).
+	 * Partitioning by plan only iterates the instances once and writes the parts
+	 * from in-memory collections.
+	 *
+	 * @see StreamGmlWriter#isPassthrough()
+	 */
+	@Override
+	public boolean isPassthrough() {
+		// When partitioning by plan, the provided instances are only iterated once
+		// to collect them into in-memory collections (see partitionByPlan). The
+		// two passes per written part then happen on those collections, so a
+		// single-pass collection (e.g. in a headless transformation) is sufficient.
+		// Without partitioning, the provided instances are iterated twice and
+		// must support that.
+		return isPartitionByPlanConfigured() && super.isPassthrough();
+	}
+
+	/**
 	 * Writes a {@code gml:boundedBy} with a {@code gml:Envelope} for the
 	 * XPlanAuszug container. This defines the mandatory default CRS of the XPlanung
 	 * model through the envelope's {@code srsName} (XPlanung conformance rule
