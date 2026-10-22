@@ -14,7 +14,7 @@ spotless {
     importOrder('groovy', 'java', 'javax', 'org', 'com', '')
 
     // https://github.com/diffplug/spotless/tree/main/plugin-gradle#eclipse-groovy
-    greclipse().configFile(rootProject.file('eclipse-format.xml'))
+    SpotlessP2Mirrors.configure(project, greclipse().configFile(rootProject.file('eclipse-format.xml')))
 
     // excludes all Java sources within the Groovy source dirs from formatting
     excludeJava()
