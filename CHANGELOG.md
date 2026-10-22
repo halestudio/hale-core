@@ -1,3 +1,12 @@
+## [6.5.2](https://github.com/halestudio/hale-core/compare/v6.5.1...v6.5.2) (2026-10-22)
+
+### Bug Fixes
+
+* **deps:** update dependency com.google.guava:guava to v33.7.2-jre ([3765bee](https://github.com/halestudio/hale-core/commit/3765beefb9a8dfa2acaeb90a549987d0c73b393b))
+* **deps:** update dependency commons-codec:commons-codec to v1.23.0 ([22c417f](https://github.com/halestudio/hale-core/commit/22c417fceaf6f4e1f2e3be0d83b01634f8e2bc34))
+* **deps:** update dependency org.apache.xmlbeans:xmlbeans to v5.4.1 ([0b442ce](https://github.com/halestudio/hale-core/commit/0b442ceb2057749c2ed2ee7d8195898355737b9b))
+* **xplan:** require reiterable instances for XPlanGML export ([e3ca661](https://github.com/halestudio/hale-core/commit/e3ca661d8f5883839d3abb751adaccc2db041746)), closes [ING-4920](https://wetransform.atlassian.net/browse/ING-4920)
+
 ## [6.5.1](https://github.com/halestudio/hale-core/compare/v6.5.0...v6.5.1) (2026-10-08)
 
 ### Bug Fixes
