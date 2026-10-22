@@ -1,3 +1,7 @@
+import to.wetransform.gradle.conventions.EclipseFormatProperties
+import to.wetransform.gradle.conventions.EditorConfigHelper
+import to.wetransform.gradle.conventions.SpotlessPlugin
+
 plugins {
   id 'org.cyclonedx.bom'
   // add so generateSpotlessWatcher task is available to easily set up local IntelliJ Idea formatting watcher
@@ -6,6 +10,17 @@ plugins {
 
 repositories {
   mavenCentral()
+}
+
+spotless {
+  groovyGradle {
+    // recreate the steps configured by the conventions plugin, to be able to use a P2 mirror
+    // TODO remove once the conventions plugin falls back to a P2 mirror itself (wetransform/gradle-conventions)
+    clearSteps()
+    def gradleConfig = new EditorConfigHelper(projectDir).getEditorConfigInfo(file('build.gradle'))
+    SpotlessP2Mirrors.configure(project, greclipse().configProperties(EclipseFormatProperties.getPropertiesAsString(gradleConfig, true)))
+    plugins.getPlugin(SpotlessPlugin).applyGenericSettings(it, gradleConfig)
+  }
 }
 
 allprojects {

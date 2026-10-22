@@ -11,7 +11,7 @@ spotless {
   groovyGradle {
     target '*.gradle'
 
-    greclipse().configFile(rootProject.file('gradle-format.properties'))
+    SpotlessP2Mirrors.configure(project, greclipse().configFile(rootProject.file('gradle-format.properties')))
 
     trimTrailingWhitespace()
     endWithNewline()

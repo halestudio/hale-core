@@ -36,7 +36,17 @@ spotless {
   groovyGradle {
     target '*.gradle'
 
-    greclipse().configFile('../gradle-format.properties')
+    // use an Eclipse mirror, as download.eclipse.org is not reliably available
+    // (copy of SpotlessP2Mirrors, which can't be used in the buildSrc build itself)
+    def p2Mirror = project.hasProperty('spotlessP2Mirror') ? project.findProperty('spotlessP2Mirror') : 'https://ftp.fau.de/eclipse'
+    def greclipseConfig = greclipse().configFile('../gradle-format.properties')
+    if (p2Mirror) {
+      greclipseConfig.withP2Mirrors([
+        'https://download.eclipse.org/eclipse/updates/': "${p2Mirror}/eclipse/updates/".toString(),
+        // every P2 repository needs a mapping as soon as mirrors are configured
+        'https://groovy.jfrog.io/artifactory/plugins-release': 'https://groovy.jfrog.io/artifactory/plugins-release'
+      ])
+    }
 
     trimTrailingWhitespace()
     endWithNewline()
