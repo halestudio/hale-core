@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema targetNamespace="eu.esdihumboldt.hale.common.instance.store" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="eu.esdihumboldt.hale.common.instance.store" id="eu.esdihumboldt.hale.instance.store" name="Temporary instance stores"/>
+      </appinfo>
+      <documentation>
+         Implementations of temporary instance stores. The store with the highest priority is used, unless the system property hale.instance.store names another store.
+      </documentation>
+   </annotation>
+   <element name="extension">
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="store"/>
+         </choice>
+         <attribute name="point" type="string" use="required"/>
+         <attribute name="id" type="string"/>
+         <attribute name="name" type="string"/>
+      </complexType>
+   </element>
+   <element name="store">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation><documentation>The unique store identifier, used for selection via the system property hale.instance.store.</documentation></annotation>
+         </attribute>
+         <attribute name="priority" type="string" use="default" value="0">
+            <annotation><documentation>The store priority (higher number is higher priority).</documentation></annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>The store factory.</documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":eu.esdihumboldt.hale.common.instance.store.InstanceStoreFactory"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+</schema>

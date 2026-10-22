@@ -11,14 +11,17 @@
  */
 package eu.esdihumboldt.hale.common.headless.transform;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.annotation.Nullable;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,7 +31,6 @@ import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import com.google.common.io.Files;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
@@ -59,16 +61,12 @@ import eu.esdihumboldt.hale.common.instance.io.InstanceReader;
 import eu.esdihumboldt.hale.common.instance.io.InstanceValidator;
 import eu.esdihumboldt.hale.common.instance.io.InstanceWriter;
 import eu.esdihumboldt.hale.common.instance.model.DataSet;
-import eu.esdihumboldt.hale.common.instance.model.Filter;
-import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.impl.FilteredInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.model.impl.InstanceDecorator;
 import eu.esdihumboldt.hale.common.instance.model.impl.MultiInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.orient.OInstance;
-import eu.esdihumboldt.hale.common.instance.orient.storage.BrowseOrientInstanceCollection;
-import eu.esdihumboldt.hale.common.instance.orient.storage.LocalOrientDB;
-import eu.esdihumboldt.hale.common.instance.orient.storage.StoreInstancesJob;
+import eu.esdihumboldt.hale.common.instance.store.InstanceStore;
+import eu.esdihumboldt.hale.common.instance.store.InstanceStoreExtension;
+import eu.esdihumboldt.hale.common.instance.store.StoreInstancesJob;
 import eu.esdihumboldt.hale.common.schema.model.SchemaSpace;
 
 /**
@@ -321,7 +319,7 @@ public class Transformation {
 		// Check whether to create a temporary database or not.
 		// Currently do not create a temporary DB is there are Retypes/Creates
 		// only.
-		final LocalOrientDB db;
+		final InstanceStore store;
 		boolean useTempDatabase = settings.useTemporaryDatabase().orElseGet(() -> {
 			boolean useDb = false;
 
@@ -340,40 +338,24 @@ public class Transformation {
 			return useDb;
 		});
 
-		// Create temporary database if necessary.
+		// Create temporary instance store if necessary.
 		if (useTempDatabase) {
-			// create db
-			File tmpDir = Files.createTempDir();
-			db = new LocalOrientDB(tmpDir);
-			tmpDir.deleteOnExit();
-
-			// get instance collection
-//			sourceToUse = new BrowseOrientInstanceCollection(db, sourceSchema, DataSet.SOURCE);
-			// only yield instances that were actually inserted
-			// this is also done in OrientInstanceService
-			// TODO make configurable?
-			sourceToUse = FilteredInstanceCollection.applyFilter(
-					new BrowseOrientInstanceCollection(db, sourceSchema, DataSet.SOURCE),
-					new Filter() {
-
-						@Override
-						public boolean match(Instance instance) {
-							Instance inst = (instance instanceof InstanceDecorator)
-									? InstanceDecorator.getRoot(instance)
-									: instance;
-
-							if (inst instanceof OInstance) {
-								return ((OInstance) inst).isInserted();
-							}
-							return true;
-						}
-
-					});
+			try {
+				store = createTemporaryStore(dir -> InstanceStoreExtension.getInstance()
+						.createStore(DataSet.SOURCE, dir, serviceProvider));
+			} catch (Exception e) {
+				// the transformation is not started, release the target sink
+				releaseSink(targetSink);
+				result.setException(e);
+				return result;
+			}
+			sourceToUse = store.getInstances(sourceSchema);
 		}
 		else {
 			sourceToUse = new StatsCountInstanceCollection(sources, reportHandler);
-			db = null;
+			store = null;
 		}
+		final Runnable closeStore = storeCloser(store);
 
 		// create transformation job
 		final AbstractTransformationJob transformJob = new AbstractTransformationJob(
@@ -448,9 +430,7 @@ public class Transformation {
 					exportJob.cancel();
 				}
 
-				if (db != null) {
-					db.delete();
-				}
+				closeStore.run();
 			}
 		});
 		// after export is done, validation should run
@@ -504,7 +484,7 @@ public class Transformation {
 
 			// run store instance job first...
 			Job storeJob = new StoreInstancesJob("Load source instances into temporary database",
-					db, sources, serviceProvider, reportHandler, true) {
+					store, sources, sourceSchema, serviceProvider, reportHandler, true) {
 
 				@Override
 				protected void onComplete() {
@@ -522,19 +502,11 @@ public class Transformation {
 
 			};
 			// and schedule jobs on successful completion
-			storeJob.addJobChangeListener(new JobChangeAdapter() {
-
-				@Override
-				public void done(IJobChangeEvent event) {
-					if (event.getResult().isOK()) {
+			storeJob.addJobChangeListener(
+					createStoreJobListener(closeStore, targetSink, result, () -> {
 						exportJob.schedule();
 						transformJob.schedule();
-					}
-					else {
-						failure(result, event);
-					}
-				}
-			});
+					}));
 
 			storeJob.schedule();
 		}
@@ -569,6 +541,118 @@ public class Transformation {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Factory for an instance store in a given directory.
+	 */
+	@FunctionalInterface
+	interface StoreFactory {
+
+		/**
+		 * Create the instance store.
+		 *
+		 * @param directory the directory to create the store in
+		 * @return the instance store
+		 * @throws IOException if the store cannot be created
+		 */
+		InstanceStore create(Path directory) throws IOException;
+	}
+
+	/**
+	 * Create a temporary instance store in a new temporary directory. If the store
+	 * cannot be created, the directory is deleted.
+	 *
+	 * @param factory the factory creating the store
+	 * @return the created store
+	 * @throws IOException if the directory or the store cannot be created
+	 */
+	static InstanceStore createTemporaryStore(StoreFactory factory) throws IOException {
+		Path storeDir = Files.createTempDirectory("hale-source-instances");
+		try {
+			return factory.create(storeDir);
+		} catch (IOException | RuntimeException e) {
+			try {
+				FileUtils.deleteDirectory(storeDir.toFile());
+			} catch (IOException | RuntimeException e1) {
+				log.warn("Failed to delete temporary instance store directory " + storeDir, e1);
+			}
+			throw e;
+		}
+	}
+
+	/**
+	 * Create a runnable that closes the given store once. Further calls have no
+	 * effect.
+	 *
+	 * @param store the store to close, may be <code>null</code>
+	 * @return the runnable closing the store
+	 */
+	static Runnable storeCloser(@Nullable InstanceStore store) {
+		if (store == null) {
+			return () -> {
+				// nothing to close
+			};
+		}
+		AtomicBoolean closed = new AtomicBoolean();
+		return () -> {
+			if (closed.compareAndSet(false, true)) {
+				try {
+					store.close();
+				} catch (IOException | RuntimeException e) {
+					log.warn("Failed to delete temporary instance store", e);
+				}
+			}
+		};
+	}
+
+	/**
+	 * Release a target sink that will not be used by a transformation.
+	 *
+	 * @param targetSink the target sink
+	 */
+	private static void releaseSink(TransformationSink targetSink) {
+		try {
+			targetSink.done(true);
+		} catch (RuntimeException e) {
+			log.warn("Error completing target sink", e);
+		}
+		try {
+			targetSink.dispose();
+		} catch (RuntimeException e) {
+			log.warn("Error disposing target sink", e);
+		}
+	}
+
+	/**
+	 * Create the listener for the job loading the source instances into the
+	 * temporary store. On success the transformation is started, otherwise the
+	 * store is closed, the target sink released and the failure reported.
+	 *
+	 * @param closeStore closes the temporary store
+	 * @param targetSink the target sink
+	 * @param result the transformation result future
+	 * @param onSuccess the action starting the transformation
+	 * @return the job change listener
+	 */
+	static JobChangeAdapter createStoreJobListener(Runnable closeStore,
+			TransformationSink targetSink, SettableFuture<Boolean> result, Runnable onSuccess) {
+		return new JobChangeAdapter() {
+
+			@Override
+			public void done(IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
+					onSuccess.run();
+				}
+				else {
+					// transformation is not started, release resources
+					closeStore.run();
+					releaseSink(targetSink);
+
+					failure(result, event);
+				}
+			}
+		};
 	}
 
 	/**
