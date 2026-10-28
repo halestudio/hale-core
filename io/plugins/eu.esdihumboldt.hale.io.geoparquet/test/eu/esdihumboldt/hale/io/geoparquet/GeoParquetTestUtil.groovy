@@ -11,7 +11,14 @@
  */
 package eu.esdihumboldt.hale.io.geoparquet
 
+import static org.junit.Assert.assertTrue
+
 import groovy.json.JsonSlurper
+import groovy.transform.CompileStatic
+
+import java.nio.file.Files
+import java.nio.file.Path
+import java.util.function.Consumer
 
 import org.apache.parquet.ParquetReadOptions
 import org.apache.parquet.conf.PlainParquetConfiguration
@@ -25,7 +32,13 @@ import org.apache.parquet.io.LocalInputFile
 import org.locationtech.jts.geom.Geometry
 import org.locationtech.jts.io.WKBReader
 
+import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
+import eu.esdihumboldt.hale.common.core.io.report.IOReport
+import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
+import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
+import eu.esdihumboldt.hale.common.schema.model.Schema
+import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 
 /**
  * Helpers for tests of GeoParquet files. Reading requires the Hadoop and codec
@@ -82,6 +95,51 @@ class GeoParquetTestUtil {
 	 */
 	static Geometry wkb(Group row, String column) {
 		new WKBReader().read(row.getBinary(column, 0).bytes)
+	}
+
+	/**
+	 * Write an instance collection to a GeoParquet file. Asserts that the writer
+	 * reports success and no errors.
+	 */
+	@CompileStatic
+	static IOReport writeInstances(File target, Schema schema, InstanceCollection instances,
+			Consumer<GeoParquetInstanceWriter> configurator = null) {
+		GeoParquetInstanceWriter writer = new GeoParquetInstanceWriter()
+		writer.setTarget(new FileIOSupplier(target))
+		def ss = new DefaultSchemaSpace()
+		ss.addSchema(schema)
+		writer.setTargetSchema(ss)
+		writer.setInstances(instances)
+
+		if (configurator != null) {
+			configurator.accept(writer)
+		}
+
+		IOReport report = writer.execute(new LogProgressIndicator())
+
+		assertTrue(report.errors*.message.toString(), report.isSuccess())
+		assertTrue(report.errors*.message.toString(), report.getErrors().isEmpty())
+
+		return report
+	}
+
+	/**
+	 * Write an instance collection to a GeoParquet file in a new temporary
+	 * directory and call the handler with the files that were written, sorted by
+	 * name. The files are deleted afterwards.
+	 */
+	@CompileStatic
+	static void withNewGeoParquet(Schema schema, InstanceCollection instances,
+			Consumer<List<File>> handler, Consumer<GeoParquetInstanceWriter> configurator = null) {
+		Path dir = Files.createTempDirectory('geoparquet')
+		try {
+			File target = new File(dir.toFile(), 'out.parquet')
+			writeInstances(target, schema, instances, configurator)
+			List<File> files = (dir.toFile().listFiles() as List<File>).sort { File f -> f.name }
+			handler.accept(files)
+		} finally {
+			dir.toFile().deleteDir()
+		}
 	}
 
 	/**
