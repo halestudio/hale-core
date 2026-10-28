@@ -1,0 +1,27 @@
+Bundled PROJJSON definitions of coordinate reference systems
+=============================================================
+
+epsg-projjson.tsv.gz contains the PROJJSON definitions of all non-deprecated
+coordinate reference systems of the EPSG dataset, one line per CRS
+("<EPSG code><TAB><minified PROJJSON>"). It is used to write the "crs" of the
+GeoParquet "geo" metadata without network access at runtime.
+
+Source: generated with pyproj (scripts/generate-projjson.py in this bundle) from
+the PROJ database, which contains the EPSG dataset. The versions used are recorded
+in epsg-projjson.version:
+
+  PROJ    9.8.1   (https://proj.org, MIT licence)
+  EPSG    v12.029
+  pyproj  3.8.0   (https://pyproj4.github.io/pyproj, MIT licence)
+
+EPSG Geodetic Parameter Dataset
+-------------------------------
+
+The definitions are derived from the EPSG Geodetic Parameter Dataset (EPSG
+Dataset), which is owned and maintained by the International Association of Oil &
+Gas Producers (IOGP). Use of the EPSG Dataset is subject to the EPSG Dataset Terms
+of Use: https://epsg.org/terms-of-use.html
+
+The EPSG Dataset is available from https://epsg.org. The data in
+epsg-projjson.tsv.gz has been converted to PROJJSON by PROJ; it is not the
+original EPSG Dataset and may not reflect its current version.

@@ -10,3 +10,11 @@ used to validate the generated "geo" metadata in tests.
 projjson-v0.5.schema.json, projjson-v0.7.schema.json
             PROJJSON schemas (OSGeo/PROJ, schemas/<version>/projjson.schema.json, master at 5fa31c29f0a806568ed7bc76c1a557604db4a804),
             referenced by the GeoParquet schemas (https://proj.org/schemas/...); tests map the URLs to these files (no network access).
+
+Licences
+--------
+
+1.0.0.json, 1.1.0.json, 2.0.0.json
+            GeoParquet specification (https://github.com/opengeospatial/geoparquet), Apache License 2.0.
+projjson-v0.5.schema.json, projjson-v0.7.schema.json
+            PROJ (https://github.com/OSGeo/PROJ), MIT licence.
