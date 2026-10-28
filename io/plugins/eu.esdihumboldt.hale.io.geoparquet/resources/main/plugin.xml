@@ -10,4 +10,135 @@
             priority="normal">
       </content-type>
    </extension>
+   <extension
+         point="eu.esdihumboldt.hale.io.provider">
+      <provider
+            allowDuplicate="false"
+            class="eu.esdihumboldt.hale.io.geoparquet.GeoParquetInstanceWriter"
+            description="Writes instances to GeoParquet files, one file per type. Geometries in nested properties are written as WKT and geometries in JSON columns as JSON, both in their source CRS (no CRS conversion)."
+            id="eu.esdihumboldt.hale.io.geoparquet.instance.writer"
+            name="GeoParquet file">
+         <contentType
+               ref="eu.esdihumboldt.hale.io.geoparquet">
+         </contentType>
+         <providerParameter
+               description="Coordinate reference system the geometries are transformed to and written in. Takes precedence over the CRS defined in the schema or by the geometries."
+               label="Target CRS"
+               name="crs"
+               optional="true">
+            <parameterBinding
+                  class="java.lang.String">
+            </parameterBinding>
+            <valueDescriptor
+                  defaultDescription="By default the CRS defined in the schema is used, otherwise the CRS of the first geometry of each type. Geometries are transformed to that CRS."
+                  sample="code:EPSG:4326"
+                  sampleDescription="Reference systems can be defined either as code or WKT (preceded with code: or wkt: respectively)">
+            </valueDescriptor>
+         </providerParameter>
+         <providerParameter
+               description="The version of the GeoParquet specification to write. Version 2.0.0 uses the native Parquet GEOMETRY type, versions 1.0.0 and 1.1.0 write plain binary columns with the geo metadata."
+               label="GeoParquet version"
+               name="geoparquet.version"
+               optional="true">
+            <valueDescriptor
+                  default="2.0.0"
+                  defaultDescription="By default version 2.0.0 is written">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.String">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="The compression codec for the Parquet files (zstd, snappy, gzip or none)"
+               label="Compression"
+               name="compression"
+               optional="true">
+            <valueDescriptor
+                  default="zstd"
+                  defaultDescription="By default ZSTD compression is used">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.String">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="Sort the instances spatially (Hilbert curve) to improve the performance of spatial queries on the file. Sorting resolves instances by reference and can be slow for sources where that is expensive (e.g. GML read directly), use an instance store or disable sorting in that case."
+               label="Sort spatially"
+               name="sort"
+               optional="true">
+            <valueDescriptor
+                  default="true"
+                  defaultDescription="By default this option is enabled">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.Boolean">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="The maximum number of rows per row group"
+               label="Row group size"
+               name="rowGroupRowLimit"
+               optional="true">
+            <valueDescriptor
+                  default="150000"
+                  defaultDescription="By default row groups contain at most 150000 rows">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.Integer">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="The maximum nesting depth of properties that are written as Parquet structs, properties nested deeper are written as JSON text"
+               label="Maximum nesting depth"
+               name="nestingDepth"
+               optional="true">
+            <valueDescriptor
+                  default="5"
+                  defaultDescription="By default a nesting depth of 5 is used">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.Integer">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="How BigInteger and BigDecimal values are written: as string (lossless), as double (lossy) or as decimal (precision 38)"
+               label="Big number encoding"
+               name="bigNumberEncoding"
+               optional="true">
+            <valueDescriptor
+                  default="string"
+                  defaultDescription="By default big numbers are written as string">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.String">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="The scale used for BigDecimal values when the big number encoding is decimal (the precision is always 38)"
+               label="Decimal scale"
+               name="decimalScale"
+               optional="true">
+            <valueDescriptor
+                  default="9"
+                  defaultDescription="By default a scale of 9 is used">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.Integer">
+            </parameterBinding>
+         </providerParameter>
+         <providerParameter
+               description="Overwrite the target file if it exists"
+               label="Overwrite target file"
+               name="overwriteTargetFile"
+               optional="true">
+            <valueDescriptor
+                  default="false"
+                  defaultDescription="By default this option is disabled">
+            </valueDescriptor>
+            <parameterBinding
+                  class="java.lang.Boolean">
+            </parameterBinding>
+         </providerParameter>
+      </provider>
+   </extension>
 </plugin>
