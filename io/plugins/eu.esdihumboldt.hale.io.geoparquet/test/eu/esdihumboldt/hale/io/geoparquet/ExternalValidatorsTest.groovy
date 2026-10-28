@@ -181,12 +181,14 @@ class ExternalValidatorsTest extends AbstractPlatformTest {
 		def result = new ExternalValidators.Result(exitCode: 1, output: output)
 		try {
 			ExternalValidators.evaluatePortolanCheck('test.parquet', result)
-			fail("Expected portolan check to fail for: $output")
 		} catch (AssertionError e) {
 			assertTrue("Unexpected message: ${e.message}", e.message.contains(expected))
 			// the output is included
 			assertTrue(e.message, e.message.contains(output))
+			return
 		}
+		// outside of the try, so it is not caught as the expected failure
+		fail("Expected portolan check to fail for: $output")
 	}
 
 	/**
