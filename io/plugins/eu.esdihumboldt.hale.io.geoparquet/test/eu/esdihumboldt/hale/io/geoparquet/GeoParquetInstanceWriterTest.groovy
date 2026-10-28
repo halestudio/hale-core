@@ -628,6 +628,79 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * A geometry whose CRS cannot be transformed to the column CRS is not written
+	 * (its source coordinates would be wrong in the column CRS): the geometry of
+	 * that row is null, the failure is reported (once) and the file is valid.
+	 * Applies to a column CRS determined from the data as well as to an explicit
+	 * target CRS.
+	 */
+	@Test
+	void testUntransformableGeometryNotWritten() {
+		def local = org.geotools.referencing.crs.DefaultEngineeringCRS.CARTESIAN_2D
+		def localCrs = new eu.esdihumboldt.hale.common.instance.geometry.impl.WKTDefinition(local.toWKT(), local)
+		[
+			null,
+			new CodeDefinition('EPSG:25832', true)
+		].each { CRSDefinition targetCrs ->
+			[true, false].each { boolean sort ->
+				def label = "sort=$sort, target=${targetCrs?.code}"
+				Schema schema = crsFromLaterFeatureSchema()
+				InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+					feature {
+						id(0)
+						geom(createGeometry('POINT(8 50)', new CodeDefinition('EPSG:4326', true)))
+					}
+					feature {
+						id(1)
+						geom(new DefaultGeometryProperty(localCrs, new WKTReader().read('POINT(1000 2000)')))
+					}
+					feature {
+						id(2)
+						geom(createGeometry('POINT(9 51)', new CodeDefinition('EPSG:4326', true)))
+					}
+				}
+				File target = new File(tmp.newFolder(), 'features.parquet')
+				def writer = new GeoParquetInstanceWriter()
+				writer.setTarget(new FileIOSupplier(target))
+				def ss = new DefaultSchemaSpace()
+				ss.addSchema(schema)
+				writer.setTargetSchema(ss)
+				writer.setInstances(instances)
+				if (targetCrs != null) {
+					writer.setTargetCRS(targetCrs)
+				}
+				writer.setSort(sort)
+				IOReport report = writer.execute(new LogProgressIndicator())
+
+				assertTrue(label, report.success)
+				assertEquals("$label: ${report.errors*.message}", 1, report.errors.size())
+				assertTrue(report.errors[0].message, report.errors[0].message.contains('transformation'))
+
+				def rows = readRows(target)
+				assertEquals(label, [0, 1, 2], rows.collect { it.getInteger('id', 0) }.sort())
+				def failed = rows.find { it.getInteger('id', 0) == 1 }
+				assertEquals(label, 0, failed.getFieldRepetitionCount('geometry'))
+				assertEquals(label, 2, rows.count { it.getFieldRepetitionCount('geometry') > 0 })
+				if (sort) {
+					// sorted like an instance without geometry (last)
+					assertEquals(label, 1, rows.last().getInteger('id', 0))
+				}
+
+				// the bbox does not include the source coordinates
+				def bbox = geoMetadata(target).columns.geometry.bbox
+				if (targetCrs == null) {
+					assertEquals(label, [8d, 50d, 9d, 51d], bbox*.doubleValue())
+				}
+				else {
+					assertTrue(label + ': ' + bbox, bbox[0] > 400000d)
+				}
+				GeoParquetCompliance.check(target, 150000, true)
+				ExternalValidators.check(target)
+			}
+		}
+	}
+
+	/**
 	 * A reference that cannot be resolved (or an instance without reference) is
 	 * reported as error, the instance is skipped and the export continues.
 	 */

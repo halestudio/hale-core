@@ -191,11 +191,15 @@ class GeoParquetTestUtil {
 
 	/**
 	 * Write an instance collection to a GeoParquet file. Asserts that the writer
-	 * reports success and no errors.
+	 * reports success and no errors, and that all written files are compliant.
+	 * Unless disabled, the files are also validated with the external validators
+	 * (see {@link ExternalValidators}), which is slow. Portolan rules can be
+	 * ignored for deliberately non-ideal data.
 	 */
 	@CompileStatic
 	static IOReport writeInstances(File target, Schema schema, InstanceCollection instances,
-			Consumer<GeoParquetInstanceWriter> configurator = null) {
+			Consumer<GeoParquetInstanceWriter> configurator = null, boolean externalValidation = true,
+			Collection<String> ignorePortolanRules = []) {
 		GeoParquetInstanceWriter writer = new GeoParquetInstanceWriter()
 		writer.setTarget(new FileIOSupplier(target))
 		def ss = new DefaultSchemaSpace()
@@ -215,6 +219,9 @@ class GeoParquetTestUtil {
 		// every written file must be compliant
 		(target.parentFile.listFiles() as List<File>).findAll { File f -> f.name.endsWith('.parquet') }.each { File f ->
 			GeoParquetCompliance.check(f, 150000, GeoParquetCompliance.hasGeometryColumn(f))
+			if (externalValidation) {
+				ExternalValidators.check(f, ignorePortolanRules)
+			}
 		}
 
 		return report
@@ -227,11 +234,12 @@ class GeoParquetTestUtil {
 	 */
 	@CompileStatic
 	static void withNewGeoParquet(Schema schema, InstanceCollection instances,
-			Consumer<List<File>> handler, Consumer<GeoParquetInstanceWriter> configurator = null) {
+			Consumer<List<File>> handler, Consumer<GeoParquetInstanceWriter> configurator = null,
+			boolean externalValidation = true, Collection<String> ignorePortolanRules = []) {
 		Path dir = Files.createTempDirectory('geoparquet')
 		try {
 			File target = new File(dir.toFile(), 'out.parquet')
-			writeInstances(target, schema, instances, configurator)
+			writeInstances(target, schema, instances, configurator, externalValidation, ignorePortolanRules)
 			List<File> files = (dir.toFile().listFiles() as List<File>).sort { File f -> f.name }
 			handler.accept(files)
 		} finally {
