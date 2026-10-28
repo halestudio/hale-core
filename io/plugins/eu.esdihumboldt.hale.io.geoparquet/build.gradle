@@ -33,6 +33,8 @@ dependencies {
 
   implementation libs.guava
 
+  implementation libs.jackson.databind
+
   implementation libs.eclipse.core.runtime
 
   implementation libs.jts
