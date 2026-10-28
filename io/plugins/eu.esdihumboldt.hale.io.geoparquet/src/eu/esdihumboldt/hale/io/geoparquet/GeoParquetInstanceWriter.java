@@ -20,6 +20,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -43,6 +45,7 @@ import eu.esdihumboldt.hale.common.instance.geometry.impl.WKTDefinition;
 import eu.esdihumboldt.hale.common.instance.io.impl.AbstractGeoInstanceWriter;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
+import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
@@ -54,6 +57,7 @@ import eu.esdihumboldt.hale.io.geoparquet.internal.schema.MappingOptions;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ParquetSchemaMapper;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.PropertyPaths;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.TypeMapping;
+import eu.esdihumboldt.hale.io.geoparquet.internal.sort.TypeSortIndex;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryConverter;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryReprojector;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.TypeFileWriter;
@@ -79,6 +83,12 @@ import eu.esdihumboldt.util.Pair;
  */
 public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		implements GeometryConverter {
+
+	/**
+	 * Maximum number of instances of a type that are buffered while waiting for a
+	 * geometry to determine the CRS (streaming mode).
+	 */
+	private static final int MAX_BUFFERED_INSTANCES = 1000;
 
 	/**
 	 * The identifier of the writer as registered to the I/O provider extension.
@@ -128,6 +138,12 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 
 	/** The target CRS parameter of the current execution. */
 	private CRSDefinition targetCrsParam;
+
+	/**
+	 * The column CRS for the target CRS parameter of the current execution,
+	 * <code>null</code> if no target CRS is set.
+	 */
+	private GeoParquetCrs targetColumnCrs;
 
 	/** The reporter of the current execution. */
 	private IOReporter reporter;
@@ -277,6 +293,10 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		this.targetCrsParam = getTargetCRS();
 		TypeOutputs outputs = null;
 		try {
+			// the target CRS is used for all geometry columns, also if it has no
+			// EPSG code (unknown CRS, reported once)
+			this.targetColumnCrs = targetCrsParam == null ? null
+					: GeoParquetCrs.resolve(targetCrsParam, reporter);
 			Path target = Paths.get(getTarget().getLocation());
 			outputs = new TypeOutputs(target);
 			boolean overwrite = getParameter(PARAM_OVERWRITE_TARGET_FILE).as(Boolean.class, false);
@@ -286,8 +306,13 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			}
 
 			Settings settings = readSettings();
-			// streaming: instances are written as they come in
-			writeInstances(getInstances(), settings, outputs, progress);
+			if (isSort()) {
+				writeSorted(getInstances(), settings, outputs, progress);
+			}
+			else {
+				// streaming: instances are written as they come in
+				writeInstances(getInstances(), settings, outputs, progress);
+			}
 
 			outputs.closeAll();
 			if (progress.isCanceled()) {
@@ -310,6 +335,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		} finally {
 			this.reporter = null;
 			this.targetCrsParam = null;
+			this.targetColumnCrs = null;
 			progress.end();
 		}
 		return reporter;
@@ -319,22 +345,174 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			TypeOutputs outputs, ProgressIndicator progress) throws IOException {
 		ParquetSchemaMapper mapper = new ParquetSchemaMapper(settings.options());
 
+		// types for which the file is not yet opened because the CRS of the primary
+		// geometry is not yet known, in order of first occurrence
+		Map<TypeDefinition, PendingType> pending = new LinkedHashMap<>();
+
 		try (ResourceIterator<Instance> it = instances.iterator()) {
 			while (it.hasNext() && !progress.isCanceled()) {
 				Instance instance = it.next();
 				TypeDefinition type = instance.getDefinition();
 				TypeFileWriter writer = outputs.getWriter(type);
-				if (writer == null) {
-					Path file = outputs.allocate(type);
-					Map<String, GeoParquetCrs> crs = determineCrs(type, mapper, instance);
-					TypeMapping mapping = mapper.map(type, crs, reporter);
-					writer = new TypeFileWriter(file, mapping, settings.options().version(), crs,
-							settings.codec(), settings.rowGroupRowLimit(), this, reporter);
-					outputs.setWriter(type, writer);
+				if (writer != null) {
+					writer.write(instance);
 				}
-				writer.write(instance);
+				else {
+					PendingType pendingType = pending.get(type);
+					if (pendingType == null) {
+						pendingType = new PendingType(new CrsResolver(type, mapper));
+						pending.put(type, pendingType);
+					}
+					pendingType.resolver().observe(instance);
+					pendingType.buffer().add(instance);
+					if (pendingType.resolver().isPrimaryResolved()
+							|| pendingType.buffer().size() >= MAX_BUFFERED_INSTANCES) {
+						pending.remove(type);
+						openAndFlush(type, pendingType, mapper, settings, outputs);
+					}
+				}
 				progress.advance(1);
 			}
+		}
+
+		if (!progress.isCanceled()) {
+			// input ended before the CRS could be determined for all types
+			for (Map.Entry<TypeDefinition, PendingType> entry : pending.entrySet()) {
+				openAndFlush(entry.getKey(), entry.getValue(), mapper, settings, outputs);
+			}
+		}
+	}
+
+	/**
+	 * Open the file of a type and write the instances that were buffered while
+	 * waiting for a geometry to determine the CRS.
+	 */
+	private void openAndFlush(TypeDefinition type, PendingType pendingType,
+			ParquetSchemaMapper mapper, Settings settings, TypeOutputs outputs) throws IOException {
+		Map<String, GeoParquetCrs> crs = pendingType.resolver().finish();
+		TypeContext context = new TypeContext(mapper.map(type, crs, reporter), crs);
+		TypeFileWriter writer = openWriter(outputs.allocate(type), context, settings);
+		outputs.setWriter(type, writer);
+		for (Instance buffered : pendingType.buffer()) {
+			writer.write(buffered);
+		}
+		pendingType.buffer().clear();
+	}
+
+	/**
+	 * Instances of a type that are buffered until the CRS of its primary geometry
+	 * is known.
+	 */
+	private record PendingType(CrsResolver resolver, List<Instance> buffer) {
+
+		PendingType(CrsResolver resolver) {
+			this(resolver, new ArrayList<>());
+		}
+	}
+
+	/**
+	 * Write the instances ordered spatially along a Hilbert curve. In a first pass
+	 * references to the instances are collected per type together with the center
+	 * of their primary geometry, in a second pass the files are written one type
+	 * after the other.
+	 */
+	private void writeSorted(InstanceCollection instances, Settings settings, TypeOutputs outputs,
+			ProgressIndicator progress) throws IOException {
+		ParquetSchemaMapper mapper = new ParquetSchemaMapper(settings.options());
+
+		// in order of first occurrence
+		Map<TypeDefinition, SortedType> types = new LinkedHashMap<>();
+
+		progress.setCurrentTask("Collecting instances for sorting");
+		try (ResourceIterator<Instance> it = instances.iterator()) {
+			while (it.hasNext() && !progress.isCanceled()) {
+				Instance instance = it.next();
+				TypeDefinition type = instance.getDefinition();
+				SortedType sorted = types.get(type);
+				if (sorted == null) {
+					sorted = new SortedType(new CrsResolver(type, mapper), this);
+					types.put(type, sorted);
+				}
+				InstanceReference ref = instances.getReference(instance);
+				if (ref == null) {
+					reporter.error("No reference available for an instance of type "
+							+ type.getName().getLocalPart() + ", the instance is not written");
+				}
+				else {
+					sorted.add(instance, ref);
+				}
+				progress.advance(1);
+			}
+		}
+
+		progress.setCurrentTask("Writing sorted instances");
+		for (Iterator<Map.Entry<TypeDefinition, SortedType>> typeIt = types.entrySet()
+				.iterator(); typeIt.hasNext() && !progress.isCanceled();) {
+			Map.Entry<TypeDefinition, SortedType> entry = typeIt.next();
+			// CRS of columns for which no geometry was found
+			Map<String, GeoParquetCrs> crs = entry.getValue().resolver().finish();
+			TypeContext context = new TypeContext(mapper.map(entry.getKey(), crs, reporter), crs);
+			TypeFileWriter writer = openWriter(outputs.allocate(entry.getKey()), context, settings);
+			outputs.setWriter(entry.getKey(), writer);
+			for (InstanceReference ref : entry.getValue().index().sorted()) {
+				if (progress.isCanceled()) {
+					break;
+				}
+				Instance instance = instances.getInstance(ref);
+				if (instance == null) {
+					reporter.error("Instance of type " + entry.getKey().getName().getLocalPart()
+							+ " could not be resolved from its reference (" + ref
+							+ "), the instance is not written");
+				}
+				else {
+					writer.write(instance);
+				}
+				progress.advance(1);
+			}
+			writer.close();
+			// release the references of the type
+			typeIt.remove();
+		}
+	}
+
+	private TypeFileWriter openWriter(Path file, TypeContext context, Settings settings)
+			throws IOException {
+		return new TypeFileWriter(file, context.mapping(), settings.options().version(),
+				context.crs(), settings.codec(), settings.rowGroupRowLimit(), this, reporter);
+	}
+
+	/**
+	 * The mapping of a type and the CRS of its geometry columns.
+	 */
+	private record TypeContext(TypeMapping mapping, Map<String, GeoParquetCrs> crs) {
+	}
+
+	/**
+	 * A type being sorted, with the references to its instances.
+	 */
+	private static final class SortedType {
+
+		private final CrsResolver resolver;
+		private final TypeSortIndex index;
+
+		SortedType(CrsResolver resolver, GeometryConverter converter) {
+			this.resolver = resolver;
+			// the CRS map is filled by the resolver as geometries are seen
+			this.index = new TypeSortIndex(resolver.preliminary, resolver.resolved, converter);
+		}
+
+		void add(Instance instance, InstanceReference ref) {
+			// determines the CRS when the first geometry is seen
+			resolver.observe(instance);
+			index.add(instance, ref);
+		}
+
+		CrsResolver resolver() {
+			return resolver;
+		}
+
+		TypeSortIndex index() {
+			return index;
 		}
 	}
 
@@ -437,74 +615,156 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	// --- CRS handling
 
 	/**
-	 * Determine the CRS for the geometry columns of a type. In order: target CRS
-	 * parameter, geometry metadata of the property type, CRS of the first geometry
-	 * of the given (first) instance of the type.
+	 * Determines the CRS of the geometry columns of a type. If the target CRS
+	 * parameter is set, it is used for all columns (even if it has no EPSG code and
+	 * is written as unknown CRS). Otherwise in order: geometry metadata of the
+	 * property type, CRS of the first geometry in the column that is found in the
+	 * instances (see {@link #observe(Instance)}).
 	 */
-	private Map<String, GeoParquetCrs> determineCrs(TypeDefinition type, ParquetSchemaMapper mapper,
-			Instance first) {
-		Map<String, GeoParquetCrs> result = new HashMap<>();
-		List<String> geometryColumns = mapper.geometryColumnNames(type);
-		if (geometryColumns.isEmpty()) {
-			return result;
-		}
-		TypeMapping preliminary = mapper.map(type, Map.of(), SimpleLog.NO_LOG);
-		for (ColumnMapping column : preliminary.getColumns()) {
-			if (geometryColumns.contains(column.getColumnName())) {
-				result.put(column.getColumnName(), determineColumnCrs(type, column.getColumnName(),
-						column.getPropertyPath(), first));
+	private class CrsResolver {
+
+		private final TypeDefinition type;
+		/** Mapping without CRS information. */
+		private final TypeMapping preliminary;
+		/** The CRS of the columns that are already determined. */
+		private final Map<String, GeoParquetCrs> resolved = new HashMap<>();
+		/**
+		 * Columns that are not yet determined, with the candidates not based on
+		 * instances.
+		 */
+		private final Map<String, PendingColumn> pending = new LinkedHashMap<>();
+
+		CrsResolver(TypeDefinition type, ParquetSchemaMapper mapper) {
+			this.type = type;
+			this.preliminary = mapper.map(type, Map.of(), SimpleLog.NO_LOG);
+			List<String> geometryColumns = preliminary.getGeometryColumns();
+			for (ColumnMapping column : preliminary.getColumns()) {
+				if (geometryColumns.contains(column.getColumnName())) {
+					if (targetColumnCrs != null) {
+						// the target CRS takes precedence
+						resolved.put(column.getColumnName(), targetColumnCrs);
+						continue;
+					}
+					List<CRSDefinition> candidates = staticCandidates(column.getPropertyPath());
+					GeoParquetCrs known = firstKnown(candidates);
+					if (known != null) {
+						resolved.put(column.getColumnName(), known);
+					}
+					else {
+						pending.put(column.getColumnName(),
+								new PendingColumn(column.getPropertyPath(), candidates));
+					}
+				}
 			}
 		}
-		return result;
+
+		/**
+		 * Determine the CRS of pending columns for which the instance has a geometry,
+		 * using the CRS of that geometry.
+		 */
+		void observe(Instance instance) {
+			if (pending.isEmpty()) {
+				return;
+			}
+			for (Map.Entry<String, PendingColumn> entry : new ArrayList<>(pending.entrySet())) {
+				PendingColumn column = entry.getValue();
+				Pair<Geometry, CRSDefinition> pair = extractGeometry(
+						PropertyPaths.findValue(instance, column.path()), false, reporter);
+				if (pair != null && pair.getFirst() != null) {
+					List<CRSDefinition> candidates = new ArrayList<>(column.candidates());
+					candidates.add(pair.getSecond());
+					resolve(entry.getKey(), type, candidates);
+				}
+			}
+		}
+
+		/**
+		 * @return if the CRS of the primary geometry column is determined (or there is
+		 *         none)
+		 */
+		boolean isPrimaryResolved() {
+			String primary = preliminary.getPrimaryGeometryColumn();
+			return primary == null || resolved.containsKey(primary);
+		}
+
+		/**
+		 * Determine the CRS for the columns for which no geometry was seen.
+		 *
+		 * @return the CRS per geometry column
+		 */
+		Map<String, GeoParquetCrs> finish() {
+			for (Map.Entry<String, PendingColumn> entry : new ArrayList<>(pending.entrySet())) {
+				resolve(entry.getKey(), type, entry.getValue().candidates());
+			}
+			return resolved;
+		}
+
+		private void resolve(String column, TypeDefinition type, List<CRSDefinition> candidates) {
+			pending.remove(column);
+			GeoParquetCrs known = firstKnown(candidates);
+			if (known != null) {
+				resolved.put(column, known);
+				return;
+			}
+			reporter.warn("Could not determine the CRS for geometry column " + column + " of type "
+					+ type.getName().getLocalPart());
+			CRSDefinition first = candidates.stream().filter(c -> c != null).findFirst()
+					.orElse(null);
+			resolved.put(column, GeoParquetCrs.resolve(first, reporter));
+		}
+
+		private GeoParquetCrs firstKnown(List<CRSDefinition> candidates) {
+			for (CRSDefinition candidate : candidates) {
+				if (candidate == null) {
+					continue;
+				}
+				GeoParquetCrs crs = GeoParquetCrs.resolve(candidate, SimpleLog.NO_LOG);
+				if (!crs.isUnknown()) {
+					return crs;
+				}
+			}
+			return null;
+		}
+
+		private List<CRSDefinition> staticCandidates(List<QName> path) {
+			List<CRSDefinition> candidates = new ArrayList<>();
+
+			PropertyDefinition property = PropertyPaths.findProperty(type, path);
+			if (property != null) {
+				GeometryMetadata metadata = property.getPropertyType()
+						.getConstraint(GeometryMetadata.class);
+				if (metadata.getAuthName() != null && metadata.getSrs() != null) {
+					candidates.add(
+							new CodeDefinition(metadata.getAuthName() + ":" + metadata.getSrs()));
+				}
+				else if (metadata.getSrsText() != null) {
+					candidates.add(new WKTDefinition(metadata.getSrsText(), null));
+				}
+			}
+			return candidates;
+		}
 	}
 
-	private GeoParquetCrs determineColumnCrs(TypeDefinition type, String column, List<QName> path,
-			Instance first) {
-		List<CRSDefinition> candidates = new ArrayList<>();
-		candidates.add(targetCrsParam);
-
-		PropertyDefinition property = PropertyPaths.findProperty(type, path);
-		if (property != null) {
-			GeometryMetadata metadata = property.getPropertyType()
-					.getConstraint(GeometryMetadata.class);
-			if (metadata.getAuthName() != null && metadata.getSrs() != null) {
-				candidates
-						.add(new CodeDefinition(metadata.getAuthName() + ":" + metadata.getSrs()));
-			}
-			else if (metadata.getSrsText() != null) {
-				candidates.add(new WKTDefinition(metadata.getSrsText(), null));
-			}
-		}
-
-		candidates.add(findInstanceCrs(first, path));
-
-		CRSDefinition firstCandidate = null;
-		for (CRSDefinition candidate : candidates) {
-			if (candidate == null) {
-				continue;
-			}
-			if (firstCandidate == null) {
-				firstCandidate = candidate;
-			}
-			GeoParquetCrs crs = GeoParquetCrs.resolve(candidate, SimpleLog.NO_LOG);
-			if (!crs.isUnknown()) {
-				return crs;
-			}
-		}
-		reporter.warn("Could not determine the CRS for geometry column " + column + " of type "
-				+ type.getName().getLocalPart());
-		return GeoParquetCrs.resolve(firstCandidate, reporter);
+	private record PendingColumn(List<QName> path, List<CRSDefinition> candidates) {
 	}
 
-	private CRSDefinition findInstanceCrs(Instance instance, List<QName> path) {
-		Object value = PropertyPaths.findValue(instance, path);
-		Pair<Geometry, CRSDefinition> pair = extractGeometry(value, false, reporter);
-		return pair == null ? null : pair.getSecond();
-	}
-
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * If the transformation to the column CRS fails (no transformation found or the
+	 * transformation of the geometry failed), the error is reported and
+	 * <code>null</code> is returned, so the geometry is not written - its
+	 * coordinates are not in the column CRS. Deliberate exception: if an explicit
+	 * target CRS is set and the geometry has no source CRS, the error is reported,
+	 * but the geometry is written unchanged (as the abstract geo instance writer
+	 * does), assuming it is in the target CRS.
+	 */
 	@Override
 	public Geometry convert(Object value, GeoParquetCrs target, SimpleLog log) {
-		Pair<Geometry, CRSDefinition> pair = extractGeometry(value, false, reporter);
+		// all problems are reported to the given log only (nothing is reported for
+		// the sort index)
+		IOReporter report = log instanceof IOReporter ? (IOReporter) log : null;
+		Pair<Geometry, CRSDefinition> pair = extractGeometry(value, false, report);
 		if (pair == null || pair.getFirst() == null) {
 			return null;
 		}
@@ -517,18 +777,18 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			// writer (strict transformation lookup, error if there is no source CRS)
 			CRSDefinition sourceCrs = pair.getSecond();
 			if (sourceCrs == null || sourceCrs.getCRS() == null) {
-				reporter.error(new IOMessageImpl(
-						"Could not convert geometry to target CRS: No source CRS provided"
-								+ describeGeometryContext(pair.getFirst()),
-						null));
-				// geometry is not in the target CRS
+				log.error("Could not convert geometry to target CRS: No source CRS provided"
+						+ describeGeometryContext(pair.getFirst()), (Throwable) null);
+				// deliberately written unchanged (like the abstract writer): without
+				// source CRS the geometry is assumed to be in the target CRS
 				return pair.getFirst();
 			}
 			geometry = reprojector.transform(pair.getFirst(), sourceCrs.getCRS(), paramCrs, false,
-					reporter, describeGeometryContext(pair.getFirst()));
+					log, describeGeometryContext(pair.getFirst()));
 			if (geometry == null) {
-				// conversion failed (already reported), geometry is not in the target CRS
-				return pair.getFirst();
+				// conversion failed (already reported): the geometry is not in the
+				// target CRS and must not be written
+				return null;
 			}
 			if (target.isSwapAxes()) {
 				// the given geometry must not be modified
@@ -542,8 +802,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		}
 
 		// unify the winding order in the written (lon/lat) axis order
-		return unifyGeometry(geometry, reporter,
-				target.isSwapAxes() ? null : target.getTargetCrs());
+		return unifyGeometry(geometry, report, target.isSwapAxes() ? null : target.getTargetCrs());
 	}
 
 	/**
