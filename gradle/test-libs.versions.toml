@@ -4,6 +4,9 @@ allure = "2.35.5"
 assertj = "3.27.7"
 testcontainers = "2.0.5"
 aspectj = "1.9.26"
+zstd-jni = "1.5.7-24"
+snappy-java = "1.1.10.12"
+json-schema-validator = "3.0.8"
 
 [libraries]
 junit4 = {module = "junit:junit", version.ref = "junit4"}
@@ -22,3 +25,10 @@ junit-system-rules = {module = "com.github.stefanbirkner:system-rules", version 
 
 aspectj-weaver = {module = "org.aspectj:aspectjweaver", version.ref = "aspectj"}
 
+
+# only for reading back Parquet files in tests (not part of the runtime)
+# (Hadoop libraries are declared in libs.versions.toml)
+zstd-jni = {module = "com.github.luben:zstd-jni", version.ref = "zstd-jni"}
+snappy-java = {module = "org.xerial.snappy:snappy-java", version.ref = "snappy-java"}
+
+json-schema-validator = {module = "com.networknt:json-schema-validator", version.ref = "json-schema-validator"}
