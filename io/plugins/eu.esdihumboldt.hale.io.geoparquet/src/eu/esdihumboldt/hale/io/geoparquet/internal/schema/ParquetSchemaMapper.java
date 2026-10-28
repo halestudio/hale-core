@@ -86,9 +86,26 @@ public class ParquetSchemaMapper {
 	 */
 	public TypeMapping map(TypeDefinition type, Map<String, GeoParquetCrs> geometryCrs,
 			SimpleLog log) {
+		return map(type, geometryCrs, log, true);
+	}
+
+	/**
+	 * Map a type to a Parquet schema.
+	 *
+	 * @param type the type definition
+	 * @param geometryCrs the CRS per geometry column name, columns without entry
+	 *            are assumed to be CRS84
+	 * @param log the log for reporting problems
+	 * @param geoParquet if the type is written as GeoParquet; if not, geometry
+	 *            columns are plain binary (WKB) columns without geometry logical
+	 *            type and there is no bbox column
+	 * @return the type mapping
+	 */
+	public TypeMapping map(TypeDefinition type, Map<String, GeoParquetCrs> geometryCrs,
+			SimpleLog log, boolean geoParquet) {
 		List<QName> primaryPath = findPrimaryGeometryPath(type);
 
-		MappingContext ctx = new MappingContext(geometryCrs, log, primaryPath);
+		MappingContext ctx = new MappingContext(geometryCrs, log, primaryPath, geoParquet);
 		Set<String> reserved = new HashSet<>();
 		if (primaryPath != null) {
 			reserved.add(TypeMapping.BBOX_COLUMN);
@@ -101,8 +118,11 @@ public class ParquetSchemaMapper {
 		List<Type> fields = new ArrayList<>(scope.fields());
 		List<ColumnMapping> columns = new ArrayList<>(scope.columns());
 		List<String> geometryColumns = new ArrayList<>();
+		boolean bbox = primaryPath != null && geoParquet;
 		if (primaryPath != null) {
-			fields.add(createBbox());
+			if (bbox) {
+				fields.add(createBbox());
+			}
 			fields.add(createGeometryField(TypeMapping.PRIMARY_GEOMETRY_COLUMN, ctx));
 			columns.add(new ColumnMapping(TypeMapping.PRIMARY_GEOMETRY_COLUMN, primaryPath, false,
 					true, ValueKind.WKB, 0));
@@ -112,8 +132,8 @@ public class ParquetSchemaMapper {
 
 		String messageName = type.getName().getLocalPart();
 		MessageType schema = new MessageType(messageName, fields);
-		return new TypeMapping(type, schema, columns, geometryColumns, primaryPath,
-				primaryPath != null);
+		return new TypeMapping(type, schema, columns, geometryColumns, primaryPath, bbox,
+				geoParquet);
 	}
 
 	/**
@@ -326,7 +346,7 @@ public class ParquetSchemaMapper {
 	 */
 	private Type createGeometryField(String name, MappingContext ctx) {
 		var builder = Types.optional(PrimitiveTypeName.BINARY);
-		if (options.version().usesNativeGeometryType()) {
+		if (ctx.geoParquet && options.version().usesNativeGeometryType()) {
 			GeoParquetCrs crs = ctx.geometryCrs.getOrDefault(name, GeoParquetCrs.crs84());
 			builder.as(LogicalTypeAnnotation.geometryType(crs.getParquetCrs()));
 		}
@@ -467,14 +487,16 @@ public class ParquetSchemaMapper {
 		final Map<String, GeoParquetCrs> geometryCrs;
 		final SimpleLog log;
 		final List<QName> primaryPath;
+		final boolean geoParquet;
 
 		final List<String> secondaryGeometryColumns = new ArrayList<>();
 
 		MappingContext(Map<String, GeoParquetCrs> geometryCrs, SimpleLog log,
-				List<QName> primaryPath) {
+				List<QName> primaryPath, boolean geoParquet) {
 			this.geometryCrs = geometryCrs;
 			this.log = log;
 			this.primaryPath = primaryPath;
+			this.geoParquet = geoParquet;
 		}
 	}
 

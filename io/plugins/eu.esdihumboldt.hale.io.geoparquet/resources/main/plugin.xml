@@ -62,7 +62,7 @@
             </parameterBinding>
          </providerParameter>
          <providerParameter
-               description="Sort the instances spatially (Hilbert curve) to improve the performance of spatial queries on the file. Sorting resolves instances by reference and can be slow for sources where that is expensive (e.g. GML read directly), use an instance store or disable sorting in that case."
+               description="Sort the instances spatially (Hilbert curve) to improve the performance of spatial queries on the file. Sorting resolves instances by reference and can be slow for sources where that is expensive (e.g. GML read directly), use an instance store or disable sorting in that case. When sorting, a type that has a geometry property but no instance with geometry is written as plain Parquet file (without GeoParquet metadata), as a GeoParquet file without geometries is not accepted by Portolan; without sorting the instances of a type are buffered until the CRS is known (at most 1000 instances), only if the input ends before that it is known that there is no geometry and the type is written as plain Parquet file, otherwise it is written as GeoParquet file without extent."
                label="Sort spatially"
                name="sort"
                optional="true">

@@ -35,6 +35,7 @@ import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.instance.model.InstanceReference
 import eu.esdihumboldt.hale.common.instance.model.MutableInstance
+import eu.esdihumboldt.hale.common.instance.model.ResourceIterator
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
@@ -318,6 +319,37 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		assertEquals(0, (tmp.root.list() as List).size())
 	}
 
+	/**
+	 * If moving a file to its final name fails, the error names the files that
+	 * were already replaced and those that were not.
+	 */
+	@Test
+	void testFailedMoveNamesFiles() {
+		Schema schema = twoTypeSchema()
+		File dir = tmp.newFolder()
+		def alpha = new File(dir, 'out_alpha.parquet')
+		alpha.text = 'old'
+		// a non-empty directory cannot be replaced by a file
+		def beta = new File(dir, 'out_beta.parquet')
+		beta.mkdir()
+		new File(beta, 'content').text = 'old'
+
+		def report = executeWriter(new File(dir, 'out.parquet'), schema, twoTypeInstances(schema), true)
+		assertFalse(report.success)
+		String message = report.errors*.message.join('\n')
+		assertTrue(message, message.contains('out_alpha.parquet'))
+		assertTrue(message, message.contains('out_beta.parquet'))
+		// the already replaced file is named as such
+		assertTrue(message, message.contains('replaced'))
+		assertEquals('alpha', readRows(alpha)[0].getString('a', 0))
+		assertTrue(beta.isDirectory())
+		// no temporary files are left
+		assertEquals([
+			'out_alpha.parquet',
+			'out_beta.parquet'
+		], (dir.list() as List).sort())
+	}
+
 	@Test
 	void testOverwrite() {
 		Schema schema = citySchema()
@@ -428,6 +460,128 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		], (tmp.root.list() as List).sort())
 	}
 
+	/**
+	 * Instance collection that counts the instances that are iterated or
+	 * resolved by reference.
+	 */
+	static class CountingCollection implements InstanceCollection {
+
+		@Delegate
+		InstanceCollection delegate
+
+		int iterated = 0
+
+		int resolved = 0
+
+		@Override
+		ResourceIterator<Instance> iterator() {
+			ResourceIterator<Instance> it = delegate.iterator()
+			new ResourceIterator<Instance>() {
+
+						@Override
+						boolean hasNext() {
+							it.hasNext()
+						}
+
+						@Override
+						Instance next() {
+							iterated++
+							it.next()
+						}
+
+						@Override
+						void close() {
+							it.close()
+						}
+					}
+		}
+
+		@Override
+		Instance getInstance(InstanceReference reference) {
+			resolved++
+			delegate.getInstance(reference)
+		}
+	}
+
+	private InstanceCollection manyTwoTypeInstances(Schema schema) {
+		new InstanceBuilder(types: schema).createCollection {
+			alpha { a('alpha1') }
+			beta { b('beta1') }
+			alpha { a('alpha2') }
+			alpha { a('alpha3') }
+			alpha { a('alpha4') }
+		}
+	}
+
+	/**
+	 * An existing type file is detected before the data of the type is written:
+	 * in streaming mode once the second type occurs, when sorting before the
+	 * instances are written.
+	 */
+	@Test
+	void testExistingTypeFileFailsEarly() {
+		[true, false].each { boolean sort ->
+			Schema schema = twoTypeSchema()
+			File dir = tmp.newFolder()
+			def existing = new File(dir, 'out_beta.parquet')
+			existing.text = 'precious'
+			def instances = new CountingCollection(delegate: manyTwoTypeInstances(schema))
+
+			def writer = new GeoParquetInstanceWriter()
+			writer.setTarget(new FileIOSupplier(new File(dir, 'out.parquet')))
+			def ss = new DefaultSchemaSpace()
+			ss.addSchema(schema)
+			writer.setTargetSchema(ss)
+			writer.setInstances(instances)
+			writer.setSort(sort)
+			IOReport report = writer.execute(new LogProgressIndicator())
+
+			assertFalse(report.success)
+			assertTrue(report.errors*.message.toString(), report.errors.any { it.message.contains('out_beta.parquet') })
+			assertEquals('precious', existing.text)
+			assertEquals(['out_beta.parquet'], dir.list() as List)
+			if (sort) {
+				// no instance written
+				assertEquals(0, instances.resolved)
+			}
+			else {
+				// stopped when the second type occurred
+				assertEquals(2, instances.iterated)
+			}
+		}
+	}
+
+	/**
+	 * An existing file with the target name does not prevent writing multiple
+	 * types (it is not written in that case).
+	 */
+	@Test
+	void testExistingTargetDoesNotBlockMultipleTypes() {
+		[true, false].each { boolean sort ->
+			Schema schema = twoTypeSchema()
+			File dir = tmp.newFolder()
+			def target = new File(dir, 'out.parquet')
+			target.text = 'precious'
+
+			def writer = new GeoParquetInstanceWriter()
+			writer.setTarget(new FileIOSupplier(target))
+			def ss = new DefaultSchemaSpace()
+			ss.addSchema(schema)
+			writer.setTargetSchema(ss)
+			writer.setInstances(twoTypeInstances(schema))
+			writer.setSort(sort)
+			IOReport report = writer.execute(new LogProgressIndicator())
+
+			assertTrue(report.errors*.message.toString(), report.success)
+			assertEquals('precious', target.text)
+			assertEquals([
+				'out.parquet',
+				'out_alpha.parquet',
+				'out_beta.parquet'
+			], (dir.list() as List).sort())
+		}
+	}
+
 	@Test
 	void testWindingOrder() {
 		Schema schema = new SchemaBuilder().schema {
@@ -531,6 +685,69 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		}, {
 			it.setSort(false)
 		})
+	}
+
+	private InstanceCollection firstWithoutCrs(Schema schema, boolean laterWithCrs = true) {
+		def crs = laterWithCrs ? new CodeDefinition('EPSG:25832', true) : null
+		new InstanceBuilder(types: schema).createCollection {
+			feature {
+				id(0)
+				geom(new DefaultGeometryProperty(null, new WKTReader().read('POINT(8 50)')))
+			}
+			feature {
+				id(1)
+				geom(new DefaultGeometryProperty(crs, new WKTReader().read('POINT(9 51)')))
+			}
+			feature {
+				id(2)
+				geom(new DefaultGeometryProperty(crs, new WKTReader().read('POINT(10 52)')))
+			}
+		}
+	}
+
+	/**
+	 * The CRS of a column is determined from the first geometry that has a CRS,
+	 * not from a preceding geometry without CRS.
+	 */
+	@Test
+	void testCrsFromFirstGeometryWithCrs() {
+		[true, false].each { boolean sort ->
+			Schema schema = crsFromLaterFeatureSchema()
+			File target = new File(tmp.newFolder(), 'features.parquet')
+			// no meaningful coordinates in EPSG:25832, so only the spec is checked
+			writeInstances(target, schema, firstWithoutCrs(schema), { it.setSort(sort) }, false)
+			ExternalValidators.checkGpio(target)
+
+			assertEquals("sort=$sort", 25832, geoMetadata(target).columns.geometry.crs.id.code)
+			def rows = readRows(target)
+			assertEquals([0, 1, 2], rows.collect { it.getInteger('id', 0) }.sort())
+			// the geometry without CRS is written as is
+			assertEquals('POINT (8 50)', wkb(rows.find { it.getInteger('id', 0) == 0 }, 'geometry').toText())
+		}
+	}
+
+	/**
+	 * If no geometry has a CRS, the CRS is unknown, but the geometries are
+	 * written as GeoParquet (and sorted).
+	 */
+	@Test
+	void testNoGeometryWithCrs() {
+		[true, false].each { boolean sort ->
+			Schema schema = crsFromLaterFeatureSchema()
+			File target = new File(tmp.newFolder(), 'features.parquet')
+			IOReport report = writeInstances(target, schema, firstWithoutCrs(schema, false), { it.setSort(sort) }, false)
+			ExternalValidators.checkGpio(target)
+
+			def geo = geoMetadata(target)
+			assertNotNull("sort=$sort", geo)
+			assertTrue(geo.columns.geometry.containsKey('crs'))
+			assertNull(geo.columns.geometry.crs)
+			assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('Could not determine the CRS') })
+			def rows = readRows(target)
+			assertEquals(3, rows.count { it.getFieldRepetitionCount('geometry') > 0 })
+			// sorted along the curve, input order in streaming mode
+			assertEquals([0, 1, 2], rows.collect { it.getInteger('id', 0) })
+		}
 	}
 
 	/**
@@ -917,5 +1134,68 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			String json = rows[0].getGroup('info', 0).getString('sub', 0)
 			assertEquals('{"geometry":"POINT (5 6)","label":"x"}', json)
 		}, { it.setNestingDepth(1) })
+	}
+
+	private InstanceCollection citiesWithoutGeometry(Schema schema) {
+		new InstanceBuilder(types: schema).createCollection {
+			city {
+				name 'Darmstadt'
+				population 158254
+			}
+			city {
+				name 'München'
+				population 1471508
+			}
+		}
+	}
+
+	/**
+	 * A type with geometry property, but without any geometry values: Portolan
+	 * does not accept a GeoParquet file without geometries (no column bbox), so
+	 * when sorting (emptiness known after the first pass) a plain Parquet file is
+	 * written, with a warning.
+	 */
+	@Test
+	void testGeometryColumnWithoutValuesSorted() {
+		Schema schema = citySchema()
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		// includes the external validators (skipped for plain Parquet)
+		IOReport report = writeInstances(target, schema, citiesWithoutGeometry(schema))
+
+		assertNull(geoMetadata(target))
+		def parquetSchema = readFooter(target).fileMetaData.schema
+		// data is kept, geometry column as plain binary, no bbox column
+		assertEquals([
+			'name',
+			'population',
+			'geometry'
+		], parquetSchema.fields*.name)
+		assertNull(parquetSchema.getType('geometry').logicalTypeAnnotation)
+		assertEquals(['Darmstadt', 'München'], readRows(target)*.getString('name', 0))
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') })
+	}
+
+	/**
+	 * In streaming mode a type for which no geometry was found until the end of
+	 * the input (all instances buffered) is written as plain Parquet as well.
+	 */
+	@Test
+	void testGeometryColumnWithoutValuesStreaming() {
+		Schema schema = citySchema()
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		// includes the external validators (skipped for plain Parquet)
+		IOReport report = writeInstances(target, schema, citiesWithoutGeometry(schema), { it.setSort(false) })
+
+		assertNull(geoMetadata(target))
+		def parquetSchema = readFooter(target).fileMetaData.schema
+		assertEquals([
+			'name',
+			'population',
+			'geometry'
+		], parquetSchema.fields*.name)
+		assertNull(parquetSchema.getType('geometry').logicalTypeAnnotation)
+		// input order
+		assertEquals(['Darmstadt', 'München'], readRows(target)*.getString('name', 0))
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') })
 	}
 }

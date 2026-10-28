@@ -36,6 +36,7 @@ public class TypeOutputs {
 
 	private final Path target;
 	private final String base;
+	private final boolean overwrite;
 
 	/** In order of first occurrence. */
 	private final Map<TypeDefinition, Output> outputs = new LinkedHashMap<>();
@@ -44,9 +45,13 @@ public class TypeOutputs {
 	 * Create the outputs for a target.
 	 *
 	 * @param target the target file
+	 * @param overwrite if existing (non-empty) final files may be overwritten,
+	 *            otherwise allocating a type and {@link #checkExisting(boolean)}
+	 *            fail if a final file exists
 	 */
-	public TypeOutputs(Path target) {
+	public TypeOutputs(Path target, boolean overwrite) {
 		this.target = target;
+		this.overwrite = overwrite;
 		String name = target.getFileName().toString();
 		if (name.toLowerCase(Locale.ROOT).endsWith(EXTENSION)) {
 			name = name.substring(0, name.length() - EXTENSION.length());
@@ -67,16 +72,65 @@ public class TypeOutputs {
 	 * Create the temporary file a type is written to. The file is located in the
 	 * directory of the target and deleted by {@link #deleteAll()}, even if no
 	 * writer is set.
+	 * <p>
+	 * Fails if overwriting is not enabled and a final file that is determined with
+	 * the new type exists (see {@link #checkExisting(boolean)}).
 	 *
 	 * @param type the type
 	 * @return the temporary file for the type
-	 * @throws IOException if the file cannot be created
+	 * @throws IOException if the file cannot be created or a final file exists
 	 */
 	public Path allocate(TypeDefinition type) throws IOException {
 		Path file = Files.createTempFile(target.toAbsolutePath().getParent(), ".geoparquet-",
 				".tmp");
 		outputs.put(type, new Output(file));
+		checkExisting(false);
 		return file;
+	}
+
+	/**
+	 * @param type the type
+	 * @return the temporary file allocated for the type
+	 */
+	public Path getTempFile(TypeDefinition type) {
+		return outputs.get(type).file;
+	}
+
+	/**
+	 * Check that none of the final files that are already determined exists (unless
+	 * overwriting is enabled). An empty file may be replaced.
+	 * <p>
+	 * The final file of the first type is only determined when a second type is
+	 * allocated or when all types are known; before that, it is only checked if
+	 * both possible final files exist.
+	 *
+	 * @param complete if all types have been allocated
+	 * @throws IOException if a final file exists and overwriting is not enabled
+	 */
+	public void checkExisting(boolean complete) throws IOException {
+		if (overwrite || outputs.isEmpty()) {
+			return;
+		}
+		if (outputs.size() == 1 && !complete) {
+			// either the target (single type) or the type file (more types follow)
+			Path typeFile = getTypeFiles().get(0);
+			if (exists(target) && exists(typeFile)) {
+				throw new IOException(
+						"Files already exist and overwriting is not enabled, one of them would be overwritten: "
+								+ target.toAbsolutePath() + ", " + typeFile.toAbsolutePath());
+			}
+			return;
+		}
+		for (Path file : getFinalFiles()) {
+			if (exists(file)) {
+				throw new IOException("File already exists and overwriting is not enabled: "
+						+ file.toAbsolutePath());
+			}
+		}
+	}
+
+	private static boolean exists(Path file) throws IOException {
+		return Files.exists(file) && Files.size(file) > 0;
 	}
 
 	/**
@@ -108,6 +162,13 @@ public class TypeOutputs {
 		if (outputs.size() == 1) {
 			return List.of(target);
 		}
+		return getTypeFiles();
+	}
+
+	/**
+	 * @return the files named after the types, used if there are multiple types
+	 */
+	private List<Path> getTypeFiles() {
 		Set<String> usedNames = new HashSet<>();
 		List<Path> result = new ArrayList<>();
 		for (TypeDefinition type : outputs.keySet()) {
