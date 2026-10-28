@@ -22,7 +22,7 @@
                ref="eu.esdihumboldt.hale.io.geoparquet">
          </contentType>
          <providerParameter
-               description="Coordinate reference system the geometries of all geometry columns are transformed to and written in. Takes precedence over the CRS defined in the schema or by the geometries. If it has no EPSG code (e.g. defined only as WKT), the geometries are still transformed to it, but the CRS is written as unknown (crs: null) and a warning is reported; Portolan does not accept such files if the coordinates are outside the lon/lat range."
+               description="Coordinate reference system the geometries of all geometry columns are transformed to and written in. Takes precedence over the CRS defined in the schema or by the geometries. If it has no EPSG code (e.g. defined only as WKT), the geometries are still transformed to it, but the CRS is written as unknown (crs: null) and a warning is reported; Portolan does not accept such files if the coordinates are outside the lon/lat range. If no target CRS is set, the CRS of each geometry column is determined from the schema or the first geometry with a CRS; in streaming mode (sort disabled), an additional geometry column whose first value only appears after the file of the type was opened (once the CRS of the primary geometry is known) gets an unknown CRS."
                label="Target CRS"
                name="crs"
                optional="true">
@@ -30,13 +30,13 @@
                   class="java.lang.String">
             </parameterBinding>
             <valueDescriptor
-                  defaultDescription="By default the CRS defined in the schema is used, otherwise the CRS of the first geometry of each type. Geometries are transformed to that CRS."
+                  defaultDescription="By default the CRS defined in the schema is used, otherwise the CRS of the first geometry with a CRS of each type. Geometries are transformed to that CRS."
                   sample="code:EPSG:4326"
                   sampleDescription="Reference systems can be defined either as code or WKT (preceded with code: or wkt: respectively)">
             </valueDescriptor>
          </providerParameter>
          <providerParameter
-               description="The version of the GeoParquet specification to write. Version 2.0.0 uses the native Parquet GEOMETRY type, versions 1.0.0 and 1.1.0 write plain binary columns with the geo metadata."
+               description="The version of the GeoParquet specification to write. Version 2.0.0 uses the native Parquet GEOMETRY type, versions 1.0.0 and 1.1.0 write plain binary columns with the geo metadata. Note that Portolan does not accept version 1.0.0."
                label="GeoParquet version"
                name="geoparquet.version"
                optional="true">
@@ -75,7 +75,7 @@
             </parameterBinding>
          </providerParameter>
          <providerParameter
-               description="The maximum number of rows per row group"
+               description="The maximum number of rows per row group. Note that values above 150000 violate the requirements of Portolan."
                label="Row group size"
                name="rowGroupRowLimit"
                optional="true">
