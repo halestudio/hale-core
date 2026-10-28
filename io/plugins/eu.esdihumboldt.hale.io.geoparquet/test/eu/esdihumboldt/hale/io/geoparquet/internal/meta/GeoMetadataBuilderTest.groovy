@@ -95,6 +95,7 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			assertEquals([0d, 0d, 1d, 2d], cols.geometry.bbox*.doubleValue())
 			assertEquals(['MultiPolygon', 'Point'], cols.geometry.geometry_types)
 			assertEquals(['Point Z'], cols.other.geometry_types)
+			assertEquals([1d, 2d, 3d, 1d, 2d, 3d], cols.other.bbox*.doubleValue())
 			assertFalse(cols.third.containsKey('bbox'))
 
 			assertEquals("$version: ${GeoParquetTestUtil.validateGeo(version, json)}".toString(), [], GeoParquetTestUtil.validateGeo(version, json))
@@ -104,6 +105,57 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			assertFalse(new JsonSlurper().parseText(json).columns.geometry.containsKey('covering'))
 			assertEquals([], GeoParquetTestUtil.validateGeo(version, json))
 		}
+	}
+
+	private static List<Double> bboxOf(GeoColumnStats columnStats) {
+		def stats = new LinkedHashMap<String, GeoColumnStats>()
+		stats.geometry = columnStats
+		String json = GeoMetadataBuilder.build(GeoParquetVersion.V1_1, 'geometry', stats, [:], true)
+		assertEquals([], GeoParquetTestUtil.validateGeo(GeoParquetVersion.V1_1, json))
+		def column = new JsonSlurper().parseText(json).columns.geometry
+		// the covering stays 2D
+		assertEquals([
+			'xmin',
+			'ymin',
+			'xmax',
+			'ymax'
+		] as Set, column.covering.bbox.keySet())
+		column.bbox*.doubleValue()
+	}
+
+	/**
+	 * The bbox of a column with 3D geometries has 6 values (GeoParquet: one range
+	 * per dimension).
+	 */
+	@Test
+	void testBbox3d() {
+		def s = statsOf('POINT Z (1 2 -3)', 'LINESTRING Z (0 5 10, 4 6 7)')
+		assertEquals(-3d, s.minZ, 0)
+		assertEquals(10d, s.maxZ, 0)
+		assertEquals([0d, 2d, -3d, 4d, 6d, 10d], bboxOf(s))
+	}
+
+	/**
+	 * A column with 2D and 3D geometries has a 3D bbox, the z range only covers
+	 * the coordinates with Z.
+	 */
+	@Test
+	void testBboxMixed2d3d() {
+		def s = statsOf('POINT (-5 -6)', 'POINT Z (1 2 3)', 'LINESTRING Z (7 8 4, 9 9 5)')
+		assertEquals([
+			'LineString Z',
+			'Point',
+			'Point Z'
+		], s.geometryTypes as List)
+		assertEquals([-5d, -6d, 3d, 9d, 9d, 5d], bboxOf(s))
+	}
+
+	@Test
+	void testBbox2d() {
+		def s = statsOf('POINT (1 2)', 'LINESTRING (0 5, 4 6)')
+		assertTrue(Double.isNaN(s.minZ))
+		assertTrue(Double.isNaN(s.maxZ))
+		assertEquals([0d, 2d, 4d, 6d], bboxOf(s))
 	}
 
 	@Test

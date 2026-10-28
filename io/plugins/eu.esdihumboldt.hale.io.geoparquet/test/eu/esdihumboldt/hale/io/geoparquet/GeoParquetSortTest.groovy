@@ -91,7 +91,7 @@ class GeoParquetSortTest extends AbstractPlatformTest {
 		}, {
 			it.setRowGroupRowLimit(1000)
 			it.setSort(false)
-		})
+		}, true, ['PTL-DAT-006']) // Portolan rightly reports the unsorted data
 	}
 
 	/**
