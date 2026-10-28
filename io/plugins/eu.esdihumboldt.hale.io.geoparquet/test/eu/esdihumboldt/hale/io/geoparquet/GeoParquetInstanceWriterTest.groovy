@@ -19,16 +19,23 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.locationtech.jts.geom.Geometry
+import org.locationtech.jts.io.WKTReader
 
 import eu.esdihumboldt.cst.functions.geometric.GeometryHelperFunctions
 import eu.esdihumboldt.hale.common.core.io.IOProviderConfigurationException
+import eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator
 import eu.esdihumboldt.hale.common.core.io.report.IOReport
+import eu.esdihumboldt.hale.common.core.io.supplier.FileIOSupplier
+import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
+import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
+import eu.esdihumboldt.hale.common.instance.model.InstanceReference
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
+import eu.esdihumboldt.hale.common.schema.model.impl.DefaultSchemaSpace
 import eu.esdihumboldt.util.test.AbstractPlatformTest
 
 /**
@@ -119,14 +126,14 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			assertEquals(1, attr1.size())
 			assertEquals('Value 1', attr1[0].getString('col1', 0))
 			assertEquals('Value 2', attr1[0].getString('col2', 0))
-		}, { it.setSort(false) })
+		})
 	}
 
 	@Test
 	void testSingleTypeUsesTargetName() {
 		Schema schema = citySchema()
 		def target = new File(tmp.root, 'cities.parquet')
-		def report = writeInstances(target, schema, cities(schema), { it.setSort(false) })
+		def report = writeInstances(target, schema, cities(schema))
 		assertTrue(report.success)
 		assertEquals(['cities.parquet'], tmp.root.list() as List)
 		assertEquals(2, readRows(target).size())
@@ -157,6 +164,20 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			def logical = readFooter(file).fileMetaData.schema.getType('geometry').logicalTypeAnnotation
 			assertTrue(logical instanceof LogicalTypeAnnotation.GeometryLogicalTypeAnnotation)
 			assertNull(logical.crs)
+		})
+	}
+
+	@Test
+	void testWriteFeaturesStreaming() {
+		Schema schema = citySchema()
+		withNewGeoParquet(schema, cities(schema), { List<File> files ->
+			def rows = readRows(files[0])
+			assertEquals(2, rows.size())
+			// input order is kept
+			assertEquals('Darmstadt', rows[0].getString('name', 0))
+			assertEquals(8.651222, wkb(rows[0], 'geometry').x, 1e-9)
+			assertEquals('München', rows[1].getString('name', 0))
+			assertNotNull(geoMetadata(files[0]))
 		}, { it.setSort(false) })
 	}
 
@@ -176,7 +197,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			def logical = readFooter(file).fileMetaData.schema.getType('geometry').logicalTypeAnnotation
 			assertEquals('EPSG:25832', logical.crs)
 		}, {
-			it.setSort(false)
 			it.setTargetCRS(new CodeDefinition('EPSG:25832', true))
 		})
 	}
@@ -188,7 +208,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			withNewGeoParquet(schema, cities(schema), { List<File> files ->
 				assertEquals(version.versionString, geoMetadata(files[0]).version)
 			}, {
-				it.setSort(false)
 				it.setVersion(version)
 			})
 		}
@@ -232,7 +251,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			assertEquals(38, decimal.precision)
 			assertEquals(2, decimal.scale)
 		}, {
-			it.setSort(false)
 			it.setNestingDepth(1)
 			it.setBigNumberEncoding(BigNumberEncoding.DECIMAL)
 			it.setDecimalScale(2)
@@ -244,7 +262,7 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		Schema schema = citySchema()
 		def target = new File(tmp.root, 'empty.parquet')
 		IOReport report = writeInstances(target, schema, new InstanceBuilder(types: schema).createCollection {
-		}, { it.setSort(false) })
+		})
 		assertTrue(report.success)
 		assertFalse(report.warnings.isEmpty())
 		assertEquals(0, (tmp.root.list() as List).size())
@@ -263,7 +281,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		ss.addSchema(schema)
 		writer.setTargetSchema(ss)
 		writer.setInstances(cities(schema))
-		writer.setSort(false)
 		def report = writer.execute(new eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator())
 		assertFalse(report.success)
 		assertFalse(report.errors.isEmpty())
@@ -272,7 +289,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 
 		// overwrite -> replaced
 		writeInstances(target, schema, cities(schema), {
-			it.setSort(false)
 			it.setOverwriteTargetFile(true)
 		})
 		assertEquals(2, readRows(target).size())
@@ -308,7 +324,6 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		ss.addSchema(schema)
 		writer.setTargetSchema(ss)
 		writer.setInstances(instances)
-		writer.setSort(false)
 		writer.setOverwriteTargetFile(overwrite)
 		writer.execute(new eu.esdihumboldt.hale.common.core.io.impl.LogProgressIndicator())
 	}
@@ -370,12 +385,12 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 				geom(GeometryProperty)
 			}
 		}
-		// clockwise exterior ring in projected CRS (x/y order)
-		def wkt = 'POLYGON((0 0, 0 10, 10 10, 10 0, 0 0))'
+		// clockwise exterior ring in geographic CRS (lon/lat order) in the area of use of EPSG:25833
+		def wkt = 'POLYGON((13 52, 13 52.001, 13.001 52.001, 13.001 52, 13 52))'
 		def collection = {
 			new InstanceBuilder(types: schema).createCollection {
 				area {
-					geom(createGeometry(wkt, new CodeDefinition('EPSG:25832', true)))
+					geom(createGeometry(wkt, new CodeDefinition('EPSG:4326', true)))
 				}
 			}
 		}
@@ -384,14 +399,13 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		withNewGeoParquet(schema, collection(), { List<File> files ->
 			def polygon = wkb(readRows(files[0])[0], 'geometry')
 			assertFalse(org.locationtech.jts.algorithm.Orientation.isCCW(polygon.exteriorRing.coordinates))
-		}, { it.setSort(false) })
+		})
 
 		// requested winding order is applied
 		withNewGeoParquet(schema, collection(), { List<File> files ->
 			def polygon = wkb(readRows(files[0])[0], 'geometry')
 			assertTrue(org.locationtech.jts.algorithm.Orientation.isCCW(polygon.exteriorRing.coordinates))
 		}, {
-			it.setSort(false)
 			it.setWindingOrder(eu.esdihumboldt.hale.common.instance.io.util.EnumWindingOrderTypes.counterClockwise)
 		})
 
@@ -399,10 +413,73 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		withNewGeoParquet(schema, collection(), { List<File> files ->
 			def polygon = wkb(readRows(files[0])[0], 'geometry')
 			assertTrue(org.locationtech.jts.algorithm.Orientation.isCCW(polygon.exteriorRing.coordinates))
+			// plausible result of the reprojection (13 E, 52 N is about 362700 E, 5764000 N in EPSG:25833)
+			def center = polygon.envelopeInternal.centre()
+			assertEquals(362700d, center.x, 1500d)
+			assertEquals(5764000d, center.y, 3000d)
 		}, {
-			it.setSort(false)
 			it.setTargetCRS(new CodeDefinition('EPSG:25833', true))
 			it.setWindingOrder(eu.esdihumboldt.hale.common.instance.io.util.EnumWindingOrderTypes.counterClockwise)
+		})
+	}
+
+	private Schema crsFromLaterFeatureSchema() {
+		new SchemaBuilder().schema {
+			feature {
+				id(Integer)
+				geom(GeometryProperty)
+			}
+		}
+	}
+
+	private InstanceCollection firstWithoutGeometry(Schema schema) {
+		new InstanceBuilder(types: schema).createCollection {
+			feature {
+				id(0)
+			}
+			feature {
+				id(1)
+			}
+			feature {
+				id(2)
+				geom(createGeometry('POINT(400000 5800000)', new CodeDefinition('EPSG:25832', true)))
+			}
+			feature {
+				id(3)
+				geom(createGeometry('POINT(410000 5810000)', new CodeDefinition('EPSG:25832', true)))
+			}
+		}
+	}
+
+	private void assertCrsFromLaterFeature(List<File> files, List<Integer> expectedIds) {
+		def geo = geoMetadata(files[0])
+		assertEquals(25832, geo.columns.geometry.crs.id.code)
+		assertEquals('EPSG:25832', readFooter(files[0]).fileMetaData.schema.getType('geometry').logicalTypeAnnotation.crs)
+		def rows = readRows(files[0])
+		assertEquals(expectedIds, rows.collect { it.getInteger('id', 0) })
+		// geometries are written as they are (already in the column CRS)
+		def written = rows.findAll { it.getFieldRepetitionCount('geometry') > 0 }
+		assertEquals(2, written.size())
+		assertEquals(400000d, wkb(written.find { it.getInteger('id', 0) == 2 }, 'geometry').x, 0d)
+	}
+
+	@Test
+	void testCrsFromFirstGeometrySorted() {
+		Schema schema = crsFromLaterFeatureSchema()
+		withNewGeoParquet(schema, firstWithoutGeometry(schema), { List<File> files ->
+			// geometries first (along the curve), the others in input order
+			assertCrsFromLaterFeature(files, [2, 3, 0, 1])
+		})
+	}
+
+	@Test
+	void testCrsFromFirstGeometryStreaming() {
+		Schema schema = crsFromLaterFeatureSchema()
+		withNewGeoParquet(schema, firstWithoutGeometry(schema), { List<File> files ->
+			// input order is preserved, also for the buffered features
+			assertCrsFromLaterFeature(files, [0, 1, 2, 3])
+		}, {
+			it.setSort(false)
 		})
 	}
 
@@ -479,5 +556,150 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			it.setRowGroupRowLimit(1)
 			it.validate()
 		}, false)
+	}
+
+	/**
+	 * Instance collection that cannot resolve some references, or provides no
+	 * reference for some instances.
+	 */
+	static class UnresolvableCollection implements InstanceCollection {
+
+		@Delegate
+		InstanceCollection delegate
+
+		/** Names of the cities for which getInstance yields null. */
+		Set<String> unresolvable = [] as Set
+
+		/** Names of the cities for which getReference yields null. */
+		Set<String> noReference = [] as Set
+
+		private static String name(Instance instance) {
+			instance.getProperty(new QName('name'))[0]
+		}
+
+		@Override
+		InstanceReference getReference(Instance instance) {
+			name(instance) in noReference ? null : delegate.getReference(instance)
+		}
+
+		@Override
+		Instance getInstance(InstanceReference reference) {
+			Instance instance = delegate.getInstance(reference)
+			name(instance) in unresolvable ? null : instance
+		}
+	}
+
+	/**
+	 * Problems converting geometries to the target CRS are reported once per
+	 * geometry, also when sorting (the conversion for the sort index does not
+	 * report anything).
+	 */
+	@Test
+	void testConversionErrorsReportedOnce() {
+		[true, false].each { boolean sort ->
+			Schema schema = citySchema()
+			InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+				city {
+					name 'Darmstadt'
+					location(createGeometry('POINT(49.872833 8.651222)', new CodeDefinition('EPSG:4326')))
+				}
+				city {
+					name 'Nowhere'
+					// no CRS
+					location(new DefaultGeometryProperty(null, new WKTReader().read('POINT(8 50)')))
+				}
+			}
+			File target = new File(tmp.newFolder(), 'cities.parquet')
+			def writer = new GeoParquetInstanceWriter()
+			writer.setTarget(new FileIOSupplier(target))
+			def ss = new DefaultSchemaSpace()
+			ss.addSchema(schema)
+			writer.setTargetSchema(ss)
+			writer.setInstances(instances)
+			writer.setTargetCRS(new CodeDefinition('EPSG:25832', true))
+			writer.setSort(sort)
+			IOReport report = writer.execute(new LogProgressIndicator())
+
+			assertTrue(report.success)
+			assertEquals("sort=$sort: ${report.errors*.message}", 1, report.errors.size())
+			assertTrue(report.errors[0].message, report.errors[0].message.contains('No source CRS'))
+			assertEquals(2, readRows(target).size())
+		}
+	}
+
+	/**
+	 * A reference that cannot be resolved (or an instance without reference) is
+	 * reported as error, the instance is skipped and the export continues.
+	 */
+	@Test
+	void testUnresolvableReference() {
+		Schema schema = citySchema()
+		def instances = new UnresolvableCollection(delegate: cities(schema),
+		unresolvable: ['München'] as Set)
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		def writer = new GeoParquetInstanceWriter()
+		writer.setTarget(new FileIOSupplier(target))
+		def ss = new DefaultSchemaSpace()
+		ss.addSchema(schema)
+		writer.setTargetSchema(ss)
+		writer.setInstances(instances)
+		IOReport report = writer.execute(new LogProgressIndicator())
+
+		assertTrue(report.success)
+		assertEquals(report.errors*.message.toString(), 1, report.errors.size())
+		assertTrue(report.errors[0].message, report.errors[0].message.contains('city'))
+		def rows = readRows(target)
+		assertEquals(['Darmstadt'], rows*.getString('name', 0))
+		GeoParquetCompliance.check(target, 150000, true)
+
+		// no reference in the first pass
+		instances = new UnresolvableCollection(delegate: cities(schema),
+		noReference: ['Darmstadt'] as Set)
+		target = new File(tmp.newFolder(), 'cities.parquet')
+		writer = new GeoParquetInstanceWriter()
+		writer.setTarget(new FileIOSupplier(target))
+		writer.setTargetSchema(ss)
+		writer.setInstances(instances)
+		report = writer.execute(new LogProgressIndicator())
+
+		assertTrue(report.success)
+		assertEquals(report.errors*.message.toString(), 1, report.errors.size())
+		assertTrue(report.errors[0].message, report.errors[0].message.contains('city'))
+		assertEquals(['München'], readRows(target)*.getString('name', 0))
+	}
+
+	/** Custom transverse mercator projection without EPSG code. */
+	private static final String CUSTOM_TM_WKT = 'PROJCS["Custom TM",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",9.5],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",600000],PARAMETER["false_northing",0],UNIT["metre",1],AXIS["Easting",EAST],AXIS["Northing",NORTH]]'
+
+	/**
+	 * A target CRS without EPSG code takes precedence over the CRS of the
+	 * geometries: geometries are converted to it and the CRS is unknown in the
+	 * metadata (with a warning).
+	 */
+	@Test
+	void testTargetCrsWithoutEpsgCode() {
+		[true, false].each { boolean sort ->
+			Schema schema = citySchema()
+			File target = new File(tmp.newFolder(), 'cities.parquet')
+			IOReport report = writeInstances(target, schema, cities(schema), {
+				it.setTargetCRS(new eu.esdihumboldt.hale.common.instance.geometry.impl.WKTDefinition(CUSTOM_TM_WKT, null))
+				it.setSort(sort)
+			}, false)
+			// Portolan rejects an unknown CRS with coordinates outside the lon/lat
+			// range (PRTLN-CNV004, it assumes WGS 84), so only the spec is checked
+			ExternalValidators.checkGpio(target)
+			def darmstadt = readRows(target).find { it.getString('name', 0) == 'Darmstadt' }
+			def point = wkb(darmstadt, 'geometry')
+			// easting/northing in the custom projection (not lon/lat)
+			assertEquals(540000d, point.x, 20000d)
+			assertEquals(5.53e6d, point.y, 50000d)
+
+			def geo = geoMetadata(target)
+			assertTrue(geo.columns.geometry.containsKey('crs'))
+			assertNull(geo.columns.geometry.crs)
+			def logical = readFooter(target).fileMetaData.schema.getType('geometry').logicalTypeAnnotation
+			assertEquals('srid:0', logical.crs)
+			assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('EPSG code') })
+		}
 	}
 }

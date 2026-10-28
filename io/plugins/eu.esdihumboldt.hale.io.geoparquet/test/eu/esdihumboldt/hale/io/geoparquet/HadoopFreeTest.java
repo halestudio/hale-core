@@ -130,22 +130,27 @@ public class HadoopFreeTest extends AbstractPlatformTest {
 			instances.add(instance);
 		}
 
-		// sorting is added in a later step, only the streaming path is tested here
 		for (String codec : new String[] { "zstd", "snappy", "gzip", "none" }) {
-			File file = new File(tmp.getRoot(), codec + ".parquet");
-			GeoParquetInstanceWriter writer = new GeoParquetInstanceWriter();
-			writer.setTarget(new FileIOSupplier(file));
-			writer.setTargetSchema(schemaSpace);
-			writer.setInstances(new DefaultInstanceCollection(instances));
-			writer.setCompression(codec);
-			writer.setSort(false);
-			IOReport report = writer.execute(new LogProgressIndicator());
-			assertTrue(codec + ": " + report.getErrors(), report.isSuccess());
-			assertTrue(codec, report.getErrors().isEmpty());
-			assertTrue(codec, file.length() > 0);
+			writeCities(schemaSpace, instances, codec, true);
+			writeCities(schemaSpace, instances, codec, false);
 		}
 
 		assertHadoopMissing();
+	}
+
+	private void writeCities(DefaultSchemaSpace schemaSpace, List<Instance> instances, String codec,
+			boolean sort) throws Exception {
+		File file = new File(tmp.getRoot(), codec + (sort ? "-sorted" : "") + ".parquet");
+		GeoParquetInstanceWriter writer = new GeoParquetInstanceWriter();
+		writer.setTarget(new FileIOSupplier(file));
+		writer.setTargetSchema(schemaSpace);
+		writer.setInstances(new DefaultInstanceCollection(instances));
+		writer.setCompression(codec);
+		writer.setSort(sort);
+		IOReport report = writer.execute(new LogProgressIndicator());
+		assertTrue(codec + ": " + report.getErrors(), report.isSuccess());
+		assertTrue(codec, report.getErrors().isEmpty());
+		assertTrue(codec, file.length() > 0);
 	}
 
 	private void assertHadoopMissing() {

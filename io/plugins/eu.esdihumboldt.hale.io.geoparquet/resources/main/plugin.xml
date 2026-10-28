@@ -22,7 +22,7 @@
                ref="eu.esdihumboldt.hale.io.geoparquet">
          </contentType>
          <providerParameter
-               description="Coordinate reference system the geometries are transformed to and written in. Takes precedence over the CRS defined in the schema or by the geometries."
+               description="Coordinate reference system the geometries of all geometry columns are transformed to and written in. Takes precedence over the CRS defined in the schema or by the geometries. If it has no EPSG code (e.g. defined only as WKT), the geometries are still transformed to it, but the CRS is written as unknown (crs: null) and a warning is reported; Portolan does not accept such files if the coordinates are outside the lon/lat range."
                label="Target CRS"
                name="crs"
                optional="true">
