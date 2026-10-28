@@ -1,0 +1,12 @@
+Official GeoParquet JSON schemas (format-specs/schema.json) from https://github.com/opengeospatial/geoparquet
+used to validate the generated "geo" metadata in tests.
+
+1.0.0.json  tag v1.0.0
+1.1.0.json  tag v1.1.0
+2.0.0.json  main at commit 1edd56fb020a188fcb35fd8babe89c41e241288e (2026-10-22), which includes PR #302
+            ("Bring back the optional bbox covering", merged 2026-09-07, commit 4c9f87e5226e36f2022d6bd7d3c1980debdf7431).
+            (schema.json is unchanged between #302 and that commit).
+
+projjson-v0.5.schema.json, projjson-v0.7.schema.json
+            PROJJSON schemas (OSGeo/PROJ, schemas/<version>/projjson.schema.json, master at 5fa31c29f0a806568ed7bc76c1a557604db4a804),
+            referenced by the GeoParquet schemas (https://proj.org/schemas/...); tests map the URLs to these files (no network access).
