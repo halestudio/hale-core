@@ -304,12 +304,9 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			this.targetColumnCrs = targetCrsParam == null ? null
 					: GeoParquetCrs.resolve(targetCrsParam, reporter);
 			Path target = Paths.get(getTarget().getLocation());
-			outputs = new TypeOutputs(target);
-			boolean overwrite = getParameter(PARAM_OVERWRITE_TARGET_FILE).as(Boolean.class, false);
-			if (Files.exists(target) && Files.size(target) > 0 && !overwrite) {
-				throw new IOException("Target file already exists and overwriting is not enabled: "
-						+ target.toAbsolutePath());
-			}
+			// existing files are checked as soon as the final files are known
+			outputs = new TypeOutputs(target,
+					getParameter(PARAM_OVERWRITE_TARGET_FILE).as(Boolean.class, false));
 
 			Settings settings = readSettings();
 			if (isSort()) {
@@ -327,7 +324,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 				reporter.setSuccess(false);
 			}
 			else {
-				finish(outputs, overwrite);
+				finish(outputs);
 				reporter.setSuccess(true);
 			}
 		} catch (Exception e) {
@@ -374,7 +371,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 					if (pendingType.resolver().isPrimaryResolved()
 							|| pendingType.buffer().size() >= MAX_BUFFERED_INSTANCES) {
 						pending.remove(type);
-						openAndFlush(type, pendingType, mapper, settings, outputs);
+						openAndFlush(type, pendingType, mapper, settings, outputs, true);
 					}
 				}
 				progress.advance(1);
@@ -384,7 +381,13 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		if (!progress.isCanceled()) {
 			// input ended before the CRS could be determined for all types
 			for (Map.Entry<TypeDefinition, PendingType> entry : pending.entrySet()) {
-				openAndFlush(entry.getKey(), entry.getValue(), mapper, settings, outputs);
+				// all instances are buffered: it is known if there is a primary geometry
+				boolean geoParquet = entry.getValue().resolver().hasPrimaryGeometry();
+				if (!geoParquet) {
+					warnPlainParquet(entry.getKey());
+				}
+				openAndFlush(entry.getKey(), entry.getValue(), mapper, settings, outputs,
+						geoParquet);
 			}
 		}
 	}
@@ -392,11 +395,15 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	/**
 	 * Open the file of a type and write the instances that were buffered while
 	 * waiting for a geometry to determine the CRS.
+	 *
+	 * @param geoParquet if the type is written as GeoParquet, otherwise as plain
+	 *            Parquet
 	 */
 	private void openAndFlush(TypeDefinition type, PendingType pendingType,
-			ParquetSchemaMapper mapper, Settings settings, TypeOutputs outputs) throws IOException {
+			ParquetSchemaMapper mapper, Settings settings, TypeOutputs outputs, boolean geoParquet)
+			throws IOException {
 		Map<String, GeoParquetCrs> crs = pendingType.resolver().finish();
-		TypeContext context = new TypeContext(mapper.map(type, crs, reporter), crs);
+		TypeContext context = new TypeContext(mapper.map(type, crs, reporter, geoParquet), crs);
 		TypeFileWriter writer = openWriter(outputs.allocate(type), context, settings);
 		outputs.setWriter(type, writer);
 		for (Instance buffered : pendingType.buffer()) {
@@ -452,13 +459,30 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		}
 
 		progress.setCurrentTask("Writing sorted instances");
+		// all types are known: check for existing files before writing
+		for (TypeDefinition type : types.keySet()) {
+			outputs.allocate(type);
+		}
+		outputs.checkExisting(true);
 		for (Iterator<Map.Entry<TypeDefinition, SortedType>> typeIt = types.entrySet()
 				.iterator(); typeIt.hasNext() && !progress.isCanceled();) {
 			Map.Entry<TypeDefinition, SortedType> entry = typeIt.next();
 			// CRS of columns for which no geometry was found
 			Map<String, GeoParquetCrs> crs = entry.getValue().resolver().finish();
-			TypeContext context = new TypeContext(mapper.map(entry.getKey(), crs, reporter), crs);
-			TypeFileWriter writer = openWriter(outputs.allocate(entry.getKey()), context, settings);
+			// instances added before the CRS of the primary geometry was known
+			entry.getValue().index().complete(instances::getInstance);
+			boolean geoParquet = true;
+			if (entry.getValue().resolver().preliminary.getPrimaryGeometryColumn() != null
+					&& !entry.getValue().index().hasGeometry()) {
+				// a GeoParquet file without geometries is not accepted by Portolan
+				// (no extent), write a plain Parquet file instead
+				geoParquet = false;
+				warnPlainParquet(entry.getKey());
+			}
+			TypeContext context = new TypeContext(
+					mapper.map(entry.getKey(), crs, reporter, geoParquet), crs);
+			TypeFileWriter writer = openWriter(outputs.getTempFile(entry.getKey()), context,
+					settings);
 			outputs.setWriter(entry.getKey(), writer);
 			for (InstanceReference ref : entry.getValue().index().sorted()) {
 				if (progress.isCanceled()) {
@@ -479,6 +503,17 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			// release the references of the type
 			typeIt.remove();
 		}
+	}
+
+	/**
+	 * Report that a type with geometry property is written as plain Parquet because
+	 * no instance has a primary geometry.
+	 */
+	private void warnPlainParquet(TypeDefinition type) {
+		// a GeoParquet file without geometries is not accepted by Portolan (no
+		// extent)
+		reporter.warn("No instance of type " + type.getName().getLocalPart()
+				+ " has a (primary) geometry, it is written as plain Parquet file without GeoParquet metadata (geometry columns as WKB without CRS information)");
 	}
 
 	private TypeFileWriter openWriter(Path file, TypeContext context, Settings settings)
@@ -508,7 +543,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		}
 
 		void add(Instance instance, InstanceReference ref) {
-			// determines the CRS when the first geometry is seen
+			// determines the CRS when the first geometry with CRS is seen
 			resolver.observe(instance);
 			index.add(instance, ref);
 		}
@@ -527,25 +562,23 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	 * final file exists and overwriting is not enabled, nothing is moved and
 	 * existing files stay untouched.
 	 */
-	private void finish(TypeOutputs outputs, boolean overwrite) throws IOException {
+	private void finish(TypeOutputs outputs) throws IOException {
 		List<Path> temps = outputs.getTempFiles();
 		if (temps.isEmpty()) {
 			reporter.warn("No instances written");
 			return;
 		}
+		// the final files are known now (in streaming mode the file of a single type
+		// is not checked before)
+		outputs.checkExisting(true);
 		List<Path> files = outputs.getFinalFiles();
-
-		if (!overwrite) {
-			for (Path file : files) {
-				// an empty target file may be replaced
-				if (Files.exists(file) && Files.size(file) > 0) {
-					throw new IOException("File already exists and overwriting is not enabled: "
-							+ file.toAbsolutePath());
-				}
-			}
-		}
 		for (int i = 0; i < files.size(); i++) {
-			moveTo(temps.get(i), files.get(i));
+			try {
+				moveTo(temps.get(i), files.get(i));
+			} catch (IOException e) {
+				// no rollback: tell which files were already replaced
+				throw new IOException(describeFailedMove(files, i, e), e);
+			}
 		}
 
 		if (files.size() > 1) {
@@ -557,6 +590,27 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 					+ String.join(", ",
 							files.stream().map(f -> f.getFileName().toString()).toList()));
 		}
+	}
+
+	/**
+	 * Describe the failure to move a file to its final name, including which final
+	 * files were already written (replacing existing files) and which were not.
+	 */
+	private static String describeFailedMove(List<Path> files, int failed, IOException e) {
+		StringBuilder message = new StringBuilder("Moving the written file to ")
+				.append(files.get(failed).toAbsolutePath()).append(" failed: ")
+				.append(e.getLocalizedMessage());
+		if (files.size() > 1) {
+			List<String> done = files.subList(0, failed).stream()
+					.map(f -> f.toAbsolutePath().toString()).toList();
+			List<String> notDone = files.subList(failed, files.size()).stream()
+					.map(f -> f.toAbsolutePath().toString()).toList();
+			message.append(". Files already written (existing files were replaced): ")
+					.append(done.isEmpty() ? "none" : String.join(", ", done))
+					.append(". Files not written (existing files are unchanged): ")
+					.append(String.join(", ", notDone));
+		}
+		return message.toString();
 	}
 
 	private void moveTo(Path temp, Path file) throws IOException {
@@ -624,8 +678,8 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	 * Determines the CRS of the geometry columns of a type. If the target CRS
 	 * parameter is set, it is used for all columns (even if it has no EPSG code and
 	 * is written as unknown CRS). Otherwise in order: geometry metadata of the
-	 * property type, CRS of the first geometry in the column that is found in the
-	 * instances (see {@link #observe(Instance)}).
+	 * property type, CRS of the first geometry with CRS in the column that is found
+	 * in the instances (see {@link #observe(Instance)}).
 	 */
 	private class CrsResolver {
 
@@ -639,6 +693,11 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		 * instances.
 		 */
 		private final Map<String, PendingColumn> pending = new LinkedHashMap<>();
+		/**
+		 * If a non-empty primary geometry was seen while the primary geometry column
+		 * was pending.
+		 */
+		private boolean primaryGeometrySeen;
 
 		CrsResolver(TypeDefinition type, ParquetSchemaMapper mapper) {
 			this.type = type;
@@ -665,8 +724,9 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		}
 
 		/**
-		 * Determine the CRS of pending columns for which the instance has a geometry,
-		 * using the CRS of that geometry.
+		 * Determine the CRS of pending columns for which the instance has a geometry
+		 * with CRS, using the CRS of that geometry. Geometries without CRS are ignored,
+		 * if no geometry has a CRS the column is determined by {@link #finish()}.
 		 */
 		void observe(Instance instance) {
 			if (pending.isEmpty()) {
@@ -674,12 +734,16 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			}
 			for (Map.Entry<String, PendingColumn> entry : new ArrayList<>(pending.entrySet())) {
 				PendingColumn column = entry.getValue();
+				boolean primary = entry.getKey().equals(preliminary.getPrimaryGeometryColumn());
 				for (GeometryProperty<?> geometry : GeometryValues
 						.collect(PropertyPaths.findValues(instance, column.path()))) {
-					Pair<Geometry, CRSDefinition> pair = extractGeometry(geometry, false, reporter);
-					if (pair != null && pair.getFirst() != null) {
+					if (primary && geometry.getGeometry() != null
+							&& !geometry.getGeometry().isEmpty()) {
+						primaryGeometrySeen = true;
+					}
+					if (geometry.getGeometry() != null && geometry.getCRSDefinition() != null) {
 						List<CRSDefinition> candidates = new ArrayList<>(column.candidates());
-						candidates.add(pair.getSecond());
+						candidates.add(geometry.getCRSDefinition());
 						resolve(entry.getKey(), type, candidates);
 						break;
 					}
@@ -694,6 +758,16 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		boolean isPrimaryResolved() {
 			String primary = preliminary.getPrimaryGeometryColumn();
 			return primary == null || resolved.containsKey(primary);
+		}
+
+		/**
+		 * @return if an instance with a non-empty primary geometry was observed while
+		 *         the CRS of the primary geometry column was not yet determined; if the
+		 *         column is still pending after all instances of the type have been
+		 *         observed, this tells if any instance has a primary geometry
+		 */
+		boolean hasPrimaryGeometry() {
+			return primaryGeometrySeen;
 		}
 
 		/**

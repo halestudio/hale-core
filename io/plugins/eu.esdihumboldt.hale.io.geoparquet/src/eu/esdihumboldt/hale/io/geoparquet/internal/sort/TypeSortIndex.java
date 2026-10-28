@@ -11,8 +11,10 @@
  */
 package eu.esdihumboldt.hale.io.geoparquet.internal.sort;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import javax.xml.namespace.QName;
 
@@ -40,15 +42,20 @@ public class TypeSortIndex {
 	private final List<QName> geometryPath;
 	private final Map<String, GeoParquetCrs> crs;
 	private final String geometryColumn;
+	/**
+	 * Instances with primary geometry added before the CRS of the primary geometry
+	 * was known.
+	 */
+	private final List<InstanceReference> deferred = new ArrayList<>();
 
 	/**
 	 * Create the index.
 	 *
 	 * @param mapping the mapping of the type
 	 * @param crs the CRS per geometry column; may be filled after the index has
-	 *            been created, instances added while the CRS of the primary
-	 *            geometry is not yet present in the map are considered to have no
-	 *            geometry
+	 *            been created, instances with primary geometry added while the CRS
+	 *            of the primary geometry is not yet present in the map are only
+	 *            added to the index by {@link #complete(Function)}
 	 * @param converter the converter used for writing geometries
 	 */
 	public TypeSortIndex(TypeMapping mapping, Map<String, GeoParquetCrs> crs,
@@ -66,6 +73,37 @@ public class TypeSortIndex {
 	 * @param ref the reference to the instance
 	 */
 	public void add(Instance instance, InstanceReference ref) {
+		if (geometryPath != null && crs.get(geometryColumn) == null && !GeometryValues
+				.collect(PropertyPaths.findValues(instance, geometryPath)).isEmpty()) {
+			// the CRS is not yet known
+			deferred.add(ref);
+			return;
+		}
+		addWithKey(instance, ref);
+	}
+
+	/**
+	 * Add the instances that were deferred because the CRS of the primary geometry
+	 * was not yet known. Must be called once the CRS is known, before
+	 * {@link #hasGeometry()} or {@link #sorted()}.
+	 *
+	 * @param resolver resolves an instance reference, yields <code>null</code> if
+	 *            the instance cannot be resolved (it is sorted last)
+	 */
+	public void complete(Function<InstanceReference, Instance> resolver) {
+		for (InstanceReference ref : deferred) {
+			Instance instance = resolver.apply(ref);
+			if (instance == null) {
+				index.addWithoutGeometry(ref);
+			}
+			else {
+				addWithKey(instance, ref);
+			}
+		}
+		deferred.clear();
+	}
+
+	private void addWithKey(Instance instance, InstanceReference ref) {
 		Envelope envelope = new Envelope();
 		GeoParquetCrs geometryCrs = geometryPath == null ? null : crs.get(geometryColumn);
 		if (geometryCrs != null) {
@@ -83,6 +121,13 @@ public class TypeSortIndex {
 			Coordinate center = envelope.centre();
 			index.add(center.x, center.y, ref);
 		}
+	}
+
+	/**
+	 * @return if any of the instances added has a primary geometry
+	 */
+	public boolean hasGeometry() {
+		return !index.getExtent().isNull();
 	}
 
 	/**

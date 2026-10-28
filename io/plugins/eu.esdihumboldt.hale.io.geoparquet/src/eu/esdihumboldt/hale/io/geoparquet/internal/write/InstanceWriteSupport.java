@@ -86,7 +86,7 @@ public class InstanceWriteSupport extends WriteSupport<Instance> {
 	@Override
 	public FinalizedWriteContext finalizeWrite() {
 		String primary = mapping.getPrimaryGeometryColumn();
-		if (primary == null) {
+		if (primary == null || !mapping.isGeoParquet()) {
 			return new FinalizedWriteContext(Map.of());
 		}
 		String geo = GeoMetadataBuilder.build(version, primary, valueWriter.getStats(), crs,

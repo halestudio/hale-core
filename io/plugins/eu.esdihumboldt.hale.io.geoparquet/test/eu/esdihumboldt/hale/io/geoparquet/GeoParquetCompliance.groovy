@@ -97,11 +97,14 @@ class GeoParquetCompliance {
 	/**
 	 * Determine if a file has a geometry column and thus must have <code>geo</code>
 	 * metadata: a column with the GEOMETRY logical type or the primary geometry
-	 * column named <code>geometry</code>.
+	 * column named <code>geometry</code> together with the <code>bbox</code>
+	 * covering column. A plain binary <code>geometry</code> column without
+	 * <code>bbox</code> column is written for types without any geometry values
+	 * (plain Parquet).
 	 */
 	static boolean hasGeometryColumn(File file) {
 		MessageType schema = GeoParquetTestUtil.readFooter(file).fileMetaData.schema
-		schema.containsField('geometry') || schema.fields.any {
+		(schema.containsField('geometry') && schema.containsField('bbox')) || schema.fields.any {
 			it.logicalTypeAnnotation instanceof GeometryLogicalTypeAnnotation
 		}
 	}
