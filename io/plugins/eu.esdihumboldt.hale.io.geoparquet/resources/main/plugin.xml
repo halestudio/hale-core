@@ -15,7 +15,7 @@
       <provider
             allowDuplicate="false"
             class="eu.esdihumboldt.hale.io.geoparquet.GeoParquetInstanceWriter"
-            description="Writes instances to GeoParquet files, one file per type. Geometries in nested properties are written as WKT and geometries in JSON columns as JSON, both in their source CRS (no CRS conversion)."
+            description="Writes instances to GeoParquet files, one file per type. The default geometry of a type is written to the primary geometry column, other top-level geometry properties to additional geometry columns. GML geometry properties (e.g. of type gml:GeometryPropertyType) are written as geometries, gml:boundedBy is not written (the bbox column and the geo metadata provide the extent). Geometries in nested properties and in JSON columns are written as WKT in their source CRS (no CRS conversion)."
             id="eu.esdihumboldt.hale.io.geoparquet.instance.writer"
             name="GeoParquet file">
          <contentType

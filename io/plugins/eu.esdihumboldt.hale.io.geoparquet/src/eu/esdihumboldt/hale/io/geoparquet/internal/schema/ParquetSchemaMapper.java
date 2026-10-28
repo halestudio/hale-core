@@ -34,7 +34,6 @@ import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.AugmentedValueFlag;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding;
-import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
@@ -172,31 +171,71 @@ public class ParquetSchemaMapper {
 	}
 
 	/**
-	 * Determine if a property results in a field.
+	 * How a property is mapped.
 	 */
-	private boolean producesField(PropertyEntry entry, List<QName> basePath, int depth,
+	private enum PropertyKind {
+		/** Not written (primary geometry moved to its own column, gml:boundedBy). */
+		SKIP,
+		/** Top-level geometry column (WKB). */
+		GEOMETRY_COLUMN,
+		/** Nested geometry written as WKT. */
+		WKT,
+		/** Complex value written as JSON string. */
+		JSON,
+		/** Complex value written as struct (if it has any field). */
+		STRUCT,
+		/** Simple value. */
+		VALUE
+	}
+
+	/**
+	 * Classify a property. Shared by the decision which properties produce a field
+	 * and the actual mapping.
+	 */
+	private PropertyKind classify(PropertyEntry entry, List<QName> basePath, int depth,
 			List<TypeDefinition> typePath, MappingContext ctx) {
 		List<QName> path = append(basePath, entry.path());
 		if (path.equals(ctx.primaryPath)) {
 			// moved to the primary geometry column
-			return false;
+			return PropertyKind.SKIP;
 		}
-		TypeDefinition propType = entry.property().getPropertyType();
-		if (propType.getConstraint(GeometryType.class).isGeometry()) {
-			return true;
+		PropertyDefinition property = entry.property();
+		if (GeometryProperties.isBoundedBy(property.getName())) {
+			// replaced by the bbox covering column
+			return PropertyKind.SKIP;
+		}
+		TypeDefinition propType = property.getPropertyType();
+		if (GeometryProperties.isGeometry(propType)) {
+			return depth == 1 ? PropertyKind.GEOMETRY_COLUMN : PropertyKind.WKT;
 		}
 		if (DefinitionUtil.hasChildren(propType)) {
-			if (hasValue(propType) || isJson(propType, depth, typePath)) {
-				return true;
+			if (isJson(propType, depth, typePath)) {
+				return PropertyKind.JSON;
 			}
-			List<TypeDefinition> childTypePath = append(typePath, propType);
-			List<PropertyEntry> childEntries = new ArrayList<>();
-			collectProperties(DefinitionUtil.getAllChildren(propType), List.of(), false,
-					childEntries);
-			return childEntries.stream()
-					.anyMatch(e -> producesField(e, path, depth + 1, childTypePath, ctx));
+			return PropertyKind.STRUCT;
 		}
-		return hasValue(propType);
+		return hasValue(propType) ? PropertyKind.VALUE : PropertyKind.SKIP;
+	}
+
+	/**
+	 * Determine if a property results in a field.
+	 */
+	private boolean producesField(PropertyEntry entry, List<QName> basePath, int depth,
+			List<TypeDefinition> typePath, MappingContext ctx) {
+		PropertyKind kind = classify(entry, basePath, depth, typePath, ctx);
+		if (kind != PropertyKind.STRUCT) {
+			return kind != PropertyKind.SKIP;
+		}
+		TypeDefinition propType = entry.property().getPropertyType();
+		if (hasValue(propType)) {
+			return true;
+		}
+		List<QName> path = append(basePath, entry.path());
+		List<TypeDefinition> childTypePath = append(typePath, propType);
+		List<PropertyEntry> childEntries = new ArrayList<>();
+		collectProperties(DefinitionUtil.getAllChildren(propType), List.of(), false, childEntries);
+		return childEntries.stream()
+				.anyMatch(e -> producesField(e, path, depth + 1, childTypePath, ctx));
 	}
 
 	/**
@@ -212,33 +251,32 @@ public class ParquetSchemaMapper {
 		boolean repeated = entry.repeatedGroup()
 				|| DefinitionUtil.getCardinality(property).mayOccurMultipleTimes();
 
-		if (propType.getConstraint(GeometryType.class).isGeometry()) {
-			if (depth == 1) {
-				fields.add(createGeometryField(name, ctx));
-				columns.add(new ColumnMapping(name, path, false, true, ValueKind.WKB, 0));
-				ctx.secondaryGeometryColumns.add(name);
-			}
-			else {
-				addValue(name, path, repeated, ValueKind.WKT, 0, fields, columns);
-			}
+		switch (classify(entry, basePath, depth, typePath, ctx)) {
+		case SKIP:
 			return;
-		}
-
-		if (DefinitionUtil.hasChildren(propType)) {
-			if (isJson(propType, depth, typePath)) {
-				ctx.log.info("Property {0} is written as JSON string", append(basePath, path));
-				addValue(name, path, repeated, ValueKind.JSON, 0, fields, columns);
-				return;
-			}
+		case GEOMETRY_COLUMN:
+			fields.add(createGeometryField(name, ctx));
+			columns.add(new ColumnMapping(name, path, false, true, ValueKind.WKB, 0));
+			ctx.secondaryGeometryColumns.add(name);
+			return;
+		case WKT:
+			addValue(name, path, repeated, ValueKind.WKT, 0, fields, columns);
+			return;
+		case JSON:
+			ctx.log.info("Property {0} is written as JSON string", append(basePath, path));
+			addValue(name, path, repeated, ValueKind.JSON, 0, fields, columns);
+			return;
+		case STRUCT:
 			mapStruct(property, name, path, repeated, basePath, depth, typePath, fields, columns,
 					ctx);
 			return;
+		case VALUE:
+		default:
+			Class<?> binding = propType.getConstraint(Binding.class).getBinding();
+			ValueKind kind = fieldFactory.determineValueKind(binding);
+			addValue(name, path, repeated, kind, fieldFactory.decimalScale(kind, binding), fields,
+					columns);
 		}
-
-		Class<?> binding = propType.getConstraint(Binding.class).getBinding();
-		ValueKind kind = fieldFactory.determineValueKind(binding);
-		addValue(name, path, repeated, kind, fieldFactory.decimalScale(kind, binding), fields,
-				columns);
 	}
 
 	private void addValue(String name, List<QName> path, boolean repeated, ValueKind kind,
@@ -310,8 +348,14 @@ public class ParquetSchemaMapper {
 	}
 
 	/**
-	 * Find the shortest property path to a geometry property (breadth-first,
-	 * children in definition order, groups and choices are transparent).
+	 * Find the primary geometry property: the property holding a geometry (see
+	 * {@link GeometryProperties#isGeometry(TypeDefinition)}) with the shortest path
+	 * (breadth-first, children in definition order, groups and choices are
+	 * transparent), similar to the default geometry determined in hale.
+	 * <code>gml:boundedBy</code> is never used, <code>gml:location</code> only if
+	 * there is no other geometry (in that case the location property as a whole is
+	 * the primary geometry, so that all its geometry options are covered; its
+	 * non-geometry options like <code>gml:LocationKeyWord</code> are not written).
 	 *
 	 * @param type the type definition
 	 * @return the property path, or <code>null</code> if there is no geometry
@@ -319,10 +363,15 @@ public class ParquetSchemaMapper {
 	private List<QName> findPrimaryGeometryPath(TypeDefinition type) {
 		record Node(TypeDefinition type, List<QName> path) {
 		}
+		// types are visited separately inside and outside of gml:location, so that
+		// a type first seen in a location is still searched elsewhere
+		record Visit(TypeDefinition type, boolean inLocation) {
+		}
 
-		Set<TypeDefinition> visited = new HashSet<>();
-		visited.add(type);
+		Set<Visit> visited = new HashSet<>();
+		visited.add(new Visit(type, false));
 		List<Node> level = List.of(new Node(type, List.of()));
+		List<QName> fallback = null;
 
 		for (int depth = 0; depth < MAX_GEOMETRY_SEARCH_DEPTH && !level.isEmpty(); depth++) {
 			List<Node> next = new ArrayList<>();
@@ -332,16 +381,41 @@ public class ParquetSchemaMapper {
 				collectProperties(DefinitionUtil.getAllChildren(node.type()), node.path(), false,
 						props);
 				for (PropertyEntry entry : props) {
-					TypeDefinition propType = entry.property().getPropertyType();
-					if (propType.getConstraint(GeometryType.class).isGeometry()) {
-						return entry.path();
+					if (GeometryProperties.isBoundedBy(entry.property().getName())) {
+						continue;
 					}
-					if (visited.add(propType)) {
+					TypeDefinition propType = entry.property().getPropertyType();
+					if (GeometryProperties.isGeometry(propType)) {
+						List<QName> location = locationPath(entry.path());
+						if (location == null) {
+							return entry.path();
+						}
+						if (fallback == null) {
+							fallback = location;
+						}
+					}
+					else if (visited.add(new Visit(propType, locationPath(entry.path()) != null))) {
 						next.add(new Node(propType, entry.path()));
 					}
 				}
 			}
 			level = next;
+		}
+		return fallback;
+	}
+
+	/**
+	 * If the path leads into <code>gml:location</code>, return the path of the
+	 * location property, so that all its options are covered.
+	 *
+	 * @return the path of the location property or <code>null</code> if the path
+	 *         does not lead into a location property
+	 */
+	private static List<QName> locationPath(List<QName> path) {
+		for (int i = 0; i < path.size(); i++) {
+			if (GeometryProperties.isLocation(path.get(i))) {
+				return List.copyOf(path.subList(0, i + 1));
+			}
 		}
 		return null;
 	}

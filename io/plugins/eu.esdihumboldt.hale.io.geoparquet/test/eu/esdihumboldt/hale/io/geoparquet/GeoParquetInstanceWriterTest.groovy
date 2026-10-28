@@ -14,6 +14,8 @@ package eu.esdihumboldt.hale.io.geoparquet
 import static eu.esdihumboldt.hale.io.geoparquet.GeoParquetTestUtil.*
 import static org.junit.Assert.*
 
+import javax.xml.namespace.QName
+
 import org.apache.parquet.schema.LogicalTypeAnnotation
 import org.junit.Rule
 import org.junit.Test
@@ -32,6 +34,8 @@ import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
 import eu.esdihumboldt.hale.common.instance.model.Instance
 import eu.esdihumboldt.hale.common.instance.model.InstanceCollection
 import eu.esdihumboldt.hale.common.instance.model.InstanceReference
+import eu.esdihumboldt.hale.common.instance.model.MutableInstance
+import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition
 import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty
 import eu.esdihumboldt.hale.common.schema.groovy.SchemaBuilder
 import eu.esdihumboldt.hale.common.schema.model.Schema
@@ -199,6 +203,52 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		}, {
 			it.setTargetCRS(new CodeDefinition('EPSG:25832', true))
 		})
+	}
+
+	/**
+	 * Writer that always returns the same target CRS object.
+	 */
+	static class FixedTargetCrsWriter extends GeoParquetInstanceWriter {
+
+		CRSDefinition fixedTargetCrs
+
+		@Override
+		CRSDefinition getTargetCRS() {
+			fixedTargetCrs
+		}
+	}
+
+	/**
+	 * The success of the conversion to the target CRS does not depend on the
+	 * identity of the CRS definitions: if the geometries use the same CRS
+	 * definition object as the target CRS, they are still written in lon/lat
+	 * order.
+	 */
+	@Test
+	void testTargetCrsSameObjectAsGeometryCrs() {
+		Schema schema = citySchema()
+		// lat/lon axis order
+		def crs = new CodeDefinition('EPSG:4326')
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			city {
+				name 'Darmstadt'
+				location(createGeometry('POINT(49.872833 8.651222)', crs))
+			}
+		}
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		def writer = new FixedTargetCrsWriter(fixedTargetCrs: crs)
+		writer.setTarget(new FileIOSupplier(target))
+		def ss = new DefaultSchemaSpace()
+		ss.addSchema(schema)
+		writer.setTargetSchema(ss)
+		writer.setInstances(instances)
+		IOReport report = writer.execute(new LogProgressIndicator())
+
+		assertTrue(report.errors*.message.toString(), report.success)
+		assertTrue(report.errors*.message.toString(), report.errors.isEmpty())
+		def point = wkb(readRows(target)[0], 'geometry')
+		assertEquals(8.651222, point.x, 1e-9)
+		assertEquals(49.872833, point.y, 1e-9)
 	}
 
 	@Test
@@ -774,5 +824,98 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			assertEquals('srid:0', logical.crs)
 			assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('EPSG code') })
 		}
+	}
+
+	/**
+	 * Geometries held as collection of geometry properties (as created by hale's
+	 * GML reader for some geometry types) and below instances of GML-like geometry
+	 * property types: all geometries are combined.
+	 */
+	@Test
+	void testGeometryCollectionsAndPropertyTypes() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				id(Integer)
+				geometry(GeometryProperty)
+				outline {
+					LineString(GeometryProperty, cardinality: '0..n')
+				}
+			}
+		}
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			t {
+				id 1
+				outline {
+					LineString(createGeometry('LINESTRING(0 0, 1 1)', new CodeDefinition('EPSG:3857')))
+					LineString(createGeometry('LINESTRING(2 2, 3 3)', new CodeDefinition('EPSG:3857')))
+				}
+			}
+		}
+		// a collection as value (not converted, as by the instance builder)
+		instances.iterator().withCloseable {
+			((MutableInstance) it.next()).setProperty(new QName('geometry'), [
+				[
+					createGeometry('POINT(1 2)', new CodeDefinition('EPSG:3857')),
+					createGeometry('POINT(3 4)', new CodeDefinition('EPSG:3857'))
+				]
+			] as Object[])
+		}
+		withNewGeoParquet(schema, instances, { List<File> files ->
+			def rows = readRows(files[0])
+			assertEquals('MULTIPOINT ((1 2), (3 4))', wkb(rows[0], 'geometry').toText())
+			assertEquals('MULTILINESTRING ((0 0, 1 1), (2 2, 3 3))', wkb(rows[0], 'outline').toText())
+		})
+	}
+
+	/**
+	 * Geometries in properties written as JSON: only the geometry as WKT, not the
+	 * structure of the GML-like geometry element; gml:boundedBy is omitted.
+	 */
+	@Test
+	void testGeometryInJson() {
+		String gml = 'http://www.opengis.net/gml/3.2'
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				geom(GeometryProperty)
+				info {
+					sub {
+						boundedBy(namespace: gml) {
+							Envelope(GeometryProperty, namespace: gml)
+						}
+						geometry {
+							Point(GeometryProperty, namespace: gml) {
+								srsName(String, [
+									eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag.ENABLED
+								])
+							}
+						}
+						label(String)
+					}
+				}
+			}
+		}
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			t {
+				geom(createGeometry('POINT(1 1)', new CodeDefinition('EPSG:3857')))
+				info {
+					sub {
+						boundedBy {
+							Envelope(createGeometry('POLYGON((0 0, 0 1, 1 1, 0 0))', new CodeDefinition('EPSG:3857')))
+						}
+						geometry {
+							Point(createGeometry('POINT(5 6)', new CodeDefinition('EPSG:3857'))) {
+								srsName 'EPSG:3857'
+							}
+						}
+						label 'x'
+					}
+				}
+			}
+		}
+		withNewGeoParquet(schema, instances, { List<File> files ->
+			def rows = readRows(files[0])
+			String json = rows[0].getGroup('info', 0).getString('sub', 0)
+			assertEquals('{"geometry":"POINT (5 6)","label":"x"}', json)
+		}, { it.setNestingDepth(1) })
 	}
 }

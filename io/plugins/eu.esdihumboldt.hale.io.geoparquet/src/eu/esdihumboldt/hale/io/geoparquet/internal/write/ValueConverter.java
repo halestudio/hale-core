@@ -78,6 +78,11 @@ class ValueConverter {
 			if (kind == ValueKind.JSON) {
 				return Binary.fromString(json.toJson(raw, path));
 			}
+			if (kind == ValueKind.WKT) {
+				// geometries may be held below the value (e.g. GML geometry property)
+				String wkt = JsonValueSerializer.toWkt(raw);
+				return wkt == null ? null : Binary.fromString(wkt);
+			}
 			Object value = ValueWriter.unwrap(raw);
 			if (value == null) {
 				return null;
@@ -97,8 +102,7 @@ class ValueConverter {
 			case BINARY -> Binary.fromConstantByteArray(as(value, byte[].class));
 			case DECIMAL_AS_STRING -> Binary.fromString(toBigDecimalString(value));
 			case DECIMAL -> toDecimal(column, value);
-			case WKT -> Binary.fromString(toWktValue(value));
-			case WKB, JSON -> throw new IllegalStateException("Unexpected kind " + kind);
+			case WKB, JSON, WKT -> throw new IllegalStateException("Unexpected kind " + kind);
 			};
 			if (result == null) {
 				throw new IllegalStateException("Conversion yielded no value");
@@ -137,14 +141,6 @@ class ValueConverter {
 			return value.toString();
 		}
 		return as(value, BigDecimal.class).toPlainString();
-	}
-
-	private static String toWktValue(Object value) {
-		String wkt = JsonValueSerializer.toWkt(value);
-		if (wkt == null) {
-			throw new IllegalArgumentException("Value is not a geometry");
-		}
-		return wkt;
 	}
 
 	/**

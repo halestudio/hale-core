@@ -24,9 +24,10 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 
 /**
  * Allocates unique field names for the properties mapped into one Parquet
- * struct (or the top level of a message).
+ * struct (or the top level of a message). Also used for the member names of
+ * values written as JSON, so they match the struct mapping.
  */
-final class ColumnNameAllocator {
+public final class ColumnNameAllocator {
 
 	/**
 	 * Prefix for XML attributes whose name collides with an element name.
@@ -41,7 +42,7 @@ final class ColumnNameAllocator {
 	 * @param name the property name
 	 * @param attribute if the property is an XML attribute
 	 */
-	record Candidate(QName name, boolean attribute) {
+	public record Candidate(QName name, boolean attribute) {
 	}
 
 	private ColumnNameAllocator() {
@@ -59,7 +60,8 @@ final class ColumnNameAllocator {
 	 * @param log the log for reporting renamed fields
 	 * @return the names, in the order of the candidates
 	 */
-	static List<String> allocate(List<Candidate> candidates, Set<String> reserved, SimpleLog log) {
+	public static List<String> allocate(List<Candidate> candidates, Set<String> reserved,
+			SimpleLog log) {
 		Set<String> elementNames = new HashSet<>();
 		for (Candidate c : candidates) {
 			if (!c.attribute()) {

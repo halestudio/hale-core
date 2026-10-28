@@ -412,6 +412,66 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		assertEquals([1d, 0d, 4d, 0d], geoMetadata(file).columns.geometry.bbox*.doubleValue())
 	}
 
+	/**
+	 * Values written as JSON (beyond the nesting depth) use the same member names
+	 * as the struct mapping: the value of an instance is <code>value</code>, a
+	 * child with that name is suffixed, properties with the same local name in
+	 * different namespaces (also XML attributes) get distinct names. No value is
+	 * lost.
+	 */
+	@Test
+	void testJsonNamesFollowStructMapping() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				inner {
+					box(Double) {
+						value(String)
+						id(String, [XmlAttributeFlag.ENABLED], namespace: 'urn:a')
+						id(Integer)
+						name(String, namespace: 'urn:x')
+						name(String, namespace: 'urn:y')
+					}
+				}
+			}
+		}
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t {
+				inner {
+					box(1.5) {
+						value('child value')
+						id('attribute', namespace: 'urn:a')
+						id(7)
+						name('x', namespace: 'urn:x')
+						name('y', namespace: 'urn:y')
+					}
+				}
+			}
+		}
+		// struct mapping
+		def struct = readRows(write(schema, 't', collection))[0].getGroup('inner', 0).getGroup('box', 0)
+		def structNames = struct.getType().getFields().collect { it.getName() }
+		assertEquals([
+			'value',
+			'value_2',
+			'attr_id',
+			'id',
+			'name',
+			'name_2'
+		], structNames)
+
+		// JSON fallback
+		def options = new MappingOptions(GeoParquetVersion.V2_0, 1, BigNumberEncoding.STRING, 9)
+		def row = readRows(write(schema, 't', collection, [:], [options: options]))[0]
+		def json = new groovy.json.JsonSlurper().parseText(row.getGroup('inner', 0).getString('box', 0))
+		assertEquals(structNames as Set, json.keySet())
+		assertEquals(1.5d, json.value as double, 0d)
+		assertEquals('child value', json.value_2)
+		assertEquals('attribute', json.attr_id)
+		assertEquals(7, json.id)
+		assertEquals('x', json.name)
+		assertEquals('y', json.name_2)
+	}
+
 	@Test
 	void testJsonOmitsPrimaryGeometry() {
 		Schema schema = new SchemaBuilder().schema {
