@@ -18,12 +18,9 @@ import groovy.json.JsonSlurper
 import org.junit.Test
 import org.locationtech.jts.io.WKTReader
 
-import com.networknt.schema.InputFormat
-import com.networknt.schema.SchemaRegistry
-import com.networknt.schema.SpecificationVersion
-
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
+import eu.esdihumboldt.hale.io.geoparquet.GeoParquetTestUtil
 import eu.esdihumboldt.hale.io.geoparquet.GeoParquetVersion
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs
 import eu.esdihumboldt.util.test.AbstractPlatformTest
@@ -32,25 +29,6 @@ import eu.esdihumboldt.util.test.AbstractPlatformTest
  * Tests for {@link GeoMetadataBuilder}.
  */
 class GeoMetadataBuilderTest extends AbstractPlatformTest {
-
-	private static String resource(String name) {
-		GeoMetadataBuilderTest.getResourceAsStream("/geoparquet-schema/$name").getText('UTF-8')
-	}
-
-	/**
-	 * Validates JSON against the official schema of a version. The PROJJSON schemas
-	 * referenced by the GeoParquet schemas are mapped to vendored copies (no network).
-	 */
-	static List<String> validate(GeoParquetVersion version, String json) {
-		def registry = SchemaRegistry.withDefaultDialect(SpecificationVersion.DRAFT_7) { builder ->
-			builder.schemas([
-				'https://proj.org/schemas/v0.5/projjson.schema.json': resource('projjson-v0.5.schema.json'),
-				'https://proj.org/schemas/v0.7/projjson.schema.json': resource('projjson-v0.7.schema.json')
-			])
-		}
-		def schema = registry.getSchema(resource("${version.versionString}.json"), InputFormat.JSON)
-		schema.validate(json, InputFormat.JSON).collect { it.toString() }
-	}
 
 	private GeoColumnStats statsOf(String... wkts) {
 		def s = new GeoColumnStats()
@@ -119,18 +97,18 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			assertEquals(['Point Z'], cols.other.geometry_types)
 			assertFalse(cols.third.containsKey('bbox'))
 
-			assertEquals("$version: ${validate(version, json)}".toString(), [], validate(version, json))
+			assertEquals("$version: ${GeoParquetTestUtil.validateGeo(version, json)}".toString(), [], GeoParquetTestUtil.validateGeo(version, json))
 
 			// without covering
 			json = GeoMetadataBuilder.build(version, 'geometry', stats, crsMap, false)
 			assertFalse(new JsonSlurper().parseText(json).columns.geometry.containsKey('covering'))
-			assertEquals([], validate(version, json))
+			assertEquals([], GeoParquetTestUtil.validateGeo(version, json))
 		}
 	}
 
 	@Test
 	void testValidationDetectsInvalidMetadata() {
 		// guards against the validation being a no-op
-		assertFalse(validate(GeoParquetVersion.V2_0, '{"version":"1.0.0","primary_column":"g","columns":{}}').isEmpty())
+		assertFalse(GeoParquetTestUtil.validateGeo(GeoParquetVersion.V2_0, '{"version":"1.0.0","primary_column":"g","columns":{}}').isEmpty())
 	}
 }
