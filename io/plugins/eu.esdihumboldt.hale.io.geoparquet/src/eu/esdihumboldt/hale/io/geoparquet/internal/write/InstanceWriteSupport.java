@@ -39,6 +39,8 @@ public class InstanceWriteSupport extends WriteSupport<Instance> {
 	private final GeoParquetVersion version;
 	private final Map<String, GeoParquetCrs> crs;
 	private final ValueWriter valueWriter;
+	private final boolean bbox2d;
+	private final SimpleLog log;
 
 	/**
 	 * Create a write support.
@@ -46,14 +48,19 @@ public class InstanceWriteSupport extends WriteSupport<Instance> {
 	 * @param mapping the type mapping
 	 * @param version the GeoParquet version
 	 * @param crs the CRS description per geometry column name
+	 * @param bbox2d if the column bbox in the <code>geo</code> metadata is written
+	 *            as 2D bbox also for geometries with Z values
 	 * @param converter the geometry converter
 	 * @param log the log for reporting problems
 	 */
 	public InstanceWriteSupport(TypeMapping mapping, GeoParquetVersion version,
-			Map<String, GeoParquetCrs> crs, GeometryConverter converter, SimpleLog log) {
+			Map<String, GeoParquetCrs> crs, boolean bbox2d, GeometryConverter converter,
+			SimpleLog log) {
 		this.mapping = mapping;
 		this.version = version;
 		this.crs = crs;
+		this.bbox2d = bbox2d;
+		this.log = log;
 		this.valueWriter = new ValueWriter(mapping, crs, converter, log);
 	}
 
@@ -89,8 +96,17 @@ public class InstanceWriteSupport extends WriteSupport<Instance> {
 		if (primary == null || !mapping.isGeoParquet()) {
 			return new FinalizedWriteContext(Map.of());
 		}
+		if (bbox2d) {
+			valueWriter.getStats().forEach((column, stats) -> {
+				if (stats.hasZ() && stats.getExtent() != null) {
+					log.warn("Geometries of column " + column + " of type "
+							+ mapping.getType().getName().getLocalPart()
+							+ " have Z values, but the column bbox in the GeoParquet metadata is written as 2D bbox as configured, which does not follow the GeoParquet specification");
+				}
+			});
+		}
 		String geo = GeoMetadataBuilder.build(version, primary, valueWriter.getStats(), crs,
-				mapping.hasBboxColumn());
+				mapping.hasBboxColumn(), bbox2d);
 		return new FinalizedWriteContext(Map.of(GEO_METADATA_KEY, geo));
 	}
 

@@ -11,6 +11,7 @@
  */
 package eu.esdihumboldt.hale.io.geoparquet
 
+import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertTrue
 import static org.junit.Assert.fail
 
@@ -174,8 +175,14 @@ class ExternalValidators {
 	 * Add the file to a temporary Portolan catalog, and check the catalog.
 	 * Findings regarding the catalog metadata (that is not what is tested here)
 	 * are ignored.
+	 *
+	 * @param expectedCatalogBbox if set, the bbox written to the catalog by
+	 *   <code>portolan add</code> for the file must match it
+	 *   (<code>[xmin, ymin, xmax, ymax]</code>, WGS84), see
+	 *   {@link #checkCatalogBbox(File, String, List)}
 	 */
-	static void checkPortolan(File file, Collection<String> ignorePortolanRules = []) {
+	static void checkPortolan(File file, Collection<String> ignorePortolanRules = [],
+			List<Double> expectedCatalogBbox = null) {
 		assumeAvailable('portolan')
 		Path dir = Files.createTempDirectory('portolan')
 		try {
@@ -204,11 +211,41 @@ class ExternalValidators {
 			], catalog, TIMEOUT_SECONDS)
 			assertTrue("portolan add failed for ${file.name}: $r", r.exitCode == 0)
 			assertTrue("portolan add reports no geometry for ${file.name}: $r", !r.output.contains('has no geometry'))
+			if (expectedCatalogBbox != null) {
+				checkCatalogBbox(catalog, file.name, expectedCatalogBbox)
+			}
 
 			r = run(['portolan', 'check', '--json'], catalog, TIMEOUT_SECONDS)
 			evaluatePortolanCheck(file.name, r, ignorePortolanRules)
 		} finally {
 			dir.toFile().deleteDir()
+		}
+	}
+
+	/**
+	 * Check the bbox that <code>portolan add</code> wrote to the catalog for a
+	 * file: the STAC object (item or collection) in the catalog that has an asset
+	 * referencing the file. Portolan 0.8.0 adds a single vector file as asset of
+	 * a collection (no item), with the bbox of the file as spatial extent.
+	 */
+	static void checkCatalogBbox(File catalog, String fileName, List<Double> expected) {
+		List<Map> stac = []
+		catalog.eachFileRecurse { File f ->
+			if (f.name.endsWith('.json')) {
+				def json = new JsonSlurper().parse(f)
+				if (json instanceof Map && json.type in ['Feature', 'Collection']
+						&& ((Map) json.assets)?.values()?.any { Map a -> (a.href as String)?.endsWith("/$fileName") }) {
+					stac << (Map) json
+				}
+			}
+		}
+		assertEquals("STAC objects with asset ${fileName}: $stac".toString(), 1, stac.size())
+		def raw = stac[0].type == 'Feature' ? stac[0].bbox : stac[0].extent?.spatial?.bbox?.getAt(0)
+		assertTrue("STAC object with asset ${fileName} has no bbox: ${stac[0]}".toString(), raw instanceof List)
+		List<Double> bbox = ((List<Number>) raw)*.doubleValue()
+		assertEquals("STAC item bbox of ${fileName}: $bbox, expected $expected".toString(), expected.size(), bbox.size())
+		expected.eachWithIndex { double v, int i ->
+			assertEquals("STAC item bbox of ${fileName}: $bbox, expected $expected".toString(), v, bbox[i], 1e-6)
 		}
 	}
 

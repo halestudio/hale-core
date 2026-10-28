@@ -66,7 +66,7 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			stats.third = new GeoColumnStats()
 			def crsMap = [geometry: crs84, other: epsg, third: unknown]
 
-			String json = GeoMetadataBuilder.build(version, 'geometry', stats, crsMap, true)
+			String json = GeoMetadataBuilder.build(version, 'geometry', stats, crsMap, true, false)
 			def geo = new JsonSlurper().parseText(json)
 
 			assertEquals(version.versionString, geo.version)
@@ -101,16 +101,16 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			assertEquals("$version: ${GeoParquetTestUtil.validateGeo(version, json)}".toString(), [], GeoParquetTestUtil.validateGeo(version, json))
 
 			// without covering
-			json = GeoMetadataBuilder.build(version, 'geometry', stats, crsMap, false)
+			json = GeoMetadataBuilder.build(version, 'geometry', stats, crsMap, false, false)
 			assertFalse(new JsonSlurper().parseText(json).columns.geometry.containsKey('covering'))
 			assertEquals([], GeoParquetTestUtil.validateGeo(version, json))
 		}
 	}
 
-	private static List<Double> bboxOf(GeoColumnStats columnStats) {
+	private static List<Double> bboxOf(GeoColumnStats columnStats, boolean bbox2d = false) {
 		def stats = new LinkedHashMap<String, GeoColumnStats>()
 		stats.geometry = columnStats
-		String json = GeoMetadataBuilder.build(GeoParquetVersion.V1_1, 'geometry', stats, [:], true)
+		String json = GeoMetadataBuilder.build(GeoParquetVersion.V1_1, 'geometry', stats, [:], true, bbox2d)
 		assertEquals([], GeoParquetTestUtil.validateGeo(GeoParquetVersion.V1_1, json))
 		def column = new JsonSlurper().parseText(json).columns.geometry
 		// the covering stays 2D
@@ -148,6 +148,18 @@ class GeoMetadataBuilderTest extends AbstractPlatformTest {
 			'Point Z'
 		], s.geometryTypes as List)
 		assertEquals([-5d, -6d, 3d, 9d, 9d, 5d], bboxOf(s))
+	}
+
+	/**
+	 * With the 2D bbox option, the bbox of a column with 3D geometries has only
+	 * the 4 values of the x/y range.
+	 */
+	@Test
+	void testBbox3dWritten2d() {
+		def s = statsOf('POINT Z (1 2 -3)', 'LINESTRING Z (0 5 10, 4 6 7)')
+		assertEquals([0d, 2d, 4d, 6d], bboxOf(s, true))
+		// no effect on 2D data
+		assertEquals([0d, 2d, 4d, 6d], bboxOf(statsOf('POINT (1 2)', 'LINESTRING (0 5, 4 6)'), true))
 	}
 
 	@Test

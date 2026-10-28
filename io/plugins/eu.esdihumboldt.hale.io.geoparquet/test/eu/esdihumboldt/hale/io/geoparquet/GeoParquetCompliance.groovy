@@ -56,9 +56,15 @@ class GeoParquetCompliance {
 	 * @param rowGroupRowLimit the maximum number of rows allowed in a row group
 	 * @param requireGeo if <code>geo</code> metadata must be present; if
 	 *   <code>false</code> files without it are only checked for the row group limit
+	 * @param bbox2d if the file was written with a 2D column bbox also for
+	 *   geometries with Z values (writer parameter
+	 *   {@link GeoParquetInstanceWriter#PARAM_BBOX_2D}, not compliant with the
+	 *   GeoParquet specification for 3D data); then a 4 value bbox is expected
+	 *   for 3D data
 	 * @throws AssertionError if a rule is violated, the message names the rule
 	 */
-	static void check(File file, int rowGroupRowLimit = 150000, boolean requireGeo = false) {
+	static void check(File file, int rowGroupRowLimit = 150000, boolean requireGeo = false,
+			boolean bbox2d = false) {
 		ParquetMetadata footer = GeoParquetTestUtil.readFooter(file)
 		checkRowGroupLimit(file, footer, rowGroupRowLimit)
 
@@ -87,7 +93,7 @@ class GeoParquetCompliance {
 			checkBboxCovering(file, schema, footer, (Map) coveringColumn.value.covering, (String) coveringColumn.key)
 		}
 
-		checkDataConsistency(file, columns)
+		checkDataConsistency(file, columns, bbox2d)
 
 		if (version == GeoParquetVersion.V2_0) {
 			checkGeospatialStatistics(file, footer, columns.keySet())
@@ -258,8 +264,10 @@ class GeoParquetCompliance {
 	/**
 	 * Rules: the column-level <code>bbox</code> equals the extent of the data and
 	 * <code>geometry_types</code> equals the set of types in the data.
+	 *
+	 * @param bbox2d if a 2D bbox (4 values) is expected also for 3D data
 	 */
-	static void checkDataConsistency(File file, Map<String, Map> columns) {
+	static void checkDataConsistency(File file, Map<String, Map> columns, boolean bbox2d = false) {
 		def rows = GeoParquetTestUtil.readRows(file)
 		WKBReader reader = new WKBReader()
 		columns.each { String name, Map column ->
@@ -314,7 +322,8 @@ class GeoParquetCompliance {
 				}
 
 				// the bbox has a range for each dimension: 3D if any geometry type is 3D
-				boolean threeD = column.geometry_types.any { (it as String).endsWith(' Z') }
+				// (unless a 2D bbox was explicitly requested)
+				boolean threeD = !bbox2d && column.geometry_types.any { (it as String).endsWith(' Z') }
 				int expectedSize = threeD ? 6 : 4
 				if (bbox.size() != expectedSize) {
 					violation(file, 'column bbox dimensions', "column '$name' has geometry types ${column.geometry_types}, so the bbox must have $expectedSize values, but has $bbox")

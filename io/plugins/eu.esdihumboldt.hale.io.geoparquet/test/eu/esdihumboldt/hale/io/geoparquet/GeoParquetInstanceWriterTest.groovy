@@ -1074,6 +1074,70 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		}
 	}
 
+	private InstanceCollection cities3d(Schema schema) {
+		new InstanceBuilder(types: schema).createCollection {
+			city {
+				name 'Darmstadt'
+				// lat/lon axis order
+				location(createGeometry('POINT Z (49.872833 8.651222 144)', new CodeDefinition('EPSG:4326')))
+			}
+			city {
+				name 'München'
+				location(createGeometry('LINESTRING Z (48.1 11.5 519, 48.2 11.6 530)', new CodeDefinition('EPSG:4326')))
+			}
+		}
+	}
+
+	/**
+	 * The column bbox of 3D data has 6 values by default (GeoParquet
+	 * specification), with the parameter bbox2d only the 4 values of the x/y
+	 * range (for Portolan, which only reads the first four values).
+	 */
+	@Test
+	void testBbox2dFor3dData() {
+		Schema schema = citySchema()
+
+		// default: 3D bbox
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		IOReport report = writeInstances(target, schema, cities3d(schema), null, false)
+		assertEquals([
+			8.651222d,
+			48.1d,
+			144d,
+			11.6d,
+			49.872833d,
+			530d
+		], geoMetadata(target).columns.geometry.bbox*.doubleValue())
+		assertFalse(report.warnings*.message.toString(), report.warnings.any { it.message.contains('2D bbox') })
+
+		// 2D bbox requested
+		target = new File(tmp.newFolder(), 'cities.parquet')
+		report = writeInstances(target, schema, cities3d(schema), { it.setBbox2d(true) }, false)
+		def geo = geoMetadata(target)
+		assertEquals([
+			8.651222d,
+			48.1d,
+			11.6d,
+			49.872833d
+		], geo.columns.geometry.bbox*.doubleValue())
+		assertEquals(['LineString Z', 'Point Z'], geo.columns.geometry.geometry_types)
+		// the Z values are written nevertheless
+		assertEquals([144d, 519d] as Set, readRows(target).collect { wkb(it, 'geometry').coordinate.z } as Set)
+		def warnings = report.warnings*.message.findAll { it.contains('2D bbox') }
+		assertEquals(report.warnings*.message.toString(), 1, warnings.size())
+		assertTrue(warnings[0], warnings[0].contains('column geometry '))
+
+		// Portolan accepts the file without ignoring PTL-DAT-005 and writes the x/y
+		// extent as bbox to the catalog
+		ExternalValidators.checkGpio(target)
+		ExternalValidators.checkPortolan(target, [], [
+			8.651222d,
+			48.1d,
+			11.6d,
+			49.872833d
+		])
+	}
+
 	/**
 	 * Geometries held as collection of geometry properties (as created by hale's
 	 * GML reader for some geometry types) and below instances of GML-like geometry

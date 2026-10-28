@@ -82,7 +82,7 @@ class TypeFileWriterHadoopFreeTest extends AbstractPlatformTest {
 		].each { codec ->
 			def file = tmp.newFile("${codec}.parquet")
 			def writer = new TypeFileWriter(file.toPath(), mapping, GeoParquetVersion.V2_0, crs, codec, 1000,
-					converter, SimpleLog.NO_LOG)
+					false, converter, SimpleLog.NO_LOG)
 			def it = instances.iterator()
 			try {
 				while (it.hasNext()) {

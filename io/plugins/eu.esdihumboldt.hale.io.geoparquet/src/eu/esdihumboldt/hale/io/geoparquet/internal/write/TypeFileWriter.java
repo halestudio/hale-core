@@ -52,15 +52,17 @@ public class TypeFileWriter implements Closeable {
 	 * @param crs the CRS description per geometry column name
 	 * @param codec the compression codec
 	 * @param rowGroupRowLimit the maximum number of rows per row group
+	 * @param bbox2d if the column bbox in the <code>geo</code> metadata is written
+	 *            as 2D bbox also for geometries with Z values
 	 * @param converter the geometry converter
 	 * @param log the log for reporting problems
 	 * @throws IOException if the file cannot be created
 	 */
 	public TypeFileWriter(Path file, TypeMapping mapping, GeoParquetVersion version,
 			Map<String, GeoParquetCrs> crs, CompressionCodecName codec, int rowGroupRowLimit,
-			GeometryConverter converter, SimpleLog log) throws IOException {
-		InstanceWriteSupport support = new InstanceWriteSupport(mapping, version, crs, converter,
-				log);
+			boolean bbox2d, GeometryConverter converter, SimpleLog log) throws IOException {
+		InstanceWriteSupport support = new InstanceWriteSupport(mapping, version, crs, bbox2d,
+				converter, log);
 		this.writer = new Builder(new LocalOutputFile(file), support)
 				.withConf(new PlainParquetConfiguration())
 				.withCodecFactory(new PureJavaCodecFactory()).withCompressionCodec(codec)

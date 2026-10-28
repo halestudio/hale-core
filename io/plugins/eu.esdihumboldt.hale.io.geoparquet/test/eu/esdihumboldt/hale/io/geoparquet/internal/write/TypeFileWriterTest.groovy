@@ -105,7 +105,7 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		def mapping = new ParquetSchemaMapper(options).map(type(args.mappingSchema ?: schema, typeName), crs, log)
 		def file = tmp.newFile()
 		def writer = new TypeFileWriter(file.toPath(), mapping, version, crs, args.codec ?: CompressionCodecName.ZSTD,
-				args.rowGroupLimit ?: 150000, args.converter ?: IDENTITY, log)
+				args.rowGroupLimit ?: 150000, args.bbox2d ?: false, args.converter ?: IDENTITY, log)
 		try {
 			instances(collection).each { writer.write(it) }
 			assertEquals(instances(collection).size(), writer.rowCount)
@@ -885,7 +885,7 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		def mapping = new ParquetSchemaMapper(MappingOptions.defaults()).map(type(schema, 't'), [:], SimpleLog.NO_LOG)
 		def file = tmp.newFile()
 		file.text = 'existing content'
-		def writer = new TypeFileWriter(file.toPath(), mapping, GeoParquetVersion.V2_0, [:], CompressionCodecName.ZSTD, 100, IDENTITY, SimpleLog.NO_LOG)
+		def writer = new TypeFileWriter(file.toPath(), mapping, GeoParquetVersion.V2_0, [:], CompressionCodecName.ZSTD, 100, false, IDENTITY, SimpleLog.NO_LOG)
 		instances(collection).each { writer.write(it) }
 		writer.close()
 		assertEquals(1, readRows(file).size())
