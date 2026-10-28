@@ -12,9 +12,11 @@
 package eu.esdihumboldt.hale.io.geoparquet.internal.write;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 
@@ -28,6 +30,7 @@ import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
+import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
 import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoColumnStats;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ColumnMapping;
@@ -51,6 +54,9 @@ public class ValueWriter {
 
 	private final LinkedHashMap<String, GeoColumnStats> stats = new LinkedHashMap<>();
 	private final IsoWkbWriter wkbWriter = new IsoWkbWriter();
+
+	/** Geometry columns for which measure values were already reported. */
+	private final Set<String> measuresReported = new HashSet<>();
 
 	private final ValueConverter valueConverter;
 
@@ -287,6 +293,26 @@ public class ValueWriter {
 	}
 
 	/**
+	 * Report (once per column) if the source geometries have measure (M) values,
+	 * which are not written. Checked before the conversion, as a CRS transformation
+	 * drops them.
+	 */
+	private void reportMeasures(ColumnMapping column, List<Object> values) {
+		if (measuresReported.contains(column.getColumnName())) {
+			return;
+		}
+		for (GeometryProperty<?> property : GeometryValues.collect(values)) {
+			Geometry g = property.getGeometry();
+			if (g != null && GeoColumnStats.hasM(g)) {
+				measuresReported.add(column.getColumnName());
+				log.warn("Geometries of column " + column.getColumnName()
+						+ " have measure (M) values, they are not written (only X, Y and Z)");
+				return;
+			}
+		}
+	}
+
+	/**
 	 * Convert the values of a geometry column to a single geometry.
 	 *
 	 * @return the geometry, <code>null</code> if there is no non-empty geometry
@@ -296,6 +322,8 @@ public class ValueWriter {
 		if (target == null) {
 			target = GeoParquetCrs.crs84();
 		}
+
+		reportMeasures(column, values);
 
 		// geometries wherever the values hold them (e.g. below a GML geometry
 		// property), each element of a geometry collection value separately

@@ -24,11 +24,18 @@ import org.apache.parquet.hadoop.metadata.ParquetMetadata
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import org.locationtech.jts.geom.Coordinate
+import org.locationtech.jts.geom.CoordinateXYM
+import org.locationtech.jts.geom.CoordinateXYZM
 import org.locationtech.jts.geom.Geometry
+import org.locationtech.jts.geom.GeometryFactory
+import org.locationtech.jts.geom.impl.PackedCoordinateSequence
 import org.locationtech.jts.io.WKTReader
+import org.locationtech.jts.io.WKTWriter
 
 import eu.esdihumboldt.cst.functions.geometric.GeometryHelperFunctions
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
+import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
 import eu.esdihumboldt.hale.common.instance.model.Instance
@@ -593,6 +600,64 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		// 3D bbox: [xmin, ymin, zmin, xmax, ymax, zmax]
 		assertEquals([0d, 0d, 1d, 4d, 4d, 3d], geoMetadata(file).columns.geometry.bbox*.doubleValue())
 		GeoParquetCompliance.check(file)
+	}
+
+	/**
+	 * Measure (M) values are not written, geometries with M are written as XY
+	 * respectively XYZ; this is reported once per geometry column.
+	 */
+	@Test
+	void testMeasuresAreNotWritten() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				a(GeometryProperty)
+				b(GeometryProperty)
+			}
+		}
+		def factory = new GeometryFactory()
+		def crsDef = new CodeDefinition('EPSG:25832', true)
+		def xym = { double x, double y, double m ->
+			new DefaultGeometryProperty(crsDef, factory.createPoint(new CoordinateXYM(x, y, m)))
+		}
+		// XYZM via a packed sequence with dimension 4 and 1 measure
+		def xyzm = new DefaultGeometryProperty(crsDef, factory.createLineString(
+				new PackedCoordinateSequence.Double([0, 0, 1, 10, 4, 4, 2, 20] as double[], 4, 1)))
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t {
+				a(xym(1, 2, 7))
+				b(xyzm)
+			}
+			t {
+				a(xym(3, 4, 8))
+				b(new DefaultGeometryProperty(crsDef, factory.createLineString(
+						[
+							new CoordinateXYZM(5, 5, 3, 30),
+							new CoordinateXYZM(6, 6, 4, 40)
+						] as Coordinate[])))
+			}
+		}
+		def log = new CollectingLog()
+		def file = write(schema, 't', collection, [geometry: UTM, b: UTM], [log: log])
+		def rows = readRows(file)
+		assertEquals('POINT (1 2)', wkb(rows[0], 'geometry').toText())
+		assertEquals('POINT (3 4)', wkb(rows[1], 'geometry').toText())
+		def wkt3d = new WKTWriter(3)
+		assertEquals('LINESTRING Z(0 0 1, 4 4 2)', wkt3d.write(wkb(rows[0], 'b')))
+		// ISO type code of LineString Z
+		assertEquals(1002, java.nio.ByteBuffer.wrap(rows[0].getBinary('b', 0).bytes, 1, 4).getInt())
+		assertEquals('LINESTRING Z(5 5 3, 6 6 4)', wkt3d.write(wkb(rows[1], 'b')))
+		def geo = geoMetadata(file)
+		assertEquals(['Point'], geo.columns.geometry.geometry_types)
+		assertEquals(['LineString Z'], geo.columns.b.geometry_types)
+		GeoParquetCompliance.check(file)
+
+		// one warning per column
+		assertEquals(log.warnings.toString(), 2, log.warnings.size())
+		['geometry', 'b'].each { column ->
+			def warnings = log.warnings.findAll { it.contains("column $column ") }
+			assertEquals(log.warnings.toString(), 1, warnings.size())
+			assertTrue(warnings[0], warnings[0].contains('(M)'))
+		}
 	}
 
 	@Test

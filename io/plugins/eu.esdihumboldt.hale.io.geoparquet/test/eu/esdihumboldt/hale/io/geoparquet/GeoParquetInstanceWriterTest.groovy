@@ -1044,6 +1044,37 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * Measure (M) values are reported once per column, also if the geometries
+	 * are transformed to another CRS (which drops the measures).
+	 */
+	@Test
+	void testMeasuresAreReported() {
+		[true, false].each { boolean sort ->
+			Schema schema = citySchema()
+			def factory = new org.locationtech.jts.geom.GeometryFactory()
+			def utm = new CodeDefinition('EPSG:25832', true)
+			def instances = new InstanceBuilder(types: schema).createCollection {
+				city {
+					name 'a'
+					location(new eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty(utm,
+							factory.createPoint(new org.locationtech.jts.geom.CoordinateXYZM(400000, 5500000, 100, 7))))
+				}
+				city {
+					name 'b'
+					location(new eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty(utm,
+							factory.createPoint(new org.locationtech.jts.geom.CoordinateXYM(410000, 5510000, 8))))
+				}
+			}
+			File target = new File(tmp.newFolder(), 'cities.parquet')
+			IOReport report = writeInstances(target, schema, instances, { it.setSort(sort) })
+			assertEquals(2, readRows(target).size())
+			def warnings = report.warnings*.message.findAll { it.contains('(M)') }
+			assertEquals(report.warnings*.message.toString(), 1, warnings.size())
+			assertTrue(warnings[0], warnings[0].contains('column geometry '))
+		}
+	}
+
+	/**
 	 * Geometries held as collection of geometry properties (as created by hale's
 	 * GML reader for some geometry types) and below instances of GML-like geometry
 	 * property types: all geometries are combined.
