@@ -1,2 +1,5 @@
 # ignore Explanation files that are processed as templates
 *Explanation*.md
+
+# vendored official JSON schemas (kept verbatim)
+io/plugins/eu.esdihumboldt.hale.io.geoparquet/resources/test/geoparquet-schema/
