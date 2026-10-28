@@ -132,6 +132,39 @@ class GeoParquetComplianceTest extends AbstractPlatformTest {
 	}
 
 	@Test
+	void testDetectsThreeDimensionalBboxFor2dData() {
+		File f = writeRawFile(true, rawGeo([1d, -3d, 0d, 5d, 2d, 0d]))
+		assertFails('column bbox dimensions') { GeoParquetCompliance.check(f) }
+	}
+
+	private static List<Map<String, Object>> rows3d() {
+		[
+			'POINT Z (1 2 7)',
+			'POINT Z (5 -3 -1)'
+		].collect { String wkt ->
+			Geometry g = new WKTReader().read(wkt)
+			[geometry: new WKBWriter(3, true).write(g), bbox: [xmin: g.coordinate.x, ymin: g.coordinate.y, xmax: g.coordinate.x, ymax: g.coordinate.y]] as Map<String, Object>
+		}
+	}
+
+	@Test
+	void testAccepts3dBbox() {
+		GeoParquetCompliance.check(writeRawFile(true, rawGeo([1d, -3d, -1d, 5d, 2d, 7d], ['Point Z']), null, [], rows3d()))
+	}
+
+	@Test
+	void testDetectsTwoDimensionalBboxFor3dData() {
+		File f = writeRawFile(true, rawGeo([1d, -3d, 5d, 2d], ['Point Z']), null, [], rows3d())
+		assertFails('column bbox dimensions') { GeoParquetCompliance.check(f) }
+	}
+
+	@Test
+	void testDetectsWrongZRange() {
+		File f = writeRawFile(true, rawGeo([1d, -3d, -1d, 5d, 2d, 8d], ['Point Z']), null, [], rows3d())
+		assertFails('z range') { GeoParquetCompliance.check(f) }
+	}
+
+	@Test
 	void testDetectsWrongGeometryTypes() {
 		File f = writeRawFile(true, rawGeo([1d, -3d, 5d, 2d], ['Polygon']))
 		assertFails('geometry_types') { GeoParquetCompliance.check(f) }

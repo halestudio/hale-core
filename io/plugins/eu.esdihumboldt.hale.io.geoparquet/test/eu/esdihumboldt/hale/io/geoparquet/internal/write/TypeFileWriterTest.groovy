@@ -40,6 +40,7 @@ import eu.esdihumboldt.hale.common.schema.model.Schema
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition
 import eu.esdihumboldt.hale.common.schema.model.impl.DefaultPropertyDefinition
 import eu.esdihumboldt.hale.io.geoparquet.BigNumberEncoding
+import eu.esdihumboldt.hale.io.geoparquet.GeoParquetCompliance
 import eu.esdihumboldt.hale.io.geoparquet.GeoParquetTestUtil.CollectingLog
 import eu.esdihumboldt.hale.io.geoparquet.GeoParquetVersion
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs
@@ -589,6 +590,9 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		def g = wkb(row, 'geometry')
 		assertEquals(3d, g.coordinates[2].z, 0)
 		assertEquals(['Polygon Z'], geoMetadata(file).columns.geometry.geometry_types)
+		// 3D bbox: [xmin, ymin, zmin, xmax, ymax, zmax]
+		assertEquals([0d, 0d, 1d, 4d, 4d, 3d], geoMetadata(file).columns.geometry.bbox*.doubleValue())
+		GeoParquetCompliance.check(file)
 	}
 
 	@Test

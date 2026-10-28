@@ -79,9 +79,16 @@ public final class GeoMetadataBuilder {
 
 			Envelope extent = columnStats.getExtent();
 			if (extent != null) {
+				// one range per dimension, 3D if any geometry has Z values
 				ArrayNode bbox = column.putArray("bbox");
-				bbox.add(extent.getMinX()).add(extent.getMinY()).add(extent.getMaxX())
-						.add(extent.getMaxY());
+				if (columnStats.hasZ()) {
+					bbox.add(extent.getMinX()).add(extent.getMinY()).add(columnStats.getMinZ())
+							.add(extent.getMaxX()).add(extent.getMaxY()).add(columnStats.getMaxZ());
+				}
+				else {
+					bbox.add(extent.getMinX()).add(extent.getMinY()).add(extent.getMaxX())
+							.add(extent.getMaxY());
+				}
 			}
 
 			if (primaryHasCovering && version.declaresCovering() && name.equals(primaryColumn)) {

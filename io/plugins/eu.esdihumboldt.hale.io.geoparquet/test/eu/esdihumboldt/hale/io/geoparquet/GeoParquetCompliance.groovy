@@ -264,6 +264,10 @@ class GeoParquetCompliance {
 		WKBReader reader = new WKBReader()
 		columns.each { String name, Map column ->
 			Envelope extent = new Envelope()
+			double[] zRange = [
+				Double.POSITIVE_INFINITY,
+				Double.NEGATIVE_INFINITY
+			] as double[]
 			SortedSet<String> types = new TreeSet<>()
 			rows.each { row ->
 				if (row.getFieldRepetitionCount(name) > 0) {
@@ -271,6 +275,12 @@ class GeoParquetCompliance {
 					if (!g.empty) {
 						extent.expandToInclude(g.envelopeInternal)
 						types << typeName(g)
+						g.coordinates.each { c ->
+							if (!Double.isNaN(c.z)) {
+								zRange[0] = Math.min(zRange[0], c.z)
+								zRange[1] = Math.max(zRange[1], c.z)
+							}
+						}
 					}
 				}
 			}
@@ -301,6 +311,17 @@ class GeoParquetCompliance {
 				]
 				if ((0..3).any { Math.abs(xy[it] - expected[it]) > TOLERANCE }) {
 					violation(file, 'column bbox', "column '$name' has bbox $bbox, but the data has extent $expected")
+				}
+
+				// the bbox has a range for each dimension: 3D if any geometry type is 3D
+				boolean threeD = column.geometry_types.any { (it as String).endsWith(' Z') }
+				int expectedSize = threeD ? 6 : 4
+				if (bbox.size() != expectedSize) {
+					violation(file, 'column bbox dimensions', "column '$name' has geometry types ${column.geometry_types}, so the bbox must have $expectedSize values, but has $bbox")
+				}
+				if (threeD && (Math.abs(bbox[2].doubleValue() - zRange[0]) > TOLERANCE
+						|| Math.abs(bbox[5].doubleValue() - zRange[1]) > TOLERANCE)) {
+					violation(file, 'column bbox', "column '$name' has bbox $bbox, but the data has z range ${zRange as List}")
 				}
 			}
 
