@@ -28,6 +28,10 @@ public class GeoColumnStats {
 
 	private final SortedSet<String> geometryTypes = new TreeSet<>();
 
+	private double minZ = Double.NaN;
+
+	private double maxZ = Double.NaN;
+
 	/**
 	 * Add a geometry. Null and empty geometries are ignored.
 	 *
@@ -39,6 +43,50 @@ public class GeoColumnStats {
 		}
 		extent.expandToInclude(g.getEnvelopeInternal());
 		geometryTypes.add(typeName(g));
+		g.apply(new CoordinateSequenceFilter() {
+
+			@Override
+			public void filter(CoordinateSequence seq, int i) {
+				double z = seq.getZ(i);
+				if (!Double.isNaN(z)) {
+					minZ = Double.isNaN(minZ) ? z : Math.min(minZ, z);
+					maxZ = Double.isNaN(maxZ) ? z : Math.max(maxZ, z);
+				}
+			}
+
+			@Override
+			public boolean isDone() {
+				return false;
+			}
+
+			@Override
+			public boolean isGeometryChanged() {
+				return false;
+			}
+		});
+	}
+
+	/**
+	 * @return if any coordinate of the added geometries has a Z value
+	 */
+	public boolean hasZ() {
+		return !Double.isNaN(minZ);
+	}
+
+	/**
+	 * @return the minimum Z value of all coordinates with Z, <code>NaN</code> if
+	 *         there is none
+	 */
+	public double getMinZ() {
+		return minZ;
+	}
+
+	/**
+	 * @return the maximum Z value of all coordinates with Z, <code>NaN</code> if
+	 *         there is none
+	 */
+	public double getMaxZ() {
+		return maxZ;
 	}
 
 	/**
