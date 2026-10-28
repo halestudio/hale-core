@@ -63,6 +63,7 @@ dependencies {
 
   testImplementation testLibs.junit4
   testImplementation testLibs.assertj
+  testImplementation libs.groovy.json
 
   testRuntimeOnly libs.geotools.epsg
 
