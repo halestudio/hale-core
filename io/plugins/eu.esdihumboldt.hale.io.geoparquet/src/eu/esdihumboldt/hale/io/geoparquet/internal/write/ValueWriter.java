@@ -12,9 +12,11 @@
 package eu.esdihumboldt.hale.io.geoparquet.internal.write;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 
@@ -27,11 +29,12 @@ import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
-import eu.esdihumboldt.hale.common.instance.model.Group;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
+import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
 import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoColumnStats;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ColumnMapping;
+import eu.esdihumboldt.hale.io.geoparquet.internal.schema.PropertyPaths;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.TypeMapping;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ValueKind;
 
@@ -51,6 +54,9 @@ public class ValueWriter {
 
 	private final LinkedHashMap<String, GeoColumnStats> stats = new LinkedHashMap<>();
 	private final IsoWkbWriter wkbWriter = new IsoWkbWriter();
+
+	/** Geometry columns for which measure values were already reported. */
+	private final Set<String> measuresReported = new HashSet<>();
 
 	private final ValueConverter valueConverter;
 
@@ -204,32 +210,8 @@ public class ValueWriter {
 		consumer.endGroup();
 	}
 
-	/**
-	 * Find the values of a property path below an instance or group. The returned
-	 * values are not unwrapped, the elements of an empty path is the parent itself.
-	 */
-	private List<Object> lookup(Object parent, List<QName> path) {
-		List<Object> current = List.of(parent);
-		for (QName name : path) {
-			List<Object> next = new ArrayList<>();
-			for (Object o : current) {
-				if (o instanceof Group) {
-					Object[] values = ((Group) o).getProperty(name);
-					if (values != null) {
-						for (Object v : values) {
-							if (v != null) {
-								next.add(v);
-							}
-						}
-					}
-				}
-			}
-			current = next;
-			if (current.isEmpty()) {
-				break;
-			}
-		}
-		return current;
+	private static List<Object> lookup(Object parent, List<QName> path) {
+		return PropertyPaths.findValues(parent, path);
 	}
 
 	static Object unwrap(Object value) {
@@ -311,6 +293,26 @@ public class ValueWriter {
 	}
 
 	/**
+	 * Report (once per column) if the source geometries have measure (M) values,
+	 * which are not written. Checked before the conversion, as a CRS transformation
+	 * drops them.
+	 */
+	private void reportMeasures(ColumnMapping column, List<Object> values) {
+		if (measuresReported.contains(column.getColumnName())) {
+			return;
+		}
+		for (GeometryProperty<?> property : GeometryValues.collect(values)) {
+			Geometry g = property.getGeometry();
+			if (g != null && GeoColumnStats.hasM(g)) {
+				measuresReported.add(column.getColumnName());
+				log.warn("Geometries of column " + column.getColumnName()
+						+ " have measure (M) values, they are not written (only X, Y and Z)");
+				return;
+			}
+		}
+	}
+
+	/**
 	 * Convert the values of a geometry column to a single geometry.
 	 *
 	 * @return the geometry, <code>null</code> if there is no non-empty geometry
@@ -321,31 +323,17 @@ public class ValueWriter {
 			target = GeoParquetCrs.crs84();
 		}
 
-		List<Geometry> geometries = new ArrayList<>();
-		for (Object raw : values) {
-			Object value = unwrap(raw);
-			if (value == null) {
-				continue;
-			}
-			try {
-				Geometry g = converter.convert(value, target, log);
-				if (g != null && !g.isEmpty()) {
-					geometries.add(g);
-				}
-			} catch (RuntimeException e) {
-				log.error("Could not convert geometry of column " + column.getColumnName() + ": "
-						+ e.getMessage(), e);
-			}
-		}
+		reportMeasures(column, values);
 
-		if (geometries.isEmpty()) {
-			return null;
-		}
-		if (geometries.size() == 1) {
-			return geometries.get(0);
-		}
+		// geometries wherever the values hold them (e.g. below a GML geometry
+		// property), each element of a geometry collection value separately
+		List<Geometry> geometries = GeometryValues.convert(values, converter, target, log,
+				"geometry of column " + column.getColumnName());
 
-		Geometry combined = geometries.get(0).getFactory().buildGeometry(geometries);
+		Geometry combined = GeometryValues.combine(geometries);
+		if (combined == null || geometries.size() == 1) {
+			return combined;
+		}
 		if (!combined.getGeometryType().equals(geometries.get(0).getGeometryType())
 				&& valueConverter.firstTime(column, "combined")) {
 			log.warn("Multiple geometries in column " + column.getColumnName()

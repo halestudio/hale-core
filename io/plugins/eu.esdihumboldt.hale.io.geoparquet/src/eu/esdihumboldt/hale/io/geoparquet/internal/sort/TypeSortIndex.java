@@ -17,6 +17,7 @@ import java.util.Map;
 import javax.xml.namespace.QName;
 
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
 
 import eu.esdihumboldt.hale.common.core.report.SimpleLog;
@@ -26,6 +27,7 @@ import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.PropertyPaths;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.TypeMapping;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryConverter;
+import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryValues;
 
 /**
  * Sort index for the instances of one type, using the center of the primary
@@ -64,17 +66,21 @@ public class TypeSortIndex {
 	 * @param ref the reference to the instance
 	 */
 	public void add(Instance instance, InstanceReference ref) {
-		Geometry geometry = null;
+		Envelope envelope = new Envelope();
 		GeoParquetCrs geometryCrs = geometryPath == null ? null : crs.get(geometryColumn);
 		if (geometryCrs != null) {
-			geometry = converter.convert(PropertyPaths.findValue(instance, geometryPath),
-					geometryCrs, SimpleLog.NO_LOG);
+			// all geometries of the primary geometry, as they are combined for writing
+			for (Geometry geometry : GeometryValues.convert(
+					PropertyPaths.findValues(instance, geometryPath), converter, geometryCrs,
+					SimpleLog.NO_LOG)) {
+				envelope.expandToInclude(geometry.getEnvelopeInternal());
+			}
 		}
-		if (geometry == null || geometry.isEmpty()) {
+		if (envelope.isNull()) {
 			index.addWithoutGeometry(ref);
 		}
 		else {
-			Coordinate center = geometry.getEnvelopeInternal().centre();
+			Coordinate center = envelope.centre();
 			index.add(center.x, center.y, ref);
 		}
 	}

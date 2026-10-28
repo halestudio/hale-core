@@ -77,6 +77,11 @@ dependencies {
   // GeoPackage reader and test data for real-world data tests
   testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.geopackage')
 
+  // GML/XSD readers (incl. GML geometry support) for tests with GML application schemas
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml')
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.gml.geometry')
+  testRuntimeOnly project(':io:plugins:eu.esdihumboldt.hale.io.xml')
+
   testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
 
   testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
@@ -97,6 +102,9 @@ dependencies {
 tasks.named('test') {
   // location of the GeoPackage test data of the GeoPackage plugin
   systemProperty 'geoparquet.test.gpkgDir', project(':io:plugins:eu.esdihumboldt.hale.io.geopackage').file('resources/test/testdata').absolutePath
+  // location of GML test data (schemas and instances) of the GML plugin and the instance model plugin
+  systemProperty 'geoparquet.test.gmlDir', project(':io:plugins:eu.esdihumboldt.hale.io.gml').file('resources/test/data').absolutePath
+  systemProperty 'geoparquet.test.instanceDataDir', project(':common:plugins:eu.esdihumboldt.hale.common.instance').file('resources/test/data').absolutePath
 
   filter {
     excludeTestsMatching '*HadoopFreeTest*'

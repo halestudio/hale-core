@@ -28,11 +28,18 @@ import org.apache.parquet.schema.LogicalTypeAnnotation.TimeUnit
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import org.locationtech.jts.geom.Coordinate
+import org.locationtech.jts.geom.CoordinateXYM
+import org.locationtech.jts.geom.CoordinateXYZM
 import org.locationtech.jts.geom.Geometry
+import org.locationtech.jts.geom.GeometryFactory
+import org.locationtech.jts.geom.impl.PackedCoordinateSequence
 import org.locationtech.jts.io.WKTReader
+import org.locationtech.jts.io.WKTWriter
 
 import eu.esdihumboldt.cst.functions.geometric.GeometryHelperFunctions
 import eu.esdihumboldt.hale.common.core.report.SimpleLog
+import eu.esdihumboldt.hale.common.instance.geometry.DefaultGeometryProperty
 import eu.esdihumboldt.hale.common.instance.geometry.impl.CodeDefinition
 import eu.esdihumboldt.hale.common.instance.groovy.InstanceBuilder
 import eu.esdihumboldt.hale.common.instance.model.Instance
@@ -489,6 +496,66 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		assertEquals([1d, 0d, 4d, 0d], geoMetadata(file).columns.geometry.bbox*.doubleValue())
 	}
 
+	/**
+	 * Values written as JSON (beyond the nesting depth) use the same member names
+	 * as the struct mapping: the value of an instance is <code>value</code>, a
+	 * child with that name is suffixed, properties with the same local name in
+	 * different namespaces (also XML attributes) get distinct names. No value is
+	 * lost.
+	 */
+	@Test
+	void testJsonNamesFollowStructMapping() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				inner {
+					box(Double) {
+						value(String)
+						id(String, [XmlAttributeFlag.ENABLED], namespace: 'urn:a')
+						id(Integer)
+						name(String, namespace: 'urn:x')
+						name(String, namespace: 'urn:y')
+					}
+				}
+			}
+		}
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t {
+				inner {
+					box(1.5) {
+						value('child value')
+						id('attribute', namespace: 'urn:a')
+						id(7)
+						name('x', namespace: 'urn:x')
+						name('y', namespace: 'urn:y')
+					}
+				}
+			}
+		}
+		// struct mapping
+		def struct = readRows(write(schema, 't', collection))[0].getGroup('inner', 0).getGroup('box', 0)
+		def structNames = struct.getType().getFields().collect { it.getName() }
+		assertEquals([
+			'value',
+			'value_2',
+			'attr_id',
+			'id',
+			'name',
+			'name_2'
+		], structNames)
+
+		// JSON fallback
+		def options = new MappingOptions(GeoParquetVersion.V2_0, 1, BigNumberEncoding.STRING, 9)
+		def row = readRows(write(schema, 't', collection, [:], [options: options]))[0]
+		def json = new groovy.json.JsonSlurper().parseText(row.getGroup('inner', 0).getString('box', 0))
+		assertEquals(structNames as Set, json.keySet())
+		assertEquals(1.5d, json.value as double, 0d)
+		assertEquals('child value', json.value_2)
+		assertEquals('attribute', json.attr_id)
+		assertEquals(7, json.id)
+		assertEquals('x', json.name)
+		assertEquals('y', json.name_2)
+	}
+
 	@Test
 	void testJsonOmitsPrimaryGeometry() {
 		Schema schema = new SchemaBuilder().schema {
@@ -609,6 +676,64 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		// 3D bbox: [xmin, ymin, zmin, xmax, ymax, zmax]
 		assertEquals([0d, 0d, 1d, 4d, 4d, 3d], geoMetadata(file).columns.geometry.bbox*.doubleValue())
 		GeoParquetCompliance.check(file)
+	}
+
+	/**
+	 * Measure (M) values are not written, geometries with M are written as XY
+	 * respectively XYZ; this is reported once per geometry column.
+	 */
+	@Test
+	void testMeasuresAreNotWritten() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				a(GeometryProperty)
+				b(GeometryProperty)
+			}
+		}
+		def factory = new GeometryFactory()
+		def crsDef = new CodeDefinition('EPSG:25832', true)
+		def xym = { double x, double y, double m ->
+			new DefaultGeometryProperty(crsDef, factory.createPoint(new CoordinateXYM(x, y, m)))
+		}
+		// XYZM via a packed sequence with dimension 4 and 1 measure
+		def xyzm = new DefaultGeometryProperty(crsDef, factory.createLineString(
+				new PackedCoordinateSequence.Double([0, 0, 1, 10, 4, 4, 2, 20] as double[], 4, 1)))
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t {
+				a(xym(1, 2, 7))
+				b(xyzm)
+			}
+			t {
+				a(xym(3, 4, 8))
+				b(new DefaultGeometryProperty(crsDef, factory.createLineString(
+						[
+							new CoordinateXYZM(5, 5, 3, 30),
+							new CoordinateXYZM(6, 6, 4, 40)
+						] as Coordinate[])))
+			}
+		}
+		def log = new CollectingLog()
+		def file = write(schema, 't', collection, [geometry: UTM, b: UTM], [log: log])
+		def rows = readRows(file)
+		assertEquals('POINT (1 2)', wkb(rows[0], 'geometry').toText())
+		assertEquals('POINT (3 4)', wkb(rows[1], 'geometry').toText())
+		def wkt3d = new WKTWriter(3)
+		assertEquals('LINESTRING Z(0 0 1, 4 4 2)', wkt3d.write(wkb(rows[0], 'b')))
+		// ISO type code of LineString Z
+		assertEquals(1002, java.nio.ByteBuffer.wrap(rows[0].getBinary('b', 0).bytes, 1, 4).getInt())
+		assertEquals('LINESTRING Z(5 5 3, 6 6 4)', wkt3d.write(wkb(rows[1], 'b')))
+		def geo = geoMetadata(file)
+		assertEquals(['Point'], geo.columns.geometry.geometry_types)
+		assertEquals(['LineString Z'], geo.columns.b.geometry_types)
+		GeoParquetCompliance.check(file)
+
+		// one warning per column
+		assertEquals(log.warnings.toString(), 2, log.warnings.size())
+		['geometry', 'b'].each { column ->
+			def warnings = log.warnings.findAll { it.contains("column $column ") }
+			assertEquals(log.warnings.toString(), 1, warnings.size())
+			assertTrue(warnings[0], warnings[0].contains('(M)'))
+		}
 	}
 
 	@Test

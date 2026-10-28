@@ -142,4 +142,34 @@ public class GeoColumnStats {
 		return found[0];
 	}
 
+	/**
+	 * Determine if a geometry has measure (M) values.
+	 *
+	 * @param g the geometry
+	 * @return if any coordinate of the geometry has a measure value
+	 */
+	public static boolean hasM(Geometry g) {
+		boolean[] found = new boolean[1];
+		g.apply(new CoordinateSequenceFilter() {
+
+			@Override
+			public void filter(CoordinateSequence seq, int i) {
+				if (seq.hasM() && !Double.isNaN(seq.getM(i))) {
+					found[0] = true;
+				}
+			}
+
+			@Override
+			public boolean isDone() {
+				return found[0];
+			}
+
+			@Override
+			public boolean isGeometryChanged() {
+				return false;
+			}
+		});
+		return found[0];
+	}
+
 }

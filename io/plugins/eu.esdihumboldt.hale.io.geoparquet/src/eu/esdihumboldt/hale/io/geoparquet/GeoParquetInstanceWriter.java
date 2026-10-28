@@ -48,6 +48,7 @@ import eu.esdihumboldt.hale.common.instance.model.InstanceCollection;
 import eu.esdihumboldt.hale.common.instance.model.InstanceReference;
 import eu.esdihumboldt.hale.common.instance.model.ResourceIterator;
 import eu.esdihumboldt.hale.common.schema.geometry.CRSDefinition;
+import eu.esdihumboldt.hale.common.schema.geometry.GeometryProperty;
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
 import eu.esdihumboldt.hale.common.schema.model.TypeDefinition;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryMetadata;
@@ -60,6 +61,7 @@ import eu.esdihumboldt.hale.io.geoparquet.internal.schema.TypeMapping;
 import eu.esdihumboldt.hale.io.geoparquet.internal.sort.TypeSortIndex;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryConverter;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryReprojector;
+import eu.esdihumboldt.hale.io.geoparquet.internal.write.GeometryValues;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.TypeFileWriter;
 import eu.esdihumboldt.hale.io.geoparquet.internal.write.TypeOutputs;
 import eu.esdihumboldt.util.Pair;
@@ -74,10 +76,14 @@ import eu.esdihumboldt.util.Pair;
  * file name.
  * <p>
  * Geometries in top-level geometry properties are written as WKB in the CRS of
- * the respective column and as lon/lat for geographic CRS. Geometries in nested
- * properties are written as WKT and geometries embedded in JSON columns are
- * written as GeoJSON-like JSON, in both cases in their source CRS (no
- * conversion).
+ * the respective column and as lon/lat for geographic CRS. The primary geometry
+ * is the geometry property with the shortest path, even if nested; it is moved
+ * to the <code>geometry</code> column. Properties of GML geometry property
+ * types (e.g. <code>gml:GeometryPropertyType</code>) are written as geometries,
+ * <code>gml:boundedBy</code> is not written and <code>gml:location</code> is
+ * only used as primary geometry if there is no other geometry. Geometries in
+ * nested properties and embedded in JSON columns are written as WKT, in both
+ * cases in their source CRS (no conversion).
  *
  * @author Simon Templer
  */
@@ -668,12 +674,15 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			}
 			for (Map.Entry<String, PendingColumn> entry : new ArrayList<>(pending.entrySet())) {
 				PendingColumn column = entry.getValue();
-				Pair<Geometry, CRSDefinition> pair = extractGeometry(
-						PropertyPaths.findValue(instance, column.path()), false, reporter);
-				if (pair != null && pair.getFirst() != null) {
-					List<CRSDefinition> candidates = new ArrayList<>(column.candidates());
-					candidates.add(pair.getSecond());
-					resolve(entry.getKey(), type, candidates);
+				for (GeometryProperty<?> geometry : GeometryValues
+						.collect(PropertyPaths.findValues(instance, column.path()))) {
+					Pair<Geometry, CRSDefinition> pair = extractGeometry(geometry, false, reporter);
+					if (pair != null && pair.getFirst() != null) {
+						List<CRSDefinition> candidates = new ArrayList<>(column.candidates());
+						candidates.add(pair.getSecond());
+						resolve(entry.getKey(), type, candidates);
+						break;
+					}
 				}
 			}
 		}
