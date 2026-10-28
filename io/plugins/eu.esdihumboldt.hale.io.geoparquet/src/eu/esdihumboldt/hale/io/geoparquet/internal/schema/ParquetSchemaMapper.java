@@ -11,17 +11,8 @@
  */
 package eu.esdihumboldt.hale.io.geoparquet.internal.schema;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.net.URI;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +22,6 @@ import javax.xml.namespace.QName;
 
 import org.apache.parquet.schema.ColumnOrder;
 import org.apache.parquet.schema.LogicalTypeAnnotation;
-import org.apache.parquet.schema.LogicalTypeAnnotation.TimeUnit;
 import org.apache.parquet.schema.MessageType;
 import org.apache.parquet.schema.PrimitiveType.PrimitiveTypeName;
 import org.apache.parquet.schema.Type;
@@ -47,6 +37,7 @@ import eu.esdihumboldt.hale.common.schema.model.constraint.type.Binding;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.GeometryType;
 import eu.esdihumboldt.hale.common.schema.model.constraint.type.HasValueFlag;
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
+import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
 
 /**
  * Maps hale type definitions to Parquet schemas.
@@ -59,11 +50,9 @@ public class ParquetSchemaMapper {
 	 */
 	private static final int MAX_GEOMETRY_SEARCH_DEPTH = 32;
 
-	private static final int DECIMAL_PRECISION = 38;
-
-	private static final int DECIMAL_BYTES = 16;
-
 	private final MappingOptions options;
+
+	private final ParquetFieldFactory fieldFactory;
 
 	/**
 	 * Create a schema mapper.
@@ -72,6 +61,7 @@ public class ParquetSchemaMapper {
 	 */
 	public ParquetSchemaMapper(MappingOptions options) {
 		this.options = options;
+		this.fieldFactory = new ParquetFieldFactory(options);
 	}
 
 	/**
@@ -100,215 +90,197 @@ public class ParquetSchemaMapper {
 		List<QName> primaryPath = findPrimaryGeometryPath(type);
 
 		MappingContext ctx = new MappingContext(geometryCrs, log, primaryPath);
+		Set<String> reserved = new HashSet<>();
 		if (primaryPath != null) {
-			// reserve names
-			ctx.usedNames.add(TypeMapping.BBOX_COLUMN);
-			ctx.usedNames.add(TypeMapping.PRIMARY_GEOMETRY_COLUMN);
+			reserved.add(TypeMapping.BBOX_COLUMN);
+			reserved.add(TypeMapping.PRIMARY_GEOMETRY_COLUMN);
 		}
 
-		mapChildren(DefinitionUtil.getAllChildren(type), List.of(), true, ctx);
+		Scope scope = mapScope(DefinitionUtil.getAllChildren(type), List.of(), 1, List.of(type),
+				reserved, ctx);
 
-		List<Type> fields = new ArrayList<>(ctx.fields);
+		List<Type> fields = new ArrayList<>(scope.fields());
+		List<ColumnMapping> columns = new ArrayList<>(scope.columns());
 		List<String> geometryColumns = new ArrayList<>();
 		if (primaryPath != null) {
 			fields.add(createBbox());
 			fields.add(createGeometryField(TypeMapping.PRIMARY_GEOMETRY_COLUMN, ctx));
-			ctx.columns.add(new ColumnMapping(TypeMapping.PRIMARY_GEOMETRY_COLUMN, primaryPath,
-					false, true, ValueKind.WKB, 0));
+			columns.add(new ColumnMapping(TypeMapping.PRIMARY_GEOMETRY_COLUMN, primaryPath, false,
+					true, ValueKind.WKB, 0));
 			geometryColumns.add(TypeMapping.PRIMARY_GEOMETRY_COLUMN);
 		}
 		geometryColumns.addAll(ctx.secondaryGeometryColumns);
 
 		String messageName = type.getName().getLocalPart();
 		MessageType schema = new MessageType(messageName, fields);
-		return new TypeMapping(type, schema, ctx.columns, geometryColumns, primaryPath,
+		return new TypeMapping(type, schema, columns, geometryColumns, primaryPath,
 				primaryPath != null);
 	}
 
 	/**
-	 * Map a collection of child definitions. Groups and choices are flattened into
-	 * the parent.
-	 *
-	 * @param children the children
-	 * @param path the property path of the parent
-	 * @param topLevel if the children are on top level (not inside a struct)
-	 * @param ctx the mapping context
+	 * The result of mapping the properties of a type or struct.
 	 */
-	private void mapChildren(Collection<? extends ChildDefinition<?>> children, List<QName> path,
-			boolean topLevel, MappingContext ctx) {
-		for (ChildDefinition<?> child : children) {
-			if (child.asGroup() != null) {
-				mapChildren(DefinitionUtil.getAllChildren(child.asGroup()),
-						append(path, child.getName()), topLevel, ctx);
-			}
-			else {
-				mapProperty(child.asProperty(), path, topLevel, ctx);
-			}
-		}
+	private record Scope(List<Type> fields, List<ColumnMapping> columns) {
 	}
 
 	/**
-	 * Map a single property. The generated field and column mapping are added to
-	 * the context.
+	 * Map the children of a type or struct. Groups and choices are flattened into
+	 * the parent.
 	 *
-	 * @param property the property
-	 * @param parentPath the property path of the parent
-	 * @param topLevel if the property is on top level (not inside a struct)
+	 * @param children the children
+	 * @param basePath the absolute property path of the struct, empty on top level
+	 * @param depth the nesting depth of the properties (1 on top level)
+	 * @param typePath the types of the enclosing structs, including the current
+	 * @param reserved field names that must not be used
 	 * @param ctx the mapping context
+	 * @return the fields and column mappings
 	 */
-	private void mapProperty(PropertyDefinition property, List<QName> parentPath, boolean topLevel,
-			MappingContext ctx) {
-		List<QName> path = append(parentPath, property.getName());
-		TypeDefinition propType = property.getPropertyType();
+	private Scope mapScope(Collection<? extends ChildDefinition<?>> children, List<QName> basePath,
+			int depth, List<TypeDefinition> typePath, Set<String> reserved, MappingContext ctx) {
+		List<PropertyEntry> all = new ArrayList<>();
+		collectProperties(children, List.of(), false, all);
 
+		// names are only allocated for properties that become fields
+		List<PropertyEntry> entries = all.stream()
+				.filter(e -> producesField(e, basePath, depth, typePath, ctx)).toList();
+		List<ColumnNameAllocator.Candidate> candidates = entries.stream()
+				.map(e -> new ColumnNameAllocator.Candidate(e.property().getName(),
+						e.property().getConstraint(XmlAttributeFlag.class).isEnabled()))
+				.toList();
+		List<String> names = ColumnNameAllocator.allocate(candidates, reserved, ctx.log);
+
+		List<Type> fields = new ArrayList<>();
+		List<ColumnMapping> columns = new ArrayList<>();
+		for (int i = 0; i < entries.size(); i++) {
+			mapProperty(entries.get(i), names.get(i), basePath, depth, typePath, fields, columns,
+					ctx);
+		}
+		return new Scope(fields, columns);
+	}
+
+	private boolean hasValue(TypeDefinition type) {
+		return type.getConstraint(HasValueFlag.class).isEnabled()
+				|| type.getConstraint(AugmentedValueFlag.class).isEnabled();
+	}
+
+	/**
+	 * Determine if a complex property is written as JSON, because of the nesting
+	 * depth limit or because its type is recursive.
+	 */
+	private boolean isJson(TypeDefinition propType, int depth, List<TypeDefinition> typePath) {
+		return depth > options.nestingDepth() || typePath.contains(propType);
+	}
+
+	/**
+	 * Determine if a property results in a field.
+	 */
+	private boolean producesField(PropertyEntry entry, List<QName> basePath, int depth,
+			List<TypeDefinition> typePath, MappingContext ctx) {
+		List<QName> path = append(basePath, entry.path());
 		if (path.equals(ctx.primaryPath)) {
 			// moved to the primary geometry column
-			return;
+			return false;
 		}
+		TypeDefinition propType = entry.property().getPropertyType();
+		if (propType.getConstraint(GeometryType.class).isGeometry()) {
+			return true;
+		}
+		if (DefinitionUtil.hasChildren(propType)) {
+			if (hasValue(propType) || isJson(propType, depth, typePath)) {
+				return true;
+			}
+			List<TypeDefinition> childTypePath = append(typePath, propType);
+			List<PropertyEntry> childEntries = new ArrayList<>();
+			collectProperties(DefinitionUtil.getAllChildren(propType), List.of(), false,
+					childEntries);
+			return childEntries.stream()
+					.anyMatch(e -> producesField(e, path, depth + 1, childTypePath, ctx));
+		}
+		return hasValue(propType);
+	}
 
-		String name = ctx.uniqueName(property.getName().getLocalPart());
+	/**
+	 * Map a single property. The generated fields and column mappings are added to
+	 * the given lists.
+	 */
+	private void mapProperty(PropertyEntry entry, String name, List<QName> basePath, int depth,
+			List<TypeDefinition> typePath, List<Type> fields, List<ColumnMapping> columns,
+			MappingContext ctx) {
+		PropertyDefinition property = entry.property();
+		List<QName> path = entry.path();
+		TypeDefinition propType = property.getPropertyType();
+		boolean repeated = entry.repeatedGroup()
+				|| DefinitionUtil.getCardinality(property).mayOccurMultipleTimes();
 
 		if (propType.getConstraint(GeometryType.class).isGeometry()) {
-			if (topLevel) {
-				ctx.fields.add(createGeometryField(name, ctx));
-				ctx.columns.add(new ColumnMapping(name, path, false, true, ValueKind.WKB, 0));
+			if (depth == 1) {
+				fields.add(createGeometryField(name, ctx));
+				columns.add(new ColumnMapping(name, path, false, true, ValueKind.WKB, 0));
 				ctx.secondaryGeometryColumns.add(name);
 			}
 			else {
-				// nested geometries are written as WKT (not yet supported)
-				ctx.usedNames.remove(name);
-				ctx.log.warn("Skipping nested geometry property {0}", path);
+				addValue(name, path, repeated, ValueKind.WKT, 0, fields, columns);
 			}
 			return;
 		}
 
-		if (!propType.getConstraint(HasValueFlag.class).isEnabled()
-				&& !propType.getConstraint(AugmentedValueFlag.class).isEnabled()) {
-			// complex property without value (structs are not yet supported)
-			ctx.usedNames.remove(name);
-			ctx.log.warn("Skipping complex property {0} without value", path);
+		if (DefinitionUtil.hasChildren(propType)) {
+			if (isJson(propType, depth, typePath)) {
+				ctx.log.info("Property {0} is written as JSON string", append(basePath, path));
+				addValue(name, path, repeated, ValueKind.JSON, 0, fields, columns);
+				return;
+			}
+			mapStruct(property, name, path, repeated, basePath, depth, typePath, fields, columns,
+					ctx);
 			return;
 		}
 
 		Class<?> binding = propType.getConstraint(Binding.class).getBinding();
-		ValueKind kind = determineValueKind(binding);
-		int scale = decimalScale(kind, binding);
-		boolean repeated = DefinitionUtil.getCardinality(property).mayOccurMultipleTimes();
-
-		ctx.fields.add(createField(name, kind, scale, repeated));
-		ctx.columns.add(new ColumnMapping(name, path, repeated, true, kind, scale));
+		ValueKind kind = fieldFactory.determineValueKind(binding);
+		addValue(name, path, repeated, kind, fieldFactory.decimalScale(kind, binding), fields,
+				columns);
 	}
 
-	private int decimalScale(ValueKind kind, Class<?> binding) {
-		if (kind != ValueKind.DECIMAL) {
-			return 0;
-		}
-		return BigInteger.class.equals(binding) ? 0 : options.decimalScale();
+	private void addValue(String name, List<QName> path, boolean repeated, ValueKind kind,
+			int scale, List<Type> fields, List<ColumnMapping> columns) {
+		fields.add(fieldFactory.createField(name, kind, scale, repeated));
+		columns.add(new ColumnMapping(name, path, repeated, true, kind, scale));
 	}
 
 	/**
-	 * Determine the kind of value for a binding.
-	 *
-	 * @param binding the property binding, may be <code>null</code>
-	 * @return the value kind
+	 * Map a complex property to a struct (or list of structs).
 	 */
-	private ValueKind determineValueKind(Class<?> binding) {
-		if (binding == null || String.class.equals(binding) || URI.class.equals(binding)) {
-			return ValueKind.STRING;
-		}
-		if (Boolean.class.equals(binding)) {
-			return ValueKind.BOOLEAN;
-		}
-		if (Byte.class.equals(binding) || Short.class.equals(binding)
-				|| Integer.class.equals(binding)) {
-			return ValueKind.INT32;
-		}
-		if (Long.class.equals(binding)) {
-			return ValueKind.INT64;
-		}
-		if (Float.class.equals(binding)) {
-			return ValueKind.FLOAT;
-		}
-		if (Double.class.equals(binding)) {
-			return ValueKind.DOUBLE;
-		}
-		if (BigInteger.class.equals(binding) || BigDecimal.class.equals(binding)) {
-			return switch (options.bigNumberEncoding()) {
-			case DOUBLE -> ValueKind.DOUBLE;
-			case DECIMAL -> ValueKind.DECIMAL;
-			case STRING -> ValueKind.DECIMAL_AS_STRING;
-			};
-		}
-		if (LocalDate.class.equals(binding) || java.sql.Date.class.equals(binding)) {
-			return ValueKind.DATE;
-		}
-		if (LocalTime.class.equals(binding) || java.sql.Time.class.equals(binding)) {
-			return ValueKind.TIME_MILLIS;
-		}
-		if (Instant.class.equals(binding) || LocalDateTime.class.equals(binding)
-				|| Date.class.isAssignableFrom(binding)
-				|| Calendar.class.isAssignableFrom(binding)) {
-			return ValueKind.TIMESTAMP_MILLIS;
-		}
-		if (byte[].class.equals(binding)) {
-			return ValueKind.BINARY;
-		}
-		return ValueKind.STRING;
-	}
+	private void mapStruct(PropertyDefinition property, String name, List<QName> path,
+			boolean repeated, List<QName> basePath, int depth, List<TypeDefinition> typePath,
+			List<Type> fields, List<ColumnMapping> columns, MappingContext ctx) {
+		TypeDefinition propType = property.getPropertyType();
+		List<Type> childFields = new ArrayList<>();
+		List<ColumnMapping> childColumns = new ArrayList<>();
+		Set<String> reserved = new HashSet<>();
 
-	/**
-	 * Create the Parquet field for a column with values.
-	 *
-	 * @param name the field name
-	 * @param kind the value kind
-	 * @param scale the decimal scale
-	 * @param repeated if the field is a list
-	 * @return the field
-	 */
-	private Type createField(String name, ValueKind kind, int scale, boolean repeated) {
-		LogicalTypeAnnotation annotation = annotation(kind, scale);
-		int length = kind == ValueKind.DECIMAL ? DECIMAL_BYTES : 0;
+		if (hasValue(propType)) {
+			Class<?> binding = propType.getConstraint(Binding.class).getBinding();
+			ValueKind kind = fieldFactory.determineValueKind(binding);
+			int scale = fieldFactory.decimalScale(kind, binding);
+			addValue(ColumnMapping.VALUE_FIELD, List.of(), false, kind, scale, childFields,
+					childColumns);
+			reserved.add(ColumnMapping.VALUE_FIELD);
+		}
+
+		Scope scope = mapScope(DefinitionUtil.getAllChildren(propType), append(basePath, path),
+				depth + 1, append(typePath, propType), reserved, ctx);
+		childFields.addAll(scope.fields());
+		childColumns.addAll(scope.columns());
+
 		if (repeated) {
-			var element = Types.optionalList().optionalElement(primitiveName(kind));
-			if (annotation != null) {
-				element = element.as(annotation);
-			}
-			if (length > 0) {
-				element = element.length(length);
-			}
-			return element.named(name);
+			fields.add(Types.optionalList().groupElement(Type.Repetition.OPTIONAL)
+					.addFields(childFields.toArray(new Type[0])).named(name));
 		}
-		var builder = Types.optional(primitiveName(kind));
-		if (annotation != null) {
-			builder = builder.as(annotation);
+		else {
+			fields.add(
+					Types.optionalGroup().addFields(childFields.toArray(new Type[0])).named(name));
 		}
-		if (length > 0) {
-			builder = builder.length(length);
-		}
-		return builder.named(name);
-	}
-
-	private LogicalTypeAnnotation annotation(ValueKind kind, int scale) {
-		return switch (kind) {
-		case STRING, DECIMAL_AS_STRING, JSON, WKT -> LogicalTypeAnnotation.stringType();
-		case DATE -> LogicalTypeAnnotation.dateType();
-		case TIMESTAMP_MILLIS -> LogicalTypeAnnotation.timestampType(true, TimeUnit.MILLIS);
-		case TIME_MILLIS -> LogicalTypeAnnotation.timeType(true, TimeUnit.MILLIS);
-		case DECIMAL -> LogicalTypeAnnotation.decimalType(scale, DECIMAL_PRECISION);
-		default -> null;
-		};
-	}
-
-	private PrimitiveTypeName primitiveName(ValueKind kind) {
-		return switch (kind) {
-		case BOOLEAN -> PrimitiveTypeName.BOOLEAN;
-		case INT32, DATE, TIME_MILLIS -> PrimitiveTypeName.INT32;
-		case INT64, TIMESTAMP_MILLIS -> PrimitiveTypeName.INT64;
-		case FLOAT -> PrimitiveTypeName.FLOAT;
-		case DOUBLE -> PrimitiveTypeName.DOUBLE;
-		case DECIMAL -> PrimitiveTypeName.FIXED_LEN_BYTE_ARRAY;
-		case STRING, BINARY, DECIMAL_AS_STRING, WKB, WKT, JSON -> PrimitiveTypeName.BINARY;
-		};
+		columns.add(new ColumnMapping(name, path, repeated, true, childColumns));
 	}
 
 	/**
@@ -357,7 +329,8 @@ public class ParquetSchemaMapper {
 			for (Node node : level) {
 				// flatten groups, keep definition order
 				List<PropertyEntry> props = new ArrayList<>();
-				collectProperties(DefinitionUtil.getAllChildren(node.type()), node.path(), props);
+				collectProperties(DefinitionUtil.getAllChildren(node.type()), node.path(), false,
+						props);
 				for (PropertyEntry entry : props) {
 					TypeDefinition propType = entry.property().getPropertyType();
 					if (propType.getConstraint(GeometryType.class).isGeometry()) {
@@ -373,25 +346,42 @@ public class ParquetSchemaMapper {
 		return null;
 	}
 
-	private record PropertyEntry(PropertyDefinition property, List<QName> path) {
+	/**
+	 * A property found below a type or struct.
+	 *
+	 * @param property the property
+	 * @param path the property path from the type or struct, including group names
+	 * @param repeatedGroup if the property is inside a repeated group or choice
+	 */
+	private record PropertyEntry(PropertyDefinition property, List<QName> path,
+			boolean repeatedGroup) {
 	}
 
 	private void collectProperties(Collection<? extends ChildDefinition<?>> children,
-			List<QName> path, List<PropertyEntry> result) {
+			List<QName> path, boolean repeatedGroup, List<PropertyEntry> result) {
 		for (ChildDefinition<?> child : children) {
 			if (child.asGroup() != null) {
+				boolean repeated = repeatedGroup
+						|| DefinitionUtil.getCardinality(child).mayOccurMultipleTimes();
 				collectProperties(DefinitionUtil.getAllChildren(child.asGroup()),
-						append(path, child.getName()), result);
+						append(path, child.getName()), repeated, result);
 			}
 			else {
-				result.add(new PropertyEntry(child.asProperty(), append(path, child.getName())));
+				result.add(new PropertyEntry(child.asProperty(), append(path, child.getName()),
+						repeatedGroup));
 			}
 		}
 	}
 
-	private static List<QName> append(List<QName> path, QName name) {
+	private static <T> List<T> append(List<T> path, T element) {
+		List<T> result = new ArrayList<>(path);
+		result.add(element);
+		return result;
+	}
+
+	private static List<QName> append(List<QName> path, List<QName> more) {
 		List<QName> result = new ArrayList<>(path);
-		result.add(name);
+		result.addAll(more);
 		return result;
 	}
 
@@ -404,9 +394,6 @@ public class ParquetSchemaMapper {
 		final SimpleLog log;
 		final List<QName> primaryPath;
 
-		final Set<String> usedNames = new HashSet<>();
-		final List<Type> fields = new ArrayList<>();
-		final List<ColumnMapping> columns = new ArrayList<>();
 		final List<String> secondaryGeometryColumns = new ArrayList<>();
 
 		MappingContext(Map<String, GeoParquetCrs> geometryCrs, SimpleLog log,
@@ -414,21 +401,6 @@ public class ParquetSchemaMapper {
 			this.geometryCrs = geometryCrs;
 			this.log = log;
 			this.primaryPath = primaryPath;
-		}
-
-		/**
-		 * Reserve a unique column name based on the given name.
-		 */
-		String uniqueName(String base) {
-			String name = base;
-			int i = 2;
-			while (!usedNames.add(name)) {
-				name = base + "_" + i++;
-			}
-			if (!name.equals(base)) {
-				log.warn("Column name {0} is already used, using {1} instead", base, name);
-			}
-			return name;
 		}
 	}
 

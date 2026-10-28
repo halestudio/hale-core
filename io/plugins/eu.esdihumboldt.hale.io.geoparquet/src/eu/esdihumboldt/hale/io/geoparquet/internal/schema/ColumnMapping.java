@@ -20,6 +20,12 @@ import javax.xml.namespace.QName;
  */
 public final class ColumnMapping {
 
+	/**
+	 * Name of the struct field holding the value of a property that has both a
+	 * value and child properties.
+	 */
+	public static final String VALUE_FIELD = "value";
+
 	private final String columnName;
 	private final List<QName> propertyPath;
 	private final boolean repeated;
