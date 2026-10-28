@@ -1198,4 +1198,108 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		assertEquals(['Darmstadt', 'München'], readRows(target)*.getString('name', 0))
 		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') })
 	}
+
+	/**
+	 * Streaming: more leading instances without geometry than can be buffered.
+	 * The file is opened when the buffer is full, before the CRS is known: the
+	 * CRS is unknown (with a warning) and later geometries are written as they
+	 * are. Input order is preserved.
+	 */
+	@Test
+	void testStreamingBufferFull() {
+		Schema schema = crsFromLaterFeatureSchema()
+		int leading = 1005
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			(0..<leading).each { int i ->
+				feature { id(i) }
+			}
+			feature {
+				id(leading)
+				geom(createGeometry('POINT(8 50)', new CodeDefinition('EPSG:4326', true)))
+			}
+			feature {
+				id(leading + 1)
+				geom(createGeometry('POINT(9 51)', new CodeDefinition('EPSG:4326', true)))
+			}
+		}
+		File target = new File(tmp.newFolder(), 'features.parquet')
+		// spatial ordering cannot be evaluated by Portolan with mostly empty geometries (info)
+		IOReport report = writeInstances(target, schema, instances, { it.setSort(false) }, true, ['PTL-DAT-006'])
+
+		def rows = readRows(target)
+		assertEquals((0..(leading + 1)).toList(), rows.collect { it.getInteger('id', 0) })
+		def geo = geoMetadata(target)
+		assertTrue(geo.columns.geometry.containsKey('crs'))
+		assertNull(geo.columns.geometry.crs)
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('Could not determine the CRS') })
+		assertEquals('POINT (8 50)', wkb(rows[leading], 'geometry').toText())
+		assertEquals('POINT (9 51)', wkb(rows[leading + 1], 'geometry').toText())
+	}
+
+	/**
+	 * Streaming with interleaved types: each type is buffered until its first
+	 * geometry independently of the others, a type still pending when the input
+	 * ends is written at the end (plain Parquet, as no geometry was seen).
+	 */
+	@Test
+	void testStreamingInterleavedTypes() {
+		Schema schema = new SchemaBuilder().schema {
+			a {
+				id(Integer)
+				geom(GeometryProperty)
+			}
+			b {
+				id(Integer)
+				geom(GeometryProperty)
+			}
+			c {
+				id(Integer)
+				geom(GeometryProperty)
+			}
+		}
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			a { id(1) }
+			c { id(1) }
+			b { id(1) }
+			a {
+				id(2)
+				geom(createGeometry('POINT(400000 5800000)', new CodeDefinition('EPSG:25832', true)))
+			}
+			b { id(2) }
+			c { id(2) }
+			a { id(3) }
+			b {
+				id(3)
+				geom(createGeometry('POINT(1000000 6600000)', new CodeDefinition('EPSG:3857', true)))
+			}
+			a {
+				id(4)
+				geom(createGeometry('POINT(410000 5810000)', new CodeDefinition('EPSG:25832', true)))
+			}
+			b { id(4) }
+			c { id(3) }
+		}
+		File dir = tmp.newFolder()
+		IOReport report = writeInstances(new File(dir, 'out.parquet'), schema, instances, { it.setSort(false) }, false)
+
+		File a = new File(dir, 'out_a.parquet')
+		File b = new File(dir, 'out_b.parquet')
+		File c = new File(dir, 'out_c.parquet')
+		// input order per type
+		assertEquals([1, 2, 3, 4], readRows(a).collect { it.getInteger('id', 0) })
+		assertEquals([1, 2, 3, 4], readRows(b).collect { it.getInteger('id', 0) })
+		assertEquals([1, 2, 3], readRows(c).collect { it.getInteger('id', 0) })
+		// CRS of the first geometry of each type
+		assertEquals(25832, geoMetadata(a).columns.geometry.crs.id.code)
+		assertEquals(3857, geoMetadata(b).columns.geometry.crs.id.code)
+		assertEquals('POINT (400000 5800000)', wkb(readRows(a)[1], 'geometry').toText())
+		assertEquals('POINT (1000000 6600000)', wkb(readRows(b)[2], 'geometry').toText())
+		[a, b].each { ExternalValidators.check(it) }
+
+		// pending until the end: no geometry, plain Parquet (see
+		// testGeometryColumnWithoutValuesStreaming)
+		assertNull(geoMetadata(c))
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') && it.message.contains(' c ') })
+		ExternalValidators.check(c)
+	}
 }
