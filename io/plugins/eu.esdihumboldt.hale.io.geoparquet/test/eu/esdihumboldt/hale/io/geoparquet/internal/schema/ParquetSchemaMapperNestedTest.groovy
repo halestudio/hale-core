@@ -312,4 +312,125 @@ class ParquetSchemaMapperNestedTest extends AbstractPlatformTest {
 		assertEquals('urn:y', col(m, 'name_3').propertyPath.last().namespaceURI)
 		assertNotNull(col(m, 'bbox_2'))
 	}
+
+	/**
+	 * GML-like feature type: the geometry properties have property types that
+	 * contain the geometry elements (in a choice), gml:boundedBy is inherited and
+	 * comes first.
+	 */
+	@Test
+	void testGmlGeometryPropertyTypes() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				boundedBy(namespace: GML) {
+					_(choice: true) {
+						Envelope(GeometryProperty, namespace: GML)
+						Null(String, namespace: GML)
+					}
+				}
+				name(String)
+				geometry {
+					_(choice: true) {
+						Point(GeometryProperty, namespace: GML)
+						Polygon(GeometryProperty, namespace: GML)
+					}
+					nilReason(String, [XmlAttributeFlag.ENABLED])
+				}
+				outline {
+					LineString(GeometryProperty, namespace: GML)
+					href(String, [XmlAttributeFlag.ENABLED])
+				}
+				info {
+					label(String)
+					extent {
+						Polygon(GeometryProperty, namespace: GML)
+					}
+				}
+			}
+		}
+		def m = map(schema, 't')
+		// the property, not the geometry element in its choice
+		assertEquals(['geometry'], m.primaryGeometryPath*.localPart)
+		// no boundedBy, geometry property types are geometry columns (not structs)
+		assertEquals([
+			'name',
+			'outline',
+			'info',
+			'bbox',
+			'geometry'
+		], m.schema.fields*.name)
+		assertEquals(['geometry', 'outline'], m.geometryColumns)
+		assertTrue(m.schema.getType('outline').isPrimitive())
+		assertEquals(ValueKind.WKB, col(m, 'outline').valueKind)
+		// nested geometry property type as WKT
+		def extent = m.schema.getType('info').asGroupType().getType('extent')
+		assertTrue(extent.isPrimitive())
+		assertEquals(LogicalTypeAnnotation.stringType(), extent.logicalTypeAnnotation)
+		assertEquals(ValueKind.WKT, col(m, 'info').children.find { it.columnName == 'extent' }.valueKind)
+	}
+
+	@Test
+	void testGmlBoundedByOnlyIsNoGeometry() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				boundedBy(namespace: GML) {
+					Envelope(GeometryProperty, namespace: GML)
+				}
+				name(String)
+			}
+		}
+		def m = map(schema, 't')
+		assertNull(m.primaryGeometryPath)
+		assertEquals(['name'], m.schema.fields*.name)
+	}
+
+	@Test
+	void testGmlLocationIsOnlyFallback() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				location(namespace: GML) {
+					_(choice: true) {
+						Point(GeometryProperty, namespace: GML)
+						LocationKeyWord(String, namespace: GML)
+					}
+				}
+				position {
+					GeographicPosition {
+						geometry {
+							Point(GeometryProperty, namespace: GML)
+						}
+					}
+				}
+			}
+		}
+		def m = map(schema, 't')
+		assertEquals([
+			'position',
+			'GeographicPosition',
+			'geometry'
+		], m.primaryGeometryPath*.localPart)
+		// location stays a struct
+		assertEquals([
+			'location',
+			'bbox',
+			'geometry'
+		], m.schema.fields*.name)
+		assertEquals(['Point', 'LocationKeyWord'], m.schema.getType('location').asGroupType().fields*.name)
+
+		// only location: the location property as a whole
+		schema = new SchemaBuilder().schema {
+			t {
+				location(namespace: GML) {
+					_(choice: true) {
+						Point(GeometryProperty, namespace: GML)
+						LocationKeyWord(String, namespace: GML)
+					}
+				}
+				name(String)
+			}
+		}
+		m = map(schema, 't')
+		assertEquals(['location'], m.primaryGeometryPath*.localPart)
+		assertEquals(['name', 'bbox', 'geometry'], m.schema.fields*.name)
+	}
 }

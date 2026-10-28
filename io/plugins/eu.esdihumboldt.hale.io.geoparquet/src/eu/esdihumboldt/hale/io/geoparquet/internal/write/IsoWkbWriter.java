@@ -28,7 +28,8 @@ import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoColumnStats;
  * Writes geometries as ISO WKB, as required by GeoParquet. The JTS
  * {@link WKBWriter} uses the EWKB flag for the Z dimension, so it is only used
  * for 2D geometries, 3D geometries are written by this class (type codes offset
- * by 1000).
+ * by 1000). Measure (M) values are not written: XYM geometries are written as
+ * XY, XYZM geometries as XYZ.
  */
 public class IsoWkbWriter {
 

@@ -11,13 +11,13 @@
  */
 package eu.esdihumboldt.hale.io.geoparquet.internal.schema;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.xml.namespace.QName;
 
 import eu.esdihumboldt.hale.common.instance.model.Group;
-import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.common.schema.model.ChildDefinition;
 import eu.esdihumboldt.hale.common.schema.model.DefinitionUtil;
 import eu.esdihumboldt.hale.common.schema.model.PropertyDefinition;
@@ -65,32 +65,38 @@ public final class PropertyPaths {
 	}
 
 	/**
-	 * Find the first value for a property path in an instance.
+	 * Find the values for a property path below an instance or group. The values
+	 * are not unwrapped, <code>null</code> values are omitted.
 	 *
-	 * @param instance the instance
-	 * @param path the property path, may include group names
-	 * @return the value (instances are unwrapped to their value), <code>null</code>
-	 *         if there is none
+	 * @param parent the instance or group the path starts at, a value that is no
+	 *            group yields no values for a non-empty path
+	 * @param path the property path, may include group names, for an empty path the
+	 *            parent itself is the only value
+	 * @return the values, empty if there are none
 	 */
-	public static Object findValue(Instance instance, List<QName> path) {
-		Object current = instance;
+	public static List<Object> findValues(Object parent, List<QName> path) {
+		List<Object> current = new ArrayList<>();
+		if (parent != null) {
+			current.add(parent);
+		}
 		for (QName name : path) {
-			Object[] values = current instanceof Group ? ((Group) current).getProperty(name) : null;
-			current = null;
-			if (values != null) {
-				for (Object value : values) {
-					if (value != null) {
-						current = value;
-						break;
+			List<Object> next = new ArrayList<>();
+			for (Object o : current) {
+				if (o instanceof Group) {
+					Object[] values = ((Group) o).getProperty(name);
+					if (values != null) {
+						for (Object v : values) {
+							if (v != null) {
+								next.add(v);
+							}
+						}
 					}
 				}
 			}
-			if (current == null) {
-				return null;
+			current = next;
+			if (current.isEmpty()) {
+				break;
 			}
-		}
-		if (current instanceof Instance) {
-			current = ((Instance) current).getValue();
 		}
 		return current;
 	}
