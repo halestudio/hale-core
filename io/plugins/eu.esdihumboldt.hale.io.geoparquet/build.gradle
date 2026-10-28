@@ -74,6 +74,9 @@ dependencies {
 
   testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
 
+  // GeoPackage reader and test data for real-world data tests
+  testImplementation project(':io:plugins:eu.esdihumboldt.hale.io.geopackage')
+
   testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
 
   testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
@@ -92,6 +95,9 @@ dependencies {
 
 // tests that must run without Hadoop and native codecs on the classpath
 tasks.named('test') {
+  // location of the GeoPackage test data of the GeoPackage plugin
+  systemProperty 'geoparquet.test.gpkgDir', project(':io:plugins:eu.esdihumboldt.hale.io.geopackage').file('resources/test/testdata').absolutePath
+
   filter {
     excludeTestsMatching '*HadoopFreeTest*'
   }
