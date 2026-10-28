@@ -89,8 +89,10 @@ class ParquetFieldFactory {
 		if (LocalTime.class.equals(binding) || java.sql.Time.class.equals(binding)) {
 			return ValueKind.TIME_MILLIS;
 		}
-		if (Instant.class.equals(binding) || LocalDateTime.class.equals(binding)
-				|| Date.class.isAssignableFrom(binding)
+		if (LocalDateTime.class.equals(binding)) {
+			return ValueKind.LOCAL_TIMESTAMP_MILLIS;
+		}
+		if (Instant.class.equals(binding) || Date.class.isAssignableFrom(binding)
 				|| Calendar.class.isAssignableFrom(binding)) {
 			return ValueKind.TIMESTAMP_MILLIS;
 		}
@@ -137,7 +139,8 @@ class ParquetFieldFactory {
 		case STRING, DECIMAL_AS_STRING, JSON, WKT -> LogicalTypeAnnotation.stringType();
 		case DATE -> LogicalTypeAnnotation.dateType();
 		case TIMESTAMP_MILLIS -> LogicalTypeAnnotation.timestampType(true, TimeUnit.MILLIS);
-		case TIME_MILLIS -> LogicalTypeAnnotation.timeType(true, TimeUnit.MILLIS);
+		case LOCAL_TIMESTAMP_MILLIS -> LogicalTypeAnnotation.timestampType(false, TimeUnit.MILLIS);
+		case TIME_MILLIS -> LogicalTypeAnnotation.timeType(false, TimeUnit.MILLIS);
 		case DECIMAL -> LogicalTypeAnnotation.decimalType(scale, DECIMAL_PRECISION);
 		default -> null;
 		};
@@ -147,7 +150,7 @@ class ParquetFieldFactory {
 		return switch (kind) {
 		case BOOLEAN -> PrimitiveTypeName.BOOLEAN;
 		case INT32, DATE, TIME_MILLIS -> PrimitiveTypeName.INT32;
-		case INT64, TIMESTAMP_MILLIS -> PrimitiveTypeName.INT64;
+		case INT64, TIMESTAMP_MILLIS, LOCAL_TIMESTAMP_MILLIS -> PrimitiveTypeName.INT64;
 		case FLOAT -> PrimitiveTypeName.FLOAT;
 		case DOUBLE -> PrimitiveTypeName.DOUBLE;
 		case DECIMAL -> PrimitiveTypeName.FIXED_LEN_BYTE_ARRAY;

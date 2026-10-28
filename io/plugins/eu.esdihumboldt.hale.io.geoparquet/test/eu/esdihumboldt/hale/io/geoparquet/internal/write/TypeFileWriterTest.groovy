@@ -16,11 +16,15 @@ import static org.junit.Assert.*
 
 import java.time.Instant
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.ZoneOffset
 
 import org.apache.parquet.example.data.Group
 import org.apache.parquet.hadoop.metadata.CompressionCodecName
 import org.apache.parquet.hadoop.metadata.ParquetMetadata
+import org.apache.parquet.schema.LogicalTypeAnnotation
+import org.apache.parquet.schema.LogicalTypeAnnotation.TimeUnit
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -190,6 +194,78 @@ class TypeFileWriterTest extends AbstractPlatformTest {
 		].each {
 			assertEquals(it, 0, second.getFieldRepetitionCount(it))
 		}
+	}
+
+	@Test
+	void testTimeIsNotUtcAdjusted() {
+		Schema schema = new SchemaBuilder().schema {
+			t { k(LocalTime) }
+		}
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t { k(LocalTime.of(14, 0, 1, 234_000_000)) }
+		}
+		def file = write(schema, 't', collection)
+		def annotation = readFooter(file).fileMetaData.schema.getType('k').logicalTypeAnnotation
+		assertEquals(LogicalTypeAnnotation.timeType(false,
+				LogicalTypeAnnotation.TimeUnit.MILLIS), annotation)
+		assertFalse(annotation.isAdjustedToUTC())
+		assertEquals(50401234, readRows(file)[0].getInteger('k', 0))
+	}
+
+	@Test
+	void testSqlTimeKeepsMillis() {
+		Schema schema = new SchemaBuilder().schema {
+			t { k(java.sql.Time) }
+		}
+		def times = [
+			new java.sql.Time(java.sql.Time.valueOf(LocalTime.of(10, 20, 30)).time + 456),
+			// negative epoch millis
+			new java.sql.Time(-1500L)
+		]
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			times.each { tm ->
+				t {
+					k(tm)
+				}
+			}
+		}
+		def file = write(schema, 't', collection)
+		def rows = readRows(file)
+		times.eachWithIndex { tm, i ->
+			def expected = tm.toLocalTime().plusNanos(Math.floorMod(tm.time, 1000L) * 1_000_000L)
+			assertEquals(expected.toNanoOfDay().intdiv(1_000_000L) as int, rows[i].getInteger('k', 0))
+		}
+		assertEquals(LocalTime.of(10, 20, 30, 456_000_000).toNanoOfDay().intdiv(1_000_000L) as int,
+				rows[0].getInteger('k', 0))
+	}
+
+	@Test
+	void testTimestampAdjustment() {
+		Schema schema = new SchemaBuilder().schema {
+			t {
+				a(LocalDateTime)
+				b(Instant)
+				c(Date)
+			}
+		}
+		def ldt = LocalDateTime.of(2024, 3, 1, 12, 30, 15, 123_000_000)
+		def instant = Instant.parse('2024-03-01T12:30:15.123Z')
+		def collection = new InstanceBuilder(types: schema).createCollection {
+			t {
+				a(ldt)
+				b(instant)
+				c(new Date(instant.toEpochMilli()))
+			}
+		}
+		def file = write(schema, 't', collection)
+		def msg = readFooter(file).fileMetaData.schema
+		assertEquals(LogicalTypeAnnotation.timestampType(false, TimeUnit.MILLIS), msg.getType('a').logicalTypeAnnotation)
+		assertEquals(LogicalTypeAnnotation.timestampType(true, TimeUnit.MILLIS), msg.getType('b').logicalTypeAnnotation)
+		assertEquals(LogicalTypeAnnotation.timestampType(true, TimeUnit.MILLIS), msg.getType('c').logicalTypeAnnotation)
+		def row = readRows(file)[0]
+		assertEquals(ldt.toInstant(ZoneOffset.UTC).toEpochMilli(), row.getLong('a', 0))
+		assertEquals(instant.toEpochMilli(), row.getLong('b', 0))
+		assertEquals(instant.toEpochMilli(), row.getLong('c', 0))
 	}
 
 	@Test

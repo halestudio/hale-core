@@ -29,9 +29,14 @@ public enum ValueKind {
 	DOUBLE,
 	/** Date (days since epoch). */
 	DATE,
-	/** Timestamp in milliseconds (UTC adjusted). */
+	/** Timestamp in milliseconds since epoch (instant, UTC adjusted). */
 	TIMESTAMP_MILLIS,
-	/** Time of day in milliseconds. */
+	/**
+	 * Local timestamp in milliseconds (not UTC adjusted), the local date-time
+	 * encoded as if it were at UTC offset.
+	 */
+	LOCAL_TIMESTAMP_MILLIS,
+	/** Local time of day in milliseconds (not UTC adjusted). */
 	TIME_MILLIS,
 	/** Binary data. */
 	BINARY,

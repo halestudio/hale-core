@@ -98,6 +98,8 @@ class ValueConverter {
 					: as(value, Double.class);
 			case DATE -> (int) as(value, LocalDate.class).toEpochDay();
 			case TIMESTAMP_MILLIS -> toInstant(value).toEpochMilli();
+			case LOCAL_TIMESTAMP_MILLIS ->
+				toLocalDateTime(value).toInstant(ZoneOffset.UTC).toEpochMilli();
 			case TIME_MILLIS -> (int) (toLocalTime(value).toNanoOfDay() / 1_000_000L);
 			case BINARY -> Binary.fromConstantByteArray(as(value, byte[].class));
 			case DECIMAL_AS_STRING -> Binary.fromString(toBigDecimalString(value));
@@ -123,15 +125,18 @@ class ValueConverter {
 	}
 
 	private static Instant toInstant(Object value) {
-		if (value instanceof LocalDateTime) {
-			return ((LocalDateTime) value).toInstant(ZoneOffset.UTC);
-		}
 		return as(value, Instant.class);
+	}
+
+	private static LocalDateTime toLocalDateTime(Object value) {
+		return as(value, LocalDateTime.class);
 	}
 
 	private static LocalTime toLocalTime(Object value) {
 		if (value instanceof java.sql.Time) {
-			return ((java.sql.Time) value).toLocalTime();
+			java.sql.Time time = (java.sql.Time) value;
+			// toLocalTime() drops the fraction of a second
+			return time.toLocalTime().plusNanos(Math.floorMod(time.getTime(), 1000L) * 1_000_000L);
 		}
 		return as(value, LocalTime.class);
 	}
