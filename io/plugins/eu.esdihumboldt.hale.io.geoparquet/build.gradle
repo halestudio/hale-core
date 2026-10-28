@@ -58,6 +58,7 @@ dependencies {
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
   implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+  implementation project(':io:plugins:eu.esdihumboldt.hale.io.xsd')
 
   implementation project(':util:plugins:eu.esdihumboldt.util')
 
