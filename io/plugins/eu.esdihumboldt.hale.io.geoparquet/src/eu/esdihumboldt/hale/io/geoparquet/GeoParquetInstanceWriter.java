@@ -131,6 +131,14 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	 */
 	public static final String PARAM_OVERWRITE_TARGET_FILE = "overwriteTargetFile";
 
+	/**
+	 * Parameter for writing the column bbox in the <code>geo</code> metadata as 2D
+	 * bbox (4 values) also for geometries with Z values, as workaround for tools
+	 * that only read 2D bboxes (Portolan 0.8.0). Not compliant with the GeoParquet
+	 * specification for 3D data. Defaults to <code>false</code>.
+	 */
+	public static final String PARAM_BBOX_2D = "bbox2d";
+
 	private static final int DEFAULT_ROW_GROUP_ROW_LIMIT = 150000;
 
 	private static final int DEFAULT_NESTING_DEPTH = 5;
@@ -228,6 +236,17 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		setParameter(PARAM_OVERWRITE_TARGET_FILE, Value.of(overwriteTargetFile));
 	}
 
+	/**
+	 * Set if the column bbox in the <code>geo</code> metadata is written as 2D bbox
+	 * also for geometries with Z values.
+	 *
+	 * @param bbox2d true to always write a 2D bbox (not compliant with the
+	 *            GeoParquet specification for 3D data)
+	 */
+	public void setBbox2d(boolean bbox2d) {
+		setParameter(PARAM_BBOX_2D, Value.of(bbox2d));
+	}
+
 	@Override
 	public boolean isPassthrough() {
 		return !isSort();
@@ -274,6 +293,10 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			throw new IOProviderConfigurationException("Parameter " + PARAM_ROW_GROUP_ROW_LIMIT
 					+ " must be at least 1, but is " + rowLimit);
 		}
+	}
+
+	private boolean isBbox2d() {
+		return getParameter(PARAM_BBOX_2D).as(Boolean.class, false);
 	}
 
 	private int getDecimalScale() {
@@ -519,7 +542,8 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	private TypeFileWriter openWriter(Path file, TypeContext context, Settings settings)
 			throws IOException {
 		return new TypeFileWriter(file, context.mapping(), settings.options().version(),
-				context.crs(), settings.codec(), settings.rowGroupRowLimit(), this, reporter);
+				context.crs(), settings.codec(), settings.rowGroupRowLimit(), settings.bbox2d(),
+				this, reporter);
 	}
 
 	/**
@@ -650,7 +674,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		int scale = getDecimalScale();
 		int rowLimit = getRowGroupRowLimit();
 		return new Settings(new MappingOptions(version, nestingDepth, bigNumbers, scale),
-				parseCodec(getParameter(PARAM_COMPRESSION).as(String.class)), rowLimit);
+				parseCodec(getParameter(PARAM_COMPRESSION).as(String.class)), rowLimit, isBbox2d());
 	}
 
 	private static CompressionCodecName parseCodec(String value) {
@@ -892,7 +916,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 	 * Settings read from the parameters.
 	 */
 	private record Settings(MappingOptions options, CompressionCodecName codec,
-			int rowGroupRowLimit) {
+			int rowGroupRowLimit, boolean bbox2d) {
 	}
 
 }

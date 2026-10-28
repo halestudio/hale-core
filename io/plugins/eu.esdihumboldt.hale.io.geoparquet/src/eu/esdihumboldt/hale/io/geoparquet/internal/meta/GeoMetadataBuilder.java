@@ -43,11 +43,15 @@ public final class GeoMetadataBuilder {
 	 * @param stats the statistics per geometry column, primary column included
 	 * @param crs the CRS per geometry column, columns without entry are CRS84
 	 * @param primaryHasCovering if the primary geometry column has a bbox column
+	 * @param bbox2d if the column bbox is always written as 2D bbox (4 values),
+	 *            also for geometries with Z values; this does not follow the
+	 *            GeoParquet specification, but is understood by tools that only
+	 *            support 2D bboxes (e.g. Portolan 0.8.0)
 	 * @return the metadata as JSON string
 	 */
 	public static String build(GeoParquetVersion version, String primaryColumn,
 			LinkedHashMap<String, GeoColumnStats> stats, Map<String, GeoParquetCrs> crs,
-			boolean primaryHasCovering) {
+			boolean primaryHasCovering, boolean bbox2d) {
 		ObjectNode root = MAPPER.createObjectNode();
 		root.put("version", version.getVersionString());
 		root.put("primary_column", primaryColumn);
@@ -79,9 +83,10 @@ public final class GeoMetadataBuilder {
 
 			Envelope extent = columnStats.getExtent();
 			if (extent != null) {
-				// one range per dimension, 3D if any geometry has Z values
+				// one range per dimension, 3D if any geometry has Z values (unless
+				// a 2D bbox is requested)
 				ArrayNode bbox = column.putArray("bbox");
-				if (columnStats.hasZ()) {
+				if (columnStats.hasZ() && !bbox2d) {
 					bbox.add(extent.getMinX()).add(extent.getMinY()).add(columnStats.getMinZ())
 							.add(extent.getMaxX()).add(extent.getMaxY()).add(columnStats.getMaxZ());
 				}

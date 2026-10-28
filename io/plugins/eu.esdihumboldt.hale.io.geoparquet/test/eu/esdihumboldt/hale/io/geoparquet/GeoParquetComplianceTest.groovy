@@ -158,6 +158,17 @@ class GeoParquetComplianceTest extends AbstractPlatformTest {
 		assertFails('column bbox dimensions') { GeoParquetCompliance.check(f) }
 	}
 
+	/**
+	 * A 2D bbox for 3D data is accepted if explicitly requested (writer parameter
+	 * bbox2d), but the x/y range is still checked.
+	 */
+	@Test
+	void testAccepts2dBboxFor3dDataIfRequested() {
+		GeoParquetCompliance.check(writeRawFile(true, rawGeo([1d, -3d, 5d, 2d], ['Point Z']), null, [], rows3d()), 150000, false, true)
+		File f = writeRawFile(true, rawGeo([1d, -3d, 5d, 3d], ['Point Z']), null, [], rows3d())
+		assertFails('column bbox') { GeoParquetCompliance.check(f, 150000, false, true) }
+	}
+
 	@Test
 	void testDetectsWrongZRange() {
 		File f = writeRawFile(true, rawGeo([1d, -3d, -1d, 5d, 2d, 8d], ['Point Z']), null, [], rows3d())

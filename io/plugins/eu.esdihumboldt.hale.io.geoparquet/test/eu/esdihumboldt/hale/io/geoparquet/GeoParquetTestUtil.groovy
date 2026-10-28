@@ -212,13 +212,15 @@ class GeoParquetTestUtil {
 		}
 
 		IOReport report = writer.execute(new LogProgressIndicator())
+		// a 2D bbox for 3D data is not compliant, but expected if requested
+		boolean bbox2d = writer.getParameter(GeoParquetInstanceWriter.PARAM_BBOX_2D).as(Boolean, false)
 
 		assertTrue(report.errors*.message.toString(), report.isSuccess())
 		assertTrue(report.errors*.message.toString(), report.getErrors().isEmpty())
 
 		// every written file must be compliant
 		(target.parentFile.listFiles() as List<File>).findAll { File f -> f.name.endsWith('.parquet') }.each { File f ->
-			GeoParquetCompliance.check(f, 150000, GeoParquetCompliance.hasGeometryColumn(f))
+			GeoParquetCompliance.check(f, 150000, GeoParquetCompliance.hasGeometryColumn(f), bbox2d)
 			if (externalValidation) {
 				ExternalValidators.check(f, ignorePortolanRules)
 			}
