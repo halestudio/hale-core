@@ -22,6 +22,8 @@ protobuf = "4.35.1"
 eclipse-collections = "13.0.0"
 schemacrawler = "16.29.1"
 log4j2 = "2.26.1"
+parquet = "1.18.1"
+hadoop = "3.4.3"
 
 [libraries]
 # TODO add project builds?
@@ -162,6 +164,11 @@ hc-projectstore = {module = "com.haleconnect.api:haleconnect-projectstore-api", 
 hc-buckets = {module = "com.haleconnect.api:haleconnect-bucket-api", version = "1.0.1"}
 
 ibm-icu = {module = "eu.esdihumboldt.unpuzzled:com.ibm.icu", version = "64.2.0.v20190507-1337"}
+
+parquet-hadoop = {module = "org.apache.parquet:parquet-hadoop", version.ref = "parquet"}
+hadoop-common = {module = "org.apache.hadoop:hadoop-common", version.ref = "hadoop"}
+# only for reading back Parquet files in tests (not part of the runtime)
+hadoop-mapreduce-client-core = {module = "org.apache.hadoop:hadoop-mapreduce-client-core", version.ref = "hadoop"}
 
 geopackage-java = {module = "mil.nga.geopackage:geopackage", version.ref = "geopackage"}
 # included as transitive dependency of geopackage, may use different version number

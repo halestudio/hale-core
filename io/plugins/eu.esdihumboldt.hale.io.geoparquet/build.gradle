@@ -1,0 +1,179 @@
+plugins {
+  id 'hale.migrated-groovy'
+  id 'hale.shadow-dependencies'
+}
+
+hale {
+  bundleName = 'hale GeoParquet Support'
+
+  // Dead code paths in parquet-hadoop reference Hadoop, native codecs and other optional libraries (optional imports).
+  // All shaded libraries (parquet itself, aircompressor and parquet's relocated dependencies) are
+  // contained in the bundle and must not be imported.
+  importPackage 'org.apache.hadoop.*;resolution:=optional,org.xerial.snappy;resolution:=optional,org.apache.commons.pool.*;resolution:=optional,com.github.luben.zstd;resolution:=optional,javax.annotation;resolution:=optional,sun.misc;resolution:=optional,sun.nio.ch;resolution:=optional,!org.apache.parquet.*,!io.airlift.compress.*,!shaded.parquet.*,*'
+  privatePackage 'eu.esdihumboldt.hale.io.geoparquet.internal.*,org.apache.parquet.*,io.airlift.compress.*,shaded.parquet.*'
+  // only the public package is exported (internal packages are private)
+  exportPackage 'eu.esdihumboldt.hale.io.geoparquet;-noimport:=true'
+}
+
+shadowJar {
+  // do not copy signature files or OSGi metadata of shaded libraries
+  exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/MANIFEST.MF'
+
+  // Libraries provided by other bundles must be imported, not shaded (relocated copies would not
+  // work with the JTS geometries / loggers of hale)
+  dependencies {
+    exclude(dependency('org.locationtech.jts:.*'))
+    exclude(dependency('org.slf4j:.*'))
+    exclude(dependency('javax.annotation:.*'))
+  }
+}
+
+dependencies {
+  implementation libs.slf4jplus.api
+
+  implementation libs.guava
+
+  implementation libs.eclipse.core.runtime
+
+  implementation libs.jts
+  implementation libs.geotools.opengis
+  implementation libs.geotools.referencing
+  implementation libs.geotools.main
+
+  // parquet-java is shaded into the bundle; native/Hadoop dependent codecs are not used
+  shadowImplementation(libs.parquet.hadoop) {
+    exclude group: 'org.xerial.snappy'
+    exclude group: 'com.github.luben'
+  }
+  // pure-Java ZSTD and Snappy (transitive dependency of parquet-hadoop)
+  shadowImplementation libs.aircompressor
+
+  // needed for builder signatures only, never loaded at runtime
+  compileOnly(libs.hadoop.common) {
+    transitive = false
+  }
+
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.schema.persist')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.instance.groovy')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.align')
+  implementation project(':common:plugins:eu.esdihumboldt.hale.common.convert')
+
+  implementation project(':util:plugins:eu.esdihumboldt.util')
+
+  testImplementation testLibs.junit4
+  testImplementation testLibs.assertj
+
+  testRuntimeOnly libs.geotools.epsg
+
+  testImplementation project(':common:plugins:eu.esdihumboldt.hale.common.test')
+
+  testImplementation project(':cst:plugins:eu.esdihumboldt.cst.functions.geometric')
+
+  testImplementation project(':util:plugins:eu.esdihumboldt.util.test')
+
+  testRuntimeOnly project(':common:plugins:eu.esdihumboldt.hale.common.convert.core')
+
+  // only required to read back written files in tests
+  testImplementation testLibs.json.schema.validator
+  testCompileOnly(libs.hadoop.common) {
+    // builder signatures reference Hadoop classes
+    transitive = false
+  }
+  testRuntimeOnly libs.hadoop.common
+  testRuntimeOnly libs.hadoop.mapreduce.client.core
+  testRuntimeOnly testLibs.zstd.jni
+  testRuntimeOnly testLibs.snappy.java
+}
+
+// tests that must run without Hadoop and native codecs on the classpath
+tasks.named('test') {
+  filter {
+    excludeTestsMatching '*HadoopFreeTest*'
+  }
+}
+
+def hadoopFreeTest = tasks.register('hadoopFreeTest', Test) {
+  description = 'Runs tests with Hadoop and native codec libraries removed from the classpath.'
+  group = 'verification'
+
+  testClassesDirs = sourceSets.test.output.classesDirs
+  classpath = sourceSets.test.runtimeClasspath.filter {
+    def n = it.name
+    !(n.startsWith('hadoop-') || n.startsWith('zstd-jni-') || n.startsWith('snappy-java-'))
+  }
+
+  filter {
+    includeTestsMatching '*HadoopFreeTest*'
+  }
+}
+
+// checks the manifest of the published bundle
+def verifyBundleManifest = tasks.register('verifyBundleManifest') {
+  description = 'Verifies the OSGi manifest of the bundle (imports of Hadoop/native codecs optional, no imports of shaded packages).'
+  group = 'verification'
+
+  def jarFile = tasks.named('shadowJar').flatMap { it.archiveFile }
+  dependsOn tasks.named('shadowJar')
+  inputs.file(jarFile)
+
+  doLast {
+    def mf = new java.util.jar.JarFile(jarFile.get().asFile).withCloseable { it.manifest }
+    def importPackage = mf.mainAttributes.getValue('Import-Package')
+    if (!importPackage) {
+      throw new GradleException('Bundle manifest has no Import-Package header')
+    }
+
+    // split on commas that are not inside quotes
+    def entries = importPackage.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).collect { it.trim() }.findAll { it }
+
+    def mustBeOptional = [
+      'org.apache.hadoop',
+      'org.xerial.snappy',
+      'com.github.luben.zstd'
+    ]
+    def forbidden = [
+      'shaded.parquet',
+      'org.apache.parquet',
+      'io.airlift.compress'
+    ]
+
+    def problems = []
+
+    // libraries provided by other bundles must not be shaded
+    def shadedForbidden = [
+      'org/locationtech/',
+      'org/slf4j/',
+      'javax/annotation/'
+    ]
+    new java.util.jar.JarFile(jarFile.get().asFile).withCloseable { jar ->
+      jar.entries().each { e ->
+        def name = e.name
+        def rel = name.startsWith('shadow_') ? name.substring(name.indexOf('/') + 1) : name
+        if (shadedForbidden.any { rel.startsWith(it) }) {
+          problems << "Jar contains shaded entry ${name}"
+        }
+      }
+    }
+    if (!entries.any { it.split(';')[0] == 'org.locationtech.jts.geom' }) {
+      problems << 'Import-Package does not contain org.locationtech.jts.geom'
+    }
+    entries.each { entry ->
+      def pkg = entry.split(';')[0]
+      boolean optional = entry.contains('resolution:=optional')
+      if (mustBeOptional.any { pkg == it || pkg.startsWith(it + '.') } && !optional) {
+        problems << "Non-optional import of ${pkg}"
+      }
+      if (forbidden.any { pkg == it || pkg.startsWith(it + '.') }) {
+        problems << "Import of shaded package ${pkg}"
+      }
+    }
+    if (problems) {
+      throw new GradleException("Invalid Import-Package in bundle manifest:\n  " + problems.join('\n  '))
+    }
+  }
+}
+
+tasks.named('check') {
+  dependsOn hadoopFreeTest, verifyBundleManifest
+}
