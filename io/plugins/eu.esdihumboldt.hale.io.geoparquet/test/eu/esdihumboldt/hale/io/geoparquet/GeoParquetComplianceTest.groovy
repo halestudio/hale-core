@@ -84,9 +84,8 @@ class GeoParquetComplianceTest extends AbstractPlatformTest {
 				geometry: [
 					encoding      : 'WKB',
 					geometry_types: types,
-					bbox          : bbox,
 					covering      : [bbox: [xmin: ['bbox', 'xmin'], ymin: ['bbox', 'ymin'], xmax: ['bbox', 'xmax'], ymax: ['bbox', 'ymax']]]
-				] + extra
+				] + (bbox == null ? [:] : [bbox: bbox]) + extra
 			]
 		])
 	}
@@ -200,6 +199,28 @@ class GeoParquetComplianceTest extends AbstractPlatformTest {
 		File f = writeRawFile(true, rawGeo([1d, -3d, 5d, 2d], ['Point'], '2.0.0'),
 		LogicalTypeAnnotation.geometryType(null), ['geometry'])
 		assertFails('geospatial statistics') { GeoParquetCompliance.check(f) }
+	}
+
+	@Test
+	void testAcceptsRowGroupWithOnlyNullGeometries() {
+		// optional geometry and bbox, as written for features without geometry
+		def bbox = Types.optionalGroup()
+		[
+			'xmin',
+			'ymin',
+			'xmax',
+			'ymax'
+		].each { String n ->
+			bbox.addField(Types.required(PrimitiveTypeName.DOUBLE).columnOrder(ColumnOrder.typeDefined()).named(n))
+		}
+		def schema = Types.buildMessage()
+				.optional(PrimitiveTypeName.BINARY).as(LogicalTypeAnnotation.geometryType(null)).named('geometry')
+				.addField(bbox.named('bbox'))
+				.named('raw')
+		File f = tmp.newFile()
+		// no geometry, so no bbox and no statistics (the compliance rules must skip the row group)
+		writeRaw(f, schema, [geo: rawGeo(null, [], '2.0.0')], [[:], [:]])
+		GeoParquetCompliance.check(f, 150000, true)
 	}
 
 	@Test

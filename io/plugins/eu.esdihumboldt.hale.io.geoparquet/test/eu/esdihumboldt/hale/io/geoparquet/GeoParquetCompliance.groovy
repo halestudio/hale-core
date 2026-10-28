@@ -82,9 +82,9 @@ class GeoParquetCompliance {
 		}
 		checkGeometryColumns(file, schema, columns, version)
 
-		Map covering = (Map) columns.values().collect { it.covering }.find { it != null }
-		if (covering != null) {
-			checkBboxCovering(file, schema, footer, covering)
+		def coveringColumn = columns.find { it.value.covering != null }
+		if (coveringColumn != null) {
+			checkBboxCovering(file, schema, footer, (Map) coveringColumn.value.covering, (String) coveringColumn.key)
 		}
 
 		checkDataConsistency(file, columns)
@@ -199,9 +199,15 @@ class GeoParquetCompliance {
 	/**
 	 * Rule: a declared bbox covering refers to a struct <code>bbox</code> at the
 	 * root with DOUBLE fields that have the type defined column order and
-	 * min/max statistics in every row group.
+	 * min/max statistics in every row group that has at least one geometry
+	 * (row groups where the geometry column is entirely null are skipped, as
+	 * there is no bbox to describe).
+	 *
+	 * @param geometryColumn the name of the geometry column the covering belongs to,
+	 *   <code>null</code> to check all row groups
 	 */
-	static void checkBboxCovering(File file, MessageType schema, ParquetMetadata footer, Map covering) {
+	static void checkBboxCovering(File file, MessageType schema, ParquetMetadata footer, Map covering,
+			String geometryColumn = null) {
 		Map bbox = (Map) covering.bbox
 		if (bbox == null) {
 			return
@@ -226,6 +232,9 @@ class GeoParquetCompliance {
 				violation(file, 'bbox column order', "field $path has column order ${order.columnOrderName}, expected TYPE_DEFINED_ORDER (readers like pyarrow ignore the statistics otherwise)")
 			}
 			footer.blocks.eachWithIndex { BlockMetaData block, int i ->
+				if (geometryColumn != null && isAllNull(block, geometryColumn)) {
+					return
+				}
 				ColumnChunkMetaData chunk = block.columns.find { it.path.toList() == path }
 				Statistics stats = chunk?.statistics
 				if (stats == null || !stats.hasNonNullValue()) {
@@ -233,6 +242,14 @@ class GeoParquetCompliance {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Determine if a column has only null values in a row group.
+	 */
+	private static boolean isAllNull(BlockMetaData block, String column) {
+		ColumnChunkMetaData chunk = block.columns.find { it.path.toList() == [column] }
+		chunk != null && chunk.statistics != null && chunk.statistics.numNulls >= block.rowCount
 	}
 
 	/**
