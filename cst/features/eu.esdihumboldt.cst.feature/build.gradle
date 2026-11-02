@@ -6,7 +6,6 @@ description = 'Conceptual Schema Transformer Feature'
 
 dependencies {
   api(project(":common:features:eu.esdihumboldt.hale.common.feature.core"))
-  api(project(":common:features:eu.esdihumboldt.hale.common.feature.orient"))
 
   api(project(":cst:plugins:eu.esdihumboldt.cst"))
   api(project(":cst:plugins:eu.esdihumboldt.cst.functions.collector"))
