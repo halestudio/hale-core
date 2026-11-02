@@ -73,37 +73,37 @@ public class InstanceStoreExtensionTest {
 	@Test
 	public void testOrderByPriority() {
 		List<Candidate> ordered = InstanceStoreExtension
-				.order(List.of(working("orient", 0, null), working("sqlite", 10, null)), null);
-		assertEquals(List.of("sqlite", "orient"), ids(ordered));
+				.order(List.of(working("low", 0, null), working("high", 10, null)), null);
+		assertEquals(List.of("high", "low"), ids(ordered));
 	}
 
 	@Test
 	public void testRequestedFirst() {
 		List<Candidate> ordered = InstanceStoreExtension
-				.order(List.of(working("orient", 0, null), working("sqlite", 10, null)), "orient");
-		assertEquals(List.of("orient", "sqlite"), ids(ordered));
+				.order(List.of(working("low", 0, null), working("high", 10, null)), "low");
+		assertEquals(List.of("low", "high"), ids(ordered));
 	}
 
 	@Test
 	public void testRequestedUnknown() {
 		List<Candidate> ordered = InstanceStoreExtension
-				.order(List.of(working("orient", 0, null), working("sqlite", 10, null)), "foo");
-		assertEquals(List.of("sqlite", "orient"), ids(ordered));
+				.order(List.of(working("low", 0, null), working("high", 10, null)), "orient");
+		assertEquals(List.of("high", "low"), ids(ordered));
 	}
 
 	@Test
 	public void testFallbackOnFailure() throws IOException {
 		InstanceStore store = dummyStore();
 		InstanceStore result = InstanceStoreExtension.createStore(
-				List.of(failing("sqlite", 10), working("orient", 0, store)), null, DataSet.SOURCE,
-				DIR, null);
+				List.of(failing("high", 10), working("low", 0, store)), null, DataSet.SOURCE, DIR,
+				null);
 		assertSame(store, result);
 	}
 
 	@Test
 	public void testAllFailing() {
 		try {
-			InstanceStoreExtension.createStore(List.of(failing("sqlite", 10), failing("orient", 0)),
+			InstanceStoreExtension.createStore(List.of(failing("high", 10), failing("low", 0)),
 					null, DataSet.SOURCE, DIR, null);
 			fail("Expected exception");
 		} catch (IOException e) {
@@ -125,9 +125,9 @@ public class InstanceStoreExtensionTest {
 	public void testFallbackOnLinkageError() throws IOException {
 		InstanceStore store = dummyStore();
 		InstanceStore result = InstanceStoreExtension
-				.createStore(List.of(candidate("sqlite", 10, (ds, dir, sp) -> {
+				.createStore(List.of(candidate("high", 10, (ds, dir, sp) -> {
 					throw new UnsatisfiedLinkError("native library missing");
-				}), working("orient", 0, store)), null, DataSet.SOURCE, DIR, null);
+				}), working("low", 0, store)), null, DataSet.SOURCE, DIR, null);
 		assertSame(store, result);
 	}
 
@@ -138,7 +138,7 @@ public class InstanceStoreExtensionTest {
 
 			@Override
 			public String getId() {
-				return "sqlite";
+				return "high";
 			}
 
 			@Override
@@ -152,7 +152,7 @@ public class InstanceStoreExtensionTest {
 			}
 		};
 		InstanceStore result = InstanceStoreExtension.createStore(
-				List.of(missing, working("orient", 0, store)), null, DataSet.SOURCE, DIR, null);
+				List.of(missing, working("low", 0, store)), null, DataSet.SOURCE, DIR, null);
 		assertSame(store, result);
 	}
 }
