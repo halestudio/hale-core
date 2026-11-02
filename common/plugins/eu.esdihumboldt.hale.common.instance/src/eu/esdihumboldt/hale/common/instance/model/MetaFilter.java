@@ -31,8 +31,7 @@ public class MetaFilter implements Filter {
 
 	/*
 	 * FIXME the type should not be part of this filter - this is done for now to be
-	 * able to easily add support to the OrientDB instance collection and to the
-	 * data view instance selector.
+	 * able to easily add support to the data view instance selector.
 	 */
 	private final TypeDefinition type;
 

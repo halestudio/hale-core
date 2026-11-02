@@ -231,11 +231,8 @@ public class TreePropertyTransformer implements PropertyTransformer {
 						metaworkerthread.get().generate(target);
 
 						// XXX ok to add to sink in any thread?!
-						// XXX addInstance and close were made synchronized in
-						// OrientInstanceSink
 						// XXX instead collect instances and write them in only
-						// one
-						// thread?
+						// one thread?
 						// after property transformations, publish target
 						// instance
 						sink.addInstance(target);

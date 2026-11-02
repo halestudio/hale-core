@@ -5,8 +5,6 @@ slf4jplus = "1.2.0.201503311443"
 spring = "7.0.9"
 groovy = "2.5.23" # "2.5.19"
 tinkerpop = "2.5.0-orientDB151"
-orientdb = "1.5.1"
-orient-common = "1.5.5"
 geotools = "35.0"
 batik = "1.19"
 prometheus = "0.16.0"
@@ -127,12 +125,9 @@ spring-context = {module = "org.springframework:spring-context", version.ref = "
 spring-beans = {module = "org.springframework:spring-beans", version.ref = "spring"}
 
 tinkerpop-blueprints-core = {module = "com.tinkerpop.blueprints:blueprints-core", version.ref = "tinkerpop"}
-tinkerpop-blueprints-orient = {module = "com.tinkerpop.blueprints:blueprints-orient-graph", version.ref = "tinkerpop"}
 tinkerpop-pipes = {module = "com.tinkerpop:pipes", version.ref = "tinkerpop"}
 tinkerpop-gremlin-java = {module = "com.tinkerpop.gremlin:gremlin-java", version.ref = "tinkerpop"}
 
-orientdb-core = {module = "com.orientechnologies:orientdb-core", version.ref = "orientdb"}
-orient-common = {module = "com.orientechnologies:orient-commons", version.ref = "orient-common"}
 
 snakeyaml = {module = "org.yaml:snakeyaml", version = "2.6"}
 
