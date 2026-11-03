@@ -128,7 +128,7 @@ tinkerpop-pipes = {module = "com.tinkerpop:pipes", version.ref = "tinkerpop"}
 tinkerpop-gremlin-java = {module = "com.tinkerpop.gremlin:gremlin-java", version.ref = "tinkerpop"}
 
 
-snakeyaml = {module = "org.yaml:snakeyaml", version = "2.6"}
+snakeyaml = {module = "org.yaml:snakeyaml", version = "2.7"}
 
 jts = {module = "org.locationtech.jts:jts-core", version = "1.20.0"}
 
