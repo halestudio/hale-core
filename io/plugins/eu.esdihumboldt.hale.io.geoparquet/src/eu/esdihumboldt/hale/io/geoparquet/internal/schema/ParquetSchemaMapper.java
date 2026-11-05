@@ -215,7 +215,7 @@ public class ParquetSchemaMapper {
 	private PropertyKind classify(PropertyEntry entry, List<QName> basePath, int depth,
 			List<TypeDefinition> typePath, MappingContext ctx) {
 		List<QName> path = append(basePath, entry.path());
-		if (path.equals(ctx.primaryPath)) {
+		if (isPrimaryGeometry(path, ctx.primaryPath)) {
 			// moved to the primary geometry column
 			return PropertyKind.SKIP;
 		}
@@ -235,6 +235,20 @@ public class ParquetSchemaMapper {
 			return PropertyKind.STRUCT;
 		}
 		return hasValue(propType) ? PropertyKind.VALUE : PropertyKind.SKIP;
+	}
+
+	/**
+	 * Determine if a property is (part of) the primary geometry. The primary
+	 * geometry path may end with a group (the substitution group of
+	 * <code>gml:location</code>), then all properties in the group are part of it.
+	 *
+	 * @param path the absolute property path, including group names
+	 * @param primaryPath the path of the primary geometry, may be <code>null</code>
+	 * @return if the property is moved to the primary geometry column
+	 */
+	private static boolean isPrimaryGeometry(List<QName> path, List<QName> primaryPath) {
+		return primaryPath != null && path.size() >= primaryPath.size()
+				&& path.subList(0, primaryPath.size()).equals(primaryPath);
 	}
 
 	/**
@@ -426,10 +440,11 @@ public class ParquetSchemaMapper {
 
 	/**
 	 * If the path leads into <code>gml:location</code>, return the path of the
-	 * location property, so that all its options are covered.
+	 * location property (or of its substitution group in GML 3.2, the outermost
+	 * match), so that all its options are covered.
 	 *
-	 * @return the path of the location property or <code>null</code> if the path
-	 *         does not lead into a location property
+	 * @return the path of the location property or group or <code>null</code> if
+	 *         the path does not lead into a location property
 	 */
 	private static List<QName> locationPath(List<QName> path) {
 		for (int i = 0; i < path.size(); i++) {

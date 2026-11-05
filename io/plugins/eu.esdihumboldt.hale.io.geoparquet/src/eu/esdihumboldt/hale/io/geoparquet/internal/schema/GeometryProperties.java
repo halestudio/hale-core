@@ -112,14 +112,31 @@ public final class GeometryProperties {
 	}
 
 	/**
-	 * Determine if a property is <code>gml:location</code>. It is only used as
-	 * primary geometry if there is no other geometry.
+	 * Determine if a property or group is <code>gml:location</code>. It is only
+	 * used as primary geometry if there is no other geometry.
+	 * <p>
+	 * In GML 3.2 <code>gml:location</code> is the head of a substitution group
+	 * (with <code>gml:priorityLocation</code>), represented in hale as choice group
+	 * named <code>{&lt;GML namespace&gt;/location}choice</code>. The group as well
+	 * as <code>gml:priorityLocation</code> are also considered the location.
 	 *
-	 * @param name the property name
-	 * @return if the property is the GML location
+	 * @param name the property or group name
+	 * @return if the property or group is the GML location
 	 */
 	public static boolean isLocation(QName name) {
-		return isGml(name, "location");
+		return isGml(name, "location") || isGml(name, "priorityLocation")
+				|| isLocationSubstitutionGroup(name);
+	}
+
+	/**
+	 * Determine if a group name is the name of the substitution group of
+	 * <code>gml:location</code>, see
+	 * <code>XmlSchemaReader.createPropertyFromElement</code> for the naming.
+	 */
+	private static boolean isLocationSubstitutionGroup(QName name) {
+		String namespace = name.getNamespaceURI();
+		return "choice".equals(name.getLocalPart()) && namespace.endsWith("/location")
+				&& namespace.startsWith(GML_NAMESPACE_PREFIX);
 	}
 
 	private static boolean isGml(QName name, String localName) {
