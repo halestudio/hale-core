@@ -16,6 +16,8 @@ import static org.junit.Assert.fail
 import groovy.json.JsonSlurper
 
 import org.apache.parquet.column.statistics.Statistics
+import org.apache.parquet.column.statistics.geospatial.BoundingBox
+import org.apache.parquet.column.statistics.geospatial.GeospatialStatistics
 import org.apache.parquet.hadoop.metadata.BlockMetaData
 import org.apache.parquet.hadoop.metadata.ColumnChunkMetaData
 import org.apache.parquet.hadoop.metadata.ParquetMetadata
@@ -365,12 +367,32 @@ class GeoParquetCompliance {
 		g.geometryType + (z ? ' Z' : '')
 	}
 
+	/** ISO WKB geometry type codes (2D), 1000 is added for Z. */
+	private static final Map<String, Integer> WKB_TYPE_CODES = [
+		Point: 1,
+		LineString: 2,
+		Polygon: 3,
+		MultiPoint: 4,
+		MultiLineString: 5,
+		MultiPolygon: 6,
+		GeometryCollection: 7
+	]
+
 	/**
 	 * Rule (GeoParquet 2.0): geometry columns carry native geospatial statistics
-	 * in every row group with geometries.
+	 * in every row group with geometries, and the statistics match the data of
+	 * the row group: the bounding box equals the extent (including the z range
+	 * for 3D data) and the geometry types equal the types in the data (as ISO
+	 * WKB codes).
 	 */
 	static void checkGeospatialStatistics(File file, ParquetMetadata footer, Collection<String> geometryColumns) {
+		// rows are read in file order, row groups are consecutive
+		List rows = GeoParquetTestUtil.readRows(file)
+		WKBReader reader = new WKBReader()
+		long offset = 0
 		footer.blocks.eachWithIndex { BlockMetaData block, int i ->
+			List blockRows = rows.subList((int) offset, (int) (offset + block.rowCount))
+			offset += block.rowCount
 			if (block.rowCount == 0) {
 				return
 			}
@@ -390,7 +412,70 @@ class GeoParquetCompliance {
 				if (geoStats == null || !geoStats.valid) {
 					violation(file, 'geospatial statistics', "column '$name' has no valid geospatial statistics in row group $i")
 				}
+				checkGeospatialStatisticsData(file, name, i, geoStats, blockRows, reader)
 			}
+		}
+	}
+
+	/**
+	 * Compare the geospatial statistics of a column chunk with the geometries of
+	 * the row group.
+	 */
+	static void checkGeospatialStatisticsData(File file, String name, int rowGroup,
+			GeospatialStatistics geoStats, List rows, WKBReader reader) {
+		Envelope extent = new Envelope()
+		double zMin = Double.POSITIVE_INFINITY
+		double zMax = Double.NEGATIVE_INFINITY
+		Set<Integer> types = new TreeSet<>()
+		rows.each { row ->
+			if (row.getFieldRepetitionCount(name) == 0) {
+				return
+			}
+			Geometry g = reader.read(row.getBinary(name, 0).bytes)
+			String type = typeName(g)
+			boolean z = type.endsWith(' Z')
+			types << WKB_TYPE_CODES[z ? type[0..-3] : type] + (z ? 1000 : 0)
+			if (!g.empty) {
+				extent.expandToInclude(g.envelopeInternal)
+				g.coordinates.each { c ->
+					if (!Double.isNaN(c.z)) {
+						zMin = Math.min(zMin, c.z)
+						zMax = Math.max(zMax, c.z)
+					}
+				}
+			}
+		}
+
+		Set<Integer> statsTypes = geoStats.geospatialTypes?.types as Set<Integer>
+		if (statsTypes != types) {
+			violation(file, 'geospatial statistics', "column '$name' has geometry types $statsTypes in the statistics of row group $rowGroup, but the data has $types")
+		}
+
+		BoundingBox box = geoStats.boundingBox
+		if (extent.isNull()) {
+			return
+		}
+		if (box == null || !box.isXYValid()) {
+			violation(file, 'geospatial statistics', "column '$name' has no valid bounding box in the statistics of row group $rowGroup")
+		}
+		List<Double> actual = [
+			box.XMin,
+			box.YMin,
+			box.XMax,
+			box.YMax
+		]
+		List<Double> expected = [
+			extent.minX,
+			extent.minY,
+			extent.maxX,
+			extent.maxY
+		]
+		if ((0..3).any { Math.abs(actual[it] - expected[it]) > TOLERANCE }) {
+			violation(file, 'geospatial statistics', "column '$name' has bounding box $actual in the statistics of row group $rowGroup, but the data has extent $expected")
+		}
+		if (zMin <= zMax && (!box.isZValid() || Math.abs(box.ZMin - zMin) > TOLERANCE
+				|| Math.abs(box.ZMax - zMax) > TOLERANCE)) {
+			violation(file, 'geospatial statistics', "column '$name' has z range [${box.ZMin}, ${box.ZMax}] in the statistics of row group $rowGroup, but the data has [$zMin, $zMax]")
 		}
 	}
 }
