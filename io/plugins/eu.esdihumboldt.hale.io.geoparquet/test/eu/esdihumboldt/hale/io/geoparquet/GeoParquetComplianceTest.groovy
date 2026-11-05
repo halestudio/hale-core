@@ -17,6 +17,9 @@ import static org.junit.Assert.*
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
+import org.apache.parquet.column.statistics.geospatial.BoundingBox
+import org.apache.parquet.column.statistics.geospatial.GeospatialStatistics
+import org.apache.parquet.column.statistics.geospatial.GeospatialTypes
 import org.apache.parquet.schema.ColumnOrder
 import org.apache.parquet.schema.LogicalTypeAnnotation
 import org.apache.parquet.schema.MessageType
@@ -26,6 +29,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.locationtech.jts.geom.Geometry
+import org.locationtech.jts.io.WKBReader
 import org.locationtech.jts.io.WKBWriter
 import org.locationtech.jts.io.WKTReader
 
@@ -298,6 +302,39 @@ class GeoParquetComplianceTest extends AbstractPlatformTest {
 			writeInstances(target, schema, instances, { it.setVersion(v) })
 			assertTrue(target.exists())
 			GeoParquetCompliance.check(target)
+		}
+	}
+
+	/**
+	 * Check the given geospatial statistics against the rows of the raw file
+	 * (points (1 2) and (5 -3)).
+	 */
+	private void checkStatistics(BoundingBox box, Set<Integer> types) {
+		File f = writeRawFile(true, rawGeo([1d, -3d, 5d, 2d]))
+		GeoParquetCompliance.checkGeospatialStatisticsData(f, 'geometry', 0,
+				new GeospatialStatistics(box, new GeospatialTypes(types)), readRows(f), new WKBReader())
+	}
+
+	private static BoundingBox box(double xmin, double xmax, double ymin, double ymax) {
+		new BoundingBox(xmin, xmax, ymin, ymax, Double.NaN, Double.NaN, Double.NaN, Double.NaN)
+	}
+
+	@Test
+	void testAcceptsMatchingGeospatialStatistics() {
+		checkStatistics(box(1, 5, -3, 2), [1] as Set)
+	}
+
+	@Test
+	void testDetectsWrongGeospatialStatisticsBbox() {
+		assertFails('bounding box') {
+			checkStatistics(box(1, 6, -3, 2), [1] as Set)
+		}
+	}
+
+	@Test
+	void testDetectsWrongGeospatialStatisticsTypes() {
+		assertFails('geometry types') {
+			checkStatistics(box(1, 5, -3, 2), [1, 4] as Set)
 		}
 	}
 }
