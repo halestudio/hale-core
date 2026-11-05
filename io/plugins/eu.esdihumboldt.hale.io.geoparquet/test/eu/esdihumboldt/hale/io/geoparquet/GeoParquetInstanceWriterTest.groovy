@@ -1295,6 +1295,51 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * In streaming mode with a target CRS (CRS known before the first instance)
+	 * a type without any geometry is written as plain Parquet as well, as when
+	 * sorting.
+	 */
+	@Test
+	void testGeometryColumnWithoutValuesStreamingTargetCrs() {
+		Schema schema = citySchema()
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		IOReport report = writeInstances(target, schema, citiesWithoutGeometry(schema), {
+			it.setSort(false)
+			it.setTargetCRS(new CodeDefinition('EPSG:25832', true))
+		})
+
+		assertNull(geoMetadata(target))
+		assertNull(readFooter(target).fileMetaData.schema.getType('geometry').logicalTypeAnnotation)
+		assertEquals(['Darmstadt', 'München'], readRows(target)*.getString('name', 0))
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') })
+	}
+
+	/**
+	 * Streaming: more instances without geometry than can be buffered and no
+	 * geometry at all. The file is opened as GeoParquet file when the buffer is
+	 * full, there is a warning that it has no geometries.
+	 */
+	@Test
+	void testStreamingBufferFullWithoutGeometry() {
+		Schema schema = citySchema()
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			(0..<1005).each { int i ->
+				city { name("city $i") }
+			}
+		}
+		File target = new File(tmp.newFolder(), 'cities.parquet')
+		// not accepted by Portolan (no extent)
+		IOReport report = writeInstances(target, schema, instances, {
+			it.setSort(false)
+			it.setTargetCRS(new CodeDefinition('EPSG:25832', true))
+		}, false)
+
+		assertEquals(1005, readRows(target).size())
+		assertEquals([], geoMetadata(target).columns.geometry.geometry_types)
+		assertTrue(report.warnings*.message.toString(), report.warnings.any { it.message.contains('has no extent') })
+	}
+
+	/**
 	 * Streaming: more leading instances without geometry than can be buffered.
 	 * The file is opened when the buffer is full, before the CRS is known: the
 	 * CRS is unknown (with a warning) and later geometries are written as they
