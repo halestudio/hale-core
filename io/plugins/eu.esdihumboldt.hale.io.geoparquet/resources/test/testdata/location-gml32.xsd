@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Feature type without own geometry property: gml:location (GML 3.2) is the only geometry. -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:t="http://www.example.com/location" targetNamespace="http://www.example.com/location"
+    elementFormDefault="qualified" version="1.0">
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <element name="Place" substitutionGroup="gml:AbstractFeature" type="t:PlaceType"/>
+  <complexType name="PlaceType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="label" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

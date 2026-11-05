@@ -199,6 +199,85 @@ class GeoParquetGmlTest extends AbstractPlatformTest {
 		})
 	}
 
+	/**
+	 * INSPIRE Addresses with the real schema: in GML 3.2 <code>gml:location</code>
+	 * is the head of a substitution group (with <code>gml:priorityLocation</code>),
+	 * which must only be used as primary geometry if there is no other geometry.
+	 * The position of an address is unbounded and its geometry is nested.
+	 */
+	@Test
+	void testMappingInspireAddress() {
+		Schema schema = loadSchema(dataFile('geoparquet.test.gmlDir', 'sample_wva/inspire3/Addresses.xsd'))
+		TypeMapping m = new ParquetSchemaMapper(MappingOptions.defaults()).map(type(schema, 'AddressType'), [:], SimpleLog.NO_LOG)
+
+		assertEquals([
+			'position',
+			'GeographicPosition',
+			'geometry'
+		], m.primaryGeometryPath*.localPart)
+		assertEquals(['geometry'], m.geometryColumns)
+	}
+
+	@Test
+	void testInspireAddressSorted() {
+		testInspireAddress(true)
+	}
+
+	@Test
+	void testInspireAddressStreaming() {
+		testInspireAddress(false)
+	}
+
+	private void testInspireAddress(boolean sort) {
+		Schema schema = loadSchema(dataFile('geoparquet.test.gmlDir', 'sample_wva/inspire3/Addresses.xsd'))
+		File gml = new File(getClass().getResource('/testdata/addresses.gml').toURI())
+		InstanceCollection instances = loadGml(schema, gml)
+		assertEquals(2, toList(instances).size())
+
+		withNewGeoParquet(schema, instances, { List<File> files ->
+			assertEquals(1, files.size())
+			File file = files[0]
+			MessageType parquetSchema = readFooter(file).fileMetaData.schema
+			assertGeometryFields(parquetSchema, ['geometry'])
+
+			Map geo = geoMetadata(file)
+			assertNotNull('No GeoParquet metadata', geo)
+			assertEquals('geometry', geo.primary_column)
+			assertEquals(['MultiPoint', 'Point'] as Set, geo.columns.geometry.geometry_types as Set)
+			assertEquals(25832, geo.columns.geometry.crs.id.code)
+
+			Map<String, Group> byId = readRows(file).collectEntries { Group row -> [(row.getString('id', 0)): row] }
+			assertEquals(2, byId.size())
+			assertEquals('POINT (500000 5500000)', wkb(byId.a1, 'geometry').toText())
+			assertEquals('MULTIPOINT ((501000 5501000), (501010 5501010))', wkb(byId.a2, 'geometry').toText())
+		}, { GeoParquetInstanceWriter w -> w.setSort(sort) })
+	}
+
+	/**
+	 * A GML 3.2 feature type without own geometry property: the substitution
+	 * group of <code>gml:location</code> is the primary geometry, covering both
+	 * <code>gml:location</code> and <code>gml:priorityLocation</code>.
+	 */
+	@Test
+	void testGml32LocationFallback() {
+		Schema schema = loadSchema(new File(getClass().getResource('/testdata/location-gml32.xsd').toURI()))
+		TypeMapping m = new ParquetSchemaMapper(MappingOptions.defaults()).map(type(schema, 'PlaceType'), [:], SimpleLog.NO_LOG)
+		assertEquals(['choice'], m.primaryGeometryPath*.localPart)
+		assertEquals(GML32 + '/location', m.primaryGeometryPath[0].namespaceURI)
+		assertNoField(m.schema, 'location')
+		assertNoField(m.schema, 'priorityLocation')
+
+		InstanceCollection instances = loadGml(schema, new File(getClass().getResource('/testdata/location.gml').toURI()))
+		withNewGeoParquet(schema, instances, { List<File> files ->
+			assertEquals(1, files.size())
+			File file = files[0]
+			assertEquals(25832, geoMetadata(file).columns.geometry.crs.id.code)
+			Map<String, Group> byId = readRows(file).collectEntries { Group row -> [(row.getString('id', 0)): row] }
+			assertEquals('POINT (500000 5500000)', wkb(byId.p1, 'geometry').toText())
+			assertEquals('POINT (501000 5501000)', wkb(byId.p2, 'geometry').toText())
+		})
+	}
+
 	private static final String GML32 = 'http://www.opengis.net/gml/3.2'
 
 	private static Geometry swapXY(Geometry geometry) {
