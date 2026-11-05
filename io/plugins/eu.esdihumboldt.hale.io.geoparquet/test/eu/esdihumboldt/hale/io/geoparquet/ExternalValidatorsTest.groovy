@@ -226,4 +226,31 @@ class ExternalValidatorsTest extends AbstractPlatformTest {
 		// no JSON
 		assertPortolanFails('Error: no catalog', 'did not produce JSON')
 	}
+
+	private File fileWithGeometryTypes(List<String> types) {
+		File f = tmp.newFile()
+		MessageType schema = Types.buildMessage().optional(PrimitiveTypeName.BINARY).named('geometry').named('raw')
+		writeRaw(f, schema, [geo: JsonOutput.toJson([version: '1.1.0', primary_column: 'geometry',
+				columns: [geometry: [encoding: 'WKB', geometry_types: types]]])], [])
+		f
+	}
+
+	/**
+	 * Only the known false positive of GDAL's validation for 3D points is
+	 * tolerated, and only if <code>Point Z</code> is declared.
+	 */
+	@Test
+	void testGdalKnownFalsePositives() {
+		String falsePositive = '/data/out.parquet: Geometry at row 0 is of type Point, but not listed in geometry_types[]\n' +
+				'/data/out.parquet: Geometry at row 1 is of type Point, but not listed in geometry_types[]\n'
+		File pointZ = fileWithGeometryTypes(['Point Z'])
+		assertTrue(ExternalValidators.onlyKnownGdalFalsePositives(pointZ, falsePositive))
+		// other errors
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(pointZ,
+				falsePositive + '/data/out.parquet: bbox mismatch\n'))
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(pointZ, ''))
+		// 2D points declared: a real error
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['Point Z', 'Point']), falsePositive))
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['LineString']), falsePositive))
+	}
 }
