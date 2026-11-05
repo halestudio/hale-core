@@ -23,6 +23,7 @@ import java.nio.file.Path
 import java.nio.file.StandardCopyOption
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+import java.util.regex.Pattern
 
 import org.junit.Assume
 
@@ -34,8 +35,16 @@ import org.junit.Assume
  * catalog and the catalog is checked</li>
  * <li>GDAL's <code>validate_geoparquet.py</code>, run in a Docker container -
  * optional, only if <code>docker</code> is available and the environment
- * variable <code>GEOPARQUET_GDAL_IMAGE</code> is set, e.g. to
- * <code>ghcr.io/osgeo/gdal:ubuntu-full-latest</code></li>
+ * variable <code>GEOPARQUET_GDAL_IMAGE</code> is set to the image. GDAL
+ * releases up to 3.13.3 cannot validate GeoParquet 2.0 (they fail to download
+ * the JSON schema of 2.0.0), only the nightly builds (<code>latest</code>) can
+ * (using the schema of 2.0.0-rc.1). For reproducible results use a nightly
+ * pinned by digest, e.g. (tested, GDAL 3.14.0dev from 2026-11-05)
+ * <code>ghcr.io/osgeo/gdal@sha256:657dd403a417c6a530f0eb55fc5f3efbdc505a3bd620e0c1199319be825b6730</code>,
+ * or a release image once a release supports GeoParquet 2.0. All versions
+ * (including the nightly) report 3D points as not listed in
+ * <code>geometry_types</code>, which is tolerated (see
+ * {@link #GDAL_POINT_Z_FALSE_POSITIVE}).</li>
  * </ul>
  * The Python tools are provided by <code>mise</code> (see <code>mise.toml</code>
  * in the repository root). The test JVM inherits <code>PATH</code> from the
@@ -49,7 +58,14 @@ import org.junit.Assume
  * <p>
  * Note that <code>gpio</code> downloads the DuckDB <code>spatial</code>
  * extension at runtime and the GDAL validation script downloads the GeoParquet
- * JSON schema, so both need network access.
+ * JSON schema, so both need network access. On Windows the DuckDB extension
+ * download (plain HTTP) may be blocked; then download the extension via HTTPS
+ * into the DuckDB extension directory
+ * (<code>~/.duckdb/extensions/&lt;DuckDB version&gt;/&lt;platform&gt;/</code>).
+ * <p>
+ * The Python tools are run with <code>PYTHONUTF8=1</code>, as Portolan writes
+ * non-ASCII characters that cannot be encoded with the default console
+ * encoding on Windows.
  */
 class ExternalValidators {
 
@@ -319,7 +335,30 @@ class ExternalValidators {
 			"/data/${file.name}"
 		]
 		Result r = run(cmd, null, TIMEOUT_SECONDS)
-		assertTrue("GDAL validate_geoparquet failed for ${file.name}: $r", r.exitCode == 0)
+		assertTrue("GDAL validate_geoparquet failed for ${file.name}: $r",
+				r.exitCode == 0 || onlyKnownGdalFalsePositives(file, r.output))
+	}
+
+	/**
+	 * Known false positive of GDAL's <code>validate_geoparquet.py</code> (GDAL
+	 * 3.9 up to at least 3.14.0dev): it maps <code>wkbPoint25D</code> to
+	 * <code>Point</code> instead of <code>Point Z</code>, so 3D points are
+	 * reported as not listed in <code>geometry_types</code>.
+	 */
+	private static final Pattern GDAL_POINT_Z_FALSE_POSITIVE = ~/.*: Geometry at row \d+ is of type Point, but not listed in geometry_types\[\]/
+
+	/**
+	 * Determine if the output of a failed GDAL validation only consists of known
+	 * false positives (see {@link #GDAL_POINT_Z_FALSE_POSITIVE}), which only
+	 * applies if <code>Point Z</code> but not <code>Point</code> is declared.
+	 */
+	static boolean onlyKnownGdalFalsePositives(File file, String output) {
+		Map geo = GeoParquetTestUtil.geoMetadata(file)
+		boolean pointZ = geo?.columns?.values()?.any { Map column ->
+			column.geometry_types?.contains('Point Z') && !column.geometry_types.contains('Point')
+		}
+		List<String> lines = output.readLines()*.trim().findAll { !it.empty }
+		pointZ && !lines.empty && lines.every { it ==~ GDAL_POINT_Z_FALSE_POSITIVE }
 	}
 
 	/**
@@ -332,6 +371,9 @@ class ExternalValidators {
 			if (dir != null) {
 				pb.directory(dir)
 			}
+			// UTF-8 output of Python tools independent of the console encoding
+			// (Portolan fails with cp1252 on Windows)
+			pb.environment().put('PYTHONUTF8', '1')
 			pb.redirectErrorStream(true)
 			pb.redirectOutput(out)
 			Process p = pb.start()
