@@ -46,6 +46,7 @@ import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoColumnStats;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ColumnMapping;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ColumnNameAllocator;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.GeometryProperties;
+import eu.esdihumboldt.hale.io.geoparquet.internal.schema.ParquetSchemaMapper;
 import eu.esdihumboldt.hale.io.xsd.constraint.XmlAttributeFlag;
 
 /**
@@ -71,8 +72,8 @@ class JsonValueSerializer {
 
 	/**
 	 * @param primaryGeometryPath the absolute property path of the primary geometry
-	 *            that is omitted (it is stored in its own column), may be
-	 *            <code>null</code>
+	 *            that is omitted (it is stored in its own column, if it is a group
+	 *            all properties in the group are omitted), may be <code>null</code>
 	 */
 	JsonValueSerializer(List<QName> primaryGeometryPath) {
 		this.primaryGeometryPath = primaryGeometryPath;
@@ -207,10 +208,14 @@ class JsonValueSerializer {
 		for (ChildDefinition<?> child : children) {
 			List<QName> childPath = new ArrayList<>(path);
 			childPath.add(child.getName());
+			if (ParquetSchemaMapper.isPrimaryGeometry(childPath, primaryGeometryPath)) {
+				// stored in the geometry column
+				continue;
+			}
 			if (child.asGroup() != null) {
 				collectDefined(DefinitionUtil.getAllChildren(child.asGroup()), childPath, result);
 			}
-			else if (child.asProperty() != null && !childPath.equals(primaryGeometryPath)
+			else if (child.asProperty() != null
 					&& !GeometryProperties.isBoundedBy(child.getName())) {
 				result.putIfAbsent(child.getName(),
 						child.asProperty().getConstraint(XmlAttributeFlag.class).isEnabled());
@@ -224,7 +229,7 @@ class JsonValueSerializer {
 		for (QName name : group.getPropertyNames()) {
 			List<QName> childPath = new ArrayList<>(path);
 			childPath.add(name);
-			if (childPath.equals(primaryGeometryPath)) {
+			if (ParquetSchemaMapper.isPrimaryGeometry(childPath, primaryGeometryPath)) {
 				// stored in the geometry column
 				continue;
 			}

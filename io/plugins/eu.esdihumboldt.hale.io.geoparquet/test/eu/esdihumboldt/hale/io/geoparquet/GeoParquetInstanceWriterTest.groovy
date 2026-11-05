@@ -1315,6 +1315,36 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 	}
 
 	/**
+	 * Streaming: the only geometry of the type follows an empty geometry with CRS
+	 * in the same instance. The empty geometry determines the CRS, but the later
+	 * geometry must still be recognized, so the file is written as GeoParquet.
+	 */
+	@Test
+	void testStreamingEmptyGeometryBeforeGeometry() {
+		Schema schema = new SchemaBuilder().schema {
+			feature {
+				id(Integer)
+				geom(GeometryProperty, cardinality: '0..n')
+			}
+		}
+		def crs = new CodeDefinition('EPSG:25832', true)
+		InstanceCollection instances = new InstanceBuilder(types: schema).createCollection {
+			feature {
+				id(0)
+				geom(createGeometry('POINT EMPTY', crs))
+				geom(createGeometry('POINT(400000 5800000)', crs))
+			}
+		}
+		File target = new File(tmp.newFolder(), 'features.parquet')
+		IOReport report = writeInstances(target, schema, instances, { it.setSort(false) })
+
+		def geo = geoMetadata(target)
+		assertNotNull(report.warnings*.message.toString(), geo)
+		assertEquals(25832, geo.columns.geometry.crs.id.code)
+		assertFalse(report.warnings*.message.toString(), report.warnings.any { it.message.contains('plain Parquet') })
+	}
+
+	/**
 	 * Streaming: more instances without geometry than can be buffered and no
 	 * geometry at all. The file is opened as GeoParquet file when the buffer is
 	 * full, there is a warning that it has no geometries.
