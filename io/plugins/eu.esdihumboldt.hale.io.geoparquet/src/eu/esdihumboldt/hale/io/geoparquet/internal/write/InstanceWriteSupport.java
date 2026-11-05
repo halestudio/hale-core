@@ -23,6 +23,7 @@ import eu.esdihumboldt.hale.common.core.report.SimpleLog;
 import eu.esdihumboldt.hale.common.instance.model.Instance;
 import eu.esdihumboldt.hale.io.geoparquet.GeoParquetVersion;
 import eu.esdihumboldt.hale.io.geoparquet.internal.crs.GeoParquetCrs;
+import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoColumnStats;
 import eu.esdihumboldt.hale.io.geoparquet.internal.meta.GeoMetadataBuilder;
 import eu.esdihumboldt.hale.io.geoparquet.internal.schema.TypeMapping;
 
@@ -95,6 +96,13 @@ public class InstanceWriteSupport extends WriteSupport<Instance> {
 		String primary = mapping.getPrimaryGeometryColumn();
 		if (primary == null || !mapping.isGeoParquet()) {
 			return new FinalizedWriteContext(Map.of());
+		}
+		GeoColumnStats primaryStats = valueWriter.getStats().get(primary);
+		if (primaryStats == null || primaryStats.getExtent() == null) {
+			// possible in streaming mode, if the file was opened before any primary
+			// geometry was encountered
+			log.warn("No instance of type " + mapping.getType().getName().getLocalPart()
+					+ " written to GeoParquet has a (primary) geometry, the file has no extent and may not be accepted by some tools (e.g. Portolan); enable sorting to write such types as plain Parquet files");
 		}
 		if (bbox2d) {
 			valueWriter.getStats().forEach((column, stats) -> {
