@@ -386,7 +386,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 				else {
 					PendingType pendingType = pending.get(type);
 					if (pendingType == null) {
-						pendingType = new PendingType(new CrsResolver(type, mapper));
+						pendingType = new PendingType(new CrsResolver(type, mapper, true));
 						pending.put(type, pendingType);
 					}
 					pendingType.resolver().observe(instance);
@@ -469,7 +469,7 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 				TypeDefinition type = instance.getDefinition();
 				SortedType sorted = types.get(type);
 				if (sorted == null) {
-					sorted = new SortedType(new CrsResolver(type, mapper), this);
+					sorted = new SortedType(new CrsResolver(type, mapper, false), this);
 					types.put(type, sorted);
 				}
 				InstanceReference ref = instances.getReference(instance);
@@ -720,11 +720,22 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		 * instances.
 		 */
 		private final Map<String, PendingColumn> pending = new LinkedHashMap<>();
+		/** If instances are checked for a primary geometry. */
+		private final boolean trackPrimaryGeometry;
 		/** If a non-empty primary geometry was seen. */
 		private boolean primaryGeometrySeen;
 
-		CrsResolver(TypeDefinition type, ParquetSchemaMapper mapper) {
+		/**
+		 * Create a CRS resolver for a type.
+		 *
+		 * @param type the type
+		 * @param mapper the schema mapper
+		 * @param trackPrimaryGeometry if {@link #observe(Instance)} should check the
+		 *            instances for a primary geometry (needed in streaming mode only)
+		 */
+		CrsResolver(TypeDefinition type, ParquetSchemaMapper mapper, boolean trackPrimaryGeometry) {
 			this.type = type;
+			this.trackPrimaryGeometry = trackPrimaryGeometry;
 			this.preliminary = mapper.map(type, Map.of(), SimpleLog.NO_LOG);
 			List<String> geometryColumns = preliminary.getGeometryColumns();
 			for (ColumnMapping column : preliminary.getColumns()) {
@@ -753,10 +764,8 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		 * if no geometry has a CRS the column is determined by {@link #finish()}.
 		 */
 		void observe(Instance instance) {
-			String primaryColumn = preliminary.getPrimaryGeometryColumn();
-			if (!primaryGeometrySeen && primaryColumn != null
-					&& !pending.containsKey(primaryColumn)) {
-				// CRS already determined, only check for a primary geometry
+			if (trackPrimaryGeometry && !primaryGeometrySeen
+					&& preliminary.getPrimaryGeometryColumn() != null) {
 				for (GeometryProperty<?> geometry : GeometryValues.collect(
 						PropertyPaths.findValues(instance, preliminary.getPrimaryGeometryPath()))) {
 					if (isNonEmpty(geometry)) {
@@ -770,12 +779,8 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 			}
 			for (Map.Entry<String, PendingColumn> entry : new ArrayList<>(pending.entrySet())) {
 				PendingColumn column = entry.getValue();
-				boolean primary = entry.getKey().equals(primaryColumn);
 				for (GeometryProperty<?> geometry : GeometryValues
 						.collect(PropertyPaths.findValues(instance, column.path()))) {
-					if (primary && isNonEmpty(geometry)) {
-						primaryGeometrySeen = true;
-					}
 					if (geometry.getGeometry() != null && geometry.getCRSDefinition() != null) {
 						List<CRSDefinition> candidates = new ArrayList<>(column.candidates());
 						candidates.add(geometry.getCRSDefinition());
@@ -796,7 +801,8 @@ public class GeoParquetInstanceWriter extends AbstractGeoInstanceWriter
 		}
 
 		/**
-		 * @return if an instance with a non-empty primary geometry was observed
+		 * @return if an instance with a non-empty primary geometry was observed (only
+		 *         tracked if enabled on creation)
 		 */
 		boolean hasPrimaryGeometry() {
 			return primaryGeometrySeen;

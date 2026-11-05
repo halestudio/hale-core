@@ -246,7 +246,7 @@ public class ParquetSchemaMapper {
 	 * @param primaryPath the path of the primary geometry, may be <code>null</code>
 	 * @return if the property is moved to the primary geometry column
 	 */
-	private static boolean isPrimaryGeometry(List<QName> path, List<QName> primaryPath) {
+	public static boolean isPrimaryGeometry(List<QName> path, List<QName> primaryPath) {
 		return primaryPath != null && path.size() >= primaryPath.size()
 				&& path.subList(0, primaryPath.size()).equals(primaryPath);
 	}
