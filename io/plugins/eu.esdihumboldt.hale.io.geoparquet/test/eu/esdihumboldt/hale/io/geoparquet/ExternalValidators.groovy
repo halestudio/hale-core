@@ -34,14 +34,15 @@ import org.junit.Assume
  * <li><code>portolan</code> (portolan-cli): the file is added to a temporary
  * catalog and the catalog is checked</li>
  * <li>GDAL's <code>validate_geoparquet.py</code>, run in a Docker container -
- * optional, only if <code>docker</code> is available and the environment
- * variable <code>GEOPARQUET_GDAL_IMAGE</code> is set to the image. GDAL
+ * optional, only if the environment variable
+ * <code>GEOPARQUET_GDAL_IMAGE</code> is set to the image, or if the environment
+ * variable <code>CI</code> is set (then {@link #GDAL_CI_IMAGE} is used by
+ * default and <code>docker</code> is required). GDAL
  * releases up to 3.13.3 cannot validate GeoParquet 2.0 (they fail to download
  * the JSON schema of 2.0.0), only the nightly builds (<code>latest</code>) can
  * (using the schema of 2.0.0-rc.1). For reproducible results use a nightly
- * pinned by digest, e.g. (tested, GDAL 3.14.0dev from 2026-11-05)
- * <code>ghcr.io/osgeo/gdal@sha256:657dd403a417c6a530f0eb55fc5f3efbdc505a3bd620e0c1199319be825b6730</code>,
- * or a release image once a release supports GeoParquet 2.0. All versions
+ * pinned by digest, e.g. {@link #GDAL_CI_IMAGE}, or a release image once a
+ * release supports GeoParquet 2.0. All versions
  * (including the nightly) report 3D points as not listed in
  * <code>geometry_types</code>, which is tolerated (see
  * {@link #GDAL_POINT_Z_FALSE_POSITIVE}).</li>
@@ -74,6 +75,14 @@ class ExternalValidators {
 
 	/** Environment variable that enables the GDAL validation, names the image. */
 	static final String GDAL_IMAGE_ENV = 'GEOPARQUET_GDAL_IMAGE'
+
+	/**
+	 * GDAL image used for the validation if the <code>CI</code> environment
+	 * variable is set and {@link #GDAL_IMAGE_ENV} is not: a nightly build pinned
+	 * by digest (tested, GDAL 3.14.0dev from 2026-11-05), as no release supports
+	 * GeoParquet 2.0 yet. Should be replaced by a release image once one does.
+	 */
+	static final String GDAL_CI_IMAGE = 'ghcr.io/osgeo/gdal@sha256:657dd403a417c6a530f0eb55fc5f3efbdc505a3bd620e0c1199319be825b6730'
 
 	/**
 	 * Portolan rules that are ignored, as they are about the metadata of the
@@ -305,14 +314,21 @@ class ExternalValidators {
 
 	/**
 	 * Run GDAL's GeoParquet validation script in a Docker container, if enabled
-	 * (<code>docker</code> available and <code>GEOPARQUET_GDAL_IMAGE</code> set).
-	 * Never fails because of missing tools. If <code>https_proxy</code> is set
+	 * (<code>GEOPARQUET_GDAL_IMAGE</code> or <code>CI</code> set). If
+	 * <code>docker</code> is not available the validation is skipped, or fails if
+	 * <code>CI</code> is set. If <code>https_proxy</code> is set
 	 * in the environment it is passed into the container (using host
 	 * networking), as the script downloads the GeoParquet JSON schema.
 	 */
 	static void checkGdal(File file) {
-		String image = System.getenv(GDAL_IMAGE_ENV)
-		if (!image || !isAvailable('docker')) {
+		String image = System.getenv(GDAL_IMAGE_ENV) ?: (System.getenv('CI') ? GDAL_CI_IMAGE : null)
+		if (!image) {
+			return
+		}
+		if (!isAvailable('docker')) {
+			if (System.getenv('CI')) {
+				fail("Docker is required for the GDAL validation, but not available (CI is set)")
+			}
 			return
 		}
 		List<String> cmd = ['docker', 'run', '--rm']
@@ -350,11 +366,14 @@ class ExternalValidators {
 	/**
 	 * Determine if the output of a failed GDAL validation only consists of known
 	 * false positives (see {@link #GDAL_POINT_Z_FALSE_POSITIVE}), which only
-	 * applies if <code>Point Z</code> but not <code>Point</code> is declared.
+	 * applies if the file has a single geometry column, which declares
+	 * <code>Point Z</code> but not <code>Point</code> (the message does not name
+	 * the column, so with several columns a real error could be hidden).
 	 */
 	static boolean onlyKnownGdalFalsePositives(File file, String output) {
 		Map geo = GeoParquetTestUtil.geoMetadata(file)
-		boolean pointZ = geo?.columns?.values()?.any { Map column ->
+		Map columns = geo?.columns
+		boolean pointZ = columns?.size() == 1 && columns.values().every { Map column ->
 			column.geometry_types?.contains('Point Z') && !column.geometry_types.contains('Point')
 		}
 		List<String> lines = output.readLines()*.trim().findAll { !it.empty }

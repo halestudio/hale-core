@@ -227,11 +227,17 @@ class ExternalValidatorsTest extends AbstractPlatformTest {
 		assertPortolanFails('Error: no catalog', 'did not produce JSON')
 	}
 
-	private File fileWithGeometryTypes(List<String> types) {
+	private File fileWithGeometryTypes(List<String> types, List<String> secondaryTypes = null) {
 		File f = tmp.newFile()
-		MessageType schema = Types.buildMessage().optional(PrimitiveTypeName.BINARY).named('geometry').named('raw')
+		def builder = Types.buildMessage().optional(PrimitiveTypeName.BINARY).named('geometry')
+		Map columns = [geometry: [encoding: 'WKB', geometry_types: types]]
+		if (secondaryTypes != null) {
+			builder = builder.optional(PrimitiveTypeName.BINARY).named('geometry2')
+			columns.geometry2 = [encoding: 'WKB', geometry_types: secondaryTypes]
+		}
+		MessageType schema = builder.named('raw')
 		writeRaw(f, schema, [geo: JsonOutput.toJson([version: '1.1.0', primary_column: 'geometry',
-				columns: [geometry: [encoding: 'WKB', geometry_types: types]]])], [])
+				columns: columns])], [])
 		f
 	}
 
@@ -252,5 +258,8 @@ class ExternalValidatorsTest extends AbstractPlatformTest {
 		// 2D points declared: a real error
 		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['Point Z', 'Point']), falsePositive))
 		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['LineString']), falsePositive))
+		// several geometry columns: the message does not name the column
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['Point Z'], ['Point Z']), falsePositive))
+		assertFalse(ExternalValidators.onlyKnownGdalFalsePositives(fileWithGeometryTypes(['Point Z'], ['Point']), falsePositive))
 	}
 }
