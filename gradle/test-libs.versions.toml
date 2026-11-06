@@ -6,7 +6,7 @@ testcontainers = "2.0.5"
 aspectj = "1.9.26"
 zstd-jni = "1.5.7-24"
 snappy-java = "1.1.10.12"
-json-schema-validator = "3.0.8"
+json-schema-validator = "3.0.9"
 
 [libraries]
 junit4 = {module = "junit:junit", version.ref = "junit4"}
