@@ -6,7 +6,7 @@ hk = "1.58.1"
 pkl = "0.32.2"
 
 # external GeoParquet validators used in tests of the GeoParquet plugin
-uv = "0.13.6"
+uv = "0.13.7"
 "pipx:geoparquet-io" = "1.7.0"
 "pipx:portolan-cli" = "0.8.0"
 
