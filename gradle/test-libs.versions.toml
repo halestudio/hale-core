@@ -4,7 +4,7 @@ allure = "2.35.5"
 assertj = "3.27.7"
 testcontainers = "2.0.5"
 aspectj = "1.9.26"
-zstd-jni = "1.5.7-24"
+zstd-jni = "1.5.7-26"
 snappy-java = "1.1.10.12"
 json-schema-validator = "3.0.8"
 
