@@ -21,6 +21,7 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -45,6 +46,11 @@ import eu.esdihumboldt.util.test.AbstractPlatformTest;
  * in {@link Transformation}.
  */
 public class TransformationStoreLifecycleTest extends AbstractPlatformTest {
+
+	/**
+	 * Timeout for waiting on the store job listener.
+	 */
+	private static final long TIMEOUT_SECONDS = 30;
 
 	/**
 	 * Target sink recording if it was completed and disposed.
@@ -92,22 +98,27 @@ public class TransformationStoreLifecycleTest extends AbstractPlatformTest {
 		job.schedule();
 		job.join();
 
-		assertFalse("Transformation must not be started", started.get());
-		assertFalse("Store directory should be deleted", Files.exists(storeDir));
-		assertTrue("Sink should be completed with cancel", sink.cancelled.get());
-		assertTrue("Sink should be disposed", sink.disposed.get());
-		assertTrue(result.isDone());
+		/*
+		 * Wait for the result, which is set as last step by the job listener. Joining
+		 * the job is not sufficient, as the job may already be marked as finished while
+		 * its listeners are still being notified.
+		 */
 		if (status.getException() != null) {
 			try {
-				result.get();
+				result.get(TIMEOUT_SECONDS, TimeUnit.SECONDS);
 				fail("Exception expected");
 			} catch (ExecutionException e) {
 				assertSame(status.getException(), e.getCause());
 			}
 		}
 		else {
-			assertFalse(result.get(1, TimeUnit.SECONDS));
+			assertFalse(result.get(TIMEOUT_SECONDS, TimeUnit.SECONDS));
 		}
+
+		assertFalse("Transformation must not be started", started.get());
+		assertFalse("Store directory should be deleted", Files.exists(storeDir));
+		assertTrue("Sink should be completed with cancel", sink.cancelled.get());
+		assertTrue("Sink should be disposed", sink.disposed.get());
 
 		// closing again (e.g. by the transformation job listener) is harmless
 		closeStore.run();
@@ -132,15 +143,17 @@ public class TransformationStoreLifecycleTest extends AbstractPlatformTest {
 		RecordingSink sink = new RecordingSink();
 		try {
 			SettableFuture<Boolean> result = SettableFuture.create();
-			AtomicBoolean started = new AtomicBoolean();
+			CountDownLatch started = new CountDownLatch(1);
 
 			Job job = storeJob(Status.OK_STATUS);
 			job.addJobChangeListener(Transformation.createStoreJobListener(
-					Transformation.storeCloser(store), sink, result, () -> started.set(true)));
+					Transformation.storeCloser(store), sink, result, started::countDown));
 			job.schedule();
 			job.join();
 
-			assertTrue(started.get());
+			// joining the job does not guarantee its listeners were notified
+			assertTrue("Transformation should be started",
+					started.await(TIMEOUT_SECONDS, TimeUnit.SECONDS));
 			assertTrue("Store must not be closed", Files.exists(storeDir));
 			assertFalse(sink.disposed.get());
 			assertFalse(result.isDone());
