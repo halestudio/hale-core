@@ -96,25 +96,6 @@ class ExternalValidators {
 	 */
 	static final Set<String> PORTOLAN_IGNORED_RULES = ['PTL-PRV-001', 'PTL-FIL-005'] as Set
 
-	/**
-	 * Portolan rule that is ignored for files with a 3D column bbox
-	 * (<code>[xmin, ymin, zmin, xmax, ymax, zmax]</code>, as required by the
-	 * GeoParquet specification for 3D geometries): Portolan 0.8.0 reads the first
-	 * four values of the bbox as 2D bbox (<code>_extract_bbox</code> in
-	 * <code>portolan_cli/metadata/geoparquet.py</code>), so it reports a mismatch
-	 * between data and declared bbox. The bbox is verified by
-	 * {@link GeoParquetCompliance} instead.
-	 */
-	static final String PORTOLAN_3D_BBOX_RULE = 'PTL-DAT-005'
-
-	/**
-	 * Determine if any geometry column of the <code>geo</code> metadata has a 3D
-	 * bbox (6 values).
-	 */
-	static boolean hasThreeDimensionalBbox(Map geo) {
-		((Map) geo.columns)?.values()?.any { Map c -> c.bbox instanceof List && ((List) c.bbox).size() == 6 }
-	}
-
 	private static final Map<String, Boolean> AVAILABLE = new ConcurrentHashMap<>()
 
 	/**
@@ -173,11 +154,7 @@ class ExternalValidators {
 		}
 		checkGpio(file)
 		if (geo.version in ['1.1.0', '2.0.0']) {
-			Collection<String> ignored = ignorePortolanRules
-			if (hasThreeDimensionalBbox(geo)) {
-				ignored = ignored + [PORTOLAN_3D_BBOX_RULE]
-			}
-			checkPortolan(file, ignored)
+			checkPortolan(file, ignorePortolanRules)
 		}
 		checkGdal(file)
 	}
