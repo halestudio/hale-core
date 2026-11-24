@@ -11,6 +11,10 @@
     // Updates to target platform use fix commits to trigger a release
     ":pathSemanticCommitType(**/*.target,fix)",
   ],
+  // Raise the limits from config:recommended (10 concurrent, 2 per hour), so that
+  // long-lived open PRs do not block other updates from being proposed.
+  prConcurrentLimit: 30,
+  prHourlyLimit: 10,
   // Regex syntax: https://github.com/google/re2/wiki/Syntax
   // If you're looking for an online regex testing tool that supports capture groups, try regex101.com. You must select the ECMAScript (JavaScript) flavor of regex. Be aware that backslashes ('\') of the resulting regex have to still be escaped e.g. \n\s --> \\n\\s. You can use the Code Generator in the sidebar and copy the regex in the generated "Alternative syntax" comment into JSON.
   customManagers: [
