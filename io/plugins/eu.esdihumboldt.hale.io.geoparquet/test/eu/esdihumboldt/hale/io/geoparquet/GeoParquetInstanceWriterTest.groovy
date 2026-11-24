@@ -1091,15 +1091,16 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 	/**
 	 * The column bbox of 3D data has 6 values by default (GeoParquet
 	 * specification), with the parameter bbox2d only the 4 values of the x/y
-	 * range (for Portolan, which only reads the first four values).
+	 * range (for Portolan versions up to 0.8.0, which only read the first four
+	 * values).
 	 */
 	@Test
 	void testBbox2dFor3dData() {
 		Schema schema = citySchema()
 
 		// default: 3D bbox
-		File target = new File(tmp.newFolder(), 'cities.parquet')
-		IOReport report = writeInstances(target, schema, cities3d(schema), null, false)
+		File target3d = new File(tmp.newFolder(), 'cities.parquet')
+		IOReport report = writeInstances(target3d, schema, cities3d(schema), null, false)
 		assertEquals([
 			8.651222d,
 			48.1d,
@@ -1107,11 +1108,11 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 			11.6d,
 			49.872833d,
 			530d
-		], geoMetadata(target).columns.geometry.bbox*.doubleValue())
+		], geoMetadata(target3d).columns.geometry.bbox*.doubleValue())
 		assertFalse(report.warnings*.message.toString(), report.warnings.any { it.message.contains('2D bbox') })
 
 		// 2D bbox requested
-		target = new File(tmp.newFolder(), 'cities.parquet')
+		File target = new File(tmp.newFolder(), 'cities.parquet')
 		report = writeInstances(target, schema, cities3d(schema), { it.setBbox2d(true) }, false)
 		def geo = geoMetadata(target)
 		assertEquals([
@@ -1127,10 +1128,18 @@ class GeoParquetInstanceWriterTest extends AbstractPlatformTest {
 		assertEquals(report.warnings*.message.toString(), 1, warnings.size())
 		assertTrue(warnings[0], warnings[0].contains('column geometry '))
 
-		// Portolan accepts the file without ignoring PTL-DAT-005 and writes the x/y
+		// Portolan (also versions up to 0.8.0) reads the 2D bbox and writes the x/y
 		// extent as bbox to the catalog
 		ExternalValidators.checkGpio(target)
 		ExternalValidators.checkPortolan(target, [], [
+			8.651222d,
+			48.1d,
+			11.6d,
+			49.872833d
+		])
+		// Portolan also reads the 3D bbox correctly and writes the x/y extent as
+		// bbox to the catalog
+		ExternalValidators.checkPortolan(target3d, [], [
 			8.651222d,
 			48.1d,
 			11.6d,
