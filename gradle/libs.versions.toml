@@ -197,7 +197,7 @@ jackson-bom = {module = "com.fasterxml.jackson:jackson-bom", version.ref = "jack
 jackson-annotations = {module = "com.fasterxml.jackson.core:jackson-annotations"}
 jackson-databind = {module = "com.fasterxml.jackson.core:jackson-databind"}
 
-ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "5.0.1"}
+ucanaccess = {module = "net.sf.ucanaccess:ucanaccess", version = "5.3.0"}
 
 poi-core = {module = "org.apache.poi:poi", version.ref = "poi"}
 poi-ooxml = {module = "org.apache.poi:poi-ooxml", version.ref = "poi"}
