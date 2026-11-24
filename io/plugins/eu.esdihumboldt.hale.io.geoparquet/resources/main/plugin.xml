@@ -36,7 +36,7 @@
             </valueDescriptor>
          </providerParameter>
          <providerParameter
-               description="The version of the GeoParquet specification to write. Version 2.0.0 uses the native Parquet GEOMETRY type, versions 1.0.0 and 1.1.0 write plain binary columns with the geo metadata. Note that Portolan does not accept version 1.0.0."
+               description="The version of the GeoParquet specification to write. Version 2.0.0 uses the native Parquet GEOMETRY type, versions 1.0.0 and 1.1.0 write plain binary columns with the geo metadata. Use version 1.1.0 for readers that do not fully support GeoParquet 2.0 yet (e.g. GDAL releases up to 3.13 and applications based on them). Note that Portolan does not accept version 1.0.0."
                label="GeoParquet version"
                name="geoparquet.version"
                optional="true">
