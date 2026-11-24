@@ -1,3 +1,64 @@
+## [7.0.0](https://github.com/halestudio/hale-core/compare/v6.5.2...v7.0.0) (2026-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* the OrientDB based instance store and its modules were removed: eu.esdihumboldt.hale.common.instance.orient, eu.esdihumboldt.hale.common.headless.orient, eu.esdihumboldt.hale.common.feature.orient, eu.esdihumboldt.util.orient.embedded.test and eu.esdihumboldt.util.blueprints.entities. Requesting the store "orient" via the system property hale.instance.store falls back to the default store.
+
+### Features
+
+* **geoparquet:** add GeoParquet instance writer ([378ea5a](https://github.com/halestudio/hale-core/commit/378ea5a7d01822e1433fbe71d0c99e758e1a5b68)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** bundle EPSG PROJJSON and resolve CRS ([0343fb2](https://github.com/halestudio/hale-core/commit/0343fb2557a0cf13229da80a768691c519fba957)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** map hale types to Parquet schemas ([887f0ed](https://github.com/halestudio/hale-core/commit/887f0ed4b29c357ca3d49cd81b9606ddd5a09353)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** map nested properties to Parquet structs and lists ([7e6fa2f](https://github.com/halestudio/hale-core/commit/7e6fa2f89bfd32ac7d405193271b2c4eb37b78b5)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** spatially sort features using a Hilbert curve ([62208f5](https://github.com/halestudio/hale-core/commit/62208f5c728b2eca8f399e77e705135245ec6c5c)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** write instances and geo metadata to Parquet files ([c62ae06](https://github.com/halestudio/hale-core/commit/c62ae06318fbd70f6fdd3d5da008b7515080a2ac)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **headless:** add transformation sink based on temporary instance store ([da02e60](https://github.com/halestudio/hale-core/commit/da02e6042d91eadffd3f5e4d67d6fdd99cb5924b)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **headless:** use SQLite based temporary instance store by default ([b7e8a88](https://github.com/halestudio/hale-core/commit/b7e8a88b6786a79757a8e417d4bb030ecee277dd)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add batching SQLite instance writer ([ff654c0](https://github.com/halestudio/hale-core/commit/ff654c0d90cb9e4c42809351c9e0bb58103eb347)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add Kryo based value codec for SQLite instance store ([4939102](https://github.com/halestudio/hale-core/commit/4939102493fc92ca0fca0d18d62354065018cf34)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add SQLite database access with pooled readers ([d66fc28](https://github.com/halestudio/hale-core/commit/d66fc284e68e92d0ccc37fe3234d1135387ef1ac)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add SQLite instance collection with fan-out and metadata filter ([8bdcc2c](https://github.com/halestudio/hale-core/commit/8bdcc2c622bcccf4897cef274830195fc481906b)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add SQLite instance store and store contract tests ([6c4e195](https://github.com/halestudio/hale-core/commit/6c4e19518ef22e7527379fef245f47446bb6b599)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add store independent job for loading instances ([17c67b8](https://github.com/halestudio/hale-core/commit/17c67b875d31baf3fe38df715bba313e90a1fcf4)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** add temporary instance store API and extension point ([1650239](https://github.com/halestudio/hale-core/commit/1650239d986e5eb19600b40517a2e206737bed06)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** serialize instance trees with Kryo ([9a12d89](https://github.com/halestudio/hale-core/commit/9a12d89822cb9ec84e90fe97fd28056c967aaaa1)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance:** add TypeAwareFilter and restrict filtering to fan-out of its types ([ef9f3f2](https://github.com/halestudio/hale-core/commit/ef9f3f2cc77f105c4934addeaf7e0695db12afc7)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+
+### Bug Fixes
+
+* **deps:** update batik to v1.20 ([0df9a61](https://github.com/halestudio/hale-core/commit/0df9a61bdf961157a808d5baf66c5f3c8a7101d7))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.22.4 ([0ed4b0a](https://github.com/halestudio/hale-core/commit/0ed4b0a95b7f9eb427c3fe44b9e3518da8073053))
+* **deps:** update dependency com.google.code.gson:gson to v2.15.0 ([74254d3](https://github.com/halestudio/hale-core/commit/74254d3f40647d9d59beb45f2b48dc6508fb8b71))
+* **deps:** update dependency org.yaml:snakeyaml to v2.7 ([42d4a19](https://github.com/halestudio/hale-core/commit/42d4a190d68ff29892bf388ff844c324b3a5ca9b))
+* **deps:** update spring core to v7.0.10 ([81a216b](https://github.com/halestudio/hale-core/commit/81a216b1b71af59d2faadf7d15bffda9685fff76))
+* **deps:** use official TinkerPop 2.6.0 release ([fcc3394](https://github.com/halestudio/hale-core/commit/fcc3394685815dcbc89fb25cf092a4a89ec80b2d)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **geoparquet:** do not use gml:priorityLocation as primary geometry ([e687718](https://github.com/halestudio/hale-core/commit/e6877188c252ff4b9c68e6397caf1e6c594c090e)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** reliably detect primary geometries when streaming ([eb2bf44](https://github.com/halestudio/hale-core/commit/eb2bf44abbeed6acb447d35ee9edb107accb726c)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** use the real geometry property of GML feature types ([da97820](https://github.com/halestudio/hale-core/commit/da97820e27d6a2b805dae170ec464df3c902bb43)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** write types without any geometry as plain Parquet ([2b2c030](https://github.com/halestudio/hale-core/commit/2b2c030e7e42141998396b42af0a302e23da0698)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **geoparquet:** write types without geometry as plain Parquet when streaming ([81d27cd](https://github.com/halestudio/hale-core/commit/81d27cd41b0dcb76f9d9faf86e39f7ba5bcb54a2)), closes [ING-5450](https://wetransform.atlassian.net/browse/ING-5450)
+* **headless:** fail reading the store sink if writing to the store failed ([f5e99e8](https://github.com/halestudio/hale-core/commit/f5e99e8c324f04758b6c98cffdbcfc6757e93f4b)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **headless:** keep source statistics for fan-out of type filtered sources ([40f2892](https://github.com/halestudio/hale-core/commit/40f28927d65c629c05995335f3e83b92502b99bf)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **headless:** release temporary store and target sink if loading fails ([b91ad8f](https://github.com/halestudio/hale-core/commit/b91ad8f7d1bb7b94a14e323939fadb00f4daddf4)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** apply SQLite page size before enabling WAL ([b3568b8](https://github.com/halestudio/hale-core/commit/b3568b876e253996addeffbdd5b37e584ffc7fea)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** derive all Kryo registration ids from one ordered table ([4788392](https://github.com/halestudio/hale-core/commit/47883921193487f3772db4018ff8c9ac09fd5a0d)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** do not deserialize skipped instances ([efd79f5](https://github.com/halestudio/hale-core/commit/efd79f54e270f539a524b039dbcdb198499e03c4)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** fall back on linkage errors and drop failing values ([93e817e](https://github.com/halestudio/hale-core/commit/93e817ecfaa6c87377367f4b6022edd2d79a5379)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** keep report task type of loading source instances ([32b2551](https://github.com/halestudio/hale-core/commit/32b25516432dcdd1493dad63a060a27f775c5aa2)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** make instance writer close safe against concurrent and interrupted callers ([4db89d9](https://github.com/halestudio/hale-core/commit/4db89d99a1d26aeac8d5c25010af03cced60c66c)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** treat metadata extraction failures as unstorable instance ([ca08f52](https://github.com/halestudio/hale-core/commit/ca08f52ea0ab9e48908f8bf7164160d1e81c831b)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** wait for the writer thread on every close and before reopening ([7d5664a](https://github.com/halestudio/hale-core/commit/7d5664af64cd11410813a5d0b2fd0d47e956c416)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance:** resolve references of root instances on fan-out selections ([f0949a4](https://github.com/halestudio/hale-core/commit/f0949a497fe7e4c9f9d8b59170e9c987d6cf216d)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+
+### Performance Improvements
+
+* **cst:** only read source instances of a type cell's types if supported ([2c1cebd](https://github.com/halestudio/hale-core/commit/2c1cebd40ccb99f3bda8c6f45a688646615d8eec)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+* **instance-store:** reuse insert statements and scan by id for multiple types ([74351ed](https://github.com/halestudio/hale-core/commit/74351ed450ceb68536920be1c72fe5af9ef3d7ef)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+
+### Code Refactoring
+
+* remove OrientDB based instance store ([3c10699](https://github.com/halestudio/hale-core/commit/3c10699a2e528bcbb88a4a2a11133caa2be671a1)), closes [ING-4137](https://wetransform.atlassian.net/browse/ING-4137)
+
 ## [6.5.2](https://github.com/halestudio/hale-core/compare/v6.5.1...v6.5.2) (2026-10-22)
 
 ### Bug Fixes
