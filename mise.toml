@@ -8,7 +8,7 @@ pkl = "0.32.2"
 # external GeoParquet validators used in tests of the GeoParquet plugin
 uv = "0.13.7"
 "pipx:geoparquet-io" = "1.7.0"
-"pipx:portolan-cli" = "0.8.0"
+"pipx:portolan-cli" = "0.9.0"
 
 [env]
 # explicitly use pkl CLI instead of pklr library because the latter does not support all language features needed
