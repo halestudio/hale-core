@@ -2,7 +2,7 @@
 java = "temurin-17.0.21.1+2"
 
 # git hooks
-hk = "1.58.1"
+hk = "2.14.0"
 pkl = "0.32.2"
 
 # external GeoParquet validators used in tests of the GeoParquet plugin
