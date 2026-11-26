@@ -15,5 +15,6 @@ required_checks:
 # PR; it pushes nothing until push is switched on centrally.
 factory:
   size: medium
-  # installs the tools of mise.toml (the JDK) in the run pod before the agent starts
-  setup: mise install
+  # installs the JDK of mise.toml in the run pod before the agent starts; only java:
+  # the Python test tools (pipx) need a C++ compiler the run pod does not have
+  setup: mise install java
