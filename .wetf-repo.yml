@@ -9,3 +9,9 @@ required_checks:
   - check / check / run
   - spotless
   - scan
+
+# Agent factory: Renovate fix job (pilot). Report-only: the factory comments on
+# failing Renovate PRs with a proposed fix and recommends what to do with each
+# PR; it pushes nothing until push is switched on centrally.
+factory:
+  size: medium
