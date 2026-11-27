@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.haleconnect.api.user.v1.model.UserInfo;
+import com.haleconnect.api.user.v1.model.User;
 
 import eu.esdihumboldt.hale.io.haleconnect.HaleConnectSession;
 
@@ -39,7 +39,7 @@ public class HaleConnectSessionImpl implements HaleConnectSession {
 	/**
 	 * Current user's profile
 	 */
-	private final UserInfo profile;
+	private final User profile;
 
 	/**
 	 * Creates a session with an associated username and token
@@ -48,7 +48,7 @@ public class HaleConnectSessionImpl implements HaleConnectSession {
 	 * @param token JSON Web Token issued by hale connect
 	 * @param profile Profile of the logged-in user
 	 */
-	public HaleConnectSessionImpl(String username, String token, UserInfo profile) {
+	public HaleConnectSessionImpl(String username, String token, User profile) {
 		if (username == null || username.trim().isEmpty()) {
 			throw new IllegalArgumentException("username must not be empty");
 		}
