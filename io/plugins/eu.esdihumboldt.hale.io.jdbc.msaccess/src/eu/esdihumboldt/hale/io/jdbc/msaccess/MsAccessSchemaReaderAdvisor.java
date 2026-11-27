@@ -76,7 +76,7 @@ public class MsAccessSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 		};
 
 		var limitOptions = LimitOptionsBuilder.builder() //
-				.fromOptions(options.getLimitOptions()) //
+				.fromOptions(options.limitOptions()) //
 				.includeTables(tableInclusion).toOptions();
 
 		return options.withLimitOptions(limitOptions);
