@@ -37,9 +37,9 @@ import com.haleconnect.api.user.v1.api.LoginApi
 import com.haleconnect.api.user.v1.api.OrganisationsApi
 import com.haleconnect.api.user.v1.api.UsersApi
 import com.haleconnect.api.user.v1.model.Credentials
-import com.haleconnect.api.user.v1.model.OrganisationInfo
+import com.haleconnect.api.user.v1.model.Organisation
 import com.haleconnect.api.user.v1.model.Token
-import com.haleconnect.api.user.v1.model.UserInfo
+import com.haleconnect.api.user.v1.model.User
 
 import de.fhg.igd.slf4jplus.ALogger
 import de.fhg.igd.slf4jplus.ALoggerFactory
@@ -170,7 +170,7 @@ public class HaleConnectServiceImpl implements HaleConnectService, BasePathManag
 					this.getSession().getToken());
 			HaleConnectOrganisationInfo orgInfo;
 			try {
-				OrganisationInfo org = api.getOrganisation(orgId);
+				Organisation org = api.getOrganisation(orgId);
 				orgInfo = new HaleConnectOrganisationInfo(id: org.id, name: org.name)
 			} catch (ApiException e) {
 				if (e.code == HttpURLConnection.HTTP_NOT_FOUND) {
@@ -286,7 +286,7 @@ public class HaleConnectServiceImpl implements HaleConnectService, BasePathManag
 
 			HaleConnectUserInfo userInfo;
 			try {
-				UserInfo info = api.getProfile(userId);
+				User info = api.getProfile(userId);
 				userInfo = new HaleConnectUserInfo(userId: info.getId(), screenName: info.getScreenName(), fullName: info.getFullName())
 			} catch (ApiException e) {
 				if (e.code == HttpURLConnection.HTTP_NOT_FOUND) {
@@ -351,7 +351,7 @@ public class HaleConnectServiceImpl implements HaleConnectService, BasePathManag
 				// First get the current user's profile to obtain the user ID
 				// required to fetch the extended profile (including the user's
 				// roles/organisations) in the next step
-				UserInfo shortProfile = usersApi.getProfileOfCurrentUser();
+				User shortProfile = usersApi.getProfileOfCurrentUser();
 				session = new HaleConnectSessionImpl(username, token.getToken(),
 						usersApi.getProfile(shortProfile.getId()));
 				orgInfoCache.clear()
