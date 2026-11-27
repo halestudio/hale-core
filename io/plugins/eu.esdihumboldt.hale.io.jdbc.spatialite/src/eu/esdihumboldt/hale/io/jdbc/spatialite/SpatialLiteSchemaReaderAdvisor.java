@@ -138,7 +138,7 @@ public class SpatialLiteSchemaReaderAdvisor implements JDBCSchemaReaderAdvisor {
 		};
 
 		var limits = LimitOptionsBuilder.builder() //
-				.fromOptions(options.getLimitOptions()) //
+				.fromOptions(options.limitOptions()) //
 				.includeTables(includeTables).toOptions();
 
 		return options.withLimitOptions(limits);

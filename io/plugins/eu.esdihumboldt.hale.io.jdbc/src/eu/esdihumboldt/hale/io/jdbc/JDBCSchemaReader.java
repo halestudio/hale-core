@@ -80,7 +80,7 @@ import schemacrawler.schema.ResultsColumns;
 import schemacrawler.schema.Table;
 import schemacrawler.schemacrawler.*;
 import schemacrawler.schemacrawler.exceptions.SchemaCrawlerException;
-import schemacrawler.tools.options.Config;
+import schemacrawler.tools.options.ConfigUtility;
 import schemacrawler.tools.utility.SchemaCrawlerUtility;
 
 /**
@@ -251,7 +251,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 			}
 			else {
 				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
-						retrievalOptions, options, new Config());
+						retrievalOptions, options, ConfigUtility.newConfig());
 			}
 
 			@SuppressWarnings("unused")
@@ -585,7 +585,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 								"Could not determine element type for array column", null));
 					}
 					else {
-						elementBinding = itemType.getTypeMappedClass();
+						elementBinding = getTypeMappedClass(itemType);
 						// TODO support custom bindings?
 						// XXX probably needed for Oracle?
 					}
@@ -622,7 +622,7 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 					}
 				}
 				else {
-					binding = column.getColumnDataType().getTypeMappedClass();
+					binding = getTypeMappedClass(column.getColumnDataType());
 				}
 			}
 
@@ -765,5 +765,71 @@ public class JDBCSchemaReader extends AbstractCachedSchemaReader
 		}
 
 		return namespace;
+	}
+
+	/**
+	 * Determine the Java class a column data type is mapped to.
+	 *
+	 * @param dataType the column data type
+	 * @return the mapped class, or {@link Object} if it cannot be determined
+	 */
+	private static Class<?> getTypeMappedClass(ColumnDataType dataType) {
+		String className = dataType.getTypeMappedClassName();
+		if (className == null || className.isBlank()) {
+			return Object.class;
+		}
+		Class<?> result = resolveClass(className.trim());
+		return result != null ? result : Object.class;
+	}
+
+	/**
+	 * Resolve a class from its canonical or binary name, supporting primitive types
+	 * and array types (e.g. <code>byte[]</code>).
+	 *
+	 * @param className the class name
+	 * @return the class or <code>null</code> if it cannot be resolved
+	 */
+	private static Class<?> resolveClass(String className) {
+		if (className.endsWith("[]")) {
+			Class<?> component = resolveClass(
+					className.substring(0, className.length() - 2).trim());
+			return component != null ? component.arrayType() : null;
+		}
+
+		switch (className) {
+		case "boolean":
+			return boolean.class;
+		case "byte":
+			return byte.class;
+		case "char":
+			return char.class;
+		case "short":
+			return short.class;
+		case "int":
+			return int.class;
+		case "long":
+			return long.class;
+		case "float":
+			return float.class;
+		case "double":
+			return double.class;
+		case "void":
+			return void.class;
+		default:
+		}
+
+		String name = className;
+		while (true) {
+			try {
+				return Class.forName(name);
+			} catch (ClassNotFoundException | LinkageError e) {
+				// try as nested class (canonical name uses '.' instead of '$')
+				int index = name.lastIndexOf('.');
+				if (index < 0) {
+					return null;
+				}
+				name = name.substring(0, index) + '$' + name.substring(index + 1);
+			}
+		}
 	}
 }

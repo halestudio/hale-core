@@ -51,7 +51,7 @@ import schemacrawler.schema.Catalog;
 import schemacrawler.schema.ResultsColumn;
 import schemacrawler.schema.ResultsColumns;
 import schemacrawler.schemacrawler.*;
-import schemacrawler.tools.options.Config;
+import schemacrawler.tools.options.ConfigUtility;
 import schemacrawler.tools.utility.SchemaCrawlerUtility;
 
 /**
@@ -210,7 +210,7 @@ public class SQLSchemaReader extends AbstractCachedSchemaReader
 			}
 			else {
 				database = SchemaCrawlerUtility.getCatalog(new ConnectionSource(connection),
-						retrievalOptions, options, new Config());
+						retrievalOptions, options, ConfigUtility.newConfig());
 			}
 
 			// create the type index
