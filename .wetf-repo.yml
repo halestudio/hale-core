@@ -10,11 +10,12 @@ required_checks:
   - spotless
   - scan
 
-# Agent factory: Renovate fix job (pilot). Report-only: the factory comments on
-# failing Renovate PRs with a proposed fix and recommends what to do with each
-# PR; it pushes nothing until push is switched on centrally.
+# Agent factory: Renovate fix job (pilot). The factory fixes failing Renovate
+# PRs on their branch and recommends what to do with each PR.
 factory:
-  size: medium
+  # 2 CPUs, 6 GiB: with the 4 GiB of medium a fix run was killed (exit 137),
+  # most likely out of memory: the Gradle build and the agent share the pod
+  size: medium-highmem
   # installs the JDK of mise.toml in the run pod before the agent starts; only java:
   # the Python test tools (pipx) need a C++ compiler the run pod does not have
   setup: mise install java
